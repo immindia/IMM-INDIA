@@ -1,7 +1,8 @@
 import { Button } from "@/components/ui/button"
+import Stats from "./components/Stats";
 function App() {
   return (
-    <Button className='px-6' variant=''>click me !</Button>
+    <Stats/>
   );
 }
 
