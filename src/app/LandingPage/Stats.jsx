@@ -23,8 +23,8 @@ const Stats = () => {
       <div className="relative z-30 max-w-screen-xl px-4 mx-auto md:px-8">
       
         <Heading
-          title="IMM LEGACY"
-          subtitle="Spanning 70 acres, with 22+ years of academic excellence, over 20,000 alumni, and 35+ specialized courses, we continue to shape future professionals."
+          title="IMM LEGACY" 
+          subtitle="Over five decades of shaping global leaders with 20,000+ successful alumni, hundreds of accolades, and partnerships worldwide."
           titleClassName="text-4xl md:text-6xl font-bold text-yellow-400"
           subtitleClassName="text-gray-300 text-base md:text-lg"
         />

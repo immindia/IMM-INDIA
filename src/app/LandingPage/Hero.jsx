@@ -1,9 +1,9 @@
 import img from "../../assets/hero.jpg";
 export default function Hero() {
     return (
-      <div className="relative sm:h-screen h-[50vh] w-full">
+      <div className="relative sm:h-[90vh] h-[50vh] w-full">
         {/* Background Image with Overlay */}
-        <div className="absolute inset-0">
+        <div className="absolute inset-0 ">
           <img
             src={img}
             alt="IMM Students and Faculty"

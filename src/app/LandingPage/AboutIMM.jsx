@@ -38,14 +38,14 @@ export default function AboutIMM() {
         </motion.div>
 
         {/* Text Section */}
-        <div className="w-full lg:w-1/2 md:pl space-y-6 relative">
+        <div className="w-full lg:w-1/2  space-y-3 sm:space-y-6 relative">
           {/* Title Animations */}
           <WordPullUp
-            className="w-fit sm:mx-0  text-gray-500 font-normal text-sm sm:text-2xl "
+            className="w-fit sm:mx-0  text-gray-500 font-normal text-base sm:text-2xl "
             words="About IMM India"
           />
           <WordPullUp
-            className="text-left sm:text-left text-4xl font-bold sm:font-bold md:font-extrabold text-pink-950 mt-8 mb-4 underline "
+            className="text-left sm:text-left text-4xl font-bold sm:font-bold md:font-extrabold text-pink-950 mt-4 sm:mt-8 mb-4 underline "
             words="Top B-School in Delhi NCR"
           />
           <div className="w-10/12 h-[2px] bg-pink-800"></div>
@@ -56,7 +56,7 @@ export default function AboutIMM() {
             initial={{ opacity: 0, x: 100 }} // Start with the paragraph offscreen to the right
             animate={pInView ? { opacity: 1, x: 0 } : {}} // Animate only when in view
             transition={{ type: "spring", stiffness: 70, damping: 20 }}
-            className="text-gray-600 sm:font-normal md:leading-loose tracking-wide text-base text-justify sm:text-left sm:text-lg"
+            className="text-gray-600 sm:font-normal md:leading-loose tracking-wide text-base text-justify sm:text-left sm:text-lg mt-6"
           >
             Year 1969, dream turned into reality and IMM, a premier educational
             society, took birth with a vision to spread the gospel of marketing
