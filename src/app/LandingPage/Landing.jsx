@@ -8,6 +8,7 @@ import Testimonial from "./Testimonial";
 import GlobalExcursion from "./GlobalExcursion";
 import Awards from "./Awards";
 import ProgramsOffered from "./ProgramsOffered";
+import AcademicPartners from "./AcademicPartners";
 
 const sectionVariants = {
   hidden: { scale: 0.8, opacity: 0 },
@@ -22,10 +23,10 @@ const sectionVariants = {
 };
 
 const Landing = () => {
-  const [aboutRef, aboutInView] = useInView({
-    threshold: 0.2,
-    triggerOnce: true,
-  });
+    const [aboutRef, aboutInView] = useInView({
+      threshold: 0.2,
+      triggerOnce: true,
+    });
   const [programsRef, programsInView] = useInView({
     threshold: 0.2,
     triggerOnce: true,
@@ -53,6 +54,14 @@ const Landing = () => {
 
   return (
     <div className="overflow-x-hidden">
+      <motion.div
+        ref={aboutRef}
+        variants={sectionVariants}
+        initial="hidden"
+        animate={aboutInView ? "visible" : "hidden"}
+      >
+        <AcademicPartners />
+      </motion.div>
       <motion.div
         ref={aboutRef}
         variants={sectionVariants}
