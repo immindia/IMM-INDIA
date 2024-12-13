@@ -12,6 +12,7 @@ import LatestBlogsAndEvents from "./LatestBlogsAndEvents";
 // import RankSlider from "./RankSlider";
 // import Stats from "./Stats";
 import Testimonial from "./Testimonial";
+import GlobalExcursion from "./GlobalExcursion";
 
 const sectionVariants = {
   hidden: { scale: 0.8, opacity: 0 }, // Starting state (small and transparent)
@@ -130,6 +131,14 @@ const Landing = () => {
         <Events />
       </motion.div> */}
 
+      <motion.div
+        ref={testimonialsRef}
+        variants={sectionVariants}
+        initial="hidden"
+        animate={testimonialsInView ? "visible" : "hidden"}
+      >
+        <GlobalExcursion/>
+      </motion.div>
       <motion.div
         ref={testimonialsRef}
         variants={sectionVariants}
