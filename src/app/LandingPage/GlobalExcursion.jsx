@@ -3,12 +3,12 @@ import img2 from "../../assets/ge2.jpg";
 import Heading from "../../components/Heading";
 export default function GlobalExcursion() {
   return (
-    <section className="px-6 py-10  bg-pink-950 sm:p-14">
+    <section className=" bg-pink-950 lg:py-20 md:py-12 py-8 sm:px-0 px-6">
       <div className="container mx-auto max-w-6xl">
         <Heading
           title="Global Excursion at IMM"
           titleClassName="lg:font-extrabold text-center  text-white "
-          className="block pb-0 mx-auto w-full text-left  sm:col-span-4 sm:pb-0 lg:pb-14"
+          className="block pb-0 mx-auto w-full text-left sm:col-span-4 sm:pb-0 lg:pb-14"
         />
 
         <div className="grid gap-8 md:grid-cols-2">

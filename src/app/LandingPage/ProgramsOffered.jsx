@@ -1,9 +1,8 @@
-
-import { ArrowRight } from 'lucide-react'
-import { Button } from "@/components/ui/button"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import Heading from "../../components/Heading"
-import img from "../../assets/prgramspic.jpg"
+import { ArrowRight } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import Heading from "../../components/Heading";
+import img from "../../assets/prgramspic.jpg";
 export default function ProgramsOffered() {
   const specializations = [
     "Marketing & Innovation Management",
@@ -13,20 +12,30 @@ export default function ProgramsOffered() {
     "International Business Management",
     "Information Technology Management",
     "Operations Management",
-    "Entrepreneurship Management"
-  ]
+    "Entrepreneurship Management",
+  ];
 
   return (
-    <div className="bg-gray-200 p-6 md:p-8">
-     <Heading 
-     title="Programmes Offered with Dual Specializations"
-     titleClassName="text-center text-2xl font-bold text-pink-950 md:text-3xl m"
-     />
+    <div className="bg-gray-200 lg:py-20 md:py-12 py-8 sm:px-0 px-6">
+      <Heading
+        title="Programmes Offered with Dual Specializations"
+        titleClassName="text-center text-2xl font-bold text-pink-950 md:text-3xl m"
+      />
 
       <Tabs defaultValue="pgdm" className="mx-auto max-w-6xl">
         <TabsList className="grid w-full grid-cols-2 h-12">
-          <TabsTrigger value="pgdm" className='text-xl h-full font-bold  data-[state=active]:bg-pink-950 data-[state=active]:text-white'>PGDM Programmes</TabsTrigger>
-          <TabsTrigger value="bba" className='text-xl h-full font-bold  data-[state=active]:bg-pink-950 data-[state=active]:text-white'>BBA Programmes</TabsTrigger>
+          <TabsTrigger
+            value="pgdm"
+            className="text-xs sm:text-xl h-full font-bold  data-[state=active]:bg-pink-950 data-[state=active]:text-white"
+          >
+            PGDM Programmes
+          </TabsTrigger>
+          <TabsTrigger
+            value="bba"
+            className="text-xs sm:text-xl h-full font-bold  data-[state=active]:bg-pink-950 data-[state=active]:text-white"
+          >
+            BBA Programmes
+          </TabsTrigger>
         </TabsList>
         <TabsContent value="pgdm">
           <ProgramContent
@@ -46,10 +55,8 @@ export default function ProgramsOffered() {
         </TabsContent>
       </Tabs>
     </div>
-  )
+  );
 }
-
-
 
 function ProgramContent({ title, specializations, imageSrc, imageAlt }) {
   return (
@@ -76,22 +83,19 @@ function ProgramContent({ title, specializations, imageSrc, imageAlt }) {
             </li>
           ))}
         </ul>
-        <div className="flex absolute bottom-5 right-5 justify-end gap-4">
-          <Button 
-            variant="outline" 
+        <div className="flex sm:absolute sm:bottom-5 sm:right-5 justify-end gap-4">
+          <Button
+            variant="outline"
             className="border-pink-950 text-pink-950 hover:bg-pink-950 hover:text-white"
           >
             Apply Now
           </Button>
-          <Button 
-            className="bg-pink-950 hover:bg-pink-950/90"
-          >
+          <Button className="bg-pink-950 hover:bg-pink-950/90">
             Know More
             <ArrowRight className="ml-2 h-4 w-4" />
           </Button>
         </div>
       </div>
     </div>
-  )
+  );
 }
-

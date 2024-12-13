@@ -1,15 +1,8 @@
 "use client";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
-
-// import Container from "../../components/wrappers/Container"
-// import AboutIndoGlobal from "./AboutIndoGolbal";
-// import Events from "./Events";
-// import Hero from "./HeroSlider";
 import LatestBlogsAndEvents from "./LatestBlogsAndEvents";
-// import Placements from "./Placements";
-// import Programs from "./Programs";
-// import RankSlider from "./RankSlider";
+import AboutIMM from "./AboutIMM";
 import Stats from "./Stats";
 import Testimonial from "./Testimonial";
 import GlobalExcursion from "./GlobalExcursion";
@@ -17,23 +10,23 @@ import Awards from "./Awards";
 import ProgramsOffered from "./ProgramsOffered";
 
 const sectionVariants = {
-  hidden: { scale: 0.8, opacity: 0 }, // Starting state (small and transparent)
+  hidden: { scale: 0.8, opacity: 0 },
   visible: {
     scale: 1,
     opacity: 1,
     transition: {
-      duration: 0.6, // Animation duration
+      duration: 0.6,
       ease: "easeOut",
     },
   },
 };
 
 const Landing = () => {
-  const [heroRef, heroInView] = useInView({
+  const [aboutRef, aboutInView] = useInView({
     threshold: 0.2,
     triggerOnce: true,
   });
-  const [placementsRef, placementsInView] = useInView({
+  const [programsRef, programsInView] = useInView({
     threshold: 0.2,
     triggerOnce: true,
   });
@@ -41,25 +34,15 @@ const Landing = () => {
     threshold: 0.2,
     triggerOnce: true,
   });
-  const [rankSliderRef, rankSliderInView] = useInView({
+  const [awardsRef, awardsInView] = useInView({
     threshold: 0.2,
     triggerOnce: true,
   });
-
-  const [programsRef, programsInView] = useInView({
+  const [excursionRef, excursionInView] = useInView({
     threshold: 0.2,
     triggerOnce: true,
   });
-  const [aboutRef, aboutInView] = useInView({
-    threshold: 0.2,
-    triggerOnce: true,
-  });
-
-  const [eventsRef, eventsInView] = useInView({
-    threshold: 0.2,
-    triggerOnce: true,
-  });
-  const [testimonialsRef, testimonialsInView] = useInView({
+  const [testimonialRef, testimonialInView] = useInView({
     threshold: 0.2,
     triggerOnce: true,
   });
@@ -70,76 +53,24 @@ const Landing = () => {
 
   return (
     <div className="overflow-x-hidden">
-      {/* <motion.div
-        ref={heroRef}
-        variants={sectionVariants}
-        initial="hidden"
-        animate={heroInView ? "visible" : "hidden"}
-      >
-        <Hero />
-      </motion.div>
-
-      <motion.div
-        ref={placementsRef}
-        variants={sectionVariants}
-        initial="hidden"
-        animate={placementsInView ? "visible" : "hidden"}
-      >
-        <Placements />
-      </motion.div>
-
-      <motion.div
-        ref={statsRef}
-        variants={sectionVariants}
-        initial="hidden"
-        animate={statsInView ? "visible" : "hidden"}
-      >
-        <Stats />
-      </motion.div>
-
-      <motion.div
-        ref={rankSliderRef}
-        variants={sectionVariants}
-        initial="hidden"
-        animate={rankSliderInView ? "visible" : "hidden"}
-      >
-        <RankSlider />
-      </motion.div>
-
-      <motion.div
-        ref={programsRef}
-        variants={sectionVariants}
-        initial="hidden"
-        animate={programsInView ? "visible" : "hidden"}
-      >
-        <Programs />
-      </motion.div>
-
       <motion.div
         ref={aboutRef}
         variants={sectionVariants}
         initial="hidden"
         animate={aboutInView ? "visible" : "hidden"}
       >
-        <AboutIndoGlobal />
+        <AboutIMM />
       </motion.div>
-
+      
       <motion.div
-        ref={eventsRef}
+        ref={programsRef}
         variants={sectionVariants}
         initial="hidden"
-        animate={eventsInView ? "visible" : "hidden"}
+        animate={programsInView ? "visible" : "hidden"}
       >
-        <Events />
-      </motion.div> */}
-      <motion.div
-        ref={statsRef}
-        variants={sectionVariants}
-        initial="hidden"
-        animate={statsInView ? "visible" : "hidden"}
-      >
-        <ProgramsOffered/>
+        <ProgramsOffered />
       </motion.div>
+      
       <motion.div
         ref={statsRef}
         variants={sectionVariants}
@@ -148,27 +79,30 @@ const Landing = () => {
       >
         <Stats />
       </motion.div>
+      
       <motion.div
-        ref={statsRef}
+        ref={awardsRef}
         variants={sectionVariants}
         initial="hidden"
-        animate={statsInView ? "visible" : "hidden"}
+        animate={awardsInView ? "visible" : "hidden"}
       >
         <Awards />
       </motion.div>
+      
       <motion.div
-        ref={testimonialsRef}
+        ref={excursionRef}
         variants={sectionVariants}
         initial="hidden"
-        animate={testimonialsInView ? "visible" : "hidden"}
+        animate={excursionInView ? "visible" : "hidden"}
       >
         <GlobalExcursion />
       </motion.div>
+      
       <motion.div
-        ref={testimonialsRef}
+        ref={testimonialRef}
         variants={sectionVariants}
         initial="hidden"
-        animate={testimonialsInView ? "visible" : "hidden"}
+        animate={testimonialInView ? "visible" : "hidden"}
       >
         <Testimonial />
       </motion.div>
