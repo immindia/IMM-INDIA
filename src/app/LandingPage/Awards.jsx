@@ -40,12 +40,13 @@ export default Awards;
 
 const CardItem = ({ item }) => (
   <div className="">
-    <div className="">
+    <div className="relative">
       <img
         src="https://cdn.easyfrontend.com/pictures/logos/award-logo.png"
         alt=""
         className="max-w-[120px] sm:max-w-[220px] text-blue-600 mx-auto hover:rotate-[360deg] duration-300"
       />
+      <img src="" alt="" />
     </div>
     <h5 className="text-[17px] text-white font-medium leading-relaxed mb-0 text-center ">
       {item.title}

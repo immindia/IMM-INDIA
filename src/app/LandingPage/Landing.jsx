@@ -28,15 +28,20 @@ const Landing = () => {
     threshold: 0.2,
     triggerOnce: true,
   });
-    const [aboutRef, aboutInView] = useInView({
-      threshold: 0.2,
-      triggerOnce: true,
-    });
+  
+  const [academicPartnersRef, academicPartnersInView] = useInView({
+    threshold: 0.2,
+    triggerOnce: true,
+  });
   const [programsRef, programsInView] = useInView({
     threshold: 0.2,
     triggerOnce: true,
   });
   const [statsRef, statsInView] = useInView({
+    threshold: 0.2,
+    triggerOnce: true,
+  });
+  const [aboutRef, aboutInView] = useInView({
     threshold: 0.2,
     triggerOnce: true,
   });
@@ -68,21 +73,14 @@ const Landing = () => {
         <Hero />
       </motion.div>
       <motion.div
-        ref={aboutRef}
+        ref={academicPartnersRef}
         variants={sectionVariants}
         initial="hidden"
-        animate={aboutInView ? "visible" : "hidden"}
+        animate={academicPartnersInView ? "visible" : "hidden"}
       >
         <AcademicPartners />
       </motion.div>
-      <motion.div
-        ref={aboutRef}
-        variants={sectionVariants}
-        initial="hidden"
-        animate={aboutInView ? "visible" : "hidden"}
-      >
-        <AboutIMM />
-      </motion.div>
+     
       
       <motion.div
         ref={programsRef}
@@ -101,7 +99,14 @@ const Landing = () => {
       >
         <Stats />
       </motion.div>
-      
+      <motion.div
+        ref={aboutRef}
+        variants={sectionVariants}
+        initial="hidden"
+        animate={aboutInView ? "visible" : "hidden"}
+      >
+        <AboutIMM />
+      </motion.div>
       <motion.div
         ref={awardsRef}
         variants={sectionVariants}
