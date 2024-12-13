@@ -1,4 +1,4 @@
-import Landing from "./app/LandingPage/landing";
+import Landing from "./app/LandingPage/Landing";
 import Footer from "./app/footer/Footer";
 
 function App() {
