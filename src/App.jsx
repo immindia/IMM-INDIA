@@ -1,8 +1,12 @@
-import { Button } from "@/components/ui/button"
-import Stats from "./components/Stats";
+import Landing from "./app/LandingPage/landing";
+import Footer from "./app/footer/Footer";
+
 function App() {
   return (
-    <Stats/>
+    <>
+   <Landing/>
+   <Footer/>
+   </>
   );
 }
 
