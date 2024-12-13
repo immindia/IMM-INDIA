@@ -10,7 +10,7 @@ import LatestBlogsAndEvents from "./LatestBlogsAndEvents";
 // import Placements from "./Placements";
 // import Programs from "./Programs";
 // import RankSlider from "./RankSlider";
-// import Stats from "./Stats";
+import Stats from "./Stats";
 import Testimonial from "./Testimonial";
 import GlobalExcursion from "./GlobalExcursion";
 
@@ -130,14 +130,21 @@ const Landing = () => {
       >
         <Events />
       </motion.div> */}
-
+      <motion.div
+        ref={statsRef}
+        variants={sectionVariants}
+        initial="hidden"
+        animate={statsInView ? "visible" : "hidden"}
+      >
+        <Stats />
+      </motion.div>
       <motion.div
         ref={testimonialsRef}
         variants={sectionVariants}
         initial="hidden"
         animate={testimonialsInView ? "visible" : "hidden"}
       >
-        <GlobalExcursion/>
+        <GlobalExcursion />
       </motion.div>
       <motion.div
         ref={testimonialsRef}
