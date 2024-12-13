@@ -14,6 +14,7 @@ import Stats from "./Stats";
 import Testimonial from "./Testimonial";
 import GlobalExcursion from "./GlobalExcursion";
 import Awards from "./Awards";
+import ProgramsOffered from "./ProgramsOffered";
 
 const sectionVariants = {
   hidden: { scale: 0.8, opacity: 0 }, // Starting state (small and transparent)
@@ -33,7 +34,7 @@ const Landing = () => {
     triggerOnce: true,
   });
   const [placementsRef, placementsInView] = useInView({
-    threshold: 0.0,
+    threshold: 0.2,
     triggerOnce: true,
   });
   const [statsRef, statsInView] = useInView({
@@ -131,6 +132,14 @@ const Landing = () => {
       >
         <Events />
       </motion.div> */}
+      <motion.div
+        ref={statsRef}
+        variants={sectionVariants}
+        initial="hidden"
+        animate={statsInView ? "visible" : "hidden"}
+      >
+        <ProgramsOffered/>
+      </motion.div>
       <motion.div
         ref={statsRef}
         variants={sectionVariants}

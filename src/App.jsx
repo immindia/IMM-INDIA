@@ -4,9 +4,9 @@ import Footer from "./app/footer/Footer";
 function App() {
   return (
     <>
-   <Landing/>
-   <Footer/>
-   </>
+      <Landing />
+      <Footer />
+    </>
   );
 }
 
