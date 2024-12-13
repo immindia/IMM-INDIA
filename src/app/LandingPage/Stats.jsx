@@ -1,5 +1,5 @@
 import React from "react";
-import bg from "../../assets/stats-bg.webp";
+import bg from "../../assets/IMMLEGACYBG.jpg";
 import Heading from "../../components/Heading";
 import WordPullUp from "../../components/ui/word-pull-up";
 import NumberTicker from "../../components/ui/number-ticker";
@@ -17,9 +17,9 @@ const Stats = () => {
       <img
         src={bg}
         alt="stats"
-        className="absolute top-0 left-0 object-cover w-full h-full -z-10 blur-sm"
+        className="absolute top-0 left-0 object-cover w-full h-full -z-10 "
       />
-      <div className="absolute inset-0 z-20 bg-black opacity-70" />
+      <div className="absolute inset-0 z-20 bg-black opacity-20" />
       <div className="relative z-30 max-w-screen-xl px-4 mx-auto md:px-8">
       
         <Heading
@@ -46,7 +46,7 @@ const Stats = () => {
                   </span>
              
               </div>
-              <div className="mt-3 text-sm font-medium text-gray-400 sm:text-xl">
+              <div className="mt-3 text-sm font-medium text-gray-400 sm:text-xl text-center max-w-32 sm:max-w-none">
                 {item.title}
                 {}
               </div>
