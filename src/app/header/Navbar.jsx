@@ -1,4 +1,6 @@
-import logo from "../../assets/logo.png";
+// import logo from "../../assets/logo.png";
+import logo from "../../assets/logo.svg";
+import logo2 from "../../assets/Imm-55-Years.svg";
 export default function Header() {
   const menuItems = [
     "Home",
@@ -22,8 +24,14 @@ export default function Header() {
             <img
               src={logo}
               alt="Indo Global Group of Colleges"
+              className="h-16 w-auto"
+            />
+            <img
+              src={logo2}
+              alt="Indo Global Group of Colleges"
               className="h-12 w-auto"
             />
+            
             {/* <div className="flex h-12 w-12 items-center justify-center rounded-full bg-white p-2">
               <span className="text-center text-xs font-bold leading-tight text-[#D92126]">
                 22+ Years of Excellence
