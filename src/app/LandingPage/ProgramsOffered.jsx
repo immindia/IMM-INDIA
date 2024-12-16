@@ -65,7 +65,7 @@ function ProgramContent({ title, specializations, imageSrc, imageAlt }) {
         <img
           src={imageSrc}
           alt={imageAlt}
-          className="h-full w-full object-cover"
+          className="h-full w-full object-cover hover:scale-125 duration-300"
         />
         <div className="absolute bottom-0 left-0 right-0 bg-pink-950 p-4 text-white">
           <h2 className="text-xl font-bold">{title} Programmes</h2>
