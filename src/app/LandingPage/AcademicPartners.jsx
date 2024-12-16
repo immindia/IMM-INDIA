@@ -62,7 +62,7 @@ export default function AcademicPartners() {
             {partners.map((partner, index) => (
               <div 
                 key={index}
-                className="flex flex-col items-center bg-white p-6 text-center"
+                className="flex flex-col items-center bg-white p-6 text-center rounded-sm shadow-md hover:translate-y-[-10px] duration-300"
               >
                 <div className="mb-4 h-24 w-full">
                   <img
