@@ -19,7 +19,7 @@ export default function ProgramsOffered() {
     <div className="bg-gray-200 lg:py-20 md:py-12 py-8 sm:px-0 px-6">
       <Heading
         title="Programmes Offered with Dual Specializations"
-        titleClassName="text-center text-2xl font-bold text-pink-950 md:text-3xl m"
+        titleClassName="text-center text-2xl font-bold text-pink-950 md:text-3xl lg:text-5xl"
       />
 
       <Tabs defaultValue="pgdm" className="mx-auto max-w-6xl">

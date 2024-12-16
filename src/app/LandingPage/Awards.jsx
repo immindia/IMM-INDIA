@@ -49,16 +49,16 @@ export default Awards;
 
 const CardItem = ({ item }) => (
   <div className="">
-    <div className="relative">
+    <div className="w-fit mx-auto relative">
       <img
         src="https://cdn.easyfrontend.com/pictures/logos/award-logo.png"
         alt=""
-        className="max-w-[120px] sm:max-w-[220px] text-blue-600 mx-auto hover:rotate-[360deg] duration-500"
+        className=" max-w-[200px] sm:max-w-[220px] text-blue-600 mx-auto hover:rotate-[360deg] duration-500"
       />
       <img
         src={item.image}
         alt=""
-        className="w-36 h-36 object-cover rounded-full absolute top-4 left-10"
+        className="w-32 sm:w-36 h-32 sm:h-36 object-cover rounded-full z-40 absolute top-4  left-9 sm:left-10"
       />
     </div>
     <h5 className="text-[17px] text-white font-medium leading-relaxed mb-0 text-center ">

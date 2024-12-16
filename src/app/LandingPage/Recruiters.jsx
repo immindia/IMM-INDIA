@@ -50,14 +50,14 @@ const Recruiters = () => {
   return (
     <div className="relative ">
      
-      <Container className="container grid ">
+      <Container className=" ">
         {/* <div className="md:sticky md:top-5 self-start">
           <AboutSidebar sidebarLinks={sidebarLinks} />
         </div> */}
         <div className="">
           <Heading
             title="Our Prominent Recruiters"
-            titleClassName="text-secondary-color text-left lg:text-5xl text-center text-pink-950"
+            titleClassName="text-secondary-color text-left  text-center text-pink-950"
             subtitleClassName="text-gray-500 text-justify m-0 lg:text-lg lg:font-normal lg:max-w-full text-center"
             subtitle="Top companies across various industries now choose IMM as a preferred destination for on-campus recruitment."
             className="lg:pb-10"
