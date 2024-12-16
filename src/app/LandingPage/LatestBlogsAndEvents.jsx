@@ -35,8 +35,10 @@ export default function LatestBlogsAndEvents() {
   return (
     <Container className="">
       <Heading
-        title="Explore Latest Blogs"
+        title="Knowledge Center"
         titleClassName="lg:font-extrabold font-bold text-pink-950"
+        subtitle="Stay updated with the latest blogs, news, and insights from IMM India. Discover thought leadership articles, industry updates, student success stories at our institution."
+        subtitleClassName="text-gray-500 text-justify m-0 lg:text-lg lg:font-normal  text-center mx-auto"
         className="w-full text-center sm:col-span-4 "
       />
 

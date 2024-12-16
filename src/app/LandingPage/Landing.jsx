@@ -10,6 +10,7 @@ import Awards from "./Awards";
 import ProgramsOffered from "./ProgramsOffered";
 import AcademicPartners from "./AcademicPartners";
 import Hero from "./Hero";
+import Recruiters from "./Recruiters";
 
 const sectionVariants = {
   hidden: { scale: 0.8, opacity: 0 },
@@ -46,6 +47,10 @@ const Landing = () => {
     triggerOnce: true,
   });
   const [awardsRef, awardsInView] = useInView({
+    threshold: 0.2,
+    triggerOnce: true,
+  });
+  const [recruitersRef, recruitersInView] = useInView({
     threshold: 0.2,
     triggerOnce: true,
   });
@@ -116,6 +121,14 @@ const Landing = () => {
         <Awards />
       </motion.div>
       
+      <motion.div
+        ref={recruitersRef}
+        variants={sectionVariants}
+        initial="hidden"
+        animate={recruitersInView ? "visible" : "hidden"}
+      >
+        <Recruiters />
+      </motion.div>
       <motion.div
         ref={excursionRef}
         variants={sectionVariants}
