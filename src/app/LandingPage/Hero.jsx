@@ -13,7 +13,7 @@ export default function Hero() {
         </div>
   
         {/* Content */}
-        <div className="relative z-10 flex h-full items-center px-6 md:px-12">
+        <div className="relative z-10 flex h-full items-center px-6 md:px-16">
           <div className="max-w-4xl">
             <h1 className="mb-4 text-4xl lg:text-7xl font-bold leading-tight text-white md:text-6xl">
               Nurturing Next Gen

@@ -1,4 +1,6 @@
-import React from "react";
+import PulsatingButton from "@/components/ui/pulsating-button";
+
+
 import {
   Instagram,
   Facebook,
@@ -9,44 +11,39 @@ import {
 } from "lucide-react";
 const TopBar = () => {
   return (
-    <div className="bg-gray-100 px-4 py-2 hidden md:block">
-      <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between text-sm">
+    <div className="hidden px-4 py-3 bg-gray-100 md:px-16 md:block">
+      <div className="flex flex-wrap items-center justify-between mx-auto text-sm">
         {/* Social Links */}
         <div className="flex items-center gap-4">
           <span className="text-gray-600">Follow us</span>
           <div className="flex gap-3">
             <a href="#" className="text-gray-600 hover:text-red-600">
-              <Instagram className="h-4 w-4" />
+              <Instagram className="w-4 h-4" />
             </a>
             <a href="#" className="text-gray-600 hover:text-red-600">
-              <Facebook className="h-4 w-4" />
+              <Facebook className="w-4 h-4" />
             </a>
             <a href="#" className="text-gray-600 hover:text-red-600">
-              <Youtube className="h-4 w-4" />
+              <Youtube className="w-4 h-4" />
             </a>
           </div>
         </div>
 
         {/* Contact Info */}
-        <div className="flex flex-wrap items-center gap-4 text-gray-600">
-          <a href="#" className="flex items-center gap-1 hover:text-red-600">
-            <MapPin className="h-4 w-4" />
-            <span>B-11, Qutab Institutional Area, New Delhi-110016</span>
-          </a>
-          <a
-            href="mailto:info@immindia.com"
-            className="flex items-center gap-1 hover:text-red-600"
-          >
-            <Mail className="h-4 w-4" />
-            <span>info@immindia.com</span>
-          </a>
-          <a
-            href="tel:+919999078888"
-            className="flex items-center gap-1 hover:text-red-600"
-          >
-            <Phone className="h-4 w-4" />
-            <span>+91-9999078888</span>
-          </a>
+        <div className="flex flex-wrap items-center gap-6 text-gray-600">
+          <PulsatingButton size="sm" className="text-xs bg-black hover:bg-black/80" pulseColor="#000">
+            International Conference
+          </PulsatingButton>
+          <PulsatingButton size="sm" className="text-xs bg-black hover:bg-black/80" pulseColor="#000">
+            Apply Now
+          </PulsatingButton>
+            <PulsatingButton size="sm" className="text-xs bg-black hover:bg-black/80" pulseColor="#000">
+            Student Says
+          </PulsatingButton>
+          <PulsatingButton size="sm" className="text-xs bg-black hover:bg-black/80" pulseColor="#000">
+            Pay Fee
+          </PulsatingButton>
+         
         </div>
       </div>
     </div>

@@ -9,30 +9,28 @@ export default function Header() {
     "Events",
     "Admissions & Placements",
     "Industry Exposure",
-    "Contact Us"
-  ]
+    "Contact Us",
+  ];
 
   return (
     <header className="w-full">
-      
-
       {/* Main Navigation */}
       <nav className="bg-pink-950">
-        <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between px-4 py-3">
+        <div className="flex flex-wrap items-center justify-between px-4 py-3 mx-auto md:px-16">
           {/* Logo Section */}
           <div className="flex items-center gap-4">
             <img
               src={logo}
               alt="Indo Global Group of Colleges"
-              className="h-16 w-auto"
+              className="w-auto h-16"
             />
             <img
               src={logo2}
               alt="Indo Global Group of Colleges"
-              className="h-12 w-auto"
+              className="w-auto h-16"
             />
-            
-            {/* <div className="flex h-12 w-12 items-center justify-center rounded-full bg-white p-2">
+
+            {/* <div className="flex items-center justify-center w-12 h-12 p-2 bg-white rounded-full">
               <span className="text-center text-xs font-bold leading-tight text-[#D92126]">
                 22+ Years of Excellence
               </span>
@@ -56,9 +54,9 @@ export default function Header() {
           </div>
 
           {/* Mobile Menu Button */}
-          <button className="rounded p-2 text-white hover:bg-red-700 lg:hidden">
+          <button className="p-2 text-white rounded hover:bg-red-700 lg:hidden">
             <svg
-              className="h-6 w-6"
+              className="w-6 h-6"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -74,6 +72,5 @@ export default function Header() {
         </div>
       </nav>
     </header>
-  )
+  );
 }
-
