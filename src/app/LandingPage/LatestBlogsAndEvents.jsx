@@ -36,7 +36,7 @@ export default function LatestBlogsAndEvents() {
     <Container className="">
       <Heading
         title="Explore Latest Blogs"
-        titleClassName="lg:font-extrabold font-bold text-secondary-color"
+        titleClassName="lg:font-extrabold font-bold text-pink-950"
         className="w-full text-center sm:col-span-4 "
       />
 

@@ -113,7 +113,7 @@ export default function Testimonial() {
     <Container className="grid ">
       <Heading
         title="Student Testimonials"
-        titleClassName="lg:font-extrabold lg:text-left  text-secondary-color rem]"
+        titleClassName="lg:font-extrabold lg:text-left text-yellow-950 "
         className=" sm:hidden block w-full pb-0 text-left sm:col-span-4 sm:pb-0 lg:pb-14"
       />
       <div className="grid grid-cols-1 gap-8 md:gap-20 md:grid-cols-2">
@@ -184,7 +184,7 @@ export default function Testimonial() {
         <div className="w-full h-full">
           <Heading
             title="Student Testimonials"
-            titleClassName="lg:font-extrabold lg:text-left  text-secondary-color rem]"
+            titleClassName="lg:font-extrabold lg:text-left  text-pink-950"
             className=" hidden sm:block w-full pb-0 text-left sm:col-span-4 sm:pb-0 lg:pb-14"
           />
 
@@ -234,12 +234,12 @@ export default function Testimonial() {
             <CarouselPrevious
               onClick={handlePrevious}
               iconStyle="text-white h-4 lg:h-8"
-              className="absolute sm:left-[0px] left-[20%] top-[90%] sm:top-[110%] bg-gray-300 hover:bg-red-600 h-10 w-20 active:bg-red-700 sm:w-24 rounded-none opacity-100"
+              className="absolute sm:left-[0px] left-[20%] top-[90%] sm:top-[110%] bg-gray-300 hover:bg-pink-800 h-10 w-20 active:bg-pink-700 sm:w-24 rounded-none opacity-100"
             />
             <CarouselNext
               onClick={handleNext}
               iconStyle="text-white h-4 lg:h-8"
-              className="absolute sm:left-[110px] left-[55%] top-[90%] sm:top-[110%] bg-slate-300 hover:bg-red-600 w-20 sm:w-24 h-10 rounded-none opacity-100 active:bg-red-700"
+              className="absolute sm:left-[110px] left-[55%] top-[90%] sm:top-[110%] bg-slate-300 hover:bg-pink-800 w-20 sm:w-24 h-10 rounded-none opacity-100 active:bg-pink-700"
             />
           </Carousel>
         </div>
