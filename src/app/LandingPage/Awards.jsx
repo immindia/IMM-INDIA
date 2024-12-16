@@ -1,22 +1,31 @@
 import Heading from "../../components/Heading";
+import img1 from "../../assets/awards/Aims.webp";
+import img2 from "../../assets/awards/Best B-School.webp";
+import img3 from "../../assets/awards/Best Business School.webp";
+import img4 from "../../assets/awards/Economic Times.webp";
+import img5 from "../../assets/awards/Centre of Academic.webp";
 
 const cards = [
   {
     title: "AIMS Innovation Award",
+    image: img1,
   },
   {
     title: "Best B-School Of the Year 2023",
+    image: img2,
   },
   {
     title:
       "Best Business School with Excellent Placement Record of the Year 2022",
+    image: img3,
   },
   {
-    title:
-      "Best Business School with Excellent Placement Record of the Year 2022",
+    title: "Economic Times Most Promising Brand",
+    image: img4,
   },
   {
     title: "Centre of Academic Excellence (B School) from Delhi NCR",
+    image: img5,
   },
 ];
 const Awards = () => {
@@ -44,9 +53,13 @@ const CardItem = ({ item }) => (
       <img
         src="https://cdn.easyfrontend.com/pictures/logos/award-logo.png"
         alt=""
-        className="max-w-[120px] sm:max-w-[220px] text-blue-600 mx-auto hover:rotate-[360deg] duration-300"
+        className="max-w-[120px] sm:max-w-[220px] text-blue-600 mx-auto hover:rotate-[360deg] duration-500"
       />
-      <img src="" alt="" />
+      <img
+        src={item.image}
+        alt=""
+        className="w-36 h-36 object-cover rounded-full absolute top-4 left-10"
+      />
     </div>
     <h5 className="text-[17px] text-white font-medium leading-relaxed mb-0 text-center ">
       {item.title}
