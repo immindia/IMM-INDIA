@@ -8,6 +8,7 @@ import corporate from "../../assets/network-happenings/corporate-connect.webp";
 import corporate2 from "../../assets/network-happenings/corporate-events.webp";
 import industry from "../../assets/network-happenings/industry-visit-pic.webp";
 import student from "../../assets/network-happenings/student-event.webp";
+import Container from "../../components/wrappers/Container";
 
 const testimonialList = [
   {
@@ -110,8 +111,8 @@ const NetworkHappening = () => {
   }, []);
 
   return (
-    <section className="ezy__testimonial12 light relative py-14 md:py-24 bg-slate-50 dark:bg-[#0b1727] text-zinc-900 dark:text-white z-[1]">
-      <div className="container px-4 mx-auto">
+    <Container className=" text-zinc-900 dark:text-white z-[1]">
+      <div className="container mx-auto">
         <Heading
           title="Network & Happenings"
           subtitle="Discover the latest updates, events, and news from the community."
@@ -157,7 +158,7 @@ const NetworkHappening = () => {
           </div>
         </div>
       </div>
-    </section>
+    </Container>
   );
 };
 
