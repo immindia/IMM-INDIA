@@ -1,3 +1,4 @@
+import ShimmerButton from "@/components/ui/shimmer-button";
 import Heading from "../../components/Heading";
 // import ImgAndBreadcrumb from "../../components/ImgAndBreadcrumb";
 import Container from "../../components/wrappers/Container";
@@ -5,7 +6,7 @@ import Container from "../../components/wrappers/Container";
 
 // import InfiniteCarousel from "../../components/ui/InfiniteCarousel";
 import IconMarquee from "./IconMarquee";
-
+import { ChevronRight } from "lucide-react";
 import amazon from "../../assets/recruiters-logo/amazon.webp";
 import cafe from "../../assets/recruiters-logo/cafe.webp";
 import citibank from "../../assets/recruiters-logo/citibank.webp";
@@ -54,6 +55,16 @@ const Recruiters = () => {
             className="lg:pb-10"
           />
           <IconMarquee icons={icons} />
+
+          {/* <ShimmerButton className="shadow-2xl mt-12 mx-auto hover:-translate-y-2 duration-300 ease-in-out">
+            <span className="whitespace-pre-wrap text-center text-sm font-medium leading-none tracking-tight text-white dark:from-white dark:to-slate-900/10 lg:text-base flex items-center hover:text-gray-500 duration-300 ease-in-out ">
+              View more
+              <ChevronRight
+                size={20}
+                className="text-white mt-1 group-hover:translate-x-1 duration-300 ease-in-out"
+              />
+            </span>
+          </ShimmerButton> */}
         </div>
       </Container>
       {/* <Stats />

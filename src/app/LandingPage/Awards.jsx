@@ -4,7 +4,8 @@ import img2 from "../../assets/awards/Best B-School.webp";
 import img3 from "../../assets/awards/Best Business School.webp";
 import img4 from "../../assets/awards/Economic Times.webp";
 import img5 from "../../assets/awards/Centre of Academic.webp";
-
+import ShimmerButton from "@/components/ui/shimmer-button";
+import { ChevronRight } from "lucide-react";
 const cards = [
   {
     title: "AIMS Innovation Award",
@@ -40,6 +41,19 @@ const Awards = () => {
           className="text-center"
         />
         <PlacementHighlights />
+        <ShimmerButton
+          className="shadow-2xl mt-12 mx-auto hover:-translate-y-2 duration-300 ease-in-out"
+          background="#FACC13"
+          shimmerSize="0.1em"
+        >
+          <span className="whitespace-pre-wrap text-center text-sm font-medium leading-none tracking-tight text-black/60 dark:from-white dark:to-slate-900/10 lg:text-base flex items-center hover:text-gray-500 duration-300 ease-in-out ">
+            View more
+            <ChevronRight
+              size={20}
+              className="text-black/60 mt-1 group-hover:translate-x-1 duration-300 ease-in-out"
+            />
+          </span>
+        </ShimmerButton>
       </div>
     </section>
   );

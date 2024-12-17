@@ -1,6 +1,8 @@
 import img1 from "../../assets/ge1.jpg";
 import img2 from "../../assets/ge2.jpg";
 import Heading from "../../components/Heading";
+import { ChevronRight } from "lucide-react";
+import ShimmerButton from "@/components/ui/shimmer-button";
 
 export default function GlobalExcursion() {
   const excursionItems = [
@@ -47,6 +49,19 @@ export default function GlobalExcursion() {
             <ExcursionCard key={index} {...item} />
           ))}
         </div>
+        <ShimmerButton className="shadow-2xl mt-12 mx-auto hover:-translate-y-2 duration-300 ease-in-out"
+        background="#ffffff"
+        shimmerSize="0.08em"
+        shimmerColor="#1e1e1e"
+        >
+          <span className="whitespace-pre-wrap text-center text-sm font-medium leading-none tracking-tight text-black/60 dark:from-white dark:to-slate-900/10 lg:text-base flex items-center hover:text-gray-500 duration-300 ease-in-out ">
+            View more
+            <ChevronRight
+              size={20}
+              className="text-black/60 mt-1 group-hover:translate-x-1 duration-300 ease-in-out"
+            />
+          </span>
+        </ShimmerButton>
       </div>
     </section>
   );
