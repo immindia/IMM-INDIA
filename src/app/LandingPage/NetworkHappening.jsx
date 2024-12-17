@@ -112,7 +112,7 @@ const NetworkHappening = () => {
 
   return (
     <Container className=" text-zinc-900 dark:text-white z-[1]">
-      <div className="container mx-auto">
+      <div className="container px-4 mx-auto">
         <Heading
           title="Network & Happenings"
           subtitle="Discover the latest updates, events, and news from the community."

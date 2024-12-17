@@ -12,6 +12,7 @@ import AcademicPartners from "./AcademicPartners";
 import Hero from "./Hero";
 import Recruiters from "./Recruiters";
 import NetworkHappening from "./NetworkHappening";
+import LiveProjects from "./LiveProjects";
 const sectionVariants = {
   hidden: { scale: 0.8, opacity: 0 },
   visible: {
@@ -67,6 +68,10 @@ const Landing = () => {
     triggerOnce: true,
   });
   const [blogsRef, blogsInView] = useInView({
+    threshold: 0.2,
+    triggerOnce: true,
+  });
+  const [liveProjectsRef, liveProjectsInView] = useInView({
     threshold: 0.2,
     triggerOnce: true,
   });
@@ -167,6 +172,15 @@ const Landing = () => {
       >
         <LatestBlogsAndEvents />
       </motion.div>
+      <motion.div
+        ref={liveProjectsRef}
+        variants={sectionVariants}
+        initial="hidden"
+        animate={liveProjectsInView ? "visible" : "hidden"}
+      >
+        <LiveProjects />
+      </motion.div>
+
     </div>
   );
 };
