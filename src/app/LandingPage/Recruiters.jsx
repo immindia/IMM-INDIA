@@ -5,51 +5,42 @@ import Container from "../../components/wrappers/Container";
 
 // import InfiniteCarousel from "../../components/ui/InfiniteCarousel";
 import IconMarquee from "./IconMarquee";
-// import ashoklayland from "../../assets/about/tieUps/ashoklayland.png";
-import cisco from "../../assets/about/tieUps/cisco.png";
-// import ibm from "../../assets/about/tieUps/ibm.png";
-// import IETE from "../../assets/about/tieUps/IETE.png";
-// import IIT_BOMBAY from "../../assets/about/tieUps/IIT_BOMBAY.png";
-// import IIT_Kanpur from "../../assets/about/tieUps/IIT_Kanpur.jpg";
-// import ISTE_logo from "../../assets/about/tieUps/ISTE_logo.png";
-import oracle from "../../assets/about/tieUps/oracle.png";
-import redhat_logo from "../../assets/about/tieUps/redhat_logo.png";
-import Roundglass from "../../assets/about/tieUps/Roundglass.png";
-// import toyota from "../../assets/about/tieUps/toyota.png";
-import university_of_quebec from "../../assets/about/tieUps/university_of_quebec.png";
-import IBM from "../../assets/placements/recruiters/ibm.jpg";
-// import Infosys from "../../assets/placements/recruiters/infosys.jpg";
-import Ashok from "../../assets/placements/recruiters/Ashok.png";
-import LT from "../../assets/placements/recruiters/Lt.png";
-import Wipro from "../../assets/placements/recruiters/Wipro.png";
-import Simplex from "../../assets/placements/recruiters/Simplex.jpg";
+
+import amazon from "../../assets/recruiters-logo/amazon.webp";
+import cafe from "../../assets/recruiters-logo/cafe.webp";
+import citibank from "../../assets/recruiters-logo/citibank.webp";
+import emami from "../../assets/recruiters-logo/emami.webp";
+import ese from "../../assets/recruiters-logo/ese.webp";
+import euromonitor from "../../assets/recruiters-logo/euromonitor.webp";
+import ey from "../../assets/recruiters-logo/ey.webp";
+import haldiram from "../../assets/recruiters-logo/haldriram.webp";
+import itc from "../../assets/recruiters-logo/itc.webp";
+import khimji from "../../assets/recruiters-logo/khimji.webp";
+import kotak from "../../assets/recruiters-logo/kotak.webp";
+import kreative from "../../assets/recruiters-logo/kreative.webp";
+import tcs from "../../assets/recruiters-logo/tcs.webp";
+import zentrades from "../../assets/recruiters-logo/zentrades.webp";
 
 const icons = [
-  // { src: ashoklayland, alt: "Ashok Leyland" }  ,
-  { src: cisco, alt: "Cisco" },
-  // { src: ibm, alt: "IBM" },
-  // { src: IETE, alt: "IETE" },
-  // { src: IIT_BOMBAY, alt: "IIT Bombay" },
-  // { src: IIT_Kanpur, alt: "IIT Kanpur" },
-  // { src: ISTE_logo, alt: "ISTE" },
-  { src: oracle, alt: "Oracle" },
-  { src: redhat_logo, alt: "Red Hat" },
-  { src: Roundglass, alt: "Roundglass" },
-  // { src: toyota, alt: "Toyota" },
-  { src: university_of_quebec, alt: "University of Quebec" },
-  { src: IBM, alt: "University of Quebec" },
-  { src: Ashok, alt: "University of Quebec" },
-  { src: LT, alt: "University of Quebec" },
-  { src: Wipro, alt: "University of Quebec" },
-  { src: Simplex, alt: "University of Quebec" },
+  { src: amazon, alt: "Amazon" },
+  { src: cafe, alt: "Cafe" },
+  { src: citibank, alt: "Citibank" },
+  { src: emami, alt: "Emami" },
+  { src: ese, alt: "Ese" },
+  { src: euromonitor, alt: "Euromonitor" },
+  { src: ey, alt: "EY" },
+  { src: haldiram, alt: "Haldiram" },
+  { src: itc, alt: "ITC" },
+  { src: khimji, alt: "Khimji" },
+  { src: kotak, alt: "Kotak" },
+  { src: kreative, alt: "Kreative" },
+  { src: tcs, alt: "TCS" },
+  { src: zentrades, alt: "Zentrades" },
 ];
 
-
 const Recruiters = () => {
- 
   return (
     <div className="relative ">
-     
       <Container className=" ">
         {/* <div className="md:sticky md:top-5 self-start">
           <AboutSidebar sidebarLinks={sidebarLinks} />
@@ -62,7 +53,7 @@ const Recruiters = () => {
             subtitle="Top companies across various industries now choose IMM as a preferred destination for on-campus recruitment."
             className="lg:pb-10"
           />
-          <IconMarquee icons={icons}/>
+          <IconMarquee icons={icons} />
         </div>
       </Container>
       {/* <Stats />
