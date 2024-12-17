@@ -5,9 +5,9 @@ export default function Header() {
   const menuItems = [
     "Home",
     "About Us",
-    "Programs",
+
     "Events",
-    "Admissions & Placements",
+    "Admissions",
     "Corporate Connect",
     "Faculty & Research",
     "Life at IMM",
