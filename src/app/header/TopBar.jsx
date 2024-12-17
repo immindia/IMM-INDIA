@@ -1,14 +1,6 @@
 import PulsatingButton from "@/components/ui/pulsating-button";
 
-
-import {
-  Instagram,
-  Facebook,
-  Youtube,
-  MapPin,
-  Mail,
-  Phone,
-} from "lucide-react";
+import { Instagram, Facebook, Youtube } from "lucide-react";
 const TopBar = () => {
   return (
     <div className="hidden px-4 py-3 bg-gray-100 md:px-16 md:block">
@@ -28,22 +20,43 @@ const TopBar = () => {
             </a>
           </div>
         </div>
-
+        <div className="text-gray-600 justify-center items-center bg-slate-50 p-3 gap-2 rounded-full border shadow-sm flex">
+          <div className="h-2 w-2 bg-pink-900 rounded-full animate-ping"></div>
+          <marquee  className=" font-bold" behavior="scroll" direction="left">
+            Welcome to our International Conference! Join us for an amazing
+            experience.
+          </marquee>
+        </div>
         {/* Contact Info */}
         <div className="flex flex-wrap items-center gap-6 text-gray-600">
-          <PulsatingButton size="sm" className="text-xs bg-black hover:bg-black/80" pulseColor="#000">
+          <PulsatingButton
+            size="sm"
+            className="text-xs bg-black hover:bg-black/80"
+            pulseColor="#000"
+          >
             International Conference
           </PulsatingButton>
-          <PulsatingButton size="sm" className="text-xs bg-black hover:bg-black/80" pulseColor="#000">
+          <PulsatingButton
+            size="sm"
+            className="text-xs bg-black hover:bg-black/80"
+            pulseColor="#000"
+          >
             Apply Now
           </PulsatingButton>
-            <PulsatingButton size="sm" className="text-xs bg-black hover:bg-black/80" pulseColor="#000">
+          <PulsatingButton
+            size="sm"
+            className="text-xs bg-black hover:bg-black/80"
+            pulseColor="#000"
+          >
             Student Says
           </PulsatingButton>
-          <PulsatingButton size="sm" className="text-xs bg-black hover:bg-black/80" pulseColor="#000">
+          <PulsatingButton
+            size="sm"
+            className="text-xs bg-black hover:bg-black/80"
+            pulseColor="#000"
+          >
             Pay Fee
           </PulsatingButton>
-         
         </div>
       </div>
     </div>

@@ -2,7 +2,7 @@ import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import Heading from "../../components/Heading";
-import img from "../../assets/prgramspic.jpg";
+import img from "../../assets/pgdm.webp";
 export default function ProgramsOffered() {
   const specializations = [
     "Marketing & Innovation Management",

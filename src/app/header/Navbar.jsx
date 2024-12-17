@@ -8,7 +8,10 @@ export default function Header() {
     "Programs",
     "Events",
     "Admissions & Placements",
-    "Industry Exposure",
+    "Corporate Connect",
+    "Faculty & Research",
+    "Life at IMM",
+    "Placements",
     "Contact Us",
   ];
 
