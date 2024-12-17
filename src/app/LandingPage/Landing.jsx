@@ -11,7 +11,7 @@ import ProgramsOffered from "./ProgramsOffered";
 import AcademicPartners from "./AcademicPartners";
 import Hero from "./Hero";
 import Recruiters from "./Recruiters";
-
+import NetworkHappening from "./NetworkHappening";
 const sectionVariants = {
   hidden: { scale: 0.8, opacity: 0 },
   visible: {
@@ -59,6 +59,10 @@ const Landing = () => {
     triggerOnce: true,
   });
   const [testimonialRef, testimonialInView] = useInView({
+    threshold: 0.2,
+    triggerOnce: true,
+  });
+  const [networkHappeningRef, networkHappeningInView] = useInView({
     threshold: 0.2,
     triggerOnce: true,
   });
@@ -145,6 +149,14 @@ const Landing = () => {
         animate={testimonialInView ? "visible" : "hidden"}
       >
         <Testimonial />
+      </motion.div>
+      <motion.div
+        ref={networkHappeningRef}
+        variants={sectionVariants}
+        initial="hidden"
+        animate={networkHappeningInView ? "visible" : "hidden"}
+      >
+        <NetworkHappening />
       </motion.div>
 
       <motion.div
