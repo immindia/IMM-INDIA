@@ -1,6 +1,7 @@
 // import logo from "../../assets/logo.png";
 import logo from "../../assets/logo.svg";
 import logo2 from "../../assets/Imm-55-Years.svg";
+import Drawer from "./Drawer";
 export default function Header() {
   const menuItems = [
     "Home",
@@ -57,7 +58,7 @@ export default function Header() {
           </div>
 
           {/* Mobile Menu Button */}
-          <button className="p-2 text-white rounded hover:bg-red-700 lg:hidden">
+          {/* <button className="p-2 text-white rounded hover:bg-red-700 lg:hidden">
             <svg
               className="w-6 h-6"
               fill="none"
@@ -71,7 +72,8 @@ export default function Header() {
                 d="M4 6h16M4 12h16M4 18h16"
               />
             </svg>
-          </button>
+          </button> */}
+          <Drawer/>
         </div>
       </nav>
     </header>
