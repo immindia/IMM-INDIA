@@ -9,6 +9,7 @@ import Header from "./app/header/Header";
 import Footer from "./app/footer/Footer";
 import Landing from "./app/LandingPage/Landing";
 import Contact from "./app/contact/Contact";
+import Pgdm from "./app/programs/Pgdm";
 function App() {
   return (
     <Router>
@@ -16,6 +17,7 @@ function App() {
       <Routes>
         <Route path='/' element={<Landing/>} />
         <Route path='/contact' element={<Contact/>} />
+        <Route path='/programs/pgdm' element={<Pgdm/>} />
       </Routes>
       
       <Footer />

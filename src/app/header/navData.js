@@ -9,7 +9,7 @@ export const navlinks = [
     name: "Programs",
     path: "/programs",
     submenu: [
-      { name: "PGDM", path: "/pgdm" },
+      { name: "PGDM", path: "/programs/pgdm" },
       { name: "BBA", path: "/bba" },
       
     ],
