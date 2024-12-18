@@ -3,46 +3,10 @@ import logo from "../../assets/logo.svg";
 import logo2 from "../../assets/Imm-55-Years.svg";
 import Drawer from "./Drawer";
 import { Link } from "react-router-dom";
+import { navlinks } from "./navData";
+import { useState } from "react";
 export default function Header() {
-  const menuItems = [
-    {
-      name: "Home",
-      path: "/",
-    },
-    {
-      name: "About Us",
-      path: "/about",
-    },
-    {
-      name: "Events",
-      path: "/events",
-    },
-    {
-      name: "Admissions",
-      path: "/admissions",
-    },
-    {
-      name: "Corporate Connect",
-      path: "/corporate",
-    },
-    {
-      name: "Faculty & Research",
-      path: "/faculty",
-    },
-    {
-      name: "Life at IMM",
-      path: "/campus-life",
-    },
-    {
-      name: "Placements",
-      path: "/placements",
-    },
-    {
-      name: "Contact Us",
-      path: "/contact",
-    },
-  ];
-
+  const [isOpen, setIsOpen] = useState(false);
   return (
     <header className="w-full">
       {/* Main Navigation */}
@@ -60,48 +24,70 @@ export default function Header() {
               alt="Indo Global Group of Colleges"
               className="w-auto h-16"
             />
-
-            {/* <div className="flex items-center justify-center w-12 h-12 p-2 bg-white rounded-full">
-              <span className="text-center text-xs font-bold leading-tight text-[#D92126]">
-                22+ Years of Excellence
-              </span>
-            </div> */}
           </div>
 
           {/* Navigation Menu */}
           <div className="hidden lg:block">
             <ul className="flex items-center gap-6">
-              {menuItems.map((item, index) => (
-                <Link to={item.path} key={index}>
-                  <li className="relative group text-sm font-medium text-white hover:text-gray-200 cursor-pointer">
-                    {item.name}
-
-                    <span className="absolute -bottom-1 left-0 w-0 group-hover:w-full h-[1px] bg-white rounded-full opacity-50 group-hover:opacity-100 transition-all duration-500"></span>
-                  </li>
-                </Link>
+              {navlinks.map((item, index) => (
+                <DropdownItem key={index} item={item} />
               ))}
             </ul>
           </div>
 
-          {/* Mobile Menu Button */}
-          {/* <button className="p-2 text-white rounded hover:bg-red-700 lg:hidden">
-            <svg
-              className="w-6 h-6"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M4 6h16M4 12h16M4 18h16"
-              />
-            </svg>
-          </button> */}
           <Drawer />
         </div>
       </nav>
     </header>
+  );
+}
+
+function DropdownItem({ item }) {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const handleMouseEnter = () => {
+    setIsOpen(true);
+  };
+
+  const handleMouseLeave = () => {
+    setIsOpen(false);
+  };
+
+  return (
+    <li
+      className="relative"
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+    >
+      <Link
+        to={item.path}
+        className="text-sm font-medium text-white hover:text-gray-200"
+      >
+        {item.name}
+      </Link>
+      {/* Dropdown Menu */}
+      {item.submenu && isOpen && (
+        <>
+          {/* This div creates an invisible bridge between parent and dropdown */}
+          <div className="absolute w-full h-2 -bottom-2"></div>
+          <ul
+            className="absolute left-0 top-full p-1 mt-2 overflow-hidden bg-white rounded shadow-lg z-[9999]  min-w-[150px] w-max"
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
+          >
+            {item.submenu.map((subItem, subIndex) => (
+              <li key={subIndex} onClick={() => setIsOpen(false)}>
+                <Link
+                  to={subItem.path}
+                  className="block px-4 py-2 text-sm text-gray-700 rounded-sm hover:bg-gray-200"
+                >
+                  {subItem.name}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </>
+      )}
+    </li>
   );
 }

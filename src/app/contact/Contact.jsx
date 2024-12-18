@@ -206,7 +206,7 @@ export default function Contact() {
       </div>
 
       {/* Main Content */}
-      <div className="max-w-[1300px] mx-auto py-6 sm:py-12 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto py-6 sm:py-12 px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 gap-5 md:grid-cols-2 sm:gap-8">
           {/* Contact Form */}
           <div className="p-6 bg-white rounded-lg shadow-lg">
