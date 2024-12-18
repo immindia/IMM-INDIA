@@ -83,22 +83,22 @@ function ContactInfo() {
   return (
     <div className="space-y-4">
       <div className="flex items-center space-x-3 text-gray-600">
-        <MapPin className="h-5 w-5 text-pink-900" />
+        <MapPin className="w-5 h-5 text-pink-900" />
         <span>B-11 Qutab Institutional Area, New Delhi - 110016</span>
       </div>
       <div className="flex items-center space-x-3 text-gray-600">
-        <Phone className="h-5 w-5 text-pink-900" />
+        <Phone className="w-5 h-5 text-pink-900" />
         <span>011-26520892</span>
-        <Phone className="h-5 w-5 text-pink-900" />
+        <Phone className="w-5 h-5 text-pink-900" />
         <span> 011-26520896</span>
       </div>
-      <div className="flex sm:items-center flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-3 text-gray-600">
+      <div className="flex flex-col space-y-4 text-gray-600 sm:items-center sm:flex-row sm:space-y-0 sm:space-x-3">
         <div className="flex items-center ">
-          <Mail className="h-5 w-5 mr-3 text-pink-900" />
+          <Mail className="w-5 h-5 mr-3 text-pink-900" />
           <span>info@immindia.com</span>
         </div>
         <div className="flex items-center">
-          <Mail className="h-5 w-5 mr-3 text-pink-900" />
+          <Mail className="w-5 h-5 mr-3 text-pink-900" />
           <span>registrar.imm@gmail.com</span>
         </div>
       </div>
@@ -110,15 +110,15 @@ function AdmissionHead() {
   return (
     <div className="space-y-4">
       <div className="flex items-center space-x-3 text-gray-600">
-        <Phone className="h-5 w-5 text-pink-900" />
+        <Phone className="w-5 h-5 text-pink-900" />
         <span>+91-9999078888</span>
       </div>
       <div className="flex items-center space-x-3 text-gray-600">
-        <Phone className="h-5 w-5 text-pink-900" />
+        <Phone className="w-5 h-5 text-pink-900" />
         <span>+91-9910463458</span>
       </div>
       <div className="flex items-center space-x-3 text-gray-600">
-        <Mail className="h-5 w-5 text-pink-900" />
+        <Mail className="w-5 h-5 text-pink-900" />
         <span>admissions@immindia.edu.in</span>
       </div>
     </div>
@@ -129,17 +129,17 @@ function CorporateResourceCentreHead() {
   return (
     <div className="space-y-4">
       <div className="flex items-center space-x-3 text-gray-600">
-        <Phone className="h-5 w-5 text-pink-900" />
+        <Phone className="w-5 h-5 text-pink-900" />
         <span>+91-9313556551</span>
       </div>
       <div className="flex items-center space-x-3 text-gray-600">
-        <Phone className="h-5 w-5 text-pink-900" />
+        <Phone className="w-5 h-5 text-pink-900" />
         <span>011-41324850</span>
-        <Phone className="h-5 w-5 text-pink-900" />
+        <Phone className="w-5 h-5 text-pink-900" />
         <span>011-26965558</span>
       </div>
       <div className="flex items-center space-x-3 text-gray-600">
-        <Mail className="h-5 w-5 text-pink-900" />
+        <Mail className="w-5 h-5 text-pink-900" />
         <span>immplacement1@gmail.com</span>
       </div>
     </div>
@@ -149,19 +149,19 @@ function CorporateResourceCentreHead() {
 function SocialLinks() {
   return (
     <div className="mt-6">
-      <h3 className="text-lg font-semibold text-gray-800 mb-3">Follow Us</h3>
+      <h3 className="mb-3 text-lg font-semibold text-gray-800">Follow Us</h3>
       <div className="flex space-x-4">
         <a href="#" className="text-gray-400 hover:text-pink-900">
-          <Facebook className="h-6 w-6" />
+          <Facebook className="w-6 h-6" />
         </a>
         <a href="#" className="text-gray-400 hover:text-pink-900">
-          <Twitter className="h-6 w-6" />
+          <Twitter className="w-6 h-6" />
         </a>
         <a href="#" className="text-gray-400 hover:text-pink-900">
-          <Instagram className="h-6 w-6" />
+          <Instagram className="w-6 h-6" />
         </a>
         <a href="#" className="text-gray-400 hover:text-pink-900">
-          <Linkedin className="h-6 w-6" />
+          <Linkedin className="w-6 h-6" />
         </a>
       </div>
     </div>
@@ -179,7 +179,7 @@ function Map() {
         allowFullScreen={false}
         loading="lazy"
         referrerPolicy="no-referrer-when-downgrade"
-        className="rounded-lg w-full h-full"
+        className="w-full h-full rounded-lg"
       ></iframe>
     </div>
   );
@@ -190,32 +190,33 @@ export default function Contact() {
     <div className="min-h-screen bg-gray-100">
       {/* Hero Section */}
       <div
-        className="relative h-40 sm:h-80 bg-cover bg-center"
+        className="relative h-40 bg-center bg-cover sm:h-80"
         style={{
-          backgroundImage: "url('https://immindia.edu.in/images/imm-college.jpg')",
+          backgroundImage:
+            "url('https://immindia.edu.in/images/imm-college.jpg')",
         }}
       >
-        <div className="absolute inset-0  bg-black bg-opacity-50 flex items-center justify-center">
+        <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50">
           <Heading
             title="Contact Us"
             titleClassName="lg:font-extrabold text-center text-white tracking-wide"
-            className="block pb-0 mx-auto w-full text-left sm:col-span-4 sm:pb-0 lg:pb-0"
+            className="block w-full  mx-auto text-left sm:col-span-4 sm:pb-0 lg:pb-0 pb-0 pt-8 sm:pt-0"
           />
         </div>
       </div>
 
       {/* Main Content */}
       <div className="max-w-[1300px] mx-auto py-6 sm:py-12 px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-8">
+        <div className="grid grid-cols-1 gap-5 md:grid-cols-2 sm:gap-8">
           {/* Contact Form */}
-          <div className="bg-white shadow-lg rounded-lg p-6">
-            <h2 className="text-2xl font-semibold text-gray-800 mb-6">
+          <div className="p-6 bg-white rounded-lg shadow-lg">
+            <h2 className="mb-6 text-2xl font-semibold text-gray-800">
               Send us a message
             </h2>
             <ContactForm />
 
-            <div className=" mt-6">
-              <h2 className="text-2xl font-semibold text-gray-800 mb-6">
+            <div className="mt-6 ">
+              <h2 className="mb-6 text-2xl font-semibold text-gray-800">
                 Find Us
               </h2>
               <Map />
@@ -224,36 +225,30 @@ export default function Contact() {
 
           {/* Contact Information */}
           <div className="space-y-5 sm:space-y-8">
-            <div className="bg-white shadow-lg rounded-lg p-6">
-              <h2 className="text-2xl font-semibold text-gray-800 mb-6">
+            <div className="p-6 bg-white rounded-lg shadow-lg">
+              <h2 className="mb-6 text-2xl font-semibold text-gray-800">
                 Contact Information
               </h2>
               <ContactInfo />
               <SocialLinks />
             </div>
-            <div className="grid  gap-5 sm:gap-8">
-              <div className="bg-white shadow-lg rounded-lg p-6">
-                <h2 className="text-2xl font-semibold text-gray-800 mb-6">
+            <div className="grid gap-5 sm:gap-8">
+              <div className="p-6 bg-white rounded-lg shadow-lg">
+                <h2 className="mb-6 text-2xl font-semibold text-gray-800">
                   Admission Head
                 </h2>
                 <AdmissionHead />
               </div>
 
-              <div className="bg-white shadow-lg rounded-lg p-6">
-                <h2 className="text-2xl font-semibold text-gray-800 mb-6">
+              <div className="p-6 bg-white rounded-lg shadow-lg">
+                <h2 className="mb-6 text-2xl font-semibold text-gray-800">
                   Corporate Resource Centre Head
                 </h2>
                 <CorporateResourceCentreHead />
               </div>
             </div>
 
-            {/* Map */}
-            {/* <div className="bg-white shadow-lg rounded-lg p-6">
-              <h2 className="text-2xl font-semibold text-gray-800 mb-6">
-                Find Us
-              </h2>
-              <Map />
-            </div> */}
+           
           </div>
         </div>
       </div>
