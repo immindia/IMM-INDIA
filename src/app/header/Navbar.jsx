@@ -2,18 +2,45 @@
 import logo from "../../assets/logo.svg";
 import logo2 from "../../assets/Imm-55-Years.svg";
 import Drawer from "./Drawer";
+import { Link } from "react-router-dom";
 export default function Header() {
   const menuItems = [
-    "Home",
-    "About Us",
-
-    "Events",
-    "Admissions",
-    "Corporate Connect",
-    "Faculty & Research",
-    "Life at IMM",
-    "Placements",
-    "Contact Us",
+    {
+      name: "Home",
+      path: "/",
+    },
+    {
+      name: "About Us",
+      path: "/about",
+    },
+    {
+      name: "Events",
+      path: "/events",
+    },
+    {
+      name: "Admissions",
+      path: "/admissions",
+    },
+    {
+      name: "Corporate Connect",
+      path: "/corporate",
+    },
+    {
+      name: "Faculty & Research",
+      path: "/faculty",
+    },
+    {
+      name: "Life at IMM",
+      path: "/campus-life",
+    },
+    {
+      name: "Placements",
+      path: "/placements",
+    },
+    {
+      name: "Contact Us",
+      path: "/contact",
+    },
   ];
 
   return (
@@ -45,14 +72,13 @@ export default function Header() {
           <div className="hidden lg:block">
             <ul className="flex items-center gap-6">
               {menuItems.map((item, index) => (
-                <li key={index}>
-                  <a
-                    href="#"
-                    className="text-sm font-medium text-white hover:text-gray-200"
-                  >
-                    {item}
-                  </a>
-                </li>
+                <Link to={item.path} key={index}>
+                  <li className="relative group text-sm font-medium text-white hover:text-gray-200 cursor-pointer">
+                    {item.name}
+
+                    <span className="absolute -bottom-1 left-0 w-0 group-hover:w-full h-[1px] bg-white rounded-full opacity-50 group-hover:opacity-100 transition-all duration-500"></span>
+                  </li>
+                </Link>
               ))}
             </ul>
           </div>
@@ -73,7 +99,7 @@ export default function Header() {
               />
             </svg>
           </button> */}
-          <Drawer/>
+          <Drawer />
         </div>
       </nav>
     </header>
