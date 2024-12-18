@@ -12,7 +12,7 @@ import {
   Linkedin,
 } from "lucide-react";
 import { Label } from "@/components/ui/label";
-
+import Heading from "@/components/Heading";
 function ContactForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -192,13 +192,15 @@ export default function Contact() {
       <div
         className="relative h-40 sm:h-80 bg-cover bg-center"
         style={{
-          backgroundImage: "url('/placeholder.svg?height=400&width=1200')",
+          backgroundImage: "url('https://immindia.edu.in/images/imm-college.jpg')",
         }}
       >
-        <div className="absolute inset-0 bg-pink-900 bg-opacity-75 flex items-center justify-center">
-          <h1 className="sm:text-6xl text-4xl font-bold text-white">
-            Contact Us
-          </h1>
+        <div className="absolute inset-0  bg-black bg-opacity-50 flex items-center justify-center">
+          <Heading
+            title="Contact Us"
+            titleClassName="lg:font-extrabold text-center text-white tracking-wide"
+            className="block pb-0 mx-auto w-full text-left sm:col-span-4 sm:pb-0 lg:pb-0"
+          />
         </div>
       </div>
 
