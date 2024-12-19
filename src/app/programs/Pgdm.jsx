@@ -1,6 +1,7 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import Container from "../../components/wrappers/Container";
 import Heading from "../../components/Heading";
+import PgdmProgram from "./PgdmProgram";
 
 const Pgdm = () => {
   return (
@@ -16,12 +17,8 @@ const Pgdm = () => {
             <TabsTrigger value="global" className="data-[state=active]:bg-pink-800 data-[state=active]:text-white">IMM Goes Global</TabsTrigger>
           </TabsList>
           <TabsContent value="pgdm" className="mt-6">
-            <div className="space-y-4">
-                <h2 className="text-2xl font-semibold">PGDM</h2>
-                <p className="text-gray-600">
-                Our PGDM program is designed to provide a comprehensive understanding of modern business practices...
-                {/* Add your curriculum content here */}
-              </p>  
+            <div className="space-y-4 px-4">
+                <PgdmProgram/>
             </div>
           </TabsContent>
 

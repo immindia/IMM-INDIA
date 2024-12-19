@@ -15,8 +15,8 @@ theme: {
 			sm: 'calc(var(--radius) - 4px)'
 		},
 		colors: {
-			'primary-color': '#dc2626',
-			'secondary-color': '#053A86',
+			'primary-color': '#500724',
+			'secondary-color': '#facc15',
 			background: 'hsl(var(--background))',
 			foreground: 'hsl(var(--foreground))',
 			card: {
