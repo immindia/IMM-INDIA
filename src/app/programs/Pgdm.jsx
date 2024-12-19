@@ -43,7 +43,7 @@ const Pgdm = () => {
             </TabsTrigger>
           </TabsList>
           <TabsContent value="pgdm" className="mt-6">
-            <div className="space-y-4 px-4">
+            <div className="space-y-8 px-4">
               <PgdmProgram />
             </div>
           </TabsContent>
