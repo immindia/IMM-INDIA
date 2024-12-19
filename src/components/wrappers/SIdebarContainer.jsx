@@ -44,7 +44,7 @@ const Entrepreneurship = () => {
         <div className="col-span-1 pt-12 md:col-span-3">
           <Heading
             title="Entrepreneurship-Focused Curriculum"
-            titleClassName="text-secondary-color text-left lg:text-5xl"
+            titleClassName="text-primary-color text-left lg:text-5xl"
             subtitleClassName="text-gray-500 text-justify m-0 lg:text-lg lg:font-normal lg:max-w-full"
             subtitle="Creating a dynamic learning environment where students build entrepreneurial skills, innovative thinking, and resilience to become successful, responsible leaders and change-makers."
             className=""

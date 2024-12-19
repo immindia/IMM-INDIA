@@ -19,20 +19,20 @@ export default function ProgramsOffered() {
     <div className="bg-gray-200 lg:py-20 md:py-12 py-8 sm:px-0 px-6">
       <Heading
         title="Programmes Offered with Dual Specializations"
-        titleClassName="text-center text-2xl font-bold text-pink-950 md:text-3xl lg:text-5xl"
+        titleClassName="text-center text-2xl font-bold text-primary-color md:text-3xl lg:text-5xl"
       />
 
       <Tabs defaultValue="pgdm" className="mx-auto max-w-6xl">
         <TabsList className="grid w-full grid-cols-2 h-12">
           <TabsTrigger
             value="pgdm"
-            className="text-xs sm:text-xl h-full font-bold  data-[state=active]:bg-pink-950 data-[state=active]:text-white"
+            className="text-xs sm:text-xl h-full font-bold  data-[state=active]:bg-primary-color data-[state=active]:text-white"
           >
             PGDM Programmes
           </TabsTrigger>
           <TabsTrigger
             value="bba"
-            className="text-xs sm:text-xl h-full font-bold  data-[state=active]:bg-pink-950 data-[state=active]:text-white"
+            className="text-xs sm:text-xl h-full font-bold  data-[state=active]:bg-primary-color data-[state=active]:text-white"
           >
             BBA Programmes
           </TabsTrigger>
@@ -67,7 +67,7 @@ function ProgramContent({ title, specializations, imageSrc, imageAlt }) {
           alt={imageAlt}
           className="h-full w-full object-cover hover:scale-125 duration-300"
         />
-        <div className="absolute bottom-0 left-0 right-0 bg-pink-950 p-4 text-white">
+        <div className="absolute bottom-0 left-0 right-0 bg-primary-color p-4 text-white">
           <h2 className="text-xl font-bold">{title} Programmes</h2>
         </div>
       </div>
@@ -86,11 +86,11 @@ function ProgramContent({ title, specializations, imageSrc, imageAlt }) {
         <div className="flex sm:absolute sm:bottom-5 sm:right-5 justify-end gap-4">
           <Button
             variant="outline"
-            className="border-pink-950 text-pink-950 hover:bg-pink-950 hover:text-white"
+            className="border-primary-color text-primary-color hover:bg-primary-color hover:text-white"
           >
             Apply Now
           </Button>
-          <Button className="bg-pink-950 hover:bg-pink-950/90">
+          <Button className="bg-primary-color hover:bg-primary-color/90">
             Know More
             <ArrowRight className="ml-2 h-4 w-4" />
           </Button>

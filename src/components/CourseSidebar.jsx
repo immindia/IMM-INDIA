@@ -147,7 +147,7 @@ export default function CourseSidebar() {
       }`}
     >
       <div className="flex flex-col h-full p-6 bg-white  rounded-lg shadow-sm">
-        <h2 className="mb-4 text-xl font-bold text-secondary-color">
+        <h2 className="mb-4 text-xl font-bold text-primary-color">
           Categories
         </h2>
         <nav className="mb-6 space-y-2">
@@ -170,7 +170,7 @@ export default function CourseSidebar() {
                   <Link
                     key={course.href}
                     to={course.href}
-                    className="block px-8 py-2 text-sm text-gray-500/90 transition-all duration-100  rounded hover:pl-6 hover:text-secondary-color hover:bg-gray-100 hover:font-medium"
+                    className="block px-8 py-2 text-sm text-gray-500/90 transition-all duration-100  rounded hover:pl-6 hover:text-primary-color hover:bg-gray-100 hover:font-medium"
                   >
                     {course.label}
                   </Link>

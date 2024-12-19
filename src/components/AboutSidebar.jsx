@@ -40,15 +40,13 @@ const AboutSidebar = ({ sidebarLinks }) => {
       }`}
     >
       <div className="flex flex-col h-full p-6 bg-white border-gray-200 rounded-lg">
-        <h2 className="mb-4 text-xl font-bold text-secondary-color">
-          Overview
-        </h2>
+        <h2 className="mb-4 text-xl font-bold text-primary-color">Overview</h2>
         <nav className="mb-6 space-y-2">
           {sidebarLinks.map((link) => (
             <Link
               key={link.href}
               to={link.href}
-              className="block px-4 py-2 text-sm text-gray-500 transition-all duration-200 rounded hover:pl-6 hover:text-secondary-color hover:bg-gray-100 hover:font-medium"
+              className="block px-4 py-2 text-sm text-gray-500 transition-all duration-200 rounded hover:pl-6 hover:text-primary-color hover:bg-gray-100 hover:font-medium"
             >
               {link.label}
             </Link>
@@ -73,24 +71,24 @@ const AboutSidebar = ({ sidebarLinks }) => {
             <Link to="/contact-us">
               <Button
                 variant="outline"
-              className="text-white transition-colors bg-transparent border-white hover:bg-white hover:text-black"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="w-5 h-5 mr-2"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
+                className="text-white transition-colors bg-transparent border-white hover:bg-white hover:text-black"
               >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M13 10V3L4 14h7v7l9-11h-7z"
-                />
-              </svg>
-              Get Started
-            </Button>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="w-5 h-5 mr-2"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M13 10V3L4 14h7v7l9-11h-7z"
+                  />
+                </svg>
+                Get Started
+              </Button>
             </Link>
           </div>
         </div>

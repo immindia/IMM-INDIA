@@ -45,7 +45,7 @@ export default function AboutIMM() {
             words="About IMM India"
           />
           <WordPullUp
-            className="text-left sm:text-left text-4xl font-bold sm:font-bold md:font-extrabold text-pink-950 mt-4 sm:mt-8 mb-4 underline "
+            className="text-left sm:text-left text-4xl font-bold sm:font-bold md:font-extrabold text-primary-color mt-4 sm:mt-8 mb-4 underline "
             words="Top B-School in Delhi NCR"
           />
           <div className="w-10/12 h-[2px] bg-pink-800"></div>
@@ -63,7 +63,7 @@ export default function AboutIMM() {
             and management education in India. IMM, the brain child of Visionary
             Dr. Jagjit Singh, has over almost five decades successfully created
             global intellectual capital and continues to do so even today.
-            <br /> 
+            <br />
             From training practicing managers to corporate leaders, educating
             management career aspirants, readying the marketing professionals to
             put India on the global marketing map and also helping students to

@@ -9,18 +9,18 @@ export default function GlobalExcursion() {
     {
       title: "Few Global Excursion Glimpses",
       image: img1,
-      alt: "Global Excursion group"
+      alt: "Global Excursion group",
     },
     {
-      title: "VISION VOYAGE AAGAMAN 2024", 
+      title: "VISION VOYAGE AAGAMAN 2024",
       image: img2,
-      alt: "Vision Voyage event"
-    }
+      alt: "Vision Voyage event",
+    },
   ];
 
   const ExcursionCard = ({ title, image, alt }) => (
     <div className="p-4 bg-white">
-      <h2 className="mb-4 text-2xl font-bold text-center text-pink-950">
+      <h2 className="mb-4 text-2xl font-bold text-center text-primary-color">
         {title}
       </h2>
       <div className="overflow-hidden">
@@ -36,7 +36,7 @@ export default function GlobalExcursion() {
   );
 
   return (
-    <section className="bg-pink-950 lg:py-20 md:py-12 py-8 sm:px-0 px-6">
+    <section className="bg-primary-color lg:py-20 md:py-12 py-8 sm:px-0 px-6">
       <div className="container mx-auto max-w-6xl">
         <Heading
           title="Global Excursion at IMM"
@@ -49,10 +49,11 @@ export default function GlobalExcursion() {
             <ExcursionCard key={index} {...item} />
           ))}
         </div>
-        <ShimmerButton className="shadow-2xl mt-12 mx-auto hover:-translate-y-2 duration-300 ease-in-out"
-        background="#ffffff"
-        shimmerSize="0.08em"
-        shimmerColor="#1e1e1e"
+        <ShimmerButton
+          className="shadow-2xl mt-12 mx-auto hover:-translate-y-2 duration-300 ease-in-out"
+          background="#ffffff"
+          shimmerSize="0.08em"
+          shimmerColor="#1e1e1e"
         >
           <span className="whitespace-pre-wrap text-center text-sm font-medium leading-none tracking-tight text-black/60 dark:from-white dark:to-slate-900/10 lg:text-base flex items-center hover:text-gray-500 duration-300 ease-in-out ">
             View more

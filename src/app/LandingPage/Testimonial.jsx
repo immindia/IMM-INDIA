@@ -184,7 +184,7 @@ export default function Testimonial() {
         <div className="w-full h-full">
           <Heading
             title="Student Testimonials"
-            titleClassName="lg:font-extrabold lg:text-left  text-pink-950"
+            titleClassName="lg:font-extrabold lg:text-left  text-primary-color"
             className=" hidden sm:block w-full pb-0 text-left sm:col-span-4 sm:pb-0 lg:pb-14"
           />
 

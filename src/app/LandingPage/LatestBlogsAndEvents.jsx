@@ -1,4 +1,3 @@
-
 import { Card, CardContent } from "@/components/ui/card";
 import img1 from "../../assets/blogs1.svg";
 import img2 from "../../assets/blogs2.svg";
@@ -36,7 +35,7 @@ export default function LatestBlogsAndEvents() {
     <Container className="">
       <Heading
         title="Knowledge Center"
-        titleClassName="lg:font-extrabold font-bold text-pink-950"
+        titleClassName="lg:font-extrabold font-bold text-primary-color"
         subtitle="Stay updated with the latest blogs, news, and insights from IMM India. Discover thought leadership articles, industry updates, student success stories at our institution."
         subtitleClassName="text-gray-500 text-justify m-0 lg:text-lg lg:font-normal  text-center mx-auto"
         className="w-full text-center sm:col-span-4 "
@@ -52,10 +51,10 @@ export default function LatestBlogsAndEvents() {
                 className="object-cover w-full sm:h-full  h-[262px]"
               />
               <div className="absolute bottom-0 left-0 right-0 p-6 space-y-2 sm:p-10 sm:space-y-4 bg-gradient-to-t from-black to-transparent">
-                <span className="top-0 px-4 py-1 mx-auto text-sm font-semibold tracking-wide text-white sm:text-lg w-fit sm:mx-0 bg-secondary-color ">
+                <span className="top-0 px-4 py-1 mx-auto text-sm font-semibold tracking-wide text-white sm:text-lg w-fit sm:mx-0 bg-primary-color ">
                   Trending
                 </span>
-                
+
                 <p className="flex items-center mr-2 text-base font-semibold text-white sm:text-lg">
                   <Calendar size={20} className="mr-2 text-white" /> September
                   2023
@@ -68,18 +67,18 @@ export default function LatestBlogsAndEvents() {
           </CardContent>
         </Card>
         <div className="grid grid-cols-1 gap-5 relative overflow-hidden h-full">
-        <AnimatedList>
-        {events.map((item, idx) => (
-          <EventCard {...item} key={idx} />
-        ))}
-      </AnimatedList>
+          <AnimatedList>
+            {events.map((item, idx) => (
+              <EventCard {...item} key={idx} />
+            ))}
+          </AnimatedList>
         </div>
       </div>
     </Container>
   );
 }
 
-const EventCard = ({id,image,title,date}) => {
+const EventCard = ({ id, image, title, date }) => {
   return (
     <Card key={id} className="p-0 rounded-none ">
       <CardContent className="flex p-0 space-x-3 sm:space-x-4 h-32 sm:h-auto">
@@ -89,7 +88,7 @@ const EventCard = ({id,image,title,date}) => {
           className="object-cover h-full aspect-square"
         />
         <div className="flex flex-col items-start justify-center flex-grow gap-2 sm:gap-3 ml-2">
-          <span className="top-0 px-4 py-1  text-xs sm:text-sm font-semibold tracking-wide text-white w-fit sm:mx-0 bg-secondary-color ">
+          <span className="top-0 px-4 py-1  text-xs sm:text-sm font-semibold tracking-wide text-white w-fit sm:mx-0 bg-primary-color ">
             Trending
           </span>
           <p className="flex items-center mr-2 text-xs sm:text-lg font-semibold text-red-600">

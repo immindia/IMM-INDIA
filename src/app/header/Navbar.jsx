@@ -10,7 +10,7 @@ export default function Header() {
   return (
     <header className="w-full">
       {/* Main Navigation */}
-      <nav className="bg-pink-950">
+      <nav className="bg-primary-color">
         <div className="flex flex-wrap items-center justify-between px-4 py-3 mx-auto md:px-16">
           {/* Logo Section */}
           <div className="flex items-center gap-4">
