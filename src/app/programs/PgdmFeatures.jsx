@@ -6,36 +6,42 @@ import Heading from "../../components/Heading";
 
 const features = [
   {
+    id: 1,
     img: "https://cdn.easyfrontend.com/pictures/featured/feature1.jpg",
     title: "Marketing & Innovation Management",
     description:
       "Marketing Management is a critical factor that has a direct impact on any organization's organic growth and sustainability. The Marketing courses in IMM's PGDM programme teach students how to develop and implement effective marketing strategies so as to overcome business challenges. The primary goal of incorporating Marketing into the programme is to develop effective managers and leaders capable of applying functional knowledge, to address business challenges in a socially and ethically responsible manner. The goal of the programme is to sharpen knowledge of the marketing function while also gaining a broad understanding of other related disciplines.",
   },
   {
+    id: 2,
     img: "https://cdn.easyfrontend.com/pictures/featured/feature2.jpg",
     title: "Financial Management",
     description:
       "The PGDM Program @IMM with specialization in Finance is an excellent opportunity for students seeking leadership positions in the field of Finance. The curriculum is befitting to contemporary times which prepares students with in-depth courses that advance the understanding of issues particularly in the field of core Finance, including: Investments, Portfolio Management, Derivative Securities, Capital Markets, Corporate Finance, Bancassurance, Corporate Restructuring, Global Financial Ecosystem, Investment & Personal Finance, International Finance, and Financial Institutions.",
   },
   {
+    id: 3,
     img: "https://cdn.easyfrontend.com/pictures/featured/feature1.jpg",
     title: "Human Resource Management",
     description:
       "Human Resource Management specialization provides the academic foundation for careers concerned with the effective utilization of the human resources of organizations and economic system as a whole. It focuses on Workforce Staffing, Training, Maintenance strategies & practices, training and instruction in Employee Recruitment, Development Processes, Management Theories, Organizational Communication, Labour Law and Relations, and other concepts that prepare students to manage an organization's human assets.",
   },
   {
+    id: 4,
     img: "https://cdn.easyfrontend.com/pictures/featured/feature2.jpg",
     title: "Operations Management",
     description:
       "Operations and IT are increasingly digitally aligned. Different company functions are now increasingly integrated, data-driven, and insight-driven. This fundamental shift in the sector has prompted a modernization of Operations Management knowledge and abilities, with an integration of Analytical methodologies, present day operations and its applications. The course develops a thorough understanding of Supply Chain Management, including Network Strategy, Long-term Planning, and Forecasting Quality Management principles.",
   },
   {
+    id: 5,
     img: "https://cdn.easyfrontend.com/pictures/featured/feature1.jpg",
     title: "Business Analytics & Research",
     description:
       "Business Analytics takes a data-driven approach to the World of Business making use of Statistics & Data Modeling to help develop new Business Insights. This blend of technology & business will make Business Analytics an ideal Specialization for students with an interest in working with Big Data and Programming. Students will be trained in Data Analysis and Business Intelligence Tools to equip them for predictive modeling and more. Subjects Included: Python for Data Science, Data Visualization using power BI and Tableau, Big Data and SQL.",
   },
   {
+    id: 6,
     img: "https://cdn.easyfrontend.com/pictures/featured/feature2.jpg",
     title: "International Business Management",
     description:

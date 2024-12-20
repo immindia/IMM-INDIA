@@ -1,8 +1,8 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import Container from "../../components/wrappers/Container";
 import Heading from "../../components/Heading";
-import PgdmProgram from "./PgdmProgram";
-
+import PgdmProgramTab from "./PgdmProgramTab";
+import ProjectTab from "./ProjectTab";
 const Pgdm = () => {
   return (
     <Container>
@@ -44,28 +44,17 @@ const Pgdm = () => {
           </TabsList>
           <TabsContent value="pgdm" className="mt-6">
             <div className="space-y-8 sm:px-4">
-              <PgdmProgram />
+              <PgdmProgramTab />
             </div>
           </TabsContent>
 
           <TabsContent value="curriculum" className="mt-6">
-            <div className="space-y-4">
-              <h2 className="text-2xl font-semibold">PGDM Curriculum</h2>
-              <p className="text-gray-600">
-                Our curriculum is designed to provide a comprehensive
-                understanding of modern business practices...
-                {/* Add your curriculum content here */}
-              </p>
-            </div>
+            <ProjectTab />
           </TabsContent>
 
           <TabsContent value="projects" className="mt-6">
-            <div className="space-y-4">
-              <h2 className="text-2xl font-semibold">Industry Projects</h2>
-              <p className="text-gray-600">
-                Students undertake real-world projects with industry partners...
-                {/* Add your projects content here */}
-              </p>
+          <div className="space-y-8 sm:px-4">
+              <ProjectTab />
             </div>
           </TabsContent>
 
