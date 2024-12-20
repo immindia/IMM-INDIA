@@ -36,7 +36,7 @@ export default function PgdmSpecialization() {
 
   return (
     <div
-      className="relative flex items-center justify-center w-full py-20 bg-background "
+      className="relative flex items-center justify-center w-full py-10 sm:py-20 bg-background "
       ref={containerRef}
     >
       <div className="flex size-full flex-col max-w-lg max-h-[300px] items-stretch justify-between gap-14">

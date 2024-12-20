@@ -19,31 +19,31 @@ const Pgdm = () => {
           <TabsList className="grid w-full h-full grid-cols-2 sm:grid-cols-4">
             <TabsTrigger
               value="pgdm"
-              className="data-[state=active]:bg-pink-800 data-[state=active]:text-white"
+              className="data-[state=active]:bg-pink-900 h-10 data-[state=active]:text-white"
             >
               PGDM
             </TabsTrigger>
             <TabsTrigger
               value="curriculum"
-              className="data-[state=active]:bg-pink-800 data-[state=active]:text-white"
+              className="data-[state=active]:bg-pink-900 h-10 data-[state=active]:text-white"
             >
               Curriculum
             </TabsTrigger>
             <TabsTrigger
               value="projects"
-              className="data-[state=active]:bg-pink-800 data-[state=active]:text-white"
+              className="data-[state=active]:bg-pink-900 h-10 data-[state=active]:text-white"
             >
               Projects
             </TabsTrigger>
             <TabsTrigger
               value="global"
-              className="data-[state=active]:bg-pink-800 data-[state=active]:text-white"
+              className="data-[state=active]:bg-pink-900 h-10 data-[state=active]:text-white"
             >
               IMM Goes Global
             </TabsTrigger>
           </TabsList>
           <TabsContent value="pgdm" className="mt-6">
-            <div className="space-y-8 px-4">
+            <div className="space-y-8 sm:px-4">
               <PgdmProgram />
             </div>
           </TabsContent>
