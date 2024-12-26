@@ -32,8 +32,11 @@ const ImmLegacy = () => {
           className="pt-12"
         /> */}
         <Legacy />
-        <IMMFeatureSection />
       </Container>
+      <div className="bg-slate-50">
+
+      <IMMFeatureSection />
+      </div>
       {/* <Stats />
       <Newsletter /> */}
     </div>
@@ -162,7 +165,7 @@ const FeatureItem = ({ feature, isHovered, onHover }) => {
         )}
         <div
           className={`
-          mt-4 flex hidden items-center text-primary
+          mt-4 sm:flex hidden items-center text-primary
           transition-all duration-300 ease-out
           opacity-0 transform translate-x-[-10px]
           ${isHovered ? "opacity-100 translate-x-0" : ""}
@@ -180,7 +183,7 @@ const IMMFeatureSection = () => {
   const [hoveredIndex, setHoveredIndex] = useState(null);
 
   return (
-    <section className="py-14 md:py-24 bg-background text-foreground overflow-hidden">
+    <section className="py-14 md:pt-24  container mx-auto text-foreground overflow-hidden">
       <div className="container px-4 mx-auto">
         <div className="flex max-w-3xl justify-center text-center mb-12 mx-auto">
           <div className="space-y-6">
@@ -201,18 +204,18 @@ const IMMFeatureSection = () => {
         </div>
 
         <div className="grid grid-cols-2 gap-6 pt-12 max-w-7xl mx-auto">
-        <div className="col-span-2 lg:col-span-1">
-						<div className="relative h-full z-10">
-							<div className="absolute -top-11 -left-11 right-12 bottom-12 bg-gray-900 dark:bg-slate-700 -z-10 rounded-[200px] lg:rounded-full rounded-tl-none lg:rounded-tl-none" />
-							<div
-								className="bg-center bg-no-repeat bg-cover rounded-2xl min-h-[350px] w-full float-right shadow-xl h-full"
-								style={{
-									backgroundImage:
-										"url(https://cdn.easyfrontend.com/pictures/sign-in-up/sign3.jpg)",
-								}}
-							/>
-						</div>
-					</div>
+          <div className="col-span-2 lg:col-span-1">
+            <div className="relative h-full z-10">
+              <div className="absolute -top-11 -left-11 right-12 bottom-12 bg-gray-900 dark:bg-slate-700 -z-10 rounded-[200px] lg:rounded-full rounded-tl-none lg:rounded-tl-none" />
+              <div
+                className="bg-center bg-no-repeat bg-cover rounded-2xl min-h-[350px] w-full float-right shadow-xl h-full"
+                style={{
+                  backgroundImage:
+                    "url(https://cdn.easyfrontend.com/pictures/sign-in-up/sign3.jpg)",
+                }}
+              />
+            </div>
+          </div>
 
           <div className="col-span-2 lg:col-span-1">
             <div className="lg:ml-6 xl:ml-12">
