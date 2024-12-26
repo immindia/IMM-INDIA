@@ -12,6 +12,7 @@ import Contact from "./app/contact/Contact";
 import Pgdm from "./app/programs/Pgdm";
 import ImmLegacy from "./app/about/ImmLegacy";
 import Leadership from "./app/about/Leadership";
+import AdvisoryBoard from "./app/about/AdvisoryBoard";
 function App() {
   return (
     <Router>
@@ -23,6 +24,7 @@ function App() {
         {/* About us */}  
         <Route path='/about/imm-legacy' element={<ImmLegacy/>} />
         <Route path='/about/leadership' element={<Leadership/>} />
+        <Route path='/about/advisory-board' element={<AdvisoryBoard/>} />
 
         {/* Programs */}
         <Route path='/programs/pgdm' element={<Pgdm/>} />

@@ -26,7 +26,7 @@ const Leadership = () => {
     { label: "Leadership" },
   ];
   return (
-    <div className="relative min-h-screen bg-slate-50">
+    <div className="relative min-h-screen ">
       <ImgAndBreadcrumb
         title="Leadership"
         imageSrc={img}
@@ -133,3 +133,7 @@ const ReadMoreDialog = ({ isOpen, onClose, leader }) => {
     </Dialog>
   );
 };
+
+
+
+
