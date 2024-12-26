@@ -59,12 +59,23 @@ function DropdownItem({ item }) {
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
-      <Link
+
+      {!item.submenu ? (
+        <Link
         to={item.path}
         className="text-sm font-medium text-white hover:text-gray-200"
       >
         {item.name}
       </Link>
+      ) : (
+        <button
+          className="text-sm font-medium text-white hover:text-gray-200"
+          onClick={() => setIsOpen(!isOpen)}
+        >
+          {item.name}
+        </button>
+      )}
+
       {/* Dropdown Menu */}
       {item.submenu && isOpen && (
         <>

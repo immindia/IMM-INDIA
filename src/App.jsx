@@ -10,6 +10,7 @@ import Footer from "./app/footer/Footer";
 import Landing from "./app/LandingPage/Landing";
 import Contact from "./app/contact/Contact";
 import Pgdm from "./app/programs/Pgdm";
+import ImmLegacy from "./app/about/ImmLegacy";
 function App() {
   return (
     <Router>
@@ -18,6 +19,7 @@ function App() {
         <Route path='/' element={<Landing/>} />
         <Route path='/contact' element={<Contact/>} />
         <Route path='/programs/pgdm' element={<Pgdm/>} />
+        <Route path='/about/imm-legacy' element={<ImmLegacy/>} />
       </Routes>
       
       <Footer />
