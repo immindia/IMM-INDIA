@@ -1,7 +1,7 @@
 import Heading from "../../components/Heading";
 import ImgAndBreadcrumb from "../../components/ImgAndBreadcrumb";
 import Container from "../../components/wrappers/Container";
-import img from "../../assets/breadcrumb.png";
+import img from "../../assets/about/AboutBanner.webp";
 // import Stats from "../../components/Stats";
 // import Newsletter from "../../components/Newsletter";
 // import AboutSidebar from "../../components/AboutSidebar";

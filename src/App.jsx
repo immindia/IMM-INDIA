@@ -11,15 +11,24 @@ import Landing from "./app/LandingPage/Landing";
 import Contact from "./app/contact/Contact";
 import Pgdm from "./app/programs/Pgdm";
 import ImmLegacy from "./app/about/ImmLegacy";
+import Leadership from "./app/about/Leadership";
 function App() {
   return (
     <Router>
       <Header />
       <Routes>
+        {/* Landing */}
         <Route path='/' element={<Landing/>} />
-        <Route path='/contact' element={<Contact/>} />
-        <Route path='/programs/pgdm' element={<Pgdm/>} />
+
+        {/* About us */}  
         <Route path='/about/imm-legacy' element={<ImmLegacy/>} />
+        <Route path='/about/leadership' element={<Leadership/>} />
+
+        {/* Programs */}
+        <Route path='/programs/pgdm' element={<Pgdm/>} />
+
+        {/* Contact */}
+        <Route path='/contact' element={<Contact/>} />
       </Routes>
       
       <Footer />
