@@ -40,7 +40,7 @@ const ImgAndBreadcrumb = ({ imageSrc, imageAlt, breadcrumbItems, title }) => {
       <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-t from-black via-black/70 to-black/30"></div>
       <WordPullUp
         words={title}
-        className="sm:text-6xl text-white font-extrabold absolute top-10 sm:top-[45%] tracking-wide"
+        className="sm:text-6xl text-white font-extrabold absolute top-10 sm:top-[45%] tracking-wide leading-tight sm:leading-none"
       />
       <Breadcrumb className="relative z-10 -mb-8 transition-all duration-300 ease-in-out hover:drop-shadow-2xl drop-shadow-xl hover:scale-105">
         <BreadcrumbList className="px-8  py-4 bg-pink-800 rounded-md">
