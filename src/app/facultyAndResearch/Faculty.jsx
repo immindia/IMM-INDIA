@@ -1,7 +1,7 @@
 import Heading from "../../components/Heading";
 import ImgAndBreadcrumb from "../../components/ImgAndBreadcrumb";
 import Container from "../../components/wrappers/Container";
-import img from "../../assets/about/AboutBanner.webp";
+import img from "../../assets/faculty/Banner.webp";
 // import Stats from "../../components/Stats";
 // import Newsletter from "../../components/Newsletter";
 // import AboutSidebar from "../../components/AboutSidebar";
@@ -228,13 +228,14 @@ const Faculty = () => {
         breadcrumbItems={breadcrumbItems}
       />
       <Container className="container grid ">
-        <Heading
+        {/* <Heading
           title="Introducing Our Esteemed Faculty"
           titleClassName="text-primary-color lg:text-5xl text-center"
           subtitleClassName="text-gray-500 text-center m-0 lg:text-lg lg:font-normal lg:max-w-full"
           subtitle="Discover the leaders who are steering our institution towards excellence in education and empowerment."
           className="pt-12 mx-auto"
-        />
+        /> */}
+        <FacultyHeading />
         <div className="grid grid-cols-4 gap-6 text-center">
           {teamMembers.map((member) => (
             <TeamMemberCard key={member.name} {...member} />
@@ -272,3 +273,35 @@ const TeamMemberCard = ({ name, role, imageSrc }) => (
     </div>
   </div>
 );
+
+
+
+
+
+const FacultyHeading = () => {
+    return (
+        <section className="py-14">
+            <div className="max-w-screen-xl mx-auto ">
+                <div className="items-center gap-x-12 sm:px-4 md:px-0 lg:flex">
+                    <div className="flex-1 sm:hidden lg:block">
+                        <img src="https://images.unsplash.com/photo-1557804506-669a67965ba0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80" className="md:max-w-lg rounded-lg " alt="" />
+                    </div>
+                    <div className="max-w-xl px-4 space-y-3 mt-6 sm:px-0 md:mt-0 lg:max-w-2xl">
+                        <h3 className="text-primary-color text-2xl font-semibold">
+                            Our Faculty
+                        </h3>
+                        <p className="text-gray-800 text-3xl font-semibold sm:text-4xl">
+                            Excellence in Teaching & Research
+                        </p>
+                        <p className="mt-3 text-gray-600">
+                            The IMM Business School has Faculty members who have earned PhDs or are Fellows from top schools in India. We attract Adjunct and Visiting Faculty from prestigious institutions like IIM Ahmedabad, IIM Lucknow, IIT Kanpur, IIT Roorkee, Jamanalal Bajaj, FMS, IIFT and other prominent business schools globally. Top industry executives serve as Visiting Faculty, bringing real-world experience to the classroom.
+                        </p>
+                        <p className="mt-3 text-gray-600">
+                            Our Faculty regularly publish research papers in renowned international and national journals, engage in consultancy work, and employ analytical tools in their teaching pedagogy. Students benefit from complete access to journals and publications, enhancing their subject knowledge through research-based lectures.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    )
+}
