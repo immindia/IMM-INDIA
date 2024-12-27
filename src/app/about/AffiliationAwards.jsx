@@ -7,6 +7,8 @@ import img from "../../assets/about/AboutBanner2.webp";
 // import AboutSidebar from "../../components/AboutSidebar";
 import icon1 from "../../assets/about/accreditations/All_India_Council.webp";
 import icon2 from "../../assets/about/accreditations/AACSB-logo.webp";
+import AcademicPartners from "../LandingPage/AcademicPartners";
+import Awards from "../LandingPage/Awards";
 const AffiliationAwards = () => {
   const breadcrumbItems = [
     { href: "/", label: "Home" },
@@ -31,6 +33,8 @@ const AffiliationAwards = () => {
         /> */}
         <AffiliationAwardsContent />
       </Container>
+      <AcademicPartners />
+      <Awards />
       <div className="bg-slate-50"></div>
     </div>
   );
@@ -44,17 +48,17 @@ const AffiliationAwardsContent = () => {
       <div className="max-w-screen-xl mx-auto md:px-8">
         <div className="items-center gap-6 sm:gap-12 sm:px-4 md:px-0 flex flex-col sm:flex-row">
           <div className="flex-1 order-2 sm:order-1 flex justify-center items-center  gap-5 sm:gap-12">
-            <div className="w-1/3 sm:w-1/2">
+            <div className="w-1/3 sm:w-1/2 ">
               <img
                 src={icon1}
-                className="w-full sm:rounded-lg object-contain drop-shadow-2xl"
+                className="w-full sm:rounded-lg object-contain drop-shadow-2xl hover:scale-110 transition-all duration-300"
                 alt=""
               />
             </div>
-            <div className="w-2/3 sm:w-1/2">
+            <div className="w-2/3 sm:w-1/2 ">
               <img
                 src={icon2}
-                className="w-full sm:rounded-lg object-contain drop-shadow-2xl"
+                className="w-full sm:rounded-lg object-contain drop-shadow-2xl hover:scale-110 transition-all duration-300"
                 alt=""
               />
             </div>
