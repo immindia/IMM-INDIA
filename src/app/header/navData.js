@@ -9,7 +9,6 @@ export const navlinks = [
       { name: "Advisory Board", path: "/about/advisory-board" },
       { name: "Accreditations & Awards", path: "/about/accreditations-awards" },
     ],
-    
   },
   {
     name: "Programs",
@@ -17,20 +16,17 @@ export const navlinks = [
     submenu: [
       { name: "PGDM", path: "/programs/pgdm" },
       { name: "BBA", path: "/bba" },
-      
     ],
-  },
-  {
-    name: "Events",
-    path: "/",
-   
   },
   { name: "Admissions", path: "/" },
   {
-    name: "Corporate Connect", 
+    name: "Corporate Connect",
     path: "/",
     submenu: [
-      { name: "Industry Lectures & Webinars", path: "/industry-lectures-webinars" },
+      {
+        name: "Industry Lectures & Webinars",
+        path: "/industry-lectures-webinars",
+      },
       { name: "Industry Visits", path: "/industry-visits" },
       { name: "Corporate Events", path: "/corporate-events" },
     ],
@@ -38,7 +34,10 @@ export const navlinks = [
   {
     name: "Faculty & Research",
     path: "/",
-   
+    submenu: [
+      { name: "Faculty", path: "/faculty-and-research/faculty" },
+      { name: "Research", path: "/faculty-and-research/research" },
+    ],
   },
   {
     name: "Life at IMM",
@@ -48,7 +47,6 @@ export const navlinks = [
       { name: "Clubs at IMM", path: "/clubs-at-imm" },
       { name: "Life at IMM", path: "/life-at-imm" },
     ],
-   
   },
   {
     name: "Placements",
