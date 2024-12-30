@@ -15,6 +15,7 @@ import Leadership from "./app/about/Leadership";
 import AdvisoryBoard from "./app/about/AdvisoryBoard";
 import AffiliationAwards from "./app/about/AffiliationAwards";
 import Faculty from "./app/facultyAndResearch/Faculty";
+import Admissions from "./app/admissions/Admissions";
 function App() {
   return (
     <Router>
@@ -34,6 +35,9 @@ function App() {
 
         {/* Faculty and Research */}
         <Route path='/faculty-and-research/faculty' element={<Faculty/>} />
+
+        {/* Admissions */}
+        <Route path='/admissions' element={<Admissions/>} />
 
         {/* Contact */}
         <Route path='/contact' element={<Contact/>} />

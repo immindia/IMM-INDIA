@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import img from "../assets/breadcrumb.png";
 
-const AboutSidebar = ({ sidebarLinks }) => {
+const AboutSidebar = ({ sidebarLinks, className }) => {
   const [isSticky, setIsSticky] = useState(false);
   useEffect(() => {
     const handleScroll = () => {
@@ -35,29 +35,36 @@ const AboutSidebar = ({ sidebarLinks }) => {
 
   return (
     <div
-      className={`sidebar col-span-1 hidden md:block  pt-8  ${
+      className={`sidebar col-span-1 hidden md:block  pt-12  ${
         isSticky ? "md:sticky md:top-4" : ""
       }`}
     >
-      <div className="flex flex-col h-full p-6 bg-white border-gray-200 rounded-lg">
-        <h2 className="mb-4 text-xl font-bold text-primary-color">Overview</h2>
+      <div className={`flex flex-col h-full p-6 ${className} border-gray-200 rounded-xl`}>
+        <h2 className="mb-4 text-xl font-bold text-white">On this page</h2>
         <nav className="mb-6 space-y-2">
           {sidebarLinks.map((link) => (
-            <Link
+            // <Link
+            //   key={link.href}
+            //   to={link.href}
+            //   className="block px-4 py-2 text-sm font-medium transition-all duration-200 rounded text-slate-300 hover:pl-6 hover:text-primary-color hover:bg-gray-100 hover:font-medium"
+            // >
+            //   {link.label}
+            // </Link>
+            <a
               key={link.href}
-              to={link.href}
-              className="block px-4 py-2 text-sm text-gray-500 transition-all duration-200 rounded hover:pl-6 hover:text-primary-color hover:bg-gray-100 hover:font-medium"
+              href={link.href}
+              className="block px-4 py-2 text-sm font-medium transition-all duration-200 rounded text-slate-300 hover:pl-6 hover:text-primary-color hover:bg-gray-100 hover:font-medium"
             >
               {link.label}
-            </Link>
+            </a>
           ))}
         </nav>
         <Link to="/contact-us">
-          <Button className="w-full px-4 py-2 mb-6 font-bold text-white rounded bg-primary-color hover:bg-red-600">
+          <Button className="w-full px-4 py-2 mb-6 font-bold text-white rounded bg-primary-color hover:bg-pink-900">
             Apply Online
           </Button>
         </Link>
-        <div className="relative flex-grow overflow-hidden rounded-md  h-56">
+        <div className="relative flex-grow h-56 overflow-hidden rounded-md">
           <img
             src={img}
             alt="cta"

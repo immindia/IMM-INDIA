@@ -18,7 +18,7 @@ export const navlinks = [
       { name: "BBA", path: "/bba" },
     ],
   },
-  { name: "Admissions", path: "/" },
+  { name: "Admissions", path: "/admissions" },
   {
     name: "Corporate Connect",
     path: "/",

@@ -286,17 +286,17 @@ const FacultyHeading = () => {
                     <div className="flex-1 sm:hidden lg:block">
                         <img src="https://images.unsplash.com/photo-1557804506-669a67965ba0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80" className="md:max-w-lg rounded-lg " alt="" />
                     </div>
-                    <div className="max-w-xl px-4 space-y-3 mt-6 sm:px-0 md:mt-0 lg:max-w-2xl">
+                    <div className="max-w-xl  space-y-3 mt-6 sm:px-0 md:mt-0 lg:max-w-2xl">
                         <h3 className="text-primary-color text-2xl font-semibold">
                             Our Faculty
                         </h3>
                         <p className="text-gray-800 text-3xl font-semibold sm:text-4xl">
                             Excellence in Teaching & Research
                         </p>
-                        <p className="mt-3 text-gray-600">
+                        <p className="mt-3 text-gray-600 text-justify ">
                             The IMM Business School has Faculty members who have earned PhDs or are Fellows from top schools in India. We attract Adjunct and Visiting Faculty from prestigious institutions like IIM Ahmedabad, IIM Lucknow, IIT Kanpur, IIT Roorkee, Jamanalal Bajaj, FMS, IIFT and other prominent business schools globally. Top industry executives serve as Visiting Faculty, bringing real-world experience to the classroom.
                         </p>
-                        <p className="mt-3 text-gray-600">
+                        <p className="mt-3 text-gray-600 text-justify">
                             Our Faculty regularly publish research papers in renowned international and national journals, engage in consultancy work, and employ analytical tools in their teaching pedagogy. Students benefit from complete access to journals and publications, enhancing their subject knowledge through research-based lectures.
                         </p>
                     </div>
