@@ -16,6 +16,9 @@ import AdvisoryBoard from "./app/about/AdvisoryBoard";
 import AffiliationAwards from "./app/about/AffiliationAwards";
 import Faculty from "./app/facultyAndResearch/Faculty";
 import Admissions from "./app/admissions/Admissions";
+import IndustryVisit from "./app/corporateConnect/IndustryVisit";
+import IndustryLecturesAndWebinars from "./app/corporateConnect/IndustryLecturesAndWebinars";
+import CorporateEvents from "./app/corporateConnect/CorporateEvents";
 function App() {
   return (
     <Router>
@@ -38,6 +41,11 @@ function App() {
 
         {/* Admissions */}
         <Route path='/admissions' element={<Admissions/>} />
+
+        {/* Corporate Connect */}
+        <Route path='/corporate-connect/industry-visit' element={<IndustryVisit/>} />
+        <Route path='/corporate-connect/industry-lectures-and-webinars' element={<IndustryLecturesAndWebinars/>} />
+        <Route path='/corporate-connect/corporate-events' element={<CorporateEvents/>} />
 
         {/* Contact */}
         <Route path='/contact' element={<Contact/>} />

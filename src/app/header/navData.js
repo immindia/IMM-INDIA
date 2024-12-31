@@ -25,10 +25,10 @@ export const navlinks = [
     submenu: [
       {
         name: "Industry Lectures & Webinars",
-        path: "/industry-lectures-webinars",
+        path: "/corporate-connect/industry-lectures-and-webinars",
       },
-      { name: "Industry Visits", path: "/industry-visits" },
-      { name: "Corporate Events", path: "/corporate-events" },
+      { name: "Industry Visits", path: "/corporate-connect/industry-visit" },
+      { name: "Corporate Events", path: "/corporate-connect/corporate-events" },
     ],
   },
   {
