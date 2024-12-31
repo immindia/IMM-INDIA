@@ -13,7 +13,7 @@ const sidebarLinks = [
 const Admissions = () => {
   const breadcrumbItems = [
     { href: "/", label: "Home" },
-    { href: "/admissions", label: "Admissions" },
+
     { label: "Admissions" },
   ];
   return (

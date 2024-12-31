@@ -64,32 +64,37 @@ const ProcessAndFees = () => {
   return (
     <Card className="w-full pt-8 mx-auto bg-white rounded-md">
       <CardContent>
-        <div className="md:flex grid grid-cols-2 gap-4 justify-between mb-8">
+        <div className="md:flex grid grid-cols-2 gap-4 justify-between items-center mb-8">
           {steps.map((step, index) => (
-            <div
-              key={index}
-              className={cn(
-                "flex flex-col items-center cursor-pointer transition-all",
-                index === activeStep ? "text-primary-color" : "text-gray-500"
-              )}
-              onClick={() => setActiveStep(index)}
-            >
+            <>
               <div
+                key={index}
                 className={cn(
-                  "w-10 h-10 rounded-full border-2 flex items-center justify-center mb-2 transition-all",
-                  index === activeStep
-                    ? "border-primary-color bg-primary-color text-white"
-                    : index < activeStep
-                    ? "border-primary-color bg-primary-color/20"
-                    : "border-gray-400"
+                  "flex flex-col items-center cursor-pointer transition-all",
+                  index === activeStep ? "text-primary-color" : "text-gray-500"
                 )}
+                onClick={() => setActiveStep(index)}
               >
-                {index + 1}
+                <div
+                  className={cn(
+                    "w-10 h-10 rounded-full border-2 flex items-center justify-center mb-2 transition-all",
+                    index === activeStep
+                      ? "border-primary-color bg-primary-color text-white"
+                      : index < activeStep
+                      ? "border-primary-color bg-primary-color/20"
+                      : "border-gray-400"
+                  )}
+                >
+                  {index + 1}
+                </div>
+                <div className="text-sm w-max font-medium text-center">
+                  {step.title}
+                </div>
               </div>
-              <div className="text-sm font-medium text-center">
-                {step.title}
-              </div>
-            </div>
+              {index !== steps.length - 1 && (
+                <div className="w-full h-[2px] rounded-lg mb-5 bg-primary-color/20"></div>
+              )}
+            </>
           ))}
         </div>
         <Card className="bg-gray-50 rounded-md">
