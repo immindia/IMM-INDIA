@@ -7,7 +7,7 @@ import Heading from "../../components/Heading";
 import { useState, useMemo } from "react";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
-import { Card } from "../../components/ui/card";
+import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import {
   Pagination,
@@ -18,14 +18,15 @@ import {
   PaginationNext,
   PaginationEllipsis,
 } from "@/components/ui/pagination";
-import { Search } from "lucide-react";
+
 import {
   Dialog,
   DialogContent,
   DialogHeader,
   DialogTitle,
-  DialogDescription,
+ 
 } from "@/components/ui/dialog";
+import { Search, BookOpen,BookOpenCheck } from "lucide-react";
 import {
   Carousel,
   CarouselContent,
@@ -157,7 +158,7 @@ const IndustryLecturesAndWebinars = () => {
         <div className="col-span-1 pt-12">
           <Heading
             title="Industry Lectures & Webinars"
-            subtitle="Stay updated with the latest events, workshops, and seminars happening at our college. From cultural fests to academic conferences, we've got it all."
+            subtitle="Join us for insightful lectures and webinars that keep you informed about the latest trends and developments in various industries."
             titleClassName="text-primary-color text-left lg:text-5xl text-center"
             subtitleClassName="hidden text-gray-500 text-justify m-0 lg:text-lg lg:font-normal lg:max-w-full font-normal text-center sm:block"
             className="lg:pb-10"
@@ -174,7 +175,7 @@ const IndustryLecturesAndWebinars = () => {
                   setSearchTerm(e.target.value);
                   setCurrentPage(1);
                 }}
-                className=" placeholder:text-gray-400 py-6 pl-12 rounded-full  border-secondary-color border-2"
+                className=" placeholder:text-gray-400 py-6 pl-12 rounded-full  border-primary-color border-2"
               />
               <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 h-5 w-5" />
             </div>
@@ -200,20 +201,21 @@ const IndustryLecturesAndWebinars = () => {
 
           <div className="events grid grid-cols-1 sm:grid-cols-2  md:grid-cols-3 lg:grid-cols-4 gap-6 mb-14">
             {currentEvents.map((event) => (
-              <Card key={event.id} className="p-4 hover:shadow-lg shadow">
+              <Card key={event.id} className="p-0 hover:-translate-y-2 transition-all duration-300 hover:shadow-lg shadow rounded-lg overflow-hidden">
                 <img
                   src={event.image}
                   alt={event.title}
-                  className="w-full h-auto aspect-square object-cover rounded"
+                  className="w-full h-auto aspect-square object-cover scale-110"
                 />
-                <h3 className="text-sm font-bold my-2">{event.title}</h3>
+                <CardContent className="p-4 mt-4 space-y-3">
+                <h3 className="text-base font-bold line-clamp-1">{event.title}</h3>
                 <p className="text-gray-500 text-xs">{event.date}</p>
-                <div className="flex flex-wrap gap-2 mt-1">
+                <div className="flex flex-wrap gap-2 ">
                   {event.tags.map((tag) => (
                     <Badge
                       key={tag}
                       className={
-                        selectedTags.includes(tag) ? "bg-secondary-color" : ""
+                        selectedTags.includes(tag) ? "bg-primary-color" : "bg-gray-200 text-gray-700 hover:bg-gray-300"
                       }
                     >
                       {tag}
@@ -221,12 +223,14 @@ const IndustryLecturesAndWebinars = () => {
                   ))}
                 </div>
                 <Button
-                  className="mt-4 w-full"
+                  className="!mt-5 w-full bg-primary-color/80 hover:bg-primary-color text-white group"
                   onClick={() => handleImageClick(event)}
                 >
-                  View Details
+                  Read More <BookOpen className="w-4 h-4 ml-2 mt-1 group-hover:hidden" /> <BookOpenCheck className="w-4 h-4 ml-2 mt-1 group-hover:block hidden" />
                 </Button>
+                </CardContent>
               </Card>
+
             ))}
           </div>
 
