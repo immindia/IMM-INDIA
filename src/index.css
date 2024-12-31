@@ -64,3 +64,24 @@
     @apply bg-background text-foreground;
   }
 }
+
+* {
+  margin: 0;
+  box-sizing: border-box;
+}
+::-webkit-scrollbar {
+  width: 0.5vw;
+}
+
+::-webkit-scrollbar-track {
+  background: #fafafa;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #fff;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #414141;
+}

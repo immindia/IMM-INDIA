@@ -205,7 +205,7 @@ const IndustryLecturesAndWebinars = () => {
                 <img
                   src={event.image}
                   alt={event.title}
-                  className="w-full h-auto aspect-square object-cover scale-110"
+                  className="w-full h-auto aspect-square object-cover scale-110 hover:scale-[1.2] hover:brightness-75 transition-all duration-300"
                 />
                 <CardContent className="p-4 mt-4 space-y-3">
                 <h3 className="text-base font-bold line-clamp-1">{event.title}</h3>

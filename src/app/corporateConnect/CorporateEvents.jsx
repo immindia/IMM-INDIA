@@ -33,9 +33,13 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
-import { eventsData } from "./eventData";
 
-const breadcrumbItems = [{ href: "/", label: "Home" },{ href: "/corporate-connect/corporate-events", label: "Corporate Connect" }, { label: "Corporate Events" }];
+import { corporateData } from "./corporateData";
+const breadcrumbItems = [
+  { href: "/", label: "Home" },
+  { href: "/corporate-connect/corporate-events", label: "Corporate Connect" },
+  { label: "Corporate Events" },
+];
 
 const formatDate = (dateString) => {
   return new Date(dateString).toLocaleDateString("en-US", {
@@ -53,8 +57,8 @@ const CorporateEvents = () => {
   const [selectedEvent, setSelectedEvent] = useState(null);
   const eventsPerPage = 12;
 
-  const events = useMemo(() => eventsData, []);
-  console.log(events);
+  const events = useMemo(() => corporateData, []);
+
   // Extract unique tags from all events
   const allTags = useMemo(() => {
     const tagSet = new Set();
@@ -79,7 +83,8 @@ const CorporateEvents = () => {
         event.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
         event.tags.some((tag) =>
           tag.toLowerCase().includes(searchTerm.toLowerCase())
-        ) || event.date.toLowerCase().includes(searchTerm.toLowerCase());
+        ) ||
+        event.date.toLowerCase().includes(searchTerm.toLowerCase());
 
       const matchesTags =
         selectedTags.length === 0 ||
@@ -200,33 +205,42 @@ const CorporateEvents = () => {
 
           <div className="events grid grid-cols-1 sm:grid-cols-2  md:grid-cols-3 lg:grid-cols-4 gap-6 mb-14">
             {currentEvents.map((event) => (
-                <Card key={event.id} className="p-0 hover:-translate-y-2 transition-all duration-300 hover:shadow-lg shadow rounded-lg overflow-hidden">
+              <Card
+                key={event.id}
+                className="p-0 hover:-translate-y-2 transition-all duration-300 hover:shadow-lg shadow rounded-lg overflow-hidden"
+              >
                 <img
                   src={event.image}
                   alt={event.title}
                   className="w-full h-auto aspect-square object-cover scale-110"
                 />
                 <CardContent className="p-4 mt-4 space-y-3">
-                <h3 className="text-base font-bold line-clamp-1">{event.title}</h3>
-                <p className="text-gray-500 text-xs">{event.date}</p>
-                <div className="flex flex-wrap gap-2 ">
-                  {event.tags.map((tag) => (
-                    <Badge
-                      key={tag}
-                      className={
-                        selectedTags.includes(tag) ? "bg-primary-color" : "bg-gray-200 text-gray-700 hover:bg-gray-300"
-                      }
-                    >
-                      {tag}
-                    </Badge>
-                  ))}
-                </div>
-                <Button
-                  className="!mt-5 w-full bg-primary-color/80 hover:bg-primary-color text-white group"
-                  onClick={() => handleImageClick(event)}
-                >
-                  Read More <BookOpen className="w-4 h-4 ml-2 mt-1 group-hover:hidden" /> <BookOpenCheck className="w-4 h-4 ml-2 mt-1 group-hover:block hidden" />
-                </Button>
+                  <h3 className="text-base font-bold line-clamp-1">
+                    {event.title}
+                  </h3>
+                  <p className="text-gray-500 text-xs">{event.date}</p>
+                  <div className="flex flex-wrap gap-2 ">
+                    {event.tags.map((tag) => (
+                      <Badge
+                        key={tag}
+                        className={
+                          selectedTags.includes(tag)
+                            ? "bg-primary-color"
+                            : "bg-gray-200 text-gray-700 hover:bg-gray-300"
+                        }
+                      >
+                        {tag}
+                      </Badge>
+                    ))}
+                  </div>
+                  <Button
+                    className="!mt-5 w-full bg-primary-color/80 hover:bg-primary-color text-white group"
+                    onClick={() => handleImageClick(event)}
+                  >
+                    Read More{" "}
+                    <BookOpen className="w-4 h-4 ml-2 mt-1 group-hover:hidden" />{" "}
+                    <BookOpenCheck className="w-4 h-4 ml-2 mt-1 group-hover:block hidden" />
+                  </Button>
                 </CardContent>
               </Card>
             ))}
@@ -297,14 +311,8 @@ const CorporateEvents = () => {
           )}
         </div>
       </Container>
-      <Dialog 
-        open={isDialogOpen} 
-        onOpenChange={setIsDialogOpen}
-        modal={true}
-      >
-        <DialogContent 
-          className="w-[95%] max-w-[600px] rounded-lg overflow-y-auto max-h-[90vh]"
-        >
+      <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen} modal={true}>
+        <DialogContent className="w-[95%] max-w-[600px] rounded-lg overflow-y-auto max-h-[90vh]">
           {selectedEvent && (
             <>
               <DialogHeader className="px-1">
@@ -314,7 +322,7 @@ const CorporateEvents = () => {
               </DialogHeader>
               <div className="mt-2 space-y-3">
                 {selectedEvent.gallery && selectedEvent.gallery.length > 0 ? (
-                  <Carousel 
+                  <Carousel
                     className="w-full"
                     opts={{
                       align: "start",
@@ -323,8 +331,8 @@ const CorporateEvents = () => {
                   >
                     <CarouselContent className="flex">
                       {selectedEvent.gallery.map((image, index) => (
-                        <CarouselItem 
-                          key={index} 
+                        <CarouselItem
+                          key={index}
                           className="basis-full flex justify-center items-center"
                         >
                           <div className="w-full max-h-[60vh] flex justify-center">
@@ -332,22 +340,18 @@ const CorporateEvents = () => {
                               src={image}
                               alt={`Gallery image ${index + 1}`}
                               className="max-w-full max-h-full object-contain rounded-md"
-                              style={{ 
-                                maxWidth: '100%', 
-                                maxHeight: '60vh', 
-                                objectFit: 'contain' 
+                              style={{
+                                maxWidth: "100%",
+                                maxHeight: "60vh",
+                                objectFit: "contain",
                               }}
                             />
                           </div>
                         </CarouselItem>
                       ))}
                     </CarouselContent>
-                    <CarouselPrevious 
-                      className="absolute left-2 top-1/2 -translate-y-1/2 z-10"
-                    />
-                    <CarouselNext 
-                      className="absolute right-2 top-1/2 -translate-y-1/2 z-10"
-                    />
+                    <CarouselPrevious className="absolute left-2 top-1/2 -translate-y-1/2 z-10" />
+                    <CarouselNext className="absolute right-2 top-1/2 -translate-y-1/2 z-10" />
                   </Carousel>
                 ) : (
                   <div className="w-full max-h-[60vh] flex justify-center">
@@ -355,32 +359,35 @@ const CorporateEvents = () => {
                       src={selectedEvent.image}
                       alt={`Event ${selectedEvent.id}`}
                       className="max-w-full max-h-full object-contain rounded-md"
-                      style={{ 
-                        maxWidth: '100%', 
-                        maxHeight: '60vh', 
-                        objectFit: 'contain' 
+                      style={{
+                        maxWidth: "100%",
+                        maxHeight: "60vh",
+                        objectFit: "contain",
                       }}
                     />
                   </div>
                 )}
-                
-                <div className="px-1 space-y-2">
-                  <p className="text-muted-foreground">
-                    {selectedEvent.description}
+
+                <div className="mt-4 max-h-[20vh] sm:max-h-[60vh] overflow-y-auto">
+                  <p>
+                    <strong>Date:</strong> {selectedEvent.date}
                   </p>
-                  <div className="flex justify-between text-sm">
-                    <p>
-                      <strong>Date:</strong> {selectedEvent.date}
-                    </p>
-                  </div>
+                  {selectedEvent.description
+                    .split("\n\n")
+                    .map((paragraph, index) => (
+                      <p
+                        key={index}
+                        className="mb-4 text-justify text-sm text-muted-foreground"
+                      >
+                        {paragraph}
+                      </p>
+                    ))}
                 </div>
               </div>
             </>
           )}
         </DialogContent>
       </Dialog>
-
-     
     </section>
   );
 };

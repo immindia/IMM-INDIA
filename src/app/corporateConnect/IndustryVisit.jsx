@@ -33,7 +33,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
-import { eventsData } from "./eventData";
+import { industryData } from "./industryData";
 
 const breadcrumbItems = [{ href: "/", label: "Home" },{ href: "/corporate-connect/industry-visit", label: "Corporate Connect" }, { label: "Industry Visits" }];
 
@@ -53,7 +53,7 @@ const IndustryVisit = () => {
   const [selectedEvent, setSelectedEvent] = useState(null);
   const eventsPerPage = 12;
 
-  const events = useMemo(() => eventsData, []);
+  const events = useMemo(() => industryData, []);
   console.log(events);
   // Extract unique tags from all events
   const allTags = useMemo(() => {
