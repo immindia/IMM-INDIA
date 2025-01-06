@@ -311,6 +311,8 @@ const CorporateEvents = () => {
           )}
         </div>
       </Container>
+
+      
       <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen} modal={true}>
         <DialogContent className="w-[95%] max-w-[600px] rounded-lg overflow-y-auto max-h-[90vh]">
           {selectedEvent && (
