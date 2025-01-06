@@ -1,7 +1,7 @@
 import Heading from "../../components/Heading";
 import ImgAndBreadcrumb from "../../components/ImgAndBreadcrumb";
 import Container from "../../components/wrappers/Container";
-import img from "../../assets/about/AboutBanner.webp";
+import img from "../../assets/lifeAtIIM/eventsAndActivities/eventBanner.webp";
 import { useMemo } from "react";
 // import Stats from "../../components/Stats";
 // import Newsletter from "../../components/Newsletter";
@@ -236,45 +236,3 @@ function EventGallery() {
   );
 }
 
-// {events[selectedYear].map((event) => (
-//   <Card key={event.id} className="group overflow-hidden">
-//     <CardHeader className="p-0">
-//       <div className="relative aspect-[16/9] overflow-hidden">
-//         <img
-//           src={event.imageUrl}
-//           alt={event.title}
-
-//           className="object-cover h-full w-full transition-transform group-hover:scale-105"
-//         />
-//         <div className="absolute bottom-2 right-2 bg-black/70 text-white px-2 py-1 rounded-md text-sm flex items-center gap-1">
-//           <ImageIcon className="w-4 h-4" />
-//           <span>{event.photoCount} Photos</span>
-//         </div>
-//       </div>
-//     </CardHeader>
-//     <CardContent className="p-4">
-//       <div className="flex items-center gap-2 text-sm text-muted-foreground mb-2">
-//         <Calendar className="w-4 h-4" />
-//         <time dateTime={event.date}>{event.date}</time>
-//       </div>
-//       <h3 className="text-xl font-bold mb-2 line-clamp-2">
-//         {event.title}
-//       </h3>
-//       <p className="text-muted-foreground line-clamp-2 text-sm">
-//         {event.description}
-//       </p>
-//     </CardContent>
-//     <CardFooter className="p-4 pt-0">
-//       <Button asChild className="w-full bg-primary-color">
-//         <Link href={event.href}>
-//           View Gallery
-//         </Link>
-//       </Button>
-//     </CardFooter>
-//   </Card>
-// ))}
-// {events[selectedYear].length === 0 && (
-//   <div className="col-span-full text-center py-12">
-//     <p className="text-muted-foreground">No events found for {selectedYear}</p>
-//   </div>
-// )}
