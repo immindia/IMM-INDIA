@@ -145,10 +145,13 @@ function EventGallery() {
                   alt={event.title}
                   className="object-cover h-full w-full transition-transform group-hover:scale-105"
                 />
-                <div className="absolute bottom-2 right-2 bg-black/70 text-white px-2 py-1 rounded-md text-sm flex items-center gap-1">
-                  <ImageIcon className="w-4 h-4" />
-                  <span>{event.photoCount} Photos</span>
-                </div>
+
+                {event.photoCount && (
+                  <div className="absolute bottom-2 right-2 bg-black/70 text-white px-2 py-1 rounded-md text-sm flex items-center gap-1">
+                    <ImageIcon className="w-4 h-4" />
+                    <span>{event.photoCount} Photos</span>
+                  </div>
+                )}
               </div>
             </CardHeader>
             <CardContent className="p-4">

@@ -7,7 +7,7 @@ export const clubsData = {
       gallery: [],
       description: `The IT Club in a business school plays a crucial role in bridging the gap between business and technology. Its purpose is to provide a platform for students interested in nurturing their knowledge, skills, and understanding of IT in a business context. Tech Titans promotes the passion for IT through various activities like workshops, seminars, business leaders talks, events and competitions, enabling them to leverage technology for tech driven start-ups and entrepreneurship. These events may cover a wide range of topics such as data analysis, business intelligence tools, digital marketing, and e-commerce. IT Club serves as a hub for students interested in the strategic use of technology in a business context.`,
       date: "2024",
-      photoCount: 5,
+      photoCount: null,
       href: "#",
     },
     {
@@ -17,7 +17,7 @@ export const clubsData = {
       gallery: [],
       description: `An essential part of "Hands on Learning" for students at any level of higher education is through the Students' Clubs. Participating in Marketing Magic, the Marketing Club for Management Students hones their marketing skills and imperative, because there is a vast difference between what is learnt as theory and concepts of marketing in the classroom and the application of concepts in the field. The Marketing Club gives a platform for students to orient themselves to practice the art and science of Marketing. The Marketing Club focuses on Marketing games based on creating marketing strategies, advertising and promotional campaigns on imaginary products, simulation exercises, learning from marketing practitioners through workshops, inter-college marketing competitions etc. Marketing Luminaries are also invited to our Corporate events which are also marketed by the Club.`,
       date: "2024",
-      photoCount: 5,
+      photoCount: null,
       href: "#",
     },
     {
@@ -27,7 +27,7 @@ export const clubsData = {
       gallery: [],
       description: `The Finance Club at IMM - Bear and Bull is a stepping stone towards excellence in the domain of Financial Management, emphasizing on supremacy of initiatives in the areas of Finance. It is an initiative to nurture financial acumen in budding managers by various activities and special sessions with industry experts. The Club is designed to not only educate students but also reach out to Industry Leaders and have periodic sessions to expose students to various practical aspects of Finance. Additionally, the Club is focussed on organizing various case competitions and events that further drive the interest of the cohort towards Finance and its real-world implications.`,
       date: "2024",
-      photoCount: 5,
+      photoCount: null,
       href: "#",
     },
     {
@@ -37,7 +37,7 @@ export const clubsData = {
       gallery: [],
       description: `The purpose of "HR Club" is to enhance and support highest ideals in Human Resource Management. The Club endeavours to help students develop interpersonal skills needed in the Corporate World and aims to encourage them to interact with HR Professionals to learn more about Latest Human Resource practices. As a student led activity, the HR Club involves students to take the lead in organizing events on a regular basis to promote team spirit and implement HR concepts in a practical manner. Student members conduct and participate in seminars, projects, publish reports, newsletters, and other materials related to the HR profession. The HR Club provides a forum for discussion on modern & trending HR practices and also invites leading HR Managers to interact with all the members. Year long events enable students to gain insights into latest happenings in the field of HR. The plethora of activities include : Conferences, Games, Seminars, Debates, Quizzes etc.`,
       date: "2024",
-      photoCount: 5,
+      photoCount: null,
       href: "#",
     },
     {
@@ -47,7 +47,7 @@ export const clubsData = {
       gallery: [],
       description: `The Operations Club promotes rational thinking and helps making complex things simple. Operations is the core of every business and plays a pivotal role in any business's success. It enables students to think beyond classroom learning which aligns them with current industry practices and activities. The objective of Operations Club "OPMAC" is to understand and develop the interest of students in different fields of Operation and Supply Chain Management. The aim is to bridge the gap between the classroom sessions and practical understanding of operations. OPMAC takes up the responsibility of engaging students in various activities while ensuring that they derive value from them. To make the Club very interactive, various events and competitions are organized, such as Simulation Games, Case Study Competitions, Guest Lectures, Panel Discussions and more.`,
       date: "2024",
-      photoCount: 5,
+        photoCount: null,
       href: "#",
     },
     {
@@ -57,7 +57,7 @@ export const clubsData = {
       gallery: [],
       description: `E-Cell supports the development of Budding Entrepreneurs by offering an Entrepreneurial Environment. It helps students to learn and increase their Entrepreneurial Knowledge as they get to learn about how to start a Venture, importance of Intellectual Property Rights (IPR), what to look for in a Co-founder etc. E-Cell also provides the right atmosphere for Entrepreneurs to work on and grow their ideas and learn important business skills like : Leadership, Time Management, Financial Planning, Negotiation, Research, etc. To achieve this goal, the Cell has introduced several projects which have already been conceptualized and effectively developed to bring out the hidden Entrepreneur in every student. Our most recent Success Story is 'Grrind Coffee', an Entrepreneurial Venture by three of our Year I students who launched their Start Up at our Corporate Event in March.`,
       date: "2024",
-      photoCount: 5,
+      photoCount: null,
       href: "#",
     },
     {
@@ -67,7 +67,7 @@ export const clubsData = {
       gallery: [],
       description: `Soft Skills Club has been set up to equip students in today's highly Competitive World with the right knowledge of required Soft Skills. Soft Skills are more challenging to develop as they are a combination of skills like Communication, Confidence, Decision Making, Leadership, Affirmative beliefs, Stress Management, Crisis Handling, Emotional Intelligence, Creativity, Etiquette, Team Spirit, Self-Grooming, English Speaking and Writing and many more, that empower students to face not only corporate challenges but also prepare them for their personal endeavours. Soft Skills Club activities attempt to bridge the gap between Campus to Corporate for students and help them transition smoothly into the Corporate life by improving their confidence, which facilitates them to prepare and present their college projects smoothly, deliver satisfactory results and also influences their personal life by improving how they interact with others.`,
       date: "2024",
-      photoCount: 5,
+      photoCount: null,
       href: "#",
     },
     {
@@ -77,7 +77,7 @@ export const clubsData = {
       gallery: [],
       description: `The Global Voices Club, formerly known as the French Club, is dedicated to promoting cultural exchange and language learning at IMM. This club provides a platform for students to explore different languages and cultures, enhancing their global perspective and communication skills in an increasingly interconnected world.`,
       date: "2024",
-      photoCount: 5,
+      photoCount: null,
       href: "#",
     },
     {
@@ -91,7 +91,7 @@ The club's emphasis on interdisciplinary collaboration brings together individua
 
 Aligned with global objectives like the United Nations Sustainable Development Goals (SDGs), Nexus focuses on impactful research projects addressing innovation, sustainability, climate change, and technological advancements. Regular activities such as hackathons, seminars, and collaborative projects provide hands-on experience and foster a spirit of healthy competition.`,
       date: "2024",
-      photoCount: 5,
+      photoCount: null,
       href: "#",
     },
     {
@@ -101,7 +101,7 @@ Aligned with global objectives like the United Nations Sustainable Development G
       gallery: [],
       description: `IMM SQUAD - The Sports Club of IMM has been launched for our enthusiastic students who love to showcase their talent in sports. The Institute has various Indoor and Outdoor sports facilities like Chess, Carrom, Table Tennis, Snooker, Badminton and more. Students are encouraged to spend time in honing their Sporting Skills along with their Management Skills. The Club also organises lectures by Eminent Sports Personalities to ensure students understand the concept of Dedication, Concentration and Perseverance. Intra college competitions are also held regularly to enhance team spirit. The Club organises Cricket and Football matches in neighbouring Sports Complexes.`,
       date: "2024",
-      photoCount: 5,
+      photoCount: null,
       href: "#",
     },
   ],

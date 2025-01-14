@@ -52,9 +52,9 @@ export const navlinks = [
     name: "Placements",
     path: "/",
     submenu: [
-      { name: "Campus Recruitment", path: "/campus-recruitment" },
-      { name: "Past Recruiters", path: "/past-recruiters" },
-      { name: "Placement Records", path: "/placement-records" },
+      { name: "Campus Recruitment", path: "/placements/campus-recruitment" },
+      { name: "Past Recruiters", path: "/placements/past-recruiters" },
+      { name: "Placement Records", path: "/placements/placement-records" },
     ],
   },
   { name: "Contact Us", path: "/contact" },

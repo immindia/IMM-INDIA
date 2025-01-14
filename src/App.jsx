@@ -22,7 +22,7 @@ import CorporateEvents from "./app/corporateConnect/CorporateEvents";
 import EventsAndActivities from "./app/lifeAtIIM/EventsAndActivities";
 import ClubsAtIIM from "./app/lifeAtIIM/ClubsAtIIM";
 import LifeAtIIM from "./app/lifeAtIIM/LifeAtIIM";
-
+import CampusRecruitment from "./app/placements/CampusRecruitment";
 function App() {
   return (
     <Router>
@@ -77,6 +77,11 @@ function App() {
           element={<LifeAtIIM />}
         />
 
+        {/* Placements */}
+        <Route
+          path="/placements/campus-recruitment"
+          element={<CampusRecruitment />}
+        />
 
         {/* Contact */}
         <Route path="/contact" element={<Contact />} />
