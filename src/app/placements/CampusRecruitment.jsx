@@ -393,9 +393,10 @@ function CompanyLogos() {
                 <motion.img
                   src={company.logo}
                   alt={`${company.name} logo`}
-                  className="max-h-12 w-full object-contain filter grayscale group-hover:filter-none transition-all duration-300"
+                  className="max-h-12 w-full object-contain filter grayscale group-hover:filter-none hover:scale-90 transition-all duration-300"
                   whileHover={{ rotate: 360 }}
                   transition={{ duration: 0.5 }}
+                  
                 />
                 <p className="mt-2 text-sm font-light group-hover:font-normal transition-all  text-gray-700 text-center group-hover:text-pink-900 duration-300">
                   {company.name}

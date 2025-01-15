@@ -23,6 +23,7 @@ import EventsAndActivities from "./app/lifeAtIIM/EventsAndActivities";
 import ClubsAtIIM from "./app/lifeAtIIM/ClubsAtIIM";
 import LifeAtIIM from "./app/lifeAtIIM/LifeAtIIM";
 import CampusRecruitment from "./app/placements/CampusRecruitment";
+import PlacementRecords from "./app/placements/PlacementRecords";
 function App() {
   return (
     <Router>
@@ -81,6 +82,10 @@ function App() {
         <Route
           path="/placements/campus-recruitment"
           element={<CampusRecruitment />}
+        />
+        <Route
+          path="/placements/placement-records"
+          element={<PlacementRecords />}
         />
 
         {/* Contact */}
