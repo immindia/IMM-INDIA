@@ -10,6 +10,7 @@ import industry from "../../assets/network-happenings/industry-visit-pic.webp";
 import student from "../../assets/network-happenings/student-event.webp";
 import Container from "../../components/wrappers/Container";
 
+import { DotPattern } from "@/components/magicui/dot-pattern";
 const testimonialList = [
   {
     author: {
@@ -111,7 +112,13 @@ const NetworkHappening = () => {
   }, []);
 
   return (
-    <Container className=" text-zinc-900 dark:text-white z-[1]">
+    <Container className=" text-zinc-900 dark:text-white z-[99] relative">
+       <DotPattern
+        className={cn(
+          "[mask-image:radial-gradient(500px_circle_at_center,white,transparent)]",
+          "z-[-1]"
+        ) }
+      />
       <div className="container px-4 mx-auto">
         <Heading
           title="Network & Happenings"

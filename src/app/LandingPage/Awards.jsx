@@ -31,11 +31,11 @@ const cards = [
 ];
 const Awards = () => {
   return (
-    <section className="relative px-0 py-10 lg:py-28 md:py-12 sm:px-0 bg-black/90">
+    <section className="relative px-0 py-10 lg:py-28 md:py-12 sm:px-0 bg-gradient-to-bl  from-blue-950 via-blue-900 to-blue-950">
       <div className="relative z-30 px-4 mx-auto max-w-screen-xl md:px-8">
         <Heading
           title="Awards and Recognitions"
-          titleClassName="text-4xl md:text-6xl font-bold text-yellow-400"
+          titleClassName="text-4xl md:text-6xl font-bold text-white"
           subtitle="We are proud to have received numerous awards and recognitions for our academic excellence and innovation."
           subtitleClassName="text-gray-300 text-base md:text-lg"
           className="text-center"
@@ -43,8 +43,9 @@ const Awards = () => {
         <PlacementHighlights />
         <ShimmerButton
           className="shadow-2xl mt-12 mx-auto hover:-translate-y-2 duration-300 ease-in-out"
-          background="#FACC13"
+          background="#FFF"
           shimmerSize="0.1em"
+          shimmerColor="#000"
         >
           <span className="whitespace-pre-wrap text-center text-sm font-medium leading-none tracking-tight text-black/60 dark:from-white dark:to-slate-900/10 lg:text-base flex items-center hover:text-gray-500 duration-300 ease-in-out ">
             View more
@@ -72,7 +73,7 @@ const CardItem = ({ item }) => (
       <img
         src={item.image}
         alt=""
-        className="w-32 sm:w-36 h-32 sm:h-36 object-cover rounded-full z-40 absolute top-4  left-9 sm:left-10"
+        className="w-32 sm:w-36 h-32 sm:h-36 object-cover rounded-full z-40 absolute top-4 border-4 border-yellow-400  left-9 sm:left-10"
       />
     </div>
     <h5 className="text-[17px] text-white font-medium leading-relaxed mb-0 text-center ">

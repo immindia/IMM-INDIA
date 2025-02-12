@@ -32,6 +32,7 @@ export default function LatestBlogsAndEvents() {
   events = Array.from({ length: 3 }, () => events).flat();
 
   return (
+    <section className="bg-gradient-to-bl from-gray-200 via-gray-50 to-gray-300">
     <Container className="">
       <Heading
         title="Knowledge Center"
@@ -42,8 +43,8 @@ export default function LatestBlogsAndEvents() {
       />
 
       <div className="grid grid-cols-1 gap-6 md:grid-cols-2  h-[720px] sm:max-h-[500px]">
-        <Card className="relative rounded-none sm:h-full  h-[262px]">
-          <CardContent className="p-0 rounded-none sm:h-full  h-[262px]">
+        <Card className="relative rounded overflow-hidden sm:h-full  h-[262px]">
+          <CardContent className="p-0 rounded sm:h-full  h-[262px]">
             <div className="h-full ">
               <img
                 src={img1}
@@ -66,21 +67,22 @@ export default function LatestBlogsAndEvents() {
             </div>
           </CardContent>
         </Card>
-        <div className="grid grid-cols-1 gap-5 relative overflow-hidden h-full">
+        <div className="grid grid-cols-1 gap-5 relative overflow-hidden rounded h-full">
           <AnimatedList>
             {events.map((item, idx) => (
               <EventCard {...item} key={idx} />
             ))}
           </AnimatedList>
         </div>
-      </div>
-    </Container>
+        </div>
+      </Container>
+    </section>
   );
 }
 
 const EventCard = ({ id, image, title, date }) => {
   return (
-    <Card key={id} className="p-0 rounded-none ">
+    <Card key={id} className="p-0 rounded ">
       <CardContent className="flex p-0 space-x-3 sm:space-x-4 h-32 sm:h-auto">
         <img
           src={image}

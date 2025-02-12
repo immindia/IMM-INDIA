@@ -47,7 +47,7 @@ export default function AcademicPartners() {
   ];
 
   return (
-    <section className="min-h-screen bg-primary-color lg:py-20 md:py-12 py-8 sm:px-0 px-6">
+    <section className="min-h-screen bg-gradient-to-t from-primary-color via-pink-700 to-primary-color lg:py-20 md:py-12 py-8 sm:px-0 px-6">
       <div className="container mx-auto max-w-7xl">
         <Heading
           title="Academic Partners"
