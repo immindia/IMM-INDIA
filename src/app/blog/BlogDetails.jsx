@@ -12,6 +12,7 @@ const BlogDetails = () => {
   useEffect(() => {
     fetchPost();
     fetchRecentPosts();
+    window.scrollTo(0, 0);
   }, [slug]);
 
   const fetchPost = async () => {
@@ -158,6 +159,12 @@ const BlogDetails = () => {
                   .article-content ul, .article-content ol {
                     margin-left: 1.5rem;
                     margin-bottom: 1.5rem;
+                    list-style-type: disc;
+                  }
+                  .article-content ol {
+                    margin-left: 1.5rem;
+                    margin-bottom: 1.5rem;
+                    list-style-type: decimal;
                   }
                   .article-content li {
                     margin-bottom: 0.5rem;

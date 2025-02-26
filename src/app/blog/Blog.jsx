@@ -84,7 +84,7 @@ const Blog = () => {
             className={`px-4 py-2 rounded ${
               page === 1
                 ? "bg-gray-200 text-gray-500 cursor-not-allowed"
-                : "bg-indigo-600 text-white hover:bg-indigo-700"
+                : "bg-pink-800 text-white hover:bg-pink-900"
             }`}
           >
             Previous
@@ -99,7 +99,7 @@ const Blog = () => {
                   onClick={() => setPage(index + 1)}
                   className={`w-10 h-10 rounded ${
                     page === index + 1
-                      ? "bg-indigo-600 text-white"
+                      ? "bg-pink-800 text-white"
                       : "bg-gray-100 text-gray-600 hover:bg-gray-200"
                   }`}
                 >
@@ -115,7 +115,7 @@ const Blog = () => {
             className={`px-4 py-2 rounded ${
               page === totalPages
                 ? "bg-gray-200 text-gray-500 cursor-not-allowed"
-                : "bg-indigo-600 text-white hover:bg-indigo-700"
+                : "bg-pink-800 text-white hover:bg-pink-900"
             }`}
           >
             Next
@@ -130,20 +130,25 @@ export default Blog;
 
 const BlogCard = ({ id, date, title, description, imageUrl, slug }) => {
   return (
-    <div className="group w-full  border border-gray-300 rounded-2xl">
+    <div
+      id={id}
+      className="group w-full overflow-hidden  border border-gray-300 rounded-2xl"
+    >
       <div className="flex items-center">
         <img
-          src={imageUrl}
+          src={imageUrl || "https://pagedone.io/asset/uploads/1696244317.png"}
           alt={title}
           className="rounded-t-2xl w-full object-cover h-48"
         />
       </div>
-      <div className="p-4 lg:p-6 transition-all duration-300 rounded-b-2xl group-hover:bg-gray-50">
+      <div className="p-4 lg:p-6 h-full transition-all duration-300 rounded-b-2xl group-hover:bg-gray-50">
         <span className="text-indigo-600 font-medium mb-3 block">{date}</span>
-        <h4 className="text-xl text-gray-900 font-medium leading-8 mb-5">
-          {title}
-        </h4>
-        <p className="text-gray-500 leading-6 mb-10">{description}</p>
+        <Link to={`/blog/${slug}`}>
+          <h4 className="text-xl text-gray-900 hover:text-primary-color transition-all duration-300 hover:underline font-medium leading-8 mb-5">
+            {title}
+          </h4>
+        </Link>
+        <p className="text-gray-500  mb-5 line-clamp-3">{description}</p>
         <Link
           to={`/blog/${slug}`}
           className="cursor-pointer text-lg text-indigo-600 font-semibold"
