@@ -43,7 +43,10 @@ export const navlinks = [
     name: "Life at IMM",
     path: "/",
     submenu: [
-      { name: "Events & Activities", path: "/life-at-iim/events-and-activities" },
+      {
+        name: "Events & Activities",
+        path: "/life-at-iim/events-and-activities",
+      },
       { name: "Clubs at IMM", path: "/life-at-iim/clubs-at-imm" },
       // { name: "Life at IMM", path: "/life-at-iim/life-at-imm" },
     ],
@@ -57,5 +60,7 @@ export const navlinks = [
       { name: "Placement Records", path: "/placements/placement-records" },
     ],
   },
+
+  { name: "Blog", path: "/blog" },
   { name: "Contact Us", path: "/contact" },
 ];

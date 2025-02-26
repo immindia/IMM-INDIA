@@ -1,10 +1,5 @@
-import {
-  BrowserRouter as Router,
-  Route,
-  Routes,
-  useLocation,
-  useParams,
-} from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { HelmetProvider } from "react-helmet-async";
 import Header from "./app/header/Header";
 import Footer from "./app/footer/Footer";
 import Landing from "./app/LandingPage/Landing";
@@ -24,76 +19,77 @@ import ClubsAtIIM from "./app/lifeAtIIM/ClubsAtIIM";
 import LifeAtIIM from "./app/lifeAtIIM/LifeAtIIM";
 import CampusRecruitment from "./app/placements/CampusRecruitment";
 import PlacementRecords from "./app/placements/PlacementRecords";
+import Blog from "./app/blog/Blog";
+import BlogDetails from "./app/blog/BlogDetails";
+
 function App() {
   return (
-    <Router>
-      <Header />
-      <Routes>
-        {/* Landing */}
-        <Route path="/" element={<Landing />} />
+    <HelmetProvider>
+      <Router>
+        <Header />
+        <Routes>
+          {/* Landing */}
+          <Route path="/" element={<Landing />} />
 
-        {/* About us */}
-        <Route path="/about/imm-legacy" element={<ImmLegacy />} />
-        <Route path="/about/leadership" element={<Leadership />} />
-        <Route path="/about/advisory-board" element={<AdvisoryBoard />} />
-        <Route
-          path="/about/accreditations-awards"
-          element={<AffiliationAwards />}
-        />
+          {/* About us */}
+          <Route path="/about/imm-legacy" element={<ImmLegacy />} />
+          <Route path="/about/leadership" element={<Leadership />} />
+          <Route path="/about/advisory-board" element={<AdvisoryBoard />} />
+          <Route
+            path="/about/accreditations-awards"
+            element={<AffiliationAwards />}
+          />
 
-        {/* Programs */}
-        <Route path="/programs/pgdm" element={<Pgdm />} />
+          {/* Programs */}
+          <Route path="/programs/pgdm" element={<Pgdm />} />
 
-        {/* Faculty and Research */}
-        <Route path="/faculty-and-research/faculty" element={<Faculty />} />
+          {/* Faculty and Research */}
+          <Route path="/faculty-and-research/faculty" element={<Faculty />} />
 
-        {/* Admissions */}
-        <Route path="/admissions" element={<Admissions />} />
+          {/* Admissions */}
+          <Route path="/admissions" element={<Admissions />} />
 
-        {/* Corporate Connect */}
-        <Route
-          path="/corporate-connect/industry-visit"
-          element={<IndustryVisit />}
-        />
-        <Route
-          path="/corporate-connect/industry-lectures-and-webinars"
-          element={<IndustryLecturesAndWebinars />}
-        />
-        <Route
-          path="/corporate-connect/corporate-events"
-          element={<CorporateEvents />}
-        />
+          {/* Corporate Connect */}
+          <Route
+            path="/corporate-connect/industry-visit"
+            element={<IndustryVisit />}
+          />
+          <Route
+            path="/corporate-connect/industry-lectures-and-webinars"
+            element={<IndustryLecturesAndWebinars />}
+          />
+          <Route
+            path="/corporate-connect/corporate-events"
+            element={<CorporateEvents />}
+          />
 
-        {/*Life at IIM*/}
-        <Route
-          path="/life-at-iim/events-and-activities"
-          element={<EventsAndActivities />}
-        />
-        <Route
-          path="/life-at-iim/clubs-at-imm"
-          element={<ClubsAtIIM />}
-        />
-        <Route
-          path="/life-at-iim/life-at-imm"
-          element={<LifeAtIIM />}
-        />
+          {/*Life at IIM*/}
+          <Route
+            path="/life-at-iim/events-and-activities"
+            element={<EventsAndActivities />}
+          />
+          <Route path="/life-at-iim/clubs-at-imm" element={<ClubsAtIIM />} />
+          <Route path="/life-at-iim/life-at-imm" element={<LifeAtIIM />} />
 
-        {/* Placements */}
-        <Route
-          path="/placements/campus-recruitment"
-          element={<CampusRecruitment />}
-        />
-        <Route
-          path="/placements/placement-records"
-          element={<PlacementRecords />}
-        />
+          {/* Placements */}
+          <Route
+            path="/placements/campus-recruitment"
+            element={<CampusRecruitment />}
+          />
+          <Route
+            path="/placements/placement-records"
+            element={<PlacementRecords />}
+          />
+          <Route path="/blog" element={<Blog />} />
+          <Route path="/blog/:slug" element={<BlogDetails />} />
 
-        {/* Contact */}
-        <Route path="/contact" element={<Contact />} />
-      </Routes>
+          {/* Contact */}
+          <Route path="/contact" element={<Contact />} />
+        </Routes>
 
-      <Footer />
-    </Router>
+        <Footer />
+      </Router>
+    </HelmetProvider>
   );
 }
 
