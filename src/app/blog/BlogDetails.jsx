@@ -118,7 +118,7 @@ const BlogDetails = () => {
               <div className="flex items-center text-gray-500">
                 <Clock className="h-5 w-5 mr-1" />
                 <span className="text-sm">
-                  {Math.ceil(post.content.rendered.split(" ").length / 200)} min
+                  {Math.ceil(post.content.rendered.split(" ").length / 100)} min
                   read
                 </span>
               </div>

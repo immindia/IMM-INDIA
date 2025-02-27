@@ -1,52 +1,90 @@
 import { useState, useEffect } from "react";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
 import Heading from "../../components/Heading";
 import { Link } from "react-router-dom";
 
+const fetchPosts = async (page) => {
+  const response = await fetch(
+    `https://www.immindia.edu.in/blog/wp-json/wp/v2/posts?_embed&page=${page}&per_page=9`
+  );
+
+  if (!response.ok) {
+    throw new Error(`Error: ${response.status}`);
+  }
+
+  const data = await response.json();
+  const totalPosts = parseInt(response.headers.get("X-WP-Total") || "0", 10);
+  const postsPerPage = parseInt(
+    response.headers.get("X-WP-Per-Page") || "9",
+    10
+  );
+  const calculatedPages = Math.max(1, Math.ceil(totalPosts / postsPerPage));
+
+  return { posts: data, totalPages: calculatedPages };
+};
+
 const Blog = () => {
-  const [posts, setPosts] = useState([]);
-  const [loading, setLoading] = useState(true);
   const [page, setPage] = useState(1);
-  const [totalPages, setTotalPages] = useState(0);
+  const queryClient = useQueryClient();
 
+  const { data, error, isLoading, isFetching } = useQuery({
+    queryKey: ["posts", page],
+    queryFn: () => fetchPosts(page),
+    keepPreviousData: true,
+    staleTime: 5 * 60 * 1000, // 5 minutes
+  });
+
+  // Prefetch next page
   useEffect(() => {
-    fetchPosts();
-  }, [page]);
-
-  const fetchPosts = async () => {
-    try {
-      const response = await fetch(
-        `https://www.immindia.edu.in/blog/wp-json/wp/v2/posts?_embed&page=${page}&per_page=9`
-      );
-      const data = await response.json();
-      setPosts(data);
-
-      // Get total pages from headers
-      const totalPosts = parseInt(response.headers.get("X-WP-Total") || "0");
-      const postsPerPage = parseInt(
-        response.headers.get("X-WP-Per-Page") || "12"
-      );
-      const calculatedPages = Math.max(
-        1,
-        Math.min(Math.ceil(totalPosts / postsPerPage), 100)
-      ); // Add upper limit of 100
-      setTotalPages(calculatedPages);
-
-      setLoading(false);
-    } catch (error) {
-      console.error("Error fetching posts:", error);
-      setLoading(false);
+    if (data?.totalPages && page < data.totalPages) {
+      queryClient.prefetchQuery({
+        queryKey: ["posts", page + 1],
+        queryFn: () => fetchPosts(page + 1),
+      });
     }
-  };
+  }, [page, data, queryClient]);
 
-  if (loading) {
+  if (isLoading) {
     return (
       <section className="py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <p className="text-center">Loading posts...</p>
+          <Heading
+            title="Our latest blog"
+            titleClassName="text-center text-primary-color"
+            subtitle="Stay updated with our latest insights and articles"
+          />
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {[...Array(9)].map((_, index) => (
+              <div
+                key={index}
+                className="animate-pulse border border-gray-300 rounded-2xl"
+              >
+                <div className="bg-gray-200 h-48 rounded-t-2xl" />
+                <div className="p-4 lg:p-6">
+                  <div className="h-4 bg-gray-200 rounded w-1/4 mb-3" />
+                  <div className="h-6 bg-gray-200 rounded w-3/4 mb-5" />
+                  <div className="h-4 bg-gray-200 rounded w-full mb-3" />
+                  <div className="h-4 bg-gray-200 rounded w-2/3" />
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
     );
   }
+
+  if (error) {
+    return (
+      <section className="py-24">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <p className="text-center text-red-500">Error fetching posts.</p>
+        </div>
+      </section>
+    );
+  }
+
+  const { posts, totalPages } = data;
 
   return (
     <section className="py-24">
@@ -80,9 +118,9 @@ const Blog = () => {
         <div className="mt-12 flex justify-center gap-2">
           <button
             onClick={() => setPage((prev) => Math.max(prev - 1, 1))}
-            disabled={page === 1}
+            disabled={page === 1 || isFetching}
             className={`px-4 py-2 rounded ${
-              page === 1
+              page === 1 || isFetching
                 ? "bg-gray-200 text-gray-500 cursor-not-allowed"
                 : "bg-pink-800 text-white hover:bg-pink-900"
             }`}
@@ -90,30 +128,30 @@ const Blog = () => {
             Previous
           </button>
 
-          <div className="flex items-center gap-2">
-            {Array.from(
-              { length: Math.max(0, Math.min(totalPages, 100)) },
-              (_, index) => (
+          <div className="flex items-center gap-2 overflow-x-auto">
+            {Array.from({ length: totalPages }, (_, index) => index + 1)
+              .slice(Math.max(0, page - 3), Math.min(totalPages, page + 2))
+              .map((pageNumber) => (
                 <button
-                  key={index + 1}
-                  onClick={() => setPage(index + 1)}
+                  key={pageNumber}
+                  onClick={() => setPage(pageNumber)}
+                  disabled={isFetching}
                   className={`w-10 h-10 rounded ${
-                    page === index + 1
+                    page === pageNumber
                       ? "bg-pink-800 text-white"
                       : "bg-gray-100 text-gray-600 hover:bg-gray-200"
-                  }`}
+                  } ${isFetching ? "cursor-not-allowed opacity-50" : ""}`}
                 >
-                  {index + 1}
+                  {pageNumber}
                 </button>
-              )
-            ).slice(Math.max(0, page - 3), Math.min(totalPages, page + 2))}
+              ))}
           </div>
 
           <button
             onClick={() => setPage((prev) => Math.min(prev + 1, totalPages))}
-            disabled={page === totalPages}
+            disabled={page === totalPages || isFetching}
             className={`px-4 py-2 rounded ${
-              page === totalPages
+              page === totalPages || isFetching
                 ? "bg-gray-200 text-gray-500 cursor-not-allowed"
                 : "bg-pink-800 text-white hover:bg-pink-900"
             }`}
@@ -121,6 +159,13 @@ const Blog = () => {
             Next
           </button>
         </div>
+
+        {/* Loading overlay for subsequent fetches */}
+        {isFetching && !isLoading && (
+          <div className="fixed inset-0 bg-black bg-opacity-30 flex items-center justify-center">
+            <div className="bg-white p-4 rounded-lg shadow-lg">Loading...</div>
+          </div>
+        )}
       </div>
     </section>
   );
@@ -132,7 +177,7 @@ const BlogCard = ({ id, date, title, description, imageUrl, slug }) => {
   return (
     <div
       id={id}
-      className="group w-full overflow-hidden  border border-gray-300 rounded-2xl"
+      className="group w-full overflow-hidden border border-gray-300 rounded-2xl"
     >
       <div className="flex items-center">
         <img
@@ -148,7 +193,7 @@ const BlogCard = ({ id, date, title, description, imageUrl, slug }) => {
             {title}
           </h4>
         </Link>
-        <p className="text-gray-500  mb-5 line-clamp-3">{description}</p>
+        <p className="text-gray-500 mb-5 line-clamp-3">{description}</p>
         <Link
           to={`/blog/${slug}`}
           className="cursor-pointer text-lg text-indigo-600 font-semibold"
