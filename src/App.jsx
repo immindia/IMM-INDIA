@@ -25,6 +25,9 @@ import Contact from "./app/contact/Contact";
 
 // Footer Components
 import Gallery from "./app/footerLinkComponents/Gallery";
+import PolicyPrivacy from "./app/footerLinkComponents/PolicyPrivacy";
+
+
 function App() {
   return (
     <HelmetProvider>
@@ -87,11 +90,12 @@ function App() {
           <Route path="/blog/:slug" element={<BlogDetails />} />
 
           {/* Contact */}
-          <Route path="/contact" element={<Contact />} />
+          <Route path="/contact-us" element={<Contact />} />
 
 
           {/* Footer Components */}
           <Route path="/gallery" element={<Gallery />} />
+          <Route path="/privacy-policy" element={<PolicyPrivacy />} />
         </Routes>
 
         <Footer />
