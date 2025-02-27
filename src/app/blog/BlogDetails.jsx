@@ -46,11 +46,9 @@ const BlogDetails = () => {
   };
 
   if (loading) {
-    return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
-        <p>Loading post...</p>
-      </div>
-    );
+    return <div className="min-h-screen bg-gray-50">
+      <Skeleton/>
+    </div>;
   }
 
   if (!post) {
@@ -266,3 +264,50 @@ const BlogDetails = () => {
 };
 
 export default BlogDetails;
+
+const Skeleton = () => {
+  return (
+    <main className="max-w-4xl mx-auto px-4 py-8">
+      <article className="bg-white rounded-lg shadow-lg overflow-hidden mb-8">
+        {/* Skeleton for featured image */}
+        <div className="w-full h-[400px] bg-gray-200 animate-pulse" />
+
+        <div className="p-8">
+          {/* Skeleton for meta info */}
+          <div className="flex items-center justify-between mb-6">
+            <div className="w-32 h-5 bg-gray-200 rounded animate-pulse" />
+            <div className="w-24 h-5 bg-gray-200 rounded animate-pulse" />
+          </div>
+
+          {/* Skeleton for title */}
+          <div className="space-y-3 mb-6">
+            <div className="h-8 bg-gray-200 rounded w-3/4 animate-pulse" />
+          </div>
+
+          {/* Skeleton for content */}
+          <div className="space-y-4">
+            <div className="h-4 bg-gray-200 rounded animate-pulse" />
+            <div className="h-4 bg-gray-200 rounded animate-pulse w-5/6" />
+            <div className="h-4 bg-gray-200 rounded animate-pulse w-4/6" />
+            <div className="h-4 bg-gray-200 rounded animate-pulse w-5/6" />
+            <div className="h-4 bg-gray-200 rounded animate-pulse w-3/6" />
+          </div>
+        </div>
+      </article>
+
+      {/* Skeleton for recent articles */}
+      <section className="bg-white rounded-lg shadow-lg p-8">
+        <div className="w-48 h-8 bg-gray-200 rounded animate-pulse mb-6" />
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {[1, 2].map((item) => (
+            <div key={item}>
+              <div className="w-full h-48 bg-gray-200 rounded-lg animate-pulse mb-4" />
+              <div className="h-6 bg-gray-200 rounded animate-pulse w-3/4 mb-2" />
+              <div className="h-4 bg-gray-200 rounded animate-pulse w-24" />
+            </div>
+          ))}
+        </div>
+      </section>
+    </main>
+  );
+};

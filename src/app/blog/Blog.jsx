@@ -26,6 +26,7 @@ const fetchPosts = async (page) => {
 const Blog = () => {
   const [page, setPage] = useState(1);
   const queryClient = useQueryClient();
+  window.scrollTo(0, 0);
 
   const { data, error, isLoading, isFetching } = useQuery({
     queryKey: ["posts", page],
