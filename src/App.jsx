@@ -1,9 +1,9 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { HelmetProvider } from "react-helmet-async";
+
 import Header from "./app/header/Header";
 import Footer from "./app/footer/Footer";
 import Landing from "./app/LandingPage/Landing";
-import Contact from "./app/contact/Contact";
 import Pgdm from "./app/programs/Pgdm";
 import ImmLegacy from "./app/about/ImmLegacy";
 import Leadership from "./app/about/Leadership";
@@ -21,7 +21,10 @@ import CampusRecruitment from "./app/placements/CampusRecruitment";
 import PlacementRecords from "./app/placements/PlacementRecords";
 import Blog from "./app/blog/Blog";
 import BlogDetails from "./app/blog/BlogDetails";
+import Contact from "./app/contact/Contact";
 
+// Footer Components
+import Gallery from "./app/footerLinkComponents/Gallery";
 function App() {
   return (
     <HelmetProvider>
@@ -85,6 +88,10 @@ function App() {
 
           {/* Contact */}
           <Route path="/contact" element={<Contact />} />
+
+
+          {/* Footer Components */}
+          <Route path="/gallery" element={<Gallery />} />
         </Routes>
 
         <Footer />
