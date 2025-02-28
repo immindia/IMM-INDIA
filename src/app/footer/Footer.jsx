@@ -81,7 +81,7 @@ export default function Footer() {
       }`}
       style={{ transition: "opacity 0.5s ease-in-out" }}
     >
-      <div className="container mx-auto px-4">
+      <div className="container sm:max-w-5xl md:max-w-6xl mx-auto px-4">
         {/* Main footer content */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Column 1: About */}

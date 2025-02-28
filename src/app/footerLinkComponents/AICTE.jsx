@@ -6,67 +6,13 @@ import { FileDown, ChevronRight } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-
-import pdf1 from "../../assets/footer/AICTE/2023-24.pdf";
+import { yearGroups } from "./aicetData";
 
 export default function AICTE() {
+  window.scrollTo(0, 0);
   const [selectedYear, setSelectedYear] = useState(null);
 
   // Group years by decade for better organization
-  const yearGroups = [
-    {
-      id: "recent",
-      label: "Recent",
-      years: [
-        { year: "2023-24", pdf: pdf1 },
-        { year: "2022-23", pdf: pdf1 },
-        { year: "2021-22", pdf: pdf1 },
-        { year: "2020-21", pdf: pdf1 },
-        { year: "2019-20", pdf: pdf1 },
-      ],
-    },
-    {
-      id: "2010s",
-      label: "2010s",
-      years: [
-        { year: "2018-19", pdf: pdf1 },
-        { year: "2017-18", pdf: pdf1 },
-        { year: "2016-17", pdf: pdf1 },
-        { year: "2015-16", pdf: pdf1 },
-        { year: "2014-15", pdf: pdf1 },
-        { year: "2013-14", pdf: pdf1 },
-        { year: "2012-13", pdf: pdf1 },
-        { year: "2011-12", pdf: pdf1 },
-        { year: "2010-11", pdf: pdf1 },
-      ],
-    },
-    {
-      id: "2000s",
-      label: "2000s",
-      years: [
-        { year: "2009-10", pdf: pdf1 },
-        { year: "2008-09", pdf: pdf1 },
-        { year: "2007-08", pdf: pdf1 },
-        { year: "2006-07", pdf: pdf1 },
-        { year: "2004-06", pdf: pdf1 },
-        { year: "2003-04", pdf: pdf1 },
-        { year: "2002-03", pdf: pdf1 },
-        { year: "2000-02", pdf: pdf1 },
-      ],
-    },
-    {
-      id: "1990s",
-      label: "1990s",
-      years: [
-        { year: "1999-00", pdf: pdf1 },
-        { year: "1998-99", pdf: pdf1 },
-        { year: "1997-98", pdf: pdf1 },
-        { year: "1996-97", pdf: pdf1 },
-        { year: "1995-96", pdf: pdf1 },
-        { year: "1994-95", pdf: pdf1 },
-      ],
-    },
-  ];
 
   const handleYearClick = (year) => {
     setSelectedYear(year.year);
@@ -109,12 +55,12 @@ export default function AICTE() {
 
         <CardContent className="p-6">
           <Tabs defaultValue="recent" className="w-full">
-            <TabsList className="grid grid-cols-2 md:grid-cols-4 mb-6">
+            <TabsList className="grid grid-cols-2 md:grid-cols-4 mb-6 h-auto">
               {yearGroups.map((group) => (
                 <TabsTrigger
                   key={group.id}
                   value={group.id}
-                  className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground"
+                  className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground h-8"
                 >
                   {group.label}
                 </TabsTrigger>
@@ -135,7 +81,7 @@ export default function AICTE() {
                         className={`w-full h-16 text-lg font-medium relative overflow-hidden ${
                           selectedYear === year.year
                             ? "bg-green-100 text-green-800 border-green-300"
-                            : "bg-[#8b1f41] hover:bg-[#7a1b39] text-white border-0"
+                            : "bg-[#8b1f41] hover:bg-[#7a1b39] text-white border-0 hover:text-white/80"
                         }`}
                         onClick={() => handleYearClick(year)}
                         disabled={selectedYear !== null}
