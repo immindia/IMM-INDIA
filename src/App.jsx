@@ -26,12 +26,60 @@ import Contact from "./app/contact/Contact";
 // Footer Components
 import Gallery from "./app/footerLinkComponents/Gallery";
 import PolicyPrivacy from "./app/footerLinkComponents/PolicyPrivacy";
+import Disclaimer from "./app/footerLinkComponents/Disclaimer";
+import { Button } from "@/components/ui/button";
+import { ArrowUp } from "lucide-react";
+import { useState, useEffect } from "react";
+import AICTE from "./app/footerLinkComponents/AICTE";
 
+
+// Add ScrollToTop component
+const ScrollToTop = () => {
+  const [isVisible, setIsVisible] = useState(false);
+
+  const toggleVisibility = () => {
+    if (window.scrollY > 300) {
+      setIsVisible(true);
+    } else {
+      setIsVisible(false);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", toggleVisibility);
+    return () => {
+      window.removeEventListener("scroll", toggleVisibility);
+    };
+  }, []);
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+
+  return (
+    <>
+      {isVisible && (
+        <Button
+          onClick={scrollToTop}
+          size="icon"
+          className="fixed animate-bounce z-50 bg-pink-700 hover:bg-pink-600 text-white bottom-16 right-6 h-9 w-9 rounded-full shadow-lg"
+          aria-label="Scroll to top"
+        >
+          <ArrowUp className="h-5 w-5" />
+        </Button>
+      )}
+    </>
+  );
+};
 
 function App() {
   return (
     <HelmetProvider>
       <Router>
+        <ScrollToTop />
         <Header />
         <Routes>
           {/* Landing */}
@@ -92,10 +140,11 @@ function App() {
           {/* Contact */}
           <Route path="/contact-us" element={<Contact />} />
 
-
           {/* Footer Components */}
           <Route path="/gallery" element={<Gallery />} />
           <Route path="/privacy-policy" element={<PolicyPrivacy />} />
+          <Route path="/disclaimer" element={<Disclaimer />} />
+          <Route path="/aicte-approval" element={<AICTE />} />
         </Routes>
 
         <Footer />

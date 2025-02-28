@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from "react";
 import {
-  ChevronUp,
   Mail,
   Phone,
   MapPin,
@@ -27,7 +26,7 @@ export default function Footer() {
   // Show back-to-top button when scrolling down
   useEffect(() => {
     const toggleVisibility = () => {
-      if (window.pageYOffset > 300) {
+      if (window.scrollY > 300) {
         setVisible(true);
       } else {
         setVisible(false);
@@ -42,12 +41,12 @@ export default function Footer() {
     return () => window.removeEventListener("scroll", toggleVisibility);
   }, []);
 
-  const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
-  };
+  // const scrollToTop = () => {
+  //   window.scrollTo({
+  //     top: 0,
+  //     behavior: "smooth",
+  //   });
+  // };
 
   // Quick links data with paths
   const quickLinks = [
@@ -299,7 +298,7 @@ export default function Footer() {
       </div>
 
       {/* Back to top button with animation */}
-      <button
+      {/* <button
         onClick={scrollToTop}
         className={`fixed right-6 bottom-16 p-3 rounded-full bg-pink-600 text-white shadow-lg transform transition-all duration-300 hover:bg-pink-500 hover:scale-110 ${
           visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
@@ -307,7 +306,7 @@ export default function Footer() {
         aria-label="Back to top"
       >
         <ChevronUp className="w-5 h-5" />
-      </button>
+      </button> */}
     </footer>
   );
 }
