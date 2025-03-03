@@ -304,9 +304,9 @@ export default function CareerDetails() {
             setSubmitStatus("success");
 
             // Redirect to career-detail.php with success flag after a short delay
-            setTimeout(() => {
-              window.location.href = `https://www.immindia.edu.in/career-detail.php?job=${jobSlug}&flag=success`;
-            }, 2000);
+            // setTimeout(() => {
+            //   window.location.href = `https://www.immindia.edu.in/career-detail.php?job=${jobSlug}&flag=success`;
+            // }, 2000);
           } else {
             throw new Error(`Form submission failed: ${text}`);
           }
