@@ -1,5 +1,8 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { HelmetProvider } from "react-helmet-async";
+import { Button } from "@/components/ui/button";
+import { ArrowUp } from "lucide-react";
+import { useState, useEffect } from "react";
 
 import Header from "./app/header/Header";
 import Footer from "./app/footer/Footer";
@@ -27,11 +30,9 @@ import Contact from "./app/contact/Contact";
 import Gallery from "./app/footerLinkComponents/Gallery";
 import PolicyPrivacy from "./app/footerLinkComponents/PolicyPrivacy";
 import Disclaimer from "./app/footerLinkComponents/Disclaimer";
-import { Button } from "@/components/ui/button";
-import { ArrowUp } from "lucide-react";
-import { useState, useEffect } from "react";
 import AICTE from "./app/footerLinkComponents/AICTE";
-
+import Career from "./app/footerLinkComponents/career/Career";
+import CareerDetail from "./app/footerLinkComponents/career/CareerDetails";
 
 // Add ScrollToTop component
 const ScrollToTop = () => {
@@ -145,6 +146,8 @@ function App() {
           <Route path="/privacy-policy" element={<PolicyPrivacy />} />
           <Route path="/disclaimer" element={<Disclaimer />} />
           <Route path="/aicte-approval" element={<AICTE />} />
+          <Route path="/career" element={<Career />} />
+        <Route path="/career/:job-opening" element={<CareerDetail />} />
         </Routes>
 
         <Footer />
