@@ -45,25 +45,58 @@ export default function CareerDetails() {
     "Please fill in all required fields and upload your resume."
   );
   // apiEndpoint state is defined here for potential future dynamic endpoint configuration
-  // eslint-disable-next-line no-unused-vars
+//   eslint-disable-next-line no-unused-vars
   const [apiEndpoint, setApiEndpoint] = useState(
     "https://www.immindia.edu.in/apply-job.php"
   );
+  const [useDirectSubmit, setUseDirectSubmit] = useState(false);
+  const formRef = useRef(null);
   const fileInputRef = useRef(null);
 
-  // Check if the API endpoint is accessible
+  // Check if the API endpoint is accessible and determine submission method
   useEffect(() => {
-    // Try to detect if we're running in a development environment without PHP
-    const isLocalDev =
-      window.location.hostname === "localhost" ||
-      window.location.hostname === "127.0.0.1";
+    // Check if we're on localhost, Vercel, or custom domain
+    const hostname = window.location.hostname;
+    const isLocalhost = hostname === "localhost" || hostname === "127.0.0.1";
+    // eslint-disable-next-line no-unused-vars
+    const isVercel = hostname.includes("vercel.app");
 
-    if (isLocalDev) {
+    console.log(`Current hostname: ${hostname}`);
+    console.log(`API endpoint: ${apiEndpoint}`);
+
+    // For non-localhost environments, we'll use the direct form submission as default
+    // This helps avoid CORS issues with cross-domain submissions
+    if (!isLocalhost) {
       console.log(
-        "Development environment detected. API calls may fail if PHP backend is not available."
+        "Non-localhost environment detected. Using direct form submission as default."
       );
-      console.log("Using remote endpoint:", apiEndpoint);
+      setUseDirectSubmit(true);
     }
+
+    // Test if CORS is an issue by making a simple OPTIONS request
+    fetch(apiEndpoint, {
+      method: "OPTIONS",
+      mode: "cors",
+    })
+      .then((response) => {
+        console.log("CORS pre-flight check response:", response.status);
+        if (response.ok) {
+          console.log(
+            "CORS is properly configured. Using fetch API for submission."
+          );
+          setUseDirectSubmit(false);
+        } else {
+          console.log(
+            "CORS may not be properly configured. Using direct form submission."
+          );
+          setUseDirectSubmit(true);
+        }
+      })
+      .catch((error) => {
+        console.warn("CORS pre-flight check failed:", error);
+        console.log("Using direct form submission as fallback.");
+        setUseDirectSubmit(true);
+      });
   }, [apiEndpoint]);
 
   // Find the job from jobListings array using the slug
@@ -234,9 +267,11 @@ export default function CareerDetails() {
     }
   };
 
+  // Update handleSubmit to use different submission methods based on environment
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("Form submission started");
+    console.log("Using direct submit:", useDirectSubmit);
 
     // Validate all fields before submission
     if (!validateForm()) {
@@ -245,28 +280,115 @@ export default function CareerDetails() {
       return;
     }
 
-    console.log("Form data:", formData);
-    console.log("File:", file);
-    console.log("Job data:", job);
-    console.log("API endpoint:", apiEndpoint);
-
     // Set loading state
     setSubmitStatus("loading");
 
-    // Create FormData object for file upload
-    const formDataToSubmit = new FormData();
-
     // Use job.id if available, otherwise use the slug as fallback
     const jobIdentifier = job.id ? job.id.toString() : jobSlug;
-    formDataToSubmit.append("job_id", jobIdentifier);
 
+    // Log form data for debugging
+    console.log("Form data:", formData);
+    console.log("File:", file);
+    console.log("Job ID:", jobIdentifier);
+    console.log("API endpoint:", apiEndpoint);
+
+    // If using direct form submission (to avoid CORS)
+    if (useDirectSubmit) {
+      console.log("Using direct form submission to avoid CORS issues");
+
+      // Create a FormData object for the form
+      const formDataToSubmit = new FormData(formRef.current);
+
+      // Ensure job_id is set
+      formDataToSubmit.set("job_id", jobIdentifier);
+
+      // Create a new form for submission
+      const form = document.createElement("form");
+      form.method = "POST";
+      form.action = apiEndpoint;
+      form.enctype = "multipart/form-data";
+      form.target = "_blank"; // Open in new tab
+
+      // Create a hidden iframe for submission (to avoid page navigation)
+      const iframe = document.createElement("iframe");
+      iframe.name = "form-target-" + Date.now();
+      iframe.style.display = "none";
+      document.body.appendChild(iframe);
+      form.target = iframe.name;
+
+      // Add all form fields
+      for (let pair of formDataToSubmit.entries()) {
+        // Skip the file input, we'll handle it separately
+        if (pair[0] === "img") continue;
+
+        const input = document.createElement("input");
+        input.type = "hidden";
+        input.name = pair[0];
+        input.value = pair[1];
+        form.appendChild(input);
+      }
+
+      // Create a special message for the user about the file
+      const messageInput = document.createElement("input");
+      messageInput.type = "hidden";
+      messageInput.name = "message";
+      messageInput.value =
+        formData.message +
+        "\n\n[Note: This application was submitted from " +
+        window.location.origin +
+        ". Please check email for resume attachment.]";
+      form.appendChild(messageInput);
+
+      // Append form to body
+      document.body.appendChild(form);
+
+      // Also send the file via email if possible
+      if (file) {
+        // Create a mailto link with the resume as an attachment
+        // Note: This won't actually attach the file, but it will prompt the user to send an email
+        const mailtoLink = document.createElement("a");
+        mailtoLink.href = `mailto:careers@immindia.edu.in?subject=Job Application: ${job.title}&body=Please find my application for the ${job.title} position.%0A%0AName: ${formData.name}%0APhone: ${formData.phone}%0AEmail: ${formData.email}%0A%0A${formData.message}%0A%0APlease see attached resume.`;
+        mailtoLink.style.display = "none";
+        document.body.appendChild(mailtoLink);
+
+        // Submit the form
+        form.submit();
+
+        // Show success message
+        setSubmitStatus("success");
+
+        // After a short delay, prompt the user to also send their resume via email
+        setTimeout(() => {
+          alert(
+            "Your application has been submitted! Please also send your resume via email when prompted."
+          );
+          mailtoLink.click();
+          document.body.removeChild(mailtoLink);
+        }, 1000);
+      } else {
+        // Just submit the form without the email prompt
+        form.submit();
+        setSubmitStatus("success");
+      }
+
+      // Clean up
+      setTimeout(() => {
+        document.body.removeChild(form);
+        document.body.removeChild(iframe);
+      }, 5000);
+
+      return;
+    }
+
+    // If not using direct submit, use fetch API (standard approach)
+    // Create FormData object for file upload
+    const formDataToSubmit = new FormData();
+    formDataToSubmit.append("job_id", jobIdentifier);
     formDataToSubmit.append("name", formData.name);
     formDataToSubmit.append("phone", formData.phone);
     formDataToSubmit.append("email", formData.email);
     formDataToSubmit.append("message", formData.message || ""); // Ensure message is not null
     formDataToSubmit.append("img", file); // This matches the PHP file input name
-
-    console.log("FormData created with job_id:", jobIdentifier);
 
     // Log all form data being sent
     for (let pair of formDataToSubmit.entries()) {
@@ -311,62 +433,14 @@ export default function CareerDetails() {
           error.message.includes("CORS")
         ) {
           console.warn(
-            "CORS error detected. Attempting traditional form submission..."
+            "CORS error detected. Switching to direct form submission..."
           );
+          setUseDirectSubmit(true);
 
-          // Create a hidden form and submit it traditionally
-          const form = document.createElement("form");
-          form.method = "POST";
-          form.action = apiEndpoint;
-          form.enctype = "multipart/form-data";
-          form.target = "_blank"; // Open in new tab
-
-          // Add all form fields
-          const jobIdInput = document.createElement("input");
-          jobIdInput.type = "hidden";
-          jobIdInput.name = "job_id";
-          jobIdInput.value = job.id ? job.id.toString() : jobSlug;
-          form.appendChild(jobIdInput);
-
-          const nameInput = document.createElement("input");
-          nameInput.type = "hidden";
-          nameInput.name = "name";
-          nameInput.value = formData.name;
-          form.appendChild(nameInput);
-
-          const phoneInput = document.createElement("input");
-          phoneInput.type = "hidden";
-          phoneInput.name = "phone";
-          phoneInput.value = formData.phone;
-          form.appendChild(phoneInput);
-
-          const emailInput = document.createElement("input");
-          emailInput.type = "hidden";
-          emailInput.name = "email";
-          emailInput.value = formData.email;
-          form.appendChild(emailInput);
-
-          const messageInput = document.createElement("input");
-          messageInput.type = "hidden";
-          messageInput.name = "message";
-          messageInput.value = formData.message || "";
-          form.appendChild(messageInput);
-
-          // Note: We can't add the file this way, so we'll inform the user
-          setErrorMessage(
-            "We're redirecting you to our application form. Please reattach your resume there."
-          );
-
-          // Append form to body and submit
-          document.body.appendChild(form);
-
-          // Set a timeout to submit the form
+          // Try again with direct submission
           setTimeout(() => {
-            form.submit();
-            // Remove form from DOM after submission
-            document.body.removeChild(form);
-          }, 1000);
-
+            handleSubmit(e);
+          }, 500);
           return;
         }
 
@@ -493,6 +567,7 @@ export default function CareerDetails() {
                 </Alert>
               ) : (
                 <form
+                  ref={formRef}
                   onSubmit={handleSubmit}
                   className="space-y-4"
                   encType="multipart/form-data"
