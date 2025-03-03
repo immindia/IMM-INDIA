@@ -288,10 +288,21 @@ export default function CareerDetails() {
         console.log("Response status:", response.status);
         return response.text().then((text) => {
           console.log("Response text:", text);
+
           if (response.ok) {
+            // Try to parse the response as JSON
+            let jsonResponse;
+            try {
+              jsonResponse = JSON.parse(text);
+              console.log("Parsed JSON response:", jsonResponse);
+            } catch (e) {
+              console.log("Response is not JSON, treating as success", e);
+            }
+
             console.log("Form submitted successfully");
-            // Set success state locally first
+            // Set success state locally
             setSubmitStatus("success");
+
             // Redirect to career-detail.php with success flag after a short delay
             setTimeout(() => {
               window.location.href = `https://www.immindia.edu.in/career-detail.php?job=${jobSlug}&flag=success`;
