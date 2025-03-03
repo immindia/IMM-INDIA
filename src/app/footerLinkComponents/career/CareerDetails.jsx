@@ -34,6 +34,9 @@ export default function CareerDetails() {
   const [file, setFile] = useState(null);
   const [isDragging, setIsDragging] = useState(false);
   const [submitStatus, setSubmitStatus] = useState(null);
+  const [errorMessage, setErrorMessage] = useState(
+    "Please fill in all required fields and upload your resume."
+  );
   const fileInputRef = useRef(null);
 
   // Find the job from jobListings array using the slug
@@ -70,7 +73,16 @@ export default function CareerDetails() {
 
   const handleFileChange = (e) => {
     if (e.target.files && e.target.files[0]) {
-      setFile(e.target.files[0]);
+      const selectedFile = e.target.files[0];
+      // Check file size (5MB limit)
+      if (selectedFile.size > 5 * 1024 * 1024) {
+        setErrorMessage(
+          "File size exceeds 5MB limit. Please select a smaller file."
+        );
+        setSubmitStatus("error");
+        return;
+      }
+      setFile(selectedFile);
     }
   };
 
@@ -88,7 +100,16 @@ export default function CareerDetails() {
     setIsDragging(false);
 
     if (e.dataTransfer.files && e.dataTransfer.files[0]) {
-      setFile(e.dataTransfer.files[0]);
+      const droppedFile = e.dataTransfer.files[0];
+      // Check file size (5MB limit)
+      if (droppedFile.size > 5 * 1024 * 1024) {
+        setErrorMessage(
+          "File size exceeds 5MB limit. Please select a smaller file."
+        );
+        setSubmitStatus("error");
+        return;
+      }
+      setFile(droppedFile);
     }
   };
 
@@ -97,24 +118,45 @@ export default function CareerDetails() {
 
     // Validate form
     if (!formData.name || !formData.email || !formData.phone || !file) {
+      setErrorMessage(
+        "Please fill in all required fields and upload your resume."
+      );
       setSubmitStatus("error");
       return;
     }
 
-    // Simulate form submission
+    // Set loading state
     setSubmitStatus("loading");
 
-    setTimeout(() => {
-      setSubmitStatus("success");
-      // Reset form
-      setFormData({
-        name: "",
-        email: "",
-        phone: "",
-        message: "",
+    // Create FormData object for file upload
+    const formDataToSubmit = new FormData();
+    formDataToSubmit.append("job_id", job.id || jobSlug);
+    formDataToSubmit.append("name", formData.name);
+    formDataToSubmit.append("phone", formData.phone);
+    formDataToSubmit.append("email", formData.email);
+    formDataToSubmit.append("message", formData.message);
+    formDataToSubmit.append("img", file);
+
+    // Submit form to PHP endpoint
+    fetch("/apply-job.php", {
+      method: "POST",
+      body: formDataToSubmit,
+    })
+      .then((response) => {
+        if (response.ok) {
+          // Redirect to career-detail.php with success flag
+          window.location.href = "/career-detail.php?flag=success";
+        } else {
+          throw new Error("Form submission failed");
+        }
+      })
+      .catch((error) => {
+        console.error("Error submitting form:", error);
+        setErrorMessage(
+          "There was an error submitting your application. Please try again later."
+        );
+        setSubmitStatus("error");
       });
-      setFile(null);
-    }, 1500);
   };
 
   return (
@@ -218,14 +260,15 @@ export default function CareerDetails() {
                   </AlertDescription>
                 </Alert>
               ) : (
-                <form onSubmit={handleSubmit} className="space-y-4">
+                <form
+                  onSubmit={handleSubmit}
+                  className="space-y-4"
+                  encType="multipart/form-data"
+                >
                   {submitStatus === "error" && (
                     <Alert className="bg-red-50 border-red-200 text-red-800 mb-4">
                       <AlertCircle className="h-4 w-4 mr-2" />
-                      <AlertDescription>
-                        Please fill in all required fields and upload your
-                        resume.
-                      </AlertDescription>
+                      <AlertDescription>{errorMessage}</AlertDescription>
                     </Alert>
                   )}
 
@@ -277,6 +320,13 @@ export default function CareerDetails() {
                     />
                   </div>
 
+                  {/* Hidden input for job_id */}
+                  <input
+                    type="hidden"
+                    name="job_id"
+                    value={job.id || jobSlug}
+                  />
+
                   <div className="space-y-2">
                     <Label>Resume / CV *</Label>
                     <div
@@ -296,6 +346,7 @@ export default function CareerDetails() {
                         onChange={handleFileChange}
                         className="hidden"
                         accept=".pdf,.doc,.docx"
+                        name="img"
                       />
 
                       {file ? (
