@@ -14,11 +14,13 @@ export default function Header() {
         <div className="flex flex-wrap items-center justify-between px-4 py-3 mx-auto md:px-16">
           {/* Logo Section */}
           <div className="flex items-center gap-4">
+            <Link to="/">
             <img
               src={logo}
               alt="Indo Global Group of Colleges"
               className="w-auto h-16"
             />
+            </Link>
             <img
               src={logo2}
               alt="Indo Global Group of Colleges"

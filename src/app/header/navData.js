@@ -62,5 +62,5 @@ export const navlinks = [
   },
 
   { name: "Blog", path: "/blog" },
-  { name: "Contact Us", path: "/contact" },
+  { name: "Contact Us", path: "/contact-us" },
 ];

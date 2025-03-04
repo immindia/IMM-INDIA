@@ -33,6 +33,7 @@ import Disclaimer from "./app/footerLinkComponents/Disclaimer";
 import AICTE from "./app/footerLinkComponents/AICTE";
 import Career from "./app/footerLinkComponents/career/Career";
 import CareerDetail from "./app/footerLinkComponents/career/CareerDetails";
+import Feedback from "./app/footerLinkComponents/Feedback";
 
 // Add ScrollToTop component
 const ScrollToTop = () => {
@@ -147,7 +148,8 @@ function App() {
           <Route path="/disclaimer" element={<Disclaimer />} />
           <Route path="/aicte-approval" element={<AICTE />} />
           <Route path="/career" element={<Career />} />
-        <Route path="/career/:job-opening" element={<CareerDetail />} />
+          <Route path="/career/:job-opening" element={<CareerDetail />} />
+          <Route path="/feedback" element={<Feedback />} />
         </Routes>
 
         <Footer />
