@@ -64,13 +64,13 @@ const ProcessAndFees = () => {
   return (
     <Card className="w-full pt-8 mx-auto bg-white rounded-md">
       <CardContent>
-        <div className="md:flex grid grid-cols-2 gap-4 justify-between items-center mb-8">
+        <div className="sm:flex grid grid-cols-2 gap-4 justify-between items-center mb-8">
           {steps.map((step, index) => (
             <>
               <div
                 key={index}
                 className={cn(
-                  "flex flex-col items-center cursor-pointer transition-all",
+                  "flex  flex-col items-center cursor-pointer transition-all",
                   index === activeStep ? "text-primary-color" : "text-gray-500"
                 )}
                 onClick={() => setActiveStep(index)}
@@ -92,7 +92,7 @@ const ProcessAndFees = () => {
                 </div>
               </div>
               {index !== steps.length - 1 && (
-                <div className="w-full h-[2px] rounded-lg mb-5 bg-primary-color/20"></div>
+                <div className="w-full hidden md:block h-[2px] rounded-lg mb-5 bg-primary-color/20"></div>
               )}
             </>
           ))}
