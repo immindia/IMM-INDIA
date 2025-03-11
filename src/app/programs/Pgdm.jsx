@@ -3,16 +3,31 @@ import Container from "../../components/wrappers/Container";
 import Heading from "../../components/Heading";
 import PgdmProgramTab from "./PgdmProgramTab";
 import ProjectTab from "./ProjectTab";
+import ImgAndBreadcrumb from "../../components/ImgAndBreadcrumb";
+import img from "../../assets/pgdm/pgdmBanner.jpg";
 const Pgdm = () => {
+
+  const breadcrumbItems = [
+    { href: "/", label: "Home" },
+    { href: "/programs/pgdm", label: "Programs" },
+    { label: "PGDM" },
+  ];
   return (
-    <Container>
-      <div className="">
-        <Heading
+    <div className="relative min-h-screen">
+      <ImgAndBreadcrumb
+        title="PGDM Program"
+        imageSrc={img}
+        imageAlt="Description of the image"
+        breadcrumbItems={breadcrumbItems}
+      />
+      <Container>
+        <div className="">
+          <Heading
           title="Post Graduate Diploma in Management"
           titleClassName="lg:font-extrabold font-bold text-primary-color"
           subtitle="Our PGDM program is designed to provide a comprehensive understanding of modern business practices..."
           subtitleClassName="text-gray-500 text-justify m-0 lg:text-lg lg:font-normal  text-center mx-auto"
-          className="w-full text-center sm:col-span-4 "
+          className="w-full text-center sm:col-span-4 pt-12"
         />
 
         <Tabs defaultValue="pgdm" className="w-full my-2">
@@ -71,6 +86,7 @@ const Pgdm = () => {
         </Tabs>
       </div>
     </Container>
+    </div>
   );
 };
 
