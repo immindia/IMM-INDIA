@@ -5,6 +5,9 @@ import Gallery from "../../components/Gallery";
 import galleryData from "../../data/galleryData";
 import img from "../../assets/research/reserchbanner.webp";
 
+
+
+
 const Research = () => {
   const breadcrumbItems = [
     { href: "/", label: "Home" },
