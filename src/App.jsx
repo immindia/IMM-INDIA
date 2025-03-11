@@ -26,7 +26,7 @@ import PlacementRecords from "./app/placements/PlacementRecords";
 import Blog from "./app/blog/Blog";
 import BlogDetails from "./app/blog/BlogDetails";
 import Contact from "./app/contact/Contact";
-
+import Research from "./app/facultyAndResearch/Research";
 // Footer Components
 import Gallery from "./app/footerLinkComponents/Gallery";
 import PolicyPrivacy from "./app/footerLinkComponents/PolicyPrivacy";
@@ -103,6 +103,7 @@ function App() {
 
           {/* Faculty and Research */}
           <Route path="/faculty-and-research/faculty" element={<Faculty />} />
+          <Route path="/faculty-and-research/research" element={<Research />} />
 
           {/* Admissions */}
           <Route path="/admissions" element={<Admissions />} />
