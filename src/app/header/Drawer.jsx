@@ -33,7 +33,7 @@ const Drawer = () => {
         </CollapsibleTrigger>
         <CollapsibleContent>
           <ul className="pl-4 space-y-1">
-            {item.dropdown.map((subItem, subIndex) => (
+            {item.submenu.map((subItem, subIndex) => (
               <li key={subIndex}>
                 <SheetClose asChild>
                   <Link
@@ -80,7 +80,7 @@ const Drawer = () => {
               <ul className="space-y-1">
                 {navlinks.map((item, index) => (
                   <li key={index}>
-                    {item.dropdown && item.name !== "Courses" ? (
+                    {item.submenu  ? (
                       <CollapsibleNavItem item={item} />
                     ) : (
                       <SheetClose asChild>
