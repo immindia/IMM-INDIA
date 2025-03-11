@@ -1,7 +1,7 @@
 import img from "../../assets/hero.jpg";
 export default function Hero() {
     return (
-      <div className="relative sm:h-[90vh] h-[50vh] w-full">
+      <div className="relative h-[400px] sm:h-[79vh] w-full">
         {/* Background Image with Overlay */}
         <div className="absolute inset-0 ">
           <img
@@ -15,10 +15,14 @@ export default function Hero() {
         {/* Content */}
         <div className="relative z-10 flex h-full items-center px-6 md:px-16">
           <div className="max-w-4xl">
-            <h1 className="mb-4 text-4xl lg:text-7xl font-bold leading-tight text-white md:text-6xl">
-              Nurturing Next Gen
+            <h1 className="mb-4 text-4xl lg:text-7xl font-bold leading-tight md:text-6xl">
+              <span className="bg-gradient-to-r from-white via-white/80 to-white/70 bg-clip-text text-transparent">
+                Human Centered.
+              </span>
               <br />
-              Global Business Leaders
+              <span className="bg-gradient-to-r from-white via-white/80 to-white/70 bg-clip-text text-transparent">
+                Future Focused.
+              </span>
             </h1>
             
             <p className="mb-6 text-xl lg:text-3xl text-white/90 md:text-2xl">
