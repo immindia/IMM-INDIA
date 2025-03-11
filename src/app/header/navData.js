@@ -45,10 +45,10 @@ export const navlinks = [
     submenu: [
       {
         name: "Events & Activities",
-        path: "/life-at-iim/events-and-activities",
+        path: "/life-at-imm/events-and-activities",
       },
-      { name: "Clubs at IMM", path: "/life-at-iim/clubs-at-imm" },
-      // { name: "Life at IMM", path: "/life-at-iim/life-at-imm" },
+      { name: "Clubs at IMM", path: "/life-at-imm/clubs-at-imm" },
+      // { name: "Life at IMM", path: "/life-at-imm/life-at-imm" },
     ],
   },
   {

@@ -1,13 +1,13 @@
 import Heading from "../../components/Heading";
 import ImgAndBreadcrumb from "../../components/ImgAndBreadcrumb";
 import Container from "../../components/wrappers/Container";
-import img from "../../assets/lifeAtIIM/clubs/clubBanner.webp"
+import img from "../../assets/lifeAtIIM/eventsAndActivities/eventBanner.webp";
 import { useMemo } from "react";
 // import Stats from "../../components/Stats";
 // import Newsletter from "../../components/Newsletter";
 // import AboutSidebar from "../../components/AboutSidebar";
-import { clubsData } from "./clubsData";
-import { Calendar, ImageIcon, Laptop, Music, Coins, Users, Box, Lightbulb, MessageCircle, Globe, BookOpen, Trophy } from "lucide-react";
+import { eventsData } from "./eventsData";
+import { Calendar, ImageIcon, Plus } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -20,7 +20,7 @@ import {
   DialogContent,
   DialogHeader,
   DialogTitle,
-
+  DialogDescription,
 } from "@/components/ui/dialog";
 import {
   Carousel,
@@ -32,26 +32,26 @@ import {
 import { Link } from "react-router-dom";
 import { useState } from "react";
 
-const ClubsAtIIM = () => {
+const EventsAndActivities = () => {
   const breadcrumbItems = [
     { href: "/", label: "Home" },
-    { href: "/life-at-iim/clubs-at-iim", label: "Life at IIM" },
-    { label: "Clubs at IIM" },
+    { href: "/life-at-imm/events-and-activities", label: "Life at IMM" },
+    { label: "Events & Activities" },
   ];
   return (
     <div className="relative min-h-screen">
       <ImgAndBreadcrumb
-        title="Clubs at IIM"
+        title="Events & Activities"
         imageSrc={img}
         imageAlt="Description of the image"
         breadcrumbItems={breadcrumbItems}
       />
       <Container className="container grid ">
         <Heading
-          title="Clubs at IIM"
+          title="Events & Activities"
           titleClassName="text-primary-color  lg:text-5xl"
           subtitleClassName="text-gray-500  m-0 lg:text-lg lg:font-normal lg:max-w-full lg:"
-          subtitle="Discover the vibrant clubs at IIM, where students can explore their interests, develop new skills, and connect with peers."
+          subtitle="Dive into the exciting and diverse events and activities that unite the IMM community, highlighting our spirit of collaboration and celebration."
           className="pt-12"
         />
         <EventGallery />
@@ -63,41 +63,16 @@ const ClubsAtIIM = () => {
   );
 };
 
-export default ClubsAtIIM;
-const clubs = [
-  "All Clubs",
-  "IT Club",
-  "Maestros Club", 
-  "Finance Club",
-  "HR Club",
-  "Operations Club",
-  "E-Cell Club",
-  "Soft Skills Club",
-  "Global Voices Club",
-  "Research Club",
-  "Sports Club"
-];
+export default EventsAndActivities;
 
-const clubIcons = {
-  "All Clubs": Calendar,
-  "IT Club": Laptop,
-  "Maestros Club": Music,
-  "Finance Club": Coins,
-  "HR Club": Users,
-  "Operations Club": Box,
-  "E-Cell Club": Lightbulb,
-  "Soft Skills Club": MessageCircle,
-  "Global Voices Club": Globe,
-  "Research Club": BookOpen,
-  "Sports Club": Trophy
-};
+const years = ["2024", "2023", "2022", "2021", "2020"];
 
 function EventGallery() {
-  const [selectedClub, setSelectedClub] = useState("All Clubs");
+  const [selectedYear, setSelectedYear] = useState("2024");
   const [selectedEvent, setSelectedEvent] = useState(null);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
 
-  const events = useMemo(() => clubsData, []);
+  const events = useMemo(() => eventsData, []);
 
   const handleImageClick = (event) => {
     setSelectedEvent(event);
@@ -105,35 +80,32 @@ function EventGallery() {
   };
   return (
     <div className="relative sm:min-h-[calc(100vh-200px)] grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 sm:gap-4  gap-y-8">
-      <div className="sidebar col-span-1 sm:h-max self-start md:sticky md:top-12">
+      <div className="sidebar col-span-1 sm:h-[600px] self-start md:sticky md:top-12">
         <div className="flex flex-col gap-4 border border-slate-50 bg-pink-800 hover:bg-pink-900 shadow-sm hover:shadow-md duration-150 transition-all rounded-xl p-4 h-full sticky top-0 ">
           <h3 className="text-xl font-bold mb-2 text-white border-b border-slate-200 pb-2">
-            Clubs at IIM
+            Events by Year
           </h3>
 
-          {clubs.map((club) => {
-            const Icon = clubIcons[club];
-            return (
-              <div
-                key={club}
-                onClick={() => {
-                  setSelectedClub(club);
-                  setSelectedEvent(null);
-                }}
-                className={`w-full flex items-center gap-2 text-left text-sm cursor-pointer hover:text-primary-color hover:bg-slate-50 duration-300 transition-all rounded-md p-2 ${
-                  club === selectedClub
-                    ? "bg-slate-50 text-primary-color font-bold"
-                    : " text-white font-medium"
-                }`}
-              >
-                <Icon className="w-4 h-4" /> {club}
-              </div>
-            );
-          })}
+          {years.map((year) => (
+            <div
+              key={year}
+              onClick={() => {
+                setSelectedYear(year);
+                setSelectedEvent(null);
+              }}
+              className={`w-full flex items-center gap-2 text-left text-sm cursor-pointer hover:text-primary-color hover:bg-slate-50 duration-300 transition-all rounded-md p-2 ${
+                year === selectedYear
+                  ? "bg-slate-50 text-primary-color font-bold"
+                  : " text-white font-medium"
+              }`}
+            >
+              <Calendar className="w-4 h-4" /> Event {year}
+            </div>
+          ))}
         </div>
       </div>
       <div className="events col-span-3 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-        {events[selectedClub].map((event) => (
+        {events[selectedYear].map((event) => (
           <Card
             key={event.id}
             className="group overflow-hidden h-max shadow-sm hover:shadow-md duration-150 transition-all rounded-xl hover:-translate-y-2"
@@ -145,13 +117,10 @@ function EventGallery() {
                   alt={event.title}
                   className="object-cover h-full w-full transition-transform group-hover:scale-105"
                 />
-
-                {event.photoCount && (
-                  <div className="absolute bottom-2 right-2 bg-black/70 text-white px-2 py-1 rounded-md text-sm flex items-center gap-1">
-                    <ImageIcon className="w-4 h-4" />
-                    <span>{event.photoCount} Photos</span>
-                  </div>
-                )}
+                <div className="absolute bottom-2 right-2 bg-black/70 text-white px-2 py-1 rounded-md text-sm flex items-center gap-1">
+                  <ImageIcon className="w-4 h-4" />
+                  <span>{event.photoCount} Photos</span>
+                </div>
               </div>
             </CardHeader>
             <CardContent className="p-4">
@@ -177,10 +146,10 @@ function EventGallery() {
             </CardFooter>
           </Card>
         ))}
-        {events[selectedClub].length === 0 && (
+        {events[selectedYear].length === 0 && (
           <div className="col-span-full text-center py-12">
             <p className="text-muted-foreground">
-              No events found for {selectedClub}
+              No events found for {selectedYear}
             </p>
           </div>
         )}

@@ -8,7 +8,7 @@ const LiveProjects = () => {
         <div className="grid grid-cols-12 gap-5 justify-start items-start">
           <div className="col-span-12 lg:col-span-6">
             <div className="text-left md:pr-20">
-              <p className="opacity-75 uppercase pl-1">IIM India</p>
+              <p className="opacity-75 uppercase pl-1">IMM India</p>
               <h1 className="text-4xl md:text-6xl leading-tight font-light uppercase tracking-wide">
                 Our{" "}
                 <span className="font-bold">

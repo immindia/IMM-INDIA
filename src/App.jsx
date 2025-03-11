@@ -18,9 +18,9 @@ import Admissions from "./app/admissions/Admissions";
 import IndustryVisit from "./app/corporateConnect/IndustryVisit";
 import IndustryLecturesAndWebinars from "./app/corporateConnect/IndustryLecturesAndWebinars";
 import CorporateEvents from "./app/corporateConnect/CorporateEvents";
-import EventsAndActivities from "./app/lifeAtIIM/EventsAndActivities";
-import ClubsAtIIM from "./app/lifeAtIIM/ClubsAtIIM";
-import LifeAtIIM from "./app/lifeAtIIM/LifeAtIIM";
+import EventsAndActivities from "./app/lifeAtIMM/EventsAndActivities";
+import ClubsAtIMM from "./app/lifeAtIMM/ClubsAtIMM";
+import LifeAtIMM from "./app/lifeAtIMM/LifeAtIMM";
 import CampusRecruitment from "./app/placements/CampusRecruitment";
 import PlacementRecords from "./app/placements/PlacementRecords";
 import Blog from "./app/blog/Blog";
@@ -121,13 +121,13 @@ function App() {
             element={<CorporateEvents />}
           />
 
-          {/*Life at IIM*/}
+          {/*Life at IMM*/}
           <Route
-            path="/life-at-iim/events-and-activities"
+            path="/life-at-imm/events-and-activities"
             element={<EventsAndActivities />}
           />
-          <Route path="/life-at-iim/clubs-at-imm" element={<ClubsAtIIM />} />
-          <Route path="/life-at-iim/life-at-imm" element={<LifeAtIIM />} />
+          <Route path="/life-at-imm/clubs-at-imm" element={<ClubsAtIMM />} />
+          <Route path="/life-at-imm/life-at-imm" element={<LifeAtIMM />} />
 
           {/* Placements */}
           <Route

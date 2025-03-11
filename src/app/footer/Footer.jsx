@@ -58,11 +58,14 @@ export default function Footer() {
     { name: "Career", path: "/career" },
 
     { name: "Enquire Now", href: "https://admissions.immindia.edu.in/" },
-    { name: "Online Fees Payment Atom", href: "https://payment.atomtech.in/payment/form/pay.action?mId=A95D13C110F64630E963122D5321258A" },
+    {
+      name: "Online Fees Payment Atom",
+      href: "https://payment.atomtech.in/payment/form/pay.action?mId=A95D13C110F64630E963122D5321258A",
+    },
     // { name: "Scholarships", path: "/scholarships" },
     { name: "Contact us", path: "/contact-us" },
     { name: "Privacy Policy", path: "/privacy-policy" },
-    
+
     { name: "Disclaimer", path: "/disclaimer" },
     { name: "AICTE Approval Letter", path: "/aicte-approval" },
     { name: "Grievance Redressal", href: AntiRagging },
@@ -142,7 +145,12 @@ export default function Footer() {
                   className="transition-transform duration-300 transform hover:translate-x-2"
                 >
                   {link.href ? (
-                    <a href={link.href} target="_blank" rel="noopener noreferrer" className="relative overflow-hidden text-pink-200 hover:text-white group">
+                    <a
+                      href={link.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="relative overflow-hidden text-pink-200 hover:text-white group"
+                    >
                       {link.name}
                     </a>
                   ) : (
@@ -179,8 +187,13 @@ export default function Footer() {
                   key={index}
                   className="transition-transform duration-300 transform hover:translate-x-2"
                 >
-                 {link.href ? (
-                    <a href={link.href} target="_blank" rel="noopener noreferrer" className="relative overflow-hidden text-pink-200 hover:text-white group">
+                  {link.href ? (
+                    <a
+                      href={link.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="relative overflow-hidden text-pink-200 hover:text-white group"
+                    >
                       {link.name}
                     </a>
                   ) : (
@@ -217,8 +230,13 @@ export default function Footer() {
                   key={index}
                   className="transition-transform duration-300 transform hover:translate-x-2"
                 >
-                 {link.href ? (
-                    <a href={link.href} target="_blank" rel="noopener noreferrer" className="relative overflow-hidden text-pink-200 hover:text-white group">
+                  {link.href ? (
+                    <a
+                      href={link.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="relative overflow-hidden text-pink-200 hover:text-white group"
+                    >
                       {link.name}
                     </a>
                   ) : (
@@ -238,43 +256,85 @@ export default function Footer() {
             <div className="mt-4 space-y-3">
               <div className="flex items-start space-x-3 group">
                 <MapPin className="w-5 h-5 mt-1 text-pink-300 transition-colors duration-300 group-hover:text-white" />
-                <a href="https://maps.app.goo.gl/851pNYsHn7qTqY7i7" target="_blank" rel="noopener noreferrer" className="text-pink-200 transition-colors duration-300 group-hover:text-white">
-                  B-11 Qutab Institutional Area,<br/>
+                <a
+                  href="https://maps.app.goo.gl/851pNYsHn7qTqY7i7"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-pink-200 transition-colors duration-300 group-hover:text-white"
+                >
+                  B-11 Qutab Institutional Area,
+                  <br />
                   New Delhi - 110016
                 </a>
               </div>
               <div className="flex items-center space-x-3 group">
-                
                 <div className="flex flex-col">
                   <span className="flex gap-2">
-                  <Phone className="w-5 h-5 mt-1 text-pink-300 transition-colors duration-300 group-hover:text-white" />
-                  <a href="tel:011-26520892" className="text-pink-200 transition-colors duration-300 hover:text-white">011-26520892,</a>
-                  <a href="tel:011-26520893" className="text-pink-200 transition-colors duration-300 hover:text-white">011-26520893</a>
+                    <Phone className="w-5 h-5 mt-1 text-pink-300 transition-colors duration-300 group-hover:text-white" />
+                    <a
+                      href="tel:011-26520892"
+                      className="text-pink-200 transition-colors duration-300 hover:text-white"
+                    >
+                      011-26520892,
+                    </a>
+                    <a
+                      href="tel:011-26520893"
+                      className="text-pink-200 transition-colors duration-300 hover:text-white"
+                    >
+                      011-26520893
+                    </a>
                   </span>
                   <span className="flex gap-2">
-                  <Phone className="w-5 h-5 mt-1 text-pink-300 transition-colors duration-300 group-hover:text-white" />
-                  <a href="tel:011-26520894" className="text-pink-200 transition-colors duration-300 hover:text-white">011-26520894,</a>
-                  <a href="tel:011-26520895" className="text-pink-200 transition-colors duration-300 hover:text-white">011-26520895</a>
+                    <Phone className="w-5 h-5 mt-1 text-pink-300 transition-colors duration-300 group-hover:text-white" />
+                    <a
+                      href="tel:011-26520894"
+                      className="text-pink-200 transition-colors duration-300 hover:text-white"
+                    >
+                      011-26520894,
+                    </a>
+                    <a
+                      href="tel:011-26520895"
+                      className="text-pink-200 transition-colors duration-300 hover:text-white"
+                    >
+                      011-26520895
+                    </a>
                   </span>
                   <span className="flex gap-2">
-                  <Phone className="w-5 h-5 mt-1 text-pink-300 transition-colors duration-300 group-hover:text-white" />
-                  <a href="tel:011-26520896" className="text-pink-200 transition-colors duration-300 hover:text-white">011-26520896,</a>
-                  <a href="tel:+919999078888" className="text-pink-200 transition-colors duration-300 hover:text-white">+91 99990 78888</a>
+                    <Phone className="w-5 h-5 mt-1 text-pink-300 transition-colors duration-300 group-hover:text-white" />
+                    <a
+                      href="tel:011-26520896"
+                      className="text-pink-200 transition-colors duration-300 hover:text-white"
+                    >
+                      011-26520896,
+                    </a>
+                    <a
+                      href="tel:+919999078888"
+                      className="text-pink-200 transition-colors duration-300 hover:text-white"
+                    >
+                      +91 99990 78888
+                    </a>
                   </span>
-                 
-                
                 </div>
               </div>
               <div className="flex items-center space-x-3 group">
-                
                 <div className="flex flex-col">
                   <span className="flex gap-2">
                     <Mail className="w-5 h-5 mt-1 text-pink-300 transition-colors duration-300 group-hover:text-white" />
-                    <a href="mailto:info@immindia.com" className="text-pink-200 transition-colors duration-300 hover:text-white">info@immindia.com</a>
+                    <a
+                      href="mailto:info@immindia.com"
+                      className="text-pink-200 transition-colors duration-300 hover:text-white"
+                    >
+                      info@immindia.com
+                    </a>
                   </span>
                   <span className="flex gap-2">
                     <Mail className="w-5 h-5 mt-1 text-pink-300 transition-colors duration-300 group-hover:text-white" />
-                    <a href="mailto:registrar.imm@gmail.com" className="text-pink-200 transition-colors duration-300 hover:text-white">registrar.imm@gmail.com</a>
+                    <a
+                      href="mailto:registrar.imm@gmail.com"
+                      className="text-pink-200 transition-colors duration-300 hover:text-white"
+                    >
+                      registrar.imm@gmail.com
+                    </a>
                   </span>
                 </div>
               </div>
@@ -319,8 +379,8 @@ export default function Footer() {
           style={{ transition: "opacity 0.5s ease-in-out 0.6s" }}
         >
           <p className="text-pink-300">
-            &copy; {new Date().getFullYear()} IIM Institute of Marketing Management. All
-            rights reserved.
+            &copy; {new Date().getFullYear()} IMM Institute of Marketing
+            Management. All rights reserved.
           </p>
         </div>
       </div>

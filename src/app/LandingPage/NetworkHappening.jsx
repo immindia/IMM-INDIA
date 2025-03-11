@@ -19,7 +19,7 @@ const testimonialList = [
     },
 
     description:
-      "Experience firsthand exposure to leading companies through IIM India's industry visits, where students gain practical insights into business operations and corporate culture.",
+      "Experience firsthand exposure to leading companies through IMM India's industry visits, where students gain practical insights into business operations and corporate culture.",
   },
   {
     author: {
@@ -28,7 +28,7 @@ const testimonialList = [
     },
 
     description:
-      "Engage with industry leaders and alumni through IIM India's Corporate Connect programs, fostering valuable networking opportunities and real-world business perspectives.",
+      "Engage with industry leaders and alumni through IMM India's Corporate Connect programs, fostering valuable networking opportunities and real-world business perspectives.",
   },
   {
     author: {
@@ -37,7 +37,7 @@ const testimonialList = [
     },
 
     description:
-      "Join our vibrant student clubs at IIM India where you can develop leadership skills, network with peers, and pursue your passions through various extracurricular activities.",
+      "Join our vibrant student clubs at IMM India where you can develop leadership skills, network with peers, and pursue your passions through various extracurricular activities.",
   },
   {
     author: {
@@ -46,7 +46,7 @@ const testimonialList = [
     },
 
     description:
-      "Participate in IIM India's corporate events including seminars, workshops, and conferences that bring together business leaders and academia for knowledge exchange.",
+      "Participate in IMM India's corporate events including seminars, workshops, and conferences that bring together business leaders and academia for knowledge exchange.",
   },
   {
     author: {
@@ -55,7 +55,7 @@ const testimonialList = [
     },
 
     description:
-      "Be part of IIM India's dynamic student events that combine learning with fun through cultural festivals, business competitions, and leadership summits.",
+      "Be part of IMM India's dynamic student events that combine learning with fun through cultural festivals, business competitions, and leadership summits.",
   },
 ];
 
@@ -113,11 +113,11 @@ const NetworkHappening = () => {
 
   return (
     <Container className=" text-zinc-900 dark:text-white z-[99] relative">
-       <DotPattern
+      <DotPattern
         className={cn(
           "[mask-image:radial-gradient(500px_circle_at_center,white,transparent)]",
           "z-[-1]"
-        ) }
+        )}
       />
       <div className="container px-4 mx-auto">
         <Heading
