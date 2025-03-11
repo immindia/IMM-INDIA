@@ -73,7 +73,7 @@ const Drawer = () => {
       <SheetContent className="bg-primary-color overflow-auto border-none">
         <SheetHeader>
           <SheetTitle className="text-white text-2xl font-bold text-left">
-            Indo Global
+            IMM India
           </SheetTitle>
           <SheetDescription className="text-white text-left pt-5">
             <nav>

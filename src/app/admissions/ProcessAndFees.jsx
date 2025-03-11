@@ -18,7 +18,7 @@ const steps = [
       "Fill the Form Online or at the Campus.",
       "Application Fee 900/- (Online Mode) Apply now",
       "Submit the necessary documents for 10th, 12th, and graduation.",
-      "Submit your CAT/MAT/XAT/ATMA/CMAT/GMAT score.",
+      "Submit your CAT / MAT / XAT / ATMA / CMAT / GMAT score.",
       "Attend the IMM PGDM GD/PI process.",
       "Follow the admission registration procedure in case selected by IMM Admission Committee.",
       "Preference will be given to work experience candidates",
@@ -28,7 +28,7 @@ const steps = [
     title: "ELIGIBILITY",
     content: [
       "Graduation degree in any stream or equivalent.",
-      "All applicants must appear in CAT/MAT/XAT/ATMA/CMAT/GMAT score.",
+      "All applicants must appear in CAT / MAT / XAT / ATMA / CMAT / GMAT score.",
       "Only test qualified applicants shall be considered for admission through the GD/PI subject to fulfilment of eligibility and admission criteria.",
     ],
   },
@@ -62,7 +62,7 @@ const ProcessAndFees = () => {
   };
 
   return (
-    <Card className="w-full sm:max-w-5xl pt-8 mx-auto bg-white rounded-md">
+    <Card className="w-full pt-8 mx-auto bg-white rounded-md sm:max-w-5xl">
       <CardContent>
         <div className="grid items-center justify-between grid-cols-2 gap-4 mb-8 sm:flex">
           {steps.map((step, index) => (
@@ -112,16 +112,14 @@ const ProcessAndFees = () => {
                   </div>
                   <div className="flex items-center gap-2">
                     {item == "Apply Now (PGDM)" ? (
-                      <a
-                        href="https://admissions.immindia.edu.in/"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="break-words transition-all  sm:text-sm duration-100 cursor-pointer hover:text-primary-color hover:text-base hover:font-medium"
+                      <Button
+                        onClick={() => window.open("https://admissions.immindia.edu.in/", "_blank")}
+                        className="-m-1 text-white break-words transition-all duration-100 cursor-pointer bg-primary-color sm:text-sm hover:text-white hover:font-medium hover:animate-pulse"
                       >
                         {item}
-                      </a>
+                      </Button>
                     ) : (
-                      <li className="break-words transition-all  sm:text-sm duration-100 cursor-pointer hover:text-primary-color hover:text-base hover:font-medium">
+                      <li className="break-words transition-all duration-100 cursor-pointer sm:text-sm hover:text-primary-color hover:text-base hover:font-medium">
                         {item}
                       </li>
                     )}
