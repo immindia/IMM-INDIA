@@ -34,8 +34,7 @@ const ImmLegacy = () => {
         <Legacy />
       </Container>
       <div className="bg-slate-50">
-
-      <IMMFeatureSection />
+        <IMMFeatureSection />
       </div>
       {/* <Stats />
       <Newsletter /> */}
@@ -163,7 +162,7 @@ const FeatureItem = ({ feature, isHovered, onHover }) => {
             {feature.desc}
           </p>
         )}
-        <div
+        {/* <div
           className={`
           mt-4 sm:flex hidden items-center text-primary
           transition-all duration-300 ease-out
@@ -173,7 +172,7 @@ const FeatureItem = ({ feature, isHovered, onHover }) => {
         >
           <span className="mr-2">Learn more</span>
           <ArrowRight size={16} />
-        </div>
+        </div> */}
       </div>
     </Card>
   );
@@ -183,7 +182,7 @@ const IMMFeatureSection = () => {
   const [hoveredIndex, setHoveredIndex] = useState(null);
 
   return (
-    <section className="py-14 md:pt-24  container mx-auto text-foreground overflow-hidden">
+    <section className="py-14 md:pt-24 container mx-auto text-foreground overflow-visible">
       <div className="container px-4 mx-auto">
         <div className="flex max-w-3xl justify-center text-center mb-12 mx-auto">
           <div className="space-y-6">
@@ -203,12 +202,12 @@ const IMMFeatureSection = () => {
           </div>
         </div>
 
-        <div className="grid grid-cols-2 gap-6 pt-12 max-w-7xl mx-auto">
-          <div className="col-span-2 lg:col-span-1">
+        <div className="grid grid-cols-2 gap-6 pt-12 max-w-7xl mx-auto min-h-[90vh]">
+          <div className="col-span-2 lg:col-span-1 lg:sticky lg:top-24" style={{height: 'fit-content'}}>
             <div className="relative h-full z-10">
-              <div className="absolute -top-11 -left-11 right-12 bottom-12 bg-gray-900 dark:bg-slate-700 -z-10 rounded-[200px] lg:rounded-full rounded-tl-none lg:rounded-tl-none" />
+              <div className="absolute -top-11 -left-11 right-12 bottom-12 h-[400px] sm:h-[600px] bg-gray-900 dark:bg-slate-700 -z-10 rounded-[200px] lg:rounded-full rounded-tl-none lg:rounded-tl-none" />
               <div
-                className="bg-center bg-no-repeat bg-cover rounded-2xl min-h-[350px] w-full float-right shadow-xl h-full"
+                className="bg-center bg-no-repeat bg-cover rounded-2xl min-h-[350px] w-full float-right shadow-xl h-[400px] sm:h-[600px]"
                 style={{
                   backgroundImage:
                     "url(https://cdn.easyfrontend.com/pictures/sign-in-up/sign3.jpg)",

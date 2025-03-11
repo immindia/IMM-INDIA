@@ -62,9 +62,9 @@ const ProcessAndFees = () => {
   };
 
   return (
-    <Card className="w-full pt-8 mx-auto bg-white rounded-md">
+    <Card className="w-full sm:max-w-5xl pt-8 mx-auto bg-white rounded-md">
       <CardContent>
-        <div className="sm:flex grid grid-cols-2 gap-4 justify-between items-center mb-8">
+        <div className="grid items-center justify-between grid-cols-2 gap-4 mb-8 sm:flex">
           {steps.map((step, index) => (
             <>
               <div
@@ -87,7 +87,7 @@ const ProcessAndFees = () => {
                 >
                   {index + 1}
                 </div>
-                <div className="text-sm w-max font-medium text-center">
+                <div className="text-sm font-medium text-center w-max">
                   {step.title}
                 </div>
               </div>
@@ -97,23 +97,34 @@ const ProcessAndFees = () => {
             </>
           ))}
         </div>
-        <Card className="bg-gray-50 rounded-md">
+        <Card className="rounded-md bg-gray-50">
           <CardHeader>
             <CardTitle className="text-primary-color">
               {steps[activeStep].title}
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <ul className=" space-y-2 text-gray-700">
+            <ul className="space-y-2 text-gray-700 ">
               {steps[activeStep].content.map((item, index) => (
-                <div className="group flex items-start gap-2" key={index}>
+                <div className="flex items-start gap-2 group" key={index}>
                   <div className="flex items-center gap-2">
-                    <ArrowRightIcon className="w-4 h-4 mr-2 mt-1 text-primary-color group-hover:text-primary-color/80 transition-all duration-100 group-hover:translate-x-1 scale-100 group-hover:scale-125 " />
+                    <ArrowRightIcon className="w-4 h-4 mt-1 mr-2 transition-all duration-100 scale-100 text-primary-color group-hover:text-primary-color/80 group-hover:translate-x-1 group-hover:scale-125 " />
                   </div>
                   <div className="flex items-center gap-2">
-                    <li className="hover:text-primary-color hover:text-base hover:font-medium transition-all duration-100 cursor-pointer">
-                      {item}
-                    </li>
+                    {item == "Apply Now (PGDM)" ? (
+                      <a
+                        href="https://admissions.immindia.edu.in/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="break-words transition-all  sm:text-sm duration-100 cursor-pointer hover:text-primary-color hover:text-base hover:font-medium"
+                      >
+                        {item}
+                      </a>
+                    ) : (
+                      <li className="break-words transition-all  sm:text-sm duration-100 cursor-pointer hover:text-primary-color hover:text-base hover:font-medium">
+                        {item}
+                      </li>
+                    )}
                   </div>
                 </div>
               ))}
@@ -133,7 +144,7 @@ const ProcessAndFees = () => {
         <Button
           onClick={handleNext}
           disabled={activeStep === steps.length - 1}
-          className="bg-primary-color text-white hover:bg-primary-color/90"
+          className="text-white bg-primary-color hover:bg-primary-color/90"
         >
           {activeStep === steps.length - 1 ? "Finish" : "Next"}
         </Button>
