@@ -13,6 +13,7 @@ import Hero from "./Hero";
 import Recruiters from "./Recruiters";
 import NetworkHappening from "./NetworkHappening";
 import LiveProjects from "./LiveProjects";
+import HeroSlider from "./HeroSlider";
 const sectionVariants = {
   hidden: { scale: 0.8, opacity: 0 },
   visible: {
@@ -84,7 +85,8 @@ const Landing = () => {
         initial="hidden"
         animate={heroInView ? "visible" : "hidden"}
       >
-        <Hero />
+        {/* <Hero /> */}
+        <HeroSlider />
       </motion.div>
       <motion.div
         ref={academicPartnersRef}
