@@ -6,10 +6,12 @@ import NumberTicker from "../../components/ui/number-ticker";
 
 const Stats = () => {
   const stats = [
-    { data: "55", title: "Years of Academic Excellence" },
-    { data: "20000", title: "Alumni across the globe" },
-    { data: "300+", title: "Awards and Recognitions" },
-    { data: "35+", title: "International Collaboration" },
+    { data: "20000", title: "Alumni Base" },
+    { data: "56", title: "Years of Academic Excellence" },
+    { data: "31+", title: "Awards and Recognitions" },
+    { data: "35", title: "International Collaboration" },
+    { data: "18000", title: "Books/News Journals" },
+    { data: "30", title: "Remarkable Intellectual Capital" },
   ];
 
   return (
@@ -31,7 +33,7 @@ const Stats = () => {
 
         {/* Example of Heading without subtitle */}
 
-        <div className="grid grid-cols-2 gap-8 md:grid-cols-4 md:gap-0 md:divide-x-2 md:divide-yellow-500">
+        <div className="grid grid-cols-2 gap-8 md:grid-cols-3  md:gap-0  md:divide-yellow-500">
           {stats.map((item, index) => (
             <div key={index} className="flex flex-col items-center md:p-4">
               <div className="text-5xl font-bold text-white font sm:text-6xl">

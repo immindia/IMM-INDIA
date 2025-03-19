@@ -115,14 +115,14 @@ const Landing = () => {
       >
         <Stats />
       </motion.div>
-      <motion.div
+      {/* <motion.div
         ref={aboutRef}
         variants={sectionVariants}
         initial="hidden"
         animate={aboutInView ? "visible" : "hidden"}
       >
         <AboutIMM />
-      </motion.div>
+      </motion.div> */}
       <motion.div
         ref={awardsRef}
         variants={sectionVariants}
