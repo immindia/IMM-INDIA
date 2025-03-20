@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import Heading from "../../components/Heading";
 import img1 from "../../assets/awards/Aims.webp";
 import img2 from "../../assets/awards/Best B-School.webp";
@@ -6,6 +7,7 @@ import img4 from "../../assets/awards/Economic Times.webp";
 import img5 from "../../assets/awards/Centre of Academic.webp";
 import ShimmerButton from "@/components/ui/shimmer-button";
 import { ChevronRight } from "lucide-react";
+import { Dialog, DialogTrigger, DialogContent } from "@/components/ui/dialog";
 const cards = [
   {
     title: "AIMS Innovation Award",
@@ -68,19 +70,33 @@ const CardItem = ({ item }) => (
       <img
         src="https://cdn.easyfrontend.com/pictures/logos/award-logo.png"
         alt=""
-        className=" max-w-[200px] sm:max-w-[220px] text-blue-600 mx-auto hover:rotate-[360deg] duration-500"
+        className=" max-w-[200px] sm:max-w-[220px] text-blue-600 mx-auto  duration-500"
       />
-      <img
-        src={item.image}
-        alt=""
-        className="w-32 sm:w-36 h-32 sm:h-36 object-cover rounded-full z-40 absolute top-4 border-4 border-yellow-400  left-9 sm:left-10"
-      />
+      <Dialog>
+        <DialogTrigger asChild>
+          <img
+            src={item.image}
+            alt={item.title}
+            className="w-32 sm:w-36 h-32 sm:h-36 object-cover rounded-full z-40 absolute top-4 border-4 border-yellow-400 left-9 sm:left-10 cursor-pointer hover:border-yellow-300 transition-colors"
+          />
+        </DialogTrigger>
+        <DialogContent className="sm:max-w-[600px] w-[98vw] rounded-md bg-transparent border-none" crossIcon="text-white sm:h-8 sm:w-8  rounded bg-slate-600 p-1">
+          <div className="w-full h-full flex justify-center items-center sm:p-8 p-3">
+            <img 
+              src={item.image} 
+            alt={item.title}
+            className="w-full h-auto object-contain rounded-lg"
+          />
+          </div>
+        </DialogContent>
+      </Dialog>
     </div>
     <h5 className="text-[17px] text-white font-medium leading-relaxed mb-0 text-center ">
       {item.title}
     </h5>
   </div>
 );
+
 const PlacementHighlights = () => {
   return (
     <section className="rounded-lg dark-gray dark:bg-[#0b1727] text-slate-800 dark:text-white">
@@ -99,3 +115,5 @@ const PlacementHighlights = () => {
     </section>
   );
 };
+
+
