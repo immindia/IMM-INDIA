@@ -3,9 +3,21 @@ import img2 from "../../assets/ge2.jpg";
 import Heading from "../../components/Heading";
 import { ChevronRight } from "lucide-react";
 import ShimmerButton from "@/components/ui/shimmer-button";
-
+import Slider from "./Slider";
 export default function GlobalExcursion() {
-  const excursionItems = [
+  const internationalExcursion = [
+    {
+      title: "Few Global Excursion Glimpses",
+      image: img1,
+      alt: "Global Excursion group",
+    },
+    {
+      title: "VISION VOYAGE AAGAMAN 2024",
+      image: img2,
+      alt: "Vision Voyage event",
+    },
+  ];
+  const nationalExcursion = [
     {
       title: "Few Global Excursion Glimpses",
       image: img1,
@@ -18,19 +30,20 @@ export default function GlobalExcursion() {
     },
   ];
 
-  const ExcursionCard = ({ title, image, alt }) => (
+  const ExcursionCard = ({slides,heading }) => (
     <div className="p-4 bg-white">
       <h2 className="mb-4 text-2xl font-bold text-center text-primary-color">
-        {title}
+        {heading}
       </h2>
-      <div className="overflow-hidden">
-        <img
+      <div className="overflow-hidden h-[400px]">
+        {/* <img
           src={image}
           alt={alt}
           className="object-cover w-full h-auto hover:scale-125 duration-300"
           width={600}
           height={400}
-        />
+        /> */}
+        <Slider slides={slides} effect="fade" />
       </div>
     </div>
   );
@@ -39,15 +52,14 @@ export default function GlobalExcursion() {
     <section className="bg-primary-color lg:py-20 md:py-12 py-8 sm:px-0 px-6">
       <div className="container mx-auto max-w-6xl">
         <Heading
-          title="Global Excursion at IMM"
+          title="EduTour @ IMM"
           titleClassName="lg:font-extrabold text-center text-white"
           className="block pb-0 mx-auto w-full text-left sm:col-span-4 sm:pb-0 lg:pb-14"
         />
 
         <div className="grid gap-8 md:grid-cols-2">
-          {excursionItems.map((item, index) => (
-            <ExcursionCard key={index} {...item} />
-          ))}
+          <ExcursionCard slides={internationalExcursion} heading="International EduTour"/>
+          <ExcursionCard slides={nationalExcursion} heading="National EduTour"/>
         </div>
         <ShimmerButton
           className="shadow-2xl mt-12 mx-auto hover:-translate-y-2 duration-300 ease-in-out"

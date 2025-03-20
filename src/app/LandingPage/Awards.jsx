@@ -8,6 +8,8 @@ import img5 from "../../assets/awards/Centre of Academic.webp";
 import ShimmerButton from "@/components/ui/shimmer-button";
 import { ChevronRight } from "lucide-react";
 import { Dialog, DialogTrigger, DialogContent } from "@/components/ui/dialog";
+import { Link } from "react-router-dom";
+
 const cards = [
   {
     title: "AIMS Innovation Award",
@@ -43,6 +45,7 @@ const Awards = () => {
           className="text-center"
         />
         <PlacementHighlights />
+        <Link to="/about/accreditations-awards">
         <ShimmerButton
           className="shadow-2xl mt-12 mx-auto hover:-translate-y-2 duration-300 ease-in-out"
           background="#FFF"
@@ -57,6 +60,7 @@ const Awards = () => {
             />
           </span>
         </ShimmerButton>
+        </Link>
       </div>
     </section>
   );

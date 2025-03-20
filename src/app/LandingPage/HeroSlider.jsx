@@ -4,7 +4,7 @@ import Slider from "./Slider";
 
 export default function HeroSlider() {
   const slides = [
-    {
+    {slider: true,
       image:
         img,
       title: "Discover Amazing Places",
@@ -16,7 +16,7 @@ export default function HeroSlider() {
         { text: "BBA Program", link: "/programs/bba" },
       ],
     },
-    {
+    {slider: true,
       image:
         "https://www.immindia.edu.in/images_webp/home/banner/banner2.webp",
       title: "Unforgettable Adventures",
@@ -28,7 +28,7 @@ export default function HeroSlider() {
         { text: "BBA Program", link: "/programs/bba" },
       ],
     },
-    {
+    {slider: true,
       image:
         "https://www.immindia.edu.in/images_webp/home/banner/banner1.webp",
       title: "Luxury Accommodations",
@@ -40,7 +40,7 @@ export default function HeroSlider() {
         { text: "BBA Program", link: "/programs/bba" },
       ],
     },
-    {
+    {slider: true,
       image:
         "https://www.immindia.edu.in/images_webp/home/banner/banner10.webp",
       title: "Luxury Accommodations",

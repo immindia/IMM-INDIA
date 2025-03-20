@@ -9,6 +9,7 @@ import { BorderBeam } from "@/components/magicui/border-beam";
 import { Link } from "react-router-dom";
 
 export default function Slider({
+
   slides,
   autoPlay = true,
   autoPlayInterval = 5000,
@@ -335,7 +336,7 @@ export default function Slider({
               className="object-cover w-full h-full"
             />
             <div className="absolute inset-0 bg-black/10" />
-            {index === 0 && (
+            {index === 0 && slide.slider && (
               <div className="absolute flex justify-start items-center h-full w-full bottom-0 left-0 right-0  md:p-12 lg:p-16 z-20">
               {/* <div className="max-w-4xl mx-auto">
                 <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-3 md:mb-6">{slide.title}</h2>
