@@ -3,6 +3,8 @@ import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import Heading from "../../components/Heading";
 import img from "../../assets/pgdm.webp";
+import VideoDialog from "./VideoDialog";
+
 export default function ProgramsOffered() {
   const specializations = [
     "Marketing & Innovation Management",
@@ -43,6 +45,8 @@ export default function ProgramsOffered() {
             specializations={specializations}
             imageSrc={img}
             imageAlt="PGDM students studying"
+            videoSrc="https://youtu.be/eOa-I0MSmUs?si=PgNnCNLBGcJRmer7"
+            videoId="eOa-I0MSmUs"
           />
         </TabsContent>
         <TabsContent value="bba">
@@ -51,6 +55,8 @@ export default function ProgramsOffered() {
             specializations={specializations.slice(0, 5)} // Assuming fewer specializations for BBA
             imageSrc={img}
             imageAlt="BBA students in classroom"
+            videoSrc="https://youtu.be/eOa-I0MSmUs?si=PgNnCNLBGcJRmer7"
+            videoId="eOa-I0MSmUs"
           />
         </TabsContent>
       </Tabs>
@@ -58,15 +64,16 @@ export default function ProgramsOffered() {
   );
 }
 
-function ProgramContent({ title, specializations, imageSrc, imageAlt }) {
+function ProgramContent({ title, specializations, imageSrc, imageAlt, videoSrc, videoId }) {
   return (
     <div className="grid gap-6 mt-6 md:grid-cols-2">
       <div className="relative overflow-hidden rounded-lg shadow-lg hover:drop-shadow-xl">
-        <img
+        <VideoDialog  title={title} thumbnailUrl={imageSrc} videoSrc={videoSrc} videoId={videoId} className="w-full h-full"/>
+        {/* <img
           src={imageSrc}
           alt={imageAlt}
           className="object-cover w-full h-full duration-300 hover:scale-125"
-        />
+        /> */}
         <div className="absolute bottom-0 left-0 right-0 p-4 text-white bg-primary-color">
           <h2 className="text-xl font-bold">{title} Programmes</h2>
         </div>
