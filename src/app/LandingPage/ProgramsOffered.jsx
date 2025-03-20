@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import Heading from "../../components/Heading";
 import img from "../../assets/pgdm.webp";
-import VideoDialog from "./VideoDialog";
+import VideoDialog from "@/components/VideoDialog";
 import { Link } from "react-router-dom";
 
 export default function ProgramsOffered() {
