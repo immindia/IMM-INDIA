@@ -19,7 +19,7 @@ const Stats = () => {
       <img
         src={bg}
         alt="stats"
-        className="absolute top-0 left-0 object-cover w-full h-full -z-10 "
+        className="absolute top-0 left-0 object-cover w-full h-full -z-10 opacity-95"
       />
       <div className="absolute inset-0 z-20 bg-black opacity-20" />
       <div className="relative z-30 max-w-screen-xl px-4 mx-auto md:px-8">
@@ -33,8 +33,30 @@ const Stats = () => {
 
         {/* Example of Heading without subtitle */}
 
-        <div className="grid grid-cols-2 gap-8 md:grid-cols-3  md:gap-0  md:divide-yellow-500">
-          {stats.map((item, index) => (
+        <div className="grid grid-cols-2 gap-8 md:grid-cols-3 divide-x-2 divide-yellow-500  md:gap-0  md:divide-yellow-500">
+          {stats.slice(0, 3).map((item, index) => (
+            <div key={index} className="flex flex-col items-center md:p-4">
+              <div className="text-5xl font-bold text-white font sm:text-6xl">
+                {/* {item.data} */}
+                <NumberTicker
+                  value={item.data}
+                  className="text-4xl font-bold text-yellow-500 font sm:text-6xl"
+                />{" "}
+                
+                  <span className="-ml-3 text-4xl font-bold text-yellow-500 font sm:text-6xl">
+                    +
+                  </span>
+             
+              </div>
+              <div className="mt-3 text-sm font-medium text-gray-400 sm:text-xl text-center max-w-32 sm:max-w-none">
+                {item.title}
+                {}
+              </div>
+            </div>
+          ))}
+        </div>
+        <div className="grid grid-cols-2 gap-8 md:grid-cols-3 mt-8 divide-x-2 divide-yellow-500  md:gap-0  md:divide-yellow-500">
+          {stats.slice(3, 6).map((item, index) => (
             <div key={index} className="flex flex-col items-center md:p-4">
               <div className="text-5xl font-bold text-white font sm:text-6xl">
                 {/* {item.data} */}
