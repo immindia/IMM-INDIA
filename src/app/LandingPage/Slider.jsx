@@ -329,7 +329,7 @@ export default function Slider({
               backfaceVisibility: "hidden",
             }}
           >
-            <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent z-10" />
+            <div className="absolute inset-0 z-10 bg-gradient-to-t from-black/70 to-transparent" />
             <img
               src={slide.image || "/placeholder.svg"}
               alt={slide.title}
@@ -337,16 +337,16 @@ export default function Slider({
             />
             <div className="absolute inset-0 bg-black/10" />
             {index === 0 && slide.slider && (
-              <div className="absolute flex justify-start items-center h-full w-full bottom-0 left-0 right-0  md:p-12 lg:p-16 z-20">
+              <div className="absolute bottom-0 left-0 right-0 z-20 flex items-center justify-start w-full h-full md:p-12 lg:p-16">
               {/* <div className="max-w-4xl mx-auto">
-                <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-3 md:mb-6">{slide.title}</h2>
-                <p className="text-base md:text-lg lg:text-xl text-white/90 max-w-2xl">{slide.description}</p>
+                <h2 className="mb-3 text-3xl font-bold text-white md:text-4xl lg:text-5xl md:mb-6">{slide.title}</h2>
+                <p className="max-w-2xl text-base md:text-lg lg:text-xl text-white/90">{slide.description}</p>
               </div> */}
 
               <div className="max-w-4xl ml-10">
-                <h1 className="mb-4 text-4xl lg:text-7xl font-bold leading-tight md:text-6xl space-y-4">
+                <h1 className="mb-4 space-y-4 text-4xl font-bold leading-tight lg:text-7xl md:text-6xl">
                   <SparklesText
-                    className="bg-gradient-to-r from-white via-white/80 to-white/70 bg-clip-text text-transparent text-4xl sm:text-5xl md:text-5xl lg:text-7xl"
+                    className="text-4xl text-transparent bg-gradient-to-r from-white via-white/80 to-white/70 bg-clip-text sm:text-5xl md:text-5xl lg:text-7xl"
                     text={slide.heading1}
                     colors={{
                       first: "#DDC99F",
@@ -355,7 +355,7 @@ export default function Slider({
                   />
 
                   <SparklesText
-                    className="bg-gradient-to-r from-white via-white/80 to-white/70 bg-clip-text text-transparent text-4xl sm:text-5xl md:text-5xl lg:text-7xl"
+                    className="text-4xl text-transparent bg-gradient-to-r from-white via-white/80 to-white/70 bg-clip-text sm:text-5xl md:text-5xl lg:text-7xl"
                     text={slide.heading2}
                     colors={{
                       first: "#DDC99F",
@@ -391,6 +391,22 @@ export default function Slider({
               </div>
             </div>
             )}
+            { !slide.slider && (
+              <div className="absolute bottom-10 left-0 right-0 z-20">
+              {/* <div className="max-w-4xl mx-auto">
+                <h2 className="mb-3 text-3xl font-bold text-white md:text-4xl lg:text-5xl md:mb-6">{slide.title}</h2>
+                <p className="max-w-2xl text-base md:text-lg lg:text-xl text-white/90">{slide.description}</p>
+              </div> */}
+
+              <div className="w-full bg-black/40 backdrop-blur-sm">
+                <h1 className="mx-auto py-2 px-3 rounded-md text-lg w-max text-white">
+                  {slide.category}
+                </h1>
+
+                
+              </div>
+            </div>
+            )}
           </div>
         ))}
       </div>
@@ -401,21 +417,21 @@ export default function Slider({
           <Button
             onClick={prevSlide}
             disabled={isAnimating}
-            className=" sm:absolute left-4 top-1/2 -translate-y-1/2 z-20 bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/20 rounded-full p-2 md:p-3"
+            className="z-20 p-2 -translate-y-1/2 border rounded-full  sm:absolute left-4 top-1/2 bg-white/10 hover:bg-white/20 backdrop-blur-sm border-white/20 md:p-3"
             size="icon"
             variant="ghost"
           >
-            <ChevronLeft className="h-5 w-5 md:h-6 md:w-6 text-white" />
+            <ChevronLeft className="w-5 h-5 text-white md:h-6 md:w-6" />
             <span className="sr-only">Previous slide</span>
           </Button>
           <Button
             onClick={nextSlide}
             disabled={isAnimating}
-            className="absolute right-6 top-1/2 -translate-y-1/2 z-20 bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/20 rounded-full p-2 md:p-3"
+            className="absolute z-20 p-2 -translate-y-1/2 border rounded-full right-6 top-1/2 bg-white/10 hover:bg-white/20 backdrop-blur-sm border-white/20 md:p-3"
             size="icon"
             variant="ghost"
           >
-            <ChevronRight className="h-5 w-5 md:h-6 md:w-6 text-white" />
+            <ChevronRight className="w-5 h-5 text-white md:h-6 md:w-6" />
             <span className="sr-only">Next slide</span>
           </Button>
         </div>
@@ -423,7 +439,7 @@ export default function Slider({
 
       {/* Indicators */}
       {indicators && (
-        <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 flex space-x-2">
+        <div className="absolute z-20 flex space-x-2 -translate-x-1/2 bottom-6 left-1/2">
           {slides.map((_, index) => (
             <button
               key={index}
