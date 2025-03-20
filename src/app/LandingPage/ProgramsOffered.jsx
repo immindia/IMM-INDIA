@@ -4,6 +4,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import Heading from "../../components/Heading";
 import img from "../../assets/pgdm.webp";
 import VideoDialog from "./VideoDialog";
+import { Link } from "react-router-dom";
 
 export default function ProgramsOffered() {
   const specializations = [
@@ -47,6 +48,9 @@ export default function ProgramsOffered() {
             imageAlt="PGDM students studying"
             videoSrc="https://youtu.be/eOa-I0MSmUs?si=PgNnCNLBGcJRmer7"
             videoId="eOa-I0MSmUs"
+            href="https://admissions.immindia.edu.in/"
+            knowMorePath='/programs/pgdm'
+            
           />
         </TabsContent>
         <TabsContent value="bba">
@@ -57,6 +61,8 @@ export default function ProgramsOffered() {
             imageAlt="BBA students in classroom"
             videoSrc="https://youtu.be/eOa-I0MSmUs?si=PgNnCNLBGcJRmer7"
             videoId="eOa-I0MSmUs"
+            path='/programs/bba'
+            knowMorePath='/programs/bba'
           />
         </TabsContent>
       </Tabs>
@@ -64,7 +70,7 @@ export default function ProgramsOffered() {
   );
 }
 
-function ProgramContent({ title, specializations, imageSrc, imageAlt, videoSrc, videoId }) {
+function ProgramContent({ title, specializations, imageSrc, imageAlt, videoSrc, videoId, path ,href,knowMorePath}) {
   return (
     <div className="grid gap-6 mt-6 md:grid-cols-2">
       <div className="relative overflow-hidden rounded-lg shadow-lg hover:drop-shadow-xl">
@@ -91,16 +97,32 @@ function ProgramContent({ title, specializations, imageSrc, imageAlt, videoSrc, 
           ))}
         </ul>
         <div className="flex justify-end gap-4 sm:absolute sm:bottom-5 sm:right-5">
+         
+         {href ? (<a href={href} target="_blank" rel="noopener noreferrer">
           <Button
             variant="outline"
             className="border-primary-color text-primary-color hover:bg-primary-color hover:text-white"
           >
             Apply Now
           </Button>
+          </a>): (
+            <Link to={path}>
+              <Button
+            variant="outline"
+            className="border-primary-color text-primary-color hover:bg-primary-color hover:text-white"
+          >
+            Apply Now
+          </Button>
+            </Link>
+          )
+          }
+
+          <Link to={knowMorePath}>
           <Button className="bg-primary-color hover:bg-primary-color/90">
             Know More
             <ArrowRight className="w-4 h-4 ml-2" />
           </Button>
+          </Link>
         </div>
       </div>
     </div>

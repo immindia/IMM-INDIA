@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes, useLocation } from "react-router-dom";
 import { HelmetProvider } from "react-helmet-async";
 import { Button } from "@/components/ui/button";
 import { ArrowUp } from "lucide-react";
@@ -35,6 +35,17 @@ import AICTE from "./app/footerLinkComponents/AICTE";
 import Career from "./app/footerLinkComponents/career/Career";
 import CareerDetail from "./app/footerLinkComponents/career/CareerDetails";
 import Feedback from "./app/footerLinkComponents/Feedback";
+
+// Scroll to top on route change
+function ScrollToTopOnMount() {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
+  return null;
+}
 
 // Add ScrollToTop component
 const ScrollToTop = () => {
@@ -82,6 +93,7 @@ function App() {
   return (
     <HelmetProvider>
       <Router>
+        <ScrollToTopOnMount />
         <ScrollToTop />
         <Header />
         <Routes>
