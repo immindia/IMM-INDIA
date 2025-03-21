@@ -1,25 +1,27 @@
 import { Fragment, useState, useEffect } from "react";
-import { ChevronLeft, ChevronRight, Star, StarHalf } from "lucide-react";
+import { ChevronLeft, ChevronRight, Star, StarHalf, ArrowRight } from "lucide-react";
 import PropTypes from "prop-types";
 import { cn } from "@/lib/utils";
 import Heading from "../../components/Heading";
 import club from "../../assets/network-happenings/club-imm.webp";
 import corporate from "../../assets/network-happenings/corporate-connect.webp";
-import corporate2 from "../../assets/network-happenings/corporate-events.webp";
 import industry from "../../assets/network-happenings/industry-visit-pic.webp";
-import student from "../../assets/network-happenings/student-event.webp";
+import research from "../../assets/research/reserchbanner.webp";
 import Container from "../../components/wrappers/Container";
-
+import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 import { DotPattern } from "@/components/magicui/dot-pattern";
+
 const testimonialList = [
   {
     author: {
-      fullName: "Industry Visit",
-      picture: industry,
+      fullName: "Club Immersion",
+      picture: club,
     },
 
     description:
-      "Experience firsthand exposure to leading companies through IMM India's industry visits, where students gain practical insights into business operations and corporate culture.",
+      "Join our vibrant student clubs at IMM India where you can develop leadership skills, network with peers, and pursue your passions through various extracurricular activities.",
+    path: "/life-at-imm/clubs-at-imm",
   },
   {
     author: {
@@ -29,33 +31,28 @@ const testimonialList = [
 
     description:
       "Engage with industry leaders and alumni through IMM India's Corporate Connect programs, fostering valuable networking opportunities and real-world business perspectives.",
+    path: "/corporate-connect/corporate-events",
   },
+  
   {
     author: {
-      fullName: "Club Immersion",
-      picture: club,
+      fullName: "Industry Visit",
+      picture: industry,
     },
 
     description:
-      "Join our vibrant student clubs at IMM India where you can develop leadership skills, network with peers, and pursue your passions through various extracurricular activities.",
+      "Experience firsthand exposure to leading companies through IMM India's industry visits, where students gain practical insights into business operations and corporate culture.",
+    path: "/corporate-connect/industry-visit",
   },
   {
     author: {
-      fullName: "Corporate Events",
-      picture: corporate2,
+      fullName: "Research Conference",
+      picture: research,
     },
 
     description:
-      "Participate in IMM India's corporate events including seminars, workshops, and conferences that bring together business leaders and academia for knowledge exchange.",
-  },
-  {
-    author: {
-      fullName: "Student Event",
-      picture: student,
-    },
-
-    description:
-      "Be part of IMM India's dynamic student events that combine learning with fun through cultural festivals, business competitions, and leadership summits.",
+      "Participate in our annual Research Conference where you can present your latest research findings, network with peers, and gain valuable insights from industry experts.",
+    path: "/faculty-and-research/research",
   },
 ];
 
@@ -90,7 +87,7 @@ const NavigationButton = ({ direction, onClick }) => (
 
 const NetworkHappening = () => {
   const [index, setIndex] = useState(0);
-  const { author, description, rating } = testimonialList[index];
+  const { author, description, rating, path } = testimonialList[index];
 
   const handleControl = (type) => {
     setIndex((prevIndex) => {
@@ -121,8 +118,8 @@ const NetworkHappening = () => {
       />
       <div className="container px-4 mx-auto">
         <Heading
-          title="Network & Happenings"
-          subtitle="Discover the latest updates, events, and news from the community."
+          title="Campus chronicles, clubs and connections"
+          subtitle="Explore the vibrant campus life, clubs, and connections that shape our community."
           subtitleClassName="text-center"
           titleClassName="text-center"
           className="text-center"
@@ -131,15 +128,15 @@ const NetworkHappening = () => {
         <div className="flex justify-center mt-6">
           <div className="w-full">
             <div className="flex flex-col md:flex-row gap-y-6 md:gap-x-6">
-              <div className="md:w-1/2 md:py-12">
+              <div className="md:w-1/2 md:py-12 sm:hover:scale-110 transition-all duration-300"> 
                 <div
-                  className="object-cover h-full bg-center bg-no-repeat bg-cover rounded-xl min-h-80"
+                  className="object-cover shadow-lg shadow-gray-400/50 h-full bg-center bg-no-repeat bg-cover rounded-xl min-h-80"
                   style={{
                     backgroundImage: `url(${author.picture})`,
                   }}
                 ></div>
               </div>
-              <div className="relative md:w-1/2">
+              <div className="relative md:w-1/2 ">
                 <div className="absolute -top-[10%] md:top-0 right-0 left-0 md:-left-[20%] bottom-0 bg-gray-200 dark:bg-slate-800 -z-[1] rounded-xl"></div>
                 <div className="flex flex-col justify-center h-full mb-10 md:mb-0">
                   <div className="p-6 mb-6 lg:py-16">
@@ -148,6 +145,13 @@ const NetworkHappening = () => {
                     </h4>
 
                     <p className="opacity-50">{description}</p>
+
+                      <Link to={path}>
+                    <Button className="mt-4 flex items-center justify-center group">
+                        <span>Explore More</span>
+                        <ArrowRight className="ml-1 group-hover:ml-2 transition-all duration-300 h-4 w-4 mt-1" />
+                    </Button>
+                      </Link>
                   </div>
                   <div className="px-6 space-x-2 lg:px-12 text-end">
                     <NavigationButton
