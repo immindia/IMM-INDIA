@@ -107,21 +107,49 @@ export default function Footer() {
             </p>
             <div className="flex items-center mt-6 space-x-4">
               {/* Social media icons with hover effects */}
-              <span className="p-2 overflow-hidden transition-all duration-300 bg-white rounded-full cursor-pointer hover:scale-110 hover:rotate-12 group">
-                <Facebook className="w-6 h-6 text-pink-300 transition-colors duration-300 group-hover:text-pink-500 " />
-              </span>
-              <span className="p-2 overflow-hidden transition-all duration-300 bg-white rounded-full cursor-pointer hover:scale-110 hover:-rotate-12 group">
+             
+              <a
+                href="https://www.instagram.com/imm_india"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-2 overflow-hidden transition-all duration-300 bg-white rounded-full cursor-pointer hover:scale-110 hover:-rotate-12 group"
+              >
                 <Instagram className="w-6 h-6 text-pink-300 transition-colors duration-300 group-hover:text-pink-500 " />
-              </span>
-              <span className="p-2 overflow-hidden transition-all duration-300 bg-white rounded-full cursor-pointer hover:scale-110 hover:rotate-12 group">
-                <Twitter className="w-6 h-6 text-pink-300 transition-colors duration-300 group-hover:text-pink-500 " />
-              </span>
-              <span className="p-2 overflow-hidden transition-all duration-300 bg-white rounded-full cursor-pointer hover:scale-110 hover:-rotate-12 group">
+              </a>
+              <a
+                href="https://www.linkedin.com/school/institute-of-marketing-and-management/?originalSubdomain=in"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-2 overflow-hidden transition-all duration-300 bg-white rounded-full cursor-pointer hover:scale-110 hover:-rotate-12 group"
+              >
                 <Linkedin className="w-6 h-6 text-pink-300 transition-colors duration-300 group-hover:text-pink-500 " />
-              </span>
-              <span className="p-2 overflow-hidden transition-all duration-300 bg-white rounded-full cursor-pointer hover:scale-110 hover:rotate-12 group">
+              </a>
+              <a
+                href="https://www.youtube.com/channel/UCsFZ4Ove-nEuyZSaBggG3eQ"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-2 overflow-hidden transition-all duration-300 bg-white rounded-full cursor-pointer hover:scale-110 hover:rotate-12 group"
+              >
                 <Youtube className="w-6 h-6 text-pink-300 transition-colors duration-300 group-hover:text-pink-500 " />
-              </span>
+              </a>
+              <a
+                href="https://www.facebook.com/indiaimm"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-2 overflow-hidden transition-all duration-300 bg-white rounded-full cursor-pointer hover:scale-110 hover:rotate-12 group"
+              >
+                <Facebook className="w-6 h-6 text-pink-300 transition-colors duration-300 group-hover:text-pink-500 " />
+              </a>
+              <a
+                href="https://x.com/imm_bschool"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-2 overflow-hidden transition-all duration-300 bg-white rounded-full cursor-pointer hover:scale-110 hover:rotate-12 group"
+              >
+                <Twitter className="w-6 h-6 text-pink-300 transition-colors duration-300 group-hover:text-pink-500 " />
+              </a>
+              
+              
             </div>
           </div>
 
