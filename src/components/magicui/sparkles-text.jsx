@@ -30,7 +30,7 @@ export const SparklesText = ({
   text,
   colors = { first: "#9E7AFF", second: "#FE8BBB" },
   className,
-  sparklesCount = 10,
+  sparklesCount = 5,
   ...props
 }) => {
   const [sparkles, setSparkles] = useState([]);
@@ -40,7 +40,7 @@ export const SparklesText = ({
       const starX = `${Math.random() * 100}%`;
       const starY = `${Math.random() * 100}%`;
       const color = Math.random() > 0.5 ? colors.first : colors.second;
-      const delay = Math.random() * 2;
+      const delay = Math.random() * 5;
       const scale = Math.random() * 1 + 0.3;
       const lifespan = Math.random() * 10 + 5;
       const id = `${starX}-${starY}-${Date.now()}`;
