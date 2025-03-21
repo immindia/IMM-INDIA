@@ -7,9 +7,9 @@ import gsap from "gsap";
 import { SparklesText } from "@/components/magicui/sparkles-text";
 import { BorderBeam } from "@/components/magicui/border-beam";
 import { Link } from "react-router-dom";
-
+import AccreditationLogo from "./AccreditationLogo";
+import { AccreditationLogoMobile } from "./AccreditationLogoMobile";
 export default function Slider({
-
   slides,
   autoPlay = true,
   autoPlayInterval = 5000,
@@ -337,75 +337,76 @@ export default function Slider({
             />
             <div className="absolute inset-0 bg-black/10" />
             {index === 0 && slide.slider && (
-              <div className="absolute bottom-0 left-0 right-0 z-20 flex items-center justify-start w-full h-full md:p-12 lg:p-16">
-              {/* <div className="max-w-4xl mx-auto">
-                <h2 className="mb-3 text-3xl font-bold text-white md:text-4xl lg:text-5xl md:mb-6">{slide.title}</h2>
-                <p className="max-w-2xl text-base md:text-lg lg:text-xl text-white/90">{slide.description}</p>
-              </div> */}
+              <div className="absolute bottom-0 left-0 right-0 z-20 flex flex-col sm:flex-row items-center justify-center w-full h-full gap-10 md:p-12 lg:p-16">
+               
+                <div className="max-w-4xl ml-10 sm:space-y-8 ">
+                  <h1 className="mb-4 space-y-4 text-4xl font-bold leading-tight lg:text-7xl md:text-6xl">
+                    <SparklesText
+                      className="text-4xl text-transparent bg-gradient-to-r from-white via-white/80 to-white/70 bg-clip-text sm:text-5xl md:text-5xl lg:text-7xl"
+                      text={slide.heading1}
+                      colors={{
+                        first: "#DDC99F",
+                        second: "#C4184B",
+                      }}
+                    />
 
-              <div className="max-w-4xl ml-10">
-                <h1 className="mb-4 space-y-4 text-4xl font-bold leading-tight lg:text-7xl md:text-6xl">
-                  <SparklesText
-                    className="text-4xl text-transparent bg-gradient-to-r from-white via-white/80 to-white/70 bg-clip-text sm:text-5xl md:text-5xl lg:text-7xl"
-                    text={slide.heading1}
-                    colors={{
-                      first: "#DDC99F",
-                      second: "#C4184B",
-                    }}
-                  />
+                    <SparklesText
+                      className="text-4xl text-transparent bg-gradient-to-r from-white via-white/80 to-white/70 bg-clip-text sm:text-5xl md:text-5xl lg:text-7xl"
+                      text={slide.heading2}
+                      colors={{
+                        first: "#DDC99F",
+                        second: "#C4184B",
+                      }}
+                    />
+                  </h1>
 
-                  <SparklesText
-                    className="text-4xl text-transparent bg-gradient-to-r from-white via-white/80 to-white/70 bg-clip-text sm:text-5xl md:text-5xl lg:text-7xl"
-                    text={slide.heading2}
-                    colors={{
-                      first: "#DDC99F",
-                      second: "#C4184B",
-                    }}
-                  />
-                </h1>
+                  <p className="mb-6 text-xl lg:text-3xl text-white/90 md:text-2xl">
+                    {slide.description}
+                  </p>
 
-                <p className="mb-6 text-xl lg:text-3xl text-white/90 md:text-2xl">
-                  {slide.description}
-                </p>
-
-                <div className="flex flex-wrap gap-4 mt-14">
-                  <Link
-                    to="/programs/pgdm"
-                    className="relative overflow-hidden rounded-full bg-[#C4184B] px-6 py-2 text-sm lg:text-lg font-semibold text-white hover:bg-white hover:text-black duration-150 transition-all hover:-translate-y-2"
-                  >
-                    <span>
-                      <BorderBeam className="absolute inset-0" />
-                      PGDM Program
-                    </span>
-                  </Link>
-                  <Link
-                    to="/programs/bba"
-                    className="relative overflow-hidden rounded-full bg-[#C4184B] px-6 py-2 text-sm lg:text-lg font-semibold text-white hover:bg-white hover:text-black duration-150 transition-all hover:-translate-y-2"
-                  >
-                    <span>
-                      <BorderBeam className="absolute inset-0" />
-                      BBA Program
-                    </span>
-                  </Link>
+                  <div className="flex flex-wrap gap-4 mt-5 sm:mt-14">
+                    <Link
+                      to="/programs/pgdm"
+                      className="relative overflow-hidden rounded-full bg-[#C4184B] px-6 py-2 text-sm lg:text-lg font-semibold text-white hover:bg-white hover:text-black duration-150 transition-all hover:-translate-y-2"
+                    >
+                      <span>
+                        <BorderBeam className="absolute inset-0" />
+                        PGDM Program
+                      </span>
+                    </Link>
+                    <Link
+                      to="/programs/bba"
+                      className="relative overflow-hidden rounded-full bg-[#C4184B] px-6 py-2 text-sm lg:text-lg font-semibold text-white hover:bg-white hover:text-black duration-150 transition-all hover:-translate-y-2"
+                    >
+                      <span>
+                        <BorderBeam className="absolute inset-0" />
+                        BBA Program
+                      </span>
+                    </Link>
+                  </div>
+                </div>
+                <div className="hidden md:block px-5 py-1 rounded-lg bg-black/40 backdrop-blur-3xl">
+                  <AccreditationLogo />
+                </div>
+                <div className="block sm:hidden px-5 py-1 rounded-lg bg-black/40 backdrop-blur-3xl">
+                  <AccreditationLogoMobile />
                 </div>
               </div>
-            </div>
             )}
-            { !slide.slider && (
-              <div className="absolute bottom-10 left-0 right-0 z-20">
-              {/* <div className="max-w-4xl mx-auto">
+
+            {!slide.slider && (
+              <div className="absolute left-0 right-0 z-20 bottom-10">
+                {/* <div className="max-w-4xl mx-auto">
                 <h2 className="mb-3 text-3xl font-bold text-white md:text-4xl lg:text-5xl md:mb-6">{slide.title}</h2>
                 <p className="max-w-2xl text-base md:text-lg lg:text-xl text-white/90">{slide.description}</p>
               </div> */}
 
-              <div className="w-full bg-black/40 backdrop-blur-sm">
-                <h1 className="mx-auto py-2 px-3 rounded-md text-lg w-max text-white">
-                   {'📍' + slide.category}
-                </h1>
-
-                
+                <div className="w-full bg-black/40 backdrop-blur-sm">
+                  <h1 className="px-3 py-2 mx-auto text-lg text-white rounded-md w-max">
+                    {"📍" + slide.category}
+                  </h1>
+                </div>
               </div>
-            </div>
             )}
           </div>
         ))}
@@ -417,7 +418,7 @@ export default function Slider({
           <Button
             onClick={prevSlide}
             disabled={isAnimating}
-            className="z-20 p-2 -translate-y-1/2 border rounded-full  sm:absolute left-4 top-1/2 bg-white/10 hover:bg-white/20 backdrop-blur-sm border-white/20 md:p-3"
+            className="z-20 p-2 -translate-y-1/2 border rounded-full sm:absolute left-4 top-1/2 bg-white/10 hover:bg-white/20 backdrop-blur-sm border-white/20 md:p-3"
             size="icon"
             variant="ghost"
           >
