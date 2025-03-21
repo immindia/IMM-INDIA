@@ -80,9 +80,9 @@ function ProgramContent({ title, specializations, imageSrc, imageAlt, videoSrc, 
           alt={imageAlt}
           className="object-cover w-full h-full duration-300 hover:scale-125"
         /> */}
-        <div className="absolute bottom-0 left-0 right-0 p-4 text-white bg-primary-color">
+        {/* <div className="absolute bottom-0 left-0 right-0 p-4 text-white bg-primary-color">
           <h2 className="text-xl font-bold">{title} Programmes</h2>
-        </div>
+        </div> */}
       </div>
 
       <div className="relative p-6 text-white rounded-lg shadow-lg bg-gradient-to-bl hover:drop-shadow-xl from-blue-950 via-blue-900 to-blue-950">

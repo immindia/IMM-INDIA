@@ -38,15 +38,15 @@ export default function VideoDialog({ videoId, title, thumbnailUrl, className,vi
           </div>
         </div>
 
-        {title && (
+        {/* {title && (
           <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4 text-white">
             <h3 className="font-medium">{title || "Video Title"}</h3>
           </div>
-        )}
+        )} */}
       </div>
 
       <Dialog open={open} onOpenChange={setOpen}>
-        <DialogContent className="sm:max-w-[800px] max-w-[90vw] p-0 overflow-hidden rounded-xl border-none shadow-2xl animate-in fade-in-0 zoom-in-95 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95 duration-200">
+        <DialogContent className="sm:max-w-[70vw] max-w-[90vw] p-0 overflow-hidden rounded-xl border-none shadow-2xl animate-in fade-in-0 zoom-in-95 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95 duration-200 ring-4 ring-white/50">
           <DialogHeader className="absolute right-4 top-4 z-10">
             <button
               onClick={() => setOpen(false)}
