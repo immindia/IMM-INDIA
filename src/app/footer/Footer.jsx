@@ -343,7 +343,7 @@ export default function Footer() {
         </div>
 
         {/* Newsletter subscription with animation */}
-        <div
+        {/* <div
           className={`mt-12 p-6 bg-pink-900 rounded-lg ${
             isLoaded ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
           }`}
@@ -369,7 +369,7 @@ export default function Footer() {
               </div>
             </div>
           </div>
-        </div>
+        </div> */}
 
         {/* Copyright section */}
         <div

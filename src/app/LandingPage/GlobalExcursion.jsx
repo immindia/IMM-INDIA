@@ -6,7 +6,10 @@ import Heading from "../../components/Heading";
 import { ChevronRight } from "lucide-react";
 import ShimmerButton from "@/components/ui/shimmer-button";
 import Slider from "./Slider";
+
+
 export default function GlobalExcursion() {
+
   const internationalExcursion = [
     {
       slider: false,
@@ -53,7 +56,7 @@ export default function GlobalExcursion() {
       alt: "Vision Voyage event",
     },
   ];
-
+  
   const [selectedInternationalCategory, setSelectedInternationalCategory] =
     useState("All");
   const [selectedNationalCategory, setSelectedNationalCategory] =

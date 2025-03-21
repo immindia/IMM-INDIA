@@ -400,7 +400,7 @@ export default function Slider({
 
               <div className="w-full bg-black/40 backdrop-blur-sm">
                 <h1 className="mx-auto py-2 px-3 rounded-md text-lg w-max text-white">
-                  {slide.category}
+                   {'📍' + slide.category}
                 </h1>
 
                 
