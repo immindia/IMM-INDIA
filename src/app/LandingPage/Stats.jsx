@@ -33,7 +33,7 @@ const Stats = () => {
 
         {/* Example of Heading without subtitle */}
 
-        <div className="grid grid-cols-2 gap-8 md:grid-cols-3 divide-x-2 divide-yellow-500  md:gap-0  md:divide-yellow-500">
+        <div className="hidden sm:grid grid-cols-2 gap-8 md:grid-cols-3 divide-x-2 divide-yellow-500  md:gap-0  md:divide-yellow-500">
           {stats.slice(0, 3).map((item, index) => (
             <div key={index} className="flex flex-col items-center md:p-4">
               <div className="text-5xl font-bold text-white font sm:text-6xl">
@@ -55,8 +55,30 @@ const Stats = () => {
             </div>
           ))}
         </div>
-        <div className="grid grid-cols-2 gap-8 md:grid-cols-3 mt-8 divide-x-2 divide-yellow-500  md:gap-0  md:divide-yellow-500">
+        <div className="hidden sm:grid grid-cols-2 gap-8 md:grid-cols-3 mt-8 divide-x-2 divide-yellow-500  md:gap-0  md:divide-yellow-500">
           {stats.slice(3, 6).map((item, index) => (
+            <div key={index} className="flex flex-col items-center md:p-4">
+              <div className="text-5xl font-bold text-white font sm:text-6xl">
+                {/* {item.data} */}
+                <NumberTicker
+                  value={item.data}
+                  className="text-4xl font-bold text-yellow-500 font sm:text-6xl"
+                />{" "}
+                
+                  <span className="-ml-3 text-4xl font-bold text-yellow-500 font sm:text-6xl">
+                    +
+                  </span>
+             
+              </div>
+              <div className="mt-3 text-sm font-medium text-gray-400 sm:text-xl text-center max-w-32 sm:max-w-none">
+                {item.title}
+                {}
+              </div>
+            </div>
+          ))}
+        </div>
+        <div className="sm:hidden grid grid-cols-2 gap-8 md:grid-cols-3 mt-8 sm:divide-x-2 divide-yellow-500  md:gap-0  md:divide-yellow-500">
+          {stats.map((item, index) => (
             <div key={index} className="flex flex-col items-center md:p-4">
               <div className="text-5xl font-bold text-white font sm:text-6xl">
                 {/* {item.data} */}
