@@ -14,6 +14,7 @@ import Recruiters from "./Recruiters";
 import NetworkHappening from "./NetworkHappening";
 import LiveProjects from "./LiveProjects";
 import HeroSlider from "./HeroSlider";
+import Placements from "./Placements";
 const sectionVariants = {
   hidden: { scale: 0.8, opacity: 0 },
   visible: {
@@ -45,6 +46,10 @@ const Landing = () => {
     triggerOnce: true,
   });
   const [aboutRef, aboutInView] = useInView({
+    threshold: 0.2,
+    triggerOnce: true,
+  });
+  const [placementsRef, placementsInView] = useInView({
     threshold: 0.2,
     triggerOnce: true,
   });
@@ -123,6 +128,14 @@ const Landing = () => {
       >
         <AboutIMM />
       </motion.div> */}
+      <motion.div
+        ref={placementsRef}
+        variants={sectionVariants}
+        initial="hidden"
+        animate={placementsInView ? "visible" : "hidden"}
+      >
+        <Placements />
+      </motion.div>
       <motion.div
         ref={awardsRef}
         variants={sectionVariants}
