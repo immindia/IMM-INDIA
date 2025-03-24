@@ -19,84 +19,58 @@ import img13 from "../../assets/live-projects/tata_tech2.png";
 const reviews = [
     {
       name: "Mr. S. Swapnil",
-      username: "Wipro Technologies, Pune",
+      username: "Tata 1 MG",
       body: "Insightful contributions to technical processes and solutions.",
-      img: img1,
+      img: img13, // Updated to match the imported image name
     },
     {
       name: "Mr. Ishlesh Bhaskar",
-      username: "HDFC Bank",
+      username: "Reliance",
       body: "Engaging discussions on financial strategies and market insights.",
-      img: img2,
+      img: img12, // Updated to match the imported image name
     },
     {
       name: "Mr. Sanjeev Garg",
-      username: "CEO, Reliance Communication, Punjab Circle",
+      username: "Aditya Birla",
       body: "Strategic contributions to communications and networking advancements.",
-      img: img3,
+      img: img1, // Updated to match the imported image name
     },
     {
       name: "Mr. Siddharth Bhardwaj",
-      username: "Regional Director North, Adlabs Films Ltd, BIG 92.7 FM",
+      username: "Herz",
       body: "Valuable insights into media management and audience engagement.",
-      img: img4,
+      img: img6, // Updated to match the imported image name
     },
     {
       name: "Ms. Banmala Shardar",
-      username: "HR, IRLE Kay Jay Rolls Pvt. Ltd, Panchkula",
+      username: "Saudi Aramco",
       body: "Effective strategies for workforce management and development.",
-      img: img5,
+      img: 'https://upload.wikimedia.org/wikipedia/en/thumb/a/a7/Saudi_Aramco_logo.svg/200px-Saudi_Aramco_logo.svg.png', // Updated to match the imported image name
     },
     {
       name: "Mr. A.C. Cheema",
-      username: "Cheema Boilers, Ropar",
+      username: "Patanjali",
       body: "Deep understanding of energy systems and boiler technologies.",
-      img: img6,
+      img: 'https://www.patanjaliayurved.net/media/images/logo.svg', // Updated to match the imported image name
     },
-    {
-      name: "Mr. Ravi Verma",
-      username: "The Times of India",
-      body: "Innovative approaches to media and journalism.",
-      img: img7,
-    },
+    // {
+    //   name: "Mr. Ravi Verma",
+    //   username: "Saarthi",
+    //   body: "Innovative approaches to media and journalism.",
+    //   img: img7, // Updated to match the imported image name
+    // },
     {
       name: "Mr. Sandeep Khosla",
-      username: "Aditya Birla Retail Ltd",
+      username: "Protivity",
       body: "Exceptional insights into retail management and customer satisfaction.",
-      img: img8,
+      img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/70/Protiviti_logo.svg/330px-Protiviti_logo.svg.png', // Updated to match the imported image name
     },
     {
       name: "Mr. Varinder Verma",
-      username: "Sr. Manager-personnel, Swaraj Engines Ltd, Mohali",
+      username: "Cavinkare",
       body: "Advanced personnel management and team-building expertise.",
-      img: img9,
+      img: 'https://cavinkare.com/wp-content/uploads/2017/01/logo.png', // Updated to match the imported image name
     },
-    {
-      name: "Dr. R.K. Kalia",
-      username: "G.M. (HRLADM), Amrit Banaspati Co. Ltd, Rajpur",
-      body: "Strong leadership in HR and administrative management.",
-      img: img10,
-    },
-    {
-      name: "Mr. Sanjeev Updadhyay",
-      username: "Sr. Manager HR, Cellebrum Technologies LTD",
-      body: "Pioneering HR strategies for technological organizations.",
-      img: img11,
-    },
-    {
-      name: "Mr. Hreetesh Bhandari",
-      username: "Manager-HR, ICICI Prudentical",
-      body: "Forward-thinking HR management and employee engagement.",
-      img: img12,
-    },
-    {
-      name: "Mr. I.V. Rao",
-      username: "Managing Executive Officer, Maruti Suzuki Pvt. Ltd",
-      body: "Extensive knowledge in automotive industry leadership.",
-      img: img13,
-    },
-    
-    
   ];
   
 const firstRow = reviews.slice(0, reviews.length / 2);

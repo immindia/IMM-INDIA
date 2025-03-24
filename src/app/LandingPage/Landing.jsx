@@ -172,14 +172,7 @@ const Landing = () => {
         <GlobalExcursion />
       </motion.div>
       
-      <motion.div
-        ref={testimonialRef}
-        variants={sectionVariants}
-        initial="hidden"
-        animate={testimonialInView ? "visible" : "hidden"}
-      >
-        <Testimonial />
-      </motion.div>
+   
       <motion.div
         ref={networkHappeningRef}
         variants={sectionVariants}
@@ -204,6 +197,14 @@ const Landing = () => {
         animate={liveProjectsInView ? "visible" : "hidden"}
       >
         <LiveProjects />
+      </motion.div>
+      <motion.div
+        ref={testimonialRef}
+        variants={sectionVariants}
+        initial="hidden"
+        animate={testimonialInView ? "visible" : "hidden"}
+      >
+        <Testimonial />
       </motion.div>
 
     </div>
