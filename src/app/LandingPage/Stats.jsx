@@ -8,7 +8,7 @@ const Stats = () => {
   const stats = [
     { data: "20000", title: "Alumni Base" },
     { data: "56", title: "Years of Academic Excellence" },
-    { data: "31+", title: "Awards and Recognitions" },
+    { data: "315+", title: "Awards and Recognitions" },
     { data: "35", title: "International Collaboration" },
     { data: "18000", title: "Books/News Journals" },
     { data: "30", title: "Remarkable Intellectual Capital" },
