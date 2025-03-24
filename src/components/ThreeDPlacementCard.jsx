@@ -128,7 +128,7 @@ export default function ThreeDPlacementCard({
             </div>
 
             <div
-              className="hidden sm:block sm:mt-4 transform-gpu rounded-lg border border-white/10 bg-white/5 p-4 backdrop-blur-sm transition-all duration-300 group-hover:border-pink-500/30 group-hover:bg-white/10"
+              className="hidden sm:block  transform-gpu rounded-lg border border-white/10 bg-white/5 p-4 backdrop-blur-sm transition-all duration-300 group-hover:border-pink-500/30 group-hover:bg-white/10"
               style={{ transform: "translateZ(30px)" }}
             >
               <div className="flex items-center justify-between">

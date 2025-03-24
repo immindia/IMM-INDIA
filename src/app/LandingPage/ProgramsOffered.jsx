@@ -74,7 +74,7 @@ function ProgramContent({ title, specializations, imageSrc, imageAlt, videoSrc, 
   return (
     <div className="grid gap-6 mt-6 md:grid-cols-2">
       <div className="relative overflow-hidden rounded-lg shadow-lg hover:drop-shadow-xl">
-        <VideoDialog  title={title} thumbnailUrl={imageSrc} videoSrc={videoSrc} videoId={videoId} className="w-full h-full"/>
+        <VideoDialog  title={title} thumbnailUrl={imageSrc} videoSrc={videoSrc} videoId={videoId} imageAlt className="w-full h-full"/>
         {/* <img
           src={imageSrc}
           alt={imageAlt}

@@ -5,7 +5,7 @@ import { Play, X } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { Dialog, DialogContent, DialogHeader } from "@/components/ui/dialog"
 
-export default function VideoDialog({ videoId, title, thumbnailUrl, className,videoSrc }) {
+export default function VideoDialog({ videoId, title, thumbnailUrl, className,videoSrc,imageAlt }) {
   const [open, setOpen] = useState(false)
 
   // Use provided thumbnail or fallback to YouTube's thumbnail
@@ -20,10 +20,10 @@ export default function VideoDialog({ videoId, title, thumbnailUrl, className,vi
         )}
         onClick={() => setOpen(true)}
       >
-        <div className=" w-full overflow-hidden">
+        <div className=" w-full h-full overflow-hidden">
           <img
-            src={thumbnail || "/placeholder.svg"}
-            alt={title || "Video thumbnail"}
+            src={thumbnail}
+            alt={imageAlt || "Video thumbnail"}
             className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
           />
         </div>

@@ -15,6 +15,8 @@ import NetworkHappening from "./NetworkHappening";
 import LiveProjects from "./LiveProjects";
 import HeroSlider from "./HeroSlider";
 import Placements from "./Placements";
+import OurPartners from "./OurPartners";
+
 const sectionVariants = {
   hidden: { scale: 0.8, opacity: 0 },
   visible: {
@@ -93,13 +95,21 @@ const Landing = () => {
         {/* <Hero /> */}
         <HeroSlider />
       </motion.div>
-      <motion.div
+      {/* <motion.div
         ref={academicPartnersRef}
         variants={sectionVariants}
         initial="hidden"
         animate={academicPartnersInView ? "visible" : "hidden"}
       >
         <AcademicPartners />
+      </motion.div> */}
+      <motion.div
+        ref={academicPartnersRef}
+        variants={sectionVariants}
+        initial="hidden"
+        animate={academicPartnersInView ? "visible" : "hidden"}
+      >
+        <OurPartners />
       </motion.div>
      
       
