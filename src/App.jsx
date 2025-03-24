@@ -13,6 +13,7 @@ import ImmLegacy from "./app/about/ImmLegacy";
 import Leadership from "./app/about/Leadership";
 import AdvisoryBoard from "./app/about/AdvisoryBoard";
 import AffiliationAwards from "./app/about/AffiliationAwards";
+import OurPartnersDetail from "./app/about/OurPartnersDetail";
 import Faculty from "./app/facultyAndResearch/Faculty";
 import Admissions from "./app/admissions/Admissions";
 import IndustryVisit from "./app/corporateConnect/IndustryVisit";
@@ -104,6 +105,7 @@ function App() {
           <Route path="/about/imm-legacy" element={<ImmLegacy />} />
           <Route path="/about/leadership" element={<Leadership />} />
           <Route path="/about/advisory-board" element={<AdvisoryBoard />} />
+          <Route path="/about/imm-partners" element={<OurPartnersDetail />} />
           <Route
             path="/about/accreditations-awards"
             element={<AffiliationAwards />}

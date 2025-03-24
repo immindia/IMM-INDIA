@@ -2,14 +2,14 @@
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import LatestBlogsAndEvents from "./LatestBlogsAndEvents";
-import AboutIMM from "./AboutIMM";
+// import AboutIMM from "./AboutIMM";
 import Stats from "./Stats";
 import Testimonial from "./Testimonial";
 import GlobalExcursion from "./GlobalExcursion";
 import Awards from "./Awards";
 import ProgramsOffered from "./ProgramsOffered";
-import AcademicPartners from "./AcademicPartners";
-import Hero from "./Hero";
+// import AcademicPartners from "./AcademicPartners";
+// import Hero from "./Hero";
 import Recruiters from "./Recruiters";
 import NetworkHappening from "./NetworkHappening";
 import LiveProjects from "./LiveProjects";

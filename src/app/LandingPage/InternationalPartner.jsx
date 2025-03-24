@@ -43,8 +43,8 @@ export default function InternationalPartner({ partner, isLoaded }) {
             <h3 className="mb-3 text-2xl font-bold">{partner.name}</h3>
             <p className="mb-6 text-muted-foreground">{partner.description}</p>
             <Button asChild className="group w-fit">
-              <Link href={partner.website} target="_blank" rel="noopener noreferrer">
-                Visit Website
+              <Link to={partner.website} target="_blank" rel="noopener noreferrer">
+                Read More
                 <ExternalLink className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
               </Link>
             </Button>
