@@ -32,9 +32,9 @@ export default function NationalPartners({ partners, isLoaded }) {
             whileHover={{ y: -8, scale: 1.02 }}
             className="h-full"
           >
-            <Card className="h-full overflow-hidden transition-all duration-300 bg-white border-transparent group hover:border-primary/20 hover:shadow-lg dark:hover:border-primary/30">
+            <Card className="h-full overflow-hidden transition-all duration-300   group hover:border-primary/20 hover:shadow-lg dark:hover:border-primary/30">
               <CardContent className="p-0">
-                <div className="relative flex items-center justify-center w-full p-0 overflow-hidden bg-white aspect-square dark:bg-slate-700">
+                <div className="relative flex items-center justify-center w-full p-0 overflow-hidden bg-whit aspect-square dark:bg-slate-700">
                   <motion.div
                     className="relative w-full h-full"
                     whileHover={{ scale: 1.1 }}
@@ -43,15 +43,15 @@ export default function NationalPartners({ partners, isLoaded }) {
                     <img
                       src={partner.logo || "/placeholder.svg"}
                       alt={`${partner.name} logo`}
-                      className="object-cover w-full h-full mx-auto shadow-md "
+                      className="object-cover w-full h-full mx-auto shadow-md"
                     />
                   </motion.div>
                 </div>
                 <div className="flex flex-col p-4 bg-white">
-                  <h3 className="mb-2 font-semibold text-">{partner.name}</h3>
+                  <h3 className="mb-2 font-semibold line-clamp-1 hover:line-clamp-none">{partner.name}</h3>
                   <Badge
                     variant="outline"
-                    className="mb-4 w-fit bg-primary/10 text-primary dark:bg-primary/20 text-"
+                    className="mb-2 w-fit bg-primary/10 text-primary dark:bg-primary/20 text-"
                   >
                     {partner.category}
                   </Badge>
