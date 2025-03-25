@@ -31,7 +31,7 @@ export default function InternationalPartner({ partner, isLoaded }) {
       >
         <div className="grid gap-6 md:grid-cols-2">
           <div className="relative flex h-64 items-center justify-center overflow-hidden bg-slate-100 p-8 dark:bg-slate-700 md:h-80">
-            <motion.div className="relative h-full w-full" whileHover={{ scale: 1.05 }} transition={{ duration: 0.3 }}>
+            <motion.div className="flex items-center justify-center" whileHover={{ scale: 1.05 }} transition={{ duration: 0.3 }}>
               <img
                 src={partner.logo || "/placeholder.svg"}
                 alt={`${partner.name} logo`}

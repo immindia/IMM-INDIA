@@ -12,7 +12,7 @@ import { AccreditationLogoMobile } from "./AccreditationLogoMobile";
 export default function Slider({
   slides,
   autoPlay = true,
-  autoPlayInterval = 5000,
+  autoPlayInterval = 50000,
   indicators = true,
   arrows = true,
   effect = "cube",
@@ -396,16 +396,16 @@ export default function Slider({
 
             {!slide.slider && (
               <div className="absolute left-0 right-0 z-20 bottom-10">
-                {/* <div className="max-w-4xl mx-auto">
-                <h2 className="mb-3 text-3xl font-bold text-white md:text-4xl lg:text-5xl md:mb-6">{slide.title}</h2>
-                <p className="max-w-2xl text-base md:text-lg lg:text-xl text-white/90">{slide.description}</p>
-              </div> */}
+                <div className="max-w-4xl mx-auto">
+                {/* <h2 className="mb-3 text-3xl font-bold text-white md:text-4xl lg:text-5xl md:mb-6">{slide.title}</h2> */}
+                {/* <p className="max-w-2xl text-base md:text-lg lg:text-xl text-white/90">{slide.description}</p> */}
+              </div>
 
-                <div className="w-full bg-black/40 backdrop-blur-sm">
+                {/* <div className="w-full bg-black/40 backdrop-blur-sm">
                   <h1 className="px-3 py-2 mx-auto text-lg text-white rounded-md w-max">
                     {"📍" + slide.category}
                   </h1>
-                </div>
+                </div> */}
               </div>
             )}
           </div>

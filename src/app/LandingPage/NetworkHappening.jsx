@@ -118,7 +118,7 @@ const NetworkHappening = () => {
       />
       <div className="container px-4 mx-auto">
         <Heading
-          title="Campus chronicles, clubs and connections"
+          title="Campus Chronicles: Clubs and Connections"
           subtitle="Explore the vibrant campus life, clubs, and connections that shape our community."
           subtitleClassName="text-center"
           titleClassName="text-center"

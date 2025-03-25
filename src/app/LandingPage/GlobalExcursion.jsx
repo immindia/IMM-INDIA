@@ -93,7 +93,7 @@ export default function GlobalExcursion() {
             {heading}
           </h2>
           <div className="overflow-hidden h-[400px]">
-            <Slider slides={filteredSlides} effect="cube" />
+            <Slider slides={filteredSlides} effect="fade" />
           </div>
         </div>
 

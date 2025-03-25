@@ -59,7 +59,7 @@ export default function ThreeDPlacementCard({
   return (
     <div
       ref={cardRef}
-      className="group m-3 z-50 relative h-[300px] w-[250px] sm:h-[400px] sm:w-[300px] cursor-pointer perspective-1000"
+      className="group m-0 z-50 relative h-[300px] w-[250px] sm:h-[350px] sm:w-[250px] cursor-pointer perspective-1000"
       onMouseMove={handleMouseMove}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
@@ -87,7 +87,7 @@ export default function ThreeDPlacementCard({
         )}
 
         {/* Card content with 3D layers */}
-        <div className="absolute inset-0 overflow-hidden rounded-xl">
+        <div className="absolute inset-0 overflow-hidden rounded-md">
           {/* Background image layer */}
           <div className="absolute inset-0 z-0 overflow-hidden">
             <div className="relative h-full w-full">
@@ -127,7 +127,7 @@ export default function ThreeDPlacementCard({
               </p> */}
             </div>
 
-            <div
+            {/* <div
               className="hidden sm:block  transform-gpu rounded-lg border border-white/10 bg-white/5 p-4 backdrop-blur-sm transition-all duration-300 group-hover:border-pink-500/30 group-hover:bg-white/10"
               style={{ transform: "translateZ(30px)" }}
             >
@@ -135,7 +135,7 @@ export default function ThreeDPlacementCard({
                 <span className="text-xs font-medium text-gray-300">View Profile</span>
                 <ExternalLink className="h-4 w-4 text-pink-300" />
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>
