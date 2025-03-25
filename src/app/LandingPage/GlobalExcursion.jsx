@@ -1,7 +1,35 @@
 import { useState } from "react";
-import img1 from "../../assets/ge1.jpg";
+import international1 from "../../assets/edutour/international/international (1).webp";
+import international2 from "../../assets/edutour/international/international (2).webp";
+import international3 from "../../assets/edutour/international/international (3).webp";
+import international4 from "../../assets/edutour/international/international (4).webp";
+import international5 from "../../assets/edutour/international/international (5).webp";
+import international6 from "../../assets/edutour/international/international (6).webp";
+import international7 from "../../assets/edutour/international/international (7).webp";
+import international8 from "../../assets/edutour/international/international (8).webp";
+import international9 from "../../assets/edutour/international/international (9).webp";
+import international10 from "../../assets/edutour/international/international (10).webp";
+import international11 from "../../assets/edutour/international/international (11).webp";
+import international12 from "../../assets/edutour/international/international (12).webp";
+import international13 from "../../assets/edutour/international/international (13).webp";
 
-import img2 from "../../assets/ge2.jpg";
+import national1 from "../../assets/edutour/national/national (1).webp";
+import national2 from "../../assets/edutour/national/national (2).webp";
+import national3 from "../../assets/edutour/national/national (3).webp";
+import national4 from "../../assets/edutour/national/national (4).webp";
+import national5 from "../../assets/edutour/national/national (5).webp";
+import national6 from "../../assets/edutour/national/national (6).webp";
+import national7 from "../../assets/edutour/national/national (7).webp";
+import national8 from "../../assets/edutour/national/national (8).webp";
+import national9 from "../../assets/edutour/national/national (9).webp";
+import national10 from "../../assets/edutour/national/national (10).webp";
+import national11 from "../../assets/edutour/national/national (11).webp";
+import national12 from "../../assets/edutour/national/national (12).webp";
+
+
+
+
+
 import Heading from "../../components/Heading";
 import { ChevronRight } from "lucide-react";
 import ShimmerButton from "@/components/ui/shimmer-button";
@@ -11,26 +39,97 @@ import Slider from "./Slider";
 export default function GlobalExcursion() {
 
   const internationalExcursion = [
-    {
-      slider: false,
-      category: "London",
-      title: "Few Global Excursion Glimpses",
-      image: img1,
-      alt: "Global Excursion group",
-    },
-    {
-      slider: false,
-      category: "London",
-      title: "VISION VOYAGE AAGAMAN 2024",
-      image: img2,
-      alt: "Vision Voyage event",
-    },
+    
     {
       slider: false,
       category: "Malaysia",
       title: "VISION VOYAGE AAGAMAN 2024",
-      image: img2,
+      image: international1,
       alt: "Vision Voyage event",
+    },
+    {
+      slider: false,
+      category: "London",
+      title: "Exploring the Great Barrier Reef",
+      image: international2,
+      alt: "Great Barrier Reef",
+    },
+    {
+      slider: false,
+      category: "London",
+      title: "Cultural Journey in Tokyo",
+      image: international3,
+      alt: "Tokyo culture",
+    },
+    {
+      slider: false,
+      category: "Malaysia",
+      title: "A Day in Paris",
+      image: international4,
+      alt: "Paris sightseeing",
+    },
+    {
+      slider: false,
+      category: "Malaysia",
+      title: "Discovering Rome",
+      image: international5,
+      alt: "Rome exploration",
+    },
+    {
+      slider: false,
+      category: "Malaysia",
+      title: "Flavors of Barcelona",
+      image: international6,
+      alt: "Barcelona food tour",
+    },
+    {
+      slider: false,
+      category: "London",
+      title: "Carnival in Rio",
+      image: international7,
+      alt: "Rio Carnival",
+    },
+    {
+      slider: false,
+      category: "London",
+      title: "Mysteries of the Pyramids",
+      image: international8,
+      alt: "Egyptian pyramids",
+    },
+    {
+      slider: false,
+      category: "Dubai",
+      title: "Taj Mahal Experience",
+      image: international9,
+      alt: "Taj Mahal",
+    },
+    {
+      slider: false,
+      category: "Dubai",
+      title: "Nature's Beauty in Banff",
+      image: international10,
+      alt: "Banff National Park",
+    },
+    {
+      slider: false,
+      category: "Dubai",
+      title: "Safari Adventure",
+      image: international11,
+      alt: "South African safari",
+    },
+    {
+      slider: false,
+      category: "Malaysia",
+      title: "Island Hopping in Phuket",
+      image: international12,
+      alt: "Phuket islands",
+    },
+    {
+      slider: false,
+      category: "Malaysia",
+      title: "Santorini Sunset",
+      image: international13,
+      alt: "Santorini view",
     },
   ];
   const nationalExcursion = [
@@ -38,23 +137,88 @@ export default function GlobalExcursion() {
       slider: false,
       category: "Delhi",
       title: "Few Global Excursion Glimpses",
-      image: img1,
+      image: national1,
       alt: "Global Excursion group",
     },
     {
       slider: false,
       category: "Manali",
       title: "VISION VOYAGE AAGAMAN 2024",
-      image: img2,
+      image: national2,
       alt: "Vision Voyage event",
     },
     {
       slider: false,
       category: "Delhi",
       title: "VISION VOYAGE AAGAMAN 2024",
-      image: img2,
+      image: national3,
       alt: "Vision Voyage event",
     },
+    {
+      slider: false,
+      category: "Delhi",
+      title: "VISION VOYAGE AAGAMAN 2024",
+      image: national4,
+      alt: "Vision Voyage event",
+    },
+    {
+      slider: false,
+      category: "Manali",
+      title: "VISION VOYAGE AAGAMAN 2024",
+      image: national5,
+      alt: "Vision Voyage event",
+    },
+    {
+      slider: false,
+      category: "Manali",
+      title: "VISION VOYAGE AAGAMAN 2024",
+      image: national6,
+      alt: "Vision Voyage event",
+    },
+    {
+      slider: false,
+      category: "Manali",
+      title: "VISION VOYAGE AAGAMAN 2024",
+      image: national7,
+      alt: "Vision Voyage event",
+    },
+    {
+      slider: false,
+      category: "Manali",
+      title: "VISION VOYAGE AAGAMAN 2024",
+      image: national8,
+      alt: "Vision Voyage event",
+    },
+    {
+      slider: false,
+      category: "Manali",
+      title: "VISION VOYAGE AAGAMAN 2024",
+      image: national9,
+      alt: "Vision Voyage event",
+    },
+    {
+      slider: false,
+      category: "Manali",
+      title: "VISION VOYAGE AAGAMAN 2024",
+      image: national10,
+      alt: "Vision Voyage event",
+    },
+    {
+      slider: false,
+      category: "Delhi",
+      title: "VISION VOYAGE AAGAMAN 2024",
+      image: national11,
+      alt: "Vision Voyage event",
+    },
+    {
+      slider: false,
+      category: "Delhi",
+      title: "VISION VOYAGE AAGAMAN 2024",
+      image: national12,
+      alt: "Vision Voyage event",
+    },
+
+
   ];
   
   const [selectedInternationalCategory, setSelectedInternationalCategory] =

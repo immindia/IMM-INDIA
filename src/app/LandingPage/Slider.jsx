@@ -446,7 +446,7 @@ export default function Slider({
               key={index}
               onClick={() => goToSlide(index)}
               className={cn(
-                "hidden md:block w-2 h-2 md:w-4 md:h-1 rounded-full transition-all duration-300",
+                "hidden md:block w-2 h-2 md:w-4 md:h-[5px] rounded-full transition-all duration-300",
                 index === currentSlide
                   ? "bg-white scale-125"
                   : "bg-white/20 hover:bg-white/60"
