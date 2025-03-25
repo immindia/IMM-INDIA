@@ -36,14 +36,14 @@ export default function NationalPartners({ partners, isLoaded }) {
               <CardContent className="p-0">
                 <div className="relative flex items-center justify-center w-full p-0 overflow-hidden bg-whit aspect-square dark:bg-slate-700">
                   <motion.div
-                    className="relative w-full h-full"
+                    className="relative w-full h-full flex items-center justify-center"
                     whileHover={{ scale: 1.1 }}
                     transition={{ duration: 0.3 }}
                   >
                     <img
                       src={partner.logo || "/placeholder.svg"}
                       alt={`${partner.name} logo`}
-                      className="object-cover w-full h-full mx-auto shadow-md"
+                      className="object-cover w-full h-ful mx-auto "
                     />
                   </motion.div>
                 </div>

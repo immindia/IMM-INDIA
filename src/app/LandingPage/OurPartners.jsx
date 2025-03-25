@@ -39,7 +39,8 @@ export default function OurPartners() {
     {
       id: 1,
       name: "IIT Ropar",
-      logo: IIT,
+      // logo: IIT,
+      logo: "https://th.bing.com/th?id=OSK.71f031ec9b8af140e44160a23537fbe6&w=300&h=300&r=0&o=6&cb=B&pid=23.1",
       category: "Education",
       fullDescription:
         "The Indian Institute of Technology Ropar (IIT Ropar) is a premier engineering institution in Punjab. The Government of India has officially designated IIT Ropar as a Centre of Excellence in AI, recognizing it as one of the top four institutes leading India's AI revolution. This landmark initiative, reported by the Economic Times, cements IIT Ropar’s position at the forefront of AI and innovation, and IMM students will be direct beneficiaries of this elite status.",
@@ -84,7 +85,7 @@ export default function OurPartners() {
     {
       id: 5,
       name: "Young Skilled India",
-      logo: Young,
+      logo: "https://youngskilledindia.com/wp-content/uploads/2020/12/ysi_logo-removebg-preview-1.png",
       category: "Training",
       fullDescription:
         "Young Skilled India, a Government of India-certified startup (DIPP 1656), is incubated at MCIE - IIT BHU, Varanasi. The organization offers AI-driven training and certificate courses aimed at enhancing professional and management skills across various demographics.",
