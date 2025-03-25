@@ -51,7 +51,8 @@ export default function OurPartners() {
     {
       id: 2,
       name: "KLADIO",
-      logo: Kladio,
+      // logo: Kladio,
+      logo: 'https://kladio.in/images/kladio_logo.png',
       category: "Education",
       fullDescription:
         "Kladio is an innovative educational platform that emphasizes experiential and global learning to prepare students for the evolving world. Their programs, such as the Bachelor's in Entrepreneurship and Family Business Management, offer immersive experiences across multiple countries, providing students with diverse business insights and cultural exposure.",
