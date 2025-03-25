@@ -1,4 +1,4 @@
-
+import bg from "@/assets/landing/Placement-Banner.jpg"
 import Container from "@/components/wrappers/Container";
 import Heading from "@/components/Heading";
 import ThreeDPlacementCard from "@/components/ThreeDPlacementCard";
@@ -114,7 +114,7 @@ const placementCards = [
 
 const Placements = () => {
   return (
-    <div className="relative ">
+    <div className="relative bg-cover bg-center" style={{ backgroundImage: `url(${bg})` }}>
       <Container className=" ">
        
         <div className="">
