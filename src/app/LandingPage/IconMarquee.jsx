@@ -12,24 +12,24 @@ const IconItem = ({ src, alt }) => {
 };
 
 export function IconMarquee({ icons }) {
-  const firstRow = icons.slice(0, Math.ceil(icons.length / 2));
-  const secondRow = icons.slice(Math.ceil(icons.length / 2));
-  
+  const firstRow = icons.slice(0, Math.ceil(icons.length / 3));
+  const secondRow = icons.slice(Math.ceil(icons.length / 3), Math.ceil((icons.length * 2) / 3));
+  const thirdRow = icons.slice(Math.ceil((icons.length * 2) / 3), icons.length);
 
   return (
-    <div className="relative flex h-96 w-full flex-col items-center justify-center overflow-hidden  gap-8">
-      <Marquee reverse pauseOnHover className="[--duration:20s]">
+    <div className="relative flex h-96 w-full flex-col items-center justify-center overflow-hidden gap-8">
+      <Marquee reverse pauseOnHover className="[--duration:40s]">
         {firstRow.map((icon, index) => (
           <IconItem key={index} {...icon} />
         ))}
       </Marquee>
-      <Marquee  pauseOnHover className="[--duration:20s]">
+      <Marquee pauseOnHover className="[--duration:40s]">
         {secondRow.map((icon, index) => (
           <IconItem key={index} {...icon} />
         ))}
       </Marquee>
-      <Marquee reverse  pauseOnHover className="[--duration:20s]">
-        {firstRow.map((icon, index) => (
+      <Marquee reverse pauseOnHover className="[--duration:40s]">
+        {thirdRow.map((icon, index) => (
           <IconItem key={index} {...icon} />
         ))}
       </Marquee>

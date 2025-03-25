@@ -337,7 +337,7 @@ export default function Slider({
             />
             <div className="absolute inset-0 bg-black/10" />
             {index === 0 && slide.slider && (
-              <div className="absolute bottom-0 left-0 right-0 z-20 flex flex-col sm:flex-row items-center justify-center w-full h-full gap-10 md:p-12 lg:p-16">
+              <div className="absolute bottom-0 left-0 right-0 z-20 flex flex-col sm:flex-row items-center justify-start w-full h-full gap-10 md:p-12 lg:p-16">
                
                 <div className="max-w-4xl ml-10 sm:space-y-8 ">
                   <h1 className="mb-4 space-y-4 text-4xl font-bold leading-tight lg:text-7xl md:text-6xl">
@@ -385,9 +385,9 @@ export default function Slider({
                     </Link>
                   </div>
                 </div>
-                <div className="hidden md:block px-5 py-1 rounded-lg bg-black/40 backdrop-blur-3xl">
+                {/* <div className="hidden md:block px-5 py-1 rounded-lg bg-black/40 backdrop-blur-3xl">
                   <AccreditationLogo />
-                </div>
+                </div> */}
                 <div className="block sm:hidden px-5 py-1 rounded-lg bg-black/40 backdrop-blur-3xl">
                   <AccreditationLogoMobile />
                 </div>
