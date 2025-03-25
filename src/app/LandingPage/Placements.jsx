@@ -119,7 +119,7 @@ const Placements = () => {
        
         <div className="">
           <Heading
-            title="Placement Excellence"
+            title="Campus to Corporate"
             titleClassName="text-primary-color text-left text-center text-primary-color"
             subtitleClassName="text-gray-500 text-justify m-0 lg:text-lg lg:font-normal lg:max-w-full text-center"
             subtitle="100+ top companies recruit our graduates for premium career opportunities"
