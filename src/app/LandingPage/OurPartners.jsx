@@ -92,12 +92,12 @@ export default function OurPartners() {
   return (
     <section
       ref={sectionRef}
-      className="bg-gradient-to-t from-primary-color via-pink-700 to-primary-color lg:py-20 md:py-12 py-8 sm:px-0 px-6"
+      className="bg-gradient-to-t from-primary-color via-pink-700 to-primary-color lg:py-16 md:py-12 py-8 sm:px-0 px-6"
     >
       <div className="container mx-auto sm:max-w-5xl md:max-w-6xl lg:max-w-7xl">
         <motion.div
           ref={headingRef}
-          className="mb-8 sm:mb-16 text-center"
+          className="mb-8 sm:mb-10 text-center"
           initial={{ opacity: 0, y: 50 }}
           animate={{
             opacity: isHeadingInView ? 1 : 0,

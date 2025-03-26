@@ -15,7 +15,7 @@ const Stats = () => {
   ];
 
   return (
-    <section className=" relative px-0 py-10 lg:py-28 md:py-12 sm:px-0">
+    <section className=" relative px-0 py-10 lg:py-20 md:py-12 sm:px-0">
       <img
         src={bg}
         alt="stats"

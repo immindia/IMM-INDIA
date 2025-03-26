@@ -35,7 +35,7 @@ const cards = [
 ];
 const Awards = () => {
   return (
-    <section className="relative px-0 py-10 lg:py-28 md:py-12 sm:px-0 bg-gradient-to-bl  from-blue-950 via-blue-900 to-blue-950">
+    <section className="relative px-0 py-10 lg:py-20 md:py-12 sm:px-0 bg-gradient-to-bl  from-blue-950 via-blue-900 to-blue-950">
       <div className="relative z-30 px-4 mx-auto max-w-screen-xl md:px-8">
         <Heading
           title="Awards and Recognitions"
