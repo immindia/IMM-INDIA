@@ -1,6 +1,5 @@
-
-import { useEffect, useState } from "react";
-import { motion } from "framer-motion";
+import { useRef } from "react";
+import { motion, useInView } from "framer-motion";
 
 import EU from "../../assets/partners/EU.png";
 import IIT from "../../assets/partners/iit.png";
@@ -16,12 +15,9 @@ import InternationalPartner from "./InternationalPartner";
 import NationalPartners from "./NationalPartners";
 
 export default function OurPartners() {
-  const [isLoaded, setIsLoaded] = useState(false);
-
-  // Simulate loading and trigger animations
-  useEffect(() => {
-    setIsLoaded(true);
-  }, []);
+  const sectionRef = useRef(null);
+  const headingRef = useRef(null);
+  const isHeadingInView = useInView(headingRef, { once: true, amount: 0.5 });
 
   // International partner data
   const internationalPartner = {
@@ -43,7 +39,7 @@ export default function OurPartners() {
 
       category: "Education",
       fullDescription:
-        "The Indian Institute of Technology Ropar (IIT Ropar) is a premier engineering institution in Punjab. The Government of India has officially designated IIT Ropar as a Centre of Excellence in AI, recognizing it as one of the top four institutes leading India's AI revolution. This landmark initiative, reported by the Economic Times, cements IIT Ropar’s position at the forefront of AI and innovation, and IMM students will be direct beneficiaries of this elite status.",
+        "The Indian Institute of Technology Ropar (IIT Ropar) is a premier engineering institution in Punjab. The Government of India has officially designated IIT Ropar as a Centre of Excellence in AI, recognizing it as one of the top four institutes leading India's AI revolution. This landmark initiative, reported by the Economic Times, cements IIT Ropar's position at the forefront of AI and innovation, and IMM students will be direct beneficiaries of this elite status.",
       website: "/about/imm-partners",
     },
     {
@@ -94,13 +90,23 @@ export default function OurPartners() {
   ];
 
   return (
-    <section className=" bg-gradient-to-t from-primary-color via-pink-700 to-primary-color lg:py-20 md:py-12 py-8 sm:px-0 px-6">
+    <section
+      ref={sectionRef}
+      className="bg-gradient-to-t from-primary-color via-pink-700 to-primary-color lg:py-20 md:py-12 py-8 sm:px-0 px-6"
+    >
       <div className="container mx-auto sm:max-w-5xl md:max-w-6xl lg:max-w-7xl">
         <motion.div
+          ref={headingRef}
           className="mb-16 text-center"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: isLoaded ? 1 : 0, y: isLoaded ? 0 : 20 }}
-          transition={{ duration: 0.6 }}
+          initial={{ opacity: 0, y: 50 }}
+          animate={{
+            opacity: isHeadingInView ? 1 : 0,
+            y: isHeadingInView ? 0 : 50,
+          }}
+          transition={{
+            duration: 0.8,
+            ease: "easeOut",
+          }}
         >
           <Heading
             title="Academic Partners"
@@ -112,11 +118,8 @@ export default function OurPartners() {
         </motion.div>
 
         <div className="space-y-20">
-          <InternationalPartner
-            partner={internationalPartner}
-            isLoaded={isLoaded}
-          />
-          <NationalPartners partners={nationalPartners} isLoaded={isLoaded} />
+          <InternationalPartner partner={internationalPartner} />
+          <NationalPartners partners={nationalPartners} />
         </div>
       </div>
     </section>
