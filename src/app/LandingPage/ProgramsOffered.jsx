@@ -16,7 +16,7 @@ export default function ProgramsOffered() {
 
   const specializations = [
     "Marketing & Innovation Management",
-    "Financial Management",
+    "Financial Management", 
     "Human Resource Management",
     "Business Analytics & Research Management",
     "International Business Management",
@@ -29,55 +29,67 @@ export default function ProgramsOffered() {
     <div className="px-6 py-8 bg-gradient-to-br from-gray-400 via-gray-100 to-gray-400 lg:py-20 md:py-12 sm:px-0">
       <motion.div
         ref={ref}
-        initial={{ opacity: 0, y: 50 }}
-        animate={{ opacity: isInView ? 1 : 0, y: isInView ? 0 : 50 }}
-        transition={{ duration: 1, ease: "easeOut" }}
+        initial={{ opacity: 0, y: 100 }}
+        animate={{ opacity: isInView ? 1 : 0, y: isInView ? 0 : 100 }}
+        transition={{ duration: 1.5, ease: "easeOut", delay: 0.5 }}
       >
-        <Heading
-          title="Programmes Offered with Dual Specializations"
-          titleClassName="text-center text-2xl font-bold text-primary-color md:text-3xl lg:text-5xl"
-        />
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: isInView ? 1 : 0, y: isInView ? 0 : 50 }}
+          transition={{ duration: 1.5, delay: 1 }}
+        >
+          <Heading
+            title="Programmes Offered with Dual Specializations"
+            titleClassName="text-center text-2xl font-bold text-primary-color md:text-3xl lg:text-5xl"
+          />
+        </motion.div>
 
-        <Tabs defaultValue="pgdm" className="max-w-6xl mx-auto">
-          <TabsList className="grid w-full h-12 grid-cols-2 shadow-lg">
-            <TabsTrigger
-              value="pgdm"
-              className="text-xs sm:text-xl h-full font-bold  data-[state=active]:bg-primary-color data-[state=active]:text-white"
-            >
-              PGDM Programmes
-            </TabsTrigger>
-            <TabsTrigger
-              value="bba"
-              className="text-xs sm:text-xl h-full font-bold  data-[state=active]:bg-primary-color data-[state=active]:text-white"
-            >
-              BBA Programmes
-            </TabsTrigger>
-          </TabsList>
-          <TabsContent value="pgdm">
-            <ProgramContent
-              title="PGDM"
-              specializations={specializations}
-              imageSrc={img}
-              imageAlt="PGDM students studying"
-              videoSrc="https://youtu.be/eOa-I0MSmUs?si=PgNnCNLBGcJRmer7"
-              videoId="eOa-I0MSmUs"
-              href="https://admissions.immindia.edu.in/"
-              knowMorePath="/programs/pgdm"
-            />
-          </TabsContent>
-          <TabsContent value="bba">
-            <ProgramContent
-              title="BBA"
-              specializations={specializations.slice(0, 5)}
-              imageSrc={img}
-              imageAlt="BBA students in classroom"
-              videoSrc="https://youtu.be/eOa-I0MSmUs?si=PgNnCNLBGcJRmer7"
-              videoId="eOa-I0MSmUs"
-              path="/programs/bba"
-              knowMorePath="/programs/bba"
-            />
-          </TabsContent>
-        </Tabs>
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: isInView ? 1 : 0, y: isInView ? 0 : 50 }}
+          transition={{ duration: 1.5, delay: 1.5 }}
+        >
+          <Tabs defaultValue="pgdm" className="max-w-6xl mx-auto">
+            <TabsList className="grid w-full h-12 grid-cols-2 shadow-lg">
+              <TabsTrigger
+                value="pgdm"
+                className="text-xs sm:text-xl h-full font-bold  data-[state=active]:bg-primary-color data-[state=active]:text-white"
+              >
+                PGDM Programmes
+              </TabsTrigger>
+              <TabsTrigger
+                value="bba"
+                className="text-xs sm:text-xl h-full font-bold  data-[state=active]:bg-primary-color data-[state=active]:text-white"
+              >
+                BBA Programmes
+              </TabsTrigger>
+            </TabsList>
+            <TabsContent value="pgdm">
+              <ProgramContent
+                title="PGDM"
+                specializations={specializations}
+                imageSrc={img}
+                imageAlt="PGDM students studying"
+                videoSrc="https://youtu.be/eOa-I0MSmUs?si=PgNnCNLBGcJRmer7"
+                videoId="eOa-I0MSmUs"
+                href="https://admissions.immindia.edu.in/"
+                knowMorePath="/programs/pgdm"
+              />
+            </TabsContent>
+            <TabsContent value="bba">
+              <ProgramContent
+                title="BBA"
+                specializations={specializations.slice(0, 5)}
+                imageSrc={img}
+                imageAlt="BBA students in classroom"
+                videoSrc="https://youtu.be/eOa-I0MSmUs?si=PgNnCNLBGcJRmer7"
+                videoId="eOa-I0MSmUs"
+                path="/programs/bba"
+                knowMorePath="/programs/bba"
+              />
+            </TabsContent>
+          </Tabs>
+        </motion.div>
       </motion.div>
     </div>
   );
@@ -101,10 +113,15 @@ function ProgramContent({
       ref={ref}
       initial={{ opacity: 0, y: 50 }}
       animate={{ opacity: isInView ? 1 : 0, y: isInView ? 0 : 50 }}
-      transition={{ duration: 0.8, ease: "easeOut", delay: 0.8 }}
+      transition={{ duration: 1.5, ease: "easeOut", delay: 2 }}
       className="grid gap-6 mt-6 md:grid-cols-2"
     >
-      <div className="relative overflow-hidden rounded-lg shadow-lg hover:drop-shadow-xl">
+      <motion.div 
+        initial={{ opacity: 0, scale: 0.8 }}
+        animate={{ opacity: isInView ? 1 : 0, scale: isInView ? 1 : 0.8 }}
+        transition={{ duration: 1.5, delay: 2.5 }}
+        className="relative overflow-hidden rounded-lg shadow-lg hover:drop-shadow-xl"
+      >
         <VideoDialog
           title={title}
           thumbnailUrl={imageSrc}
@@ -112,18 +129,23 @@ function ProgramContent({
           videoId={videoId}
           className="w-full h-full"
         />
-      </div>
+      </motion.div>
 
-      <div className="relative p-6 text-white rounded-lg shadow-lg bg-gradient-to-bl hover:drop-shadow-xl from-blue-950 via-blue-900 to-blue-950">
+      <motion.div
+        initial={{ opacity: 0, x: 100 }}
+        animate={{ opacity: isInView ? 1 : 0, x: isInView ? 0 : 100 }}
+        transition={{ duration: 1.5, delay: 3 }}
+        className="relative p-6 text-white rounded-lg shadow-lg bg-gradient-to-bl hover:drop-shadow-xl from-blue-950 via-blue-900 to-blue-950"
+      >
         <h2 className="mb-4 text-xl font-bold">{title} Programmes</h2>
         <h3 className="mb-2 font-semibold text-p">{title}</h3>
         <ul className="mb-6 space-y-2">
           {specializations.map((spec, index) => (
             <motion.li
               key={index}
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: isInView ? 1 : 0, x: isInView ? 0 : -20 }}
-              transition={{ duration: 0.3, delay: 0.3 + index * 0.1 }}
+              initial={{ opacity: 0, x: 50 }}
+              animate={{ opacity: isInView ? 1 : 0, x: isInView ? 0 : 50 }}
+              transition={{ duration: 1, delay: 3.5 + index * 0.2 }}
               className="flex items-center gap-2"
             >
               <div className="h-1.5 w-1.5 rounded-full bg-pink-800" />
@@ -131,7 +153,12 @@ function ProgramContent({
             </motion.li>
           ))}
         </ul>
-        <div className="flex justify-end gap-4 sm:absolute sm:bottom-5 sm:right-5">
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: isInView ? 1 : 0, y: isInView ? 0 : 20 }}
+          transition={{ duration: 1, delay: 5 }}
+          className="flex justify-end gap-4 sm:absolute sm:bottom-5 sm:right-5"
+        >
           {href ? (
             <a href={href} target="_blank" rel="noopener noreferrer">
               <Button
@@ -158,8 +185,8 @@ function ProgramContent({
               <ArrowRight className="w-4 h-4 ml-2" />
             </Button>
           </Link>
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
     </motion.div>
   );
 }
