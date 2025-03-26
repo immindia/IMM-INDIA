@@ -31,12 +31,12 @@ export default function ProgramsOffered() {
         ref={ref}
         initial={{ opacity: 0, y: 100 }}
         animate={{ opacity: isInView ? 1 : 0, y: isInView ? 0 : 100 }}
-        transition={{ duration: 1.5, ease: "easeOut", delay: 0.5 }}
+        transition={{ duration: 1, ease: "easeOut", delay: 0.3 }}
       >
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: isInView ? 1 : 0, y: isInView ? 0 : 50 }}
-          transition={{ duration: 1.5, delay: 1 }}
+          transition={{ duration: 1, delay: 0.5 }}
         >
           <Heading
             title="Programmes Offered with Dual Specializations"
@@ -47,7 +47,7 @@ export default function ProgramsOffered() {
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: isInView ? 1 : 0, y: isInView ? 0 : 50 }}
-          transition={{ duration: 1.5, delay: 1.5 }}
+          transition={{ duration: 1, delay: 1 }}
         >
           <Tabs defaultValue="pgdm" className="max-w-6xl mx-auto">
             <TabsList className="grid w-full h-12 grid-cols-2 shadow-lg">
@@ -113,13 +113,13 @@ function ProgramContent({
       ref={ref}
       initial={{ opacity: 0, y: 50 }}
       animate={{ opacity: isInView ? 1 : 0, y: isInView ? 0 : 50 }}
-      transition={{ duration: 1.5, ease: "easeOut", delay: 2 }}
+      transition={{ duration: 1, ease: "easeOut", delay: 1 }}
       className="grid gap-6 mt-6 md:grid-cols-2"
     >
       <motion.div 
         initial={{ opacity: 0, scale: 0.8 }}
         animate={{ opacity: isInView ? 1 : 0, scale: isInView ? 1 : 0.8 }}
-        transition={{ duration: 1.5, delay: 2.5 }}
+        transition={{ duration: 1, delay: 1.5 }}
         className="relative overflow-hidden rounded-lg shadow-lg hover:drop-shadow-xl"
       >
         <VideoDialog
@@ -134,7 +134,7 @@ function ProgramContent({
       <motion.div
         initial={{ opacity: 0, x: 100 }}
         animate={{ opacity: isInView ? 1 : 0, x: isInView ? 0 : 100 }}
-        transition={{ duration: 1.5, delay: 3 }}
+        transition={{ duration: 1, delay: 2 }}
         className="relative p-6 text-white rounded-lg shadow-lg bg-gradient-to-bl hover:drop-shadow-xl from-blue-950 via-blue-900 to-blue-950"
       >
         <h2 className="mb-4 text-xl font-bold">{title} Programmes</h2>
@@ -145,7 +145,7 @@ function ProgramContent({
               key={index}
               initial={{ opacity: 0, x: 50 }}
               animate={{ opacity: isInView ? 1 : 0, x: isInView ? 0 : 50 }}
-              transition={{ duration: 1, delay: 3.5 + index * 0.2 }}
+              transition={{ duration: 0.8, delay: 2.5 + index * 0.1 }}
               className="flex items-center gap-2"
             >
               <div className="h-1.5 w-1.5 rounded-full bg-pink-800" />
@@ -156,7 +156,7 @@ function ProgramContent({
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: isInView ? 1 : 0, y: isInView ? 0 : 20 }}
-          transition={{ duration: 1, delay: 5 }}
+          transition={{ duration: 0.8, delay: 3.5 }}
           className="flex justify-end gap-4 sm:absolute sm:bottom-5 sm:right-5"
         >
           {href ? (
