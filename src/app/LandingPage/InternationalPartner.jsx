@@ -44,8 +44,8 @@ export default function InternationalPartner({ partner }) {
         whileHover={{ y: -5 }}
         className="overflow-hidden rounded-xl bg-white shadow-xl transition-all duration-300 dark:bg-slate-800"
       >
-        <div className="grid gap-6 md:grid-cols-2">
-          <div className="relative flex h-64 items-center justify-center overflow-hidden bg-slate-100 p-8 dark:bg-slate-700 md:h-80">
+        <div className="grid sm:gap-6 md:grid-cols-2">
+          <div className="relative flex h-48 sm:h-64  items-center justify-center overflow-hidden bg-slate-100 p-8 dark:bg-slate-700 md:h-80">
             <motion.div
               ref={logoRef}
               className="flex items-center justify-center"
@@ -60,13 +60,13 @@ export default function InternationalPartner({ partner }) {
               <img
                 src={partner.logo || "/placeholder.svg"}
                 alt={`${partner.name} logo`}
-                className="object-contain"
+                className="object-contain "
               />
             </motion.div>
           </div>
-          <div className="flex flex-col justify-center p-8">
+          <div className="flex flex-col justify-center p-4 sm:p-8">
             <motion.h3
-              className="mb-3 text-2xl font-bold"
+              className="mb-3 text-2xl font-semibold  sm:font-bold"
               initial={{ opacity: 0, y: 20 }}
               animate={{
                 opacity: isContentInView ? 1 : 0,
@@ -77,7 +77,7 @@ export default function InternationalPartner({ partner }) {
               {partner.name}
             </motion.h3>
             <motion.p
-              className="mb-6 text-muted-foreground"
+              className="mb-6 hidden sm:block text-muted-foreground"
               initial={{ opacity: 0, y: 20 }}
               animate={{
                 opacity: isContentInView ? 1 : 0,

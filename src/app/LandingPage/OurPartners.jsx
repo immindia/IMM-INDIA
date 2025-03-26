@@ -97,7 +97,7 @@ export default function OurPartners() {
       <div className="container mx-auto sm:max-w-5xl md:max-w-6xl lg:max-w-7xl">
         <motion.div
           ref={headingRef}
-          className="mb-16 text-center"
+          className="mb-8 sm:mb-16 text-center"
           initial={{ opacity: 0, y: 50 }}
           animate={{
             opacity: isHeadingInView ? 1 : 0,
@@ -117,7 +117,7 @@ export default function OurPartners() {
           />
         </motion.div>
 
-        <div className="space-y-20">
+        <div className="space-y-10 sm:space-y-20">
           <InternationalPartner partner={internationalPartner} />
           <NationalPartners partners={nationalPartners} />
         </div>
