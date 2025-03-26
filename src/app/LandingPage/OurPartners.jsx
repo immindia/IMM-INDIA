@@ -95,7 +95,7 @@ export default function OurPartners() {
 
   return (
     <section className=" bg-gradient-to-t from-primary-color via-pink-700 to-primary-color lg:py-20 md:py-12 py-8 sm:px-0 px-6">
-      <div className="container mx-auto md:max-w-6xl lg:max-w-7xl">
+      <div className="container mx-auto sm:max-w-5xl md:max-w-6xl lg:max-w-7xl">
         <motion.div
           className="mb-16 text-center"
           initial={{ opacity: 0, y: 20 }}
