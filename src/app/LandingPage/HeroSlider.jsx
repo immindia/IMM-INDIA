@@ -4,9 +4,9 @@ import Slider from "./Slider";
 
 export default function HeroSlider() {
   const slides = [
-    {slider: true,
-      image:
-        img,
+    {
+      slider: true,
+      image: img,
       title: "Discover Amazing Places",
       heading1: "Human Centered.",
       heading2: "Future Focused.",
@@ -16,9 +16,9 @@ export default function HeroSlider() {
         { text: "BBA Program", link: "/programs/bba" },
       ],
     },
-    {slider: true,
-      image:
-        "https://www.immindia.edu.in/images_webp/home/banner/banner2.webp",
+    {
+      slider: true,
+      image: "https://www.immindia.edu.in/images_webp/home/banner/banner2.webp",
       title: "Unforgettable Adventures",
       heading1: "Innovation Driven.",
       heading2: "Industry Ready.",
@@ -28,9 +28,9 @@ export default function HeroSlider() {
         { text: "BBA Program", link: "/programs/bba" },
       ],
     },
-    {slider: true,
-      image:
-        "https://www.immindia.edu.in/images_webp/home/banner/banner1.webp",
+    {
+      slider: true,
+      image: "https://www.immindia.edu.in/images_webp/home/banner/banner1.webp",
       title: "Luxury Accommodations",
       heading1: "Global Perspective.",
       heading2: "Local Impact.",
@@ -40,7 +40,8 @@ export default function HeroSlider() {
         { text: "BBA Program", link: "/programs/bba" },
       ],
     },
-    {slider: true,
+    {
+      slider: true,
       image:
         "https://www.immindia.edu.in/images_webp/home/banner/banner10.webp",
       title: "Luxury Accommodations",
