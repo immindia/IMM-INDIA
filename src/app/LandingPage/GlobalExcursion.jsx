@@ -252,11 +252,11 @@ export default function GlobalExcursion() {
 
     return (
       <div className="flex flex-col gap-6">
-        <div className="p-4 bg-white ">
+        <div className="p-4 bg-white rounded ">
           <h2 className="mb-4 text-2xl font-bold text-center text-primary-color">
             {heading}
           </h2>
-          <div className="overflow-hidden h-[400px]">
+          <div className="overflow-hidden rounded-sm h-[200px]  sm:h-[400px]">
             <Slider slides={filteredSlides} effect="fade" />
           </div>
         </div>
