@@ -22,7 +22,7 @@ export default function NationalPartners({ partners, isLoaded }) {
         <div className="w-20 h-1 mt-2 bg-white/80"></div>
       </motion.div>
 
-      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-6">
+      <div className="grid grid-cols-2 gap-6 sm:grid-cols-2 lg:grid-cols-6">
         {partners.map((partner, index) => (
           <motion.div
             key={partner.id}
