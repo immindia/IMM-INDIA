@@ -109,7 +109,7 @@ const TopBar = () => {
               Pay Fee
             </PulsatingButton>
           </a>
-          <Link to="/blog">
+          {/* <Link to="/blog">
           <PulsatingButton
             size="sm"
             className="text-xs bg-black hover:bg-black/80"
@@ -117,7 +117,7 @@ const TopBar = () => {
           >
            Blogs
           </PulsatingButton>
-          </Link>
+          </Link> */}
         </div>
       </div>
     </div>

@@ -21,7 +21,7 @@ const cards = [
   },
   {
     title:
-      "Best Business School with Excellent Placement Record of the Year 2022",
+      "Best Business School with Excellent",
     image: img3,
   },
   {
@@ -74,14 +74,14 @@ const CardItem = ({ item }) => (
       <img
         src="https://cdn.easyfrontend.com/pictures/logos/award-logo.png"
         alt=""
-        className=" max-w-[200px] sm:max-w-[220px] text-blue-600 mx-auto  duration-500"
+        className=" max-w-[160px] sm:max-w-[220px] text-blue-600 mx-auto  duration-500"
       />
       <Dialog>
         <DialogTrigger asChild>
           <img
             src={item.image}
             alt={item.title}
-            className="w-32 sm:w-36 h-32 sm:h-36 object-cover rounded-full z-40 absolute top-4 border-4 border-yellow-400 left-9 sm:left-10 cursor-pointer hover:border-yellow-300 transition-colors"
+            className="w-24 sm:w-36 h-24 sm:h-36 object-cover rounded-full z-40 absolute top-4 border-2 sm:border-4 border-yellow-400 left-8 sm:left-10 cursor-pointer hover:border-yellow-300 transition-colors"
           />
         </DialogTrigger>
         <DialogContent className="sm:max-w-[600px] w-[98vw] rounded-md bg-transparent border-none" crossIcon="text-white sm:h-8 sm:w-8  rounded bg-slate-600 p-1">
@@ -105,13 +105,14 @@ const PlacementHighlights = () => {
   return (
     <section className="rounded-lg dark-gray dark:bg-[#0b1727] text-slate-800 dark:text-white">
       <div className="container mx-auto">
-        <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-5 gap-6">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-6">
           {cards.map((item, i) => (
             <div
-              className="col-span-3 duration-300 md:col-span-1 hover:scale-105"
+              className={`${i === cards.length - 1 ? "col-span-2" : "sm:col-span-3"} duration-300 md:col-span-1 hover:scale-105`}
               key={i}
             >
-              <CardItem item={item} />
+            
+              <CardItem item={item} key={i} />
             </div>
           ))}
         </div>
