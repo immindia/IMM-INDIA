@@ -32,7 +32,7 @@ export default function NationalPartners({ partners, isLoaded }) {
             whileHover={{ y: -8, scale: 1.02 }}
             className="h-full"
           >
-            <Card className="h-full overflow-hidden transition-all duration-300   group hover:border-primary/20 hover:shadow-lg dark:hover:border-primary/30">
+            <Card className="h-full overflow-hidden transition-all duration-300   group hover:border-primary/20 hover:shadow-lg dark:hover:border-primary/30 rounded-sm">
               <CardContent className="p-0">
                 <div className="relative flex items-center justify-center w-full p-0 overflow-hidden bg-whit aspect-square dark:bg-slate-700">
                   <motion.div

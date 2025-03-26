@@ -3,12 +3,12 @@
 import { useEffect, useState } from "react";
 
 import EU from "../../assets/partners/EU.png";
-import IIT from "../../assets/partners/IIT_1_11zon.jpg";
-import JIT from "../../assets/partners/jif_2_11zon.jpg";
-import Kladio from "../../assets/partners/kladio_3_11zon.jpg";
-import Vitti from "../../assets/partners/vitti_4_11zon.jpg";
-import Wasme from "../../assets/partners/wasme_5_11zon.jpg";
-import Young from "../../assets/partners/young_6_11zon.jpg";
+import IIT from "../../assets/partners/iit.png";
+import JIT from "../../assets/partners/jit.png";
+import Kladio from "../../assets/partners/kladio.png";
+import Vitti from "../../assets/partners/vitti.png";
+import Wasme from "../../assets/partners/wasme.png";
+import Young from "../../assets/partners/young.png";
 import img from "../../assets/breadcrumb.png";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";

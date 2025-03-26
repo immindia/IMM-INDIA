@@ -3,12 +3,12 @@ import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 
 import EU from "../../assets/partners/EU.png";
-import IIT from "../../assets/partners/IIT_1_11zon.jpg";
-import JIT from "../../assets/partners/jif_2_11zon.jpg";
-import Kladio from "../../assets/partners/kladio_3_11zon.jpg";
-import Vitti from "../../assets/partners/vitti_4_11zon.jpg";
-import Wasme from "../../assets/partners/wasme_5_11zon.jpg";
-import Young from "../../assets/partners/young_6_11zon.jpg";
+import IIT from "../../assets/partners/iit.png";
+import JIT from "../../assets/partners/jit.png";
+import Kladio from "../../assets/partners/kladio.png";
+import Vitti from "../../assets/partners/vitti.png";
+import Wasme from "../../assets/partners/wasme.png";
+import Young from "../../assets/partners/young.png";
 
 import Heading from "../../components/Heading";
 
@@ -39,25 +39,21 @@ export default function OurPartners() {
     {
       id: 1,
       name: "IIT Ropar",
-      // logo: IIT,
-      logo: "https://th.bing.com/th?id=OSK.71f031ec9b8af140e44160a23537fbe6&w=300&h=300&r=0&o=6&cb=B&pid=23.1",
+      logo: IIT,
+
       category: "Education",
       fullDescription:
         "The Indian Institute of Technology Ropar (IIT Ropar) is a premier engineering institution in Punjab. The Government of India has officially designated IIT Ropar as a Centre of Excellence in AI, recognizing it as one of the top four institutes leading India's AI revolution. This landmark initiative, reported by the Economic Times, cements IIT Ropar’s position at the forefront of AI and innovation, and IMM students will be direct beneficiaries of this elite status.",
       website: "/about/imm-partners",
-      
-     
     },
     {
       id: 2,
       name: "KLADIO",
-      // logo: Kladio,
-      logo: 'https://kladio.in/images/kladio_logo.png',
+      logo: Kladio,
       category: "Education",
       fullDescription:
         "Kladio is an innovative educational platform that emphasizes experiential and global learning to prepare students for the evolving world. Their programs, such as the Bachelor's in Entrepreneurship and Family Business Management, offer immersive experiences across multiple countries, providing students with diverse business insights and cultural exposure.",
       website: "/about/imm-partners",
-
     },
     {
       id: 3,
@@ -67,9 +63,6 @@ export default function OurPartners() {
       fullDescription:
         "JJF Education Private Limited operates in the education sector with a focus on disseminating knowledge and creating awareness. The company aims to provide a common forum for various education professionals to organize training courses and special programs in both online and offline formats.",
       website: "/about/imm-partners",
-     
-     
-     
     },
     {
       id: 4,
@@ -79,21 +72,15 @@ export default function OurPartners() {
       fullDescription:
         "Vitti Research Foundation focuses on fundamental AI research and collaborates with academia, global foundations, industries, and government initiatives to publish papers and generate intellectual property.",
       website: "/about/imm-partners",
-     
-     
-       
     },
     {
       id: 5,
       name: "Young Skilled India",
-      logo: "https://youngskilledindia.com/wp-content/uploads/2020/12/ysi_logo-removebg-preview-1.png",
+      logo: Young,
       category: "Training",
       fullDescription:
         "Young Skilled India, a Government of India-certified startup (DIPP 1656), is incubated at MCIE - IIT BHU, Varanasi. The organization offers AI-driven training and certificate courses aimed at enhancing professional and management skills across various demographics.",
       website: "/about/imm-partners",
-     
-     
-       
     },
     {
       id: 6,
@@ -103,7 +90,6 @@ export default function OurPartners() {
       fullDescription:
         "The World Association for Small and Medium Enterprises (WASME) is a global, non-governmental organization dedicated to promoting the growth and development of small and medium enterprises (SMEs) worldwide. WASME fosters collaboration among governments, industry bodies, and SMEs through policy advocacy, capacity building, and knowledge sharing.",
       website: "/about/imm-partners",
-    
     },
   ];
 
@@ -112,25 +98,25 @@ export default function OurPartners() {
       <div className="container mx-auto md:max-w-6xl lg:max-w-7xl">
         <motion.div
           className="mb-16 text-center"
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: isLoaded ? 1 : 0, y: isLoaded ? 0 : 20 }}
-        transition={{ duration: 0.6 }}
-      >
-        <Heading
-          title="Academic Partners"
-          titleClassName="text-center text-2xl font-bold text-white md:text-3xl"
-          className="block lg:pb-0 sm:pb-0 mx-auto w-full text-left sm:col-span-4 "
-          subtitle="Our academic partners are some of the best in the world, and we are proud to have them on board."
-          subtitleClassName="text-center text-white/80 text-sm md:text-base"
-        />
-      </motion.div>
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: isLoaded ? 1 : 0, y: isLoaded ? 0 : 20 }}
+          transition={{ duration: 0.6 }}
+        >
+          <Heading
+            title="Academic Partners"
+            titleClassName="text-center text-2xl font-bold text-white md:text-3xl"
+            className="block lg:pb-0 sm:pb-0 mx-auto w-full text-left sm:col-span-4 "
+            subtitle="Our academic partners are some of the best in the world, and we are proud to have them on board."
+            subtitleClassName="text-center text-white/80 text-sm md:text-base"
+          />
+        </motion.div>
 
-      <div className="space-y-20">
-        <InternationalPartner
-          partner={internationalPartner}
-          isLoaded={isLoaded}
-        />
-        <NationalPartners partners={nationalPartners} isLoaded={isLoaded} />
+        <div className="space-y-20">
+          <InternationalPartner
+            partner={internationalPartner}
+            isLoaded={isLoaded}
+          />
+          <NationalPartners partners={nationalPartners} isLoaded={isLoaded} />
         </div>
       </div>
     </section>
