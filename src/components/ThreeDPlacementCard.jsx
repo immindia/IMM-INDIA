@@ -12,6 +12,7 @@ export default memo(function ThreeDPlacementCard({
   company = "Nexus Technologies",
   role = "Senior Developer",
   featured = false,
+  logo = "https://v0.dev/placeholder.svg?height=400&width=300",
 }) {
   const cardRef = useRef(null)
   const [transform, setTransform] = useState('')
@@ -85,14 +86,13 @@ export default memo(function ThreeDPlacementCard({
         </div>
 
         {/* Content */}
-        <div className="relative z-10 flex h-full flex-col justify-end p-6">
-          <div className="sm:mb-2 mt-auto">
-            <h3 className="mb-1 sm:text-2xl font-bold tracking-tight text-white">
+        <div className="relative z-10 flex h-full flex-col justify-end p-2">
+          <div className="sm:mb- mt-auto">
+            <h3 className="mb-1 sm:text-xl  text-center   font-bold tracking-tight text-white">
               {name}
             </h3>
-            <div className="mb-4 flex items-center gap-2">
-              <Building2 className="h-4 w-4 text-pink-300" />
-              <p className="text-sm font-medium text-pink-300">{company}</p>
+            <div className="mb flex items-center gap-2 py-2 scale-75 bg-white rounded">
+              <img src={logo} alt="logo" className="w-auto mx-auto h-8" />
             </div>
           </div>
         </div>
