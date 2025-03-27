@@ -26,7 +26,7 @@ const Header = () => {
 
   return (
     <header
-      className={`shadow-sm z-50  transition-all duration-500 ${
+      className={`shadow-sm z-[9999]  transition-all duration-500 ${
         isVisible ? "sticky top-0 translate-y-0" : "relative -translate-y-full"
       }`}
     >

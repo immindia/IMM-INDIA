@@ -1,11 +1,11 @@
 "use client";
-import { motion } from "framer-motion";
+// import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import LatestBlogsAndEvents from "./LatestBlogsAndEvents";
 // import AboutIMM from "./AboutIMM";
 import Stats from "./Stats";
 import Testimonial from "./Testimonial";
-import GlobalExcursion from "./GlobalExcursion";
+import GlobalExcursion from "./EduTour";
 import Awards from "./Awards";
 import ProgramsOffered from "./ProgramsOffered";
 // import AcademicPartners from "./AcademicPartners";
@@ -17,23 +17,23 @@ import HeroSlider from "./HeroSlider";
 import Placements from "./Placements";
 import OurPartners from "./OurPartners";
 
-const sectionVariants = {
-  hidden: { scale: 0.8, opacity: 0 },
-  visible: {
-    scale: 1,
-    opacity: 1,
-    transition: {
-      duration: 0.6,
-      ease: "easeOut",
-    },
-  },
-};
+// const sectionVariants = {
+//   hidden: { scale: 0.8, opacity: 0 },
+//   visible: {
+//     scale: 1,
+//     opacity: 1,
+//     transition: {
+//       duration: 0.6,
+//       ease: "easeOut",
+//     },
+//   },
+// };
 
 const Landing = () => {
-  const [heroRef, heroInView] = useInView({
-    threshold: 0.2,
-    triggerOnce: true,
-  });
+  // const [heroRef, heroInView] = useInView({
+  //   threshold: 0.2,
+  //   triggerOnce: true,
+  // });
   
   // const [academicPartnersRef, academicPartnersInView] = useInView({
   //   threshold: 0.2,

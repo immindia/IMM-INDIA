@@ -80,7 +80,7 @@ const ScrollToTop = () => {
         <Button
           onClick={scrollToTop}
           size="icon"
-          className="fixed animate-bounce z-50 bg-pink-700 hover:bg-pink-600 text-white bottom-16 right-6 h-9 w-9 rounded-full shadow-lg"
+          className="fixed animate-bounce z-[9999] bg-pink-700 hover:bg-pink-600 text-white bottom-16 right-6 h-9 w-9 rounded-full shadow-lg"
           aria-label="Scroll to top"
         >
           <ArrowUp className="h-5 w-5" />

@@ -36,7 +36,7 @@ export default function ProgramsOffered() {
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: isInView ? 1 : 0, y: isInView ? 0 : 50 }}
-          transition={{ duration: 1, delay: 0.5 }}
+          transition={{ duration: 0.5, delay: 0.5 }}
         >
           <Heading
             title="Programmes Offered with Dual Specializations"
@@ -47,7 +47,7 @@ export default function ProgramsOffered() {
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: isInView ? 1 : 0, y: isInView ? 0 : 50 }}
-          transition={{ duration: 1, delay: 1 }}
+          transition={{ duration: 0.5, delay: 0.5 }}
         >
           <Tabs defaultValue="pgdm" className="max-w-6xl mx-auto">
             <TabsList className="grid w-full h-12 grid-cols-2 shadow-lg">
@@ -119,7 +119,7 @@ function ProgramContent({
       <motion.div 
         initial={{ opacity: 0, scale: 0.8 }}
         animate={{ opacity: isInView ? 1 : 0, scale: isInView ? 1 : 0.8 }}
-        transition={{ duration: 1, delay: 1.5 }}
+        transition={{ duration: 1, delay: 1 }}
         className="relative overflow-hidden rounded-lg shadow-lg hover:drop-shadow-xl"
       >
         <VideoDialog
@@ -134,7 +134,7 @@ function ProgramContent({
       <motion.div
         initial={{ opacity: 0, x: 100 }}
         animate={{ opacity: isInView ? 1 : 0, x: isInView ? 0 : 100 }}
-        transition={{ duration: 1, delay: 2 }}
+        transition={{ duration: 1, delay: 1 }}
         className="relative p-6 text-white rounded-lg shadow-lg bg-gradient-to-bl hover:drop-shadow-xl from-blue-950 via-blue-900 to-blue-950"
       >
         <h2 className="mb-4 text-xl font-bold">{title} Programmes</h2>
