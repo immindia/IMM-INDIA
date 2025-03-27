@@ -111,14 +111,13 @@ export default function OurPartnersDetail() {
         breadcrumbItems={breadcrumbItems}
       />
       <Container className="container  gap-14">
-      
-          <Heading
-            title="IMM Partners"
-            titleClassName="text-primary-color text-center lg:text-5xl"
-            subtitleClassName="text-gray-500 text-center m-0 lg:text-lg lg:font-normal lg:max-w-full"
-            subtitle="As a leading service provider, we are committed to collaborating with industry experts to deliver exceptional solutions that drive business success."
-            className="pt-12 mx-auto"
-          />
+        <Heading
+          title="IMM Partners"
+          titleClassName="text-primary-color text-center lg:text-5xl"
+          subtitleClassName="text-gray-500 text-center m-0 lg:text-lg lg:font-normal lg:max-w-full"
+          subtitle="As a leading service provider, we are committed to collaborating with industry experts to deliver exceptional solutions that drive business success."
+          className="pt-12 mx-auto"
+        />
 
         <div className="space-y-12 md:space-y-24">
           {partners.map((partner, index) => (
@@ -133,7 +132,7 @@ export default function OurPartnersDetail() {
             >
               <div className="relative flex  w-full items-center justify-center overflow-hidden bg-white p-8 md:h-auto md:w-1/2 h-auto sm:h-96 ">
                 <motion.div
-                  className="relative h-full w-full "
+                  className="relative h-full w-full flex items-center justify-center"
                   whileHover={{ scale: 1.05 }}
                   transition={{ duration: 0.3 }}
                 >

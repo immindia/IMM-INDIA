@@ -25,7 +25,7 @@ const PlacementStats = () => {
   ];
 
   return (
-    <section className=" relative px-0 pb-12 pt-16 lg:py-20 md:py-12 sm:px-0">
+    <section className=" relative px-0 pb-12 pt-16  lg:py-20 md:py-12 sm:px-0">
       <img
         src={bg}
         alt="stats"
@@ -44,7 +44,7 @@ const PlacementStats = () => {
 
         <div className="grid grid-cols-2 gap-8 md:grid-cols-3 md:gap-5 md:divide-yellow-500">
           {stats.map((item, index) => (
-            <div key={index} className="flex flex-col hover:bg-yellow-500 group rounded-xl  items-center md:p-4 border border-yellow-500 transition-all duration-300 group-hover:border-white hover:ring-2 hover:-translate-y-2  hover:ring-yellow-500">
+            <div key={index} className={"flex flex-col hover:bg-yellow-500 group rounded-xl  items-center p-4 border border-yellow-500 transition-all duration-300 group-hover:border-white hover:ring-2 hover:-translate-y-2  hover:ring-yellow-500" + (index === stats.length - 1 ? " col-span-2 sm:col-span-1" : "  ")}>
               {item.icon}
               <div className="text-5xl font-bold text-white font sm:text-6xl">
                 <NumberTicker

@@ -1,12 +1,12 @@
-import Heading from "../../components/Heading";
+// import Heading from "../../components/Heading";
 import ImgAndBreadcrumb from "../../components/ImgAndBreadcrumb";
-import Container from "../../components/wrappers/Container";
+// import Container from "../../components/wrappers/Container";
 import img from "../../assets/faculty/Banner.webp";
-import React, { useState } from "react";
-import { motion } from "framer-motion";
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
-import { Search, ChevronDown, ChevronUp } from "lucide-react";
+// import React, { useState } from "react";
+// import { motion } from "framer-motion";
+// import { Input } from "@/components/ui/input";
+// import { Button } from "@/components/ui/button";
+// import { Search, ChevronDown, ChevronUp } from "lucide-react";
 import PlacementStats from "./PlacementStats";
 import PlacementGrid from "./PlacementGrid";
 

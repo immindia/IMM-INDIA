@@ -1,104 +1,35 @@
-'use client'
+"use client";
 
-import { motion } from "framer-motion"
-import { Badge } from "@/components/ui/badge"
-import { Card, CardHeader, CardContent } from "@/components/ui/card"
-import { Building2 } from 'lucide-react'
-import img1 from '../../assets/recruiters-logo/amazon.webp';
-import img2 from '../../assets/recruiters-logo/citibank.webp';
-import img3 from '../../assets/recruiters-logo/ese.webp';
-import img4 from '../../assets/recruiters-logo/haldriram.webp';
-const placements = [
-  {
-    name: "Imran Khan",
-    year: "2020-22",
-    company: "Amazon",
-    image: "https://v0.dev/placeholder.svg",
-    companyImage: img1
-  },
-  {
-    name: "Abhishek Singh",
-    year: "2020-22",
-    company: "Citi Bank",
-    image: "https://v0.dev/placeholder.svg",
-    companyImage: img2
-  },
-  {
-    name: "Aakash Singh",
-    year: "2020-22",
-    company: "ESE",
-    image: "https://v0.dev/placeholder.svg",
-    companyImage: img3
-  },
-  {
-    name: "Pranav Singh",
-    year: "2020-22",
-    company: "Haldriram",
-    image: "https://v0.dev/placeholder.svg",
-    companyImage: img4
-  },
-  
-  {
-    name: "Imran Khan",
-    year: "2020-22",
-    company: "Amazon",
-    image: "https://v0.dev/placeholder.svg",
-    companyImage: img1
-  },
-  {
-    name: "Abhishek Singh",
-    year: "2020-22",
-    company: "Citi Bank",
-    image: "https://v0.dev/placeholder.svg",
-    companyImage: img2
-  },
-  {
-    name: "Aakash Singh",
-    year: "2020-22",
-    company: "ESE",
-    image: "https://v0.dev/placeholder.svg",
-    companyImage: img3
-  },
-  {
-    name: "Pranav Singh",
-    year: "2020-22",
-    company: "Haldriram",
-    image: "https://v0.dev/placeholder.svg",
-    companyImage: img4
-  },
-  
-  {
-    name: "Imran Khan",
-    year: "2020-22",
-    company: "Amazon",
-    image: "https://v0.dev/placeholder.svg",
-    companyImage: img1
-  },
-  {
-    name: "Abhishek Singh",
-    year: "2020-22",
-    company: "Citi Bank",
-    image: "https://v0.dev/placeholder.svg",
-    companyImage: img2
-  },
-  {
-    name: "Aakash Singh",
-    year: "2020-22",
-    company: "ESE",
-    image: "https://v0.dev/placeholder.svg",
-    companyImage: img3
-  },
-  {
-    name: "Pranav Singh",
-    year: "2020-22",
-    company: "Haldriram",
-    image: "https://v0.dev/placeholder.svg",
-    companyImage: img4
-  },
-  
-]
+import { motion } from "framer-motion";
+import { Badge } from "@/components/ui/badge";
+import { Card, CardHeader, CardContent } from "@/components/ui/card";
+import { placementCards } from "@/data/placementData";
+import { useEffect, useState } from "react";
 
 export default function PlacementGrid() {
+  const [imagesLoaded, setImagesLoaded] = useState({});
+
+  // Preload the first 4 images that will be visible in the viewport
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const preloadCount = 4; // Preload first 4 images
+      placementCards.slice(0, preloadCount).forEach((placement) => {
+        const link = document.createElement("link");
+        link.rel = "preload";
+        link.as = "image";
+        link.href = placement.image || "/placeholder.svg";
+        document.head.appendChild(link);
+      });
+    }
+  }, []);
+
+  const handleImageLoad = (id) => {
+    setImagesLoaded((prev) => ({
+      ...prev,
+      [id]: true,
+    }));
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-b from-white to-gray-50 py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
@@ -133,15 +64,17 @@ export default function PlacementGrid() {
               transition={{ delay: index * 0.1 }}
               className="bg-white hover:-translate-y-3 rounded-lg p-6 text-center shadow-sm hover:shadow-lg transition-shadow duration-300"
             >
-              <div className="text-2xl font-bold text-primary mb-2">{stat.value}</div>
+              <div className="text-2xl font-bold text-primary mb-2">
+                {stat.value}
+              </div>
               <div className="text-sm text-gray-600">{stat.label}</div>
             </motion.div>
           ))}
         </div>
 
         {/* Placement Grid */}
-        <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {placements.map((placement, index) => (
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {placementCards.map((placement, index) => (
             <motion.div
               key={placement.name + index}
               initial={{ opacity: 0, scale: 0.9 }}
@@ -150,15 +83,31 @@ export default function PlacementGrid() {
             >
               <Card className="overflow-hidden hover:shadow-lg transition-shadow duration-300">
                 <CardHeader className="p-0">
-                  <div className="relative h-48 w-full">
+                  <div className="relative sm:h-80 w-full">
                     <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent z-10 hover:bg-gradient-to-t hover:from-black/0 duration-200 transition-all" />
-                    <img
-                      src={placement.companyImage || "/placeholder.svg"}
-                      alt={`${placement.name}'s placement`}
-                      className="h-full w-full object-contain sm:p-10 p-6"
+                    <div
+                      className={`absolute inset-0 bg-gray-200 animate-pulse ${
+                        imagesLoaded[placement.name + index]
+                          ? "opacity-0"
+                          : "opacity-100"
+                      } transition-opacity duration-300`}
                     />
-                    <Badge 
-                      variant={placement.company === "Pladis" ? "default" : "secondary"}
+                    <img
+                      src={placement.image || "/placeholder.svg"}
+                      alt={`${placement.name}'s placement`}
+                      className="h-full w-full object-cover"
+                      loading="lazy"
+                      width={300}
+                      height={400}
+                      decoding="async"
+                      fetchPriority={index < 4 ? "high" : "low"}
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                      onLoad={() => handleImageLoad(placement.name + index)}
+                    />
+                    <Badge
+                      variant={
+                        placement.company === "Pladis" ? "default" : "secondary"
+                      }
                       className="absolute top-4 right-4 z-20"
                     >
                       {placement.company}
@@ -168,10 +117,19 @@ export default function PlacementGrid() {
                 <CardContent className="p-4">
                   <div className="flex items-start justify-between">
                     <div>
-                      <h3 className="font-semibold text-lg mb-1">{placement.name}</h3>
+                      <h3 className="font-semibold text-lg mb-1">
+                        {placement.name}
+                      </h3>
                       <div className="flex items-center text-sm text-gray-600">
-                        <Building2 className="h-4 w-4 mr-1" />
-                        <span>{placement.year}</span>
+                        <img
+                          src={placement.logo}
+                          alt={placement.name}
+                          className="h-8"
+                          loading="lazy"
+                          // width={32}
+                          height={32}
+                          decoding="async"
+                        />
                       </div>
                     </div>
                   </div>
@@ -182,6 +140,5 @@ export default function PlacementGrid() {
         </div>
       </div>
     </div>
-  )
+  );
 }
-

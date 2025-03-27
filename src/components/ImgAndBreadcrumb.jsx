@@ -36,6 +36,10 @@ const ImgAndBreadcrumb = ({ imageSrc, imageAlt, breadcrumbItems, title }) => {
         src={imageSrc}
         alt={imageAlt || "Image"}
         className="absolute top-0 left-0 object-cover w-full h-full shadow-sm -z-10"
+        width={1920}
+        height={1080}
+        fetchPriority="high"
+        decoding="async"
       />
       <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-t from-black via-black/70 to-black/30"></div>
       <WordPullUp
@@ -77,10 +81,11 @@ const ImgAndBreadcrumb = ({ imageSrc, imageAlt, breadcrumbItems, title }) => {
               {breadcrumbItems.length > 0 && (
                 <BreadcrumbItem className="text-white mobile-breadcrumb-item">
                   <BreadcrumbLink asChild className="text-white">
-                    <Link to={breadcrumbItems[0].href}
-                     className=" font-semibold text-white transition-colors duration-100 ease-in-out hover:text-slate-100 ">
+                    <Link
+                      to={breadcrumbItems[0].href}
+                      className=" font-semibold text-white transition-colors duration-100 ease-in-out hover:text-slate-100 "
+                    >
                       {breadcrumbItems[0].label}
-                      
                     </Link>
                   </BreadcrumbLink>
                 </BreadcrumbItem>
