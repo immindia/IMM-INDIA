@@ -1,4 +1,4 @@
-import Heading from "../../components/Heading";
+// import Heading from "../../components/Heading";
 import ImgAndBreadcrumb from "../../components/ImgAndBreadcrumb";
 import Container from "../../components/wrappers/Container";
 import img from "../../assets/about/AboutBanner2.webp";
@@ -7,8 +7,10 @@ import img from "../../assets/about/AboutBanner2.webp";
 // import AboutSidebar from "../../components/AboutSidebar";
 import icon1 from "../../assets/about/accreditations/All_India_Council.webp";
 import icon2 from "../../assets/about/accreditations/AACSB-logo.webp";
-import AcademicPartners from "../LandingPage/AcademicPartners";
-import Awards from "../LandingPage/Awards";
+// import AcademicPartners from "../LandingPage/AcademicPartners";
+import Awards from "./Awards";
+import { Suspense } from "react";
+
 const AffiliationAwards = () => {
   const breadcrumbItems = [
     { href: "/", label: "Home" },
@@ -16,14 +18,15 @@ const AffiliationAwards = () => {
     { label: "Affiliation & Accreditation" },
   ];
   return (
-    <div className="relative min-h-screen ">
+    <div className="relative min-h-screen">
       <ImgAndBreadcrumb
         title="Accreditations & Awards"
         imageSrc={img}
         imageAlt="Description of the image"
+        loading="eager"
         breadcrumbItems={breadcrumbItems}
       />
-      <Container className="container grid ">
+      <Container className="container grid">
         {/* <Heading
           title="Accreditations & Awards"
           titleClassName="text-primary-color  lg:text-5xl text-center"
@@ -33,8 +36,15 @@ const AffiliationAwards = () => {
         /> */}
         <AffiliationAwardsContent />
       </Container>
-      <AcademicPartners />
-      <Awards />
+      <Suspense
+        fallback={
+          <div className="h-96 flex items-center justify-center">
+            Loading awards...
+          </div>
+        }
+      >
+        <Awards />
+      </Suspense>
       <div className="bg-slate-50"></div>
     </div>
   );
@@ -73,10 +83,10 @@ const AffiliationAwardsContent = () => {
             </p>
             <p className="mt-3 text-gray-600 text-justify">
               Our quality of education acts as a key differentiator of the
-              Institute’s standard of excellence. The accreditations ensure a
+              Institute's standard of excellence. The accreditations ensure a
               rigorous quality control and benchmarking against global standards
               in terms of governance, programs, faculty, research, and ethics.
-              IMM‘s PGDM is focused on three inter-related areas: academic
+              IMM's PGDM is focused on three inter-related areas: academic
               merit, personal values, and social concerns. The two-year,
               full-time, Post Graduate Diploma in Management (PGDM) is approved
               by the All India Institute of Technical Education (AICTE).
