@@ -1,6 +1,6 @@
-import img1 from "../../assets/spotlights/cpd.webp"; // Campus Placement Drive
-import img2 from "../../assets/spotlights/cpd.webp"; // Campus Placement Drive
-import img3 from "../../assets/spotlights/cpd.webp"; // Campus Placement Drive
+// import img1 from "../../assets/spotlights/cpd.webp"; // Campus Placement Drive
+// import img2 from "../../assets/spotlights/cpd.webp"; // Campus Placement Drive
+// import img3 from "../../assets/spotlights/cpd.webp"; // Campus Placement Drive
 
 export const corporateData = [
   {

@@ -12,7 +12,8 @@ export default {
         sm: "calc(var(--radius) - 4px)",
       },
       colors: {
-        "primary-color": "#500724",
+        // "primary-color": "#500724",
+        "primary-color": "oklch(0.459 0.187 3.815)",
         "secondary-color": "#facc15",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
