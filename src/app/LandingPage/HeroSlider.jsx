@@ -1,4 +1,10 @@
-import img from "../../assets/hero.jpg";
+// import img from "../../assets/hero.jpg";
+import img from "../../assets/Hero/hero2.webp";
+import img2 from "../../assets/Hero/hero3.webp";
+import img3 from "../../assets/Hero/hero4.webp";
+import img4 from "../../assets/Hero/hero5.webp";
+import img5 from "../../assets/Hero/hero6.webp";
+
 
 import Slider from "./Slider";
 
@@ -18,7 +24,7 @@ export default function HeroSlider() {
     },
     {
       slider: true,
-      image: "https://www.immindia.edu.in/images_webp/home/banner/banner2.webp",
+      image: img2,
       title: "Unforgettable Adventures",
       heading1: "Innovation Driven.",
       heading2: "Industry Ready.",
@@ -30,7 +36,7 @@ export default function HeroSlider() {
     },
     {
       slider: true,
-      image: "https://www.immindia.edu.in/images_webp/home/banner/banner1.webp",
+      image: img3,
       title: "Luxury Accommodations",
       heading1: "Global Perspective.",
       heading2: "Local Impact.",
@@ -42,8 +48,14 @@ export default function HeroSlider() {
     },
     {
       slider: true,
-      image:
-        "https://www.immindia.edu.in/images_webp/home/banner/banner10.webp",
+      image: img4,
+      title: "Luxury Accommodations",
+      heading1: "Global Perspective.",
+      heading2: "Local Impact.",
+    },
+    {
+      slider: true,
+      image: img5,
       title: "Luxury Accommodations",
       heading1: "Global Perspective.",
       heading2: "Local Impact.",
