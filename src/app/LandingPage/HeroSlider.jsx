@@ -64,7 +64,7 @@ export default function HeroSlider() {
 
   return (
     <div className="w-screen h-[70vh] sm:h-[80vh] overflow-hidden">
-      <Slider slides={slides} effect="fade" arrowClassName="hidden" />
+      <Slider slides={slides} effect="fade" arrowClassName="hidden sm:flex" />
     </div>
   );
 }
