@@ -1,6 +1,6 @@
 // import logo from "../../assets/logo.png";
 import logo from "../../assets/logo.svg";
-import logo2 from "../../assets/Imm-55-Years.svg";
+import logo2 from "../../assets/header/imm 56 years logo.png";
 import Drawer from "./Drawer";
 import { Link } from "react-router-dom";
 import { navlinks } from "./navData";
@@ -26,11 +26,11 @@ export default function Header() {
                 className="w-auto h-16"
               />
             </Link>
-            {/* <img
+            <img
               src={logo2}
               alt="Indo Global Group of Colleges"
               className="w-auto h-16 transition-transform duration-300 hover:scale-105"
-            /> */}
+            />
           </div>
 
           {/* Navigation Menu */}

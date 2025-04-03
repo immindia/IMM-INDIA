@@ -7,13 +7,14 @@ import { motion, AnimatePresence } from "framer-motion";
 import { SparklesText } from "@/components/magicui/sparkles-text";
 import { BorderBeam } from "@/components/magicui/border-beam";
 import { Link } from "react-router-dom";
-import AccreditationLogo from "./AccreditationLogo";
+// import AccreditationLogo from "./AccreditationLogo";
 import { AccreditationLogoMobile } from "./AccreditationLogoMobile";
-
+import logos from "../../assets/Hero/logo-1.webp";
 export default function Slider({
+  arrowClassName,
   slides,
   autoPlay = true,
-  autoPlayInterval = 50000,
+  autoPlayInterval = 60000,
   indicators = true,
   arrows = true,
   effect = "cube",
@@ -222,7 +223,7 @@ export default function Slider({
             />
             <div className="absolute inset-0 bg-black/10" />
             {currentSlide === 0 && slides[currentSlide].slider && (
-              <div className="absolute bottom-0 left-0 right-0 z-20 flex flex-col sm:flex-row items-center justify-center sm:justify-start w-full h-full gap-10 md:p-12 lg:p-16">
+              <div className="absolute bottom-0 left-0 right-0 z-20 flex flex-col items-center justify-center w-full h-full gap-10 sm:flex-row sm:justify-start md:p-12 lg:p-16">
                 <div className="max-w-4xl ml-10 sm:space-y-8 ">
                   <h1 className="mb-4 space-y-4 text-4xl font-bold leading-tight lg:text-7xl md:text-6xl">
                     <SparklesText
@@ -268,11 +269,17 @@ export default function Slider({
                       </span>
                     </Link>
                   </div>
+
+                  <img
+                    src={logos}
+                    alt="logo image"
+                    className="hidden object-contain w-full h-full rounded-lg sm:block max-h-32 drop-shadow-xl"
+                  />
                 </div>
-                {/* <div className="hidden md:block px-5 py-1 rounded-lg bg-black/40 backdrop-blur-3xl">
+                {/* <div className="hidden px-5 py-1 rounded-lg md:block bg-black/40 backdrop-blur-3xl">
                   <AccreditationLogo />
                 </div> */}
-                <div className="block sm:hidden px-5 py-1 rounded-lg bg-black/40 backdrop-blur-3xl">
+                <div className="block px-5 py-1 rounded-lg sm:hidden bg-black/40 backdrop-blur-3xl">
                   <AccreditationLogoMobile />
                 </div>
               </div>
@@ -298,11 +305,11 @@ export default function Slider({
 
       {/* Navigation Arrows */}
       {arrows && (
-        <div className="hidden sm:flex ">
+        <div className={`flex ${arrowClassName}`}>
           <Button
             onClick={prevSlideFunc}
             disabled={isAnimating}
-            className="z-20 p-2 -translate-y-1/2 border rounded-full sm:absolute left-4 top-1/2 bg-white/10 hover:bg-white/20 backdrop-blur-sm border-white/20 md:p-3"
+            className="absolute z-20 scale-75 sm:scale-100 p-2 -translate-y-1/2 border rounded-full left-2 sm:left-4 top-1/2 bg-white/10 hover:bg-white/20 sm:backdrop-blur-sm border-white/20 md:p-3"
             size="icon"
             variant="ghost"
           >
@@ -312,7 +319,7 @@ export default function Slider({
           <Button
             onClick={nextSlideFunc}
             disabled={isAnimating}
-            className="absolute z-20 p-2 -translate-y-1/2 border rounded-full right-6 top-1/2 bg-white/10 hover:bg-white/20 backdrop-blur-sm border-white/20 md:p-3"
+            className="absolute z-20 scale-75 sm:scale-100 p-2 -translate-y-1/2 border rounded-full right-2 sm:right-4 top-1/2 bg-white/10 hover:bg-white/20 sm:backdrop-blur-sm border-white/20 md:p-3"
             size="icon"
             variant="ghost"
           >
