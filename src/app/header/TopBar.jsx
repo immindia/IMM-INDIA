@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import PulsatingButton from "@/components/ui/pulsating-button";
 import { Link } from "react-router-dom";
 import { Instagram, Facebook, Youtube, Twitter, Linkedin } from "lucide-react";
+import { RiTwitterXLine } from "react-icons/ri";
 
 const TopBar = () => {
   const [iconsLoaded, setIconsLoaded] = useState([
@@ -32,7 +33,7 @@ const TopBar = () => {
     { icon: <Linkedin className="w-4 h-4" />, url: "https://www.linkedin.com/school/institute-of-marketing-and-management/?originalSubdomain=in" },
     { icon: <Youtube className="w-4 h-4" />, url: "https://bit.ly/IMM-YT" },
     { icon: <Facebook className="w-4 h-4" />, url: "https://www.facebook.com/indiaimm" },
-    { icon: <Twitter className="w-4 h-4" />, url: "https://x.com/imm_bschool" },
+    { icon: <RiTwitterXLine className="w-4 h-4" />, url: "https://x.com/imm_bschool" },
   ];
 
   return (
