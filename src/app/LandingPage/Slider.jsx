@@ -270,9 +270,9 @@ export default function Slider({
                 {/* <div className="hidden px-5 py-1 rounded-lg md:block bg-black/40 backdrop-blur-3xl">
                   <AccreditationLogo />
                 </div> */}
-                <div className="block px-5 py-1 rounded-lg sm:hidden bg-black/40 backdrop-blur-3xl">
+                {/* <div className="block px-5 py-1 rounded-lg sm:hidden bg-black/40 backdrop-blur-3xl">
                   <AccreditationLogoMobile />
-                </div>
+                </div> */}
               </div>
             )}
 

@@ -38,7 +38,7 @@ const ReviewCard = ({
   return (
     <figure
       className={cn(
-        "relative h-full w-max cursor-pointer overflow-hidden rounded-xl border p-4 ",
+        "relative h-full w-max cursor-pointer overflow-hidden rounded-xl border p-4",
         // light styles
         "border-gray-950/[.1] bg-gray-950/[.01]  bg-white",
         // dark styles
@@ -54,7 +54,7 @@ const ReviewCard = ({
 
 export function AccreditationLogoMobile() {
   return (
-    <div className="relative flex max-w-7xl mx-auto py-10 sm:pt-20 flex-col items-center justify-center overflow-hidden">
+    <div className="relative flex max-w-7xl mx-auto pb-10 sm:pb-0 flex-col items-center justify-center overflow-hidden">
       <Marquee pauseOnHover className="[--duration:5s]" isPlaying={false} repeat={false}>
         {reviews.map((review) => (
           <ReviewCard key={review.id} {...review} />
