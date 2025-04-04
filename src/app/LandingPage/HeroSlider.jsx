@@ -5,7 +5,7 @@ import img3 from "../../assets/Hero/hero4.webp";
 import img4 from "../../assets/Hero/hero5.webp";
 import img5 from "../../assets/Hero/hero6.webp";
 
-
+import { AccreditationLogoMobile } from "./AccreditationLogoMobile";
 import Slider from "./Slider";
 
 export default function HeroSlider() {
@@ -63,8 +63,18 @@ export default function HeroSlider() {
   ];
 
   return (
-    <div className="w-screen h-[70vh] sm:h-[80vh] overflow-hidden">
-      <Slider slides={slides} effect="fade" arrowClassName="hidden sm:flex" />
-    </div>
+    <>
+      <div className="w-screen bg-gradient-to-t from-primary-color via-pink-700 to-primary-color h-[70vh] sm:h-[80vh] overflow-hidden">
+        <Slider slides={slides} effect="fade" arrowClassName="hidden sm:flex" />
+      </div>
+      <div className="w-full relative" style={{ marginTop: '-150px' }}>
+        <div className="container mx-auto">
+          <div className="relative">
+            <AccreditationLogoMobile />
+            <div className="absolute bottom-0 left-0 w-full h-1/2 bg-gradient-to-t from-primary-color via-pink-700 to-primary-color -z-[1]" />
+          </div>
+        </div>
+      </div>
+    </>
   );
 }

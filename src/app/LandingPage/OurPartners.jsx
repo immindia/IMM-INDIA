@@ -13,7 +13,7 @@ import Heading from "../../components/Heading";
 
 import InternationalPartner from "./InternationalPartner";
 import NationalPartners from "./NationalPartners";
-
+import { AccreditationLogoMobile } from "./AccreditationLogoMobile";
 export default function OurPartners() {
   const sectionRef = useRef(null);
   const headingRef = useRef(null);
@@ -90,38 +90,43 @@ export default function OurPartners() {
   ];
 
   return (
-    <section
-      ref={sectionRef}
-      className="bg-gradient-to-t from-primary-color via-pink-700 to-primary-color lg:py-16 md:py-12 py-8 sm:px-0 px-6"
-    >
-      <div className="container mx-auto sm:max-w-5xl md:max-w-6xl lg:max-w-7xl">
-        <motion.div
-          ref={headingRef}
-          className="mb-8 sm:mb-10 text-center"
-          initial={{ opacity: 0, y: 50 }}
-          animate={{
-            opacity: isHeadingInView ? 1 : 0,
-            y: isHeadingInView ? 0 : 50,
-          }}
-          transition={{
-            duration: 0.8,
-            ease: "easeOut",
-          }}
-        >
-          <Heading
-            title="Academic Partners"
-            titleClassName="text-center text-2xl font-bold text-white md:text-3xl"
-            className="block lg:pb-0 sm:pb-0 mx-auto w-full text-left sm:col-span-4 "
-            subtitle="Our academic partners are some of the best in the world, and we are proud to have them on board."
-            subtitleClassName="text-center text-white/80 text-sm md:text-base"
-          />
-        </motion.div>
+    <>
+      {/* <div className="relative">
+        <AccreditationLogoMobile />
+      </div> */}
+      <section
+        ref={sectionRef}
+        className="bg-gradient-to-t from-primary-color via-pink-700 to-primary-color lg:py-16 md:py-12 py-8 sm:px-0 px-6"
+      >
+        <div className="container mx-auto sm:max-w-5xl md:max-w-6xl lg:max-w-7xl">
+          <motion.div
+            ref={headingRef}
+            className="mb-8 sm:mb-10 text-center"
+            initial={{ opacity: 0, y: 50 }}
+            animate={{
+              opacity: isHeadingInView ? 1 : 0,
+              y: isHeadingInView ? 0 : 50,
+            }}
+            transition={{
+              duration: 0.8,
+              ease: "easeOut",
+            }}
+          >
+            <Heading
+              title="Academic Partners"
+              titleClassName="text-center text-2xl font-bold text-white md:text-3xl"
+              className="block lg:pb-0 sm:pb-0 mx-auto w-full text-left sm:col-span-4 "
+              subtitle="Our academic partners are some of the best in the world, and we are proud to have them on board."
+              subtitleClassName="text-center text-white/80 text-sm md:text-base"
+            />
+          </motion.div>
 
-        <div className="space-y-10 sm:space-y-20">
-          <InternationalPartner partner={internationalPartner} />
-          <NationalPartners partners={nationalPartners} />
+          <div className="space-y-10 sm:space-y-20">
+            <InternationalPartner partner={internationalPartner} />
+            <NationalPartners partners={nationalPartners} />
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </>
   );
 }

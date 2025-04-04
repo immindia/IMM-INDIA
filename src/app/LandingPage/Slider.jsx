@@ -338,6 +338,11 @@ export default function Slider({
           ))}
         </div>
       )}
+      {/* <div className="w-full relative" style={{ marginTop: '-150px' }}>
+        <div className="container mx-auto px-4">
+          <AccreditationLogoMobile />
+        </div>
+      </div> */}
     </div>
   );
 }
