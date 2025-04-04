@@ -53,6 +53,9 @@ import vardhman from "../../assets/recruiters-logo-marquee/vardhman logo.webp";
 import vivo from "../../assets/recruiters-logo-marquee/vivo logo.webp";
 import volvo from "../../assets/recruiters-logo-marquee/volvo logo.webp";
 import wipro from "../../assets/recruiters-logo-marquee/wipro logo.webp";
+import pvr from "../../assets/recruiters-logo-marquee/Pvrcinemas.jpg";
+import mankind from "../../assets/recruiters-logo-marquee/Mankind.png";
+import EY from "../../assets/recruiters-logo-marquee/EY.png";
 
 const icons = [
   // { src: amazon, alt: "Amazon" },
@@ -101,6 +104,9 @@ const icons = [
   { src: vivo, alt: "Vivo" },
   { src: volvo, alt: "Volvo" },
   { src: wipro, alt: "Wipro" },
+  { src: pvr, alt: "PVR" },
+  { src: mankind, alt: "Mankind" },
+  { src: EY, alt: "EY" },
 ];
 
 const Recruiters = () => {

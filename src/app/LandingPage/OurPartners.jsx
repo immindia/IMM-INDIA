@@ -4,7 +4,7 @@ import { motion, useInView } from "framer-motion";
 import EU from "../../assets/partners/EU.png";
 import IIT from "../../assets/partners/iit.png";
 import JIT from "../../assets/partners/jit.png";
-import Kladio from "../../assets/partners/kladio.png";
+import Kladio from "../../assets/partners/kladio.webp";
 import Vitti from "../../assets/partners/vitti.png";
 import Wasme from "../../assets/partners/wasme.png";
 import Young from "../../assets/partners/young.png";
