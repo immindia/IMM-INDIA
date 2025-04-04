@@ -20,14 +20,14 @@ const LiveProjects = () => {
         <div className="grid grid-cols-12 gap-5 justify-start items-start">
           <div className="col-span-12 lg:col-span-6">
             <div className="text-left md:pr-20">
-              <motion.p
+              {/* <motion.p
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: isInView ? 1 : 0, y: isInView ? 0 : 20 }}
                 transition={{ duration: 0.8, delay: 0.5 }}
                 className="opacity-75 uppercase pl-1"
               >
                 IMM India
-              </motion.p>
+              </motion.p> */}
 
               <motion.h1
                 initial={{ opacity: 0, y: 30 }}

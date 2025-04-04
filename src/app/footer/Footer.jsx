@@ -64,6 +64,7 @@ export default function Footer() {
     },
     // { name: "Scholarships", path: "/scholarships" },
     { name: "Contact us", path: "/contact-us" },
+    { name: "Blog", path: "/blog" },
     { name: "Privacy Policy", path: "/privacy-policy" },
 
     { name: "Disclaimer", path: "/disclaimer" },
@@ -74,9 +75,9 @@ export default function Footer() {
   ];
 
   // Split links into columns
-  const column1 = quickLinks.slice(0, 6);
-  const column2 = quickLinks.slice(6, 12);
-  const column3 = quickLinks.slice(12);
+  const column1 = quickLinks.slice(0, 7);
+  const column2 = quickLinks.slice(7, 13);
+  const column3 = quickLinks.slice(13);
 
   return (
     <footer

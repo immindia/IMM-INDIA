@@ -39,20 +39,19 @@ import Slider from "./Slider";
 export default function GlobalExcursion() {
 
   const internationalExcursion = [
-    
-    {
-      slider: false,
-      category: "Malaysia",
-      title: "VISION VOYAGE AAGAMAN 2024",
-      image: international1,
-      alt: "Vision Voyage event",
-    },
     {
       slider: false,
       category: "London",
       title: "Exploring the Great Barrier Reef",
       image: international2,
       alt: "Great Barrier Reef",
+    },
+    {
+      slider: false,
+      category: "Malaysia",
+      title: "VISION VOYAGE AAGAMAN 2024",
+      image: international1,
+      alt: "Vision Voyage event",
     },
     {
       slider: false,
@@ -135,7 +134,7 @@ export default function GlobalExcursion() {
   const nationalExcursion = [
     {
       slider: false,
-      category: "Delhi",
+      category: "Udaipur",
       title: "Few Global Excursion Glimpses",
       image: national1,
       alt: "Global Excursion group",
@@ -149,14 +148,14 @@ export default function GlobalExcursion() {
     },
     {
       slider: false,
-      category: "Delhi",
+      category: "Udaipur",
       title: "VISION VOYAGE AAGAMAN 2024",
       image: national3,
       alt: "Vision Voyage event",
     },
     {
       slider: false,
-      category: "Delhi",
+      category: "Udaipur",
       title: "VISION VOYAGE AAGAMAN 2024",
       image: national4,
       alt: "Vision Voyage event",
@@ -205,14 +204,14 @@ export default function GlobalExcursion() {
     },
     {
       slider: false,
-      category: "Delhi",
+      category: "Udaipur",
       title: "VISION VOYAGE AAGAMAN 2024",
       image: national11,
       alt: "Vision Voyage event",
     },
     {
       slider: false,
-      category: "Delhi",
+      category: "Udaipur",
       title: "VISION VOYAGE AAGAMAN 2024",
       image: national12,
       alt: "Vision Voyage event",
