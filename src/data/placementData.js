@@ -106,8 +106,8 @@ const placementCards = [
     id: 11,
     image: Ritam,
     name: "Ritam Kalkhandey",
-    company: "JK Cement",
-    logo: jkcement,
+    company: "Regalo Kitchens",
+    logo: Regalo,
   },
   {
     id: 12,
@@ -127,8 +127,8 @@ const placementCards = [
     id: 14,
     image: Vipin,
     name: "Vipin Yadav",
-    company: "Regalo Kitchens",
-    logo: Regalo,
+    company: "JK Cement",
+    logo: jkcement,
   },
   {
     id: 15,
