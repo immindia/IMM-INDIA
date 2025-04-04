@@ -10,6 +10,7 @@ import { Link } from "react-router-dom";
 // import AccreditationLogo from "./AccreditationLogo";
 import { AccreditationLogoMobile } from "./AccreditationLogoMobile";
 import logos from "../../assets/Hero/logo-1.webp";
+import Heading from "../../components/Heading";
 export default function Slider({
   arrowClassName,
   slides,
@@ -226,23 +227,13 @@ export default function Slider({
               <div className="absolute bottom-0 left-0 right-0 z-20 flex flex-col items-center justify-center w-full h-full gap-10 sm:flex-row sm:justify-start md:p-12 lg:p-16">
                 <div className="max-w-4xl ml-10 sm:space-y-8 ">
                   <h1 className="mb-4 space-y-4 text-4xl font-bold leading-tight lg:text-7xl md:text-6xl">
-                    <SparklesText
-                      className="text-4xl text-transparent bg-gradient-to-r from-white via-white/80 to-white/70 bg-clip-text sm:text-5xl md:text-5xl lg:text-7xl"
-                      text={slides[currentSlide].heading1}
-                      colors={{
-                        first: "#DDC99F",
-                        second: "#C4184B",
-                      }}
-                    />
+                    <div className="text-4xl text-white sm:text-5xl md:text-5xl lg:text-7xl">
+                      {slides[currentSlide].heading1}
+                    </div>
 
-                    <SparklesText
-                      className="text-4xl text-transparent bg-gradient-to-r from-white via-white/80 to-white/70 bg-clip-text sm:text-5xl md:text-5xl lg:text-7xl"
-                      text={slides[currentSlide].heading2}
-                      colors={{
-                        first: "#DDC99F",
-                        second: "#C4184B",
-                      }}
-                    />
+                    <div className="text-4xl text-white sm:text-5xl md:text-5xl lg:text-7xl">
+                      {slides[currentSlide].heading2}
+                    </div>
                   </h1>
 
                   <p className="mb-6 text-xl lg:text-3xl text-white/90 md:text-2xl">
@@ -270,11 +261,11 @@ export default function Slider({
                     </Link>
                   </div>
 
-                  <img
+                  {/* <img
                     src={logos}
                     alt="logo image"
                     className="hidden object-contain w-full h-full rounded-lg sm:block max-h-32 drop-shadow-xl"
-                  />
+                  /> */}
                 </div>
                 {/* <div className="hidden px-5 py-1 rounded-lg md:block bg-black/40 backdrop-blur-3xl">
                   <AccreditationLogo />
