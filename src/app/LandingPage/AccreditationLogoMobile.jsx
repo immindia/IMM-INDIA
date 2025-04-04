@@ -9,7 +9,7 @@ import GGU from "@/assets/accreditationLogo/GGU.webp";
 const reviews = [
   {
     id: 1,
-    img: AACSB,
+    img: AMDISA,
   },
   {
     id: 2,
@@ -17,7 +17,7 @@ const reviews = [
   },
   {
     id: 3,
-    img: AMDISA,
+    img: AACSB,
   },
   {
     id: 4,
@@ -40,7 +40,7 @@ const ReviewCard = ({
       className={cn(
         "relative h-full w-max cursor-pointer overflow-hidden rounded-xl border p-4",
         // light styles
-        "border-gray-950/[.1] bg-gray-950/[.01]   bg-gradient-to-br from-gray-400 via-gray-100 to-gray-400",
+        "border-gray-950/[.1] bg-gray-950/[.01] bg-white",
         // dark styles
         "dark:border-gray-50/[.1] dark:bg-gray-50/[.10] dark:hover:bg-gray-50/[.15]"
       )}
@@ -54,7 +54,7 @@ const ReviewCard = ({
 
 export function AccreditationLogoMobile() {
   return (
-    <div className="relative flex max-w-7xl mx-auto pb-10 sm:pb-0 flex-col items-center justify-center overflow-hidden">
+    <div className="relative flex max-w-7xl mx-auto pb-10 sm:pt-20 flex-col items-center justify-center overflow-hidden">
       <Marquee pauseOnHover className="[--duration:5s]" isPlaying={false} repeat={false}>
         {reviews.map((review) => (
           <ReviewCard key={review.id} {...review} />

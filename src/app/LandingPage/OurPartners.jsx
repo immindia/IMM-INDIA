@@ -91,7 +91,7 @@ export default function OurPartners() {
 
   return (
     <>
-      <div className="relative bg-gradient-to-t from-primary-color via-pink-700 to-primary-color">
+      <div className="relative bg-gradient-to-br from-gray-400 via-gray-100 to-gray-400">
         <AccreditationLogoMobile />
         {/* <div className="absolute bottom-0 left-0 w-full h-[calc(100%-40px)] bg-gradient-to-t from-primary-color via-pink-700 to-primary-color -z-[1]" /> */}
       </div>

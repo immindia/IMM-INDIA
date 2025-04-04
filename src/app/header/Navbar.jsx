@@ -23,7 +23,7 @@ export default function Header() {
               <img
                 src={logo}
                 alt="Indo Global Group of Colleges"
-                className="w-auto h-16"
+                className="w-auto h-[70px]"
               />
             </Link>
             <img

@@ -82,7 +82,7 @@ export default function Footer() {
 
   return (
     <footer
-      className={`bg-pink-950 text-white py-12 relative ${
+      className={`bg-primary-color text-white py-12 relative ${
         isLoaded ? "opacity-100" : "opacity-0"
       }`}
       style={{ transition: "opacity 0.5s ease-in-out" }}
@@ -403,7 +403,7 @@ export default function Footer() {
 
         {/* Copyright section */}
         <div
-          className={`mt-12 pt-6 border-t border-pink-800 text-center ${
+          className={`mt-12 pt-6 border-t border-primary-color/50 text-center ${
             isLoaded ? "opacity-100" : "opacity-0"
           }`}
           style={{ transition: "opacity 0.5s ease-in-out 0.6s" }}

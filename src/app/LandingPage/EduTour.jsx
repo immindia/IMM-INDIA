@@ -283,7 +283,7 @@ export default function GlobalExcursion() {
     <section className="px-6 py-8 bg-primary-color lg:py-20 md:py-12 sm:px-0">
       <div className="container max-w-6xl mx-auto">
         <Heading
-          title="EduTour @ IMM"
+          title="EduTours @ IMM"
           titleClassName="lg:font-extrabold text-center text-white"
           className="block w-full pb-0 mx-auto text-left sm:col-span-4 sm:pb-0 lg:pb-14"
         />

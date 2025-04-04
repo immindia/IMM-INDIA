@@ -35,7 +35,7 @@ export default function LatestBlogsAndEvents() {
     <section className="bg-gradient-to-bl from-gray-200 via-gray-50 to-gray-300">
       <Container className="">
         <Heading
-          title="Updated Events"
+          title="Upcoming Events"
           titleClassName="lg:font-extrabold font-bold text-primary-color"
           subtitle="Stay updated with the latest events, news, and insights from IMM India. Discover thought leadership, industry updates, student success stories at our institution."
           subtitleClassName="text-gray-500 text-justify m-0 lg:text-lg lg:font-normal  text-center mx-auto"
