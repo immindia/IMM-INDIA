@@ -216,7 +216,7 @@ export default function Slider({
           }}
         >
           <div className="relative w-full h-full">
-            <div className="absolute inset-0 z-10 bg-gradient-to-t from-black/70 to-transparent" />
+            <div className="absolute inset-0 z-10 bg-gradient-to-t from-black/0 to-transparent" />
             <img
               src={slides[currentSlide].image || "/placeholder.svg"}
               alt={slides[currentSlide].title}
