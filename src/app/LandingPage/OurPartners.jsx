@@ -91,9 +91,10 @@ export default function OurPartners() {
 
   return (
     <>
-      {/* <div className="relative">
+      <div className="relative bg-gradient-to-t from-primary-color via-pink-700 to-primary-color">
         <AccreditationLogoMobile />
-      </div> */}
+        {/* <div className="absolute bottom-0 left-0 w-full h-[calc(100%-40px)] bg-gradient-to-t from-primary-color via-pink-700 to-primary-color -z-[1]" /> */}
+      </div>
       <section
         ref={sectionRef}
         className="bg-gradient-to-t from-primary-color via-pink-700 to-primary-color lg:py-16 md:py-12 py-8 sm:px-0 px-6"

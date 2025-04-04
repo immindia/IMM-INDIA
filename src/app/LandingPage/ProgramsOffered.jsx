@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import Heading from "../../components/Heading";
 import img from "../../assets/pgdm.webp";
+import img2 from "../../assets/programsoffered.webp";
 import VideoDialog from "@/components/VideoDialog";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
@@ -68,7 +69,7 @@ export default function ProgramsOffered() {
               <ProgramContent
                 title="PGDM"
                 specializations={specializations}
-                imageSrc={img}
+                imageSrc={img2}
                 imageAlt="PGDM students studying"
                 videoSrc="https://youtu.be/eOa-I0MSmUs?si=PgNnCNLBGcJRmer7"
                 videoId="eOa-I0MSmUs"

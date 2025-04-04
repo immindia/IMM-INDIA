@@ -12,6 +12,7 @@ import {
   Linkedin,
   Youtube,
 } from "lucide-react";
+import { RiTwitterXLine } from "react-icons/ri";
 import { Link } from "react-router-dom";
 
 export default function Footer() {
@@ -147,7 +148,7 @@ export default function Footer() {
                 rel="noopener noreferrer"
                 className="p-2 overflow-hidden transition-all duration-300 bg-white rounded-full cursor-pointer hover:scale-110 hover:rotate-12 group"
               >
-                <Twitter className="w-6 h-6 text-pink-300 transition-colors duration-300 group-hover:text-pink-500 " />
+                <RiTwitterXLine className="w-6 h-6 text-pink-300 transition-colors duration-300 group-hover:text-pink-500 " />
               </a>
               
               

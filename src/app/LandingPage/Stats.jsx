@@ -1,4 +1,4 @@
-import bg from "../../assets/IMMLEGACYBG.jpg";
+import bg from "../../assets/Building.webp";
 import Heading from "../../components/Heading";
 import NumberTicker from "../../components/ui/number-ticker";
 import { motion } from "framer-motion";
@@ -25,7 +25,7 @@ const Stats = () => {
         alt="stats"
         className="absolute top-0 left-0 object-cover w-full h-full -z-10 opacity-95"
       />
-      <div className="absolute inset-0 z-20 bg-black opacity-20" />
+      <div className="absolute inset-0 z-20 bg-gradient-to-t from-primary-color via-pink-900 to-primary-color opacity-80" />
       <div className="relative z-30 max-w-screen-xl px-4 mx-auto md:px-8">
         <motion.div
           ref={ref}
