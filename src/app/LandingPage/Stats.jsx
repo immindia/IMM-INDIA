@@ -42,7 +42,7 @@ const Stats = () => {
               title="IMM LEGACY"
               subtitle="Over five decades of shaping global leaders with 20,000+ successful alumni, hundreds of accolades, and partnerships worldwide."
               titleClassName="text-4xl md:text-6xl font-bold text-yellow-400"
-              subtitleClassName="text-gray-300 text-base md:text-lg"
+              subtitleClassName="text-white text-base md:text-lg"
             />
           </motion.div>
 
@@ -69,7 +69,7 @@ const Stats = () => {
                     +
                   </span>
                 </div>
-                <div className="mt-3 text-sm font-medium text-gray-400 sm:text-xl text-center max-w-32 sm:max-w-none">
+                <div className="mt-3 text-sm font-medium text-white sm:text-xl text-center max-w-32 sm:max-w-none">
                   {item.title}
                 </div>
               </motion.div>
@@ -99,7 +99,7 @@ const Stats = () => {
                     +
                   </span>
                 </div>
-                <div className="mt-3 text-sm font-medium text-gray-400 sm:text-xl text-center max-w-32 sm:max-w-none">
+                <div className="mt-3 text-sm font-medium text-white sm:text-xl text-center max-w-32 sm:max-w-none">
                   {item.title}
                 </div>
               </motion.div>
@@ -129,7 +129,7 @@ const Stats = () => {
                     +
                   </span>
                 </div>
-                <div className="mt-3 text-sm font-medium text-gray-400 sm:text-xl text-center max-w-32 sm:max-w-none">
+                <div className="mt-3 text-sm font-medium text-white sm:text-xl text-center max-w-32 sm:max-w-none">
                   {item.title}
                 </div>
               </motion.div>
