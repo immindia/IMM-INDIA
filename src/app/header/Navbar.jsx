@@ -13,9 +13,9 @@ export default function Header() {
     <header className="w-full">
       {/* Main Navigation */}
       <nav className="bg-primary-color">
-        <div className="flex flex-wrap items-center justify-between px-4 py-3 mx-auto md:px-16">
+        <div className="flex flex-wrap items-center justify-between px-4 py-3 mx-auto md:px-10">
           {/* Logo Section */}
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-2">
             <Link
               to="/"
               className="transition-transform duration-300 hover:scale-105"
