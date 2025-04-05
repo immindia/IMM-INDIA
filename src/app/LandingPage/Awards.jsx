@@ -18,7 +18,7 @@ const cards = [
     image: img1,
   },
   {
-    title: "Best B-School Of the Year 2023",
+    title: "Best B-School Of the Year",
     image: img2,
   },
   {

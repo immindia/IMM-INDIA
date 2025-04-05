@@ -23,13 +23,13 @@ export default function Header() {
               <img
                 src={logo}
                 alt="Indo Global Group of Colleges"
-                className="w-auto h-[70px]"
+                className="w-auto h-[80px]"
               />
             </Link>
             <img
               src={logo2}
               alt="Indo Global Group of Colleges"
-              className="w-auto h-16 transition-transform duration-300 hover:scale-105"
+              className="w-auto h-16 transition-transform duration-300 hover:scale-105 "
             />
           </div>
 
