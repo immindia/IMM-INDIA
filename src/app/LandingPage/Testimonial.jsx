@@ -17,44 +17,84 @@ import img2 from "../../assets/test2.png";
 import img3 from "../../assets/test3.png";
 import img4 from "../../assets/test4.png";
 import Heading from "../../components/Heading";
+import { Link } from "react-router-dom";
+import { BorderBeam } from "@/components/magicui/border-beam";
+import { Button } from "@/components/ui/button";
+import AkshiImg from "../../assets/testimonials/Akshi Agarwal_11zon.webp";
+import AmanImg from "../../assets/testimonials/Aman Goswami_11zon.webp";
+import AmitImg from "../../assets/testimonials/Amit Kumar Aman_11zon.webp";
+import AnjaliImg from "../../assets/testimonials/Anjali Sharma_11zon.webp";
+import KunalImg from "../../assets/testimonials/Kunal Chaudhary_11zon.webp";
+import MehtabImg from "../../assets/testimonials/Mehtab Agarwal_11zon.webp";
+import PragyaImg from "../../assets/testimonials/Pragya Singhal_11zon.webp";
+import ShrutiImg from "../../assets/testimonials/Shruti_11zon.webp";
 
 export default function Testimonial() {
   // Testimonials data array
   const testimonials = [
     {
       id: 0,
-      image: img,
-      quote: "I can't thank enough for the incredible courses they offer.",
-      name: "Devon Lane",
-      position: "Scrum Master",
+      image: ShrutiImg,
+      quote: "Watch my testimonial video",
+      name: "Shruti",
+      position: "Student",
+      videoLink: "https://youtu.be/_wmO1XuXtew?feature=shared",
     },
     {
       id: 1,
-      image: img1,
-      quote: "This course changed my life and career trajectory.",
-      name: "John Doe",
-      position: "Software Engineer",
+      image: AmitImg,
+      quote: "Watch my testimonial video",
+      name: "Amit",
+      position: "Student",
+      videoLink: "https://youtu.be/UfCXe3g0z60?feature=shared",
     },
     {
       id: 2,
-      image: img2,
-      quote: "Amazing content and great instructors!",
-      name: "Jane Smith",
-      position: "Project Manager",
+      image: AmanImg,
+      quote: "Watch my testimonial video",
+      name: "Aman",
+      position: "Student",
+      videoLink: "https://youtu.be/Gv5ooJEsBpc?feature=shared",
     },
     {
       id: 3,
-      image: img3,
-      quote: "I learned so much, and I’m applying it daily!",
-      name: "Alice Johnson",
-      position: "UX Designer",
+      image: AkshiImg,
+      quote: "Watch my testimonial video",
+      name: "Akshi",
+      position: "Student",
+      videoLink: "https://youtu.be/UxdxlXncWS8?feature=shared",
     },
     {
       id: 4,
-      image: img4,
-      quote: "The best investment I've made in my education.",
-      name: "Bob Brown",
-      position: "Data Analyst",
+      image: PragyaImg,
+      quote: "Watch my testimonial video",
+      name: "Pragya",
+      position: "Student",
+      videoLink: "https://youtu.be/_uN1KDA46bA?feature=shared",
+    },
+    {
+      id: 5,
+      image: MehtabImg,
+      quote: "Watch my testimonial video",
+      name: "Mehtab",
+      position: "Student",
+      videoLink: "https://youtu.be/Y0nkrcTL5U8?feature=shared",
+    },
+    {
+      id: 6,
+      image: KunalImg,
+      quote: "Watch my testimonial video",
+      name: "Kunal",
+      position: "Student",
+      videoLink: "https://youtu.be/lCYdDnKrzxY?feature=shared",
+    },
+    {
+      id: 7,
+      image: AnjaliImg,
+      quote: "Watch my testimonial video",
+      name: "Anjali",
+      position: "Student",
+      videoLink: "https://youtu.be/zAtcsH8b5Ec?feature=shared",
     },
   ];
 
@@ -120,11 +160,15 @@ export default function Testimonial() {
         <div className="hidden relative h-[600px] md:flex w-full flex-col items-center justify-center rounded-lg">
           {/* Central Image with Fade Effect */}
           <span
-            className={`pointer-events-none whitespace-pre-wrap bg-gradient-to-b from-black to-gray-300 bg-clip-text text-center text-8xl font-semibold leading-none text-transparent dark:from-white dark:to-black transition-opacity duration-300 ${
+            className={`pointer-events-none overflow-hidden whitespace-pre-wrap bg-gradient-to-b from-black to-gray-300 bg-clip-text text-center text-8xl font-semibold leading-none text-transparent dark:from-white dark:to-black transition-opacity duration-300 ${
               fade ? "opacity-0" : "opacity-100"
             }`}
           >
-            <img src={centralImage} alt="Central" className="w-[220px]" />
+            <img
+              src={centralImage}
+              alt="Central"
+              className="w-[220px] rounded-full border border-blue-900"
+            />
           </span>
 
           {/* Orbiting Circles */}
@@ -132,7 +176,7 @@ export default function Testimonial() {
           {testimonials.map((testimonial, index) => (
             <OrbitingCircles
               key={testimonial.id}
-              className="size-[100px] border-none"
+              className="size-[100px] border-none overflow-hidden"
               radius={index % 2 === 0 ? 170 : 290} // Adjust radius for alternate circles
               duration={20}
               delay={index * 5} // Use index to stagger delays
@@ -141,7 +185,7 @@ export default function Testimonial() {
               <img
                 src={testimonial.image}
                 alt={`Person ${index + 1}`}
-                className={`w-[100px] cursor-pointer transition-opacity duration-300 ${
+                className={`w-[100px] cursor-pointer transition-opacity border border-blue-900 rounded-full duration-300 ${
                   fade ? "opacity-0" : "opacity-100"
                 }`}
                 onClick={() => handleOrbitingCircleClick(index)} // Update click handler
@@ -152,11 +196,15 @@ export default function Testimonial() {
         <div className="md:hidden relative h-[300px] flex w-full flex-col items-center justify-center rounded-lg">
           {/* Central Image with Fade Effect */}
           <span
-            className={`pointer-events-none whitespace-pre-wrap bg-gradient-to-b from-black to-gray-300 bg-clip-text text-center text-8xl font-semibold leading-none text-transparent dark:from-white dark:to-black transition-opacity duration-300 ${
+            className={`pointer-events-none  overflow-hidden whitespace-pre-wrap bg-gradient-to-b from-black to-gray-300 bg-clip-text text-center text-8xl font-semibold leading-none text-transparent dark:from-white dark:to-black transition-opacity duration-300 ${
               fade ? "opacity-0" : "opacity-100"
             }`}
           >
-            <img src={centralImage} alt="Central" className="w-[100px]" />
+            <img
+              src={centralImage}
+              alt="Central"
+              className="w-[100px] rounded-full border border-blue-900"
+            />
           </span>
 
           {/* Orbiting Circles */}
@@ -164,7 +212,7 @@ export default function Testimonial() {
           {testimonials.map((testimonial, index) => (
             <OrbitingCircles
               key={testimonial.id}
-              className="size-[50px] border-none"
+              className="size-[50px] border-none overflow-hidden"
               radius={index % 2 === 0 ? 90 : 140} // Adjust radius for alternate circles
               duration={20}
               delay={index * 5} // Use index to stagger delays
@@ -173,7 +221,7 @@ export default function Testimonial() {
               <img
                 src={testimonial.image}
                 alt={`Person ${index + 1}`}
-                className={`w-[50px] cursor-pointer transition-opacity duration-300 ${
+                className={`w-[50px] cursor-pointer transition-opacity rounded-full border border-blue-900 duration-300 ${
                   fade ? "opacity-0" : "opacity-100"
                 }`}
                 onClick={() => handleOrbitingCircleClick(index)} // Update click handler
@@ -212,9 +260,6 @@ export default function Testimonial() {
                               ))}
                               <Star className="w-6 h-6 text-gray-300" />
                             </div>
-                            <blockquote className="md:text-3xl text-center sm:text-left text-xl font-medium text-gray-700 mb-4 sm:leading-[3rem]">
-                              {testimonial.quote}
-                            </blockquote>
                             <div className="mt-6">
                               <p className="text-lg text-center sm:text-left font-semibold text-red-600 md:text-2xl">
                                 {testimonial.name}
@@ -222,6 +267,12 @@ export default function Testimonial() {
                               <p className="text-sm text-center sm:text-left text-gray-600 md:text-xl">
                                 {testimonial.position}
                               </p>
+                              <Link to={testimonial.videoLink} target="_blank">
+                                <Button className="mt-8 overflow-hidden rounded-full bg-[#C4184B] hover:bg-primary-color px-6 !py-2 text-sm lg:text-lg font-semibold text-white duration-150 transition-all hover:-translate-y-2">
+                                  {/* <BorderBeam className="absolute inset-0 rounded-full" /> */}
+                                  Watch Testimonial Video
+                                </Button>
+                              </Link>
                             </div>
                           </div>
                         </div>

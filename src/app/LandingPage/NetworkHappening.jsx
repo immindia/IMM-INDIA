@@ -4,7 +4,7 @@ import { ChevronLeft, ChevronRight, ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 import Heading from "../../components/Heading";
 import club from "../../assets/network-happenings/club-imm.webp";
-import corporate from "../../assets/network-happenings/Corporate Connect.webp";
+import corporate from "../../assets/network-happenings/corporate.png";
 import industry from "../../assets/network-happenings/Industry Visit.webp";
 import research from "../../assets/network-happenings/Research Conference.webp";
 import Container from "../../components/wrappers/Container";
