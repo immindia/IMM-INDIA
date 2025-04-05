@@ -1,8 +1,8 @@
 import Abhay from "@/assets/placements/students/Abhay Bhadouria23_1_11zon.webp";
 import Akshay from "@/assets/placements/students/Akshay Kumar_2_11zon.webp";
-import Ankur from "@/assets/placements/students/Ankur Sharma_3_11zon.webp";
+import Ankur from "@/assets/placements/students/ankur.webp";
 import Dheeraj from "@/assets/placements/students/Dheeraj.png";
-import Diksha from "@/assets/placements/students/Diksha Joshi_5_11zon.webp";
+import Diksha from "@/assets/placements/students/diksha.webp";
 import Gaurav from "@/assets/placements/students/Gaurav Saho_6_11zon.webp";
 import Gunraj from "@/assets/placements/students/Gunraj Chawla_7_11zon.webp";
 import Jyotsana from "@/assets/placements/students/Jyotsana Singh_8_11zon.webp";
@@ -11,7 +11,7 @@ import Muskan from "@/assets/placements/students/Muskan Garg_10_11zon.webp";
 import Ritam from "@/assets/placements/students/Ritam Kalkhandey_12_11zon.webp";
 import Shambhavi from "@/assets/placements/students/shambhavi.webp";
 import Shweta from "@/assets/placements/students/shweta.webp";
-import Tamanna from "@/assets/placements/students/TAMANNA BHARDWAJ_15_11zon.webp";
+import Tamanna from "@/assets/placements/students/tamanna.webp";
 import Vipin from "@/assets/placements/students/Vipin Yadav_16_11zon.webp";
 
 import easyCom from "@/assets/placements/students/logo/company (1).webp";
