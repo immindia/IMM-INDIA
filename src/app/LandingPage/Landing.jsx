@@ -16,7 +16,7 @@ import LiveProjects from "./LiveProjects";
 import HeroSlider from "./HeroSlider";
 import Placements from "./Placements";
 import OurPartners from "./OurPartners";
-
+import AwardsThreeD from "./AwardsThreeD";
 // const sectionVariants = {
 //   hidden: { scale: 0.8, opacity: 0 },
 //   visible: {
@@ -153,6 +153,7 @@ const Landing = () => {
         animate={awardsInView ? "visible" : "hidden"}
       > */}
         <Awards />
+        {/* <AwardsThreeD /> */}
       {/* </motion.div> */}
       
       {/* <motion.div

@@ -10,7 +10,8 @@ import { ChevronRight } from "lucide-react";
 import { Dialog, DialogTrigger, DialogContent } from "@/components/ui/dialog";
 import { Link } from "react-router-dom";
 import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
+import { useRef, useEffect } from "react";
+import VanillaTilt from 'vanilla-tilt';
 
 const cards = [
   {
@@ -111,65 +112,112 @@ const Awards = () => {
 
 export default Awards;
 
-const CardItem = ({ item, index, areCardsInView }) => (
-  <motion.div
-    initial={{ opacity: 0, y: 50, scale: 0.9 }}
-    animate={{
-      opacity: areCardsInView ? 1 : 0,
-      y: areCardsInView ? 0 : 50,
-      scale: areCardsInView ? 1 : 0.9,
-    }}
-    transition={{
-      duration: 0.7,
-      delay: 0.4 + index * 0.4,
-      ease: "easeOut",
-    }}
-    whileHover={{ y: -5, scale: 1.02 }}
-  >
-    <div className="w-fit mx-auto relative">
-      <img
-        src="https://cdn.easyfrontend.com/pictures/logos/award-logo.png"
-        alt=""
-        className="max-w-[160px] sm:max-w-[220px] text-blue-600 mx-auto duration-500"
-      />
-      <Dialog>
-        <DialogTrigger asChild>
-          <img
-            src={item.image}
-            alt={item.title}
-            className="w-24 sm:w-36 h-24 sm:h-36 object-cover rounded-full z-40 absolute top-4 border-2 sm:border-4 border-yellow-400 left-8 sm:left-10 cursor-pointer hover:border-yellow-300 transition-colors"
-          />
-        </DialogTrigger>
-        <DialogContent
-          className="sm:max-w-[600px] w-[98vw] rounded-md bg-transparent border-none"
-          crossIcon="text-white sm:h-8 sm:w-8  rounded bg-slate-600 p-1"
-        >
-          <div className="w-full h-full flex justify-center items-center sm:p-8 p-3">
+const CardItem = ({ item, index, areCardsInView }) => {
+  const tiltRef = useRef(null);
+
+  useEffect(() => {
+    const tiltNode = tiltRef.current;
+    
+    if (tiltNode) {
+      VanillaTilt.init(tiltNode, {
+        max: 25, // maximum tilt rotation (degrees)
+        perspective: 1000, // transform perspective, the lower the more extreme the tilt gets
+        scale: 1.05, // 2 = 200%, 1.5 = 150%, etc.
+        speed: 1000, // speed of the enter/exit transition
+        glare: true, // if it should have a "glare" effect
+        "max-glare": 0.5, // the maximum "glare" opacity
+        gyroscope: true, // if the tilt should be affected by mobile gyroscope
+        reverse: true, // reverse the tilt direction
+      });
+    }
+
+    return () => {
+      if (tiltNode) {
+        tiltNode.vanillaTilt.destroy();
+      }
+    };
+  }, []);
+
+  return (
+    <motion.div
+      ref={tiltRef}
+      className="shadow-[0px_50px_100px_-20px_rgba(50,50,93,0.25),0px_30px_60px_-30px_rgba(0,0,0,0.3),inset_0px_-2px_6px_0px_rgba(10,37,64,0.35)] flex flex-col items-center justify-center h-full py-2 rounded-xl bg-gradient-to-br from-blue-900/50 to-blue-950/50 backdrop-blur-sm"
+      initial={{ opacity: 0, y: 50, scale: 0.9 }}
+      animate={{
+        opacity: areCardsInView ? 1 : 0,
+        y: areCardsInView ? 0 : 50,
+        scale: areCardsInView ? 1 : 0.9,
+      }}
+      transition={{
+        duration: 0.7,
+        delay: 0.4 + index * 0.4,
+        ease: "easeOut",
+      }}
+      style={{
+        transformStyle: "preserve-3d",
+      }}
+    >
+      <div 
+        className="w-fit mx-auto relative"
+        style={{
+          transform: "translateZ(50px)",
+          transformStyle: "preserve-3d"
+        }}
+      >
+        <img
+          src="https://cdn.easyfrontend.com/pictures/logos/award-logo.png"
+          alt=""
+          className="max-w-[160px] sm:max-w-[220px] text-blue-600 mx-auto duration-500"
+          style={{
+            transform: "translateZ(20px)",
+          }}
+        />
+        <Dialog>
+          <DialogTrigger asChild>
             <img
               src={item.image}
               alt={item.title}
-              className="w-full h-auto object-contain rounded-lg"
+              className="w-24 sm:w-36 h-24 sm:h-36 object-cover rounded-full z-40 absolute top-4 border-2 sm:border-4 border-yellow-400 left-8 sm:left-10 cursor-pointer hover:border-yellow-300 transition-colors"
+              style={{
+                transform: "translateZ(75px)",
+              }}
             />
-          </div>
-        </DialogContent>
-      </Dialog>
-    </div>
-    <motion.h5
-      initial={{ opacity: 0, y: 20 }}
-      animate={{
-        opacity: areCardsInView ? 1 : 0,
-        y: areCardsInView ? 0 : 20,
-      }}
-      transition={{
-        duration: 0.5,
-        delay: 0.2 + index * 0.1,
-      }}
-      className="text-[17px] text-white font-medium leading-relaxed mb-0 text-center"
-    >
-      {item.title}
-    </motion.h5>
-  </motion.div>
-);
+          </DialogTrigger>
+          <DialogContent
+            className="sm:max-w-[600px] w-[98vw] rounded-md bg-transparent border-none"
+            crossIcon="text-white sm:h-8 sm:w-8 rounded bg-slate-600 p-1"
+          >
+            <div className="w-full h-full flex justify-center items-center sm:p-8 p-3">
+              <img
+                src={item.image}
+                alt={item.title}
+                className="w-full h-auto object-contain rounded-lg"
+              />
+            </div>
+          </DialogContent>
+        </Dialog>
+      </div>
+      <motion.h5
+        initial={{ opacity: 0, y: 20 }}
+        animate={{
+          opacity: areCardsInView ? 1 : 0,
+          y: areCardsInView ? 0 : 20,
+        }}
+        transition={{
+          duration: 0.5,
+          delay: 0.2 + index * 0.1,
+        }}
+        className="text-[17px] text-white font-medium leading-relaxed mb-0 text-center mt-4"
+        style={{
+          transform: "translateZ(30px)",
+          transformStyle: "preserve-3d"
+        }}
+      >
+        {item.title}
+      </motion.h5>
+    </motion.div>
+  );
+};
 
 const PlacementHighlights = ({ cardsRef, areCardsInView }) => {
   return (
