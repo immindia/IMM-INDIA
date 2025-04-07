@@ -15,7 +15,7 @@ export default function Slider({
   arrowClassName,
   slides,
   autoPlay = true,
-  autoPlayInterval = 3000,
+  autoPlayInterval = 60000,
   indicators = true,
   arrows = true,
   effect = "cube",
@@ -241,7 +241,7 @@ export default function Slider({
                     </div>
                   </h1>
 
-                  <p className="mb-6 text-xl lg:text-3xl text-white/90 md:text-2xl">
+                  <p className="mb-6 text-xl lg:text-3xl text-white/90 md:text-2xl max-w-md">
                     {slides[currentSlide].description}
                   </p>
 

@@ -24,6 +24,7 @@ import ClubsAtIMM from "./app/lifeAtIMM/ClubsAtIMM";
 import LifeAtIMM from "./app/lifeAtIMM/LifeAtIMM";
 import CampusRecruitment from "./app/placements/CampusRecruitment";
 import PlacementRecords from "./app/placements/PlacementRecords";
+import AluminiDirectory from "./app/alumni/AluminiDirectory";
 import Blog from "./app/blog/Blog";
 import BlogDetails from "./app/blog/BlogDetails";
 import Contact from "./app/contact/Contact";
@@ -153,6 +154,11 @@ function App() {
             path="/placements/placement-records"
             element={<PlacementRecords />}
           />
+
+          {/* Alumni */}
+          <Route path="/alumni" element={<AluminiDirectory />} />
+
+          {/* Blog */}
           <Route path="/blog" element={<Blog />} />
           <Route path="/blog/:slug" element={<BlogDetails />} />
 
