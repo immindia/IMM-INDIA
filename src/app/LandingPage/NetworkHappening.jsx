@@ -6,7 +6,7 @@ import Heading from "../../components/Heading";
 import club from "../../assets/network-happenings/club-imm.webp";
 import corporate from "../../assets/network-happenings/corporate.png";
 import industry from "../../assets/network-happenings/insdustry.png";
-import research from "../../assets/network-happenings/research.png";
+import research from "../../assets/network-happenings/research.webp";
 import Container from "../../components/wrappers/Container";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
@@ -206,7 +206,7 @@ const NetworkHappening = () => {
                       initial="hidden"
                       animate="visible"
                       exit="exit"
-                      className="p-6 mb-6 lg:py-16"
+                      className="p-6 sm:mb-6 py-2 lg:py-16"
                     >
                       <motion.h4
                         className="mb-4 text-4xl font-bold"

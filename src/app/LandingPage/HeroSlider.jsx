@@ -5,11 +5,14 @@ import img2 from "../../assets/Hero/2.webp";
 // import img2_1 from "../../assets/Hero/2.2.webp";
 import img2_1 from "../../assets/Hero/2.2.png";
 import img3 from "../../assets/Hero/3.webp";
-import img3_1 from "../../assets/Hero/3.3.webp";
+// import img3_1 from "../../assets/Hero/3.3.webp";
+import img3_1 from "../../assets/Hero/3.3.png";
 import img4 from "../../assets/Hero/4.webp";
-import img4_1 from "../../assets/Hero/4.4.webp";
+// import img4_1 from "../../assets/Hero/4.4.webp";
+import img4_1 from "../../assets/Hero/4.4.png";
 import img5 from "../../assets/Hero/5.webp";
-import img5_1 from "../../assets/Hero/5.5.webp";
+// import img5_1 from "../../assets/Hero/5.5.webp";
+import img5_1 from "../../assets/Hero/5.5.png";
 
 // import { AccreditationLogoMobile } from "./AccreditationLogoMobile";
 import Slider from "./Slider";

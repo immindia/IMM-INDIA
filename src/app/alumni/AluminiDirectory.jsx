@@ -156,7 +156,7 @@ export default function AlumniDirectory() {
                         <SelectValue placeholder="Class Year" />
                       </div>
                     </SelectTrigger>
-                    <SelectContent className="bg-red">
+                    <SelectContent className="max-h-60">
                       <SelectItem value="all">All Years</SelectItem>
                       {classYears.map((year) => (
                         <SelectItem key={year} value={year}>

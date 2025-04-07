@@ -9,11 +9,11 @@ import GGU from "@/assets/accreditationLogo/GGU.webp";
 const reviews = [
   {
     id: 1,
-    img: AMDISA,
+    img: AICTE,
   },
   {
     id: 2,
-    img: AICTE,
+    img: AUAP,
   },
   {
     id: 3,
@@ -21,7 +21,7 @@ const reviews = [
   },
   {
     id: 4,
-    img: AUAP,
+    img: AMDISA,
   },
   {
     id: 5,
