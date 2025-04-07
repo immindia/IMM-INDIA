@@ -23,7 +23,7 @@ import NEHA_BHAT from "@/assets/alumni/NEHA BHAT.webp";
 import NITIN from "@/assets/alumni/NITIN Sethi.webp";
 import PANKAJ from "@/assets/alumni/PANKAJ KUMAR.webp";
 import PRABHJOT from "@/assets/alumni/PRABHJOT KHERA.webp";
-import PRANAV from "@/assets/alumni/PRAnav sRIVASTAVA.webp";
+import PRANAV from "@/assets/alumni/PRAnav sRIVASTAVa.webp";
 import PUJA from "@/assets/alumni/Puja singh.webp";
 import RAJIV from "@/assets/alumni/rajiv kumar.webp";
 import ROHINA from "@/assets/alumni/ROHINA BINTE.webp";
