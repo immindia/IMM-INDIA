@@ -15,7 +15,7 @@ const Header = () => {
 
       // Add delay using setTimeout
       setTimeout(() => {
-        setIsVisible(prevScrollPos > currentScrollPos || currentScrollPos < 10);
+        setIsVisible(prevScrollPos > currentScrollPos || currentScrollPos < 200);
         setPrevScrollPos(currentScrollPos);
       }, 150); // 100ms delay
     };
