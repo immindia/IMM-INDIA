@@ -6,7 +6,7 @@ export default memo(function PlacementCardMarquee({ children }) {
     <div className="relative flex w-full flex-col items-center justify-center overflow-hidden">
       <Marquee
         pauseOnHover
-        className="[--duration:40s] py-6 sm:py-12"
+        className="[--duration:14s] py-6 sm:py-12"
         style={{ transform: "translateZ(0)" }}
       >
         {children}

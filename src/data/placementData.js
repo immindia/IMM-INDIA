@@ -27,12 +27,7 @@ import iciciBank from "@/assets/placements/students/logo/icici.png";
 import oyo from "@/assets/placements/students/logo/company (10).webp";
 import jkcement from "@/assets/placements/students/logo/company (11).webp";
 
-
-
-
-
-export 
-const placementCards = [
+export const placementCards = [
   {
     id: 1,
     image: Jyotsana,
@@ -40,12 +35,12 @@ const placementCards = [
     company: "Lattice",
     logo: Lattice,
   },
-//   {
-//     id: 2,
-//     image: Gunraj,
-//     name: "Gunraj Chawla",
-//     company: "Ameriprise",
-//   },
+  //   {
+  //     id: 2,
+  //     image: Gunraj,
+  //     name: "Gunraj Chawla",
+  //     company: "Ameriprise",
+  //   },
   {
     id: 3,
     image: Shambhavi,

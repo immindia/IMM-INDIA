@@ -11,14 +11,10 @@ import {
 } from "@/components/ui/carousel";
 import { Star } from "lucide-react";
 import OrbitingCircles from "../../components/ui/orbiting-circles";
-import img from "../../assets/test0.png";
-import img1 from "../../assets/test1.png";
-import img2 from "../../assets/test2.png";
-import img3 from "../../assets/test3.png";
-import img4 from "../../assets/test4.png";
+
 import Heading from "../../components/Heading";
 import { Link } from "react-router-dom";
-import { BorderBeam } from "@/components/magicui/border-beam";
+// import { BorderBeam } from "@/components/magicui/border-beam";
 import { Button } from "@/components/ui/button";
 import AkshiImg from "../../assets/testimonials/Akshi Agarwal_11zon.webp";
 import AmanImg from "../../assets/testimonials/Aman Goswami_11zon.webp";
