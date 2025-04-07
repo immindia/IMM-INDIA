@@ -9,7 +9,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Search, GraduationCap, Building2, Users, ArrowUpDown, Filter, LayoutGrid, List } from "lucide-react"
-import { alumniData } from "./alumniData"
+import { alumniData } from "../../data/alumniData"
 export default function AlumniDirectory() {
  
 
@@ -252,9 +252,10 @@ export default function AlumniDirectory() {
                           className="bg-white border rounded-lg overflow-hidden hover:shadow-md transition-shadow"
                         >
                           <div className="aspect-square bg-gradient-to-br from-pink-100 to-pink-200 flex items-center justify-center">
-                            <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-white flex items-center justify-center text-2xl sm:text-3xl font-bold text-pink-600 shadow-sm">
+                            {/* <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-white flex items-center justify-center text-2xl sm:text-3xl font-bold text-pink-600 shadow-sm">
                               {alumni.name.charAt(0)}
-                            </div>
+                            </div> */}
+                            <img src={alumni.img} alt={alumni.name} className="h-full w-full object-cover" />
                           </div>
                           <div className="p-3 sm:p-4">
                             <h3 className="font-semibold text-base sm:text-lg truncate">{alumni.name}</h3>
