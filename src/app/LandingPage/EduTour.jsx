@@ -303,7 +303,7 @@ export default function GlobalExcursion() {
           />
         </div>
         <ShimmerButton
-          className="mx-auto mt-12 duration-300 ease-in-out shadow-2xl hover:-translate-y-2"
+          className="mx-auto mt-12 hidden duration-300 ease-in-out shadow-2xl hover:-translate-y-2"
           background="#ffffff"
           shimmerSize="0.08em"
           shimmerColor="#1e1e1e"
