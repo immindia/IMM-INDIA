@@ -110,7 +110,7 @@ const Stats = () => {
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: isInView ? 1 : 0, y: isInView ? 0 : 50 }}
             transition={{ duration: 1.5, delay: 2.5 }}
-            className="sm:hidden grid grid-cols-2 gap-8 md:grid-cols-3 mt-8 sm:divide-x-2 divide-yellow-500 md:gap-0 md:divide-yellow-500"
+            className="sm:hidden grid grid-cols-2 gap-2 md:grid-cols-3 mt-0 sm:mt-8 sm:divide-x-2 divide-yellow-500 md:gap-0 md:divide-yellow-500"
           >
             {stats.map((item, index) => (
               <motion.div

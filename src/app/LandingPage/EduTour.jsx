@@ -44,6 +44,7 @@ export default function GlobalExcursion() {
       category: "London",
       title: "VISION VOYAGE AAGAMAN 2024",
       image: international1,
+      mobileImage: international1,
       alt: "Vision Voyage event",
     },
     {
@@ -51,6 +52,7 @@ export default function GlobalExcursion() {
       category: "Dubai",
       title: "Exploring the Great Barrier Reef",
       image: international2,
+      mobileImage: international2,
       alt: "Great Barrier Reef",
     },
     {
@@ -58,6 +60,7 @@ export default function GlobalExcursion() {
       category: "Dubai",
       title: "Cultural Journey in Tokyo",
       image: international3,
+      mobileImage: international3,
       alt: "Tokyo culture",
     },
     {
@@ -65,6 +68,7 @@ export default function GlobalExcursion() {
       category: "Dubai",
       title: "A Day in Paris",
       image: international4,
+      mobileImage: international4,
       alt: "Paris sightseeing",
     },
     {
@@ -72,6 +76,7 @@ export default function GlobalExcursion() {
       category: "Dubai",
       title: "Discovering Rome",
       image: international5,
+      mobileImage: international5,
       alt: "Rome exploration",
     },
     {
@@ -79,6 +84,7 @@ export default function GlobalExcursion() {
       category: "Malaysia",
       title: "Flavors of Barcelona",
       image: international6,
+      mobileImage: international6,
       alt: "Barcelona food tour",
     },
     {
@@ -86,6 +92,7 @@ export default function GlobalExcursion() {
       category: "Malaysia",
       title: "Carnival in Rio",
       image: international7,
+      mobileImage: international7,
       alt: "Rio Carnival",
     },
     {
@@ -93,6 +100,7 @@ export default function GlobalExcursion() {
       category: "Malaysia",
       title: "Mysteries of the Pyramids",
       image: international8,
+      mobileImage: international8,
       alt: "Egyptian pyramids",
     },
     {
@@ -100,6 +108,7 @@ export default function GlobalExcursion() {
       category: "Malaysia",
       title: "Taj Mahal Experience",
       image: international9,
+      mobileImage: international9,
       alt: "Taj Mahal",
     },
     {
@@ -107,6 +116,7 @@ export default function GlobalExcursion() {
       category: "London",
       title: "Nature's Beauty in Banff",
       image: international10,
+      mobileImage: international10,
       alt: "Banff National Park",
     },
     {
@@ -114,6 +124,7 @@ export default function GlobalExcursion() {
       category: "London",
       title: "Safari Adventure",
       image: international11,
+      mobileImage: international11,
       alt: "South African safari",
     },
     {
@@ -121,6 +132,7 @@ export default function GlobalExcursion() {
       category: "London",
       title: "Island Hopping in Phuket",
       image: international12,
+      mobileImage: international12,
       alt: "Phuket islands",
     },
     {
@@ -128,6 +140,7 @@ export default function GlobalExcursion() {
       category: "London",
       title: "Santorini Sunset",
       image: international13,
+      mobileImage: international13,
       alt: "Santorini view",
     },
   ];
@@ -137,6 +150,7 @@ export default function GlobalExcursion() {
       category: "Udaipur",
       title: "Few Global Excursion Glimpses",
       image: national1,
+      mobileImage: national1,
       alt: "Global Excursion group",
     },
     {
@@ -144,6 +158,7 @@ export default function GlobalExcursion() {
       category: "Udaipur",
       title: "VISION VOYAGE AAGAMAN 2024",
       image: national2,
+      mobileImage: national2,
       alt: "Vision Voyage event",
     },
     {
@@ -151,6 +166,7 @@ export default function GlobalExcursion() {
       category: "Udaipur",
       title: "VISION VOYAGE AAGAMAN 2024",
       image: national3,
+      mobileImage: national3,
       alt: "Vision Voyage event",
     },
     {
@@ -158,6 +174,7 @@ export default function GlobalExcursion() {
       category: "Udaipur",
       title: "VISION VOYAGE AAGAMAN 2024",
       image: national4,
+      mobileImage: national4,
       alt: "Vision Voyage event",
     },
     {
@@ -165,6 +182,7 @@ export default function GlobalExcursion() {
       category: "Udaipur",
       title: "VISION VOYAGE AAGAMAN 2024",
       image: national5,
+      mobileImage: national5,
       alt: "Vision Voyage event",
     },
     {
@@ -172,6 +190,7 @@ export default function GlobalExcursion() {
       category: "Manali",
       title: "VISION VOYAGE AAGAMAN 2024",
       image: national6,
+      mobileImage: national6,
       alt: "Vision Voyage event",
     },
     {
@@ -179,6 +198,7 @@ export default function GlobalExcursion() {
       category: "Manali",
       title: "VISION VOYAGE AAGAMAN 2024",
       image: national7,
+      mobileImage: national7,
       alt: "Vision Voyage event",
     },
     {
@@ -186,6 +206,7 @@ export default function GlobalExcursion() {
       category: "Manali",
       title: "VISION VOYAGE AAGAMAN 2024",
       image: national8,
+      mobileImage: national8,
       alt: "Vision Voyage event",
     },
     {
@@ -193,6 +214,7 @@ export default function GlobalExcursion() {
       category: "Manali",
       title: "VISION VOYAGE AAGAMAN 2024",
       image: national9,
+      mobileImage: national9,
       alt: "Vision Voyage event",
     },
     {
@@ -200,6 +222,7 @@ export default function GlobalExcursion() {
       category: "Udaipur",
       title: "VISION VOYAGE AAGAMAN 2024",
       image: national10,
+      mobileImage: national10,
       alt: "Vision Voyage event",
     },
     {
@@ -207,6 +230,7 @@ export default function GlobalExcursion() {
       category: "Udaipur",
       title: "VISION VOYAGE AAGAMAN 2024",
       image: national11,
+      mobileImage: national11,
       alt: "Vision Voyage event",
     },
     {
@@ -214,6 +238,7 @@ export default function GlobalExcursion() {
       category: "Udaipur",
       title: "VISION VOYAGE AAGAMAN 2024",
       image: national12,
+      mobileImage: national12,
       alt: "Vision Voyage event",
     },
 
