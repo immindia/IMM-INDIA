@@ -54,8 +54,8 @@ const ReviewCard = ({
 
 export function AccreditationLogoMobile() {
   return (
-    <div className="relative flex max-w-7xl mx-auto pb-10 sm:pt-20 flex-col items-center justify-center overflow-hidden">
-      <Marquee pauseOnHover className="[--duration:5s]" isPlaying={false} repeat={false}>
+    <div className="relative flex max-w-7xl mx-auto py-4 sm:py-10 flex-col items-center justify-center overflow-hidden">
+      <Marquee pauseOnHover className="[--duration:8s]" >
         {reviews.map((review) => (
           <ReviewCard key={review.id} {...review} />
         ))}

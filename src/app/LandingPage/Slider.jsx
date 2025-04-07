@@ -4,13 +4,13 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence } from "framer-motion";
-import { SparklesText } from "@/components/magicui/sparkles-text";
+// import { SparklesText } from "@/components/magicui/sparkles-text";
 import { BorderBeam } from "@/components/magicui/border-beam";
 import { Link } from "react-router-dom";
 // import AccreditationLogo from "./AccreditationLogo";
-import { AccreditationLogoMobile } from "./AccreditationLogoMobile";
-import logos from "../../assets/Hero/logo-1.webp";
-import Heading from "../../components/Heading";
+// import { AccreditationLogoMobile } from "./AccreditationLogoMobile";
+// import logos from "../../assets/Hero/logo-1.webp";
+// import Heading from "../../components/Heading";
 export default function Slider({
   arrowClassName,
   slides,
@@ -220,7 +220,12 @@ export default function Slider({
             <img
               src={slides[currentSlide].image || "/placeholder.svg"}
               alt={slides[currentSlide].title}
-              className="object-cover w-full h-full"
+              className="object-cover w-full h-full sm:block hidden"
+            />
+            <img
+              src={slides[currentSlide].mobileImage || "/placeholder.svg"}
+              alt={slides[currentSlide].title}
+              className="object-cover w-full h-full block sm:hidden"
             />
             <div className="absolute inset-0 bg-black/10" />
             {currentSlide === 0 && slides[currentSlide].slider && (

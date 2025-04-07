@@ -1,18 +1,24 @@
 // import img from "../../assets/hero.jpg";
-import img from "../../assets/Hero/1.webp";
+import img1 from "../../assets/Hero/1.webp";
+import img1_1 from "../../assets/Hero/1.1.webp";
 import img2 from "../../assets/Hero/2.webp";
+import img2_1 from "../../assets/Hero/2.2.webp";
 import img3 from "../../assets/Hero/3.webp";
+import img3_1 from "../../assets/Hero/3.3.webp";
 import img4 from "../../assets/Hero/4.webp";
+import img4_1 from "../../assets/Hero/4.4.webp";
 import img5 from "../../assets/Hero/5.webp";
+import img5_1 from "../../assets/Hero/5.5.webp";
 
-import { AccreditationLogoMobile } from "./AccreditationLogoMobile";
+// import { AccreditationLogoMobile } from "./AccreditationLogoMobile";
 import Slider from "./Slider";
 
 export default function HeroSlider() {
   const slides = [
     {
       slider: true,
-      image: img,
+      image: img1,
+      mobileImage: img1_1,
       title: "Discover Amazing Places",
       heading1: "Human Centered.",
       heading2: "Future Focused.",
@@ -25,6 +31,7 @@ export default function HeroSlider() {
     {
       slider: true,
       image: img2,
+      mobileImage: img2_1,
       title: "Unforgettable Adventures",
       heading1: "Innovation Driven.",
       heading2: "Industry Ready.",
@@ -37,6 +44,7 @@ export default function HeroSlider() {
     {
       slider: true,
       image: img3,
+      mobileImage: img3_1,
       title: "Luxury Accommodations",
       heading1: "Global Perspective.",
       heading2: "Local Impact.",
@@ -49,6 +57,7 @@ export default function HeroSlider() {
     {
       slider: true,
       image: img4,
+      mobileImage: img4_1,
       title: "Luxury Accommodations",
       heading1: "Global Perspective.",
       heading2: "Local Impact.",
@@ -56,6 +65,7 @@ export default function HeroSlider() {
     {
       slider: true,
       image: img5,
+      mobileImage: img5_1,
       title: "Luxury Accommodations",
       heading1: "Global Perspective.",
       heading2: "Local Impact.",
@@ -64,7 +74,7 @@ export default function HeroSlider() {
 
   return (
     <>
-      <div className="w-screen bg-gradient-to-t from-primary-color via-pink-700 to-primary-color h-[70vh] sm:h-[80vh] overflow-hidden">
+      <div className="w-screen bg-gradient-to-t from-primary-color via-pink-700 to-primary-color h-[400px] sm:h-[82vh] overflow-hidden">
         <Slider slides={slides} effect="fade" arrowClassName="hidden sm:flex" />
       </div>
       {/* <div className="w-full relative" style={{ marginTop: '-125px' }}>

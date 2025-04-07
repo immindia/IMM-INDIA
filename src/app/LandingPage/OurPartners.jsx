@@ -8,8 +8,14 @@ import Kladio from "../../assets/partners/kladio.webp";
 import Vitti from "../../assets/partners/vitti.png";
 import Wasme from "../../assets/partners/wasme.png";
 import Young from "../../assets/partners/young.png";
-
+import logos from "../../assets/accreditationLogo/logos.png";
 import Heading from "../../components/Heading";
+
+import AACSB from "@/assets/accreditationLogo/AACSB.webp";
+import AICTE from "@/assets/accreditationLogo/AICTE.webp";
+import AMDISA from "@/assets/accreditationLogo/AMDISA.webp";
+import AUAP from "@/assets/accreditationLogo/AUAP.webp";
+import GGU from "@/assets/accreditationLogo/GGU.webp";
 
 import InternationalPartner from "./InternationalPartner";
 import NationalPartners from "./NationalPartners";
@@ -92,8 +98,54 @@ export default function OurPartners() {
   return (
     <>
       <div className="relative bg-gradient-to-br from-gray-400 via-gray-100 to-gray-400">
-        <AccreditationLogoMobile />
+      {/* <div className="relative bg-white "> */}
+        <div className="sm:hidden block">
+          <AccreditationLogoMobile />
+        </div>
         {/* <div className="absolute bottom-0 left-0 w-full h-[calc(100%-40px)] bg-gradient-to-t from-primary-color via-pink-700 to-primary-color -z-[1]" /> */}
+        {/* <img
+          src={logos}
+          alt="logo image"
+          className="hidden object-contain w-full h-40 p-1 sm:block mx-auto"
+        /> */}
+
+        <div className="hidden sm:flex justify-center items-center gap-4 p-5">
+          <div className="h-36 bg-white rounded-lg p-5">
+            <img
+              src={AICTE}
+              alt="AICTE"
+              className="w-full h-full object-contain hover:-translate-y-2 transition-all duration-300"
+            />
+          </div>
+          <div className="h-36 bg-white rounded-lg p-5">
+            <img
+              src={AMDISA}
+              alt="AMDISA"
+              className="w-full h-full object-contain hover:-translate-y-2 transition-all duration-300"
+            />
+          </div>
+          <div className="h-36 bg-white rounded-lg p-5">
+            <img
+              src={AACSB}
+              alt="AACSB"
+              className="w-full h-full object-contain hover:-translate-y-2 transition-all duration-300"
+            />
+          </div>
+          <div className="h-36 bg-white rounded-lg p-5">
+            <img
+              src={AUAP}
+              alt="AUAP"
+              className="w-full h-full object-contain hover:-translate-y-2 transition-all duration-300"
+            />
+          </div>
+          <div className="h-36 bg-white rounded-lg p-5">
+            <img
+              src={GGU}
+              alt="GGU"
+              className="w-full h-full object-contain hover:-translate-y-2 transition-all duration-300"
+            />
+          </div>
+        </div>
       </div>
       <section
         ref={sectionRef}
