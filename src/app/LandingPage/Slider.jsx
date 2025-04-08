@@ -241,7 +241,7 @@ export default function Slider({
                     </h2>
                   </div>
 
-                  <p className="mb-6 text-xl text-center sm:text-left px-14 sm:px-0 lg:text-3xl text-white/90 md:text-2xl max-w-md">
+                  <p className="mb-6 text-lg sm:text-xl text-center sm:text-left px-14 sm:px-0 lg:text-3xl text-white/90 md:text-2xl max-w-md">
                     {slides[currentSlide].description}
                   </p>
 

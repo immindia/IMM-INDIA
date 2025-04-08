@@ -8,7 +8,7 @@ import Kladio from "../../assets/partners/kladio.webp";
 import Vitti from "../../assets/partners/vitti.png";
 import Wasme from "../../assets/partners/wasme.png";
 import Young from "../../assets/partners/young.png";
-import logos from "../../assets/accreditationLogo/logos.png";
+// import logos from "../../assets/accreditationLogo/logos.png";
 import Heading from "../../components/Heading";
 
 import AACSB from "@/assets/accreditationLogo/AACSB.webp";

@@ -1,6 +1,7 @@
 // import img from "../../assets/hero.jpg";
 import img1 from "../../assets/Hero/1.webp";
-import img1_1 from "../../assets/Hero/1.1.webp";
+// import img1_1 from "../../assets/Hero/1.1.webp";
+import img1_1 from "../../assets/Hero/1.1.png";
 import img2 from "../../assets/Hero/2.webp";
 // import img2_1 from "../../assets/Hero/2.2.webp";
 import img2_1 from "../../assets/Hero/2.2.png";
