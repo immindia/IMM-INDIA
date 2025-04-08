@@ -98,7 +98,7 @@ export default function OurPartners() {
   return (
     <>
       <div className="relative bg-gradient-to-br from-gray-400 via-gray-100 to-gray-400">
-      {/* <div className="relative bg-white "> */}
+        {/* <div className="relative bg-white "> */}
         <div className="sm:hidden block">
           <AccreditationLogoMobile />
         </div>
@@ -119,8 +119,8 @@ export default function OurPartners() {
           </div>
           <div className="h-36 bg-white rounded-lg p-5">
             <img
-              src={AMDISA}
-              alt="AMDISA"
+              src={AUAP}
+              alt="AUAP"
               className="w-full h-full object-contain hover:-translate-y-2 transition-all duration-300"
             />
           </div>
@@ -131,10 +131,11 @@ export default function OurPartners() {
               className="w-full h-full object-contain hover:-translate-y-2 transition-all duration-300"
             />
           </div>
+
           <div className="h-36 bg-white rounded-lg p-5">
             <img
-              src={AUAP}
-              alt="AUAP"
+              src={AMDISA}
+              alt="AMDISA"
               className="w-full h-full object-contain hover:-translate-y-2 transition-all duration-300"
             />
           </div>
