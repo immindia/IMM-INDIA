@@ -15,7 +15,7 @@ export default function Slider({
   arrowClassName,
   slides,
   autoPlay = true,
-  autoPlayInterval = 6000,
+  autoPlayInterval = 600000,
   indicators = true,
   arrows = true,
   effect = "cube",
@@ -229,23 +229,23 @@ export default function Slider({
             />
             <div className="absolute inset-0 bg-black/10" />
             {currentSlide === 0 && slides[currentSlide].slider && (
-              <div className="absolute bottom-0 left-0 right-0 z-20 flex flex-col items-center justify-center w-full h-full gap-10 sm:flex-row sm:justify-start md:p-12 lg:p-16">
-                <div className="max-w-4xl ml-10 sm:space-y-8 ">
-                  <h1 className="mb-4 space-y-4 text-4xl font-bold leading-tight md:text-6xl">
-                    <div className="text-4xl text-white sm:text-5xl md:text-6xl">
+              <div className="absolute bottom-0 left-0 right-0 z-20 flex flex-col items-center justify-end w-full h-full gap-10 sm:flex-row sm:justify-start md:p-12 lg:p-16 mb-8 sm:mb-0">
+                <div className="max-w-4xl sm:ml-10 sm:space-y-8 ">
+                  <div className="mb-4 text-center sm:text-left space-y-1 text-4xl font-bold leading-tight md:text-6xl">
+                    <h1 className="text-4xl text-white sm:text-5xl md:text-6xl">
                       {slides[currentSlide].heading1}
-                    </div>
+                    </h1>
 
-                    <div className="text-4xl text-white sm:text-5xl md:text-6xl">
+                    <h2 className="text-4xl  text-white sm:text-5xl md:text-6xl">
                       {slides[currentSlide].heading2}
-                    </div>
-                  </h1>
+                    </h2>
+                  </div>
 
-                  <p className="mb-6 text-xl lg:text-3xl text-white/90 md:text-2xl max-w-md">
+                  <p className="mb-6 text-xl text-center sm:text-left px-14 sm:px-0 lg:text-3xl text-white/90 md:text-2xl max-w-md">
                     {slides[currentSlide].description}
                   </p>
 
-                  <div className="flex flex-wrap gap-4 mt-5 sm:mt-14">
+                  <div className="flex flex-wrap justify-center sm:justify-start gap-4 mt-5 sm:mt-14">
                     <Link
                       to="/programs/pgdm"
                       className="relative overflow-hidden rounded-full bg-[#C4184B] px-6 py-2 text-sm lg:text-lg font-semibold text-white hover:bg-white hover:text-black duration-150 transition-all hover:-translate-y-2"
