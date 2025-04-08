@@ -11,8 +11,8 @@ import { Dialog, DialogTrigger, DialogContent } from "@/components/ui/dialog";
 import { Link } from "react-router-dom";
 import { motion, useInView } from "framer-motion";
 import { useRef, useEffect } from "react";
-import VanillaTilt from 'vanilla-tilt';
-
+import VanillaTilt from "vanilla-tilt";
+import leaf from "../../assets/awards/leaf.png";
 const cards = [
   {
     title: "AIMS Innovation Award",
@@ -51,7 +51,7 @@ const Awards = () => {
       ref={sectionRef}
       className="relative px-0 py-10 lg:py-20 md:py-12 sm:px-0 bg-gradient-to-bl  from-blue-950 via-blue-900 to-blue-950"
     >
-      <div className="relative z-30 px-4 mx-auto max-w-screen-xl md:px-8">
+      <div className="relative z-30 px- mx-auto max-w-screen-xl md:px-">
         <motion.div
           ref={headingRef}
           initial={{ opacity: 0, y: 50 }}
@@ -72,10 +72,9 @@ const Awards = () => {
             className="text-center"
           />
         </motion.div>
-        <PlacementHighlights
-          cardsRef={cardsRef}
-          areCardsInView={areCardsInView}
-        />
+
+        <AwardsCards cardsRef={cardsRef} areCardsInView={areCardsInView} />
+
         <motion.div
           ref={buttonRef}
           initial={{ opacity: 0, y: 20 }}
@@ -117,7 +116,7 @@ const CardItem = ({ item, index, areCardsInView }) => {
 
   useEffect(() => {
     const tiltNode = tiltRef.current;
-    
+
     if (tiltNode) {
       VanillaTilt.init(tiltNode, {
         max: 25, // maximum tilt rotation (degrees)
@@ -141,7 +140,7 @@ const CardItem = ({ item, index, areCardsInView }) => {
   return (
     <motion.div
       ref={tiltRef}
-      className="shadow-[0px_50px_100px_-20px_rgba(50,50,93,0.25),0px_30px_60px_-30px_rgba(0,0,0,0.3),inset_0px_-2px_6px_0px_rgba(10,37,64,0.35)] flex flex-col items-center justify-center h-full py-2 rounded-xl bg-gradient-to-br from-blue-900/50 to-blue-950/50 backdrop-blur-sm"
+      className="shadow-[0px_50px_100px_-20px_rgba(50,50,93,0.25),0px_30px_60px_-30px_rgba(0,0,0,0.3),inset_0px_-2px_6px_0px_rgba(10,37,64,0.35)] flex flex-col items-center justify-start h-full py-2 rounded-xl bg-gradient-to-br from-blue-900/50 to-blue-950/50 backdrop-blur-sm"
       initial={{ opacity: 0, y: 50, scale: 0.9 }}
       animate={{
         opacity: areCardsInView ? 1 : 0,
@@ -157,17 +156,17 @@ const CardItem = ({ item, index, areCardsInView }) => {
         transformStyle: "preserve-3d",
       }}
     >
-      <div 
+      <div
         className="w-fit mx-auto relative"
         style={{
           transform: "translateZ(50px)",
-          transformStyle: "preserve-3d"
+          transformStyle: "preserve-3d",
         }}
       >
         <img
-          src="https://cdn.easyfrontend.com/pictures/logos/award-logo.png"
+          src={leaf}
           alt=""
-          className="max-w-[160px] sm:max-w-[220px] text-blue-600 mx-auto duration-500"
+          className="max-w-[160px] sm:max-w-[230px] text-blue-600 mx-auto duration-500"
           style={{
             transform: "translateZ(20px)",
           }}
@@ -177,7 +176,7 @@ const CardItem = ({ item, index, areCardsInView }) => {
             <img
               src={item.image}
               alt={item.title}
-              className="w-24 sm:w-36 h-24 sm:h-36 object-cover rounded-full z-40 absolute top-4 border-2 sm:border-4 border-yellow-400 left-8 sm:left-10 cursor-pointer hover:border-yellow-300 transition-colors"
+              className="w-24 sm:w-36 h-24 sm:h-36 object-cover rounded-full z-40 absolute top-4 sm:top-5 border-2 sm:border-4 border-yellow-400 left-8 sm:left-11 cursor-pointer hover:border-yellow-300 transition-colors"
               style={{
                 transform: "translateZ(75px)",
               }}
@@ -210,7 +209,7 @@ const CardItem = ({ item, index, areCardsInView }) => {
         className="text-[17px] text-white font-medium leading-relaxed mb-0 text-center mt-4"
         style={{
           transform: "translateZ(30px)",
-          transformStyle: "preserve-3d"
+          transformStyle: "preserve-3d",
         }}
       >
         {item.title}
@@ -219,7 +218,7 @@ const CardItem = ({ item, index, areCardsInView }) => {
   );
 };
 
-const PlacementHighlights = ({ cardsRef, areCardsInView }) => {
+const AwardsCards = ({ cardsRef, areCardsInView }) => {
   return (
     <section className="rounded-lg dark-gray dark:bg-[#0b1727] text-slate-800 dark:text-white">
       <div className="container mx-auto">
