@@ -177,11 +177,19 @@ const NetworkHappening = () => {
                     initial="hidden"
                     animate="visible"
                     exit="exit"
-                    className="object-cover shadow-lg shadow-gray-400/50 h-full bg-center bg-no-repeat bg-cover rounded-xl min-h-80"
-                    style={{
-                      backgroundImage: `url(${author.picture})`,
-                    }}
-                  ></motion.div>
+                    className="overflow-hidden drop-shadow-lg shadow-gray-400/50 h-full rounded-lg sm:rounded-xl aspect-video sm:h-80"
+                    // style={{
+                    //     backgroundImage: `url(${author.picture})`,
+                    // }}
+                  >
+                    <img
+                      src={author.picture}
+                      alt="image"
+                      className={`w-full h-full object-cover ${
+                        index === 2 ? "brightness-125" : ""
+                      }`}
+                    />
+                  </motion.div>
                 </AnimatePresence>
               </motion.div>
               <motion.div
