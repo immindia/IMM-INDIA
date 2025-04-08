@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import Heading from "../../components/Heading";
-
+import leaf from "../../assets/awards/leaf.png";
 // import ShimmerButton from "@/components/ui/shimmer-button";
 // import { ChevronRight } from "lucide-react";
 import { Dialog, DialogTrigger, DialogContent } from "@/components/ui/dialog";
@@ -118,11 +118,11 @@ const CardItem = ({ item, index, areCardsInView }) => (
   >
     <div className="w-fit mx-auto relative">
       <img
-        src="https://cdn.easyfrontend.com/pictures/logos/award-logo.png"
+        src={leaf}
         alt="Award logo"
         loading="eager"
         decoding="async"
-        className="max-w-[160px] sm:max-w-[220px] text-blue-600 mx-auto duration-500"
+        className="max-w-[160px] sm:max-w-[230px] text-blue-600 mx-auto duration-500"
       />
       <Dialog>
         <DialogTrigger asChild>
@@ -131,7 +131,7 @@ const CardItem = ({ item, index, areCardsInView }) => (
             alt={item.title}
             loading="lazy"
             decoding="async"
-            className="w-24 sm:w-36 h-24 sm:h-36 object-cover rounded-full z-40 absolute top-4 border-2 sm:border-4 border-yellow-400 left-8 sm:left-10 cursor-pointer hover:border-yellow-300 transition-colors"
+            className="w-24 sm:w-36 h-24 sm:h-36 object-cover rounded-full z-40 absolute top-4 sm:top-5 border-2 sm:border-4 border-yellow-400 left-8 sm:left-11 cursor-pointer hover:border-yellow-300 transition-colors"
           />
         </DialogTrigger>
         <DialogContent
