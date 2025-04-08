@@ -247,7 +247,7 @@ export default function Testimonial() {
                       <CardContent className="p-0 lg min-h-[250px] sm:h-[350px] border-none shadow-none grid">
                         <div className="bg-white">
                           <div className="p-0 sm:space-y-8">
-                            <div className="flex mb-4 justify-center sm:justify-start">
+                            <div className="flex mb-4 items-center justify-center sm:justify-start">
                               {[...Array(4)].map((_, i) => (
                                 <Star
                                   key={i}
@@ -263,12 +263,17 @@ export default function Testimonial() {
                               <p className="text-sm text-center sm:text-left text-gray-600 md:text-xl">
                                 {testimonial.position}
                               </p>
-                              <Link to={testimonial.videoLink} target="_blank">
-                                <Button className="mt-8 overflow-hidden rounded-full bg-[#C4184B] hover:bg-primary-color px-6 !py-2 text-sm lg:text-lg font-semibold text-white duration-150 transition-all hover:-translate-y-2">
+                              <div className="flex justify-center sm:justify-start">
+                                <Button className="mt-4 sm:mt-8 w-fit mx-auto sm:mx-0 rounded-full bg-[#C4184B] hover:bg-primary-color px-6 !py-2 text-sm lg:text-lg font-semibold text-white duration-150 transition-all hover:-translate-y-2 ">
                                   {/* <BorderBeam className="absolute inset-0 rounded-full" /> */}
-                                  Watch Testimonial Video
+                                <Link
+                                  to={testimonial.videoLink}
+                                  target="_blank"
+                                >
+                                  Watch Testimonial Video{" "}
+                                </Link>
                                 </Button>
-                              </Link>
+                              </div>
                             </div>
                           </div>
                         </div>
