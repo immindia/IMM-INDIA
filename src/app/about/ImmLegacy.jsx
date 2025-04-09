@@ -9,7 +9,7 @@ import { useState } from "react";
 import { Eye, Target, Award } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import founder from "../../assets/about/leadership/founder.webp";
-import building from "../../assets/building.webp";
+import building from "../../assets/Building.webp";
 const ImmLegacy = () => {
   const breadcrumbItems = [
     { href: "/", label: "Home" },
