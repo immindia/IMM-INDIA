@@ -206,14 +206,14 @@ function EventGallery() {
       </div>
 
       <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen} modal={true}>
-        <DialogContent className="p-0 max-w-[95%] w-[500px] rounded-xl overflow-hidden border-none shadow-lg">
+        <DialogContent className="p-0 max-w-[95%] sm:w-fit rounded-xl overflow-hidden border-none shadow-lg">
           {selectedEvent && (
             <div className="relative flex flex-col">
               {/* Image/Carousel Section */}
-              <div className="relative w-full h-[250px] md:h-[500px] bg-muted overflow-hidden">
+              <div className="relative w-full  bg-muted overflow-hidden">
                 {selectedEvent.gallery && selectedEvent.gallery.length > 0 ? (
                   <Carousel
-                    className="w-full h-full flex items-center justify-center"
+                    className="w-full h-full"
                     opts={{
                       align: "start",
                       loop: true,
@@ -225,7 +225,7 @@ function EventGallery() {
                           <img
                             src={`https://stealthlearn.in/imm-admin/api/${image}`}
                             alt={`Gallery image ${index + 1}`}
-                            className="w-full h-full object-cover transition-transform hover:scale-105 duration-700"
+                            className="w-auto mx-auto h-[300px] sm:h-[500px] object-cover transition-transform hover:scale-105 duration-700"
                           />
                         </CarouselItem>
                       ))}
