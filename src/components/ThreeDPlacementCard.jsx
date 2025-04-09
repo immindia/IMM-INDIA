@@ -86,7 +86,7 @@ export default memo(function ThreeDPlacementCard({
         </div>
 
         {/* Content */}
-        <div className="relative z-10 flex h-full flex-col justify-end p-2">
+        <div className="relative z-[9999] flex h-full flex-col justify-end p-2">
           <div className="sm:mb- mt-auto">
             <h3 className="mb-1 sm:text-xl  text-center   font-bold tracking-tight text-white">
               {name}
