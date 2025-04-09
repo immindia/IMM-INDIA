@@ -91,7 +91,10 @@ export default memo(function ThreeDPlacementCard({
             className="h-full w-full object-cover transform-gpu transition-transform duration-500 ease-out group-hover:scale-110"
             style={{ willChange: "transform" }}
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent" />
+          <div
+            className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent"
+            style={{ transform: "translateZ(0.5px)" }}
+          />
         </div>
 
         {/* Content */}
