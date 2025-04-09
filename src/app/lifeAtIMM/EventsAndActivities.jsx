@@ -2,12 +2,11 @@ import Heading from "../../components/Heading";
 import ImgAndBreadcrumb from "../../components/ImgAndBreadcrumb";
 import Container from "../../components/wrappers/Container";
 import img from "../../assets/lifeAtIIM/eventsAndActivities/eventBanner.webp";
-import { useMemo } from "react";
+import { useMemo, useState, useEffect } from "react";
 // import Stats from "../../components/Stats";
 // import Newsletter from "../../components/Newsletter";
 // import AboutSidebar from "../../components/AboutSidebar";
-import { eventsData } from "./eventsData";
-import { Calendar, ImageIcon, Plus } from "lucide-react";
+import { Calendar, ImageIcon, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -20,7 +19,6 @@ import {
   DialogContent,
   DialogHeader,
   DialogTitle,
-  DialogDescription,
 } from "@/components/ui/dialog";
 import {
   Carousel,
@@ -30,7 +28,6 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import { Link } from "react-router-dom";
-import { useState } from "react";
 
 const EventsAndActivities = () => {
   const breadcrumbItems = [
@@ -65,21 +62,72 @@ const EventsAndActivities = () => {
 
 export default EventsAndActivities;
 
-const years = ["2024", "2023", "2022", "2021", "2020"];
-
 function EventGallery() {
-  const [selectedYear, setSelectedYear] = useState("2024");
+  const [selectedYear, setSelectedYear] = useState("");
   const [selectedEvent, setSelectedEvent] = useState(null);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
+  const [events, setEvents] = useState([]);
+  const [years, setYears] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-  const events = useMemo(() => eventsData, []);
+  useEffect(() => {
+    const fetchEvents = async () => {
+      try {
+        const response = await fetch(
+          "https://stealthlearn.in/imm-admin/api/index2.php?resource=events"
+        );
+        const data = await response.json();
+
+        // Process events and extract unique years
+        const processedEvents = data.map((event) => ({
+          ...event,
+          photoCount: event.gallery ? event.gallery.length : 0,
+          href: `#${event.id}`,
+        }));
+
+        // Extract unique years from events
+        const uniqueYears = [
+          ...new Set(
+            processedEvents.map((event) =>
+              new Date(event.date).getFullYear().toString()
+            )
+          ),
+        ].sort((a, b) => b - a);
+
+        setEvents(processedEvents);
+        setYears(uniqueYears);
+        setSelectedYear(uniqueYears[0] || "");
+        setLoading(false);
+      } catch (error) {
+        console.error("Error fetching events:", error);
+        setLoading(false);
+      }
+    };
+
+    fetchEvents();
+  }, []);
+
+  const filteredEvents = useMemo(() => {
+    return events.filter(
+      (event) => new Date(event.date).getFullYear().toString() === selectedYear
+    );
+  }, [events, selectedYear]);
 
   const handleImageClick = (event) => {
     setSelectedEvent(event);
     setIsDialogOpen(true);
   };
+
+  if (loading) {
+    return (
+      <div className="flex justify-center items-center min-h-[400px]">
+        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-primary-color"></div>
+      </div>
+    );
+  }
+
   return (
-    <div className="relative sm:min-h-[calc(100vh-200px)] grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 sm:gap-4  gap-y-8">
+    <div className="relative sm:min-h-[calc(100vh-200px)] grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 sm:gap-4 gap-y-8">
       <div className="sidebar col-span-1 sm:h-[600px] self-start md:sticky md:top-12">
         <div className="flex flex-col gap-4 border border-slate-50 bg-pink-800 hover:bg-pink-900 shadow-sm hover:shadow-md duration-150 transition-all rounded-xl p-4 h-full sticky top-0 ">
           <h3 className="text-xl font-bold mb-2 text-white border-b border-slate-200 pb-2">
@@ -105,15 +153,15 @@ function EventGallery() {
         </div>
       </div>
       <div className="events col-span-3 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-        {events[selectedYear].map((event) => (
+        {filteredEvents.map((event) => (
           <Card
             key={event.id}
             className="group overflow-hidden h-max shadow-sm hover:shadow-md duration-150 transition-all rounded-xl hover:-translate-y-2"
           >
             <CardHeader className="p-0">
-              <div className="relative aspect-[16/9] overflow-hidden ">
+              <div className="relative aspect-square overflow-hidden ">
                 <img
-                  src={event.image}
+                  src={`https://stealthlearn.in/imm-admin/api/${event.image}`}
                   alt={event.title}
                   className="object-cover h-full w-full transition-transform group-hover:scale-105"
                 />
@@ -126,7 +174,9 @@ function EventGallery() {
             <CardContent className="p-4">
               <div className="flex items-center gap-2 text-sm text-muted-foreground mb-2">
                 <Calendar className="w-4 h-4" />
-                <time dateTime={event.date}>{event.date}</time>
+                <time dateTime={event.date}>
+                  {new Date(event.date).toLocaleDateString()}
+                </time>
               </div>
               <h3 className="text-xl font-bold mb-2 line-clamp-1 hover:text-primary-color duration-300 transition-all hover:line-clamp-none">
                 {event.title}
@@ -146,7 +196,7 @@ function EventGallery() {
             </CardFooter>
           </Card>
         ))}
-        {events[selectedYear].length === 0 && (
+        {filteredEvents.length === 0 && (
           <div className="col-span-full text-center py-12">
             <p className="text-muted-foreground">
               No events found for {selectedYear}
@@ -156,41 +206,27 @@ function EventGallery() {
       </div>
 
       <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen} modal={true}>
-        <DialogContent className="w-[95%] max-w-[600px] rounded-lg overflow-y-auto max-h-[90vh]">
+        <DialogContent className="p-0 max-w-[95%] w-[500px] rounded-xl overflow-hidden border-none shadow-lg">
           {selectedEvent && (
-            <>
-              <DialogHeader className="px-1">
-                <DialogTitle className="text-xl font-bold">
-                  {selectedEvent.title}
-                </DialogTitle>
-              </DialogHeader>
-              <div className="mt-2 space-y-3">
+            <div className="relative flex flex-col">
+              {/* Image/Carousel Section */}
+              <div className="relative w-full h-[250px] md:h-[500px] bg-muted overflow-hidden">
                 {selectedEvent.gallery && selectedEvent.gallery.length > 0 ? (
                   <Carousel
-                    className="w-full"
+                    className="w-full h-full flex items-center justify-center"
                     opts={{
                       align: "start",
                       loop: true,
                     }}
                   >
-                    <CarouselContent className="flex">
+                    <CarouselContent className="h-full">
                       {selectedEvent.gallery.map((image, index) => (
-                        <CarouselItem
-                          key={index}
-                          className="basis-full flex justify-center items-center"
-                        >
-                          <div className="w-full max-h-[60vh] flex justify-center">
-                            <img
-                              src={image}
-                              alt={`Gallery image ${index + 1}`}
-                              className="max-w-full max-h-full object-contain rounded-md"
-                              style={{
-                                maxWidth: "100%",
-                                maxHeight: "60vh",
-                                objectFit: "contain",
-                              }}
-                            />
-                          </div>
+                        <CarouselItem key={index} className="basis-full h-full">
+                          <img
+                            src={`https://stealthlearn.in/imm-admin/api/${image}`}
+                            alt={`Gallery image ${index + 1}`}
+                            className="w-full h-full object-cover transition-transform hover:scale-105 duration-700"
+                          />
                         </CarouselItem>
                       ))}
                     </CarouselContent>
@@ -198,37 +234,43 @@ function EventGallery() {
                     <CarouselNext className="absolute right-2 top-1/2 -translate-y-1/2 z-10" />
                   </Carousel>
                 ) : (
-                  <div className="w-full max-h-[60vh] flex justify-center">
-                    <img
-                      src={selectedEvent.image}
-                      alt={`Event ${selectedEvent.id}`}
-                      className="max-w-full max-h-full object-contain rounded-md"
-                      style={{
-                        maxWidth: "100%",
-                        maxHeight: "60vh",
-                        objectFit: "contain",
-                      }}
-                    />
-                  </div>
+                  <img
+                    src={`https://stealthlearn.in/imm-admin/api/${selectedEvent.image}`}
+                    alt={selectedEvent.title}
+                    className="w-full h-full object-cover transition-transform hover:scale-105 duration-700"
+                  />
                 )}
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  className="absolute top-2 right-2 rounded-full bg-black/20 backdrop-blur-sm hover:bg-black/40 text-white"
+                  onClick={() => setIsDialogOpen(false)}
+                >
+                  <X className="h-4 w-4" />
+                </Button>
+              </div>
 
-                <div className="mt-4 max-h-[20vh] sm:max-h-[60vh] overflow-y-auto">
-                  <p>
-                    <strong>Date:</strong> {selectedEvent.date}
+              {/* Content Section */}
+              <div className="p-6 space-y-4 bg-white dark:bg-gray-950">
+                <div className="space-y-1.5">
+                  <h2 className="text-2xl font-semibold tracking-tight">
+                    {selectedEvent.title}
+                  </h2>
+                  <div className="flex items-center text-sm text-muted-foreground">
+                    <Calendar className="mr-2 h-4 w-4" />
+                    <time dateTime={selectedEvent.date}>
+                      {new Date(selectedEvent.date).toLocaleDateString()}
+                    </time>
+                  </div>
+                </div>
+
+                <div className="pt-3 border-t border-border max-h-[200px] overflow-y-auto pr-2 scrollbar-thin scrollbar-thumb-rounded scrollbar-thumb-muted-foreground/20 scrollbar-track-transparent">
+                  <p className="text-muted-foreground leading-relaxed">
+                    {selectedEvent.description}
                   </p>
-                  {selectedEvent.description
-                    .split("\n\n")
-                    .map((paragraph, index) => (
-                      <p
-                        key={index}
-                        className="mb-4 text-justify text-sm text-muted-foreground"
-                      >
-                        {paragraph}
-                      </p>
-                    ))}
                 </div>
               </div>
-            </>
+            </div>
           )}
         </DialogContent>
       </Dialog>
