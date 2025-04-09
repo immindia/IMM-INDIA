@@ -1,4 +1,4 @@
-import Heading from "../../components/Heading";
+// import Heading from "../../components/Heading";
 import ImgAndBreadcrumb from "../../components/ImgAndBreadcrumb";
 import Container from "../../components/wrappers/Container";
 import img from "../../assets/about/AboutBanner.webp";
@@ -6,9 +6,10 @@ import img from "../../assets/about/AboutBanner.webp";
 // import Newsletter from "../../components/Newsletter";
 // import AboutSidebar from "../../components/AboutSidebar";
 import { useState } from "react";
-import { Eye, Target, Award, ArrowRight } from "lucide-react";
+import { Eye, Target, Award } from "lucide-react";
 import { Card } from "@/components/ui/card";
-
+import founder from "../../assets/about/leadership/founder.webp";
+import building from "../../assets/building.webp";
 const ImmLegacy = () => {
   const breadcrumbItems = [
     { href: "/", label: "Home" },
@@ -58,8 +59,7 @@ const Legacy = () => {
             <div
               className="min-h-[300px] md:h-full bg-center bg-cover rounded-md"
               style={{
-                backgroundImage:
-                  "url(https://cdn.easyfrontend.com/pictures/contents/contents-banner.jpg)",
+                backgroundImage: `url(${founder})`,
               }}
             ></div>
           </div>
@@ -209,8 +209,7 @@ const IMMFeatureSection = () => {
               <div
                 className="bg-center bg-no-repeat bg-cover rounded-2xl min-h-[350px] w-full float-right shadow-xl h-[400px] sm:h-[600px]"
                 style={{
-                  backgroundImage:
-                    "url(https://cdn.easyfrontend.com/pictures/sign-in-up/sign3.jpg)",
+                  backgroundImage: `url(${building})`,
                 }}
               />
             </div>
