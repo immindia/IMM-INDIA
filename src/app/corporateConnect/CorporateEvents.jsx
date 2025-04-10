@@ -234,7 +234,7 @@ const CorporateEvents = () => {
                     ))}
                   </div>
                   <Button
-                    className="!mt-5 w-full bg-primary-color/80 hover:bg-primary-color text-white group"
+                    className="!mt-5 w-full bg-primary-color hover:bg-pink-900 text-white group"
                     onClick={() => handleImageClick(event)}
                   >
                     Read More{" "}

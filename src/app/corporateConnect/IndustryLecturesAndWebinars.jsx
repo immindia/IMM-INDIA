@@ -223,7 +223,7 @@ const IndustryLecturesAndWebinars = () => {
                   ))}
                 </div>
                 <Button
-                  className="!mt-5 w-full bg-primary-color/80 hover:bg-primary-color text-white group"
+                  className="!mt-5 w-full bg-primary-color hover:bg-pink-900 text-white group"
                   onClick={() => handleImageClick(event)}
                 >
                   Read More <BookOpen className="w-4 h-4 ml-2 mt-1 group-hover:hidden" /> <BookOpenCheck className="w-4 h-4 ml-2 mt-1 group-hover:block hidden" />
