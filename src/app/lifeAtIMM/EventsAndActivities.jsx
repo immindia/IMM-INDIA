@@ -265,9 +265,9 @@ function EventGallery() {
                 </div>
 
                 <div className="pt-3 border-t border-border max-h-[200px] overflow-y-auto pr-2 scrollbar-thin scrollbar-thumb-rounded scrollbar-thumb-muted-foreground/20 scrollbar-track-transparent">
-                  <p className="text-muted-foreground leading-relaxed">
+                  <pre className="text-muted-foreground leading-relaxed">
                     {selectedEvent.description}
-                  </p>
+                  </pre>
                 </div>
               </div>
             </div>
