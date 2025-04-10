@@ -24,7 +24,6 @@ import {
   DialogContent,
   DialogHeader,
   DialogTitle,
-  DialogDescription,
 } from "@/components/ui/dialog";
 import {
   Carousel,
@@ -34,20 +33,14 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 
-import { corporateData } from "./corporateData";
+import { useEventData } from "../../hooks/useEventData";
+import { usePagination } from "../../hooks/usePagination";
+
 const breadcrumbItems = [
   { href: "/", label: "Home" },
   { href: "/corporate-connect/corporate-events", label: "Corporate Connect" },
   { label: "Corporate Events" },
 ];
-
-const formatDate = (dateString) => {
-  return new Date(dateString).toLocaleDateString("en-US", {
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-  });
-};
 
 const CorporateEvents = () => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -57,13 +50,18 @@ const CorporateEvents = () => {
   const [selectedEvent, setSelectedEvent] = useState(null);
   const eventsPerPage = 12;
 
-  const events = useMemo(() => corporateData, []);
+  // Use custom hook to fetch data with the "corporate" category
+  const { events, loading } = useEventData("Corporate Connect");
 
   // Extract unique tags from all events
   const allTags = useMemo(() => {
     const tagSet = new Set();
+    if (!events) return [];
+
     events.forEach((event) => {
-      event.tags.forEach((tag) => tagSet.add(tag));
+      if (event.tags && Array.isArray(event.tags)) {
+        event.tags.forEach((tag) => tagSet.add(tag));
+      }
     });
     return Array.from(tagSet).sort();
   }, [events]);
@@ -78,72 +76,35 @@ const CorporateEvents = () => {
 
   // Filter events based on search term and selected tags
   const filteredEvents = useMemo(() => {
+    if (!events) return [];
+
     return events.filter((event) => {
       const matchesSearch =
         event.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        event.tags.some((tag) =>
-          tag.toLowerCase().includes(searchTerm.toLowerCase())
-        ) ||
-        event.date.toLowerCase().includes(searchTerm.toLowerCase());
+        (event.tags &&
+          Array.isArray(event.tags) &&
+          event.tags.some((tag) =>
+            tag.toLowerCase().includes(searchTerm.toLowerCase())
+          )) ||
+        (event.date &&
+          event.date.toLowerCase().includes(searchTerm.toLowerCase()));
 
       const matchesTags =
         selectedTags.length === 0 ||
-        selectedTags.every((tag) => event.tags.includes(tag));
+        (event.tags &&
+          Array.isArray(event.tags) &&
+          selectedTags.every((tag) => event.tags.includes(tag)));
 
       return matchesSearch && matchesTags;
     });
   }, [events, searchTerm, selectedTags]);
 
-  const indexOfLastEvent = currentPage * eventsPerPage;
-  const indexOfFirstEvent = indexOfLastEvent - eventsPerPage;
-  const currentEvents = filteredEvents.slice(
-    indexOfFirstEvent,
-    indexOfLastEvent
-  );
-
-  // New pagination helper functions
-  const generatePaginationRange = (currentPage, totalPages) => {
-    const delta = 2; // Number of pages to show before and after current page
-    const range = [];
-    const rangeWithDots = [];
-
-    // Always add first page
-    range.push(1);
-
-    for (let i = currentPage - delta; i <= currentPage + delta; i++) {
-      if (i > 1 && i < totalPages) {
-        range.push(i);
-      }
-    }
-
-    // Always add last page
-    if (totalPages > 1) {
-      range.push(totalPages);
-    }
-
-    // Add dots where needed
-    let l;
-    for (let i of range) {
-      if (l) {
-        if (i - l > 1) {
-          rangeWithDots.push("...");
-        }
-      }
-      rangeWithDots.push(i);
-      l = i;
-    }
-
-    return rangeWithDots;
-  };
-
-  // Calculate total pages
-  const totalPages = Math.ceil(filteredEvents.length / eventsPerPage);
-
-  // Generate page range
-  const pageRange = useMemo(
-    () => generatePaginationRange(currentPage, totalPages),
-    [currentPage, totalPages]
-  );
+  // Use pagination hook
+  const {
+    currentItems: currentEvents,
+    totalPages,
+    pageRange,
+  } = usePagination(filteredEvents, eventsPerPage, currentPage);
 
   const handleImageClick = (event) => {
     setSelectedEvent(event);
@@ -203,56 +164,64 @@ const CorporateEvents = () => {
             </div>
           </div>
 
-          <div className="events grid grid-cols-1 sm:grid-cols-2  md:grid-cols-3 lg:grid-cols-4 gap-6 mb-14">
-            {currentEvents.map((event) => (
-              <Card
-                key={event.id}
-                className="p-0 hover:-translate-y-2 transition-all duration-300 hover:shadow-lg shadow rounded-lg overflow-hidden"
-              >
-                <img
-                  src={event.image}
-                  alt={event.title}
-                  className="w-full h-auto aspect-square object-cover scale-110"
-                />
-                <CardContent className="p-4 mt-4 space-y-3">
-                  <h3 className="text-base font-bold line-clamp-1">
-                    {event.title}
-                  </h3>
-                  <p className="text-gray-500 text-xs">{event.date}</p>
-                  <div className="flex flex-wrap gap-2 ">
-                    {event.tags.map((tag) => (
-                      <Badge
-                        key={tag}
-                        className={
-                          selectedTags.includes(tag)
-                            ? "bg-primary-color"
-                            : "bg-gray-200 text-gray-700 hover:bg-gray-300"
-                        }
-                      >
-                        {tag}
-                      </Badge>
-                    ))}
-                  </div>
-                  <Button
-                    className="!mt-5 w-full bg-primary-color hover:bg-pink-900 text-white group"
-                    onClick={() => handleImageClick(event)}
-                  >
-                    Read More{" "}
-                    <BookOpen className="w-4 h-4 ml-2 mt-1 group-hover:hidden" />{" "}
-                    <BookOpenCheck className="w-4 h-4 ml-2 mt-1 group-hover:block hidden" />
-                  </Button>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
+          {loading ? (
+            <div className="flex justify-center items-center min-h-[400px]">
+              <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-primary-color"></div>
+            </div>
+          ) : (
+            <div className="events grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mb-14">
+              {currentEvents.map((event) => (
+                <Card
+                  key={event.id}
+                  className="p-0 hover:-translate-y-2 transition-all duration-300 hover:shadow-lg shadow rounded-lg overflow-hidden"
+                >
+                  <img
+                    src={event.image}
+                    alt={event.title}
+                    className="w-full h-auto aspect-square object-cover scale-110"
+                  />
+                  <CardContent className="p-4 mt-4 space-y-3">
+                    <h3 className="text-base font-bold line-clamp-1">
+                      {event.title}
+                    </h3>
+                    <p className="text-gray-500 text-xs">{event.date}</p>
+                    <div className="flex flex-wrap gap-2 ">
+                      {event.tags &&
+                        Array.isArray(event.tags) &&
+                        event.tags.map((tag) => (
+                          <Badge
+                            key={tag}
+                            className={
+                              selectedTags.includes(tag)
+                                ? "bg-primary-color"
+                                : "bg-gray-200 text-gray-700 hover:bg-gray-300"
+                            }
+                          >
+                            {tag}
+                          </Badge>
+                        ))}
+                    </div>
+                    <Button
+                      className="!mt-5 w-full bg-primary-color hover:bg-pink-900 text-white group"
+                      onClick={() => handleImageClick(event)}
+                    >
+                      Read More{" "}
+                      <BookOpen className="w-4 h-4 ml-2 mt-1 group-hover:hidden" />{" "}
+                      <BookOpenCheck className="w-4 h-4 ml-2 mt-1 group-hover:block hidden" />
+                    </Button>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          )}
 
-          {currentEvents.length === 0 && (
+          {!loading && currentEvents.length === 0 && (
             <div className="text-center text-gray-500 py-8">
               No events found matching your criteria.
             </div>
           )}
 
-          {filteredEvents.length > eventsPerPage && (
+          {!loading && filteredEvents.length > eventsPerPage && (
             <Pagination className="">
               <PaginationContent>
                 <PaginationItem>
@@ -312,7 +281,6 @@ const CorporateEvents = () => {
         </div>
       </Container>
 
-      
       <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen} modal={true}>
         <DialogContent className="w-[95%] max-w-[600px] rounded-lg overflow-y-auto max-h-[90vh]">
           {selectedEvent && (

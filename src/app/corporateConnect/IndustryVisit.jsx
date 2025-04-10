@@ -24,7 +24,6 @@ import {
   DialogContent,
   DialogHeader,
   DialogTitle,
-  DialogDescription,
 } from "@/components/ui/dialog";
 import {
   Carousel,
@@ -33,17 +32,14 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
-import { industryData } from "./industryData";
+import { useEventData } from "../../hooks/useEventData";
+import { usePagination } from "../../hooks/usePagination";
 
-const breadcrumbItems = [{ href: "/", label: "Home" },{ href: "/corporate-connect/industry-visit", label: "Corporate Connect" }, { label: "Industry Visits" }];
-
-const formatDate = (dateString) => {
-  return new Date(dateString).toLocaleDateString("en-US", {
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-  });
-};
+const breadcrumbItems = [
+  { href: "/", label: "Home" },
+  { href: "/corporate-connect/industry-visit", label: "Corporate Connect" },
+  { label: "Industry Visits" },
+];
 
 const IndustryVisit = () => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -53,13 +49,18 @@ const IndustryVisit = () => {
   const [selectedEvent, setSelectedEvent] = useState(null);
   const eventsPerPage = 12;
 
-  const events = useMemo(() => industryData, []);
-  console.log(events);
+  // Use custom hook to fetch data with the "industry-visit" category
+  const { events, loading } = useEventData("Industry Visits");
+
   // Extract unique tags from all events
   const allTags = useMemo(() => {
     const tagSet = new Set();
+    if (!events) return [];
+
     events.forEach((event) => {
-      event.tags.forEach((tag) => tagSet.add(tag));
+      if (event.tags && Array.isArray(event.tags)) {
+        event.tags.forEach((tag) => tagSet.add(tag));
+      }
     });
     return Array.from(tagSet).sort();
   }, [events]);
@@ -74,71 +75,35 @@ const IndustryVisit = () => {
 
   // Filter events based on search term and selected tags
   const filteredEvents = useMemo(() => {
+    if (!events) return [];
+
     return events.filter((event) => {
       const matchesSearch =
         event.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        event.tags.some((tag) =>
-          tag.toLowerCase().includes(searchTerm.toLowerCase())
-        ) || event.date.toLowerCase().includes(searchTerm.toLowerCase());
+        (event.tags &&
+          Array.isArray(event.tags) &&
+          event.tags.some((tag) =>
+            tag.toLowerCase().includes(searchTerm.toLowerCase())
+          )) ||
+        (event.date &&
+          event.date.toLowerCase().includes(searchTerm.toLowerCase()));
 
       const matchesTags =
         selectedTags.length === 0 ||
-        selectedTags.every((tag) => event.tags.includes(tag));
+        (event.tags &&
+          Array.isArray(event.tags) &&
+          selectedTags.every((tag) => event.tags.includes(tag)));
 
       return matchesSearch && matchesTags;
     });
   }, [events, searchTerm, selectedTags]);
 
-  const indexOfLastEvent = currentPage * eventsPerPage;
-  const indexOfFirstEvent = indexOfLastEvent - eventsPerPage;
-  const currentEvents = filteredEvents.slice(
-    indexOfFirstEvent,
-    indexOfLastEvent
-  );
-
-  // New pagination helper functions
-  const generatePaginationRange = (currentPage, totalPages) => {
-    const delta = 2; // Number of pages to show before and after current page
-    const range = [];
-    const rangeWithDots = [];
-
-    // Always add first page
-    range.push(1);
-
-    for (let i = currentPage - delta; i <= currentPage + delta; i++) {
-      if (i > 1 && i < totalPages) {
-        range.push(i);
-      }
-    }
-
-    // Always add last page
-    if (totalPages > 1) {
-      range.push(totalPages);
-    }
-
-    // Add dots where needed
-    let l;
-    for (let i of range) {
-      if (l) {
-        if (i - l > 1) {
-          rangeWithDots.push("...");
-        }
-      }
-      rangeWithDots.push(i);
-      l = i;
-    }
-
-    return rangeWithDots;
-  };
-
-  // Calculate total pages
-  const totalPages = Math.ceil(filteredEvents.length / eventsPerPage);
-
-  // Generate page range
-  const pageRange = useMemo(
-    () => generatePaginationRange(currentPage, totalPages),
-    [currentPage, totalPages]
-  );
+  // Use pagination hook
+  const {
+    currentItems: currentEvents,
+    totalPages,
+    pageRange,
+  } = usePagination(filteredEvents, eventsPerPage, currentPage);
 
   const handleImageClick = (event) => {
     setSelectedEvent(event);
@@ -198,47 +163,64 @@ const IndustryVisit = () => {
             </div>
           </div>
 
-          <div className="events grid grid-cols-1 sm:grid-cols-2  md:grid-cols-3 lg:grid-cols-4 gap-6 mb-14">
-            {currentEvents.map((event) => (
-              <Card key={event.id} className="p-0 hover:-translate-y-2 transition-all duration-300 hover:shadow-lg shadow rounded-lg overflow-hidden">
-              <img
-                src={event.image}
-                alt={event.title}
-                className="w-full h-auto aspect-square object-cover scale-110"
-              />
-              <CardContent className="p-4 mt-4 space-y-3">
-              <h3 className="text-base font-bold line-clamp-1">{event.title}</h3>
-              <p className="text-gray-500 text-xs">{event.date}</p>
-              <div className="flex flex-wrap gap-2 ">
-                {event.tags.map((tag) => (
-                  <Badge
-                    key={tag}
-                    className={
-                      selectedTags.includes(tag) ? "bg-primary-color" : "bg-gray-200 text-gray-700 hover:bg-gray-300"
-                    }
-                  >
-                    {tag}
-                  </Badge>
-                ))}
-              </div>
-              <Button
-                className="!mt-5 w-full bg-primary-color hover:bg-pink-900 text-white group"
-                onClick={() => handleImageClick(event)}
-              >
-                Read More <BookOpen className="w-4 h-4 ml-2 mt-1 group-hover:hidden" /> <BookOpenCheck className="w-4 h-4 ml-2 mt-1 group-hover:block hidden" />
-              </Button>
-              </CardContent>
-            </Card>
-            ))}
-          </div>
+          {loading ? (
+            <div className="flex justify-center items-center min-h-[400px]">
+              <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-primary-color"></div>
+            </div>
+          ) : (
+            <div className="events grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mb-14">
+              {currentEvents.map((event) => (
+                <Card
+                  key={event.id}
+                  className="p-0 hover:-translate-y-2 transition-all duration-300 hover:shadow-lg shadow rounded-lg overflow-hidden"
+                >
+                  <img
+                    src={event.image}
+                    alt={event.title}
+                    className="w-full h-auto aspect-video object-cover scale-110"
+                  />
+                  <CardContent className="p-4 mt-4 space-y-3">
+                    <h3 className="text-base font-bold line-clamp-1">
+                      {event.title}
+                    </h3>
+                    <p className="text-gray-500 text-xs">{event.date}</p>
+                    <div className="flex flex-wrap gap-2 ">
+                      {event.tags &&
+                        Array.isArray(event.tags) &&
+                        event.tags.map((tag) => (
+                          <Badge
+                            key={tag}
+                            className={
+                              selectedTags.includes(tag)
+                                ? "bg-primary-color"
+                                : "bg-gray-200 text-gray-700 hover:bg-gray-300"
+                            }
+                          >
+                            {tag}
+                          </Badge>
+                        ))}
+                    </div>
+                    <Button
+                      className="!mt-5 w-full bg-primary-color hover:bg-pink-900 text-white group"
+                      onClick={() => handleImageClick(event)}
+                    >
+                      Read More{" "}
+                      <BookOpen className="w-4 h-4 ml-2 mt-1 group-hover:hidden" />{" "}
+                      <BookOpenCheck className="w-4 h-4 ml-2 mt-1 group-hover:block hidden" />
+                    </Button>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          )}
 
-          {currentEvents.length === 0 && (
+          {!loading && currentEvents.length === 0 && (
             <div className="text-center text-gray-500 py-8">
               No events found matching your criteria.
             </div>
           )}
 
-          {filteredEvents.length > eventsPerPage && (
+          {!loading && filteredEvents.length > eventsPerPage && (
             <Pagination className="">
               <PaginationContent>
                 <PaginationItem>
@@ -297,14 +279,8 @@ const IndustryVisit = () => {
           )}
         </div>
       </Container>
-      <Dialog 
-        open={isDialogOpen} 
-        onOpenChange={setIsDialogOpen}
-        modal={true}
-      >
-        <DialogContent 
-          className="w-[95%] max-w-[600px] rounded-lg overflow-y-auto max-h-[90vh]"
-        >
+      <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen} modal={true}>
+        <DialogContent className="w-[95%] max-w-[600px] rounded-lg overflow-y-auto max-h-[90vh]">
           {selectedEvent && (
             <>
               <DialogHeader className="px-1">
@@ -314,7 +290,7 @@ const IndustryVisit = () => {
               </DialogHeader>
               <div className="mt-2 space-y-3">
                 {selectedEvent.gallery && selectedEvent.gallery.length > 0 ? (
-                  <Carousel 
+                  <Carousel
                     className="w-full"
                     opts={{
                       align: "start",
@@ -323,8 +299,8 @@ const IndustryVisit = () => {
                   >
                     <CarouselContent className="flex">
                       {selectedEvent.gallery.map((image, index) => (
-                        <CarouselItem 
-                          key={index} 
+                        <CarouselItem
+                          key={index}
                           className="basis-full flex justify-center items-center"
                         >
                           <div className="w-full max-h-[60vh] flex justify-center">
@@ -332,22 +308,18 @@ const IndustryVisit = () => {
                               src={image}
                               alt={`Gallery image ${index + 1}`}
                               className="max-w-full max-h-full object-contain rounded-md"
-                              style={{ 
-                                maxWidth: '100%', 
-                                maxHeight: '60vh', 
-                                objectFit: 'contain' 
+                              style={{
+                                maxWidth: "100%",
+                                maxHeight: "60vh",
+                                objectFit: "contain",
                               }}
                             />
                           </div>
                         </CarouselItem>
                       ))}
                     </CarouselContent>
-                    <CarouselPrevious 
-                      className="absolute left-2 top-1/2 -translate-y-1/2 z-10"
-                    />
-                    <CarouselNext 
-                      className="absolute right-2 top-1/2 -translate-y-1/2 z-10"
-                    />
+                    <CarouselPrevious className="absolute left-2 top-1/2 -translate-y-1/2 z-10" />
+                    <CarouselNext className="absolute right-2 top-1/2 -translate-y-1/2 z-10" />
                   </Carousel>
                 ) : (
                   <div className="w-full max-h-[60vh] flex justify-center">
@@ -355,15 +327,15 @@ const IndustryVisit = () => {
                       src={selectedEvent.image}
                       alt={`Event ${selectedEvent.id}`}
                       className="max-w-full max-h-full object-contain rounded-md"
-                      style={{ 
-                        maxWidth: '100%', 
-                        maxHeight: '60vh', 
-                        objectFit: 'contain' 
+                      style={{
+                        maxWidth: "100%",
+                        maxHeight: "60vh",
+                        objectFit: "contain",
                       }}
                     />
                   </div>
                 )}
-                
+
                 <div className="px-1 space-y-2">
                   <p className="text-muted-foreground">
                     {selectedEvent.description}
@@ -379,8 +351,6 @@ const IndustryVisit = () => {
           )}
         </DialogContent>
       </Dialog>
-
-     
     </section>
   );
 };
