@@ -206,9 +206,9 @@ function EventGallery() {
       </div>
 
       <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen} modal={true}>
-        <DialogContent className="p-0 max-w-[95%] sm:w-fit rounded-xl overflow-hidden border-none shadow-lg">
+        <DialogContent className="p-0 max-w-[95vw] max-h-[95%] sm:w-fit rounded-xl overflow-hidden border-none shadow-lg">
           {selectedEvent && (
-            <div className="relative flex flex-col">
+            <div className="relative flex flex-col max-w-[95vw] max-h-[95%]">
               {/* Image/Carousel Section */}
               <div className="relative w-full  bg-muted overflow-hidden">
                 {selectedEvent.gallery && selectedEvent.gallery.length > 0 ? (
@@ -251,7 +251,7 @@ function EventGallery() {
               </div>
 
               {/* Content Section */}
-              <div className="p-6 space-y-4 bg-white dark:bg-gray-950">
+              <div className="p-6 space-y-4 bg-white dark:bg-gray-950 w-full">
                 <div className="space-y-1.5">
                   <h2 className="text-2xl font-semibold tracking-tight">
                     {selectedEvent.title}
@@ -265,7 +265,7 @@ function EventGallery() {
                 </div>
 
                 <div className="pt-3 border-t border-border max-h-[200px] overflow-y-auto pr-2 scrollbar-thin scrollbar-thumb-rounded scrollbar-thumb-muted-foreground/20 scrollbar-track-transparent">
-                  <pre className="text-muted-foreground leading-relaxed">
+                  <pre className="text-muted-foreground font-sans leading-relaxed  break-words">
                     {selectedEvent.description}
                   </pre>
                 </div>
