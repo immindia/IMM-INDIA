@@ -206,26 +206,26 @@ function EventGallery() {
       </div>
 
       <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen} modal={true}>
-        <DialogContent className="p-0 max-w-[95vw] max-h-[95%] sm:w-fit rounded-xl overflow-hidden border-none shadow-lg">
+        <DialogContent className="p-0 w-[95vw] sm:max-w-[60vw] max-h-[95vh] rounded-xl overflow-hidden border-none shadow-lg">
           {selectedEvent && (
-            <div className="relative flex flex-col max-w-[95vw] max-h-[95%]">
+            <div className="relative flex flex-col h-full">
               {/* Image/Carousel Section */}
-              <div className="relative w-full  bg-muted overflow-hidden">
+              <div className="relative w-full bg-muted">
                 {selectedEvent.gallery && selectedEvent.gallery.length > 0 ? (
                   <Carousel
-                    className="w-full h-full"
+                    className="w-full"
                     opts={{
                       align: "start",
                       loop: true,
                     }}
                   >
-                    <CarouselContent className="h-full">
+                    <CarouselContent>
                       {selectedEvent.gallery.map((image, index) => (
-                        <CarouselItem key={index} className="basis-full h-full">
+                        <CarouselItem key={index} className="basis-full w-full">
                           <img
                             src={`https://stealthlearn.in/imm-admin/api/${image}`}
                             alt={`Gallery image ${index + 1}`}
-                            className="w-auto mx-auto h-[300px] sm:h-[500px] object-cover transition-transform hover:scale-105 duration-700"
+                            className="w-auto mx-auto h-[200px] sm:h-[500px] object-cover transition-transform hover:scale-105 duration-700"
                           />
                         </CarouselItem>
                       ))}
@@ -237,7 +237,7 @@ function EventGallery() {
                   <img
                     src={`https://stealthlearn.in/imm-admin/api/${selectedEvent.image}`}
                     alt={selectedEvent.title}
-                    className="w-full h-full object-cover transition-transform hover:scale-105 duration-700"
+                    className="w-full h-[200px] sm:h-[400px] object-cover transition-transform hover:scale-105 duration-700"
                   />
                 )}
                 <Button
@@ -251,9 +251,9 @@ function EventGallery() {
               </div>
 
               {/* Content Section */}
-              <div className="p-6 space-y-4 bg-white dark:bg-gray-950 w-full">
+              <div className="p-4 sm:p-6 space-y-4 bg-white dark:bg-gray-950 flex-1 overflow-hidden flex flex-col">
                 <div className="space-y-1.5">
-                  <h2 className="text-2xl font-semibold tracking-tight">
+                  <h2 className="text-xl sm:text-2xl font-semibold tracking-tight">
                     {selectedEvent.title}
                   </h2>
                   <div className="flex items-center text-sm text-muted-foreground">
@@ -265,7 +265,7 @@ function EventGallery() {
                 </div>
 
                 <div className="pt-3 border-t border-border max-h-[200px] overflow-y-auto pr-2 scrollbar-thin scrollbar-thumb-rounded scrollbar-thumb-muted-foreground/20 scrollbar-track-transparent">
-                  <pre className="text-muted-foreground font-sans leading-relaxed  break-words">
+                  <pre className="text-muted-foreground font-sans leading-relaxed whitespace-pre-wrap break-words w-full">
                     {selectedEvent.description}
                   </pre>
                 </div>
