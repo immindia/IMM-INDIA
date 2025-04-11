@@ -296,8 +296,8 @@ const FacultyHeading = () => {
             <p className="mt-3 text-gray-600 text-justify ">
               The IMM Business School has Faculty members who have earned PhDs
               or are Fellows from top schools in India. We attract Adjunct and
-              Visiting Faculty from prestigious institutions like IMM Ahmedabad,
-              IMM Lucknow, IIT Kanpur, IIT Roorkee, Jamanalal Bajaj, FMS, IIFT
+              Visiting Faculty from prestigious institutions like IIM Ahmedabad,
+              IIM Lucknow, IIT Kanpur, IIT Roorkee, Jamnalal Bajaj, FMS, IIFT
               and other prominent business schools globally. Top industry
               executives serve as Visiting Faculty, bringing real-world
               experience to the classroom.
