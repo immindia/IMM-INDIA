@@ -50,7 +50,7 @@ export default function PlacementGrid() {
         </div>
 
         {/* Stats Section */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12">
+        {/* <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12">
           {[
             { label: "Total Placements", value: "150+" },
             { label: "Companies", value: "25+" },
@@ -70,7 +70,7 @@ export default function PlacementGrid() {
               <div className="text-sm text-gray-600">{stat.label}</div>
             </motion.div>
           ))}
-        </div>
+        </div> */}
 
         {/* Placement Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -104,14 +104,14 @@ export default function PlacementGrid() {
                       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
                       onLoad={() => handleImageLoad(placement.name + index)}
                     />
-                    <Badge
+                    {/* <Badge
                       variant={
                         placement.company === "Pladis" ? "default" : "secondary"
                       }
                       className="absolute top-4 right-4 z-20"
                     >
                       {placement.company}
-                    </Badge>
+                    </Badge> */}
                   </div>
                 </CardHeader>
                 <CardContent className="p-4">
