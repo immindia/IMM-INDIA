@@ -9,7 +9,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
-import { Star } from "lucide-react";
+import { Star,StarHalf } from "lucide-react";
 import OrbitingCircles from "../../components/ui/orbiting-circles";
 
 import Heading from "../../components/Heading";
@@ -34,6 +34,7 @@ export default function Testimonial() {
       quote: "Watch my testimonial video",
       name: "Shruti",
       position: "Student",
+      rating: 4,
       videoLink: "https://youtu.be/_wmO1XuXtew?feature=shared",
     },
     {
@@ -42,6 +43,7 @@ export default function Testimonial() {
       quote: "Watch my testimonial video",
       name: "Amit",
       position: "Student",
+      rating: 4.5,
       videoLink: "https://youtu.be/UfCXe3g0z60?feature=shared",
     },
     {
@@ -50,6 +52,7 @@ export default function Testimonial() {
       quote: "Watch my testimonial video",
       name: "Aman",
       position: "Student",
+      rating: 5,
       videoLink: "https://youtu.be/Gv5ooJEsBpc?feature=shared",
     },
     {
@@ -58,6 +61,7 @@ export default function Testimonial() {
       quote: "Watch my testimonial video",
       name: "Akshi",
       position: "Student",
+      rating: 4.5,
       videoLink: "https://youtu.be/UxdxlXncWS8?feature=shared",
     },
     {
@@ -66,6 +70,7 @@ export default function Testimonial() {
       quote: "Watch my testimonial video",
       name: "Pragya",
       position: "Student",
+      rating: 5,
       videoLink: "https://youtu.be/_uN1KDA46bA?feature=shared",
     },
     {
@@ -74,6 +79,7 @@ export default function Testimonial() {
       quote: "Watch my testimonial video",
       name: "Mehtab",
       position: "Student",
+      rating: 4,
       videoLink: "https://youtu.be/Y0nkrcTL5U8?feature=shared",
     },
     {
@@ -82,6 +88,7 @@ export default function Testimonial() {
       quote: "Watch my testimonial video",
       name: "Kunal",
       position: "Student",
+      rating: 4.5,
       videoLink: "https://youtu.be/lCYdDnKrzxY?feature=shared",
     },
     {
@@ -90,6 +97,7 @@ export default function Testimonial() {
       quote: "Watch my testimonial video",
       name: "Anjali",
       position: "Student",
+      rating: 4,
       videoLink: "https://youtu.be/zAtcsH8b5Ec?feature=shared",
     },
   ];
@@ -248,13 +256,19 @@ export default function Testimonial() {
                         <div className="bg-white">
                           <div className="p-0 sm:space-y-8">
                             <div className="flex mb-4 items-center justify-center sm:justify-start">
-                              {[...Array(4)].map((_, i) => (
+                              {[...Array(Math.floor(testimonial.rating))].map((_, i) => (
                                 <Star
                                   key={i}
                                   className="sm:w-6 sm:h-6 text-yellow-400 fill-current"
                                 />
                               ))}
-                              <Star className="w-6 h-6 text-gray-300" />
+                              {testimonial.rating % 1 === 0.5 && (
+                                <StarHalf
+                                  className="sm:w-6 sm:h-6 text-yellow-400 fill-current"
+                                />
+                                
+                              )}
+                              {/* <Star className="w-6 h-6 text-gray-300" /> */}
                             </div>
                             <div className="mt-6">
                               <p className="text-lg text-center sm:text-left font-semibold text-red-600 md:text-2xl">
