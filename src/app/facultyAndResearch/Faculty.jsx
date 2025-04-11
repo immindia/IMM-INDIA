@@ -9,9 +9,9 @@ import img from "../../assets/faculty/Banner.webp";
 import { LinkedinIcon } from "lucide-react";
 import Anupam from "../../assets/faculty/Anupam.jpg";
 import Anurag from "../../assets/faculty/Anurag.jpg";
-import Castelino from "../../assets/faculty/Castelino.png";
+
 import Dhruv from "../../assets/faculty/Dhruv.png";
-import Dilip from "../../assets/faculty/Dilip.png";
+
 import Harish from "../../assets/faculty/Harish.jpg";
 import Kamil from "../../assets/faculty/Kamil.jpeg";
 import Kamlesh from "../../assets/faculty/Kamlesh.png";
@@ -27,7 +27,7 @@ import Ruchika from "../../assets/faculty/Ruchika.png";
 import Sakshi from "../../assets/faculty/Sakshi.png";
 import Smita from "../../assets/faculty/Samita.webp";
 import SanjayB from "../../assets/faculty/Sanjay B.png";
-import Satinder from "../../assets/faculty/Satinder.jpg";
+
 import Singhal from "../../assets/faculty/Singhal.jpg";
 import Sonalika from "../../assets/faculty/Sonalika.png";
 import Suket from "../../assets/faculty/Suket.jpg";
@@ -43,12 +43,12 @@ const Faculty = () => {
   ];
 
   const teamMembers = [
-    {
-      id: 1,
-      name: "Prof. Dr. Dilip Nandkeolyar",
-      role: "Ph.D (Business Management)",
-      imageSrc: Dilip,
-    },
+    // {
+    //   id: 1,
+    //   name: "Prof. Dr. Dilip Nandkeolyar",
+    //   role: "Ph.D (Business Management)",
+    //   imageSrc: Dilip,
+    // },
     {
       id: 2,
       name: "Prof. Smita Lal",
@@ -97,18 +97,18 @@ const Faculty = () => {
       role: "Ph.D(HR), MBA(Fin. & HR), UGC NET, B.Ed., B.Com.",
       imageSrc: Sakshi,
     },
-    {
-      id: 10,
-      name: "Dr. Satinder Bhatia",
-      role: "M.Com, M.Phil (Organisation Behaviour), Ph.D (Financial Management), Project Management Professional (PMP)",
-      imageSrc: Satinder,
-    },
-    {
-      id: 11,
-      name: "Prof. Castelino Aldrin Santosh",
-      role: "B.A.(Economics), Masters in Marketing Management (MMM), Pursuing Phd.",
-      imageSrc: Castelino,
-    },
+    // {
+    //   id: 10,
+    //   name: "Dr. Satinder Bhatia",
+    //   role: "M.Com, M.Phil (Organisation Behaviour), Ph.D (Financial Management), Project Management Professional (PMP)",
+    //   imageSrc: Satinder,
+    // },
+    // {
+    //   id: 11,
+    //   name: "Prof. Castelino Aldrin Santosh",
+    //   role: "B.A.(Economics), Masters in Marketing Management (MMM), Pursuing Phd.",
+    //   imageSrc: Castelino,
+    // },
     {
       id: 12,
       name: "Prof. Sanjay Verma",

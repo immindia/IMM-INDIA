@@ -69,28 +69,7 @@ Last but not least, perseverance is the only key to a bright future, so gear up 
 Blessings and Best Wishes Always!`,
     linkedin: null,
   },
-  {
-    id: 5,
-    image: director,
-    position: "Director",
-    name: "Prof. Dr. Dilip Nandkeolyar",
-    message: `Dear students, parents, colleagues, and friends,
-
-In the ever-evolving landscape of Indian academia, we at the Institute of Marketing and Management believe that our role extends beyond producing business leaders. We are committed to nurturing a generation of change-makers who will shape India's future.
-
-A. Addressing Complex Challenges: Our mission is to equip our future leaders with the skills needed to tackle India's multifaceted societal challenges, whether in poverty alleviation or sustainable development.
-B. Versatile Skill Set: We take pride in cultivating versatile skills—leadership, communication, critical thinking—essential for navigating India's unique societal intricacies.
-C. Global Perspective: As India continues to rise on the global stage, we instill a global mindset, crucial for international collaboration and trade.
-D. Collaboration and Teamwork: In a country as diverse as India, collaboration is the cornerstone of success. Working together, we craft solutions that uplift all segments of our society.
-E. Entrepreneurship & Innovation: Our commitment to entrepreneurship tailored to India's challenges promotes innovation, growth, and job creation.
-F. Measuring Impact: Beyond financial metrics, our graduates understand the importance of data-driven decision-making for the development of India's grassroots.
-G. Advocacy for Inclusive Growth: We are proud to see our graduates becoming advocates for inclusive progress and corporate social responsibility, actively bridging societal divides.
-H. Networking for Progress: Our institution provides a platform for building networks with like-minded individuals committed to India's growth.
-I. Leadership with a National Vision: Ultimately, our mission is to foster leaders who envision a brighter, more equitable, and sustainable India.
-
-I am humbled to be part of this transformative journey with all of you. Let's continue to empower individuals to be effective leaders, advocates, and change-makers. Together, we can make India a better place for all.`,
-    linkedin: null,
-  },
+ 
   {
     id: 6,
     image: dean,
