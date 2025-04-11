@@ -1,5 +1,4 @@
 import dean from "../../assets/about/leadership/dean.webp";
-import director from "../../assets/about/leadership/director.webp";
 import registrar from "../../assets/about/leadership/registrar.webp";
 import executivePresident from "../../assets/about/leadership/executive-president.webp";
 import seniorAdvisor from "../../assets/about/leadership/senior-advisor.webp";
