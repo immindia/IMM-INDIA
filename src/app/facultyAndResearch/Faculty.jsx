@@ -236,7 +236,7 @@ const Faculty = () => {
           className="pt-12 mx-auto"
         /> */}
         <FacultyHeading />
-        <div className="grid grid-cols-4 gap-6 text-center">
+        <div className="grid grid-cols-5 gap-6 text-center">
           {teamMembers.map((member) => (
             <TeamMemberCard key={member.name} {...member} />
           ))}
@@ -258,7 +258,7 @@ const TeamMemberCard = ({ name, role, imageSrc }) => (
         <img
           src={imageSrc}
           alt={name}
-          className="w-full h-auto rounded-lg hover:scale-110 transition-all duration-300"
+          className="w-full h-auto rounded-lg  hover:scale-110 transition-all duration-300"
         />
       </div>
       <div className="px-4 py-6">
