@@ -107,7 +107,7 @@ export default function AlumniDirectory() {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-pink-50 to-white">
-      <div className="container mx-auto py-6 px-4 sm:py-8">
+      <div className="container sm:max-w-6xl md:max-w-7xl mx-auto py-6 px-4 sm:py-8">
         <div className="mb-6 sm:mb-8 text-center">
           <h1 className="text-3xl sm:text-4xl font-bold mb-2 bg-clip-text text-transparent bg-gradient-to-r from-pink-600 to-pink-800">
             Alumni Directory
@@ -229,8 +229,8 @@ export default function AlumniDirectory() {
             </div>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-4 sm:gap-6">
-            <Card className={`${viewStyle === "table" ? "md:col-span-2" : "md:col-span-3"} border-none shadow-md`}>
+          <div className="grid md:grid-cols-1 gap-4 sm:gap-6">
+            <Card className={`${viewStyle === "table" ? "md:col-span-2" : "md:col-span-4"} border-none shadow-md`}>
               <CardHeader className="pb-3 bg-gradient-to-r from-pink-50 to-pink-100 rounded-t-lg py-4 sm:py-6">
                 <div className="flex items-center justify-between">
                   <CardTitle className="flex items-center gap-2 text-pink-700 text-lg sm:text-xl">
@@ -244,7 +244,7 @@ export default function AlumniDirectory() {
               </CardHeader>
               <CardContent className="p-3 sm:p-4">
                 {viewStyle === "card" ? (
-                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-4">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-4 gap-3 sm:gap-4">
                     {paginatedAlumni.length > 0 ? (
                       paginatedAlumni.map((alumni, index) => (
                         <div
@@ -411,7 +411,7 @@ export default function AlumniDirectory() {
             </Card>
 
             {viewStyle === "table" && (
-              <div className="space-y-4 sm:space-y-6">
+              <div className="space-y-4 sm:space-y-6 hidden">
                 <Card className="border-none shadow-md">
                   <CardHeader className="bg-gradient-to-r from-pink-50 to-pink-100 rounded-t-lg py-4">
                     <CardTitle className="text-pink-700 text-lg">Alumni Insights</CardTitle>
