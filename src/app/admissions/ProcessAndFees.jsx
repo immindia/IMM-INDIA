@@ -48,6 +48,13 @@ const steps = [
     title: "APPLY NOW",
     content: ["Apply Now (PGDM)"],
   },
+  {
+    title: "REFUND POLICY",
+    content: [
+      "IMM Business School will follow AICTE guidelines and policy in this matter and refund the collected fee after deducting an amount of 1,000/- as Processing Fee, to the students withdrawing their admission before the last date of admission, irrespective of the reasons for withdrawal of admission.",
+      "However, the Application Fee once paid, is non-refundable",
+    ],
+  },
 ];
 
 const ProcessAndFees = () => {
@@ -113,7 +120,12 @@ const ProcessAndFees = () => {
                   <div className="flex items-center gap-2">
                     {item == "Apply Now (PGDM)" ? (
                       <Button
-                        onClick={() => window.open("https://admissions.immindia.edu.in/", "_blank")}
+                        onClick={() =>
+                          window.open(
+                            "https://admissions.immindia.edu.in/",
+                            "_blank"
+                          )
+                        }
                         className="-m-1 text-white break-words transition-all duration-100 cursor-pointer bg-primary-color sm:text-sm hover:text-white hover:font-medium hover:animate-pulse"
                       >
                         {item}
