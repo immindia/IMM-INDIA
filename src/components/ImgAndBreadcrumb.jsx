@@ -35,17 +35,19 @@ const ImgAndBreadcrumb = ({ imageSrc, imageAlt, breadcrumbItems, title }) => {
       <img
         src={imageSrc}
         alt={imageAlt || "Image"}
-        className="absolute top-0 left-0 object-cover w-full h-full shadow-sm -z-10"
+        className="absolute top-0 left-0 object-cover w-full h-full shadow-sm -z-10 "
         width={1920}
         height={1080}
         fetchPriority="high"
         decoding="async"
       />
-      <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-t from-black via-black/70 to-black/30"></div>
-      <WordPullUp
-        words={title}
-        className="sm:text-6xl text-white font-extrabold absolute top-10 sm:top-[45%] tracking-wide leading-tight sm:leading-none"
-      />
+      {/* <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-t from-black via-black/70 to-black/30"></div> */}
+      <div className=" absolute top-10 sm:top-[45%] p-5 bg-black/50 rounded-md ">
+        <WordPullUp
+          words={title}
+          className="sm:text-6xl text-white font-extrabold  tracking-wide leading-tight sm:leading-none"
+        />
+      </div>
       <Breadcrumb className="relative z-10 -mb-8 transition-all duration-300 ease-in-out hover:drop-shadow-2xl drop-shadow-xl hover:scale-105">
         <BreadcrumbList className="px-8  py-4 bg-pink-800 rounded-md">
           {isDesktop ? (
