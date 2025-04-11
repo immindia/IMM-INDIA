@@ -6,7 +6,7 @@ import img from "../../assets/about/AboutBanner2.webp";
 // import Newsletter from "../../components/Newsletter";
 // import AboutSidebar from "../../components/AboutSidebar";
 import icon1 from "../../assets/about/accreditations/All_India_Council.webp";
-import icon2 from "../../assets/about/accreditations/AACSB-logo.webp";
+import icon2 from "../../assets/about/accreditations/logos-2.png";
 // import AcademicPartners from "../LandingPage/AcademicPartners";
 import Awards from "./Awards";
 import { Suspense } from "react";
@@ -54,24 +54,18 @@ export default AffiliationAwards;
 
 const AffiliationAwardsContent = () => {
   return (
-    <section className="py-14">
+    <section className="sm:py-14 pt-12 sm:pt-0">
       <div className="max-w-screen-xl mx-auto md:px-8">
         <div className="items-center gap-6 sm:gap-12 sm:px-4 md:px-0 flex flex-col sm:flex-row">
           <div className="flex-1 order-2 sm:order-1 flex justify-center items-center  gap-5 sm:gap-12">
-            <div className="w-1/3 sm:w-1/2 ">
-              <img
-                src={icon1}
-                className="w-full sm:rounded-lg object-contain drop-shadow-2xl hover:scale-110 transition-all duration-300"
-                alt=""
-              />
-            </div>
-            <div className="w-2/3 sm:w-1/2 ">
+            <div className="">
               <img
                 src={icon2}
-                className="w-full sm:rounded-lg object-contain drop-shadow-2xl hover:scale-110 transition-all duration-300"
+                className="w-full sm:p-8 sm:rounded-lg object-contain drop-shadow-2xl hover:scale-110 transition-all duration-300"
                 alt=""
               />
             </div>
+            
           </div>
           <div className="max-w-xl order-1 sm:order-2 space-y-3 mt-6 sm:px-0 md:mt-0 lg:max-w-2xl">
             <h3 className="text-primary-color text-2xl font-semibold">

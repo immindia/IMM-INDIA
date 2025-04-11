@@ -3,16 +3,16 @@ import Marquee from "../../components/ui/marquee";
 
 // Import images
 import img1 from "../../assets/live-projects/akalgroup.png";
-import img2 from "../../assets/live-projects/beneton.png";
-import img3 from "../../assets/live-projects/casback.png";
-import img4 from "../../assets/live-projects/chatter.png";
-import img5 from "../../assets/live-projects/hcl.png";
+// import img2 from "../../assets/live-projects/beneton.png";
+// import img3 from "../../assets/live-projects/casback.png";
+// import img4 from "../../assets/live-projects/chatter.png";
+// import img5 from "../../assets/live-projects/hcl.png";
 import img6 from "../../assets/live-projects/hrtz.png";
-import img7 from "../../assets/live-projects/jio.png";
-import img8 from "../../assets/live-projects/mankind.png";
-import img9 from "../../assets/live-projects/panta.png";
-import img10 from "../../assets/live-projects/pathkind.png";
-import img11 from "../../assets/live-projects/pladis.png";
+// import img7 from "../../assets/live-projects/jio.png";
+// import img8 from "../../assets/live-projects/mankind.png";
+// import img9 from "../../assets/live-projects/panta.png";
+// import img10 from "../../assets/live-projects/pathkind.png";
+// import img11 from "../../assets/live-projects/pladis.png";
 import img12 from "../../assets/live-projects/reliance-digital.png";
 import img13 from "../../assets/live-projects/tata_tech2.png";
 
