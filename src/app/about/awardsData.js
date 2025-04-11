@@ -27,12 +27,12 @@ export const cards = [
     image: img1,
   },
   {
-    title: "Best B-School Of the Year 2023",
+    title: "Best B-School",
     image: img2,
   },
   {
     title:
-      "Best Business School with Excellent Placement Record of the Year 2023",
+      "Best Business School with Excellent Placement Record",
     image: img3,
   },
   {
@@ -44,7 +44,7 @@ export const cards = [
     image: img5,
   },
   {
-    title: "Best B-School of the Year 2023",
+    title: "Best B-School",
     image: img6,
   },
   {

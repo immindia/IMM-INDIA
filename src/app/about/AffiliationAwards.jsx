@@ -1,13 +1,11 @@
-// import Heading from "../../components/Heading";
+
 import ImgAndBreadcrumb from "../../components/ImgAndBreadcrumb";
 import Container from "../../components/wrappers/Container";
 import img from "../../assets/about/AboutBanner2.webp";
-// import Stats from "../../components/Stats";
-// import Newsletter from "../../components/Newsletter";
-// import AboutSidebar from "../../components/AboutSidebar";
-import icon1 from "../../assets/about/accreditations/All_India_Council.webp";
+
+
 import icon2 from "../../assets/about/accreditations/logos-2.png";
-// import AcademicPartners from "../LandingPage/AcademicPartners";
+
 import Awards from "./Awards";
 import { Suspense } from "react";
 

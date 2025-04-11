@@ -31,7 +31,7 @@ const Awards = () => {
   useEffect(() => {
     // Preload the award logo and all award images
     const imagesToPreload = [
-      "https://cdn.easyfrontend.com/pictures/logos/award-logo.png",
+      leaf,
       ...cards.map((card) => card.image),
     ];
     preloadImages(imagesToPreload);
