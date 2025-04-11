@@ -2,11 +2,10 @@ import Heading from "../../components/Heading";
 import ImgAndBreadcrumb from "../../components/ImgAndBreadcrumb";
 import Container from "../../components/wrappers/Container";
 import img from "../../assets/lifeAtIIM/clubs/clubBanner.webp";
-import { useMemo } from "react";
+import { useEffect, useMemo, useState } from "react";
 // import Stats from "../../components/Stats";
 // import Newsletter from "../../components/Newsletter";
 // import AboutSidebar from "../../components/AboutSidebar";
-import { clubsData } from "./clubsData";
 import {
   Calendar,
   ImageIcon,
@@ -42,7 +41,6 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import { Link } from "react-router-dom";
-import { useState } from "react";
 
 const ClubsAtIMM = () => {
   const breadcrumbItems = [
@@ -104,17 +102,91 @@ const clubIcons = {
   "Sports Club": Trophy,
 };
 
+const API_URL =
+  "https://stealthlearn.in/imm-admin/api/index3.php?resource=clubs";
+const BASE_IMAGE_URL = "https://stealthlearn.in/imm-admin/api/";
+
 function EventGallery() {
   const [selectedClub, setSelectedClub] = useState("All Clubs");
   const [selectedEvent, setSelectedEvent] = useState(null);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
+  const [clubsData, setClubsData] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-  const events = useMemo(() => clubsData, []);
+  useEffect(() => {
+    const fetchClubsData = async () => {
+      try {
+        setLoading(true);
+        const response = await fetch(API_URL);
+
+        if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+
+        const data = await response.json();
+        setClubsData(data);
+        setLoading(false);
+      } catch (err) {
+        setError(err.message);
+        setLoading(false);
+      }
+    };
+
+    fetchClubsData();
+  }, []);
+
+  const events = useMemo(() => {
+    if (!clubsData.length) return { "All Clubs": [] };
+
+    // Group events by category
+    const groupedEvents = {
+      "All Clubs": clubsData
+        .filter((event) => event.category === "All Clubs")
+        .map((event) => ({
+          ...event,
+          image: BASE_IMAGE_URL + event.image,
+          gallery: event.gallery.map((img) => BASE_IMAGE_URL + img),
+          href: "#",
+          photoCount: event.gallery?.length || 0,
+        })),
+    };
+
+    // Create filtered lists for each club category
+    clubs.forEach((club) => {
+      if (club === "All Clubs") return;
+
+      groupedEvents[club] = clubsData
+        .filter((event) => event.category === club)
+        .map((event) => ({
+          ...event,
+          image: BASE_IMAGE_URL + event.image,
+          gallery: event.gallery.map((img) => BASE_IMAGE_URL + img),
+          href: "#",
+          photoCount: event.gallery?.length || 0,
+        }));
+    });
+
+    return groupedEvents;
+  }, [clubsData]);
 
   const handleImageClick = (event) => {
     setSelectedEvent(event);
     setIsDialogOpen(true);
   };
+
+  if (loading) {
+    return <div className="text-center py-10">Loading events...</div>;
+  }
+
+  if (error) {
+    return (
+      <div className="text-center py-10 text-red-500">
+        Error loading events: {error}
+      </div>
+    );
+  }
+
   return (
     <div className="relative sm:min-h-[calc(100vh-200px)] grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 sm:gap-4  gap-y-8">
       <div className="sidebar col-span-1 sm:h-max self-start md:sticky md:top-12">
@@ -145,20 +217,21 @@ function EventGallery() {
         </div>
       </div>
       <div className="events col-span-3 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-        {events[selectedClub].map((event) => (
+        {events[selectedClub]?.map((event) => (
           <Card
             key={event.id}
             className="group overflow-hidden h-max shadow-sm hover:shadow-md duration-150 transition-all rounded-xl hover:-translate-y-2"
           >
             <CardHeader className="p-0">
-              <div className="relative aspect-[16/9] overflow-hidden ">
+              <div className="relative aspect-square overflow-hidden ">
+                
                 <img
                   src={event.image}
                   alt={event.title}
                   className="object-cover h-full w-full transition-transform group-hover:scale-105"
                 />
 
-                {event.photoCount && (
+                {event.photoCount > 0 && (
                   <div className="absolute bottom-2 right-2 bg-black/70 text-white px-2 py-1 rounded-md text-sm flex items-center gap-1">
                     <ImageIcon className="w-4 h-4" />
                     <span>{event.photoCount} Photos</span>
@@ -189,7 +262,7 @@ function EventGallery() {
             </CardFooter>
           </Card>
         ))}
-        {events[selectedClub].length === 0 && (
+        {(!events[selectedClub] || events[selectedClub].length === 0) && (
           <div className="col-span-full text-center py-12">
             <p className="text-muted-foreground">
               No events found for {selectedClub}
@@ -260,7 +333,7 @@ function EventGallery() {
                     <strong>Date:</strong> {selectedEvent.date}
                   </p>
                   {selectedEvent.description
-                    .split("\n\n")
+                    .split("\n")
                     .map((paragraph, index) => (
                       <p
                         key={index}
