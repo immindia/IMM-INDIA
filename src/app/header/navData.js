@@ -62,7 +62,15 @@ export const navlinks = [
     ],
   },
 
-  { name: "Alumni", path: "/alumni" },
+  {
+    name: "Alumni",
+    path: "/",
+    submenu: [
+      { name: "Dazzling Divas", path: "/alumni/dazzling-divas" },
+      { name: "Hall of Fame", path: "/alumni/hall-of-fame" },
+      { name: "Alumni Connect", href: "https://alumni.immindia.edu.in/" },
+    ],
+  },
   { name: "Career", path: "/career" },
   { name: "Contact Us", path: "/contact-us" },
 ];

@@ -120,15 +120,29 @@ function DropdownItem({ item }) {
             onMouseLeave={handleMouseLeave}
           >
             {item.submenu.map((subItem, subIndex) => (
-              <li key={subIndex} onClick={() => setIsOpen(false)}>
-                <Link
-                  to={subItem.path}
-                  className="block px-4 py-2 text-sm text-gray-700 rounded-sm transition-all duration-200
+              subItem.href ? (
+                <li key={subIndex} onClick={() => setIsOpen(false)}>
+                  <a
+                    href={subItem.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block px-4 py-2 text-sm text-gray-700 rounded-sm transition-all duration-200
                             hover:bg-gray-200 hover:pl-6 hover:text-primary-color"
-                >
-                  {subItem.name}
-                </Link>
-              </li>
+                  >
+                    {subItem.name}
+                  </a>
+                </li>
+              ) : (
+                <li key={subIndex} onClick={() => setIsOpen(false)}>
+                  <Link
+                    to={subItem.path}
+                    className="block px-4 py-2 text-sm text-gray-700 rounded-sm transition-all duration-200
+                            hover:bg-gray-200 hover:pl-6 hover:text-primary-color"
+                  >
+                    {subItem.name}
+                  </Link>
+                </li>
+              )
             ))}
           </ul>
         </>
