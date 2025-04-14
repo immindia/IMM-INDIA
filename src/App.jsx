@@ -29,6 +29,8 @@ import Blog from "./app/blog/Blog";
 import BlogDetails from "./app/blog/BlogDetails";
 import Contact from "./app/contact/Contact";
 import Research from "./app/facultyAndResearch/Research";
+import InternationalResearch from "./app/facultyAndResearch/InternationalResearch";
+import NationalResearch from "./app/facultyAndResearch/NationalResearch";
 // Footer Components
 import Gallery from "./app/footerLinkComponents/Gallery";
 import PolicyPrivacy from "./app/footerLinkComponents/PolicyPrivacy";
@@ -119,6 +121,8 @@ function App() {
           {/* Faculty and Research */}
           <Route path="/faculty-and-research/faculty" element={<Faculty />} />
           <Route path="/faculty-and-research/research" element={<Research />} />
+          <Route path="/faculty-and-research/international-conference" element={<InternationalResearch />} />
+          <Route path="/faculty-and-research/national-conference" element={<NationalResearch />} />
 
           {/* Admissions */}
           <Route path="/admissions" element={<Admissions />} />
