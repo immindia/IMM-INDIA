@@ -30,6 +30,10 @@ export const navlinks = [
       },
       { name: "Industry Visits", path: "/corporate-connect/industry-visit" },
       { name: "Corporate Events", path: "/corporate-connect/corporate-events" },
+      {
+        name: "Recruit and Partner",
+        path: "/corporate-connect/recruit-and-partner",
+      },
     ],
   },
   {
