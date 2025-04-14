@@ -1,7 +1,7 @@
 import Heading from "../../components/Heading";
 import ImgAndBreadcrumb from "../../components/ImgAndBreadcrumb";
 import Container from "../../components/wrappers/Container";
-import Gallery from "../../components/Gallery";
+// import Gallery from "../../components/Gallery";
 // import galleryData from "../../data/galleryData";
 import national from "../../assets/research/reserchbanner.webp";
 import international from "../../assets/research/internantionalBanner.webp";

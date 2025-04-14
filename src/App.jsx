@@ -25,6 +25,7 @@ import LifeAtIMM from "./app/lifeAtIMM/LifeAtIMM";
 import CampusRecruitment from "./app/placements/CampusRecruitment";
 import PlacementRecords from "./app/placements/PlacementRecords";
 import DazzlingDivas from "./app/alumni/AluminiDirectory";
+import HallofFame from "./app/alumni/HallofFame";
 import Blog from "./app/blog/Blog";
 import BlogDetails from "./app/blog/BlogDetails";
 import Contact from "./app/contact/Contact";
@@ -164,8 +165,8 @@ function App() {
             path="/alumni/dazzling-divas"
             element={<DazzlingDivas />}
           />
-          {/* <Route path="/alumni/hall-of-fame" element={<HallOfFame />} />
-          <Route path="/alumni/alumni-connect" element={<AlumniConnect />} /> */}
+          <Route path="/alumni/hall-of-fame" element={<HallofFame />} />
+          
 
           {/* Blog */}
           <Route path="/blog" element={<Blog />} />
