@@ -47,6 +47,14 @@ const features = [
     description:
       "Due to globalization it is critical to have a working knowledge of International Business Operations. This covers operations in overseas organisations and the mode of conducting business on a global scale. International Business deals with multi-national organisations, their governance, strategies, and management; their relationship with governments, and the importance of globalisation and localisation of economic activities. The students learn about cross-border trade of goods, services, technology, capital & knowledge transfers.",
   },
+  {
+    id: 7,
+    img: "https://img.freepik.com/free-photo/entrepreneur-startup-business-owner_23-2148888888.jpg",
+    title: "Entrepreneurship Management",
+    description:
+      "The Entrepreneurship Management specialization equips students with the skills and knowledge needed to launch and manage successful business ventures. The program focuses on developing entrepreneurial mindset, business planning, startup management, and innovation strategies. Students learn about opportunity identification, business model development, funding strategies, risk management, and growth hacking. The curriculum covers essential aspects of entrepreneurship including market research, financial planning, legal considerations, and digital marketing for startups. This specialization prepares students to become successful entrepreneurs or intrapreneurs within established organizations.",
+  },
+  
 ];
 
 const FeatureItem = ({ feature, index }) => {

@@ -208,7 +208,7 @@ function EventGallery() {
       </div>
 
       <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen} modal={true}>
-        <DialogContent className="p-0 w-[95vw] sm:max-w-[60vw] max-h-[95vh] rounded-xl overflow-hidden border-none shadow-lg">
+        <DialogContent className="p-0 w-[95vw] sm:max-w-[60vw] max-h-[95vh] rounded-xl overflow-hidden border-none shadow-lg z-[99999] ">
           {selectedEvent && (
             <div className="relative flex flex-col h-full">
               {/* Image/Carousel Section */}
@@ -245,7 +245,7 @@ function EventGallery() {
                 <Button
                   variant="ghost"
                   size="icon"
-                  className="absolute top-2 right-2 rounded-full bg-black/20 backdrop-blur-sm hover:bg-black/40 text-white"
+                  className="absolute z-50 top-2 right-2 rounded-full bg-white/10 backdrop-blur-sm text-black border"
                   onClick={() => setIsDialogOpen(false)}
                 >
                   <X className="h-4 w-4" />

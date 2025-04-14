@@ -340,15 +340,20 @@ const IndustryLecturesAndWebinars = () => {
                   </div>
                 )}
 
-                <div className="px-1 space-y-2">
-                  <p className="text-muted-foreground">
-                    {selectedEvent.description}
-                  </p>
-                  <div className="flex justify-between text-sm">
-                    <p>
-                      <strong>Date:</strong> {selectedEvent.date}
-                    </p>
-                  </div>
+                <div className="mt-4 max-h-[20vh] sm:max-h-[60vh] overflow-y-auto">
+                  {/* <p>
+                    <strong>Date:</strong> {selectedEvent.date}
+                  </p> */}
+                  {selectedEvent.description
+                    .split("\n\n")
+                    .map((paragraph, index) => (
+                      <p
+                        key={index}
+                        className="mb-4 text-justify text-sm text-muted-foreground"
+                      >
+                        {paragraph}
+                      </p>
+                    ))}
                 </div>
               </div>
             </>

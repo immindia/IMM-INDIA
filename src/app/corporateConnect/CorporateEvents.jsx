@@ -339,9 +339,9 @@ const CorporateEvents = () => {
                 )}
 
                 <div className="mt-4 max-h-[20vh] sm:max-h-[60vh] overflow-y-auto">
-                  <p>
+                  {/* <p>
                     <strong>Date:</strong> {selectedEvent.date}
-                  </p>
+                  </p> */}
                   {selectedEvent.description
                     .split("\n\n")
                     .map((paragraph, index) => (
