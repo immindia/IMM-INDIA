@@ -23,6 +23,7 @@ import EventsAndActivities from "./app/lifeAtIMM/EventsAndActivities";
 import ClubsAtIMM from "./app/lifeAtIMM/ClubsAtIMM";
 import LifeAtIMM from "./app/lifeAtIMM/LifeAtIMM";
 import CampusRecruitment from "./app/placements/CampusRecruitment";
+import RecruitAndPartner from "./app/corporateConnect/RecruitAndPartner";
 import PlacementRecords from "./app/placements/PlacementRecords";
 import DazzlingDivas from "./app/alumni/AluminiDirectory";
 import HallofFame from "./app/alumni/HallofFame";
@@ -141,6 +142,10 @@ function App() {
             path="/corporate-connect/corporate-events"
             element={<CorporateEvents />}
           />
+          <Route
+            path="/corporate-connect/recruit-and-partner"
+            element={<RecruitAndPartner />}
+          />  
 
           {/*Life at IMM*/}
           <Route
