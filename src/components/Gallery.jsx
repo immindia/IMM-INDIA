@@ -139,7 +139,7 @@ const Gallery = ({ images = [] }) => {
             <div className="w-full h-full flex flex-col items-center justify-center p-6">
               <div className="relative max-h-[80vh] max-w-full overflow-hidden rounded-lg">
                 <img
-                  src={selectedImage?.img}
+                  src={selectedImage?.src}
                   alt={selectedImage?.title}
                   className="max-h-[80vh] max-w-full object-contain"
                   onError={(e) => {
