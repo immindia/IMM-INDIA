@@ -105,7 +105,7 @@ export default function RecruitAndPartner() {
           <div className="absolute top-0 left-0 w-full h-full bg-[url('/pink-abstract-network.png')] opacity-5 bg-cover"></div>
 
           <CardHeader className="text-center bg-gradient-to-r from-pink-700 to-pink-500 text-white rounded-t-lg relative overflow-hidden">
-            <div className="absolute inset-0 bg-[url('/pink-white-geometric-abstraction.png')] opacity-10 bg-cover mix-blend-overlay"></div>
+            <div className="absolute inset-0 bg-[url('/pink-white-geometric-abstraction.png')] opacity-30 bg-cover mix-blend-overlay"></div>
 
             <div className="relative z-10 py-6">
               <div className="flex justify-center mb-4">

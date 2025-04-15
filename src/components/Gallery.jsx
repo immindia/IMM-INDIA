@@ -20,6 +20,7 @@ const Gallery = ({ images = [] }) => {
       );
     });
     setFilteredImages(filtered);
+    console.log(images);
   }, [searchTerm, images]);
 
   useEffect(() => {
@@ -97,9 +98,9 @@ const Gallery = ({ images = [] }) => {
               className="rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300 cursor-pointer"
               onClick={() => handleImageClick(image)}
             >
-              <div className="relative aspect-square overflow-hidden">
+              <div className="relative aspect-[4/3] overflow-hidden">
                 <img
-                  src={image.img}
+                  src={image.src}
                   alt={image.title}
                   className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
                   onError={(e) => {
@@ -108,10 +109,10 @@ const Gallery = ({ images = [] }) => {
                   }}
                 />
               </div>
-              <div className="p-4">
+              {/* <div className="p-4">
                 <h3 className="font-medium text-primary-color/80 text-lg text-center">{image.title}</h3>
                 <p className="text-muted-foreground  text-center">{image.year}</p>
-              </div>
+              </div> */}
             </div>
           ))}
         </div>

@@ -5,12 +5,43 @@ import Gallery from "../../components/Gallery";
 import galleryData from "../../data/galleryData";
 // import national from "../../assets/research/reserchbanner.webp";
 import international from "../../assets/research/internantionalBanner.webp";
+import { useState, useEffect } from "react";
 // import { Link } from "react-router-dom";
 
 
 
 
 const Research = () => {
+
+  const [nationalImages, setNationalImages] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchInternationalData = async () => {
+      try {
+        const response = await fetch(
+          "https://stealthlearn.in/imm-admin/api/index.php"
+        );
+        const data = await response.json();
+        const filtered = data
+          .filter((item) => item.category === "National")
+          .map((item) => ({
+            id: item.id,
+            src: item.url,
+            alt: item.title,
+            title: item.title,
+          }));
+        setNationalImages(filtered);
+      } catch (error) {
+        console.error("Error fetching national data:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchInternationalData();
+  }, []);
+
   const breadcrumbItems = [
     { href: "/", label: "Home" },
     { href: "/research", label: "Research" },
@@ -35,8 +66,12 @@ const Research = () => {
           />
         </div>
 
-        <div className="pb-12 ">
-         <Gallery images={galleryData} />
+        <div className="pb-12">
+          {loading ? (
+            <div className="text-center py-8">Loading...</div>
+          ) : (
+            <Gallery images={nationalImages} />
+          )}
         </div>
       </Container>
     </div>
