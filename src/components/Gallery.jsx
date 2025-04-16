@@ -73,21 +73,21 @@ const Gallery = ({ images = [] }) => {
   return (
     <div className="w-full py-">
       {/* Search bar */}
-      <div className="flex justify-center mb-20">
-          <div className="relative w-full max-w-5xl">
-        <Input
-          type="text"
-          placeholder="Search by title or year..."
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-          className="pl-10 pr-4 py-6 text-lg border-pink-900 focus:ring-pink -900 focus:border-pink-900 rounded-full w-full"
-        />
-         <Search
-              className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"
-              size={20}
-            />
-      </div>
-      </div>
+      {/* <div className="flex justify-center mb-20">
+        <div className="relative w-full max-w-5xl">
+          <Input
+            type="text"
+            placeholder="Search by title or year..."
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            className="pl-10 pr-4 py-6 text-lg border-pink-900 focus:ring-pink -900 focus:border-pink-900 rounded-full w-full"
+          />
+          <Search
+            className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"
+            size={20}
+          />
+        </div>
+      </div> */}
 
       {/* Gallery grid */}
       {filteredImages.length > 0 ? (
@@ -148,10 +148,10 @@ const Gallery = ({ images = [] }) => {
                   }}
                 />
               </div>
-              <div className="mt-4 text-center text-white">
+              {/* <div className="mt-4 text-center text-white">
                 <h2 className="text-xl font-medium">{selectedImage?.title}</h2>
                 <p className="text-gray-300">{selectedImage?.year}</p>
-              </div>
+              </div> */}
             </div>
           </div>
         </DialogContent>

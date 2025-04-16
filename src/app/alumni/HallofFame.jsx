@@ -49,7 +49,7 @@ export default function HallofFame() {
   const [currentPage, setCurrentPage] = useState(1);
   const [sortField, setSortField] = useState("title");
   const [sortDirection, setSortDirection] = useState("asc");
-  const itemsPerPage = 10;
+  const itemsPerPage = 12;
   const [viewStyle, setViewStyle] = useState("card");
 
   // Fetch data from API

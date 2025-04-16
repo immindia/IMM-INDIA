@@ -19,7 +19,7 @@ export default function AlumniDirectory() {
   const [currentPage, setCurrentPage] = useState(1)
   const [sortField, setSortField] = useState("name")
   const [sortDirection, setSortDirection] = useState("asc")
-  const itemsPerPage = 10
+  const itemsPerPage = 12
   const [viewStyle, setViewStyle] = useState("card")
 
   // Extract unique class years and companies for filters
