@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import Heading from "../../components/Heading";
 import ImgAndBreadcrumb from "../../components/ImgAndBreadcrumb";
 import Container from "../../components/wrappers/Container";
@@ -7,13 +8,7 @@ import img from "../../assets/about/AboutBanner.webp";
 // import AboutSidebar from "../../components/AboutSidebar";
 
 import { LinkedinIcon } from "lucide-react";
-import DrGPrao from "../../assets/about/advisory/Dr-G-P-Rao.webp";
-import DrMVenkatesan from "../../assets/about/advisory/Dr-M-Venkatesan.webp";
-import DrSurabhiPandey from "../../assets/about/advisory/Dr-Surabhi-Pandey.webp";
-import DrVeenaBhalla from "../../assets/about/advisory/Dr-Veena-Bhalla.webp";
-import MrAbenLal from "../../assets/about/advisory/Mr-Aben-Lal.webp";
-import MrRohitLamba from "../../assets/about/advisory/Mr-Rohit-Lamba.webp";
-import MrSanjayPuri from "../../assets/about/advisory/Mr-Sanjay-Puri.webp";
+import PropTypes from "prop-types";
 
 const AdvisoryBoard = () => {
   const breadcrumbItems = [
@@ -48,72 +43,94 @@ const AdvisoryBoard = () => {
 
 export default AdvisoryBoard;
 
-const TeamMemberCard = ({ name, role, imageSrc }) => (
-  <div className="col-span-4 md:col-span-2 lg:col-span-1 hover:-translate-y-2 transition-all duration-300">
-    <div className="bg-white shadow-xl dark:bg-slate-800 rounded-xl h-full p-2">
-        <div className="flex justify-center overflow-hidden rounded-lg relative">
-            <img src={imageSrc} alt={name} className="w-full h-auto rounded-lg hover:scale-110 transition-all duration-300" />
-           
-        </div>
+const TeamMemberCard = ({ name, role, imageSrc, linkedinLink }) => (
+  <div className=" hover:-translate-y-2 transition-all duration-300">
+    <div className="bg-white shadow-xl dark:bg-slate-800 rounded-xl h-full p-2 group">
+      <div className="flex justify-center overflow-hidden rounded-lg relative">
+        <img
+          src={imageSrc}
+          alt={name}
+          className="w-full h-auto rounded-lg hover:scale-110 transition-all duration-300"
+        />
+      </div>
       <div className="px-4 py-6">
-        <h4 className="text-2xl font-medium mb-1">{name}</h4>
-        <p className="mb-4 text-sm">{role}</p>
+        <h4 className="text-xl font-medium mb-1 line-clamp-1">{name}</h4>
+        <p className="mb-4 text-sm line-clamp-none sm:line-clamp-2 group-hover:line-clamp-none transition-all duration-300">
+          {role}
+        </p>
         <div className="mt-6 flex justify-center">
-          <LinkedinIcon size={20} />
+          <a href={linkedinLink} target="_blank" rel="noopener noreferrer">
+            <LinkedinIcon size={20} />
+          </a>
         </div>
       </div>
     </div>
   </div>
 );
 
+TeamMemberCard.propTypes = {
+  name: PropTypes.string.isRequired,
+  role: PropTypes.string.isRequired,
+  imageSrc: PropTypes.string.isRequired,
+  linkedinLink: PropTypes.string,
+};
+
 const AdvisoryBoardContent = () => {
-  const teamMembers = [
-    {
-      name: "Dr. G. P. Rao",
-      role: "Founder\nGPR HR Consulting LLP",
-      imageSrc: DrGPrao,
-    },
-    {
-      name: "Dr. M. Venkatesan",
-      role: "Professor in OB\n& HRM Head Incharge\nAssessment & Development Centre (IIFT)",
-      imageSrc: DrMVenkatesan,
-    },
-    {
-      name: "Dr. Surabhi Pandey",
-      role: "Assistant Professor\n& Program Incharge\nIndian Institute of Public Administration (IIPA)",
-      imageSrc: DrSurabhiPandey,
-    },
-    {
-      name: "Dr. Veena Bhalla",
-      role: "Consultant\nDr. D Y Patil Vidyapeeth",
-      imageSrc: DrVeenaBhalla,
-    },
-    {
-      name: "Mr. Aben Lal",
-      role: "General Manager (Retd.)\nAir India\nExecutive Director (Retd.)\nAlliance Air",
-      imageSrc: MrAbenLal,
-    },
-    {
-      name: "Mr. Rohit Lamba",
-      role: "Vice President\nSales & Marketing\nHead Branding\nJindal Steel & Power Limited",
-      imageSrc: MrRohitLamba,
-    },
-    {
-      name: "Mr. Sanjay Puri",
-      role: "Vice President\nThe Indian Express (P) Ltd.",
-      imageSrc: MrSanjayPuri,
-    },
-  ];
+  const [advisoryMembers, setAdvisoryMembers] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchAdvisoryBoard = async () => {
+      try {
+        const response = await fetch(
+          "https://stealthlearn.in/imm-admin/api/indexFaculty.php"
+        );
+        if (!response.ok) {
+          throw new Error("Failed to fetch advisory board data");
+        }
+        const data = await response.json();
+        // Filter to only include advisory board category
+        const advisoryOnly = data.filter(
+          (member) => member.category.toLowerCase() === "advisory board"
+        );
+        setAdvisoryMembers(advisoryOnly);
+        setLoading(false);
+      } catch (err) {
+        setError(err.message);
+        setLoading(false);
+      }
+    };
+
+    fetchAdvisoryBoard();
+  }, []);
 
   return (
     <section className="ezy__team4 light bg-white dark:bg-[#0b1727] text-zinc-900 dark:text-white">
       <div className="container px-4 mx-auto">
-       
-        <div className="grid grid-cols-4 gap-6 text-center">
-          {teamMembers.map((member) => (
-            <TeamMemberCard key={member.name} {...member} />
-          ))}
-        </div>
+        {loading && (
+          <div className="text-center py-10">
+            <p className="text-lg">Loading advisory board information...</p>
+          </div>
+        )}
+        {error && (
+          <div className="text-center py-10">
+            <p className="text-lg text-red-500">Error: {error}</p>
+          </div>
+        )}
+        {!loading && !error && (
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 text-center">
+            {advisoryMembers.map((member) => (
+              <TeamMemberCard
+                key={member.id}
+                name={member.title}
+                role={member.description}
+                imageSrc={member.url}
+                linkedinLink={member.link}
+              />
+            ))}
+          </div>
+        )}
       </div>
     </section>
   );
