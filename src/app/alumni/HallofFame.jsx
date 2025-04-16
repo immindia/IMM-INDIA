@@ -37,7 +37,16 @@ import {
   LayoutGrid,
   List,
 } from "lucide-react";
+import Heading from "../../components/Heading";
+import ImgAndBreadcrumb from "../../components/ImgAndBreadcrumb";
+// import Container from "../../components/wrappers/Container";  
+import img from "../../assets/banner/AlumniBanner.png";
 
+const breadcrumbItems = [
+  { href: "/", label: "Home" },
+  { href: "/alumni", label: "Alumni" },
+  { label: "Hall of Fame" },
+];
 export default function HallofFame() {
   const [alumniData, setAlumniData] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -219,16 +228,24 @@ export default function HallofFame() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-pink-50 to-white">
-      <div className="container sm:max-w-6xl md:max-w-7xl mx-auto py-6 px-4 sm:py-8">
-        <div className="mb-6 sm:mb-8 text-center">
-          <h1 className="text-3xl sm:text-4xl font-bold mb-2 bg-clip-text text-transparent bg-gradient-to-r from-pink-600 to-pink-800">
-            Alumni Directory
-          </h1>
-          <p className="text-muted-foreground text-base sm:text-lg">
-            Connect with our global network of alumni
-          </p>
-        </div>
+    <div className="relative min-h-screen">
+    <ImgAndBreadcrumb
+      title="Hall of Fame"
+      imageSrc={img}
+      imageAlt="Description of the image"
+      breadcrumbItems={breadcrumbItems}
+    />
+    
+    <section className="pt-12 sm:pt-20 bg-gradient-to-b from-pink-50 to-white">
+      <div className="container sm:max-w-6xl md:max-w-6xl lg:max-w-7xl xl:max-w-7xl mx-auto py-6 px-4 sm:py-8">
+      <Heading
+          title="Alumni Directory"
+          titleClassName="text-primary-color text-center lg:text-5xl"
+          subtitleClassName="text-gray-500  m-0 lg:text-lg lg:font-normal lg:max-w-full"
+          subtitle="Connect with our global network of alumni"
+          className=""
+        />
+
 
         <div className="grid gap-4 sm:gap-6 mb-6 sm:mb-8">
           <Card className="border-none shadow-md">
@@ -709,7 +726,9 @@ export default function HallofFame() {
             )}
           </div>
         </div>
+
       </div>
+      </section>
     </div>
   );
 }

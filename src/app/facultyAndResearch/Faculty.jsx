@@ -1,4 +1,4 @@
-import Heading from "../../components/Heading";
+import { useState, useEffect } from "react";
 import ImgAndBreadcrumb from "../../components/ImgAndBreadcrumb";
 import Container from "../../components/wrappers/Container";
 import img from "../../assets/faculty/Banner.webp";
@@ -7,240 +7,77 @@ import img from "../../assets/faculty/Banner.webp";
 // import AboutSidebar from "../../components/AboutSidebar";
 
 import { LinkedinIcon } from "lucide-react";
-import Anupam from "../../assets/faculty/Anupam.jpg";
-import Anurag from "../../assets/faculty/Anurag.jpg";
-
-import Dhruv from "../../assets/faculty/Dhruv.png";
-
-import Harish from "../../assets/faculty/Harish.jpg";
-import Kamil from "../../assets/faculty/Kamil.jpeg";
-import Kamlesh from "../../assets/faculty/Kamlesh.png";
-import Madan from "../../assets/faculty/Madan.png";
-import Manoj from "../../assets/faculty/Manoj.jpg";
-import Megha from "../../assets/faculty/Megha.webp";
-import Mukul from "../../assets/faculty/Mukul.webp";
-import Nisha from "../../assets/faculty/Nisha.webp";
-import Preshni from "../../assets/faculty/Preshni.png";
-import Rituparna from "../../assets/faculty/Rituparna.webp";
-import Ruchi from "../../assets/faculty/Ruchi.webp";
-import Ruchika from "../../assets/faculty/Ruchika.png";
-import Sakshi from "../../assets/faculty/Sakshi.png";
-import Smita from "../../assets/faculty/Samita.webp";
-import SanjayB from "../../assets/faculty/Sanjay B.png";
-
-import Singhal from "../../assets/faculty/Singhal.jpg";
-import Sonalika from "../../assets/faculty/Sonalika.png";
-import Suket from "../../assets/faculty/Suket.jpg";
-import Swati from "../../assets/faculty/Swati.webp";
-import Tanu from "../../assets/faculty/Tanu.webp";
-import Varun from "../../assets/faculty/Varun.png";
+import PropTypes from "prop-types";
 
 const Faculty = () => {
+  const [facultyMembers, setFacultyMembers] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
   const breadcrumbItems = [
     { href: "/", label: "Home" },
     { href: "/faculty-and-research/faculty", label: "Faculty and Research" },
     { label: "Faculty" },
   ];
 
-  const teamMembers = [
-    // {
-    //   id: 1,
-    //   name: "Prof. Dr. Dilip Nandkeolyar",
-    //   role: "Ph.D (Business Management)",
-    //   imageSrc: Dilip,
-    // },
-    {
-      id: 2,
-      name: "Prof. Smita Lal",
-      role: "Dean\nMBA (Mktg.& Fin), B.Com.",
-      imageSrc: Smita,
-    },
-    {
-      id: 3,
-      name: "Dr. Ruchi Sharma",
-      role: "Controller of Examination\nPh.D.(Mktg.), M.Com. (NET),\nMBA, PGDCA, PGDSRD",
-      imageSrc: Ruchi,
-    },
-    {
-      id: 4,
-      name: "Prof. Megha Mathur",
-      role: "Head-Academics\nUGC NET, M.Phil, MBA,\nPursuing Ph.D.",
-      imageSrc: Megha,
-    },
-    {
-      id: 5,
-      name: "Dr. Preshni Shrivastava",
-      role: "Ph.D. (Mngmt), MBA (IT), PGDM (OM), DEEE, PMP",
-      imageSrc: Preshni,
-    },
-    {
-      id: 6,
-      name: "Prof. Rituparna Prasoon",
-      role: "MBA (HR & Mktg.),\nMA., LLB",
-      imageSrc: Rituparna,
-    },
-    {
-      id: 7,
-      name: "Dr. Swati Jha",
-      role: "Ph.D. (Mngmt), MBA (Finance and HR)\nUGC NET JRF\nNLP practitioner",
-      imageSrc: Swati,
-    },
-    {
-      id: 8,
-      name: "Dr. Tanu Manocha",
-      role: "Ph.D.(OM), MBA (OM),\nB.Tech (ECE)",
-      imageSrc: Tanu,
-    },
-    {
-      id: 9,
-      name: "Dr. Sakshi Sharma",
-      role: "Ph.D(HR), MBA(Fin. & HR), UGC NET, B.Ed., B.Com.",
-      imageSrc: Sakshi,
-    },
-    // {
-    //   id: 10,
-    //   name: "Dr. Satinder Bhatia",
-    //   role: "M.Com, M.Phil (Organisation Behaviour), Ph.D (Financial Management), Project Management Professional (PMP)",
-    //   imageSrc: Satinder,
-    // },
-    // {
-    //   id: 11,
-    //   name: "Prof. Castelino Aldrin Santosh",
-    //   role: "B.A.(Economics), Masters in Marketing Management (MMM), Pursuing Phd.",
-    //   imageSrc: Castelino,
-    // },
-    {
-      id: 12,
-      name: "Prof. Sanjay Verma",
-      role: "PGDSM, B.A.",
-      imageSrc: SanjayB,
-    },
-    {
-      id: 13,
-      name: "Prof. Nisha Anand",
-      role: "PGDBM, MA(Public Adm.),\nB.Sc",
-      imageSrc: Nisha,
-    },
-    {
-      id: 14,
-      name: "Prof. Sonalika Singh",
-      role: "Assistant Professor\nHead Global Alliances PGDM, BA English (Hons), DU",
-      imageSrc: Sonalika,
-    },
-    {
-      id: 15,
-      name: "Prof. Mukul Kumar",
-      role: "MBA (Mktg), M. Com,\nB.Com,",
-      imageSrc: Mukul,
-    },
-    {
-      id: 16,
-      name: "Prof. Suket Chauhan",
-      role: "Mechanical Engineer, B.Com, MBA - HR & Marketing",
-      imageSrc: Suket,
-    },
-    {
-      id: 17,
-      name: "Prof. Kapil Kumar Bali",
-      role: "M.Com., FCS, LL.B, MBA",
-      imageSrc: Kamil,
-    },
-    {
-      id: 18,
-      name: "Prof. Kamlesh Kumar Verma",
-      role: "MBA (HR) (FMS)\nB E (Industrial Engg )\nIIT Roorkee",
-      imageSrc: Kamlesh,
-    },
-    {
-      id: 19,
-      name: "Prof. Manoj Sharma",
-      role: "MBA(Fin.), MA(Economics),\nB.Sc (PCM)",
-      imageSrc: Manoj,
-    },
-    {
-      id: 20,
-      name: "Prof. Ruchika Dugal",
-      role: "MBA ( Mktg & Adtvg.)\nCorporate Trainer",
-      imageSrc: Ruchika,
-    },
-    {
-      id: 21,
-      name: "Prof. Varun Jaggi",
-      role: "Soft Skill Trainer, Spoken\nEnglish Coach Public Speaker",
-      imageSrc: Varun,
-    },
-    {
-      id: 22,
-      name: "Prof. Dhruv Sood",
-      role: "MBA (IB)\nIIFT",
-      imageSrc: Dhruv,
-    },
-    {
-      id: 23,
-      name: "Prof. Harish Jain",
-      role: "B.Tech. (Mech. Honors) - IIT Kharagpur\nIndustry Domain: Big Data Analytics, Strategy Management, Agile Project Management and Marketing",
-      imageSrc: Harish,
-    },
-    {
-      id: 24,
-      name: "Dr. K.L. Chawla",
-      role: "Ph.D. (Economics), LLB\nIndustry Domain: Economics, International Business, Business Law",
-      imageSrc: Kamlesh,
-    },
-    {
-      id: 25,
-      name: "Prof. D.C.Singhal",
-      role: "B.Tech. (Mech.) – IIT, Kharagpur\nIndustry Domain: Procurement & Supply Chain Management, International Business, Operation Strategy & Management",
-      imageSrc: Singhal,
-    },
-    {
-      id: 26,
-      name: "Prof. Anupam Bhasin",
-      role: "MBA – FMS, Delhi\nIndustry Domain: Consultancy, Project Management, Trainer",
-      imageSrc: Anupam,
-    },
-    {
-      id: 27,
-      name: "Prof. Sanjay Blaggan",
-      role: "M.Tech (CS), B.Sc\nIndustry Domain: IT, Programming and Statistical Analysis",
-      imageSrc: SanjayB,
-    },
-    {
-      id: 28,
-      name: "Prof. Anurag Arora",
-      role: "MBA, PG (International Business) – IIFT, Delhi\nIndustry Domain: P&L Management, Product/ Brand Management",
-      imageSrc: Anurag,
-    },
-    {
-      id: 29,
-      name: "Prof. Madan Lal",
-      role: "M.A. (Economics)\nIndustry Domain: International Marketing, Foreign Trade Policy, International Trade Operations",
-      imageSrc: Madan,
-    },
-  ];
+  useEffect(() => {
+    const fetchFaculty = async () => {
+      try {
+        const response = await fetch(
+          "https://stealthlearn.in/imm-admin/api/indexFaculty.php"
+        );
+        if (!response.ok) {
+          throw new Error("Failed to fetch faculty data");
+        }
+        const data = await response.json();
+        // Filter to only include faculty category
+        const facultyOnly = data.filter(
+          (member) => member.category.toLowerCase() === "faculty"
+        );
+        setFacultyMembers(facultyOnly.reverse());
+        setLoading(false);
+      } catch (err) {
+        setError(err.message);
+        setLoading(false);
+      }
+    };
+
+    fetchFaculty();
+  }, []);
 
   return (
-    <div className="relative min-h-screen ">
+    <div className="relative min-h-screen">
       <ImgAndBreadcrumb
         title="Faculty"
         imageSrc={img}
         imageAlt="Description of the image"
         breadcrumbItems={breadcrumbItems}
       />
-      <Container className="container grid ">
-        {/* <Heading
-          title="Introducing Our Esteemed Faculty"
-          titleClassName="text-primary-color lg:text-5xl text-center"
-          subtitleClassName="text-gray-500 text-center m-0 lg:text-lg lg:font-normal lg:max-w-full"
-          subtitle="Discover the leaders who are steering our institution towards excellence in education and empowerment."
-          className="pt-12 mx-auto"
-        /> */}
+      <Container className="container grid">
         <FacultyHeading />
-        <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-5 gap-6 mx-auto justify-center items-center text-center">
-          {teamMembers.map((member) => (
-            <TeamMemberCard key={member.name} {...member} />
-          ))}
-        </div>
+        {loading && (
+          <div className="text-center py-10">
+            <p className="text-lg">Loading faculty information...</p>
+          </div>
+        )}
+        {error && (
+          <div className="text-center py-10">
+            <p className="text-lg text-red-500">Error: {error}</p>
+          </div>
+        )}
+        {!loading && !error && (
+          <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-5 gap-6 mx-auto justify-center items-center text-center">
+            {facultyMembers.map((member) => (
+              <TeamMemberCard
+                key={member.id}
+                name={member.title}
+                role={member.description}
+                imageSrc={member.url}
+                linkedinLink={member.link}
+              />
+            ))}
+          </div>
+        )}
       </Container>
       <div className="bg-slate-50"></div>
       {/* <Stats />
@@ -251,28 +88,38 @@ const Faculty = () => {
 
 export default Faculty;
 
-const TeamMemberCard = ({ name, role, imageSrc }) => (
+const TeamMemberCard = ({ name, role, imageSrc, linkedinLink }) => (
   <div className="col-span-4 md:col-span-2 lg:col-span-1 hover:-translate-y-2 transition-all duration-300">
     <div className="bg-white shadow-xl dark:bg-slate-800 rounded-xl h-full p-2 group">
       <div className="flex justify-center overflow-hidden rounded-lg relative">
         <img
           src={imageSrc}
           alt={name}
-          className="w-full h-auto rounded-lg  hover:scale-110 transition-all duration-300"
+          className="w-full h-auto rounded-lg hover:scale-110 transition-all duration-300"
         />
       </div>
       <div className="px-4 py-6">
-        <h4 className="text-2xl font-medium mb-1">{name}</h4>
-        <p className="mb-4 text-sm sm:line-clamp-2 group-hover:line-clamp-none transition-all duration-300">
+        <h4 className="text-xl font-medium mb-1 line-clamp-1">{name}</h4>
+        <p className="mb-4 text-sm line-clamp-none sm:line-clamp-2 group-hover:line-clamp-none transition-all duration-300">
           {role}
         </p>
-        <div className="mt-6 flex justify-center">
-          <LinkedinIcon size={20} />
+        
+          <div className="mt-6 flex justify-center">
+            <a href={linkedinLink} target="_blank" rel="noopener noreferrer">
+              <LinkedinIcon size={20} />
+            </a>
         </div>
       </div>
     </div>
   </div>
 );
+
+TeamMemberCard.propTypes = {
+  name: PropTypes.string.isRequired,
+  role: PropTypes.string.isRequired,
+  imageSrc: PropTypes.string.isRequired,
+  linkedinLink: PropTypes.string,
+};
 
 const FacultyHeading = () => {
   return (
