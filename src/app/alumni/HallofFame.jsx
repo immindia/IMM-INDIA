@@ -49,8 +49,8 @@ export default function HallofFame() {
   const [currentPage, setCurrentPage] = useState(1);
   const [sortField, setSortField] = useState("title");
   const [sortDirection, setSortDirection] = useState("asc");
-  const itemsPerPage = 12;
   const [viewStyle, setViewStyle] = useState("card");
+  const itemsPerPage = window.innerWidth < 500 ? 10 : 15;
 
   // Fetch data from API
   useEffect(() => {
@@ -372,7 +372,7 @@ export default function HallofFame() {
               </CardHeader>
               <CardContent className="p-3 sm:p-4">
                 {viewStyle === "card" ? (
-                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-4 gap-3 sm:gap-4">
+                  <div className="grid grid-cols-1 sm:grid-cols-4 lg:grid-cols-5 xl:grid-cols-5 gap-3 sm:gap-4">
                     {paginatedAlumni.length > 0 ? (
                       paginatedAlumni.map((alumni, index) => (
                         <div
@@ -387,10 +387,10 @@ export default function HallofFame() {
                             />
                           </div>
                           <div className="p-3 sm:p-4">
-                            <h3 className="font-semibold text-base sm:text-lg truncate">
+                            <h3 className="font-semibold text-base sm:text-lg line-clamp-2">
                               {alumni.name}
                             </h3>
-                            <p className="text-xs sm:text-sm text-gray-600 truncate">
+                            <p className="text-xs sm:text-sm text-gray-600 line-clamp-2 hover:line-clamp-none">
                               {alumni.company}
                             </p>
                             <div className="flex items-center justify-between mt-2">

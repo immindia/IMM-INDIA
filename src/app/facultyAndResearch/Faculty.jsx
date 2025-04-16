@@ -236,7 +236,7 @@ const Faculty = () => {
           className="pt-12 mx-auto"
         /> */}
         <FacultyHeading />
-        <div className="grid grid-cols-5 gap-6 text-center">
+        <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-5 gap-6 mx-auto justify-center items-center text-center">
           {teamMembers.map((member) => (
             <TeamMemberCard key={member.name} {...member} />
           ))}
@@ -276,7 +276,7 @@ const TeamMemberCard = ({ name, role, imageSrc }) => (
 
 const FacultyHeading = () => {
   return (
-    <section className="py-14">
+    <section className="py-14 mx-auto">
       <div className="max-w-screen-xl mx-auto ">
         <div className="items-center gap-x-12 sm:px-4 md:px-0 lg:flex">
           <div className="flex-1 sm:hidden lg:block">

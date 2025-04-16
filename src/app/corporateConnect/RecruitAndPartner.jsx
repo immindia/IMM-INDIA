@@ -5,7 +5,7 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import * as z from "zod"
 import { CheckCircle2, Send, Sparkles } from "lucide-react"
-
+import img2 from "../../assets/programsoffered.webp";
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
@@ -305,11 +305,11 @@ export default function RecruitAndPartner() {
                 <div className="sticky top-10">
                   <div className="rounded-lg overflow-hidden shadow-lg mb-6">
                     <img
-                      src="/pink-hues-campus.png"
+                      src={img2}
                       alt="IIM Campus"
                       width={300}
                       height={400}
-                      className="w-full h-auto"
+                      className="w-full h-auto brightness-75 hover:brightness-100 transition-all duration-300"
                     />
                   </div>
                   <div className="bg-pink-50 p-4 rounded-lg border border-pink-200">

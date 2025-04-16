@@ -1,5 +1,5 @@
 import ImgAndBreadcrumb from "../../components/ImgAndBreadcrumb";
-import img from "../../assets/breadcrumb.png";
+import img from "../../assets/banner/IndustryLecturesBanner.jpg";
 import Container from "../../components/wrappers/Container";
 import Heading from "../../components/Heading";
 // import AboutSidebar from "../../components/AboutSidebar";

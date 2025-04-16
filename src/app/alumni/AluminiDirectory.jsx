@@ -19,8 +19,9 @@ export default function AlumniDirectory() {
   const [currentPage, setCurrentPage] = useState(1)
   const [sortField, setSortField] = useState("name")
   const [sortDirection, setSortDirection] = useState("asc")
-  const itemsPerPage = 12
   const [viewStyle, setViewStyle] = useState("card")
+  
+  const itemsPerPage = window.innerWidth < 500 ? 10 : 15
 
   // Extract unique class years and companies for filters
   const classYears = useMemo(() => {
@@ -107,7 +108,7 @@ export default function AlumniDirectory() {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-pink-50 to-white">
-      <div className="container sm:max-w-6xl md:max-w-7xl mx-auto py-6 px-4 sm:py-8">
+      <div className="container sm:max-w-6xl md:max-w-6xl lg:max-w-7xl xl:max-w-7xl mx-auto py-6 px-4 sm:py-8">
         <div className="mb-6 sm:mb-8 text-center">
           <h1 className="text-3xl sm:text-4xl font-bold mb-2 bg-clip-text text-transparent bg-gradient-to-r from-pink-600 to-pink-800">
             Alumni Directory
@@ -244,7 +245,7 @@ export default function AlumniDirectory() {
               </CardHeader>
               <CardContent className="p-3 sm:p-4">
                 {viewStyle === "card" ? (
-                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-4 gap-3 sm:gap-4">
+                  <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-5 xl:grid-cols-5 gap-3 sm:gap-4">
                     {paginatedAlumni.length > 0 ? (
                       paginatedAlumni.map((alumni, index) => (
                         <div
