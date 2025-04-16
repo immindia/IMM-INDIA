@@ -82,7 +82,7 @@ const Drawer = () => {
           </svg>
         </button>
       </SheetTrigger>
-      <SheetContent className="bg-primary-color overflow-auto border-none">
+      <SheetContent className="bg-pink-800 overflow-auto border-none shadow-lg z-[99999]">
         <SheetHeader>
           <SheetTitle className="text-white text-2xl font-bold text-left">
             IMM India
