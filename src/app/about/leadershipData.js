@@ -1,4 +1,4 @@
-import dean from "../../assets/about/leadership/dean.webp";
+import dean from "../../assets/faculty/Samita.webp";
 import registrar from "../../assets/about/leadership/registrar.webp";
 import executivePresident from "../../assets/about/leadership/executive-president.webp";
 import seniorAdvisor from "../../assets/about/leadership/senior-advisor.webp";
@@ -15,7 +15,7 @@ export const leadershipData = [
 IMM's Founder, Late Dr. Jagjit Singh, was an exemplary teacher who inspired thousands of students, igniting their imaginations and instilling a love for learning. A gifted academician and scholar, he epitomized the virtues of generosity, sincerity, earnestness, gravity, and kindness. For over four decades, Dr. Jagjit Singh facilitated learning by introducing various initiatives and innovations, revolutionizing the way Management Education is imparted. He founded several initiatives, forums, and associations, including the World Marketing Congress, Indo-European Association, National Association of Women Entrepreneurs & Executives, Global Development Centre (GDC), Top Management Club (TMC), Young Managers Forum, and IMM Executives' Club, among many others.
 
 IMM pays its respects, reverence, and gratitude to "Sir" for his selfless efforts and invaluable contributions to society by imparting knowledge and shaping the careers of countless students. His humility, wisdom, life lessons, and passion for teaching will be forever remembered.`,
-    linkedin: null,
+    linkedin: 'https://www.linkedin.com/',
   },
   {
     id: 2,
@@ -27,7 +27,7 @@ IMM pays its respects, reverence, and gratitude to "Sir" for his selfless effort
 Her visionary leadership is the driving force behind the organization's expansion into the dynamic world of Ed-tech.
 
 Prof. Satpal's contributions extend far beyond her roles within IMM and JJ Foundation. Her steadfast dedication to uplifting women and her involvement with Delhi Kala Karam showcase her enduring commitment to societal betterment. Through her multifaceted roles, she has demonstrated a rare blend of leadership, compassion, and a deep-seated belief in the power of education and empowerment. This vision has paved the way for the organization's venture into Ed-tech, promising to leave a lasting impact on the educational landscape.`,
-    linkedin: null,
+    linkedin: 'https://www.linkedin.com/',
   },
   {
     id: 3,
@@ -48,13 +48,13 @@ Our excellent placement record has furthered our mission to enhance the knowledg
 This innovative approach has empowered our students with global knowledge, leading to broader placement opportunities and the institution winning over 15 awards and accolades.
 
 Join our ever-growing successful fraternity as we prepare for Education 4.0.`,
-    linkedin: null,
+    linkedin: 'https://www.linkedin.com/in/prof-gaganjit-singh/',
   },
   {
     id: 4,
     image: registrar,
     position: "Registrar and Promoter",
-    name: "Not specified",
+    name: "Prof. Molijit Lall",
     message: `Welcome to IMM, a real temple of learning. You are going to join us in the 55th year of successful operations and are fortunate to experience our vibrant campus, robust faculty members, and Global course curriculum.
 
 Learning is a never-ending journey and continues on a daily basis. We learn from our peers, our family, our environment. As future managers, it is pertinent for you to make the right choices and imbibe the best from all around you.
@@ -66,14 +66,14 @@ Another important aspect of learning is discipline. Maintaining discipline in li
 Last but not least, perseverance is the only key to a bright future, so gear up and give it your best. Also remember, you must learn to give back what you receive. So give your full power to the organization you become a part of and make your family and Alma Mater proud.
 
 Blessings and Best Wishes Always!`,
-    linkedin: null,
+    linkedin: 'https://www.linkedin.com/in/molijit-lall-571788114/',
   },
  
   {
     id: 6,
     image: dean,
     position: "Dean",
-    name: "Not specified",
+    name: "Prof. Smita Lal",
     message: `Dear Career Professionals of Tomorrow,
 
 Welcome to the 2025 Academic Session at IMM!
@@ -87,6 +87,6 @@ You will join an environment of academic excellence and industry-based dialogues
 Our faculty comprises experienced and talented individuals, derived from industry talent as well as intellectually stimulated teachers. They are your partners in education, challenging you to think critically and creatively as you work towards your professional goals.
 
 You will benefit from the placement mentorship and academic exposure that IMM offers, paving the way for your future success.`,
-    linkedin: null,
+    linkedin: 'https://www.linkedin.com/in/prof-smita-lal-b522b721/',
   },
 ];
