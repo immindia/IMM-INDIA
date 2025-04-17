@@ -67,13 +67,10 @@ const FeatureItem = ({ feature, index }) => {
           "md:order-2": index % 2,
         })}
       >
-        <div
-          className={cn(
-            "bg-center bg-no-repeat bg-cover h-full min-h-[350px] w-full -z-10 overflow-hidden"
-          )}
-          style={{
-            backgroundImage: `url(${feature.img})`,
-          }}
+        <img
+          src={feature.img}
+          alt={feature.title}
+          className="sm:h-full h-[220px]  aspect-video w-full object-cover"
         />
       </div>
       <div className="col-span-12 md:col-span-6 relative z-20 p-0">
