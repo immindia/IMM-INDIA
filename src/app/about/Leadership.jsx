@@ -88,24 +88,38 @@ const LeaderCard = ({ leader, onReadMore }) => {
             className="object-cover rounded-lg"
           />
         </div>
-        <h3 className="text-xl font-semibold mb-2">{leader.name}</h3>
-        <p className="text-gray-600 mb-4">{leader.position}</p>
-        {leader.linkedin && (
-          <a
-            href={leader.linkedin}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-blue-500 hover:text-blue-700"
-          >
-            <LinkedinIcon className="inline-block mr-2" size={20} />
-            LinkedIn Profile
-          </a>
-        )}
+        <div className="flex items-start justify-between">
+          <div>
+            <h3 className="text-xl font-semibold mb-2">{leader.name}</h3>
+            <p className="text-gray-600 mb-4">{leader.position}</p>
+          </div>
+
+          {leader.linkedin && (
+            <a href={leader.linkedin} target="_blank" rel="noopener noreferrer" className="hover:scale-110 transition-all duration-300">
+              <img
+                width="48"
+                height="48"
+                src="https://img.icons8.com/color/48/linkedin.png"
+                alt="linkedin"
+              />
+            </a>
+          )}
+        </div>
       </CardContent>
       <CardFooter className="p-6 pt-0">
-        <Button onClick={() => onReadMore(leader)} className="w-full flex items-center justify-center group">
-          Read Message <Mail size={20} className="mt-1 ml-2 group-hover:hidden transition-all duration-300" />
-          <MailOpen size={20} className="mt- ml-2 hidden group-hover:block transition-all duration-300" />
+        <Button
+          onClick={() => onReadMore(leader)}
+          className="w-full flex items-center justify-center group"
+        >
+          Read Message{" "}
+          <Mail
+            size={20}
+            className="mt-1 ml-2 group-hover:hidden transition-all duration-300"
+          />
+          <MailOpen
+            size={20}
+            className="mt- ml-2 hidden group-hover:block transition-all duration-300"
+          />
         </Button>
       </CardFooter>
     </Card>
@@ -116,11 +130,13 @@ const ReadMoreDialog = ({ isOpen, onClose, leader }) => {
   if (!leader) return null;
 
   return (
-    <Dialog open={isOpen} onOpenChange={onClose} className=' rounded-lg'>
+    <Dialog open={isOpen} onOpenChange={onClose} className=" rounded-lg">
       <DialogContent className="sm:max-w-3xl rounded-lg w-[90vw]">
         <DialogHeader>
           <DialogTitle className="text-xl text-left">{leader.name}</DialogTitle>
-          <DialogDescription className="text-left">{leader.position}</DialogDescription>
+          <DialogDescription className="text-left">
+            {leader.position}
+          </DialogDescription>
         </DialogHeader>
         <div className="mt-4 max-h-[60vh] overflow-y-auto">
           {leader.message.split("\n\n").map((paragraph, index) => (
@@ -133,7 +149,3 @@ const ReadMoreDialog = ({ isOpen, onClose, leader }) => {
     </Dialog>
   );
 };
-
-
-
-
