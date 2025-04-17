@@ -80,7 +80,7 @@ function EventGallery() {
 
         // Process events and extract unique years
         const processedEvents = data
-          .filter(event => event.category === " ")
+          .filter(event => event.category === "Events")
           .map((event) => ({
             ...event,
             photoCount: event.gallery ? event.gallery.length : 0,
