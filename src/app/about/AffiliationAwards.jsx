@@ -52,7 +52,7 @@ export default AffiliationAwards;
 
 const AffiliationAwardsContent = () => {
   return (
-    <section className="sm:py-14 pt-12 sm:pt-0">
+    <section className=" pt-12">
       <div className="max-w-screen-xl mx-auto md:px-8">
         <div className="items-center gap-6 sm:gap-12 sm:px-4 md:px-0 flex flex-col sm:flex-row">
           <div className="flex-1 order-2 sm:order-1 flex justify-center items-center  gap-5 sm:gap-12">
