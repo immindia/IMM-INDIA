@@ -47,7 +47,7 @@ const Blog = () => {
 
   if (isLoading) {
     return (
-      <section className="py-24">
+      <section className="sm:py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <Heading
             title="Our latest blog"
@@ -88,7 +88,7 @@ const Blog = () => {
   const { posts, totalPages } = data;
 
   return (
-    <section className="py-24">
+    <section className="py-12 sm:py-24">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <Heading
           title="Our latest blog"
@@ -184,7 +184,7 @@ const BlogCard = ({ id, date, title, description, imageUrl, slug }) => {
         <img
           src={imageUrl || "https://pagedone.io/asset/uploads/1696244317.png"}
           alt={title}
-          className="rounded-t-2xl w-full object-cover h-48"
+          className="rounded-t-2xl w-full object-cover h-44 sm:h-48 aspect-video"
         />
       </div>
       <div className="p-4 lg:p-6 h-full transition-all duration-300 rounded-b-2xl group-hover:bg-gray-50">

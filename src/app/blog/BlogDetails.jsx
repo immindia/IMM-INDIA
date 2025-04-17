@@ -230,7 +230,7 @@ const BlogDetails = () => {
                   className="group cursor-pointer"
                 >
                   <img
-                    className="w-full h-48 object-cover rounded-lg mb-4"
+                    className="w-full h-[10rem] sm:h-[13rem] aspect-video object-cover rounded-lg mb-4"
                     src={
                       recentPost._embedded?.["wp:featuredmedia"]?.[0]
                         ?.source_url ||
