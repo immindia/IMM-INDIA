@@ -5,8 +5,8 @@ import img from "../../assets/about/AboutBanner.webp";
 // import Stats from "../../components/Stats";
 // import Newsletter from "../../components/Newsletter";
 // import AboutSidebar from "../../components/AboutSidebar";
-import { useState } from "react";
-import { LinkedinIcon, MessageSquare, Mail, MailOpen } from "lucide-react";
+import { useState, useEffect } from "react";
+import { Mail, MailOpen } from "lucide-react";
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import {
@@ -17,7 +17,7 @@ import {
   DialogDescription,
 } from "@/components/ui/dialog";
 
-import { leadershipData } from "./leadershipData";
+import PropTypes from "prop-types";
 
 const Leadership = () => {
   const breadcrumbItems = [
@@ -53,8 +53,36 @@ const Leadership = () => {
 export default Leadership;
 
 const LeadershipContent = () => {
+  const [leadershipMembers, setLeadershipMembers] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
   const [selectedLeader, setSelectedLeader] = useState(null);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
+
+  useEffect(() => {
+    const fetchLeadership = async () => {
+      try {
+        const response = await fetch(
+          "https://stealthlearn.in/imm-admin/api/indexFaculty.php"
+        );
+        if (!response.ok) {
+          throw new Error("Failed to fetch leadership data");
+        }
+        const data = await response.json();
+        // Filter to only include leadership category
+        const leadershipOnly = data.filter(
+          (member) => member.category.toLowerCase() === "leadership"
+        );
+        setLeadershipMembers(leadershipOnly.reverse());
+        setLoading(false);
+      } catch (err) {
+        setError(err.message);
+        setLoading(false);
+      }
+    };
+
+    fetchLeadership();
+  }, []);
 
   const handleReadMore = (leader) => {
     setSelectedLeader(leader);
@@ -63,11 +91,33 @@ const LeadershipContent = () => {
 
   return (
     <div className="container mx-auto">
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {leadershipData.map((leader, index) => (
-          <LeaderCard key={index} leader={leader} onReadMore={handleReadMore} />
-        ))}
-      </div>
+      {loading && (
+        <div className="text-center py-10">
+          <p className="text-lg">Loading leadership information...</p>
+        </div>
+      )}
+      {error && (
+        <div className="text-center py-10">
+          <p className="text-lg text-red-500">Error: {error}</p>
+        </div>
+      )}
+      {!loading && !error && (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {leadershipMembers.map((leader) => (
+            <LeaderCard
+              key={leader.id}
+              leader={{
+                name: leader.title,
+                position: leader.description,
+                image: leader.url,
+                linkedin: leader.link,
+                message: leader.message || "No message available.",
+              }}
+              onReadMore={handleReadMore}
+            />
+          ))}
+        </div>
+      )}
       <ReadMoreDialog
         isOpen={isDialogOpen}
         onClose={() => setIsDialogOpen(false)}
@@ -95,7 +145,12 @@ const LeaderCard = ({ leader, onReadMore }) => {
           </div>
 
           {leader.linkedin && (
-            <a href={leader.linkedin} target="_blank" rel="noopener noreferrer" className="hover:scale-110 transition-all duration-300">
+            <a
+              href={leader.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:scale-110 transition-all duration-300"
+            >
               <img
                 width="48"
                 height="48"
@@ -139,8 +194,8 @@ const ReadMoreDialog = ({ isOpen, onClose, leader }) => {
           </DialogDescription>
         </DialogHeader>
         <div className="mt-4 max-h-[60vh] overflow-y-auto">
-          {leader.message.split("\n\n").map((paragraph, index) => (
-            <p key={index} className="mb-4">
+          {leader.message.split(/\n+/).map((paragraph, index) => (
+            <p key={index} className="mb-4 whitespace-pre-line">
               {paragraph}
             </p>
           ))}
@@ -148,4 +203,26 @@ const ReadMoreDialog = ({ isOpen, onClose, leader }) => {
       </DialogContent>
     </Dialog>
   );
+};
+
+// Add PropTypes for components
+LeaderCard.propTypes = {
+  leader: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    position: PropTypes.string.isRequired,
+    image: PropTypes.string.isRequired,
+    linkedin: PropTypes.string,
+    message: PropTypes.string,
+  }).isRequired,
+  onReadMore: PropTypes.func.isRequired,
+};
+
+ReadMoreDialog.propTypes = {
+  isOpen: PropTypes.bool.isRequired,
+  onClose: PropTypes.func.isRequired,
+  leader: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    position: PropTypes.string.isRequired,
+    message: PropTypes.string.isRequired,
+  }),
 };
