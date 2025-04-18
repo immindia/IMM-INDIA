@@ -182,6 +182,7 @@ function App() {
 
           {/* Footer Components */}
           <Route path="/life-at-imm/gallery" element={<Gallery />} />
+          <Route path="/gallery" element={<Gallery />} />
           <Route path="/privacy-policy" element={<PolicyPrivacy />} />
           <Route path="/disclaimer" element={<Disclaimer />} />
           <Route path="/aicte-approval" element={<AICTE />} />
