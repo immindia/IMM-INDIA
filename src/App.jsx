@@ -181,7 +181,7 @@ function App() {
           <Route path="/contact-us" element={<Contact />} />
 
           {/* Footer Components */}
-          <Route path="/gallery" element={<Gallery />} />
+          <Route path="/life-at-imm/gallery" element={<Gallery />} />
           <Route path="/privacy-policy" element={<PolicyPrivacy />} />
           <Route path="/disclaimer" element={<Disclaimer />} />
           <Route path="/aicte-approval" element={<AICTE />} />

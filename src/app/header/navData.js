@@ -53,6 +53,7 @@ export const navlinks = [
         path: "/life-at-imm/events-and-activities",
       },
       { name: "Clubs at IMM", path: "/life-at-imm/clubs-at-imm" },
+      { name: "State-of-the Art Campus", path: "/life-at-imm/gallery" },
       // { name: "Life at IMM", path: "/life-at-imm/life-at-imm" },
     ],
   },

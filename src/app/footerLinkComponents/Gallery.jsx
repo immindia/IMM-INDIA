@@ -8,7 +8,7 @@ const Gallery = () => {
   const [selectedImage, setSelectedImage] = useState(null);
   const breadcrumbItems = [
     { href: "/", label: "Home" },
-    { href: "/gallery", label: "Gallery" },
+    { href: "/life-at-imm/gallery", label: "Life at IMM" },
     { label: "Gallery" },
   ];
 
@@ -35,7 +35,7 @@ const Gallery = () => {
   return (
     <div className="relative min-h-screen">
       <ImgAndBreadcrumb
-        title="Gallery"
+        title="State-of-the Art Campus"
         imageSrc={img}
         imageAlt="Description of the image"
         breadcrumbItems={breadcrumbItems}
