@@ -78,7 +78,7 @@ export default function RecruitAndPartner() {
             </div>
             <h2 className="text-3xl font-bold text-center mb-2 text-pink-800">Thank You!</h2>
             <p className="text-center text-gray-600 max-w-md">
-              Your submission has been received. We appreciate your interest in IIM's Strategic Plan Implementation.
+              Your submission has been received. We appreciate your interest in IMM's Strategic Plan Implementation.
               Someone from our team will be in touch with you soon.
             </p>
             <Button
@@ -111,13 +111,13 @@ export default function RecruitAndPartner() {
               <div className="flex justify-center mb-4">
                 <img
                   src="/minimalist-pink-education-logo.png"
-                  alt="IIM Logo"
+                  alt="IMM Logo"
                   width={80}
                   height={80}
                   className="rounded-full bg-white p-2"
                 />
               </div>
-              <CardTitle className="text-4xl font-bold tracking-tight mb-2">HELP DESIGN IIM'S FUTURE</CardTitle>
+              <CardTitle className="text-4xl font-bold tracking-tight mb-2">HELP DESIGN IMM'S FUTURE</CardTitle>
               <CardDescription className="text-pink-100 text-xl">Send Comments, Ideas, Questions</CardDescription>
             </div>
           </CardHeader>
@@ -125,7 +125,7 @@ export default function RecruitAndPartner() {
           <CardContent className="pt-8 relative z-10">
             <div className="mb-8 text-slate-600 bg-pink-50 p-6 rounded-lg border-l-4 border-pink-400">
               <p>
-                Thank you for your interest in IIM's Strategic Plan Implementation: IIM2030 - Designing the Future.
+                Thank you for your interest in IMM's Strategic Plan Implementation: IMM{new Date().getFullYear()} - Designing the Future.
                 Please use the form below to ask any questions or provide feedback. Your inquiry will be directed to the
                 appropriate initiative team for follow-up.
               </p>
@@ -306,7 +306,7 @@ export default function RecruitAndPartner() {
                   <div className="rounded-lg overflow-hidden shadow-lg mb-6">
                     <img
                       src={img2}
-                      alt="IIM Campus"
+                      alt="IMM Campus"
                       width={300}
                       height={400}
                       className="w-full h-auto brightness-75 hover:brightness-100 transition-all duration-300"
@@ -337,7 +337,7 @@ export default function RecruitAndPartner() {
           <CardFooter className="flex justify-center border-t border-pink-100 pt-6 pb-6 text-sm text-pink-700 bg-gradient-to-r from-pink-50 to-white">
             <div className="flex items-center">
               <Sparkles className="h-4 w-4 mr-2 text-pink-400" />
-              IIM2030 - Designing the Future | Strategic Plan Implementation
+              IMM{new Date().getFullYear()} - Designing the Future | Strategic Plan Implementation
             </div>
           </CardFooter>
         </Card>
