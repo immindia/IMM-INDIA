@@ -95,7 +95,7 @@ const TeamMemberCard = ({ name, role, imageSrc, linkedinLink }) => (
         <img
           src={imageSrc}
           alt={name}
-          className="w-full h-auto rounded-lg hover:scale-110 transition-all duration-300"
+          className="w-full h-auto sm:h-60 object-cover rounded-lg hover:scale-110 transition-all duration-300"
         />
       </div>
       <div className="px-4 py-6">
