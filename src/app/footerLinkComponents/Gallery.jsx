@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import Heading from "../../components/Heading";
 import ImgAndBreadcrumb from "../../components/ImgAndBreadcrumb";
 import Container from "../../components/wrappers/Container";
-import img from "../../assets/breadcrumb.png";
+import img from "../../assets/banner/GalleryBanner.jpg";
 
 const Gallery = () => {
   const [selectedImage, setSelectedImage] = useState(null);

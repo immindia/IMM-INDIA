@@ -12,7 +12,7 @@ import { Suspense } from "react";
 const AffiliationAwards = () => {
   const breadcrumbItems = [
     { href: "/", label: "Home" },
-    { href: "/about/affiliation-accreditation", label: "About" },
+    { href: "/about/accreditations-awards", label: "About" },
     { label: "Affiliation & Accreditation" },
   ];
   return (
