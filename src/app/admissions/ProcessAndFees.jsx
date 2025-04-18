@@ -154,7 +154,7 @@ const ProcessAndFees = () => {
         <Button
           onClick={handleNext}
           disabled={activeStep === steps.length - 1}
-          className="text-white bg-primary-color hover:bg-primary-color/90"
+          className={`text-white bg-primary-color hover:bg-primary-color/90 ${activeStep === steps.length - 1 ? "hidden" : "block"}`}
         >
           {activeStep === steps.length - 1 ? "Finish" : "Next"}
         </Button>

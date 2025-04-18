@@ -23,7 +23,7 @@ export const useEventData = (category) => {
 
         const data = await response.json();
 
-        // Process and filter events
+        // Process, filter and sort events by date
         const processedEvents = data
           .filter((event) => (category ? event.category === category : true))
           .map((event) => ({
@@ -40,7 +40,8 @@ export const useEventData = (category) => {
                     : `https://stealthlearn.in/imm-admin/api/${img}`
                 )
               : [],
-          }));
+          }))
+          .sort((a, b) => new Date(b.date) - new Date(a.date)); // Sort by date in descending order
 
         setEvents(processedEvents);
         setLoading(false);
