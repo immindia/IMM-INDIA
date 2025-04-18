@@ -4,6 +4,8 @@ import ImgAndBreadcrumb from "../../components/ImgAndBreadcrumb";
 import Container from "../../components/wrappers/Container";
 import Gallery from "../../components/Gallery";
 import international from "../../assets/research/internantionalBanner.webp";
+import { Button } from "../../components/ui/button";
+import { FileIcon, DownloadIcon } from "lucide-react";
 // import { Link } from "react-router-dom";
 
 const InternationalResearch = () => {
@@ -67,6 +69,42 @@ const InternationalResearch = () => {
           ) : (
             <Gallery images={internationalImages} />
           )}
+        </div>
+
+        <div className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-8">
+          <Button
+            asChild
+            variant="default"
+            className="bg-primary-color hover:bg-primary-color/90 sm:text-lg hover:scale-105 transition-all duration-300 hover:-translate-y-2 hover:shadow-lg group"
+          >
+            <a href="#" className="inline-flex items-center">
+              <img
+                width="24"
+                height="24"
+                src="https://img.icons8.com/color/48/google-drive--v2.png"
+                alt="google-drive--v2"
+                className="mr-2 group-hover:rotate-[360deg] transition-all duration-300"
+              />
+              IMMRC Day 1
+            </a>
+          </Button>
+
+          <Button
+            asChild
+            variant="default"
+            className="bg-primary-color hover:bg-primary-color/90 sm:text-lg hover:scale-105 transition-all duration-300 hover:-translate-y-2 hover:shadow-lg group"
+          >
+            <a href="#" className="inline-flex items-center">
+              <img
+                width="24"
+                height="24"
+                src="https://img.icons8.com/color/48/google-drive--v2.png"
+                alt="google-drive--v2"
+                className="mr-2 group-hover:rotate-[360deg] transition-all duration-300"
+              />
+              IMMRC Day 2
+            </a>
+          </Button>
         </div>
       </Container>
     </div>
