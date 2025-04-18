@@ -21,7 +21,6 @@ export default function ProgramsOffered() {
     "Human Resource Management",
     "Business Analytics & Research Management",
     "International Business Management",
-    "Information Technology Management",
     "Operations Management",
     "Entrepreneurship Management",
   ];
