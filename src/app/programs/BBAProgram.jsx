@@ -136,7 +136,7 @@ const BBAProgram = () => {
 
       // If we get here, it's an actual error
       console.error("Form submission failed with status:", response.status);
-      alert("Form submission successful");
+      // alert("Form submission successful");
       setIsSuccess(true);
         form.reset();
         setFile(null);
@@ -648,7 +648,7 @@ const BBAProgram = () => {
       </section>
 
       {isSuccess && (
-        <div className="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative mb-4">
+        <div className="bg-green-100 fixed z-50 top-[190px] right-5 border border-green-400 text-green-700 px-4 py-3 rounded  mb-4 w-fit">
           <span className="block sm:inline">Form submitted successfully!</span>
         </div>
       )}
