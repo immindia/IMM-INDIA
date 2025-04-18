@@ -31,12 +31,12 @@ const Stats = () => {
           ref={ref}
           initial={{ opacity: 0, y: 100 }}
           animate={{ opacity: isInView ? 1 : 0, y: isInView ? 0 : 100 }}
-          transition={{ duration: 1.5, ease: "easeOut", delay: 0.5 }}
+          transition={{ duration: 0.5, ease: "easeOut", delay: 0.1 }}
         >
           <motion.div
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: isInView ? 1 : 0, y: isInView ? 0 : 50 }}
-            transition={{ duration: 1.5, delay: 1 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
           >
             <Heading
               title="IMM LEGACY"
@@ -49,7 +49,7 @@ const Stats = () => {
           <motion.div
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: isInView ? 1 : 0, y: isInView ? 0 : 50 }}
-            transition={{ duration: 1.5, delay: 1.5 }}
+            transition={{ duration: 0.5, delay: 0.3 }}
             className="hidden sm:grid grid-cols-2 gap-8 md:grid-cols-3 divide-x-2 divide-yellow-500 md:gap-0 md:divide-yellow-500"
           >
             {stats.slice(0, 3).map((item, index) => (
@@ -57,7 +57,7 @@ const Stats = () => {
                 key={index}
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: isInView ? 1 : 0, y: isInView ? 0 : 30 }}
-                transition={{ duration: 1, delay: 2 + index * 0.2 }}
+                transition={{ duration: 0.5, delay: 0.4 + index * 0.1 }}
                 className="flex flex-col items-center md:p-4"
               >
                 <div className="text-5xl font-bold text-white font sm:text-6xl">
@@ -79,7 +79,7 @@ const Stats = () => {
           <motion.div
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: isInView ? 1 : 0, y: isInView ? 0 : 50 }}
-            transition={{ duration: 1.5, delay: 2.5 }}
+            transition={{ duration: 0.5, delay: 0.5 }}
             className="hidden sm:grid grid-cols-2 gap-8 md:grid-cols-3 mt-8 divide-x-2 divide-yellow-500 md:gap-0 md:divide-yellow-500"
           >
             {stats.slice(3, 6).map((item, index) => (
@@ -87,7 +87,7 @@ const Stats = () => {
                 key={index}
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: isInView ? 1 : 0, y: isInView ? 0 : 30 }}
-                transition={{ duration: 1, delay: 3 + index * 0.2 }}
+                transition={{ duration: 0.5, delay: 0.6 + index * 0.1 }}
                 className="flex flex-col items-center md:p-4"
               >
                 <div className="text-5xl font-bold text-white font sm:text-6xl">
@@ -109,15 +109,18 @@ const Stats = () => {
           <motion.div
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: isInView ? 1 : 0, y: isInView ? 0 : 50 }}
-            transition={{ duration: 1.5, delay: 2.5 }}
+            transition={{ duration: 0.5, delay: 0.5 }}
             className="sm:hidden grid grid-cols-2 gap-2 md:grid-cols-3 mt-0 sm:mt-8 sm:divide-x-2 divide-yellow-500 md:gap-0 md:divide-yellow-500"
           >
             {stats.map((item, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
-                animate={{ opacity: isInView ? 1 : 0, x: isInView ? 0 : (index % 2 === 0 ? -50 : 50) }}
-                transition={{ duration: 1, delay: 1.5 + index * 0.2 }}
+                animate={{
+                  opacity: isInView ? 1 : 0,
+                  x: isInView ? 0 : index % 2 === 0 ? -50 : 50,
+                }}
+                transition={{ duration: 0.5, delay: 0.4 + index * 0.1 }}
                 className="flex flex-col items-center md:p-4"
               >
                 <div className="text-5xl font-bold text-white font sm:text-6xl">
