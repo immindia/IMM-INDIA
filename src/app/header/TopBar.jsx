@@ -3,9 +3,9 @@ import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import PulsatingButton from "@/components/ui/pulsating-button";
 import { Link } from "react-router-dom";
-import { Instagram, Facebook, Youtube, Twitter, Linkedin } from "lucide-react";
+import { Instagram, Facebook, Youtube, Twitter, Linkedin, QrCode, CreditCard } from "lucide-react";
 import { RiTwitterXLine } from "react-icons/ri";
-
+import img from "../../assets/header/QR-img.webp"
 const TopBar = () => {
   const [iconsLoaded, setIconsLoaded] = useState([
     false,
@@ -14,6 +14,7 @@ const TopBar = () => {
     false,
     false,
   ]);
+  const [isPayFeeOpen, setIsPayFeeOpen] = useState(false);
 
   useEffect(() => {
     // Animate icons one by one with a delay
@@ -28,12 +29,49 @@ const TopBar = () => {
     });
   }, []);
 
+  // Close payment dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = () => {
+      if (isPayFeeOpen) setIsPayFeeOpen(false);
+    };
+
+    document.addEventListener("click", handleClickOutside);
+    return () => {
+      document.removeEventListener("click", handleClickOutside);
+    };
+  }, [isPayFeeOpen]);
+
   const socialIcons = [
-    { icon: <Instagram className="w-4 h-4" />, url: "https://www.instagram.com/imm_india/" },
-    { icon: <Linkedin className="w-4 h-4" />, url: "https://www.linkedin.com/school/institute-of-marketing-and-management/?originalSubdomain=in" },
+    {
+      icon: <Instagram className="w-4 h-4" />,
+      url: "https://www.instagram.com/imm_india/",
+    },
+    {
+      icon: <Linkedin className="w-4 h-4" />,
+      url: "https://www.linkedin.com/school/institute-of-marketing-and-management/?originalSubdomain=in",
+    },
     { icon: <Youtube className="w-4 h-4" />, url: "https://bit.ly/IMM-YT" },
-    { icon: <Facebook className="w-4 h-4" />, url: "https://www.facebook.com/indiaimm" },
-    { icon: <RiTwitterXLine className="w-4 h-4" />, url: "https://x.com/imm_bschool" },
+    {
+      icon: <Facebook className="w-4 h-4" />,
+      url: "https://www.facebook.com/indiaimm",
+    },
+    {
+      icon: <RiTwitterXLine className="w-4 h-4" />,
+      url: "https://x.com/imm_bschool",
+    },
+  ];
+
+  const paymentOptions = [
+    {
+      name: "Payfee by Atom",
+      url: "https://payment.atomtech.in/payment/form/pay.action?mId=A95D13C110F64630E963122D5321258A",
+      icon: <CreditCard className="w-4 h-4" />,
+    },
+    {
+      name: "QR Code",
+      url: img, // Replace with actual QR code link or modal trigger
+      icon: <QrCode className="w-4 h-4" />,
+    },
   ];
 
   return (
@@ -97,19 +135,52 @@ const TopBar = () => {
               Apply Now
             </PulsatingButton>
           </a>
-          <a
-            href="https://payment.atomtech.in/payment/form/pay.action?mId=A95D13C110F64630E963122D5321258A"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <PulsatingButton
-              size="sm"
-              className="text-xs bg-black hover:bg-black/80"
-              pulseColor="#000"
+
+          {/* Pay Fee Dropdown */}
+          <div className="relative">
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                setIsPayFeeOpen(!isPayFeeOpen);
+              }}
+              className="relative"
             >
-              Pay Fee
-            </PulsatingButton>
-          </a>
+              <PulsatingButton
+                size="sm"
+                className="text-xs bg-black hover:bg-black/80"
+                pulseColor="#000"
+              >
+                Pay Fee
+              </PulsatingButton>
+            </button>
+
+            {isPayFeeOpen && (
+              <>
+                {/* Invisible bridge between button and dropdown */}
+                <div className="absolute w-full h-2 -bottom-2"></div>
+                <ul
+                  className="absolute right-0 top-full p-1 mt-2 overflow-hidden bg-white rounded shadow-lg z-[9999] min-w-[150px] w-max
+                             animate-fadeIn transform origin-top-right"
+                >
+                  {paymentOptions.map((option, index) => (
+                    <li key={index} onClick={() => setIsPayFeeOpen(false)}>
+                      <a
+                        href={option.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-2 block px-4 py-2 text-sm text-gray-700 rounded-sm transition-all duration-200
+                                 hover:bg-gray-200 hover:pl-6 hover:text-primary-color"
+                      >
+                        {option.icon}
+                        {option.name}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </>
+            )}
+          </div>
+
           {/* <Link to="/blog">
           <PulsatingButton
             size="sm"
