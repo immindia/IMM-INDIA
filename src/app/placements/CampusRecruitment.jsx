@@ -91,7 +91,7 @@ function CompanyLogos() {
 
   // Function to get visible logos based on active tab
   const getVisibleLogos = (companies) => {
-    return showAll ? companies : companies.slice(0, 25);
+    return showAll ? companies : companies.slice(0, window.innerWidth < 768 ? 24 : 25);
   };
 
   return (
@@ -199,7 +199,7 @@ const FinalPlacementCompanies = ({
               <motion.img
                 src={company.logo}
                 alt={`${company.name} logo`}
-                className="max-h-12 w-full object-contain filter grayscale mix-blend-multiply group-hover:filter-none hover:scale-90 transition-all duration-300"
+                className="max-h-12 w-full object-contain filter sm:grayscale mix-blend-multiply group-hover:filter-none hover:scale-90 transition-all duration-300"
                 whileHover={{ rotate: 360, scale: 1.5 }}
                 transition={{ duration: 0.5 }}
               />
@@ -276,7 +276,7 @@ const InternshipPlacementCompanies = ({
                       <motion.img
                         src={company.logo}
                         alt={`${company.name} logo`}
-                        className="max-h-12 w-full object-contain filter grayscale mix-blend-multiply group-hover:filter-none hover:scale-90 transition-all duration-300"
+                        className="max-h-12 w-full object-contain filter sm:grayscale mix-blend-multiply group-hover:filter-none hover:scale-90 transition-all duration-300"
                         whileHover={{ rotate: 360, scale: 1.5 }}
                         transition={{ duration: 0.5 }}
                       />
