@@ -7,7 +7,8 @@ import { Dialog, DialogTrigger, DialogContent } from "@/components/ui/dialog";
 // import { Link } from "react-router-dom";
 import { motion, useInView } from "framer-motion";
 import { useRef, useEffect } from "react";
-import { cards } from "./awardsData";
+// import { cards } from "./awardsData";
+import { useAwardsData } from "../../hooks/useAwardsData";
 
 // Add preload function at the top level
 const preloadImages = (images) => {
@@ -22,6 +23,7 @@ const Awards = () => {
   const headingRef = useRef(null);
   const cardsRef = useRef(null);
   // const buttonRef = useRef(null);
+  const { awards, loading } = useAwardsData();
 
   const isHeadingInView = useInView(headingRef, { once: true, amount: 0.5 });
   const areCardsInView = useInView(cardsRef, { once: true, amount: 0.1 });
@@ -30,12 +32,11 @@ const Awards = () => {
   // Preload award images when component mounts
   useEffect(() => {
     // Preload the award logo and all award images
-    const imagesToPreload = [
-      leaf,
-      ...cards.map((card) => card.image),
-    ];
-    preloadImages(imagesToPreload);
-  }, []);
+    if (awards.length > 0) {
+      const imagesToPreload = [leaf, ...awards.map((award) => award.image)];
+      preloadImages(imagesToPreload);
+    }
+  }, [awards]);
 
   return (
     <section
@@ -63,7 +64,15 @@ const Awards = () => {
             className="text-center"
           />
         </motion.div>
-        <AwardsCards cardsRef={cardsRef} areCardsInView={areCardsInView} />
+        {loading ? (
+          <div className="text-white text-center py-10">Loading awards...</div>
+        ) : (
+          <AwardsCards
+            cardsRef={cardsRef}
+            areCardsInView={areCardsInView}
+            awards={awards}
+          />
+        )}
         {/* <motion.div
           ref={buttonRef}
           initial={{ opacity: 0, y: 20 }}
@@ -100,14 +109,10 @@ const Awards = () => {
 
 export default Awards;
 
-const CardItem = ({ item, index, areCardsInView }) => (
+const CardItem = ({ item, index }) => (
   <motion.div
     initial={{ opacity: 0, y: 50, scale: 0.9 }}
-    animate={{
-      opacity: areCardsInView ? 1 : 0,
-      y: areCardsInView ? 0 : 50,
-      scale: areCardsInView ? 1 : 0.9,
-    }}
+    animate={{ opacity: 1, y: 0, scale: 1 }}
     transition={{
       duration: 0.7,
       delay: 0.2 + index * 0.2,
@@ -153,8 +158,8 @@ const CardItem = ({ item, index, areCardsInView }) => (
     <motion.h5
       initial={{ opacity: 0, y: 20 }}
       animate={{
-        opacity: areCardsInView ? 1 : 0,
-        y: areCardsInView ? 0 : 20,
+        opacity: 1,
+        y: 0,
       }}
       transition={{
         duration: 0.5,
@@ -167,7 +172,7 @@ const CardItem = ({ item, index, areCardsInView }) => (
   </motion.div>
 );
 
-const AwardsCards = ({ cardsRef, areCardsInView }) => {
+const AwardsCards = ({ cardsRef, areCardsInView, awards }) => {
   return (
     <section className="rounded-lg dark-gray dark:bg-[#0b1727] text-slate-800 dark:text-white">
       <div className="container mx-auto">
@@ -175,14 +180,14 @@ const AwardsCards = ({ cardsRef, areCardsInView }) => {
           ref={cardsRef}
           className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-6"
         >
-          {cards.map((item, i) => (
+          {awards.map((item, i) => (
             <div
               className={`${
-                i === cards.length - 1 ? "col-span-2" : "sm:col-span-3"
+                i === awards.length - 1 ? "col-span-2" : "sm:col-span-3"
               } duration-300 md:col-span-1 hover:scale-105`}
               key={i}
             >
-              <CardItem item={item} index={i} areCardsInView={areCardsInView} />
+              <CardItem item={item} index={i} />
             </div>
           ))}
         </div>

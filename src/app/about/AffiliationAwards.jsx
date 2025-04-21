@@ -1,8 +1,6 @@
-
 import ImgAndBreadcrumb from "../../components/ImgAndBreadcrumb";
 import Container from "../../components/wrappers/Container";
 import img from "../../assets/about/AboutBanner2.webp";
-
 
 import icon2 from "../../assets/about/accreditations/logos-2.png";
 
@@ -63,7 +61,6 @@ const AffiliationAwardsContent = () => {
                 alt=""
               />
             </div>
-            
           </div>
           <div className="max-w-xl order-1 sm:order-2 space-y-3 mt-6 sm:px-0 md:mt-0 lg:max-w-2xl">
             <h3 className="text-primary-color text-2xl font-semibold">

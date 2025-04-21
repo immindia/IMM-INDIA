@@ -25,7 +25,7 @@ const CampusRecruitment = () => {
       />
       <Container className="container grid ">
         <Heading
-          title="Our Trusted Partners"
+          title="Final Placement Companies"
           titleClassName="text-primary-color lg:text-5xl text-center"
           subtitleClassName="text-gray-500 text-center m-0 lg:text-lg lg:font-normal lg:max-w-full"
           subtitle="Discover the industry leaders who trust our platform for their recruitment needs."

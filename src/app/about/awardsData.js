@@ -31,8 +31,7 @@ export const cards = [
     image: img2,
   },
   {
-    title:
-      "Best Business School with Excellent Placement Record",
+    title: "Best Business School with Excellent Placement Record",
     image: img3,
   },
   {
@@ -118,3 +117,52 @@ export const cards = [
   //   image: img22,
   // },
 ];
+
+import { useState, useEffect } from "react";
+
+/**
+ * Custom hook to fetch and manage awards data from the API
+ * @returns {Object} Awards data and loading state
+ */
+export const useAwardsData = () => {
+  const [awards, setAwards] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchAwards = async () => {
+      try {
+        const response = await fetch(
+          "https://stealthlearn.in/imm-admin/api/index.php"
+        );
+
+        if (!response.ok) {
+          throw new Error("Failed to fetch awards");
+        }
+
+        const data = await response.json();
+
+        // Filter awards and process data
+        const processedAwards = data
+          .filter((item) => item.category === "Award")
+          .map((award) => ({
+            ...award,
+            id: award.id,
+            title: award.title,
+            image: award.url,
+          }));
+
+        setAwards(processedAwards);
+        setLoading(false);
+      } catch (error) {
+        console.error("Error fetching awards:", error);
+        setError(error);
+        setLoading(false);
+      }
+    };
+
+    fetchAwards();
+  }, []);
+
+  return { awards, loading, error };
+};
