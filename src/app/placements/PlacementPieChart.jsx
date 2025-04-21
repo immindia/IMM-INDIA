@@ -144,17 +144,15 @@ export default function PlacementPieChart() {
                   </ChartContainer>
                 </div>
 
-                <div className="mt-4 grid grid-cols-2 sm:grid-cols-3 gap-4">
+                <div className="mt-4 grid grid-cols-2 sm:grid-cols-3 gap-2">
                   {finalPlacementsData.map((entry, index) => (
                     <div
                       key={`legend-${index}`}
-                      className="flex items-center justify-between gap-2 text-sm"
+                      className="flex items-center gap-2 text-sm"
                       onMouseEnter={() => setActiveFinalIndex(index)}
                     >
-                      <div className="flex items-center gap-2">
-                        <div className="w-3 h-3 rounded-full" style={{ backgroundColor: entry.color }}></div>
-                        <span className="truncate">{entry.name}</span>
-                      </div>
+                      <div className="w-3 h-3 rounded-full" style={{ backgroundColor: entry.color }}></div>
+                      <span className="truncate">{entry.name}</span>
                       <span className="font-medium">{entry.value}%</span>
                     </div>
                   ))}
@@ -196,17 +194,15 @@ export default function PlacementPieChart() {
                   </ChartContainer>
                 </div>
 
-                <div className="mt-4 grid grid-cols-2 sm:grid-cols-3 gap-4 sm:gap-2">
+                <div className="mt-4 grid grid-cols-2 sm:grid-cols-3 gap-2">
                   {summerInternshipsData.map((entry, index) => (
                     <div
                       key={`legend-${index}`}
-                      className="flex items-center justify-between gap-2 text-sm"
+                      className="flex items-center gap-2 text-sm"
                       onMouseEnter={() => setActiveInternIndex(index)}
                     >
-                      <div className="flex items-center gap-2">
-                        <div className="w-3 h-3 rounded-full" style={{ backgroundColor: entry.color }}></div>
-                        <span className="truncate text-xs sm:text-sm">{entry.name}</span>
-                      </div>
+                      <div className="w-3 h-3 rounded-full" style={{ backgroundColor: entry.color }}></div>
+                      <span className="truncate">{entry.name}</span>
                       <span className="font-medium">{entry.value}%</span>
                     </div>
                   ))}

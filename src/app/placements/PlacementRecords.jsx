@@ -18,7 +18,7 @@ const PlacementRecords = () => {
   ];
 
   return (
-    <div className="relative min-h-screen ">
+    <div className="relative min-h-screen overflow-x-hidden">
       <ImgAndBreadcrumb
         title="Placement Records"
         imageSrc={img}
@@ -26,7 +26,7 @@ const PlacementRecords = () => {
         breadcrumbItems={breadcrumbItems}
       />
         <PlacementStats/>
-        <div className="w-full bg-slate-50">
+        <div className=" bg-slate-50">
           <PlacementPieChart/>
         </div>
       {/* <Container className="container grid "> */}
