@@ -69,39 +69,10 @@ const Awards = () => {
         ) : (
           <AwardsCards
             cardsRef={cardsRef}
-            areCardsInView={areCardsInView}
             awards={awards}
           />
         )}
-        {/* <motion.div
-          ref={buttonRef}
-          initial={{ opacity: 0, y: 20 }}
-          animate={{
-            opacity: isButtonInView ? 1 : 0,
-            y: isButtonInView ? 0 : 20,
-          }}
-          transition={{
-            duration: 0.5,
-            delay: 0.2,
-          }}
-        >
-          <Link to="/about/accreditations-awards">
-            <ShimmerButton
-              className="shadow-2xl mt-12 mx-auto hover:-translate-y-2 duration-300 ease-in-out"
-              background="#FFF"
-              shimmerSize="0.1em"
-              shimmerColor="#000"
-            >
-              <span className="whitespace-pre-wrap text-center text-sm font-medium leading-none tracking-tight text-black/60 dark:from-white dark:to-slate-900/10 lg:text-base flex items-center hover:text-gray-500 duration-300 ease-in-out ">
-                View more
-                <ChevronRight
-                  size={20}
-                  className="text-black/60 mt-1 group-hover:translate-x-1 duration-300 ease-in-out"
-                />
-              </span>
-            </ShimmerButton>
-          </Link>
-        </motion.div> */}
+     
       </div>
     </section>
   );
@@ -131,16 +102,19 @@ const CardItem = ({ item, index }) => (
       />
       <Dialog>
         <DialogTrigger asChild>
+          <div className="w-24 sm:w-36 h-24 sm:h-36 object-cover rounded-full z-40 absolute top-4 sm:top-5 border-2 sm:border-4 border-yellow-400 left-8 sm:left-11 cursor-pointer hover:border-yellow-300 transition-colors overflow-hidden ">
+
           <img
             src={item.image}
             alt={item.title}
             loading="lazy"
             decoding="async"
-            className="w-24 sm:w-36 h-24 sm:h-36 object-cover rounded-full z-40 absolute top-4 sm:top-5 border-2 sm:border-4 border-yellow-400 left-8 sm:left-11 cursor-pointer hover:border-yellow-300 transition-colors"
-          />
+            className="w-24 sm:w-36 h-24 sm:h-36 object-cover cursor-pointer hover:border-yellow-300 transition-colors scale-150"
+            />
+            </div>
         </DialogTrigger>
         <DialogContent
-          className="sm:max-w-[600px] w-[98vw] rounded-md bg-transparent border-none"
+          className="z-[9999] sm:max-w-[600px] w-[98vw] rounded-md bg-transparent border-none"
           crossIcon="text-white sm:h-8 sm:w-8 rounded bg-slate-600 p-1"
         >
           <div className="w-full h-full flex justify-center items-center sm:p-8 p-3">
@@ -172,7 +146,7 @@ const CardItem = ({ item, index }) => (
   </motion.div>
 );
 
-const AwardsCards = ({ cardsRef, areCardsInView, awards }) => {
+const AwardsCards = ({ cardsRef, awards }) => {
   return (
     <section className="rounded-lg dark-gray dark:bg-[#0b1727] text-slate-800 dark:text-white">
       <div className="container mx-auto">
