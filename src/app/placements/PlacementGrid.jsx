@@ -73,7 +73,7 @@ export default function PlacementGrid() {
         </div> */}
 
         {/* Placement Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-6 ">
           {placementCards.map((placement, index) => (
             <motion.div
               key={placement.name + index}
@@ -81,7 +81,7 @@ export default function PlacementGrid() {
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: index * 0.1 }}
             >
-              <Card className="overflow-hidden hover:shadow-lg transition-shadow duration-300">
+              <Card className="overflow-hidden  hover:shadow-lg transition-shadow duration-300">
                 <CardHeader className="p-0">
                   <div className="relative sm:h-80 w-full">
                     <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent z-10 hover:bg-gradient-to-t hover:from-black/0 duration-200 transition-all" />
@@ -95,7 +95,7 @@ export default function PlacementGrid() {
                     <img
                       src={placement.image || "/placeholder.svg"}
                       alt={`${placement.name}'s placement`}
-                      className="h-full w-full object-cover"
+                      className="sm:h-full h-[200px]  w-full object-cover"
                       loading="lazy"
                       width={300}
                       height={400}
@@ -117,7 +117,7 @@ export default function PlacementGrid() {
                 <CardContent className="p-4">
                   <div className="flex items-start justify-between">
                     <div>
-                      <h3 className="font-semibold text-lg mb-1">
+                      <h3 className="font-semibold text-lg mb-1 line-clamp-1 sm:line-clamp-none">
                         {placement.name}
                       </h3>
                       <div className="flex items-center text-sm text-gray-600">

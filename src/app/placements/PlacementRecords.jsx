@@ -9,7 +9,7 @@ import img from "../../assets/faculty/Banner.webp";
 // import { Search, ChevronDown, ChevronUp } from "lucide-react";
 import PlacementStats from "./PlacementStats";
 import PlacementGrid from "./PlacementGrid";
-
+import PlacementPieChart from "./PlacementPieChart";
 const PlacementRecords = () => {
   const breadcrumbItems = [
     { href: "/", label: "Home" },
@@ -26,6 +26,9 @@ const PlacementRecords = () => {
         breadcrumbItems={breadcrumbItems}
       />
         <PlacementStats/>
+        <div className="w-full bg-slate-50">
+          <PlacementPieChart/>
+        </div>
       {/* <Container className="container grid "> */}
         {/* <Heading
           title="Placement Records"
