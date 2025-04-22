@@ -3,9 +3,16 @@ import Heading from "../../components/Heading";
 import ImgAndBreadcrumb from "../../components/ImgAndBreadcrumb";
 import Container from "../../components/wrappers/Container";
 import img from "../../assets/banner/GalleryBanner.jpg";
+import PropTypes from "prop-types";
 
 const Gallery = () => {
   const [selectedImage, setSelectedImage] = useState(null);
+  const [galleryImages, setGalleryImages] = useState([]);
+  const [categories, setCategories] = useState([]);
+  const [selectedCategory, setSelectedCategory] = useState("All");
+  const [loading, setLoading] = useState(true);
+  const [filteredData, setFilteredData] = useState([]);
+
   const breadcrumbItems = [
     { href: "/", label: "Home" },
     { href: "/life-at-imm/gallery", label: "Life at IMM" },
@@ -20,17 +27,65 @@ const Gallery = () => {
     };
 
     const timeoutId = setTimeout(handleScroll, 2000);
-    
+
     return () => clearTimeout(timeoutId);
   }, []);
 
-  const galleryImages = [
-    "https://pagedone.io/asset/uploads/1713942989.png",
-    "https://pagedone.io/asset/uploads/1713943004.png",
-    "https://pagedone.io/asset/uploads/1713943024.png",
-    "https://pagedone.io/asset/uploads/1713943039.png",
-    "https://pagedone.io/asset/uploads/1713943054.png",
-  ];
+  useEffect(() => {
+    const fetchGalleryImages = async () => {
+      try {
+        const response = await fetch(
+          "https://stealthlearn.in/imm-admin/api/index.php"
+        );
+        const data = await response.json();
+
+        // Filter out unwanted categories
+        const filteredImages = data.filter(
+          (image) =>
+            !["Award", "International", "National", "Uncategorized Research"].includes(
+              image.category
+            )
+        );
+
+        // Extract unique categories
+        const uniqueCategories = [
+          "All",
+          ...new Set(filteredImages.reverse().map((image) => image.category)),
+        ];
+        setCategories(uniqueCategories);
+
+        // Store the filtered data
+        setFilteredData(filteredImages.reverse());
+
+        // Set gallery images with all filtered images
+        setGalleryImages(filteredImages.map((image) => image.url));
+        setLoading(false);
+      } catch (error) {
+        console.error("Error fetching gallery images:", error);
+        setLoading(false);
+      }
+    };
+
+    fetchGalleryImages();
+  }, []);
+
+  // Filter images when category changes
+  useEffect(() => {
+    if (filteredData.length > 0) {
+      if (selectedCategory === "All") {
+        setGalleryImages(filteredData.map((image) => image.url));
+      } else {
+        const categoryImages = filteredData
+          .filter((image) => image.category === selectedCategory)
+          .map((image) => image.url);
+        setGalleryImages(categoryImages);
+      }
+    }
+  }, [selectedCategory, filteredData]);
+
+  const handleCategoryClick = (category) => {
+    setSelectedCategory(category);
+  };
 
   return (
     <div className="relative min-h-screen">
@@ -47,15 +102,40 @@ const Gallery = () => {
             titleClassName="text-4xl font-bold text-center text-gray-900"
             subtitleClassName="text-gray-600 text-lg text-center leading-8"
             subtitle="Explore our vibrant campus life through these moments."
-            className="mb-10"
+            className="mb-"
           />
+
+          {/* Category Filter Buttons */}
+          <div className="flex flex-wrap justify-center gap-2 mb-10">
+            {categories.map((category, index) => (
+              <button
+                key={index}
+                onClick={() => handleCategoryClick(category)}
+                className={`px-4 py-2 rounded-full  text-xs sm:text-sm transition-all ${
+                  selectedCategory === category
+                    ? "bg-pink-600 text-white"
+                    : "bg-gray-200 text-gray-700 hover:bg-gray-300"
+                }`}
+              >
+                {category}
+              </button>
+            ))}
+          </div>
         </div>
 
         {/* Gallery Grid */}
-        <GalleryImage
-          galleryImages={galleryImages}
-          setSelectedImage={setSelectedImage}
-        />
+        {loading ? (
+          <div className="text-center py-10">Loading gallery images...</div>
+        ) : galleryImages.length > 0 ? (
+          <GalleryImage
+            galleryImages={galleryImages}
+            setSelectedImage={setSelectedImage}
+          />
+        ) : (
+          <div className="text-center py-10">
+            No gallery images found for the selected category.
+          </div>
+        )}
       </Container>
 
       {/* Lightbox */}
@@ -85,6 +165,25 @@ const Gallery = () => {
 export default Gallery;
 
 const GalleryImage = ({ galleryImages, setSelectedImage }) => {
+  // Check if we have enough images
+  if (galleryImages.length < 2) {
+    // If less than 2 images, show them in a simple grid
+    return (
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-10">
+        {galleryImages.map((image, index) => (
+          <div key={index} className="h-[277px] overflow-hidden w-full rounded">
+            <img
+              src={image}
+              alt="Gallery image"
+              className="gallery-image object-cover rounded hover:scale-110 transition-all duration-700 ease-in-out mx-auto w-full h-full cursor-pointer"
+              onClick={() => setSelectedImage(image)}
+            />
+          </div>
+        ))}
+      </div>
+    );
+  }
+
   return (
     <div className="flex flex-col mb-10">
       <div className="grid md:grid-cols-12 gap-8 lg:mb-11 mb-7">
@@ -105,18 +204,28 @@ const GalleryImage = ({ galleryImages, setSelectedImage }) => {
           />
         </div>
       </div>
-      <div className="grid md:grid-cols-3 grid-cols-1 gap-8">
-        {galleryImages.slice(2).map((image, index) => (
-          <div key={index} className="h-[277px] overflow-hidden w-full rounded">
-            <img
-              src={image}
-              alt="Gallery image"
-              className="gallery-image object-cover rounded hover:scale-110 transition-all duration-700 ease-in-out mx-auto w-full h-full cursor-pointer"
-              onClick={() => setSelectedImage(image)}
-            />
-          </div>
-        ))}
-      </div>
+      {galleryImages.length > 2 && (
+        <div className="grid md:grid-cols-3 grid-cols-1 gap-8">
+          {galleryImages.slice(2).map((image, index) => (
+            <div
+              key={index}
+              className="h-[277px] overflow-hidden w-full rounded"
+            >
+              <img
+                src={image}
+                alt="Gallery image"
+                className="gallery-image object-cover rounded hover:scale-110 transition-all duration-700 ease-in-out mx-auto w-full h-full cursor-pointer"
+                onClick={() => setSelectedImage(image)}
+              />
+            </div>
+          ))}
+        </div>
+      )}
     </div>
   );
+};
+
+GalleryImage.propTypes = {
+  galleryImages: PropTypes.array.isRequired,
+  setSelectedImage: PropTypes.func.isRequired,
 };
