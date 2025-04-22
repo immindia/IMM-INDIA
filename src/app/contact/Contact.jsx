@@ -65,7 +65,7 @@ function ContactForm() {
           id="message"
           placeholder="Your Message"
           required
-          className="h-[7rem]"
+          className="h-[5rem]"
         />
       </div>
       <Button
@@ -132,12 +132,12 @@ function CorporateResourceCentreHead() {
         <Phone className="w-5 h-5 text-pink-900" />
         <span>+91-9313556551</span>
       </div>
-      <div className="flex items-center space-x-3 text-gray-600">
+      {/* <div className="flex items-center space-x-3 text-gray-600">
         <Phone className="w-5 h-5 text-pink-900" />
         <span>011-41324850</span>
         <Phone className="w-5 h-5 text-pink-900" />
         <span>011-26965558</span>
-      </div>
+      </div> */}
       <div className="flex items-center space-x-3 text-gray-600">
         <Mail className="w-5 h-5 text-pink-900" />
         <span>immplacement1@gmail.com</span>

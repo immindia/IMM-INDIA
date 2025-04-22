@@ -120,18 +120,18 @@ function CompanyLogos() {
           </p>
         ) : (
           <Tabs defaultValue="final" className="max-w-6xl mx-auto mb-10">
-            <TabsList className="grid sm:w-full sm:grid-cols-2 h-max gap-2 sm:h-14 w-fit mx-auto">
+            <TabsList className="grid sm:w-full sm:grid-cols-2 h-max gap-2 sm:h-14 w-fit mx-auto bg-slate-100">
               <TabsTrigger
                 value="final"
-                className="text-base data-[state=active]:bg-pink-900 data-[state=active]:text-white"
+                className="text-base  data-[state=active]:bg-pink-900 data-[state=active]:text-white sm:font-bold"
               >
                 Final Placement Companies
               </TabsTrigger>
               <TabsTrigger
                 value="internship"
-                className="text-base data-[state=active]:bg-pink-900 data-[state=active]:text-white"
+                className="text-base data-[state=active]:bg-pink-900 data-[state=active]:text-white sm:font-bold"
               >
-                Internship Placement Companies
+                Summer Internship Companies
               </TabsTrigger>
             </TabsList>
 

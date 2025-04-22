@@ -139,9 +139,11 @@ const CardItem = ({ item, index }) => (
         duration: 0.5,
         delay: 0.2 + index * 0.1,
       }}
-      className="text-[17px] text-white font-medium leading-relaxed mb-0 text-center"
+      className="text-base text-white font-medium leading-relaxed mb-0 text-center"
     >
-      {item.title}
+      {item.title.split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()).join(' ')}
+
+      HELLO BOY
     </motion.h5>
   </motion.div>
 );
