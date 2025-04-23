@@ -1,18 +1,33 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { zodResolver } from "@hookform/resolvers/zod"
-import { useForm } from "react-hook-form"
-import * as z from "zod"
-import { CheckCircle2, Send, Sparkles } from "lucide-react"
+import { useState } from "react";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
+import * as z from "zod";
+import { CheckCircle2, Send, Sparkles } from "lucide-react";
 import img2 from "../../assets/programsoffered.webp";
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
-import { Input } from "@/components/ui/input"
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
-import { Textarea } from "@/components/ui/textarea"
-import { toast } from "@/hooks/use-toast"
+import { Button } from "@/components/ui/button";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form";
+import { Input } from "@/components/ui/input";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import { Textarea } from "@/components/ui/textarea";
+import { toast } from "@/hooks/use-toast";
+import axios from "axios";
 
 const formSchema = z.object({
   fullName: z.string().min(2, { message: "Full name is required" }),
@@ -23,11 +38,11 @@ const formSchema = z.object({
     required_error: "Please select how you wish to connect",
   }),
   comments: z.string().optional(),
-})
+});
 
 export default function RecruitAndPartner() {
-  const [isSubmitting, setIsSubmitting] = useState(false)
-  const [isSubmitted, setIsSubmitted] = useState(false)
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
 
   const form = useForm({
     resolver: zodResolver(formSchema),
@@ -39,29 +54,53 @@ export default function RecruitAndPartner() {
       connectionType: undefined,
       comments: "",
     },
-  })
+  });
 
   async function onSubmit(values) {
-    setIsSubmitting(true)
+    setIsSubmitting(true);
 
     try {
-      // Simulate API call
-      await new Promise((resolve) => setTimeout(resolve, 1500))
-      console.log(values)
+      // Submit to backend API
+      console.log("Submitting form:", values);
+      const response = await axios.post(
+        "https://stealthlearn.in/imm-admin/api/indexRecruitAndPartner.php",
+        values
+      );
 
-      setIsSubmitted(true)
-      toast({
-        title: "Form submitted successfully",
-        description: "Thank you for your interest. We'll be in touch soon.",
-      })
+      console.log("API Response:", response.data);
+
+      // Handle success, partial success, or error
+      if (response.data.status === "success") {
+        // Complete success
+        setIsSubmitted(true);
+        toast({
+          title: "Form submitted successfully",
+          description: "Thank you for your interest. We'll be in touch soon.",
+        });
+      } else if (response.data.status === "partial") {
+        // Database success but email failed
+        setIsSubmitted(true);
+        toast({
+          title: "Form submitted successfully",
+          description:
+            "Your information was saved, but there was an issue with sending the confirmation email.",
+        });
+      } else {
+        // Other errors
+        throw new Error(
+          "API returned error: " + (response.data.message || "Unknown error")
+        );
+      }
     } catch (error) {
+      console.error("Submission error:", error);
       toast({
         title: "Something went wrong",
-        description: "Your form was not submitted. Please try again.",
+        description: "Your form was not submitted. Please try again later.",
         variant: "destructive",
-      })
+      });
     } finally {
-      setIsSubmitting(false)
+      // Always set isSubmitting to false when done
+      setIsSubmitting(false);
     }
   }
 
@@ -76,10 +115,13 @@ export default function RecruitAndPartner() {
             <div className="w-20 h-20 rounded-full bg-pink-100 flex items-center justify-center mb-6">
               <CheckCircle2 className="h-10 w-10 text-pink-600" />
             </div>
-            <h2 className="text-3xl font-bold text-center mb-2 text-pink-800">Thank You!</h2>
+            <h2 className="text-3xl font-bold text-center mb-2 text-pink-800">
+              Thank You!
+            </h2>
             <p className="text-center text-gray-600 max-w-md">
-              Your submission has been received. We appreciate your interest in IMM's Strategic Plan Implementation.
-              Someone from our team will be in touch with you soon.
+              Your submission has been received. We appreciate your interest in
+              IMM's Strategic Plan Implementation. Someone from our team will be
+              in touch with you soon.
             </p>
             <Button
               className="mt-8 bg-pink-600 hover:bg-pink-700 text-white px-8 py-2 rounded-full"
@@ -91,7 +133,7 @@ export default function RecruitAndPartner() {
           </CardContent>
         </Card>
       </div>
-    )
+    );
   }
 
   return (
@@ -117,30 +159,41 @@ export default function RecruitAndPartner() {
                   className="rounded-full bg-white p-2"
                 />
               </div>
-              <CardTitle className="text-4xl font-bold tracking-tight mb-2">HELP DESIGN IMM'S FUTURE</CardTitle>
-              <CardDescription className="text-pink-100 text-xl">Send Comments, Ideas, Questions</CardDescription>
+              <CardTitle className="text-4xl font-bold tracking-tight mb-2">
+                HELP DESIGN IMM'S FUTURE
+              </CardTitle>
+              <CardDescription className="text-pink-100 text-xl">
+                Send Comments, Ideas, Questions
+              </CardDescription>
             </div>
           </CardHeader>
 
           <CardContent className="pt-8 relative z-10">
             <div className="mb-8 text-slate-600 bg-pink-50 p-6 rounded-lg border-l-4 border-pink-400">
               <p>
-                Thank you for your interest in IMM's Strategic Plan Implementation: IMM{new Date().getFullYear()} - Designing the Future.
-                Please use the form below to ask any questions or provide feedback. Your inquiry will be directed to the
+                Thank you for your interest in IMM's Strategic Plan
+                Implementation: IMM{new Date().getFullYear()} - Designing the
+                Future. Please use the form below to ask any questions or
+                provide feedback. Your inquiry will be directed to the
                 appropriate initiative team for follow-up.
               </p>
             </div>
 
             <div className="flex items-center mb-8">
               <div className="h-px flex-1 bg-gradient-to-r from-transparent to-pink-200"></div>
-              <h3 className="font-medium text-pink-800 px-4">Please enter your information</h3>
+              <h3 className="font-medium text-pink-800 px-4">
+                Please enter your information
+              </h3>
               <div className="h-px flex-1 bg-gradient-to-l from-transparent to-pink-200"></div>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
               <div className="md:col-span-2">
                 <Form {...form}>
-                  <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+                  <form
+                    onSubmit={form.handleSubmit(onSubmit)}
+                    className="space-y-6"
+                  >
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                       <FormField
                         control={form.control}
@@ -189,7 +242,9 @@ export default function RecruitAndPartner() {
                         name="title"
                         render={({ field }) => (
                           <FormItem>
-                            <FormLabel className="text-pink-800">Title</FormLabel>
+                            <FormLabel className="text-pink-800">
+                              Title
+                            </FormLabel>
                             <FormControl>
                               <Input
                                 placeholder="Your job title"
@@ -207,7 +262,9 @@ export default function RecruitAndPartner() {
                         name="company"
                         render={({ field }) => (
                           <FormItem>
-                            <FormLabel className="text-pink-800">Company</FormLabel>
+                            <FormLabel className="text-pink-800">
+                              Company
+                            </FormLabel>
                             <FormControl>
                               <Input
                                 placeholder="Your company name"
@@ -226,7 +283,9 @@ export default function RecruitAndPartner() {
                       name="connectionType"
                       render={({ field }) => (
                         <FormItem className="space-y-3">
-                          <FormLabel className="text-pink-800">How do you wish to connect with FIIB?</FormLabel>
+                          <FormLabel className="text-pink-800">
+                            How do you wish to connect with FIIB?
+                          </FormLabel>
                           <FormControl>
                             <RadioGroup
                               onValueChange={field.onChange}
@@ -235,13 +294,21 @@ export default function RecruitAndPartner() {
                             >
                               <FormItem className="flex items-center space-x-3 space-y-0 p-3 rounded-lg hover:bg-pink-50 transition-colors">
                                 <FormControl>
-                                  <RadioGroupItem value="hireIntern" className="text-pink-600" />
+                                  <RadioGroupItem
+                                    value="hireIntern"
+                                    className="text-pink-600"
+                                  />
                                 </FormControl>
-                                <FormLabel className="font-normal text-pink-800 cursor-pointer">Hire Intern</FormLabel>
+                                <FormLabel className="font-normal text-pink-800 cursor-pointer">
+                                  Hire Intern
+                                </FormLabel>
                               </FormItem>
                               <FormItem className="flex items-center space-x-3 space-y-0 p-3 rounded-lg hover:bg-pink-50 transition-colors">
                                 <FormControl>
-                                  <RadioGroupItem value="fullTimeJob" className="text-pink-600" />
+                                  <RadioGroupItem
+                                    value="fullTimeJob"
+                                    className="text-pink-600"
+                                  />
                                 </FormControl>
                                 <FormLabel className="font-normal text-pink-800 cursor-pointer">
                                   Full-Time Job
@@ -249,7 +316,10 @@ export default function RecruitAndPartner() {
                               </FormItem>
                               <FormItem className="flex items-center space-x-3 space-y-0 p-3 rounded-lg hover:bg-pink-50 transition-colors">
                                 <FormControl>
-                                  <RadioGroupItem value="collaborate" className="text-pink-600" />
+                                  <RadioGroupItem
+                                    value="collaborate"
+                                    className="text-pink-600"
+                                  />
                                 </FormControl>
                                 <FormLabel className="font-normal text-pink-800 cursor-pointer">
                                   Collaborate with us
@@ -267,7 +337,9 @@ export default function RecruitAndPartner() {
                       name="comments"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel className="text-pink-800">Add Comments</FormLabel>
+                          <FormLabel className="text-pink-800">
+                            Add Comments
+                          </FormLabel>
                           <FormControl>
                             <Textarea
                               placeholder="Share your thoughts, questions, or ideas..."
@@ -313,15 +385,21 @@ export default function RecruitAndPartner() {
                     />
                   </div>
                   <div className="bg-pink-50 p-4 rounded-lg border border-pink-200">
-                    <h4 className="font-medium text-pink-800 mb-2">Why Partner With Us?</h4>
+                    <h4 className="font-medium text-pink-800 mb-2">
+                      Why Partner With Us?
+                    </h4>
                     <ul className="space-y-2 text-sm text-gray-600">
                       <li className="flex items-start">
                         <span className="text-pink-500 mr-2">•</span>
-                        <span>Access to top talent and innovative research</span>
+                        <span>
+                          Access to top talent and innovative research
+                        </span>
                       </li>
                       <li className="flex items-start">
                         <span className="text-pink-500 mr-2">•</span>
-                        <span>Collaborative opportunities with industry experts</span>
+                        <span>
+                          Collaborative opportunities with industry experts
+                        </span>
                       </li>
                       <li className="flex items-start">
                         <span className="text-pink-500 mr-2">•</span>
@@ -337,11 +415,12 @@ export default function RecruitAndPartner() {
           <CardFooter className="flex justify-center border-t border-pink-100 pt-6 pb-6 text-sm text-pink-700 bg-gradient-to-r from-pink-50 to-white">
             <div className="flex items-center">
               <Sparkles className="h-4 w-4 mr-2 text-pink-400" />
-              IMM{new Date().getFullYear()} - Designing the Future | Strategic Plan Implementation
+              IMM{new Date().getFullYear()} - Designing the Future | Strategic
+              Plan Implementation
             </div>
           </CardFooter>
         </Card>
       </div>
     </div>
-  )
+  );
 }
