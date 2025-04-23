@@ -8,7 +8,6 @@ import img from "../../assets/faculty/Banner.webp";
 
 import { LinkedinIcon } from "lucide-react";
 import PropTypes from "prop-types";
-
 const Faculty = () => {
   const [facultyMembers, setFacultyMembers] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -18,6 +17,14 @@ const Faculty = () => {
     { href: "/", label: "Home" },
     { href: "/faculty-and-research/faculty", label: "Faculty and Research" },
     { label: "Faculty" },
+  ];
+
+  // Ordered list of faculty names to prioritize
+  const orderedNames = [
+    "Prof. Smita Lal",  "Dr. Ruchi Sharma", "Prof. Megha Mathur", "Dr. Preshni Shrivastava", 
+    "Prof. Rituparna Prasoon", "Dr. Swati Jha", "Dr. Tanu Manocha", "Dr. Shivangi", "Dr. Sakshi Sharma", "Prof. Sanjay Verma",
+    "Prof. Nisha Anand", "Prof. Sonalika Singh", "Prof. Mukul Kumar", "Prof. Suket Chauhan", "Prof. Kapil Kumar Bali",
+    "Prof. Kamlesh Kumar Verma", "Prof. Manoj Sharma","Prof. Ruchika Dugal", "Prof. Varun Jaggi", "Prof. Dhruv Sood", "Prof. Harish Jain","Dr. K.L. Chawla", "Prof. D.C.Singhal", "Prof. Anupam Bhasin","Prof. Sanjay Blaggan", "Prof. Anurag Arora", "Prof. Madan Lal"
   ];
 
   useEffect(() => {
@@ -34,7 +41,29 @@ const Faculty = () => {
         const facultyOnly = data.filter(
           (member) => member.category.toLowerCase() === "faculty"
         );
-        setFacultyMembers(facultyOnly.reverse());
+        
+        // Create ordered faculty list based on predefined sequence
+        const orderedFaculty = [];
+        
+        // First add faculty members in the specified order
+        orderedNames.forEach(nameFragment => {
+          const matchingMember = facultyOnly.find(member => 
+            member.title.toLowerCase().trim() === nameFragment.toLowerCase()
+          );
+          
+          if (matchingMember) {
+            orderedFaculty.push(matchingMember);
+          }
+        });
+        
+        // Add any remaining faculty members that weren't matched
+        facultyOnly.forEach(member => {
+          if (!orderedFaculty.some(orderedMember => orderedMember.id === member.id)) {
+            orderedFaculty.push(member);
+          }
+        });
+        
+        setFacultyMembers(orderedFaculty);
         setLoading(false);
       } catch (err) {
         setError(err.message);
