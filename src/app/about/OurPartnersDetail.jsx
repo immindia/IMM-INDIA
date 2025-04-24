@@ -9,7 +9,7 @@ import Kladio from "../../assets/partners/kladio.webp";
 import Vitti from "../../assets/partners/vitti.png";
 import Wasme from "../../assets/partners/wasme.png";
 import Young from "../../assets/partners/young.png";
-import img from "../../assets/breadcrumb.png";
+import img from "../../assets/banner/partnerBanner.png";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import Heading from "../../components/Heading";
