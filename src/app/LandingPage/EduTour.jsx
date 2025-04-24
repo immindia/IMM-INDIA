@@ -1,254 +1,68 @@
-import { useState } from "react";
-import international1 from "../../assets/edutour/international/international (1).webp";
-import international2 from "../../assets/edutour/international/international (2).webp";
-import international3 from "../../assets/edutour/international/international (3).webp";
-import international4 from "../../assets/edutour/international/international (4).webp";
-import international5 from "../../assets/edutour/international/international (5).webp";
-import international6 from "../../assets/edutour/international/international (6).webp";
-import international7 from "../../assets/edutour/international/international (7).webp";
-import international8 from "../../assets/edutour/international/international (8).webp";
-import international9 from "../../assets/edutour/international/international (9).webp";
-import international10 from "../../assets/edutour/international/international (10).webp";
-import international11 from "../../assets/edutour/international/international (11).webp";
-import international12 from "../../assets/edutour/international/international (12).webp";
-import international13 from "../../assets/edutour/international/international (13).webp";
-
-import national1 from "../../assets/edutour/national/national (1).webp";
-import national2 from "../../assets/edutour/national/national (2).webp";
-import national3 from "../../assets/edutour/national/national (3).webp";
-import national4 from "../../assets/edutour/national/national (4).webp";
-import national5 from "../../assets/edutour/national/national (5).webp";
-import national6 from "../../assets/edutour/national/national (6).webp";
-import national7 from "../../assets/edutour/national/national (7).webp";
-import national8 from "../../assets/edutour/national/national (8).webp";
-import national9 from "../../assets/edutour/national/national (9).webp";
-import national10 from "../../assets/edutour/national/national (10).webp";
-import national11 from "../../assets/edutour/national/national (11).webp";
-import national12 from "../../assets/edutour/national/national (12).webp";
-
-
-
-
-
+import { useState, useEffect } from "react";
 import Heading from "../../components/Heading";
 import { ChevronRight } from "lucide-react";
 import ShimmerButton from "@/components/ui/shimmer-button";
 import Slider from "./Slider";
-
+import PropTypes from "prop-types";
 
 export default function GlobalExcursion() {
+  const [internationalExcursion, setInternationalExcursion] = useState([]);
+  const [nationalExcursion, setNationalExcursion] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-  const internationalExcursion = [
-    {
-      slider: false,
-      category: "London",
-      title: "VISION VOYAGE AAGAMAN 2024",
-      image: international1,
-      mobileImage: international1,
-      alt: "Vision Voyage event",
-    },
-    {
-      slider: false,
-      category: "Dubai",
-      title: "Exploring the Great Barrier Reef",
-      image: international2,
-      mobileImage: international2,
-      alt: "Great Barrier Reef",
-    },
-    {
-      slider: false,
-      category: "Dubai",
-      title: "Cultural Journey in Tokyo",
-      image: international3,
-      mobileImage: international3,
-      alt: "Tokyo culture",
-    },
-    {
-      slider: false,
-      category: "Dubai",
-      title: "A Day in Paris",
-      image: international4,
-      mobileImage: international4,
-      alt: "Paris sightseeing",
-    },
-    {
-      slider: false,
-      category: "Dubai",
-      title: "Discovering Rome",
-      image: international5,
-      mobileImage: international5,
-      alt: "Rome exploration",
-    },
-    {
-      slider: false,
-      category: "Malaysia",
-      title: "Flavors of Barcelona",
-      image: international6,
-      mobileImage: international6,
-      alt: "Barcelona food tour",
-    },
-    {
-      slider: false,
-      category: "Malaysia",
-      title: "Carnival in Rio",
-      image: international7,
-      mobileImage: international7,
-      alt: "Rio Carnival",
-    },
-    {
-      slider: false,
-      category: "Malaysia",
-      title: "Mysteries of the Pyramids",
-      image: international8,
-      mobileImage: international8,
-      alt: "Egyptian pyramids",
-    },
-    {
-      slider: false,
-      category: "Malaysia",
-      title: "Taj Mahal Experience",
-      image: international9,
-      mobileImage: international9,
-      alt: "Taj Mahal",
-    },
-    {
-      slider: false,
-      category: "London",
-      title: "Nature's Beauty in Banff",
-      image: international10,
-      mobileImage: international10,
-      alt: "Banff National Park",
-    },
-    {
-      slider: false,
-      category: "London",
-      title: "Safari Adventure",
-      image: international11,
-      mobileImage: international11,
-      alt: "South African safari",
-    },
-    {
-      slider: false,
-      category: "London",
-      title: "Island Hopping in Phuket",
-      image: international12,
-      mobileImage: international12,
-      alt: "Phuket islands",
-    },
-    {
-      slider: false,
-      category: "London",
-      title: "Santorini Sunset",
-      image: international13,
-      mobileImage: international13,
-      alt: "Santorini view",
-    },
-  ];
-  const nationalExcursion = [
-    {
-      slider: false,
-      category: "Udaipur",
-      title: "Few Global Excursion Glimpses",
-      image: national1,
-      mobileImage: national1,
-      alt: "Global Excursion group",
-    },
-    {
-      slider: false,
-      category: "Udaipur",
-      title: "VISION VOYAGE AAGAMAN 2024",
-      image: national2,
-      mobileImage: national2,
-      alt: "Vision Voyage event",
-    },
-    {
-      slider: false,
-      category: "Udaipur",
-      title: "VISION VOYAGE AAGAMAN 2024",
-      image: national3,
-      mobileImage: national3,
-      alt: "Vision Voyage event",
-    },
-    {
-      slider: false,
-      category: "Udaipur",
-      title: "VISION VOYAGE AAGAMAN 2024",
-      image: national4,
-      mobileImage: national4,
-      alt: "Vision Voyage event",
-    },
-    {
-      slider: false,
-      category: "Udaipur",
-      title: "VISION VOYAGE AAGAMAN 2024",
-      image: national5,
-      mobileImage: national5,
-      alt: "Vision Voyage event",
-    },
-    {
-      slider: false,
-      category: "Manali",
-      title: "VISION VOYAGE AAGAMAN 2024",
-      image: national6,
-      mobileImage: national6,
-      alt: "Vision Voyage event",
-    },
-    {
-      slider: false,
-      category: "Manali",
-      title: "VISION VOYAGE AAGAMAN 2024",
-      image: national7,
-      mobileImage: national7,
-      alt: "Vision Voyage event",
-    },
-    {
-      slider: false,
-      category: "Manali",
-      title: "VISION VOYAGE AAGAMAN 2024",
-      image: national8,
-      mobileImage: national8,
-      alt: "Vision Voyage event",
-    },
-    {
-      slider: false,
-      category: "Manali",
-      title: "VISION VOYAGE AAGAMAN 2024",
-      image: national9,
-      mobileImage: national9,
-      alt: "Vision Voyage event",
-    },
-    {
-      slider: false,
-      category: "Udaipur",
-      title: "VISION VOYAGE AAGAMAN 2024",
-      image: national10,
-      mobileImage: national10,
-      alt: "Vision Voyage event",
-    },
-    {
-      slider: false,
-      category: "Udaipur",
-      title: "VISION VOYAGE AAGAMAN 2024",
-      image: national11,
-      mobileImage: national11,
-      alt: "Vision Voyage event",
-    },
-    {
-      slider: false,
-      category: "Udaipur",
-      title: "VISION VOYAGE AAGAMAN 2024",
-      image: national12,
-      mobileImage: national12,
-      alt: "Vision Voyage event",
-    },
-
-
-  ];
-  
   const [selectedInternationalCategory, setSelectedInternationalCategory] =
     useState("All");
   const [selectedNationalCategory, setSelectedNationalCategory] =
     useState("All");
+
+  useEffect(() => {
+    const fetchEduTours = async () => {
+      try {
+        const response = await fetch(
+          "https://stealthlearn.in/imm-admin/api/indexEdutour.php"
+        );
+        if (!response.ok) {
+          throw new Error("Failed to fetch edutour data");
+        }
+        const data = await response.json();
+
+        // Process data for international and national tours
+        const internationalTours = data
+          .filter((tour) => tour.category === "International")
+          .map((tour) => ({
+            slider: false,
+            category: tour.subcategory,
+            title: tour.title,
+            image: tour.url,
+            mobileImage: tour.url,
+            alt: tour.title || "Tour image",
+            description: tour.description,
+          }));
+
+        const nationalTours = data
+          .filter((tour) => tour.category === "National")
+          .map((tour) => ({
+            slider: false,
+            category: tour.subcategory,
+            title: tour.title,
+            image: tour.url,
+            mobileImage: tour.url,
+            alt: tour.title || "Tour image",
+            description: tour.description,
+          }));
+
+        setInternationalExcursion(internationalTours);
+        setNationalExcursion(nationalTours);
+        setLoading(false);
+      } catch (err) {
+        setError(err.message);
+        setLoading(false);
+      }
+    };
+
+    fetchEduTours();
+  }, []);
 
   function handleInternationalCategoryChange(category) {
     setSelectedInternationalCategory(category);
@@ -263,6 +77,8 @@ export default function GlobalExcursion() {
     heading,
     onCategoryChange,
     selectedCategory,
+    isLoading,
+    errorMessage,
   }) => {
     const filteredSlides =
       selectedCategory === "All"
@@ -280,9 +96,23 @@ export default function GlobalExcursion() {
           <h2 className="mb-4 text-2xl font-bold text-center text-primary-color">
             {heading}
           </h2>
-          <div className="overflow-hidden rounded-sm h-[200px]  sm:h-[400px]">
-            <Slider slides={filteredSlides} effect="fade" />
-          </div>
+          {isLoading ? (
+            <div className="flex items-center justify-center h-[200px] sm:h-[400px]">
+              <p className="text-lg">Loading tour information...</p>
+            </div>
+          ) : errorMessage ? (
+            <div className="flex items-center justify-center h-[200px] sm:h-[400px]">
+              <p className="text-lg text-red-500">Error: {errorMessage}</p>
+            </div>
+          ) : filteredSlides.length === 0 ? (
+            <div className="flex items-center justify-center h-[200px] sm:h-[400px]">
+              <p className="text-lg">No tour images available</p>
+            </div>
+          ) : (
+            <div className="overflow-hidden rounded-sm h-[200px] sm:h-[400px]">
+              <Slider slides={filteredSlides} effect="fade" />
+            </div>
+          )}
         </div>
 
         <div className="flex flex-wrap items-center justify-center gap-2">
@@ -304,6 +134,15 @@ export default function GlobalExcursion() {
     );
   };
 
+  ExcursionCard.propTypes = {
+    slides: PropTypes.array.isRequired,
+    heading: PropTypes.string.isRequired,
+    onCategoryChange: PropTypes.func.isRequired,
+    selectedCategory: PropTypes.string.isRequired,
+    isLoading: PropTypes.bool,
+    errorMessage: PropTypes.string,
+  };
+
   return (
     <section className="px-6 py-8 bg-primary-color lg:py-20 md:py-12 sm:px-0">
       <div className="container max-w-6xl mx-auto">
@@ -319,12 +158,16 @@ export default function GlobalExcursion() {
             heading="International EduTour"
             onCategoryChange={handleInternationalCategoryChange}
             selectedCategory={selectedInternationalCategory}
+            isLoading={loading}
+            errorMessage={error}
           />
           <ExcursionCard
             slides={nationalExcursion}
             heading="National EduTour"
             onCategoryChange={handleNationalCategoryChange}
             selectedCategory={selectedNationalCategory}
+            isLoading={loading}
+            errorMessage={error}
           />
         </div>
         <ShimmerButton
