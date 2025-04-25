@@ -8,6 +8,7 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Search, ChevronDown, ChevronUp } from "lucide-react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import PropTypes from "prop-types";
 
 const CampusRecruitment = () => {
   const breadcrumbItems = [
@@ -66,15 +67,22 @@ function CompanyLogos() {
   }, []);
 
   // Process recruiters data to match our component structure
-  const recruitersData = recruiters.map((recruiter) => ({
-    id: recruiter.id,
-    name: recruiter.title,
-    logo: recruiter.url,
-    category:
-      recruiter.category === "Final Placement Recruiter"
-        ? "final"
-        : "internship",
-  }));
+  // Only include recruiters with categories "Final Placement Recruiter" or "Internship Recruiter"
+  const recruitersData = recruiters
+    .filter(
+      (recruiter) =>
+        recruiter.category === "Final Placement Recruiter" ||
+        recruiter.category === "Summer Internship Recruiter"
+    )
+    .map((recruiter) => ({
+      id: recruiter.id,
+      name: recruiter.title,
+      logo: recruiter.url,
+      category:
+        recruiter.category === "Final Placement Recruiter"
+          ? "final"
+          : "internship",
+    }));
 
   // Filter logos based on search term
   const filteredBySearch = recruitersData.filter((company) =>
@@ -91,7 +99,9 @@ function CompanyLogos() {
 
   // Function to get visible logos based on active tab
   const getVisibleLogos = (companies) => {
-    return showAll ? companies : companies.slice(0, window.innerWidth < 768 ? 24 : 25);
+    return showAll
+      ? companies
+      : companies.slice(0, window.innerWidth < 768 ? 24 : 25);
   };
 
   return (
@@ -236,6 +246,13 @@ const FinalPlacementCompanies = ({
   );
 };
 
+FinalPlacementCompanies.propTypes = {
+  finalPlacements: PropTypes.array.isRequired,
+  getVisibleLogos: PropTypes.func.isRequired,
+  showAll: PropTypes.bool.isRequired,
+  setShowAll: PropTypes.func.isRequired,
+};
+
 const InternshipPlacementCompanies = ({
   internshipPlacements,
   getVisibleLogos,
@@ -245,70 +262,77 @@ const InternshipPlacementCompanies = ({
   return (
     <>
       <motion.div
-                className="grid grid-cols-2 gap-10 sm:grid-cols-3 lg:grid-cols-5"
-                initial="hidden"
-                animate="visible"
-                key="internship-tab"
-                variants={{
-                  hidden: { opacity: 0 },
-                  visible: {
-                    opacity: 1,
-                    transition: {
-                      staggerChildren: 0.1,
-                    },
-                  },
-                }}
-              >
-                {getVisibleLogos(internshipPlacements).map((company) => (
-                  <motion.div
-                    key={company.id}
-                    className="col-span-1 flex justify-center items-center"
-                    variants={{
-                      hidden: { y: 20, opacity: 0 },
-                      visible: { y: 0, opacity: 1 },
-                    }}
-                  >
-                    <motion.div
-                      className="group"
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
-                    >
-                      <motion.img
-                        src={company.logo}
-                        alt={`${company.name} logo`}
-                        className="max-h-12 w-full object-contain filter sm:grayscale mix-blend-multiply group-hover:filter-none hover:scale-90 transition-all duration-300"
-                        whileHover={{ rotate: 360, scale: 1.5 }}
-                        transition={{ duration: 0.5 }}
-                      />
-                      <p className="mt-2 text-sm font-light group-hover:font-normal transition-all text-gray-700 text-center group-hover:text-pink-900 duration-300">
-                        {company.name}
-                      </p>
-                    </motion.div>
-                  </motion.div>
-                ))}
-              </motion.div>
+        className="grid grid-cols-2 gap-10 sm:grid-cols-3 lg:grid-cols-5"
+        initial="hidden"
+        animate="visible"
+        key="internship-tab"
+        variants={{
+          hidden: { opacity: 0 },
+          visible: {
+            opacity: 1,
+            transition: {
+              staggerChildren: 0.1,
+            },
+          },
+        }}
+      >
+        {getVisibleLogos(internshipPlacements).map((company) => (
+          <motion.div
+            key={company.id}
+            className="col-span-1 flex justify-center items-center"
+            variants={{
+              hidden: { y: 20, opacity: 0 },
+              visible: { y: 0, opacity: 1 },
+            }}
+          >
+            <motion.div
+              className="group"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <motion.img
+                src={company.logo}
+                alt={`${company.name} logo`}
+                className="max-h-12 w-full object-contain filter sm:grayscale mix-blend-multiply group-hover:filter-none hover:scale-90 transition-all duration-300"
+                whileHover={{ rotate: 360, scale: 1.5 }}
+                transition={{ duration: 0.5 }}
+              />
+              <p className="mt-2 text-sm font-light group-hover:font-normal transition-all text-gray-700 text-center group-hover:text-pink-900 duration-300">
+                {company.name}
+              </p>
+            </motion.div>
+          </motion.div>
+        ))}
+      </motion.div>
 
-              {internshipPlacements.length > 8 && (
-                <div className="flex justify-center mt-12">
-                  <Button
-                    onClick={() => setShowAll(!showAll)}
-                    className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md bg-white text-pink-900 hover:bg-pink-900 hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-pink-900 transition-colors duration-300"
-                  >
-                    <span>{showAll ? "Show Less" : "View All Partners"}</span>
-                    {showAll ? (
-                      <ChevronUp className="ml-2" size={20} />
-                    ) : (
-                      <ChevronDown className="ml-2" size={20} />
-                    )}
-                  </Button>
-                </div>
-              )}
+      {internshipPlacements.length > 8 && (
+        <div className="flex justify-center mt-12">
+          <Button
+            onClick={() => setShowAll(!showAll)}
+            className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md bg-white text-pink-900 hover:bg-pink-900 hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-pink-900 transition-colors duration-300"
+          >
+            <span>{showAll ? "Show Less" : "View All Partners"}</span>
+            {showAll ? (
+              <ChevronUp className="ml-2" size={20} />
+            ) : (
+              <ChevronDown className="ml-2" size={20} />
+            )}
+          </Button>
+        </div>
+      )}
 
-              {internshipPlacements.length === 0 && (
-                <p className="text-center text-gray-500 mt-8">
-                  No companies found. Try a different search term.
-                </p>
-              )}
+      {internshipPlacements.length === 0 && (
+        <p className="text-center text-gray-500 mt-8">
+          No companies found. Try a different search term.
+        </p>
+      )}
     </>
   );
+};
+
+InternshipPlacementCompanies.propTypes = {
+  internshipPlacements: PropTypes.array.isRequired,
+  getVisibleLogos: PropTypes.func.isRequired,
+  showAll: PropTypes.bool.isRequired,
+  setShowAll: PropTypes.func.isRequired,
 };
