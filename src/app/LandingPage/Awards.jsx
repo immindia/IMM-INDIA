@@ -26,7 +26,7 @@ const Awards = () => {
   const { awards, loading } = useAwardsData();
   const awardData = awards.slice(0, 5);
   const isHeadingInView = useInView(headingRef, { once: true, amount: 0.5 });
-  const areCardsInView = useInView(cardsRef, { once: true, amount: 0.1 });
+  // const areCardsInView = useInView(cardsRef, { once: true, amount: 0.1 });
   const isButtonInView = useInView(buttonRef, { once: true, amount: 0.5 });
 
   // Preload award images when component mounts

@@ -25,12 +25,12 @@ const PlacementRecords = () => {
         imageAlt="Description of the image"
         breadcrumbItems={breadcrumbItems}
       />
-        <PlacementStats/>
-        <div className=" bg-slate-50">
-          <PlacementPieChart/>
-        </div>
+      <PlacementStats />
+      <div className=" bg-slate-50">
+        <PlacementPieChart />
+      </div>
       {/* <Container className="container grid "> */}
-        {/* <Heading
+      {/* <Heading
           title="Placement Records"
           titleClassName="text-primary-color lg:text-5xl text-center"
           subtitleClassName="text-gray-500 text-center m-0 lg:text-lg lg:font-normal lg:max-w-full"
@@ -38,7 +38,7 @@ const PlacementRecords = () => {
           className="pt-12 lg:pb-10 mx-auto"
         /> */}
       {/* </Container> */}
-     <PlacementGrid/>
+      <PlacementGrid />
       <div className="bg-slate-50"></div>
     </div>
   );
