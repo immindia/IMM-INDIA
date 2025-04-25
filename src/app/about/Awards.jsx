@@ -143,7 +143,6 @@ const CardItem = ({ item, index }) => (
     >
       {item.title.split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()).join(' ')}
 
-      HELLO BOY
     </motion.h5>
   </motion.div>
 );
