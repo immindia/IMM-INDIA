@@ -3,20 +3,60 @@ import Container from "@/components/wrappers/Container";
 import Heading from "@/components/Heading";
 import ThreeDPlacementCard from "@/components/ThreeDPlacementCard";
 import PlacementCardMarquee from "@/components/PlacementCardMarquee";
-import { placementCards } from "@/data/placementData";
-
-import { useEffect, memo } from "react";
+import { useEffect, memo, useState } from "react";
 
 const Placements = () => {
+  const [placements, setPlacements] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchPlacements = async () => {
+      try {
+        const response = await fetch(
+          "https://stealthlearn.in/imm-admin/api/indexPlacement.php"
+        );
+        const data = await response.json();
+        // Filter for Summer Placement category
+        const summerPlacements = data.filter(
+          (item) => item.category === "Summer Placement"
+        );
+        setPlacements(summerPlacements);
+      } catch (error) {
+        console.error("Error fetching placements:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchPlacements();
+  }, []);
+
   // Preload images
   useEffect(() => {
-    placementCards.forEach((card) => {
-      const img = new Image();
-      img.src = card.image;
-      const logo = new Image();
-      logo.src = card.logo;
-    });
-  }, []);
+    if (placements.length > 0) {
+      placements.forEach((card) => {
+        const img = new Image();
+        img.src = card.url;
+        const logo = new Image();
+        logo.src = card.logo_url;
+      });
+    }
+  }, [placements]);
+
+  if (loading) {
+    return (
+      <div
+        className="relative bg-cover bg-center transform-gpu"
+        style={{ backgroundImage: `url(${bg})`, willChange: "transform" }}
+      >
+        <Container>
+          <div className="text-center py-10">
+            <p>Loading placements...</p>
+          </div>
+        </Container>
+      </div>
+    );
+  }
 
   return (
     <div
@@ -37,8 +77,15 @@ const Placements = () => {
           />
 
           <PlacementCardMarquee>
-            {placementCards.map((card) => (
-              <ThreeDPlacementCard key={card.id} {...card} />
+            {placements.map((card) => (
+              <ThreeDPlacementCard
+                key={card.id}
+                id={card.id}
+                name={card.title}
+                image={card.url}
+                logo={card.logo_url}
+                company={card.description}
+              />
             ))}
           </PlacementCardMarquee>
         </div>
