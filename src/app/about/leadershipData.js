@@ -21,12 +21,12 @@ IMM pays its respects, reverence, and gratitude to "Sir" for his selfless effort
     id: 2,
     image: seniorAdvisor,
     position: "Senior Advisor and Promoter",
-    name: "Prof. Satpal Jagjit Singh",
-    message: `Prof. Satpal Jagjit Singh is a prominent figure in education and social empowerment. As the Founder Director of JJ Foundation and Chief Advisor at IMM Business School, Prof. Satpal has played a pivotal role in shaping the institution since its inception in 1969. With an unwavering commitment to women's empowerment, she has been a driving force in this field since the early 90s. Additionally, she serves as the Director of JJFEPL and is the esteemed chairperson of the NGO, Delhi Kala Karam, where her dedicated efforts have earned her numerous accolades.
+    name: "Smt. Satpal Jagjit Singh",
+    message: `Smt. Satpal Jagjit Singh is a prominent figure in education and social empowerment. As the Founder Director of JJ Foundation and Chief Advisor at IMM Business School, Smt. Satpal has played a pivotal role in shaping the institution since its inception in 1969. With an unwavering commitment to women's empowerment, she has been a driving force in this field since the early 90s. Additionally, she serves as the Director of JJFEPL and is the esteemed chairperson of the NGO, Delhi Kala Karam, where her dedicated efforts have earned her numerous accolades.
 
 Her visionary leadership is the driving force behind the organization's expansion into the dynamic world of Ed-tech.
 
-Prof. Satpal's contributions extend far beyond her roles within IMM and JJ Foundation. Her steadfast dedication to uplifting women and her involvement with Delhi Kala Karam showcase her enduring commitment to societal betterment. Through her multifaceted roles, she has demonstrated a rare blend of leadership, compassion, and a deep-seated belief in the power of education and empowerment. This vision has paved the way for the organization's venture into Ed-tech, promising to leave a lasting impact on the educational landscape.`,
+Smt. Satpal's contributions extend far beyond her roles within IMM and JJ Foundation. Her steadfast dedication to uplifting women and her involvement with Delhi Kala Karam showcase her enduring commitment to societal betterment. Through her multifaceted roles, she has demonstrated a rare blend of leadership, compassion, and a deep-seated belief in the power of education and empowerment. This vision has paved the way for the organization's venture into Ed-tech, promising to leave a lasting impact on the educational landscape.`,
     linkedin: "https://www.linkedin.com/",
   },
   {

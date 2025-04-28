@@ -68,7 +68,7 @@ const AwardsThreeD = () => {
           <Heading
             title="Awards and Recognitions"
             titleClassName="text-4xl md:text-6xl font-bold text-white"
-            subtitle="We are proud to have received numerous awards and recognitions for our academic excellence and innovation."
+            subtitle="We are proud to have received numerous Awards and Recognitions for our Academic Excellence and Innovation."
             subtitleClassName="text-gray-300 text-base md:text-lg"
             className="text-center"
           />

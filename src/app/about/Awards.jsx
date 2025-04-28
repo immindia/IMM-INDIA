@@ -59,7 +59,7 @@ const Awards = () => {
           <Heading
             title="Awards and Recognitions"
             titleClassName="text-4xl md:text-6xl font-bold text-white"
-            subtitle="We are proud to have received numerous awards and recognitions for our academic excellence and innovation."
+            subtitle="We are proud to have received numerous Awards and Recognitions for our Academic Excellence and Innovation."
             subtitleClassName="text-gray-300 text-base md:text-lg"
             className="text-center"
           />
@@ -67,12 +67,8 @@ const Awards = () => {
         {loading ? (
           <div className="text-white text-center py-10">Loading awards...</div>
         ) : (
-          <AwardsCards
-            cardsRef={cardsRef}
-            awards={awards}
-          />
+          <AwardsCards cardsRef={cardsRef} awards={awards} />
         )}
-     
       </div>
     </section>
   );
@@ -103,15 +99,14 @@ const CardItem = ({ item, index }) => (
       <Dialog>
         <DialogTrigger asChild>
           <div className="w-24 sm:w-36 h-24 sm:h-36 object-cover rounded-full z-40 absolute top-4 sm:top-5 border-2 sm:border-4 border-yellow-400 left-8 sm:left-11 cursor-pointer hover:border-yellow-300 transition-colors overflow-hidden ">
-
-          <img
-            src={item.image}
-            alt={item.title}
-            loading="lazy"
-            decoding="async"
-            className="w-24 sm:w-36 h-24 sm:h-36 object-cover cursor-pointer hover:border-yellow-300 transition-colors scale-150"
+            <img
+              src={item.image}
+              alt={item.title}
+              loading="lazy"
+              decoding="async"
+              className="w-24 sm:w-36 h-24 sm:h-36 object-cover cursor-pointer hover:border-yellow-300 transition-colors scale-150"
             />
-            </div>
+          </div>
         </DialogTrigger>
         <DialogContent
           className="z-[9999] sm:max-w-[600px] w-[98vw] rounded-md bg-transparent border-none"
@@ -141,8 +136,12 @@ const CardItem = ({ item, index }) => (
       }}
       className="text-base text-white font-medium leading-relaxed mb-0 text-center"
     >
-      {item.title.split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()).join(' ')}
-
+      {item.title
+        .split(" ")
+        .map(
+          (word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()
+        )
+        .join(" ")}
     </motion.h5>
   </motion.div>
 );
