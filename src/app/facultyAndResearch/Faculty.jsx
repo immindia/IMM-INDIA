@@ -5,13 +5,20 @@ import img from "../../assets/faculty/Banner.webp";
 // import Stats from "../../components/Stats";
 // import Newsletter from "../../components/Newsletter";
 // import AboutSidebar from "../../components/AboutSidebar";
-
+import { useFetch } from "../../hooks/useFetch";
 import { LinkedinIcon } from "lucide-react";
 import PropTypes from "prop-types";
 const Faculty = () => {
   const [facultyMembers, setFacultyMembers] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const { data } = useFetch("/api/indexBanner.php");
+  const [banner, setBanner] = useState([]);
+  useEffect(() => {
+    if (data) {
+      setBanner(data.filter((item) => item.category === "Faculty"));
+    }
+  }, [data]);
 
   const breadcrumbItems = [
     { href: "/", label: "Home" },
@@ -78,7 +85,7 @@ const Faculty = () => {
     <div className="relative min-h-screen">
       <ImgAndBreadcrumb
         title="Faculty"
-        imageSrc={img}
+        imageSrc={banner[0]?.url || "https://stealthlearn.in/imm-admin/api/uploads/680f7616ba55c.png"}
         imageAlt="Description of the image"
         breadcrumbItems={breadcrumbItems}
       />

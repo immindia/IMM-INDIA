@@ -1,23 +1,32 @@
 import ImgAndBreadcrumb from "../../components/ImgAndBreadcrumb";
 import Container from "../../components/wrappers/Container";
-import img from "../../assets/about/AboutBanner2.webp";
-
 import icon2 from "../../assets/about/accreditations/logos-2.png";
-
+import { useState, useEffect } from "react";
 import Awards from "./Awards";
 import { Suspense } from "react";
+import { useFetch } from "../../hooks/useFetch";
 
 const AffiliationAwards = () => {
+  const { data } = useFetch("/api/indexBanner.php");
+  const [banner, setBanner] = useState([]);
+
+  useEffect(() => {
+    if (data) {
+      setBanner(data.filter((item) => item.category === "Accreditations & Awards"));
+    }
+  }, [data]);
+
   const breadcrumbItems = [
     { href: "/", label: "Home" },
     { href: "/about/accreditations-awards", label: "About" },
     { label: "Affiliation & Accreditation" },
   ];
+
   return (
     <div className="relative min-h-screen">
       <ImgAndBreadcrumb
         title="Accreditations & Awards"
-        imageSrc={img}
+        imageSrc={banner[0]?.url || "https://stealthlearn.in/imm-admin/api/uploads/680f7616ba55c.png"}
         imageAlt="Description of the image"
         loading="eager"
         breadcrumbItems={breadcrumbItems}
@@ -72,13 +81,14 @@ const AffiliationAwardsContent = () => {
             </p>
             <p className="mt-3 text-gray-600 text-justify">
               Our quality of education acts as a key differentiator of the
-              Institute's standard of excellence. The accreditations ensure a
-              rigorous quality control and benchmarking against global standards
-              in terms of governance, programs, faculty, research, and ethics.
-              IMM's PGDM is focused on three inter-related areas: academic
-              merit, personal values, and social concerns. The two-year,
-              full-time, Post Graduate Diploma in Management (PGDM) is approved
-              by the All India Institute of Technical Education (AICTE).
+              Institute&apos;s standard of excellence. The accreditations ensure
+              a rigorous quality control and benchmarking against global
+              standards in terms of governance, programs, faculty, research, and
+              ethics. IMM&apos;s PGDM is focused on three inter-related areas:
+              academic merit, personal values, and social concerns. The
+              two-year, full-time, Post Graduate Diploma in Management (PGDM) is
+              approved by the All India Institute of Technical Education
+              (AICTE).
             </p>
           </div>
         </div>
