@@ -8,7 +8,7 @@ import img from "../../assets/about/AboutBanner.webp";
 import { useState } from "react";
 import { Eye, Target, Award } from "lucide-react";
 import { Card } from "@/components/ui/card";
-import founder from "../../assets/about/leadership/founder.webp";
+import founder from "../../assets/about/leadership/founder1.webp";
 import building from "../../assets/Building.webp";
 const ImmLegacy = () => {
   const breadcrumbItems = [
@@ -51,13 +51,14 @@ const Legacy = () => {
       <div className="container ">
         <div className="grid lg:grid-cols-3 gap-x-6">
           <div>
-            <h2 className="lg:text-end text-3xl md:text-5xl text-primary-color leading-tight md:leading-normal tracking-wide sm:font-light lg:pl-6 mb-0">
-              IMM Legacy: Five Decades of Excellence in Management Education
+            <h2 className="lg:text-end text-3xl md:text-5xl text-primary-color leading-tight md:leading-normal tracking-wide sm:font-light lg:pl-6 mb-0 sm:-mt-3 ">
+              IMM Legacy: <br /> Five Decades of Excellence in Management
+              Education
             </h2>
           </div>
           <div className="lg:px-4 my-6 lg:my-0">
             <div
-              className="min-h-[350px] md:h-full bg-center bg-cover rounded-md"
+              className="min-h-[400px] md:h-full bg-cover bg-center  rounded-md"
               style={{
                 backgroundImage: `url(${founder})`,
               }}
@@ -94,7 +95,7 @@ const features = [
   {
     icon: Eye,
     title: "Vision",
-    desc: "To serve as a Centre for Excellence in Management Education, Research & Training. By taking the Glorious & Golden Legacy of 55 years forward with Young Leaders and Nation Builders & blending modern management thoughts and eternal values.",
+    desc: "To serve as a Centre for Excellence in Management Education, Research & Training. By taking the Glorious & Golden Legacy of 56 years forward with Young Leaders and Nation Builders & blending modern management thoughts and eternal values.",
   },
   {
     icon: Target,
@@ -203,7 +204,10 @@ const IMMFeatureSection = () => {
         </div>
 
         <div className="grid grid-cols-2 gap-6 pt-12 max-w-7xl mx-auto min-h-[90vh]">
-          <div className="col-span-2 lg:col-span-1 lg:sticky lg:top-24" style={{height: 'fit-content'}}>
+          <div
+            className="col-span-2 lg:col-span-1 lg:sticky lg:top-24"
+            style={{ height: "fit-content" }}
+          >
             <div className="relative h-full z-10">
               <div className="absolute -top-11 -left-11 right-12 bottom-12 h-[400px] sm:h-[600px] bg-gray-900 dark:bg-slate-700 -z-10 rounded-[200px] lg:rounded-full rounded-tl-none lg:rounded-tl-none" />
               <div

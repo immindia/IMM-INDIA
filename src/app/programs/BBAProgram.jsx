@@ -138,9 +138,9 @@ const BBAProgram = () => {
       console.error("Form submission failed with status:", response.status);
       // alert("Form submission successful");
       setIsSuccess(true);
-        form.reset();
-        setFile(null);
-        setShowMarksheetUpload(false);
+      form.reset();
+      setFile(null);
+      setShowMarksheetUpload(false);
     } catch (error) {
       console.error("Error submitting form:", error);
       alert("An error occurred. Please try again later.");
@@ -410,7 +410,7 @@ const BBAProgram = () => {
               IMM Business School! We're excited to introduce you to our
               Bachelor of Business Administration (BBA) program—a perfect blend
               of tradition and innovation that has been shaping future business
-              leaders for 55 years.
+              leaders for 56 years.
             </p>
           </div>
 
@@ -450,7 +450,7 @@ const BBAProgram = () => {
       </section>
 
       {/* Explore BBA Section */}
-        {/* <section className="py-8">
+      {/* <section className="py-8">
           <div className="container mx-auto px-4">
             <img
               className="w-full h-96 object-cover rounded-lg shadow-lg"
@@ -604,7 +604,7 @@ const BBAProgram = () => {
               At IMM Business School, we believe our BBA program is more than
               just a degree—it's a journey of growth and transformation. Join
               our vibrant community and be part of an institution that has been
-              pioneering business education for 55 years.
+              pioneering business education for 56 years.
             </p>
             <p className="text-lg">
               Enrol today and start your exciting journey into the world of
