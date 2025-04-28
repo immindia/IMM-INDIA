@@ -40,7 +40,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const ClubsAtIMM = () => {
   const breadcrumbItems = [
@@ -113,6 +113,7 @@ function EventGallery() {
   const [clubsData, setClubsData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchClubsData = async () => {
@@ -201,8 +202,12 @@ function EventGallery() {
               <div
                 key={club}
                 onClick={() => {
-                  setSelectedClub(club);
-                  setSelectedEvent(null);
+                  if (club === "Research Club") {
+                    navigate("/faculty-and-research/research");
+                  } else {
+                    setSelectedClub(club);
+                    setSelectedEvent(null);
+                  }
                 }}
                 className={`w-full flex items-center gap-2 text-left text-sm cursor-pointer hover:text-primary-color hover:bg-slate-50 duration-300 transition-all rounded-md p-2 ${
                   club === selectedClub
@@ -224,7 +229,6 @@ function EventGallery() {
           >
             <CardHeader className="p-0">
               <div className="relative aspect-square overflow-hidden ">
-                
                 <img
                   src={event.image}
                   alt={event.title}
