@@ -161,14 +161,20 @@ const CardItem = ({ item, index }) => (
         duration: 0.5,
         delay: 0.2 + index * 0.1,
       }}
-      className="text-base text-white font-medium leading-relaxed mb-0 text-center"
+      className="text-sm text-white font-medium leading-relaxed mb-0 text-center"
     >
-      {item.title
+      {/* {item.title
         .split(" ")
         .map(
           (word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()
         )
-        .join(" ")}
+        .join(" ")} */}
+        {item.description.split('\n').map((line, i) => (
+          <span key={i}>
+            {line}
+            <br />
+          </span>
+        ))}
     </motion.h5>
   </motion.div>
 );
