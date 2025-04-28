@@ -144,12 +144,13 @@ const LeaderCard = ({ leader, onReadMore }) => {
             <p className="text-gray-600 mb-4">{leader.position}</p>
           </div>
 
-          {leader.linkedin && (
+          
             <a
-              href={leader.linkedin}
-              target="_blank"
+              href={leader.linkedin || "javascript:void(0)"}
+              // target="_blank"
               rel="noopener noreferrer"
               className="hover:scale-110 transition-all duration-300"
+              
             >
               <img
                 width="48"
@@ -158,7 +159,7 @@ const LeaderCard = ({ leader, onReadMore }) => {
                 alt="linkedin"
               />
             </a>
-          )}
+     
         </div>
       </CardContent>
       <CardFooter className="p-6 pt-0">

@@ -88,9 +88,7 @@ function ContactInfo() {
       </div>
       <div className="flex items-center space-x-3 text-gray-600">
         <Phone className="w-5 h-5 text-pink-900" />
-        <span>011-26520892</span>
-        <Phone className="w-5 h-5 text-pink-900" />
-        <span> 011-26520896</span>
+        <span>011-26520892/93/94/95/96</span>
       </div>
       <div className="flex flex-col space-y-4 text-gray-600 sm:items-center sm:flex-row sm:space-y-0 sm:space-x-3">
         <div className="flex items-center ">
@@ -140,7 +138,7 @@ function CorporateResourceCentreHead() {
       </div> */}
       <div className="flex items-center space-x-3 text-gray-600">
         <Mail className="w-5 h-5 text-pink-900" />
-        <span>immplacement1@gmail.com</span>
+        <span>sanjay@immindia.com</span>
       </div>
     </div>
   );
