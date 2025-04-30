@@ -1,87 +1,14 @@
 import { cn } from "@/lib/utils";
 import Marquee from "../../components/ui/marquee";
+import { useEffect, useState } from "react";
 
-// Import images
+// Keep some fallback images in case the API fails
 import img1 from "../../assets/live-projects/akalgroup.png";
-// import img2 from "../../assets/live-projects/beneton.png";
-// import img3 from "../../assets/live-projects/casback.png";
-// import img4 from "../../assets/live-projects/chatter.png";
-// import img5 from "../../assets/live-projects/hcl.png";
 import img6 from "../../assets/live-projects/hrtz.png";
-// import img7 from "../../assets/live-projects/jio.png";
-// import img8 from "../../assets/live-projects/mankind.png";
-// import img9 from "../../assets/live-projects/panta.png";
-// import img10 from "../../assets/live-projects/pathkind.png";
-// import img11 from "../../assets/live-projects/pladis.png";
 import img12 from "../../assets/live-projects/reliance-digital.png";
 import img13 from "../../assets/live-projects/tata_tech2.png";
 
-const reviews = [
-    {
-      name: "Mr. S. Swapnil",
-      username: "Tata 1 MG",
-      body: "Insightful contributions to technical processes and solutions.",
-      img: img13, // Updated to match the imported image name
-    },
-    {
-      name: "Mr. Ishlesh Bhaskar",
-      username: "Reliance",
-      body: "Engaging discussions on financial strategies and market insights.",
-      img: img12, // Updated to match the imported image name
-    },
-    {
-      name: "Mr. Sanjeev Garg",
-      username: "Aditya Birla",
-      body: "Strategic contributions to communications and networking advancements.",
-      img: img1, // Updated to match the imported image name
-    },
-    {
-      name: "Mr. Siddharth Bhardwaj",
-      username: "Herz",
-      body: "Valuable insights into media management and audience engagement.",
-      img: img6, // Updated to match the imported image name
-    },
-    {
-      name: "Ms. Banmala Shardar",
-      username: "Saudi Aramco",
-      body: "Effective strategies for workforce management and development.",
-      img: 'https://upload.wikimedia.org/wikipedia/en/thumb/a/a7/Saudi_Aramco_logo.svg/200px-Saudi_Aramco_logo.svg.png', // Updated to match the imported image name
-    },
-    {
-      name: "Mr. A.C. Cheema",
-      username: "Patanjali",
-      body: "Deep understanding of energy systems and boiler technologies.",
-      img: 'https://www.patanjaliayurved.net/media/images/logo.svg', // Updated to match the imported image name
-    },
-    // {
-    //   name: "Mr. Ravi Verma",
-    //   username: "Saarthi",
-    //   body: "Innovative approaches to media and journalism.",
-    //   img: img7, // Updated to match the imported image name
-    // },
-    {
-      name: "Mr. Sandeep Khosla",
-      username: "Protivity",
-      body: "Exceptional insights into retail management and customer satisfaction.",
-      img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/70/Protiviti_logo.svg/330px-Protiviti_logo.svg.png', // Updated to match the imported image name
-    },
-    {
-      name: "Mr. Varinder Verma",
-      username: "Cavinkare",
-      body: "Advanced personnel management and team-building expertise.",
-      img: 'https://cavinkare.com/wp-content/uploads/2017/01/logo.png', // Updated to match the imported image name
-    },
-  ];
-  
-const firstRow = reviews.slice(0, reviews.length / 2);
-const secondRow = reviews.slice(reviews.length / 2);
-
-const ReviewCard = ({
-  img,
-  name,
-  username,
-  body,
-}) => {
+const ReviewCard = ({ img, name, username }) => {
   return (
     <figure
       className={cn(
@@ -89,38 +16,136 @@ const ReviewCard = ({
         // light styles
         "border-gray-950/[.1] bg-gray-950/[.01] hover:bg-gray-950/[.05]",
         // dark styles
-        "dark:border-gray-50/[.1] dark:bg-gray-50/[.10] dark:hover:bg-gray-50/[.15]",
+        "dark:border-gray-50/[.1] dark:bg-gray-50/[.10] dark:hover:bg-gray-50/[.15]"
       )}
     >
       <div className="flex flex-row items-center gap-2">
-        <img className="w-full"  alt="" src={img} />
-        {/* <div className="flex flex-col">
-          <figcaption className="text-sm font-medium dark:text-white">
-            {name}
-          </figcaption>
-          <p className="text-xs font-normal dark:text-white/40">{username}</p>
-        </div> */}
+        <img className="w-full" alt={name} src={img} />
       </div>
-      {/* <blockquote className="mt-2 text-sm">{body}</blockquote> */}
     </figure>
   );
 };
 
 export function IndustryMarquee() {
+  const [liveProjectRecruiters, setLiveProjectRecruiters] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  // Fallback data in case the API fails
+  const fallbackRecruiters = [
+    {
+      name: "Tata 1 MG",
+      username: "Tata 1 MG",
+      img: img13,
+    },
+    {
+      name: "Reliance",
+      username: "Reliance",
+      img: img12,
+    },
+    {
+      name: "Aditya Birla",
+      username: "Aditya Birla",
+      img: img1,
+    },
+    {
+      name: "Herz",
+      username: "Herz",
+      img: img6,
+    },
+    {
+      name: "Saudi Aramco",
+      username: "Saudi Aramco",
+      img: "https://upload.wikimedia.org/wikipedia/en/thumb/a/a7/Saudi_Aramco_logo.svg/200px-Saudi_Aramco_logo.svg.png",
+    },
+    {
+      name: "Patanjali",
+      username: "Patanjali",
+      img: "https://www.patanjaliayurved.net/media/images/logo.svg",
+    },
+    {
+      name: "Protivity",
+      username: "Protivity",
+      img: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/70/Protiviti_logo.svg/330px-Protiviti_logo.svg.png",
+    },
+    {
+      name: "Cavinkare",
+      username: "Cavinkare",
+      img: "https://cavinkare.com/wp-content/uploads/2017/01/logo.png",
+    },
+  ];
+
+  useEffect(() => {
+    const fetchRecruiters = async () => {
+      try {
+        setIsLoading(true);
+        const response = await fetch(
+          "https://stealthlearn.in/imm-admin/api/indexRecruiter.php"
+        );
+        if (!response.ok) {
+          throw new Error("Failed to fetch recruiters");
+        }
+        const data = await response.json();
+
+        // Filter for Live Project Recruiter category
+        const filteredData = data.filter(
+          (item) => item.category === "Live Project Recruiter"
+        );
+
+        // Map the data to the format needed for our component
+        const formattedData = filteredData.map((item) => ({
+          id: item.id,
+          name: item.title,
+          username: item.title,
+          img: item.url,
+        }));
+
+        setLiveProjectRecruiters(
+          formattedData.length > 0 ? formattedData : fallbackRecruiters
+        );
+      } catch (err) {
+        console.error("Error fetching recruiters:", err);
+        setError(err.message);
+        setLiveProjectRecruiters(fallbackRecruiters);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchRecruiters();
+  }, []);
+
+  // Split the recruiters into two rows for the marquee
+  const recruiters = isLoading ? fallbackRecruiters : liveProjectRecruiters;
+  const firstRow = recruiters.slice(0, Math.ceil(recruiters.length / 2));
+  const secondRow = recruiters.slice(Math.ceil(recruiters.length / 2));
+
   return (
-    <div className="relative flex h-[480px] w-full flex-row items-center justify-center overflow-hidden rounded-lg  bg-background ">
-      <Marquee pauseOnHover vertical className="[--duration:20s]">
-        {firstRow.map((review) => (
-          <ReviewCard key={review.username} {...review} />
-        ))}
-      </Marquee>
-      <Marquee reverse pauseOnHover vertical className="[--duration:20s]">
-        {secondRow.map((review) => (
-          <ReviewCard key={review.username} {...review} />
-        ))}
-      </Marquee>
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-1/5 bg-gradient-to-b from-white dark:from-background"></div>
-      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-1/5 bg-gradient-to-t from-white dark:from-background"></div>
+    <div className="relative flex h-[480px] w-full flex-row items-center justify-center overflow-hidden rounded-lg bg-background">
+      {isLoading ? (
+        <div className="flex items-center justify-center w-full h-full">
+          <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-primary-color"></div>
+        </div>
+      ) : error ? (
+        <div className="text-center text-red-500">
+          <p>Error loading recruiters: {error}</p>
+        </div>
+      ) : (
+        <>
+          <Marquee pauseOnHover vertical className="[--duration:20s]">
+            {firstRow.map((review) => (
+              <ReviewCard key={review.id || review.username} {...review} />
+            ))}
+          </Marquee>
+          <Marquee reverse pauseOnHover vertical className="[--duration:20s]">
+            {secondRow.map((review) => (
+              <ReviewCard key={review.id || review.username} {...review} />
+            ))}
+          </Marquee>
+          <div className="pointer-events-none absolute inset-x-0 top-0 h-1/5 bg-gradient-to-b from-white dark:from-background"></div>
+          <div className="pointer-events-none absolute inset-x-0 bottom-0 h-1/5 bg-gradient-to-t from-white dark:from-background"></div>
+        </>
+      )}
     </div>
   );
 }

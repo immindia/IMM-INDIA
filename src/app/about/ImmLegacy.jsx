@@ -5,12 +5,23 @@ import img from "../../assets/about/AboutBanner.webp";
 // import Stats from "../../components/Stats";
 // import Newsletter from "../../components/Newsletter";
 // import AboutSidebar from "../../components/AboutSidebar";
-import { useState } from "react";
+import { useState,useEffect  } from "react";
 import { Eye, Target, Award } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import founder from "../../assets/about/leadership/founder1.webp";
 import building from "../../assets/Building.webp";
+import { useFetch } from "../../hooks/useFetch";
 const ImmLegacy = () => {
+
+  
+  const { data } = useFetch("/api/indexBanner.php");
+  const [banner, setBanner] = useState([]);
+    useEffect(() => {
+      if (data) {
+        setBanner(data.filter((item) => item.category === "IMM Legacy"));
+      }
+    }, [data]);
+
   const breadcrumbItems = [
     { href: "/", label: "Home" },
     { href: "/about/imm-legacy", label: "About" },
@@ -20,7 +31,7 @@ const ImmLegacy = () => {
     <div className="relative min-h-screen">
       <ImgAndBreadcrumb
         title="IMM Legacy & Vision"
-        imageSrc={img}
+        imageSrc={banner[0]?.url || "https://stealthlearn.in/imm-admin/api/uploads/680fd14484b0a.png"}
         imageAlt="Description of the image"
         breadcrumbItems={breadcrumbItems}
       />

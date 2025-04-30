@@ -41,6 +41,7 @@ import Heading from "../../components/Heading";
 import ImgAndBreadcrumb from "../../components/ImgAndBreadcrumb";
 // import Container from "../../components/wrappers/Container";  
 import img from "../../assets/banner/AlumniBanner.png";
+import { useFetch } from "../../hooks/useFetch";
 
 const breadcrumbItems = [
   { href: "/", label: "Home" },
@@ -60,6 +61,14 @@ export default function HallofFame() {
   const [sortDirection, setSortDirection] = useState("asc");
   const [viewStyle, setViewStyle] = useState("card");
   const itemsPerPage = window.innerWidth < 500 ? 10 : 15;
+
+  const { data } = useFetch("/api/indexBanner.php");
+  const [banner, setBanner] = useState([]);
+  useEffect(() => {
+    if (data) {
+      setBanner(data.filter((item) => item.category === "Hall of Fame"));
+    }
+  }, [data]);
 
   // Fetch data from API
   useEffect(() => {
@@ -231,7 +240,7 @@ export default function HallofFame() {
     <div className="relative min-h-screen">
     <ImgAndBreadcrumb
       title="Hall of Fame"
-      imageSrc={img}
+      imageSrc={banner[0]?.url || "https://stealthlearn.in/imm-admin/api/uploads/680fd14484b0a.png"}
       imageAlt="Description of the image"
       breadcrumbItems={breadcrumbItems}
     />

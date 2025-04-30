@@ -16,10 +16,19 @@ import {
   DialogTitle,
   DialogDescription,
 } from "@/components/ui/dialog";
+import { useFetch } from "../../hooks/useFetch";
 
 import PropTypes from "prop-types";
 
 const Leadership = () => {
+  const { data } = useFetch("/api/indexBanner.php");
+  const [banner, setBanner] = useState([]);
+    useEffect(() => {
+      if (data) {
+        setBanner(data.filter((item) => item.category === "Leadership"));
+      }
+    }, [data]);
+
   const breadcrumbItems = [
     { href: "/", label: "Home" },
     { href: "/about/leadership", label: "About" },
@@ -29,7 +38,7 @@ const Leadership = () => {
     <div className="relative min-h-screen ">
       <ImgAndBreadcrumb
         title="Leadership"
-        imageSrc={img}
+        imageSrc={banner[0]?.url || "https://stealthlearn.in/imm-admin/api/uploads/680fd14484b0a.png"}
         imageAlt="Description of the image"
         breadcrumbItems={breadcrumbItems}
       />

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import {
@@ -42,6 +42,7 @@ import Heading from "../../components/Heading";
 import ImgAndBreadcrumb from "../../components/ImgAndBreadcrumb";
 import Container from "../../components/wrappers/Container";
 import img from "../../assets/banner/AlumniBanner.png";
+import { useFetch } from "../../hooks/useFetch";
 
 const breadcrumbItems = [
   { href: "/", label: "Home" },
@@ -57,6 +58,13 @@ export default function AlumniDirectory() {
   const [sortField, setSortField] = useState("name");
   const [sortDirection, setSortDirection] = useState("asc");
   const [viewStyle, setViewStyle] = useState("card");
+  const { data } = useFetch("/api/indexBanner.php");
+  const [banner, setBanner] = useState([]);
+  useEffect(() => {
+    if (data) {
+      setBanner(data.filter((item) => item.category === "Dazzling Divas"));
+    }
+  }, [data]);
 
   const itemsPerPage = window.innerWidth < 500 ? 10 : 15;
 
@@ -151,7 +159,7 @@ export default function AlumniDirectory() {
     <div className="relative min-h-screen">
       <ImgAndBreadcrumb
         title="Dazzling Divas"
-        imageSrc={img}
+        imageSrc={banner[0]?.url || "https://stealthlearn.in/imm-admin/api/uploads/680fd14484b0a.png"}
         imageAlt="Description of the image"
         breadcrumbItems={breadcrumbItems}
       />

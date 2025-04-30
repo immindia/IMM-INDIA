@@ -15,8 +15,16 @@ import { Link } from "react-router-dom";
 import Heading from "../../components/Heading";
 import ImgAndBreadcrumb from "../../components/ImgAndBreadcrumb";
 import Container from "../../components/wrappers/Container";
-
+import { useFetch } from "../../hooks/useFetch";
 export default function OurPartnersDetail() {
+  const { data } = useFetch("/api/indexBanner.php");
+  const [banner, setBanner] = useState([]);
+    useEffect(() => {
+      if (data) {
+        setBanner(data.filter((item) => item.category === "IMM Partners"));
+      }
+    }, [data]);
+
   const [isLoaded, setIsLoaded] = useState(false);
 
   // Simulate loading and trigger animations
@@ -106,7 +114,7 @@ export default function OurPartnersDetail() {
     <div className="relative">
       <ImgAndBreadcrumb
         title="IMM Partners"
-        imageSrc={img}
+        imageSrc={banner[0]?.url || "https://stealthlearn.in/imm-admin/api/uploads/680fd14484b0a.png"}
         imageAlt="Description of the image"
         breadcrumbItems={breadcrumbItems}
       />

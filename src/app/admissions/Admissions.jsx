@@ -1,16 +1,22 @@
 import Heading from "../../components/Heading";
 import ImgAndBreadcrumb from "../../components/ImgAndBreadcrumb";
 import Container from "../../components/wrappers/Container";
-import img from "../../assets/admissions/admissionsBanner.webp";
-import AboutSidebar from "../../components/AboutSidebar";
+// import AboutSidebar from "../../components/AboutSidebar";
 import ProcessAndFees from "./ProcessAndFees";
-const sidebarLinks = [
-  { href: "#overview", label: "Overview" },
-  { href: "#application-process", label: "Application Process" },
-  { href: "#tuition-fees", label: "Tuition Fees" },
-  { href: "#scholarships", label: "Scholarships" },
-];
+import { useState, useEffect } from "react";
+
+import { useFetch } from "../../hooks/useFetch";
+
 const Admissions = () => {
+
+  const { data } = useFetch("/api/indexBanner.php");
+  const [banner, setBanner] = useState([]);
+    useEffect(() => {
+      if (data) {
+        setBanner(data.filter((item) => item.category === "Admissions"));
+      }
+    }, [data]);
+  
   const breadcrumbItems = [
     { href: "/", label: "Home" },
 
@@ -20,7 +26,7 @@ const Admissions = () => {
     <div className="relative min-h-screen ">
       <ImgAndBreadcrumb
         title="Admissions"
-        imageSrc={img}
+        imageSrc={banner[0]?.url || "https://stealthlearn.in/imm-admin/api/uploads/680fd14484b0a.png"}
         imageAlt="Description of the image"
         breadcrumbItems={breadcrumbItems}
       />
