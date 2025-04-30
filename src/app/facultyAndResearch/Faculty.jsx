@@ -102,7 +102,7 @@ const Faculty = () => {
           </div>
         )}
         {!loading && !error && (
-          <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-5 gap-6 mx-auto justify-center items-center text-center">
+          <div className="grid grid-cols-1 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-5 gap-6 mx-auto justify-center items-stretch text-center">
             {facultyMembers.map((member) => (
               <TeamMemberCard
                 key={member.id}
@@ -125,13 +125,13 @@ const Faculty = () => {
 export default Faculty;
 
 const TeamMemberCard = ({ name, role, imageSrc, linkedinLink }) => (
-  <div className="col-span-4 md:col-span-2 lg:col-span-1 hover:-translate-y-2 transition-all duration-300">
+  <div className=" hover:-translate-y-2 transition-all duration-300">
     <div className="bg-white shadow-xl dark:bg-slate-800 rounded-xl h-full p-2 group">
       <div className="flex justify-center overflow-hidden rounded-lg relative">
         <img
           src={imageSrc}
           alt={name}
-          className="w-full h-auto sm:h-60 object-cover rounded-lg hover:scale-110 transition-all duration-300"
+          className="w-full h-auto sm:h-60 object-cover rounded-lg hover:scale-110 transition-all duration-300 bg-red-500"
         />
       </div>
       <div className="px-4 py-6">
@@ -159,38 +159,41 @@ TeamMemberCard.propTypes = {
 
 const FacultyHeading = () => {
   return (
-    <section className="py-14 mx-auto">
+    <section className="py-10 sm:py-14 mx-auto">
       <div className="max-w-screen-xl mx-auto ">
         <div className="items-center gap-x-12 sm:px-4 md:px-0 lg:flex">
-          <div className="flex-1 sm:hidden lg:block">
+          {/* <div className="flex-1 sm:hidden lg:block">
             <img
               src={img}
               className="md:max-w-lg rounded-lg h-80 w-full object-cover"
               alt=""
             />
-          </div>
-          <div className="max-w-xl  space-y-3 mt-6 sm:px-0 md:mt-0 lg:max-w-2xl">
-            <h3 className="text-primary-color text-2xl font-semibold">
+          </div> */}
+          <div className="max-w-xl  space-y-3 mt-6 sm:px-0 md:mt-0 lg:max-w-6xl">
+            <h3 className="text-primary-color text-center text-2xl font-semibold">
               Our Faculty
             </h3>
-            <p className="text-gray-800 text-3xl font-semibold sm:text-4xl">
+            <p className="text-gray-800 text-3xl font-semibold text-center sm:text-4xl ">
               Excellence in Teaching & Research
             </p>
-            <p className="mt-3 text-gray-600 text-justify ">
+            <p className="sm:!mt-8 text-gray-600 text-justify sm:text-center ">
               The IMM Business School has Faculty members who have earned PhDs
               or are Fellows from top schools in India. We attract Adjunct and
               Visiting Faculty from prestigious institutions like IIM Ahmedabad,
               IIM Lucknow, IIT Kanpur, IIT Roorkee, Jamnalal Bajaj, FMS, IIFT
               and other prominent business schools globally. Top industry
               executives serve as Visiting Faculty, bringing real-world
-              experience to the classroom.
-            </p>
-            <p className="mt-3 text-gray-600 text-justify">
+              experience to the classroom. 
+              <br />
+              <br />
               Our Faculty regularly publish research papers in renowned
               international and national journals, engage in consultancy work,
               and employ analytical tools in their teaching pedagogy. Students
               benefit from complete access to journals and publications,
               enhancing their subject knowledge through research-based lectures.
+            </p>
+            <p className="mt-3 text-gray-600 text-justify">
+              
             </p>
           </div>
         </div>
