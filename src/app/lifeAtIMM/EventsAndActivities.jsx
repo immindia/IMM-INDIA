@@ -28,8 +28,18 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import { Link } from "react-router-dom";
+import { useFetch } from "../../hooks/useFetch";
 
 const EventsAndActivities = () => {
+  const { data } = useFetch("/api/indexBanner.php");
+  const [banner, setBanner] = useState([]);
+
+  useEffect(() => {
+    if (data) {
+      setBanner(data.filter((item) => item.category === "Events & Activities"));
+    }
+  }, [data]);
+
   const breadcrumbItems = [
     { href: "/", label: "Home" },
     { href: "/life-at-imm/events-and-activities", label: "Life at IMM" },
@@ -39,7 +49,10 @@ const EventsAndActivities = () => {
     <div className="relative min-h-screen">
       <ImgAndBreadcrumb
         title="Events & Activities"
-        imageSrc={img}
+        imageSrc={
+          banner[0]?.url ||
+          "https://stealthlearn.in/imm-admin/api/uploads/680fd14484b0a.png"
+        }
         imageAlt="Description of the image"
         breadcrumbItems={breadcrumbItems}
       />
@@ -80,7 +93,7 @@ function EventGallery() {
 
         // Process events and extract unique years
         const processedEvents = data
-          .filter(event => event.category === "Events")
+          .filter((event) => event.category === "Events")
           .map((event) => ({
             ...event,
             photoCount: event.gallery ? event.gallery.length : 0,
@@ -154,11 +167,11 @@ function EventGallery() {
           ))}
         </div>
       </div>
-      <div className="events col-span-3 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div className="events col-span-3 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-center  place-content-stretch gap-4">
         {filteredEvents.map((event) => (
           <Card
             key={event.id}
-            className="group overflow-hidden h-max shadow-sm hover:shadow-md duration-150 transition-all rounded-xl hover:-translate-y-2"
+            className="group overflow-hidden h-max  sm:h-auto shadow-sm hover:shadow-md duration-150 transition-all rounded-xl hover:-translate-y-2"
           >
             <CardHeader className="p-0">
               <div className="relative aspect-square overflow-hidden ">
@@ -174,7 +187,7 @@ function EventGallery() {
               </div>
             </CardHeader>
             <CardContent className="p-4">
-              <div className="flex items-center gap-2 text-sm text-muted-foreground mb-2">
+              <div className="flex items-start gap-2 text-sm text-muted-foreground mb-2">
                 <Calendar className="w-4 h-4" />
                 <time dateTime={event.date}>
                   {new Date(event.date).toLocaleDateString()}

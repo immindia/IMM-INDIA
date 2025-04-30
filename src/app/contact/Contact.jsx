@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -13,6 +13,8 @@ import {
 } from "lucide-react";
 import { Label } from "@/components/ui/label";
 import Heading from "@/components/Heading";
+import ImgAndBreadcrumb from "../../components/ImgAndBreadcrumb";
+import { useFetch } from "../../hooks/useFetch";
 function ContactForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -184,24 +186,31 @@ function Map() {
 }
 
 export default function Contact() {
+  const { data } = useFetch("/api/indexBanner.php");
+  const [banner, setBanner] = useState([]);
+
+  useEffect(() => {
+    if (data) {
+      setBanner(data.filter((item) => item.category === "Contact"));
+    }
+  }, [data]);
+
+  const breadcrumbItems = [
+    { href: "/", label: "Home" },
+    { label: "Contact Us" },
+  ];
+
   return (
     <div className="min-h-screen bg-gray-100">
-      {/* Hero Section */}
-      <div
-        className="relative h-40 bg-center bg-cover sm:h-80"
-        style={{
-          backgroundImage:
-            "url('https://immindia.edu.in/images/imm-college.jpg')",
-        }}
-      >
-        <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50">
-          <Heading
-            title="Contact Us"
-            titleClassName="lg:font-extrabold text-center text-white tracking-wide"
-            className="block w-full  mx-auto text-left sm:col-span-4 sm:pb-0 lg:pb-0 pb-0 pt-8 sm:pt-0"
-          />
-        </div>
-      </div>
+      <ImgAndBreadcrumb
+        title="Contact Us"
+        imageSrc={
+          banner[0]?.url ||
+          "https://stealthlearn.in/imm-admin/api/uploads/680fd14484b0a.png"
+        }
+        imageAlt="Contact Us"
+        breadcrumbItems={breadcrumbItems}
+      />
 
       {/* Main Content */}
       <div className="max-w-7xl mx-auto py-6 sm:py-12 px-4 sm:px-6 lg:px-8">
@@ -245,8 +254,6 @@ export default function Contact() {
                 <CorporateResourceCentreHead />
               </div>
             </div>
-
-           
           </div>
         </div>
       </div>

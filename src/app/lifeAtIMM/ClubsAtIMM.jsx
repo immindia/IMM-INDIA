@@ -41,8 +41,18 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import { Link, useNavigate } from "react-router-dom";
+import { useFetch } from "../../hooks/useFetch";
 
 const ClubsAtIMM = () => {
+  const { data } = useFetch("/api/indexBanner.php");
+  const [banner, setBanner] = useState([]);
+
+  useEffect(() => {
+    if (data) {
+      setBanner(data.filter((item) => item.category === "Clubs at IMM"));
+    }
+  }, [data]);
+
   const breadcrumbItems = [
     { href: "/", label: "Home" },
     { href: "/life-at-imm/clubs-at-imm", label: "Life at IMM" },
@@ -52,7 +62,10 @@ const ClubsAtIMM = () => {
     <div className="relative min-h-screen">
       <ImgAndBreadcrumb
         title="Clubs at IMM"
-        imageSrc={img}
+        imageSrc={
+          banner[0]?.url ||
+          "https://stealthlearn.in/imm-admin/api/uploads/680fd14484b0a.png"
+        }
         imageAlt="Description of the image"
         breadcrumbItems={breadcrumbItems}
       />

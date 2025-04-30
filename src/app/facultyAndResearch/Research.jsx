@@ -5,12 +5,18 @@ import Container from "../../components/wrappers/Container";
 // import galleryData from "../../data/galleryData";
 import national from "../../assets/research/reserchbanner.webp";
 import international from "../../assets/research/internantionalBanner.webp";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-
-
-
+import { useFetch } from "../../hooks/useFetch";
 
 const Research = () => {
+  const { data } = useFetch("/api/indexBanner.php");
+  const [banner, setBanner] = useState([]);
+  useEffect(() => {
+    if (data) {
+      setBanner(data.filter((item) => item.category === "Research"));
+    }
+  }, [data]);
   const breadcrumbItems = [
     { href: "/", label: "Home" },
     { href: "/research", label: "Research" },
@@ -20,7 +26,7 @@ const Research = () => {
     <div className="relative min-h-screen">
       <ImgAndBreadcrumb
         title="Research"
-        imageSrc={international}
+        imageSrc={banner[0]?.url || "https://stealthlearn.in/imm-admin/api/uploads/680fd14484b0a.png"}
         imageAlt="Description of the image"
         breadcrumbItems={breadcrumbItems}
       />

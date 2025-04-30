@@ -2,7 +2,7 @@
 import ImgAndBreadcrumb from "../../components/ImgAndBreadcrumb";
 // import Container from "../../components/wrappers/Container";
 import img from "../../assets/faculty/Banner.webp";
-// import React, { useState } from "react";
+import { useState, useEffect } from "react";
 // import { motion } from "framer-motion";
 // import { Input } from "@/components/ui/input";
 // import { Button } from "@/components/ui/button";
@@ -10,7 +10,18 @@ import img from "../../assets/faculty/Banner.webp";
 import PlacementStats from "./PlacementStats";
 import PlacementGrid from "./PlacementGrid";
 import PlacementPieChart from "./PlacementPieChart";
+import { useFetch } from "../../hooks/useFetch";
+
 const PlacementRecords = () => {
+  const { data } = useFetch("/api/indexBanner.php");
+  const [banner, setBanner] = useState([]);
+
+  useEffect(() => {
+    if (data) {
+      setBanner(data.filter((item) => item.category === "Placement Records"));
+    }
+  }, [data]);
+
   const breadcrumbItems = [
     { href: "/", label: "Home" },
     { href: "/placements/placement-records", label: "Placement Records" },
@@ -21,7 +32,10 @@ const PlacementRecords = () => {
     <div className="relative min-h-screen overflow-x-hidden">
       <ImgAndBreadcrumb
         title="Placement Records"
-        imageSrc={img}
+        imageSrc={
+          banner[0]?.url ||
+          "https://stealthlearn.in/imm-admin/api/uploads/680fd14484b0a.png"
+        }
         imageAlt="Description of the image"
         breadcrumbItems={breadcrumbItems}
       />

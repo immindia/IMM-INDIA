@@ -4,7 +4,8 @@ import Container from "../../components/wrappers/Container";
 import Heading from "../../components/Heading";
 // import AboutSidebar from "../../components/AboutSidebar";
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
+import { useFetch } from "../../hooks/useFetch";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
@@ -43,6 +44,15 @@ const breadcrumbItems = [
 ];
 
 const CorporateEvents = () => {
+  const { data } = useFetch("/api/indexBanner.php");
+  const [banner, setBanner] = useState([]);
+
+  useEffect(() => {
+    if (data) {
+      setBanner(data.filter((item) => item.category === "Corporate Events"));
+    }
+  }, [data]);
+
   const [searchTerm, setSearchTerm] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const [selectedTags, setSelectedTags] = useState([]);
@@ -115,7 +125,10 @@ const CorporateEvents = () => {
     <section className="relative min-h-screen">
       <ImgAndBreadcrumb
         title="Corporate Events"
-        imageSrc={img}
+        imageSrc={
+          banner[0]?.url ||
+          "https://stealthlearn.in/imm-admin/api/uploads/680fd14484b0a.png"
+        }
         imageAlt="Description of the image"
         breadcrumbItems={breadcrumbItems}
       />

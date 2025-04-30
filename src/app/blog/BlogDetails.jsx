@@ -46,9 +46,11 @@ const BlogDetails = () => {
   };
 
   if (loading) {
-    return <div className="min-h-screen bg-gray-50">
-      <Skeleton/>
-    </div>;
+    return (
+      <div className="min-h-screen bg-gray-50">
+        <Skeleton />
+      </div>
+    );
   }
 
   if (!post) {

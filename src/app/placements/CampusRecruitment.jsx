@@ -9,8 +9,18 @@ import { Button } from "@/components/ui/button";
 import { Search, ChevronDown, ChevronUp } from "lucide-react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import PropTypes from "prop-types";
+import { useFetch } from "../../hooks/useFetch";
 
 const CampusRecruitment = () => {
+  const { data } = useFetch("/api/indexBanner.php");
+  const [banner, setBanner] = useState([]);
+
+  useEffect(() => {
+    if (data) {
+      setBanner(data.filter((item) => item.category === "Campus Recruitment"));
+    }
+  }, [data]);
+
   const breadcrumbItems = [
     { href: "/", label: "Home" },
     { href: "/placements/campus-recruitment", label: "Campus Recruitment" },
@@ -21,7 +31,10 @@ const CampusRecruitment = () => {
     <div className="relative min-h-screen ">
       <ImgAndBreadcrumb
         title="Campus Recruitment"
-        imageSrc={img}
+        imageSrc={
+          banner[0]?.url ||
+          "https://stealthlearn.in/imm-admin/api/uploads/680fd14484b0a.png"
+        }
         imageAlt="Description of the image"
         breadcrumbItems={breadcrumbItems}
       />
