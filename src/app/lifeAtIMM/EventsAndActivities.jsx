@@ -123,9 +123,12 @@ function EventGallery() {
   }, []);
 
   const filteredEvents = useMemo(() => {
-    return events.filter(
-      (event) => new Date(event.date).getFullYear().toString() === selectedYear
-    );
+    return events
+      .filter(
+        (event) =>
+          new Date(event.date).getFullYear().toString() === selectedYear
+      )
+      .sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
   }, [events, selectedYear]);
 
   const handleImageClick = (event) => {
@@ -187,12 +190,12 @@ function EventGallery() {
               </div>
             </CardHeader>
             <CardContent className="p-4">
-              <div className="flex items-start gap-2 text-sm text-muted-foreground mb-2">
+              {/* <div className="flex items-start gap-2 text-sm text-muted-foreground mb-2">
                 <Calendar className="w-4 h-4" />
                 <time dateTime={event.date}>
                   {new Date(event.date).toLocaleDateString()}
                 </time>
-              </div>
+              </div> */}
               <h3 className="text-xl font-bold mb-2 line-clamp-1 hover:text-primary-color duration-300 transition-all hover:line-clamp-none">
                 {event.title}
               </h3>
@@ -279,10 +282,10 @@ function EventGallery() {
                   </div>
                 </div>
 
-                <div className="pt-3 border-t border-border max-h-[200px] overflow-y-auto pr-2 scrollbar-thin scrollbar-thumb-rounded scrollbar-thumb-muted-foreground/20 scrollbar-track-transparent">
-                  <pre className="text-muted-foreground font-sans leading-relaxed whitespace-pre-wrap break-words w-full">
+                <div className="pt-3 border-t border-border max-h-[100px] overflow-y-auto pr-2 scrollbar-thin scrollbar-thumb-rounded scrollbar-thumb-muted-foreground/20 scrollbar-track-transparent">
+                  <p className="text-muted-foreground font-sans leading-relaxed whitespace-pre-wrap break-words w-full">
                     {selectedEvent.description}
-                  </pre>
+                  </p>
                 </div>
               </div>
             </div>

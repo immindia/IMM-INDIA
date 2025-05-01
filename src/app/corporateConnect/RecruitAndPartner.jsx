@@ -284,7 +284,7 @@ export default function RecruitAndPartner() {
                       render={({ field }) => (
                         <FormItem className="space-y-3">
                           <FormLabel className="text-pink-800">
-                            How do you wish to connect with FIIB?
+                            How do you wish to connect with IMM?
                           </FormLabel>
                           <FormControl>
                             <RadioGroup
