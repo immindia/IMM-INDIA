@@ -177,7 +177,7 @@ function EventGallery() {
             className="group overflow-hidden h-max  sm:h-auto shadow-sm hover:shadow-md duration-150 transition-all rounded-xl hover:-translate-y-2"
           >
             <CardHeader className="p-0">
-              <div className="relative aspect-square overflow-hidden ">
+              <div className="relative aspect-video overflow-hidden ">
                 <img
                   src={`https://stealthlearn.in/imm-admin/api/${event.image}`}
                   alt={event.title}
