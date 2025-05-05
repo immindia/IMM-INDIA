@@ -128,7 +128,18 @@ function EventGallery() {
         (event) =>
           new Date(event.date).getFullYear().toString() === selectedYear
       )
-      .sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
+      .sort((a, b) => {
+        const dateA = new Date(a.date);
+        const dateB = new Date(b.date);
+        const createdAtA = new Date(a.created_at);
+        const createdAtB = new Date(b.created_at);
+  
+        if (dateA > dateB) return -1;
+        if (dateA < dateB) return 1;
+        if (createdAtA > createdAtB) return -1;
+        if (createdAtA < createdAtB) return 1;
+        return 0;
+      });
   }, [events, selectedYear]);
 
   const handleImageClick = (event) => {
@@ -174,7 +185,7 @@ function EventGallery() {
         {filteredEvents.map((event) => (
           <Card
             key={event.id}
-            className="group overflow-hidden h-max  sm:h-auto shadow-sm hover:shadow-md duration-150 transition-all rounded-xl hover:-translate-y-2"
+            className="group overflow-hidden h-max  sm:h-[336px] shadow-sm hover:shadow-md duration-150 transition-all rounded-xl hover:-translate-y-2"
           >
             <CardHeader className="p-0">
               <div className="relative aspect-video overflow-hidden ">
