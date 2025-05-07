@@ -288,7 +288,7 @@ function EventGallery() {
                   <div className="flex items-center text-sm text-muted-foreground">
                     <Calendar className="mr-2 h-4 w-4" />
                     <time dateTime={selectedEvent.date}>
-                      {new Date(selectedEvent.date).toLocaleDateString()}
+                      {new Intl.DateTimeFormat('en-IN', { day: '2-digit', month: '2-digit', year: 'numeric' }).format(new Date(selectedEvent.date))}
                     </time>
                   </div>
                 </div>

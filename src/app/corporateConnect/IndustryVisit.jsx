@@ -353,7 +353,7 @@ const IndustryVisit = () => {
                   {/* <p>
                     <strong>Date:</strong> {selectedEvent.date}
                   </p> */}
-                  {selectedEvent.description
+                  {selectedEvent.description && selectedEvent.description !== "" && selectedEvent.description
                     .split("\n\n")
                     .map((paragraph, index) => (
                       <p
