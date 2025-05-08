@@ -136,7 +136,7 @@ const CorporateEvents = () => {
         <div className="col-span-1 pt-12">
           <Heading
             title="Corporate Events"
-            subtitle="Stay informed about upcoming events, workshops, and seminars at our college, from cultural festivals to academic conferences."
+            subtitle="Stay informed about events, workshops, and seminars at our college."
             titleClassName="text-primary-color text-left lg:text-5xl text-center"
             subtitleClassName="hidden text-gray-500 text-justify m-0 lg:text-lg lg:font-normal lg:max-w-full font-normal text-center sm:block"
             className="lg:pb-10"

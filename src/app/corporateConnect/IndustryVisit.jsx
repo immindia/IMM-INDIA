@@ -135,7 +135,7 @@ const IndustryVisit = () => {
         <div className="col-span-1 pt-12">
           <Heading
             title="Industry Visits"
-            subtitle="Gain firsthand experience through guided tours of leading companies and understand real-world industry operations."
+            subtitle="Experiential learning through guided tours at leading companies to understand real-world industry operations."
             titleClassName="text-primary-color text-left lg:text-5xl text-center"
             subtitleClassName="hidden text-gray-500 text-justify m-0 lg:text-lg lg:font-normal lg:max-w-full font-normal text-center sm:block"
             className="lg:pb-10"

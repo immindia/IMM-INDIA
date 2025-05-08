@@ -39,8 +39,8 @@ const Pgdm = () => {
           <Heading
             title="Post Graduate Diploma in Management"
             titleClassName="lg:font-extrabold font-bold text-primary-color"
-            subtitle="Our PGDM program is designed to provide a comprehensive understanding of modern business practices..."
-            subtitleClassName="text-gray-500 text-justify m-0 lg:text-lg lg:font-normal  text-center mx-auto"
+            subtitle="Our PGDM program is designed to provide a comprehensive understanding of modern business practices"
+            subtitleClassName="text-gray-500 text-justify m-0 lg:text-lg lg:font-normal  text-center mx-auto max-w-5xl"
             className="w-full text-center sm:col-span-4 pt-12"
           />
 

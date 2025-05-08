@@ -629,7 +629,7 @@ const BBAProgram = () => {
               Specializations
             </Badge>
             <h2 className="text-3xl font-bold text-gray-900 mb-6">
-              BBA Specializations Offered at IMM
+            Specialisations Offered in BBA @IMM
             </h2>
             <p className="text-gray-700 text-lg">
               Choose from a variety of specializations designed to align with

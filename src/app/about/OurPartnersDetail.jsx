@@ -16,6 +16,8 @@ import Heading from "../../components/Heading";
 import ImgAndBreadcrumb from "../../components/ImgAndBreadcrumb";
 import Container from "../../components/wrappers/Container";
 import { useFetch } from "../../hooks/useFetch";
+// import bg from "../../assets/partners/partnerBG.jpg";
+import bg from "../../assets/partners/partnerBG.png";
 export default function OurPartnersDetail() {
   const { data } = useFetch("/api/indexBanner.php");
   const [banner, setBanner] = useState([]);
@@ -33,7 +35,7 @@ export default function OurPartnersDetail() {
   }, []);
   const breadcrumbItems = [
     { href: "/", label: "Home" },
-    { href: "/about/imm-partners", label: "IMM Partners" },
+    { href: "/about/imm-partners", label: "About" },
     { label: "IMM Partners" },
   ];
   // All partners data
@@ -112,29 +114,32 @@ export default function OurPartnersDetail() {
 
   return (
     <div className="relative">
+     
       <ImgAndBreadcrumb
         title="IMM Partners"
         imageSrc={banner[0]?.url || "https://stealthlearn.in/imm-admin/api/uploads/680fd14484b0a.png"}
         imageAlt="Description of the image"
         breadcrumbItems={breadcrumbItems}
       />
-      <Container className="container  gap-14">
+      <section className="relative">
+        <img src={bg} alt="background" className="absolute inset-0 w-full h-full object-cover " />
+        <Container className="container  gap-14">
         <Heading
           title="IMM Partners"
           titleClassName="text-primary-color text-center lg:text-5xl"
           subtitleClassName="text-gray-500 text-center m-0 lg:text-lg lg:font-normal lg:max-w-full"
           subtitle="As a leading service provider, we are committed to collaborating with industry experts to deliver exceptional solutions that drive business success."
-          className="pt-12 mx-auto"
+          className="pt-1 mx-auto"
         />
 
-        <div className="space-y-12 md:space-y-24">
+        <div className="space-y-12 md:space-y-16 -mt-6">
           {partners.map((partner, index) => (
             <motion.div
               key={partner.id}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: isLoaded ? 1 : 0, y: isLoaded ? 0 : 20 }}
               transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
-              className={`flex flex-col overflow-hidden rounded-lg bg-gray-100 drop-shadow-md shadow-sm md:flex-row ${
+              className={`flex flex-col overflow-hidden rounded-lg bg-gray-100 drop-shadow-md shadow-lg md:flex-row ${
                 index % 2 === 1 ? "md:flex-row-reverse" : ""
               }`}
             >
@@ -187,6 +192,8 @@ export default function OurPartnersDetail() {
           ))}
         </div>
       </Container>
+      </section>
+      
     </div>
   );
 }

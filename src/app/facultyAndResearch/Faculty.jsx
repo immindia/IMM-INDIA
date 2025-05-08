@@ -38,7 +38,7 @@ const TeamMemberCard = memo(({ name, role, imageSrc, linkedinLink }) => {
           />
         </div>
         <div className="px-4 py-6">
-          <h4 className="text-xl font-medium mb-1 line-clamp-1">{name}</h4>
+          <h4 className="text-xl font-medium mb-1 line-clamp-1 hover:line-clamp-none transition-all duration-300">{name}</h4>
           <p className="mb-4 text-sm line-clamp-none sm:line-clamp-2 group-hover:line-clamp-none transition-all duration-300">
             {role}
           </p>
