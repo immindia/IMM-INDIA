@@ -1,5 +1,5 @@
 export const navlinks = [
-  // { name: "Home", path: "/" },
+  { name: "Home", path: "/" },
   {
     name: "About Us",
     path: "/",

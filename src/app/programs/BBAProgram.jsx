@@ -51,10 +51,19 @@ import {
 } from "@/components/ui/accordion";
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
 import { useFetch } from "../../hooks/useFetch";
+import campus from "../../assets/bba/bbaAbout.jpg";
 
 const BBAProgram = () => {
   // State for form submission and file upload
@@ -264,9 +273,9 @@ const BBAProgram = () => {
   // Stats data
   const stats = [
     { value: "56+", label: "Years of Excellence" },
-    { value: "10,000+", label: "Alumni Network" },
+    { value: "20,000+", label: "Alumni Network" },
     { value: "100%", label: "Placement Assistance" },
-    { value: "50+", label: "Industry Partners" },
+    { value: "520+", label: "Industry Partners" },
   ];
 
   return (
@@ -275,7 +284,7 @@ const BBAProgram = () => {
       {/* Hero Banner Section */}
       <section
         id="overview"
-        className="relative h-screen flex items-center justify-center   text-white "
+        className="relative sm:h-screen py-5 sm:py-0 flex items-center justify-center   text-white "
       >
         <img
           className="absolute h-full w-full object-cover -z-[99]"
@@ -285,7 +294,7 @@ const BBAProgram = () => {
           }
           alt="IMM Business School Campus"
         />
-<div className="absolute inset-0 bg-black/50 bg-gradient-to-r from-blue-900/50 to-blue-700/40"></div>
+        <div className="absolute inset-0 bg-black/50 bg-gradient-to-r from-blue-900/50 to-blue-700/40"></div>
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             <div className="lg:col-span-7 relative z-10">
@@ -307,11 +316,12 @@ const BBAProgram = () => {
                   <Badge className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-1.5">
                     AICTE Approved
                   </Badge>
-                  <Badge className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-1.5">
-                    Industry Integrated
-                  </Badge>
+
                   <Badge className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-1.5">
                     NEP 2020 Aligned
+                  </Badge>
+                  <Badge className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-1.5">
+                    Industry Immersion
                   </Badge>
                 </div>
               </div>
@@ -336,7 +346,7 @@ const BBAProgram = () => {
               <Card className="bg-white text-foreground shadow-xl border-0">
                 <CardHeader className="bg-blue-700 text-white rounded-t-lg">
                   <CardTitle className="text-center text-xl font-bold">
-                    Register for Admission 2024
+                    Register for Admission 2025-2028
                   </CardTitle>
                   <CardDescription className="text-center text-blue-100">
                     Fill the form below to start your application
@@ -494,7 +504,7 @@ const BBAProgram = () => {
                         className="w-full bg-blue-700 hover:bg-blue-800"
                         disabled={isSubmitting || !isEligible}
                       >
-                        {isSubmitting ? "Submitting..." : "Submit Application"}
+                        {isSubmitting ? "Submitting..." : "Submit"}
                       </Button>
                     </form>
                   </Form>
@@ -506,22 +516,22 @@ const BBAProgram = () => {
       </section>
 
       {/* Welcome Section */}
-      <section className="py-20 bg-white">
+      <section className="py-8 sm:py-20 bg-white">
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row gap-12 items-center">
             <div className="md:w-1/2">
               <img
                 className="w-full h-auto rounded-xl shadow-lg object-cover"
-                src="/innovative-learning-hub.png"
+                src={campus}
                 alt="IMM Business School Campus"
               />
             </div>
             <div className="md:w-1/2 space-y-6">
-              <Badge className="bg-blue-100 text-blue-800 hover:bg-blue-200">
+              {/* <Badge className="bg-blue-100 text-blue-800 hover:bg-blue-200">
                 Established 1968
-              </Badge>
-              <h2 className="text-3xl font-bold text-gray-900">
-                Welcome to your Future at The IMM Business School
+              </Badge> */}
+              <h2 className="text-4xl font-bold text-gray-900">
+                Welcome to your Future at <br /> IMM Business School
               </h2>
               <p className="text-gray-700 text-lg leading-relaxed">
                 We're excited to introduce you to our Bachelor of Business
@@ -547,7 +557,7 @@ const BBAProgram = () => {
       </section>
 
       {/* Program Highlights */}
-      <section className="py-20 bg-gray-50">
+      <section className="py-8 sm:py-20 bg-gray-50">
         <div className="container mx-auto px-4">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <Badge className="bg-blue-100 text-blue-800 hover:bg-blue-200 mb-4">
@@ -612,7 +622,7 @@ const BBAProgram = () => {
       </section>
 
       {/* Specializations Section */}
-      <section id="specializations" className="py-20 bg-white">
+      <section id="specializations" className="py-8 sm:py-20 bg-white">
         <div className="container mx-auto px-4">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <Badge className="bg-blue-100 text-blue-800 hover:bg-blue-200 mb-4">
@@ -654,7 +664,7 @@ const BBAProgram = () => {
       </section>
 
       {/* Key Features Section */}
-      <section id="features" className="py-20 bg-gray-50">
+      <section id="features" className="py-8 sm:py-20 bg-gray-50">
         <div className="container mx-auto px-4">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <Badge className="bg-blue-100 text-blue-800 hover:bg-blue-200 mb-4">
@@ -692,7 +702,7 @@ const BBAProgram = () => {
       </section>
 
       {/* Tabs Section */}
-      <section className="py-20 bg-white">
+      <section className="py-8 sm:py-20 bg-white">
         <div className="container mx-auto px-4">
           <div className="text-center max-w-3xl mx-auto mb-12">
             <Badge className="bg-blue-100 text-blue-800 hover:bg-blue-200 mb-4">
@@ -793,7 +803,7 @@ const BBAProgram = () => {
       </section>
 
       {/* Accordion Section */}
-      <section className="py-20 bg-gray-50">
+      <section className="py-8 sm:py-20 bg-gray-50">
         <div className="container mx-auto px-4">
           <div className="text-center max-w-3xl mx-auto mb-12">
             <Badge className="bg-blue-100 text-blue-800 hover:bg-blue-200 mb-4">
@@ -810,7 +820,7 @@ const BBAProgram = () => {
                 value="item-1"
                 className="bg-white mb-4 rounded-lg shadow-sm"
               >
-                <AccordionTrigger className="text-lg font-semibold text-gray-900 px-6 py-4 hover:no-underline">
+                <AccordionTrigger className="text-base sm:text-lg font-semibold text-gray-900 px-6 py-4 hover:no-underline text-left">
                   Embracing NEP2020
                 </AccordionTrigger>
                 <AccordionContent className="text-gray-700 px-6 pb-4">
@@ -826,7 +836,7 @@ const BBAProgram = () => {
                 value="item-2"
                 className="bg-white mb-4 rounded-lg shadow-sm"
               >
-                <AccordionTrigger className="text-lg font-semibold text-gray-900 px-6 py-4 hover:no-underline">
+                <AccordionTrigger className="text-base sm:text-lg font-semibold text-gray-900 px-6 py-4 hover:no-underline text-left">
                   A Proud Legacy
                 </AccordionTrigger>
                 <AccordionContent className="text-gray-700 px-6 pb-4">
@@ -842,7 +852,7 @@ const BBAProgram = () => {
                 value="item-3"
                 className="bg-white mb-4 rounded-lg shadow-sm"
               >
-                <AccordionTrigger className="text-lg font-semibold text-gray-900 px-6 py-4 hover:no-underline">
+                <AccordionTrigger className="text-base sm:text-lg font-semibold text-gray-900 px-6 py-4 hover:no-underline text-left">
                   Pioneering AICTE-Approved BBA
                 </AccordionTrigger>
                 <AccordionContent className="text-gray-700 px-6 pb-4">
@@ -858,7 +868,7 @@ const BBAProgram = () => {
                 value="item-4"
                 className="bg-white mb-4 rounded-lg shadow-sm"
               >
-                <AccordionTrigger className="text-lg font-semibold text-gray-900 px-6 py-4 hover:no-underline">
+                <AccordionTrigger className="text-base sm:text-lg font-semibold text-gray-900 px-6 py-4 hover:no-underline text-left">
                   Integrating AI, ML, and Emerging Technologies
                 </AccordionTrigger>
                 <AccordionContent className="text-gray-700 px-6 pb-4">
@@ -877,7 +887,7 @@ const BBAProgram = () => {
                 value="item-5"
                 className="bg-white mb-4 rounded-lg shadow-sm"
               >
-                <AccordionTrigger className="text-lg font-semibold text-gray-900 px-6 py-4 hover:no-underline">
+                <AccordionTrigger className="text-base sm:text-lg font-semibold text-gray-900 px-6 py-4 hover:no-underline text-left">
                   Multidisciplinary Corporate Immersion Programme for Problem
                   Solving (MCIPPS)
                 </AccordionTrigger>
@@ -897,7 +907,7 @@ const BBAProgram = () => {
                 value="item-6"
                 className="bg-white mb-4 rounded-lg shadow-sm"
               >
-                <AccordionTrigger className="text-lg font-semibold text-gray-900 px-6 py-4 hover:no-underline">
+                <AccordionTrigger className="text-base sm:text-lg font-semibold text-gray-900 px-6 py-4 hover:no-underline">
                   From Class 12 to Business Leader
                 </AccordionTrigger>
                 <AccordionContent className="text-gray-700 px-6 pb-4">
@@ -914,7 +924,7 @@ const BBAProgram = () => {
       </section>
 
       {/* Fee Structure Section */}
-      <section id="fees" className="py-20 bg-white">
+      <section id="fees" className="py-8 sm:py-20 bg-white">
         <div className="container mx-auto px-4">
           <div className="text-center max-w-3xl mx-auto mb-12">
             <Badge className="bg-blue-100 text-blue-800 hover:bg-blue-200 mb-4">
@@ -929,40 +939,70 @@ const BBAProgram = () => {
             </p>
           </div>
 
-          <div className="max-w-3xl mx-auto">
-            <Card className="border-0 shadow-lg overflow-hidden">
-              <CardHeader className="bg-blue-700 text-white p-6">
-                <div className="grid grid-cols-3 gap-4 text-center">
-                  <div className="text-lg font-semibold">Fee Structure</div>
-                  <div className="text-lg font-semibold">Total Fees</div>
-                  <div className="text-2xl font-bold">₹4,95,000/-</div>
-                </div>
+          <div className="w-full max-w-4xl mx-auto space-y-6 ">
+            <Card className="border-2 shadow-md rounded-lg overflow-hidden">
+              <CardHeader className="bg-blue-700 border-b">
+                <CardTitle className="text-center text-2xl font-bold text-white">
+                  Registration Fee : ₹50,000
+                </CardTitle>
               </CardHeader>
+
               <CardContent className="p-0">
-                <div className="grid grid-cols-3 gap-0 text-center">
-                  <div className="p-6 border-r border-gray-100">
-                    <div className="text-gray-500 mb-2">1st Year</div>
-                    <div className="text-2xl font-bold text-blue-700">
-                      ₹1,70,000/-
-                    </div>
-                  </div>
-                  <div className="p-6 border-r border-gray-100">
-                    <div className="text-gray-500 mb-2">2nd Year</div>
-                    <div className="text-2xl font-bold text-blue-700">
-                      ₹1,65,000/-
-                    </div>
-                  </div>
-                  <div className="p-6">
-                    <div className="text-gray-500 mb-2">3rd Year</div>
-                    <div className="text-2xl font-bold text-blue-700">
-                      ₹1,60,000/-
-                    </div>
-                  </div>
-                </div>
+                <Table>
+                  <TableHeader>
+                    <TableRow className="bg-slate-100">
+                      <TableHead className="font-bold text-black border w-1/4 text-center">
+                        SEMESTER
+                      </TableHead>
+                      <TableHead className="font-bold text-black border text-center w-1/4">
+                        1<sup>st</sup> YEAR
+                      </TableHead>
+                      <TableHead className="font-bold text-black border text-center w-1/4">
+                        2<sup>nd</sup> YEAR
+                      </TableHead>
+                      <TableHead className="font-bold text-black border text-center w-1/4">
+                        3<sup>rd</sup> YEAR
+                      </TableHead>
+                    </TableRow>
+                  </TableHeader>
+                  <TableBody>
+                    <TableRow>
+                      <TableCell className="font-semibold border text-center">
+                        I
+                      </TableCell>
+                      <TableCell className="border text-center">
+                        ₹1,00,000
+                      </TableCell>
+                      <TableCell className="border text-center">
+                        ₹1,10,000
+                      </TableCell>
+                      <TableCell className="border text-center">
+                        ₹1,10,000
+                      </TableCell>
+                    </TableRow>
+                    <TableRow>
+                      <TableCell className="font-semibold border text-center">
+                        II
+                      </TableCell>
+                      <TableCell className="border text-center">
+                        ₹70,000
+                      </TableCell>
+                      <TableCell className="border text-center">
+                        ₹80,000
+                      </TableCell>
+                      <TableCell className="border text-center">
+                        ₹80,000
+                      </TableCell>
+                    </TableRow>
+                  </TableBody>
+                </Table>
               </CardContent>
-              {/* <CardFooter className="bg-gray-50 p-6 flex justify-center">
-                <Button className="bg-blue-700 hover:bg-blue-800">Download Fee Structure</Button>
-              </CardFooter> */}
+
+              <CardFooter className="bg-blue-700 border-t justify-center p-4">
+                <p className="text-2xl font-bold text-white">
+                  Total Fee : ₹6,00,000
+                </p>
+              </CardFooter>
             </Card>
           </div>
         </div>

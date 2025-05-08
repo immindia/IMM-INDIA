@@ -83,7 +83,7 @@ export const cards = [
   },
   {
     title:
-      "Top 10 Promising Colleges Providing Logistics & Supply Chain Management Programmes - Higher Education Review",
+      "Top 10 Promising Colleges Providing Logistics & Supply Chain Management Programs - Higher Education Review",
     image: img15,
   },
   {

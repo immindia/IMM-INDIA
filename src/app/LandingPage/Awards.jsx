@@ -170,7 +170,7 @@ const CardItem = ({ item, index }) => (
         )
         .join(" ")} */}
         {item.description.split('\n').map((line, i) => (
-          <span key={i}>
+          <span key={i} className="">
             {line}
             <br />
           </span>

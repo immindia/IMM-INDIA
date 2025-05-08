@@ -223,7 +223,7 @@ const IndustryLecturesAndWebinars = () => {
                       className="!mt-5 w-full bg-primary-color hover:bg-pink-900 text-white group"
                       onClick={() => handleImageClick(event)}
                     >
-                      Read More{" "}
+                      View More{" "}
                       <BookOpen className="w-4 h-4 ml-2 mt-1 group-hover:hidden" />{" "}
                       <BookOpenCheck className="w-4 h-4 ml-2 mt-1 group-hover:block hidden" />
                     </Button>

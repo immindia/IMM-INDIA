@@ -33,7 +33,7 @@ export default function NationalPartners({ partners }) {
 
       <div
         ref={cardsRef}
-        className="grid grid-cols-2 gap-6 sm:grid-cols-2 lg:grid-cols-6"
+        className="grid grid-cols-2 gap-6 sm:grid-cols-2 lg:grid-cols-5"
       >
         {partners.map((partner, index) => (
           <motion.div

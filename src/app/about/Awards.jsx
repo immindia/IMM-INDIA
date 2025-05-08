@@ -59,8 +59,8 @@ const Awards = () => {
           <Heading
             title="Awards and Recognitions"
             titleClassName="text-4xl md:text-6xl font-bold text-white"
-            subtitle="We are proud to have received numerous Awards and Recognitions for our Academic Excellence and Innovation."
-            subtitleClassName="text-gray-300 text-base md:text-lg"
+            subtitle="We are proud to have received numerous Awards and Recognitions for our Academic Excellence and Innovation in recent years."
+            subtitleClassName="text-gray-300 text-base md:text-lg max-w-2xl"
             className="text-center"
           />
         </motion.div>

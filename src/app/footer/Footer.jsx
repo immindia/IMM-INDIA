@@ -409,7 +409,7 @@ export default function Footer() {
           style={{ transition: "opacity 0.5s ease-in-out 0.6s" }}
         >
           <p className="text-pink-300">
-            &copy; {new Date().getFullYear()} IMM Institute of Marketing
+            &copy; {new Date().getFullYear()} Institute of Marketing and
             Management. All rights reserved.
           </p>
         </div>

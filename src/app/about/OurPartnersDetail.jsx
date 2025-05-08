@@ -6,7 +6,7 @@ import EU from "../../assets/partners/EU.png";
 import IIT from "../../assets/partners/iit.png";
 import JIT from "../../assets/partners/jit.webp";
 import Kladio from "../../assets/partners/kladio.webp";
-import Vitti from "../../assets/partners/vitti.png";
+// import Vitti from "../../assets/partners/vitti.png";
 import Wasme from "../../assets/partners/wasme.png";
 import Young from "../../assets/partners/young.png";
 import img from "../../assets/banner/partnerBanner.png";
@@ -78,16 +78,16 @@ export default function OurPartnersDetail() {
       longDescription:
         "The company aims to provide a common forum for various education professionals to organize training courses and special programs in both online and offline formats. JJF Education intends to collaborate with Indian and foreign entities to further its objective of educating, enabling, and empowering individuals globally.",
     },
-    {
-      id: 4,
-      name: "VITTI Research Foundation",
-      logo: Vitti,
-      category: "Research",
-      description:
-        "Vitti Research Foundation focuses on fundamental AI research.",
-      longDescription:
-        "They collaborate with academia, global foundations, industries, and government initiatives to publish papers and generate intellectual property.",
-    },
+    // {
+    //   id: 4,
+    //   name: "VITTI Research Foundation",
+    //   logo: Vitti,
+    //   category: "Research",
+    //   description:
+    //     "Vitti Research Foundation focuses on fundamental AI research.",
+    //   longDescription:
+    //     "They collaborate with academia, global foundations, industries, and government initiatives to publish papers and generate intellectual property.",
+    // },
     {
       id: 5,
       name: "Young Skilled India",

@@ -5,22 +5,20 @@ import img from "../../assets/about/AboutBanner.webp";
 // import Stats from "../../components/Stats";
 // import Newsletter from "../../components/Newsletter";
 // import AboutSidebar from "../../components/AboutSidebar";
-import { useState,useEffect  } from "react";
+import { useState, useEffect } from "react";
 import { Eye, Target, Award } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import founder from "../../assets/about/leadership/founder1.webp";
 import building from "../../assets/Building.webp";
 import { useFetch } from "../../hooks/useFetch";
 const ImmLegacy = () => {
-
-  
   const { data } = useFetch("/api/indexBanner.php");
   const [banner, setBanner] = useState([]);
-    useEffect(() => {
-      if (data) {
-        setBanner(data.filter((item) => item.category === "IMM Legacy"));
-      }
-    }, [data]);
+  useEffect(() => {
+    if (data) {
+      setBanner(data.filter((item) => item.category === "IMM Legacy"));
+    }
+  }, [data]);
 
   const breadcrumbItems = [
     { href: "/", label: "Home" },
@@ -31,7 +29,10 @@ const ImmLegacy = () => {
     <div className="relative min-h-screen">
       <ImgAndBreadcrumb
         title="IMM Legacy & Vision"
-        imageSrc={banner[0]?.url || "https://stealthlearn.in/imm-admin/api/uploads/680fd14484b0a.png"}
+        imageSrc={
+          banner[0]?.url ||
+          "https://stealthlearn.in/imm-admin/api/uploads/680fd14484b0a.png"
+        }
         imageAlt="Description of the image"
         breadcrumbItems={breadcrumbItems}
       />
@@ -92,8 +93,9 @@ const Legacy = () => {
             </p>
             <p className="text-base tracking-widest opacity-80 mt-6 mb-0 text-justify">
               We take pride in helping students pursue their educational
-              endeavors overseas while maintaining our commitment to excellence
-              in management education and creating future business leaders.
+              endeavors in India and overseas, while maintaining our commitment
+              to excellence in management education and creating future business
+              leaders.
             </p>
           </div>
         </div>
@@ -106,12 +108,12 @@ const features = [
   {
     icon: Eye,
     title: "Vision",
-    desc: "To serve as a Centre for Excellence in Management Education, Research & Training. By taking the Glorious & Golden Legacy of 56 years forward with Young Leaders and Nation Builders & blending modern management thoughts and eternal values.",
+    desc: "To serve as a Centre for Excellence in Management Education, Research & Training. By taking the glorious & golden legacy of 56 years forward with Young Leaders and Nation Builders & blending modern management thoughts and eternal values.",
   },
   {
     icon: Target,
     title: "Mission",
-    desc: "Our Mission is to impart Value-based Management Education to be achieved through an Interdisciplinary approach, by integrating teaching with research, training, seminars, conferences, publications and to put India on the Marketing and Management Map of the World.",
+    desc: "Our Mission is to impart Value-based Management Education to be achieved through an interdisciplinary approach, by integrating teaching with research, training, seminars, conferences, publications and to put India on the Marketing and Management Map of the World.",
   },
   {
     icon: Award,

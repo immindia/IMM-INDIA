@@ -92,7 +92,7 @@ export default memo(function ThreeDPlacementCard({
             style={{ willChange: "transform" }}
           />
           <div
-            className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent"
+            className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"
             style={{ transform: "translateZ(0.5px)" }}
           />
         </div>

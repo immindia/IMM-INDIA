@@ -39,7 +39,7 @@ export default function ProgramsOffered() {
           transition={{ duration: 0.5, delay: 0.5 }}
         >
           <Heading
-            title="Programmes Offered with Dual Specializations"
+            title="AICTE Approved Programs Offered @IMM"
             titleClassName="text-center text-2xl font-bold text-primary-color md:text-3xl lg:text-5xl"
           />
         </motion.div>
@@ -55,18 +55,18 @@ export default function ProgramsOffered() {
                 value="pgdm"
                 className="text-xs sm:text-xl h-full font-bold  data-[state=active]:bg-primary-color data-[state=active]:text-white"
               >
-                PGDM Programmes
+                PGDM Program
               </TabsTrigger>
               <TabsTrigger
                 value="bba"
                 className="text-xs sm:text-xl h-full font-bold  data-[state=active]:bg-primary-color data-[state=active]:text-white"
               >
-                BBA Programmes
+                BBA Program
               </TabsTrigger>
             </TabsList>
             <TabsContent value="pgdm">
               <ProgramContent
-                title="PGDM"
+                title="PGDM Program with Dual Specializations"
                 specializations={specializations}
                 imageSrc={img2}
                 imageAlt="PGDM students studying"
@@ -78,7 +78,7 @@ export default function ProgramsOffered() {
             </TabsContent>
             <TabsContent value="bba">
               <ProgramContent
-                title="BBA"
+                title="BBA Program"
                 specializations={specializations.slice(0, 5)}
                 imageSrc={img}
                 imageAlt="BBA students in classroom"
@@ -137,8 +137,8 @@ function ProgramContent({
         transition={{ duration: 1, delay: 1 }}
         className="relative p-6 text-white rounded-lg shadow-lg bg-gradient-to-bl hover:drop-shadow-xl from-blue-950 via-blue-900 to-blue-950"
       >
-        <h2 className="mb-4 text-xl font-bold">{title} Programmes</h2>
-        <h3 className="mb-2 font-semibold text-p">{title}</h3>
+        <h2 className="mb-4 text-xl font-bold">{title}</h2>
+        {/* <h3 className="mb-2 font-semibold text-p">{title}</h3> */}
         <ul className="mb-6 space-y-2">
           {specializations.map((spec, index) => (
             <motion.li
