@@ -33,6 +33,13 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
+import {
+  Sheet,
+  SheetContent,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet";
 import { useEventData } from "../../hooks/useEventData";
 import { usePagination } from "../../hooks/usePagination";
 
@@ -120,6 +127,23 @@ const IndustryVisit = () => {
     setIsDialogOpen(true);
   };
 
+  const [showSearchButton, setShowSearchButton] = useState(false);
+
+  // Add scroll event listener
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY;
+      if (scrollPosition >= 300) {
+        setShowSearchButton(true);
+      } else {
+        setShowSearchButton(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
     <section className="relative min-h-screen">
       <ImgAndBreadcrumb
@@ -141,7 +165,11 @@ const IndustryVisit = () => {
             className="lg:pb-10"
           />
 
-          <div className="search-section mb-10 sm:mb-24 space-y-8" id="top">
+          {/* Mobile Search Section */}
+          <div
+            className="search-section mb-10 sm:mb-24 space-y-8 sm:hidden"
+            id="top"
+          >
             <div className="relative w-full max-w-6xl mx-auto">
               <Input
                 id="search"
@@ -152,18 +180,18 @@ const IndustryVisit = () => {
                   setSearchTerm(e.target.value);
                   setCurrentPage(1);
                 }}
-                className=" placeholder:text-gray-400 py-6 pl-12 rounded-full  border-primary-color border-2"
+                className="placeholder:text-gray-400 py-6 pl-12 rounded-full border-primary-color border-2"
               />
               <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 h-5 w-5" />
             </div>
-            <div className="hidden tags-filter justify-center sm:flex flex-wrap sm:gap-4 gap-2 max-w-6xl mx-auto">
+            <div className="tags-filter flex flex-wrap gap-2 max-w-6xl mx-auto">
               {allTags.length === 0 && (
                 <p className="text-gray-500">No tags found</p>
               )}
               {allTags.map((tag) => (
                 <Badge
                   key={tag}
-                  className={`cursor-pointer sm:hover:-translate-y-1 transition-all ${
+                  className={`cursor-pointer hover:-translate-y-1 transition-all ${
                     selectedTags.includes(tag)
                       ? "bg-secondary-color text-white"
                       : "bg-gray-200 text-gray-700 hover:bg-gray-300"
@@ -174,6 +202,71 @@ const IndustryVisit = () => {
                 </Badge>
               ))}
             </div>
+          </div>
+
+          {/* Desktop Search Button */}
+          <div
+            className={`hidden sm:block fixed right-8 top-1/2 -translate-y-1/2 z-[9999] transition-opacity duration-300 ${
+              showSearchButton ? "opacity-100" : "opacity-0 pointer-events-none"
+            }`}
+          >
+            <Sheet>
+              <SheetTrigger asChild>
+                <Button
+                  size="icon"
+                  className="rounded-full w-12 h-12 bg-primary-color hover:bg-pink-900 text-white shadow-lg"
+                >
+                  <Search className="h-6 w-6" />
+                </Button>
+              </SheetTrigger>
+              <SheetContent
+                side="right"
+                className="w-[400px] sm:w-[540px]  z-[99999]"
+              >
+                <SheetHeader>
+                  <SheetTitle className="text-xl font-bold">
+                    Search Events
+                  </SheetTitle>
+                </SheetHeader>
+                <div className="mt-6 space-y-6">
+                  <div className="relative">
+                    <Input
+                      id="search"
+                      type="text"
+                      placeholder="Search events by title, tags or date..."
+                      value={searchTerm}
+                      onChange={(e) => {
+                        setSearchTerm(e.target.value);
+                        setCurrentPage(1);
+                      }}
+                      className="placeholder:text-gray-400 py-6 pl-12 rounded-full border-primary-color border-2"
+                    />
+                    <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 h-5 w-5" />
+                  </div>
+                  <div className="tags-filter flex flex-wrap gap-2">
+                    <p className="w-full text-sm font-medium mb-2">
+                      Filter by Tags:
+                    </p>
+                    {allTags.length === 0 && (
+                      <p className="text-gray-500">No tags found</p>
+                    )}
+                    {allTags.map((tag) => (
+                      <Badge
+                        key={tag}
+                        className={`cursor-pointer hover:-translate-y-1 transition-all ${
+                          selectedTags.includes(tag)
+                            ? "bg-secondary-color text-white"
+                            : "bg-gray-200 text-gray-700 hover:bg-gray-300"
+                        }`}
+                        onClick={() => toggleTag(tag)}
+                      >
+                        {tag}
+                      </Badge>
+                    ))}
+                  </div>
+                </div>
+              </SheetContent>
+            </Sheet>
           </div>
 
           {loading ? (
@@ -353,16 +446,18 @@ const IndustryVisit = () => {
                   {/* <p>
                     <strong>Date:</strong> {selectedEvent.date}
                   </p> */}
-                  {selectedEvent.description && selectedEvent.description !== "" && selectedEvent.description
-                    .split("\n\n")
-                    .map((paragraph, index) => (
-                      <p
-                        key={index}
-                        className="mb-4 text-justify text-sm text-muted-foreground"
-                      >
-                        {paragraph}
-                      </p>
-                    ))}
+                  {selectedEvent.description &&
+                    selectedEvent.description !== "" &&
+                    selectedEvent.description
+                      .split("\n\n")
+                      .map((paragraph, index) => (
+                        <p
+                          key={index}
+                          className="mb-4 text-justify text-sm text-muted-foreground"
+                        >
+                          {paragraph}
+                        </p>
+                      ))}
                 </div>
               </div>
             </>
