@@ -6,13 +6,15 @@ import { Link } from "react-router-dom";
 import { navlinks } from "./navData";
 import { useState, useEffect } from "react";
 import PropTypes from "prop-types";
+import { useTheme } from "@/context/ThemeContext";
 
 export default function Header() {
-  // This state is used for mobile menu drawer, but handled by Drawer component
+  const { navbarColor } = useTheme();
+
   return (
     <header className="w-full">
       {/* Main Navigation */}
-      <nav className="bg-primary-color">
+      <nav className={navbarColor}>
         <div className="flex flex-wrap items-center justify-between px-4 py-3 mx-auto md:px-4">
           {/* Logo Section */}
           <div className="flex items-center gap-0">
@@ -119,7 +121,7 @@ function DropdownItem({ item }) {
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
           >
-            {item.submenu.map((subItem, subIndex) => (
+            {item.submenu.map((subItem, subIndex) =>
               subItem.href ? (
                 <li key={subIndex} onClick={() => setIsOpen(false)}>
                   <a
@@ -143,7 +145,7 @@ function DropdownItem({ item }) {
                   </Link>
                 </li>
               )
-            ))}
+            )}
           </ul>
         </>
       )}

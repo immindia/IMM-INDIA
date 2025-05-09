@@ -8,7 +8,7 @@ const PgdmProgram = () => {
     <section className="ezy__about1 light   bg-white dark:bg-[#0b1727] text-zinc-900 dark:text-white">
       <div className="space-y-4">
         <h1 className="text-3xl font-semibold text-primary-color">
-          PGDM Program with Dual Specialisations
+          PGDM Program with Dual Specializations
         </h1>
         <p className="text-gray-600 text-base">
           IMM is one of the most premium Business Schools for PGDM /MBA in
@@ -36,7 +36,12 @@ const PgdmProgram = () => {
           onClick={() => setIsOpen(!isOpen)}
           className="text-primary-color flex group items-center  animate-pulse"
         >
-          {isOpen ? "Read Less" : "Read More"}{isOpen ? <ArrowUp className="ml-1 mt-1 h-4 w-4 group-hover:rotate-90 group-hover:ml-2 transition-all duration-300" /> : <ArrowRight className="ml-1 mt-1 h-4 w-4 group-hover:rotate-90 group-hover:ml-2 transition-all duration-300" />}
+          {isOpen ? "Read Less" : "Read More"}
+          {isOpen ? (
+            <ArrowUp className="ml-1 mt-1 h-4 w-4 group-hover:rotate-90 group-hover:ml-2 transition-all duration-300" />
+          ) : (
+            <ArrowRight className="ml-1 mt-1 h-4 w-4 group-hover:rotate-90 group-hover:ml-2 transition-all duration-300" />
+          )}
         </button>
       </div>
       <div className="sm:mt-10 grid sm:grid-cols-2 gap-4">

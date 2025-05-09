@@ -14,8 +14,10 @@ import {
 } from "lucide-react";
 import { RiTwitterXLine } from "react-icons/ri";
 import { Link } from "react-router-dom";
+import { useTheme } from "@/context/ThemeContext";
 
 export default function Footer() {
+  const { footerColor } = useTheme();
   // Controls visibility of the "back to top" button
   const [visible, setVisible] = useState(false);
 
@@ -82,7 +84,7 @@ export default function Footer() {
 
   return (
     <footer
-      className={`bg-primary-color text-white py-12 relative ${
+      className={`${footerColor} text-white py-12 relative ${
         isLoaded ? "opacity-100" : "opacity-0"
       }`}
       style={{ transition: "opacity 0.5s ease-in-out" }}
@@ -109,7 +111,7 @@ export default function Footer() {
             </p>
             <div className="flex items-center mt-6 space-x-4">
               {/* Social media icons with hover effects */}
-             
+
               <a
                 href="https://www.instagram.com/imm_india"
                 target="_blank"
@@ -150,8 +152,6 @@ export default function Footer() {
               >
                 <RiTwitterXLine className="w-6 h-6 text-pink-300 transition-colors duration-300 group-hover:text-pink-500 " />
               </a>
-              
-              
             </div>
           </div>
 

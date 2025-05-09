@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { useTheme } from "@/context/ThemeContext";
 import {
   Search,
   Award,
@@ -66,6 +67,18 @@ import { useFetch } from "../../hooks/useFetch";
 import campus from "../../assets/bba/bbaAbout.jpg";
 
 const BBAProgram = () => {
+  const { updateColors } = useTheme();
+
+  // Set custom colors when component mounts
+  useEffect(() => {
+    updateColors("bg-blue-900", "bg-blue-900");
+
+    // Reset colors when component unmounts
+    return () => {
+      updateColors("bg-primary-color", "bg-primary-color");
+    };
+  }, [updateColors]);
+
   // State for form submission and file upload
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showMarksheetUpload, setShowMarksheetUpload] = useState(false);
@@ -557,16 +570,16 @@ const BBAProgram = () => {
       </section>
 
       {/* Program Highlights */}
-      <section className="py-8 sm:py-20 bg-gray-50">
+      <section className="py-8 sm:py-20 bg-gradient-to-r from-blue-900 to-blue-700">
         <div className="container mx-auto px-4">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <Badge className="bg-blue-100 text-blue-800 hover:bg-blue-200 mb-4">
               Program Highlights
             </Badge>
-            <h2 className="text-3xl font-bold text-gray-900 mb-6">
+            <h2 className="text-3xl font-bold text-white mb-6">
               Why Choose Our BBA Program?
             </h2>
-            <p className="text-gray-700 text-lg">
+            <p className="text-white/90 text-lg">
               Our program stands out with its unique blend of traditional
               business education and modern technological integration.
             </p>
@@ -629,7 +642,7 @@ const BBAProgram = () => {
               Specializations
             </Badge>
             <h2 className="text-3xl font-bold text-gray-900 mb-6">
-            Specialisations Offered in BBA @IMM
+              Specializations Offered in BBA @IMM
             </h2>
             <p className="text-gray-700 text-lg">
               Choose from a variety of specializations designed to align with
@@ -664,16 +677,19 @@ const BBAProgram = () => {
       </section>
 
       {/* Key Features Section */}
-      <section id="features" className="py-8 sm:py-20 bg-gray-50">
+      <section
+        id="features"
+        className="py-8 sm:py-20 bg-gradient-to-r from-blue-900 to-blue-700"
+      >
         <div className="container mx-auto px-4">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <Badge className="bg-blue-100 text-blue-800 hover:bg-blue-200 mb-4">
               Key Features
             </Badge>
-            <h2 className="text-3xl font-bold text-gray-900 mb-6">
+            <h2 className="text-3xl font-bold text-white mb-6">
               What Makes Our BBA Program Special
             </h2>
-            <p className="text-gray-700 text-lg">
+            <p className="text-white/90 text-lg">
               Our program is designed with the future in mind, combining
               traditional business education with modern technological
               advancements.
@@ -803,13 +819,13 @@ const BBAProgram = () => {
       </section>
 
       {/* Accordion Section */}
-      <section className="py-8 sm:py-20 bg-gray-50">
+      <section className="py-8 sm:py-20 bg-gradient-to-r from-blue-900 to-blue-700">
         <div className="container mx-auto px-4">
           <div className="text-center max-w-3xl mx-auto mb-12">
             <Badge className="bg-blue-100 text-blue-800 hover:bg-blue-200 mb-4">
               FAQ
             </Badge>
-            <h2 className="text-3xl font-bold text-gray-900 mb-6">
+            <h2 className="text-3xl font-bold text-white mb-6">
               We guarantee you the finest & quality business education
             </h2>
           </div>

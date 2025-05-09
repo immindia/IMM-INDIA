@@ -28,7 +28,7 @@ const features = [
   },
   {
     id: 4,
-    img: "https://img.freepik.com/free-photo/business-deal-top-view_23-2147626517.jpg",
+    img: "https://img.freepik.com/premium-photo/smart-warehouse-management-system-with-innovative-internet-things-technology_31965-18635.jpg",
     title: "Operations & Supply Chain Management",
     description:
       "Operations and IT are increasingly digitally aligned. Different company functions are now increasingly integrated, data-driven, and insight-driven. This fundamental shift in the sector has prompted a modernization of Operations Management knowledge and abilities, with an integration of Analytical methodologies, present day operations and its applications. The course develops a thorough understanding of Supply Chain Management, including Network Strategy, Long-term Planning, and Forecasting Quality Management principles.",
