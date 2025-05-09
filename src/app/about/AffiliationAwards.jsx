@@ -25,7 +25,7 @@ const AffiliationAwards = () => {
   return (
     <div className="relative min-h-screen">
       <ImgAndBreadcrumb
-        title="Accreditations & Awards"
+        // title="Accreditations & Awards"
         imageSrc={banner[0]?.url || "https://stealthlearn.in/imm-admin/api/uploads/680fd14484b0a.png"}
         imageAlt="Description of the image"
         loading="eager"

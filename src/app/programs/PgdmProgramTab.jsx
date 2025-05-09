@@ -11,7 +11,7 @@ const PgdmProgram = () => {
           PGDM Program with Dual Specializations
         </h1>
         <p className="text-gray-600 text-base">
-          IMM is one of the most premium Business Schools for PGDM /MBA in
+          IMM is one of the most premium Business Schools for PGDM in
           Delhi. The two-year full-time Post Graduate Diploma in Management
           (PGDM), is the flagship programme of IMM-Business School.
         </p>

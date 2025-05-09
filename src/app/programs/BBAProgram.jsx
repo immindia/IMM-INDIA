@@ -1,7 +1,9 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useTheme } from "@/context/ThemeContext";
+import { motion } from "framer-motion";
+import { useInView } from "framer-motion";
 import {
   Search,
   Award,
@@ -17,6 +19,8 @@ import {
   Users,
   BookOpen,
   ArrowRight,
+  X,
+  Warehouse,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -66,8 +70,46 @@ import * as z from "zod";
 import { useFetch } from "../../hooks/useFetch";
 import campus from "../../assets/bba/bbaAbout.jpg";
 
+// Add this style to your component or global CSS
+const verticalTextStyle = {
+  writingMode: "vertical-rl",
+  transform: "rotate(180deg)",
+  textOrientation: "mixed",
+  fontWeight: "bold",
+};
+
+// Custom hook for animations when element is in viewport
+const useAnimationInView = () => {
+  const ref = useRef(null);
+  const [isInView, setIsInView] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsInView(true);
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    if (ref.current) {
+      observer.observe(ref.current);
+    }
+
+    return () => {
+      if (ref.current) {
+        observer.unobserve(ref.current);
+      }
+    };
+  }, []);
+
+  return [ref, isInView];
+};
+
 const BBAProgram = () => {
   const { updateColors } = useTheme();
+  const [isFormVisible, setIsFormVisible] = useState(false);
 
   // Set custom colors when component mounts
   useEffect(() => {
@@ -94,6 +136,15 @@ const BBAProgram = () => {
       setBanner(data.filter((item) => item.category === "BBA"));
     }
   }, [data]);
+
+  // Toggle form visibility
+  const toggleForm = () => {
+    setIsFormVisible(!isFormVisible);
+    window.scrollTo({
+      top: window.innerWidth > 768 ? 10 : 400,
+      behavior: "smooth",
+    });
+  };
 
   // Form validation schema
   const formSchema = z.object({
@@ -238,11 +289,12 @@ const BBAProgram = () => {
       description:
         "Learn to analyze data and derive actionable business insights.",
     },
-    // {
-    //   title: "Information Technology",
-    //   icon: <Cpu className="h-12 w-12 text-blue-600" />,
-    //   description: "Understand how technology drives business transformation.",
-    // },
+    {
+      title: "Operations & Supply Chain Management",
+      icon: <Warehouse className="h-12 w-12 text-blue-600" />,
+      description:
+        "Optimize supply chain operations and logistics for efficient business operations.",
+    },
   ];
 
   // Key features data
@@ -292,12 +344,27 @@ const BBAProgram = () => {
   ];
 
   return (
-    <div className=" min-h-screen" id="form">
-      {/* Sticky Header */}
+    <div className="min-h-screen" id="form">
+      {/* Enquiry Form Toggle Button */}
+      <div className="fixed right-0 top-1/2 z-50 transform -translate-y-1/2">
+        <button
+          onClick={toggleForm}
+          className={`flex items-center bg-amber-500 hover:bg-amber-600 text-white animate-pulse px-2 py-3 rounded-l-lg shadow-lg transition-all duration-300 ${
+            isFormVisible ? "opacity-50" : "opacity-100"
+          }`}
+        >
+          {isFormVisible ? (
+            <X className="h-5 w-5 mr-2" />
+          ) : (
+            <span style={verticalTextStyle}>Enquiry Now</span>
+          )}
+        </button>
+      </div>
+
       {/* Hero Banner Section */}
       <section
         id="overview"
-        className="relative sm:h-screen py-5 sm:py-0 flex items-center justify-center   text-white "
+        className="relative sm:h-[80vh] py-5 sm:py-0 flex items-center justify-center text-white"
       >
         <img
           className="absolute h-full w-full object-cover -z-[99]"
@@ -307,20 +374,25 @@ const BBAProgram = () => {
           }
           alt="IMM Business School Campus"
         />
-        <div className="absolute inset-0 bg-black/50 bg-gradient-to-r from-blue-900/50 to-blue-700/40"></div>
+        <div className="absolute inset-0 bg-black/10 bg-gradient-to-r from-blue-900/60 to-blue-700/10"></div>
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-            <div className="lg:col-span-7 relative z-10">
-              <div className="space-y-6">
+            <div className="lg:col-span-8 relative z-10">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 1, delay: 0.2 }}
+                className="space-y-6"
+              >
                 <Badge className="bg-amber-500 hover:bg-amber-600 text-white px-4 py-1 text-sm font-medium">
-                  1<sup>st</sup> time in India
+                  1st Time in India
                 </Badge>
-                <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-tight">
+                <h1 className="text-4xl text-shadow-lg md:text-5xl lg:text-6xl font-bold tracking-tight leading-tight">
                   AI & ML Infused{" "}
-                  <span className="text-amber-400">BBA Program</span> in New
+                  <span className="text-amber-400 text-shadow-lg">BBA Program</span> in New
                   Delhi
                 </h1>
-                <p className="text-lg md:text-xl text-slate-100 max-w-2xl">
+                <p className="text-lg md:text-xl text-shadow-md text-slate-100 max-w-2xl">
                   Prepare for the future of business with our innovative program
                   that combines traditional business education with cutting-edge
                   technology.
@@ -337,234 +409,271 @@ const BBAProgram = () => {
                     Industry Immersion
                   </Badge>
                 </div>
-              </div>
-
-              {/* Stats */}
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-12">
-                {stats.map((stat, index) => (
-                  <div
-                    key={index}
-                    className="bg-white/10 backdrop-blur-sm rounded-lg p-4 text-center"
-                  >
-                    <div className="text-2xl md:text-3xl font-bold text-amber-400">
-                      {stat.value}
-                    </div>
-                    <div className="text-sm text-blue-100">{stat.label}</div>
-                  </div>
-                ))}
-              </div>
+              </motion.div>
             </div>
 
-            <div className="lg:col-span-5 relative z-10">
-              <Card className="bg-white text-foreground shadow-xl border-0">
-                <CardHeader className="bg-blue-700 text-white rounded-t-lg">
-                  <CardTitle className="text-center text-xl font-bold">
-                    Register for Admission 2025-2028
-                  </CardTitle>
-                  <CardDescription className="text-center text-blue-100">
-                    Fill the form below to start your application
-                  </CardDescription>
-                </CardHeader>
-                <CardContent className="p-6">
-                  <Form {...form}>
-                    <form
-                      onSubmit={form.handleSubmit(onSubmit)}
-                      className="space-y-4"
-                    >
-                      <FormField
-                        control={form.control}
-                        name="fullname"
-                        render={({ field }) => (
-                          <FormItem>
-                            {/* <FormLabel>Full Name</FormLabel> */}
-                            <FormControl>
-                              <Input placeholder="Enter Full Name" {...field} />
-                            </FormControl>
-                            <FormMessage />
-                          </FormItem>
-                        )}
-                      />
-
-                      <FormField
-                        control={form.control}
-                        name="contact"
-                        render={({ field }) => (
-                          <FormItem>
-                            {/* <FormLabel>Contact Number</FormLabel> */}
-                            <FormControl>
-                              <Input
-                                type="tel"
-                                inputMode="numeric"
-                                placeholder="Enter Contact Number"
-                                maxLength={10}
-                                {...field}
-                              />
-                            </FormControl>
-                            <FormMessage />
-                          </FormItem>
-                        )}
-                      />
-
-                      <FormField
-                        control={form.control}
-                        name="email"
-                        render={({ field }) => (
-                          <FormItem>
-                            {/* <FormLabel>Email Address</FormLabel> */}
-                            <FormControl>
-                              <Input
-                                type="email"
-                                placeholder="Enter Email"
-                                {...field}
-                              />
-                            </FormControl>
-                            <FormMessage />
-                          </FormItem>
-                        )}
-                      />
-
-                      <FormField
-                        control={form.control}
-                        name="address"
-                        render={({ field }) => (
-                          <FormItem>
-                            {/* <FormLabel>City</FormLabel> */}
-                            <FormControl>
-                              <Input placeholder="Enter City" {...field} />
-                            </FormControl>
-                            <FormMessage />
-                          </FormItem>
-                        )}
-                      />
-
-                      <FormField
-                        name="program"
-                        render={({ field }) => (
-                          <FormItem>
-                            {/* <FormLabel>Program</FormLabel> */}
-                            <FormControl>
-                              <Input
-                                {...field}
-                                value="BBA"
-                                readOnly
-                                className="bg-gray-50"
-                              />
-                            </FormControl>
-                          </FormItem>
-                        )}
-                      />
-
-                      <FormField
-                        control={form.control}
-                        name="completed12th"
-                        render={({ field }) => (
-                          <FormItem>
-                            <FormLabel>
-                              Do you have minimum 50% score in 10th and 12th?
-                            </FormLabel>
-                            <Select
-                              onValueChange={(value) => {
-                                field.onChange(value);
-                                handleEligibilityChange(value);
-                              }}
-                              value={field.value}
-                              disabled={!isEligible && field.value === "no"}
-                            >
-                              <FormControl>
-                                <SelectTrigger>
-                                  <SelectValue placeholder="Select Yes or No" />
-                                </SelectTrigger>
-                              </FormControl>
-                              <SelectContent>
-                                <SelectItem value="yes">Yes</SelectItem>
-                                <SelectItem value="no">No</SelectItem>
-                              </SelectContent>
-                            </Select>
-                            <FormMessage />
-                          </FormItem>
-                        )}
-                      />
-
-                      {showMarksheetUpload && (
+            {/* Form Section - Collapsible */}
+            <div className="form-section lg:col-span-4  relative z-10">
+              <motion.div
+                initial={{ opacity: 0, x: 100 }}
+                animate={{
+                  opacity: isFormVisible ? 1 : 0,
+                  x: isFormVisible ? 0 : 100,
+                  width: isFormVisible ? "auto" : 0,
+                }}
+                transition={{ duration: 0.5 }}
+                className={`${isFormVisible ? "block" : "hidden"}`}
+              >
+                <Card className="bg-white text-foreground shadow-xl border-0">
+                  <CardHeader className="bg-blue-700 text-white rounded-t-lg">
+                    <div className="flex justify-between items-center">
+                      <CardTitle className="text-center text-xl font-bold">
+                        Register for Admission 2025-2028
+                      </CardTitle>
+                      <button
+                        onClick={toggleForm}
+                        className="text-white hover:text-gray-200"
+                      >
+                        <X className="h-5 w-5" />
+                      </button>
+                    </div>
+                    <CardDescription className="text- text-blue-100">
+                      Fill the form below to start your application
+                    </CardDescription>
+                  </CardHeader>
+                  <CardContent className="p-6">
+                    <Form {...form}>
+                      <form
+                        onSubmit={form.handleSubmit(onSubmit)}
+                        className="space-y-4"
+                      >
                         <FormField
-                          name="marksheet"
+                          control={form.control}
+                          name="fullname"
                           render={({ field }) => (
                             <FormItem>
-                              <FormLabel>Upload your 12th Marksheet</FormLabel>
-                              <FormControl className="h-max">
+                              <FormControl>
                                 <Input
-                                  type="file"
-                                  accept=".pdf, .doc, .docx"
-                                  onChange={(e) => {
-                                    handleFileChange(e);
-                                    // Maintain compatibility with react-hook-form
-                                    field.onChange(e);
-                                  }}
-                                  disabled={!isEligible}
-                                  className="file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-medium file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100"
+                                  placeholder="Enter Full Name"
+                                  {...field}
                                 />
                               </FormControl>
-                              <FormDescription>
-                                Accepted formats: PDF, DOC, DOCX
-                              </FormDescription>
+                              <FormMessage />
                             </FormItem>
                           )}
                         />
-                      )}
 
-                      <Button
-                        type="submit"
-                        className="w-full bg-blue-700 hover:bg-blue-800"
-                        disabled={isSubmitting || !isEligible}
-                      >
-                        {isSubmitting ? "Submitting..." : "Submit"}
-                      </Button>
-                    </form>
-                  </Form>
-                </CardContent>
-              </Card>
+                        <FormField
+                          control={form.control}
+                          name="contact"
+                          render={({ field }) => (
+                            <FormItem>
+                              <FormControl>
+                                <Input
+                                  type="tel"
+                                  inputMode="numeric"
+                                  placeholder="Enter Contact Number"
+                                  maxLength={10}
+                                  {...field}
+                                />
+                              </FormControl>
+                              <FormMessage />
+                            </FormItem>
+                          )}
+                        />
+
+                        <FormField
+                          control={form.control}
+                          name="email"
+                          render={({ field }) => (
+                            <FormItem>
+                              <FormControl>
+                                <Input
+                                  type="email"
+                                  placeholder="Enter Email"
+                                  {...field}
+                                />
+                              </FormControl>
+                              <FormMessage />
+                            </FormItem>
+                          )}
+                        />
+
+                        <FormField
+                          control={form.control}
+                          name="address"
+                          render={({ field }) => (
+                            <FormItem>
+                              <FormControl>
+                                <Input placeholder="Enter City" {...field} />
+                              </FormControl>
+                              <FormMessage />
+                            </FormItem>
+                          )}
+                        />
+
+                        <FormField
+                          name="program"
+                          render={({ field }) => (
+                            <FormItem>
+                              <FormControl>
+                                <Input
+                                  {...field}
+                                  value="BBA"
+                                  readOnly
+                                  className="bg-gray-50"
+                                />
+                              </FormControl>
+                            </FormItem>
+                          )}
+                        />
+
+                        <FormField
+                          control={form.control}
+                          name="completed12th"
+                          render={({ field }) => (
+                            <FormItem>
+                              <FormLabel>
+                                Do you have minimum 50% score in 10th and 12th?
+                              </FormLabel>
+                              <Select
+                                onValueChange={(value) => {
+                                  field.onChange(value);
+                                  handleEligibilityChange(value);
+                                }}
+                                value={field.value}
+                                disabled={!isEligible && field.value === "no"}
+                              >
+                                <FormControl>
+                                  <SelectTrigger>
+                                    <SelectValue placeholder="Select Yes or No" />
+                                  </SelectTrigger>
+                                </FormControl>
+                                <SelectContent>
+                                  <SelectItem value="yes">Yes</SelectItem>
+                                  <SelectItem value="no">No</SelectItem>
+                                </SelectContent>
+                              </Select>
+                              <FormMessage />
+                            </FormItem>
+                          )}
+                        />
+
+                        {showMarksheetUpload && (
+                          <FormField
+                            name="marksheet"
+                            render={({ field }) => (
+                              <FormItem>
+                                <FormLabel>
+                                  Upload your 12th Marksheet
+                                </FormLabel>
+                                <FormControl className="h-max">
+                                  <Input
+                                    type="file"
+                                    accept=".pdf, .doc, .docx"
+                                    onChange={(e) => {
+                                      handleFileChange(e);
+                                      field.onChange(e);
+                                    }}
+                                    disabled={!isEligible}
+                                    className="file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-medium file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100"
+                                  />
+                                </FormControl>
+                                <FormDescription>
+                                  Accepted formats: PDF, DOC, DOCX
+                                </FormDescription>
+                              </FormItem>
+                            )}
+                          />
+                        )}
+
+                        <Button
+                          type="submit"
+                          className="w-full bg-blue-700 hover:bg-blue-800"
+                          disabled={isSubmitting || !isEligible}
+                        >
+                          {isSubmitting ? "Submitting..." : "Submit"}
+                        </Button>
+                      </form>
+                    </Form>
+                  </CardContent>
+                </Card>
+              </motion.div>
             </div>
           </div>
         </div>
+      </section>
+
+      {/* Stats Section - Moved above welcome section */}
+      <section className="py-12 bg-gradient-to-r from-blue-800 to-blue-600">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, delay: 0.3 }}
+          className="container mx-auto px-4"
+        >
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+            {stats.map((stat, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.5, delay: 0.1 * index }}
+                className="bg-white rounded-lg shadow-lg p-6 text-center transform hover:scale-105 transition-transform"
+              >
+                <div className="text-3xl md:text-4xl font-bold text-amber-500 mb-2">
+                  {stat.value}
+                </div>
+                <div className="text-sm md:text-base text-blue-800 font-medium">
+                  {stat.label}
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
       </section>
 
       {/* Welcome Section */}
       <section className="py-8 sm:py-20 bg-white">
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row gap-12 items-center">
-            <div className="md:w-1/2">
+            <motion.div
+              className="md:w-1/2"
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 1, delay: 0.2 }}
+            >
               <img
                 className="w-full h-auto rounded-xl shadow-lg object-cover"
                 src={campus}
                 alt="IMM Business School Campus"
               />
-            </div>
-            <div className="md:w-1/2 space-y-6">
-              {/* <Badge className="bg-blue-100 text-blue-800 hover:bg-blue-200">
-                Established 1968
-              </Badge> */}
+            </motion.div>
+            <motion.div
+              className="md:w-1/2 space-y-6"
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 1, delay: 0.4 }}
+            >
               <h2 className="text-4xl font-bold text-gray-900">
                 Welcome to your Future at <br /> IMM Business School
               </h2>
               <p className="text-gray-700 text-lg leading-relaxed">
-                We're excited to introduce you to our Bachelor of Business
+                We&apos;re excited to introduce you to our Bachelor of Business
                 Administration (BBA) program—a perfect blend of tradition and
                 innovation that has been shaping future business leaders for 56
                 years.
               </p>
               <p className="text-gray-700 text-lg leading-relaxed">
                 Our program is designed to equip you with the skills, knowledge,
-                and mindset needed to thrive in today's rapidly evolving
+                and mindset needed to thrive in today&apos;s rapidly evolving
                 business landscape. With a focus on practical learning, industry
                 exposure, and cutting-edge technology, we prepare you to be the
                 leaders of tomorrow.
               </p>
-              {/* <div className="pt-4">
-                <Button className="bg-blue-700 hover:bg-blue-800">
-                  Learn More <ChevronRight className="ml-2 h-4 w-4" />
-                </Button>
-              </div> */}
-            </div>
+            </motion.div>
           </div>
         </div>
       </section>
@@ -572,7 +681,13 @@ const BBAProgram = () => {
       {/* Program Highlights */}
       <section className="py-8 sm:py-20 bg-gradient-to-r from-blue-900 to-blue-700">
         <div className="container mx-auto px-4">
-          <div className="text-center max-w-3xl mx-auto mb-16">
+          <motion.div
+            className="text-center max-w-7xl mx-auto mb-16"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1, delay: 0.2 }}
+          >
             <Badge className="bg-blue-100 text-blue-800 hover:bg-blue-200 mb-4">
               Program Highlights
             </Badge>
@@ -583,53 +698,74 @@ const BBAProgram = () => {
               Our program stands out with its unique blend of traditional
               business education and modern technological integration.
             </p>
-          </div>
+          </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <Card className="border-0 shadow-md hover:shadow-xl transition-shadow">
-              <CardContent className="p-6">
-                <div className="rounded-full bg-blue-100 w-16 h-16 flex items-center justify-center mb-6">
-                  <Award className="h-8 w-8 text-blue-700" />
-                </div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">
-                  AICTE Approved
-                </h3>
-                <p className="text-gray-600">
-                  One of the first BBA programs to receive AICTE approval,
-                  ensuring high-quality education standards.
-                </p>
-              </CardContent>
-            </Card>
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.3 }}
+            >
+              <Card className="border-0 shadow-md hover:shadow-xl transition-shadow">
+                <CardContent className="p-6">
+                  <div className="rounded-full bg-blue-100 w-16 h-16 flex items-center justify-center mb-6">
+                    <Award className="h-8 w-8 text-blue-700" />
+                  </div>
+                  <h3 className="text-xl font-semibold text-blue-600 mb-3">
+                    AICTE Approved
+                  </h3>
+                  <p className="text-gray-600">
+                    One of the first BBA programs to receive AICTE approval,
+                    ensuring high-quality education standards.
+                  </p>
+                </CardContent>
+              </Card>
+            </motion.div>
 
-            <Card className="border-0 shadow-md hover:shadow-xl transition-shadow">
-              <CardContent className="p-6">
-                <div className="rounded-full bg-blue-100 w-16 h-16 flex items-center justify-center mb-6">
-                  <Cpu className="h-8 w-8 text-blue-700" />
-                </div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">
-                  AI & ML Integration
-                </h3>
-                <p className="text-gray-600">
-                  Learn how to leverage artificial intelligence and machine
-                  learning to solve complex business problems.
-                </p>
-              </CardContent>
-            </Card>
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.5 }}
+            >
+              <Card className="border-0 shadow-md hover:shadow-xl transition-shadow">
+                <CardContent className="p-6">
+                  <div className="rounded-full bg-blue-100 w-16 h-16 flex items-center justify-center mb-6">
+                    <Cpu className="h-8 w-8 text-blue-700" />
+                  </div>
+                  <h3 className="text-xl font-semibold text-blue-600 mb-3">
+                    AI & ML Integration
+                  </h3>
+                  <p className="text-gray-600">
+                    Learn how to leverage artificial intelligence and machine
+                    learning to solve complex business problems.
+                  </p>
+                </CardContent>
+              </Card>
+            </motion.div>
 
-            <Card className="border-0 shadow-md hover:shadow-xl transition-shadow">
-              <CardContent className="p-6">
-                <div className="rounded-full bg-blue-100 w-16 h-16 flex items-center justify-center mb-6">
-                  <Building className="h-8 w-8 text-blue-700" />
-                </div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">
-                  Industry Immersion
-                </h3>
-                <p className="text-gray-600">
-                  Gain hands-on experience through our unique Multidisciplinary
-                  Corporate Immersion Programme.
-                </p>
-              </CardContent>
-            </Card>
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.7 }}
+            >
+              <Card className="border-0 shadow-md hover:shadow-xl transition-shadow">
+                <CardContent className="p-6">
+                  <div className="rounded-full bg-blue-100 w-16 h-16 flex items-center justify-center mb-6">
+                    <Building className="h-8 w-8 text-blue-700" />
+                  </div>
+                  <h3 className="text-xl font-semibold text-blue-600 mb-3">
+                    Industry Immersion
+                  </h3>
+                  <p className="text-gray-600">
+                    Gain hands-on experience through our unique
+                    Multidisciplinary Corporate Immersion Programme.
+                  </p>
+                </CardContent>
+              </Card>
+            </motion.div>
           </div>
         </div>
       </section>
@@ -637,7 +773,13 @@ const BBAProgram = () => {
       {/* Specializations Section */}
       <section id="specializations" className="py-8 sm:py-20 bg-white">
         <div className="container mx-auto px-4">
-          <div className="text-center max-w-3xl mx-auto mb-16">
+          <motion.div
+            className="text-center max-w-4xl mx-auto mb-16"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1, delay: 0.2 }}
+          >
             <Badge className="bg-blue-100 text-blue-800 hover:bg-blue-200 mb-4">
               Specializations
             </Badge>
@@ -648,29 +790,31 @@ const BBAProgram = () => {
               Choose from a variety of specializations designed to align with
               your career goals and industry demands.
             </p>
-          </div>
+          </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {specializations.map((spec, index) => (
-              <Card
+              <motion.div
                 key={index}
-                className="border border-gray-100 hover:border-blue-200 shadow-sm hover:shadow-md transition-all duration-300"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, delay: 0.2 + index * 0.1 }}
               >
-                <CardContent className="p-6">
-                  <div className="flex items-center space-x-4 mb-4">
-                    <div className="bg-blue-50 rounded-lg p-3">{spec.icon}</div>
-                    <h3 className="text-xl font-semibold text-gray-900">
-                      {spec.title}
-                    </h3>
-                  </div>
-                  <p className="text-gray-600 mb-4">{spec.description}</p>
-                  {/* <div className="flex justify-end">
-                    <Button variant="ghost" className="text-blue-700 hover:text-blue-800 p-0 h-auto">
-                      Learn more <ArrowRight className="ml-2 h-4 w-4" />
-                    </Button>
-                  </div> */}
-                </CardContent>
-              </Card>
+                <Card className="border border-gray-100 hover:border-blue-200 shadow-sm hover:shadow-md transition-all duration-300">
+                  <CardContent className="p-6">
+                    <div className="flex items-center space-x-4 mb-4">
+                      <div className="bg-blue-50 rounded-lg p-3">
+                        {spec.icon}
+                      </div>
+                      <h3 className="text-xl font-semibold text-blue-700">
+                        {spec.title}
+                      </h3>
+                    </div>
+                    <p className="text-gray-600 mb-4">{spec.description}</p>
+                  </CardContent>
+                </Card>
+              </motion.div>
             ))}
           </div>
         </div>
@@ -682,7 +826,13 @@ const BBAProgram = () => {
         className="py-8 sm:py-20 bg-gradient-to-r from-blue-900 to-blue-700"
       >
         <div className="container mx-auto px-4">
-          <div className="text-center max-w-3xl mx-auto mb-16">
+          <motion.div
+            className="text-center max-w-7xl mx-auto mb-16"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1, delay: 0.2 }}
+          >
             <Badge className="bg-blue-100 text-blue-800 hover:bg-blue-200 mb-4">
               Key Features
             </Badge>
@@ -694,24 +844,28 @@ const BBAProgram = () => {
               traditional business education with modern technological
               advancements.
             </p>
-          </div>
+          </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {features.map((feature, index) => (
-              <div
+              <motion.div
                 key={index}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, delay: 0.2 + index * 0.1 }}
                 className="bg-white rounded-xl shadow-sm p-6 hover:shadow-md transition-shadow"
               >
                 <div className="flex items-center space-x-4 mb-4">
                   <div className="bg-blue-50 rounded-full p-2">
                     {feature.icon}
                   </div>
-                  <h3 className="text-lg font-semibold text-gray-900">
+                  <h3 className="text-lg font-semibold text-blue-700">
                     {feature.title}
                   </h3>
                 </div>
                 <p className="text-gray-600 ml-16">{feature.description}</p>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
@@ -720,117 +874,143 @@ const BBAProgram = () => {
       {/* Tabs Section */}
       <section className="py-8 sm:py-20 bg-white">
         <div className="container mx-auto px-4">
-          <div className="text-center max-w-3xl mx-auto mb-12">
+          <motion.div
+            className="text-center max-w-3xl mx-auto mb-12"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1, delay: 0.2 }}
+          >
             <Badge className="bg-blue-100 text-blue-800 hover:bg-blue-200 mb-4">
               Program Details
             </Badge>
             <h2 className="text-3xl font-bold text-gray-900 mb-6">
               Explore Our BBA Program
             </h2>
-          </div>
+          </motion.div>
 
-          <Tabs defaultValue="curriculum" className="max-w-4xl mx-auto">
-            <TabsList className="grid grid-cols-3 mb-8">
-              <TabsTrigger value="curriculum">Curriculum</TabsTrigger>
-              <TabsTrigger value="faculty">Faculty</TabsTrigger>
-              <TabsTrigger value="facilities">Facilities</TabsTrigger>
-            </TabsList>
-            <TabsContent
-              value="curriculum"
-              className="bg-white rounded-xl shadow-sm p-6"
-            >
-              <h3 className="text-xl font-semibold text-gray-900 mb-4">
-                Comprehensive Curriculum
-              </h3>
-              <p className="text-gray-700 mb-4">
-                Our BBA program offers a well-rounded curriculum that covers all
-                essential aspects of business administration while incorporating
-                modern technological advancements.
-              </p>
-              <ul className="space-y-3">
-                {[
-                  "Foundation courses in management principles, economics, and accounting",
-                  "Specialized courses in your chosen area of concentration",
-                  "Technology-focused modules including AI, ML, and data analytics",
-                  "Soft skills development through communication and leadership workshops",
-                  "Industry projects and internships for practical experience",
-                ].map((item, index) => (
-                  <li key={index} className="flex items-start">
-                    <CheckCircle className="h-5 w-5 text-blue-600 mr-2 mt-0.5" />
-                    <span className="text-gray-700">{item}</span>
-                  </li>
-                ))}
-              </ul>
-            </TabsContent>
-            <TabsContent
-              value="faculty"
-              className="bg-white rounded-xl shadow-sm p-6"
-            >
-              <h3 className="text-xl font-semibold text-gray-900 mb-4">
-                Expert Faculty
-              </h3>
-              <p className="text-gray-700 mb-4">
-                Learn from industry experts and experienced academicians who
-                bring real-world knowledge to the classroom.
-              </p>
-              <ul className="space-y-3">
-                {[
-                  "Professors with extensive industry experience",
-                  "Visiting faculty from top corporations",
-                  "Research-oriented academicians with publications in reputed journals",
-                  "Mentors who provide personalized guidance for career development",
-                  "Industry professionals who conduct specialized workshops",
-                ].map((item, index) => (
-                  <li key={index} className="flex items-start">
-                    <CheckCircle className="h-5 w-5 text-blue-600 mr-2 mt-0.5" />
-                    <span className="text-gray-700">{item}</span>
-                  </li>
-                ))}
-              </ul>
-            </TabsContent>
-            <TabsContent
-              value="facilities"
-              className="bg-white rounded-xl shadow-sm p-6"
-            >
-              <h3 className="text-xl font-semibold text-gray-900 mb-4">
-                State-of-the-Art Facilities
-              </h3>
-              <p className="text-gray-700 mb-4">
-                Our campus is equipped with modern facilities to enhance your
-                learning experience and prepare you for the corporate world.
-              </p>
-              <ul className="space-y-3">
-                {[
-                  "Smart classrooms with advanced audio-visual equipment",
-                  "Well-stocked library with digital resources and databases",
-                  "Computer labs with industry-standard software",
-                  "Innovation hub for entrepreneurial projects",
-                  "Recreation areas for holistic development",
-                ].map((item, index) => (
-                  <li key={index} className="flex items-start">
-                    <CheckCircle className="h-5 w-5 text-blue-600 mr-2 mt-0.5" />
-                    <span className="text-gray-700">{item}</span>
-                  </li>
-                ))}
-              </ul>
-            </TabsContent>
-          </Tabs>
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1, delay: 0.4 }}
+          >
+            <Tabs defaultValue="curriculum" className="max-w-4xl mx-auto">
+              <TabsList className="grid grid-cols-3 mb-8">
+                <TabsTrigger value="curriculum" className=" data-[state=active]:bg-blue-700 data-[state=active]:text-white">Curriculum</TabsTrigger>
+                <TabsTrigger value="faculty" className=" data-[state=active]:bg-blue-700 data-[state=active]:text-white">Faculty</TabsTrigger>
+                <TabsTrigger value="facilities" className=" data-[state=active]:bg-blue-700 data-[state=active]:text-white">Facilities</TabsTrigger>
+              </TabsList>
+              <TabsContent
+                value="curriculum"
+                className="bg-white rounded-xl shadow-sm p-6"
+              >
+                <h3 className="text-xl font-semibold text-blue-500 mb-4">
+                  Comprehensive Curriculum
+                </h3>
+                <p className="text-gray-700 mb-4">
+                  Our BBA program offers a well-rounded curriculum that covers
+                  all essential aspects of business administration while
+                  incorporating modern technological advancements.
+                </p>
+                <ul className="space-y-3">
+                  {[
+                    "Foundation courses in management principles, economics, and accounting",
+                    "Technology Driven Pedagogy in Management Subjects, Empowered by Al & ML Bootcamp",
+                    "Specialized courses in your chosen area of concentration",
+                    "Technology-focused modules including AI & ML",
+                    "Soft skills development through communication and leadership workshops",
+                    "Industry projects and internships for practical experience",
+                  ].map((item, index) => (
+                    <li key={index} className="flex items-start">
+                      <CheckCircle className="h-5 w-5 text-blue-600 mr-2 mt-0.5" />
+                      <span className="text-gray-700">{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </TabsContent>
+              <TabsContent
+                value="faculty"
+                className="bg-white rounded-xl shadow-sm p-6"
+              >
+                <h3 className="text-xl font-semibold text-blue-500 mb-4">
+                  Expert Faculty
+                </h3>
+                <p className="text-gray-700 mb-4">
+                  Learn from industry experts and experienced academicians who
+                  bring real-world knowledge to the classroom.
+                </p>
+                <ul className="space-y-3">
+                  {[
+                    "Professors with extensive industry experience",
+                    "Visiting faculty from top corporations",
+                    "Research-oriented academicians with publications in reputed journals",
+                    "Mentors who provide personalized guidance for career development",
+                    "Industry professionals who conduct specialized workshops",
+                  ].map((item, index) => (
+                    <li key={index} className="flex items-start">
+                      <CheckCircle className="h-5 w-5 text-blue-600 mr-2 mt-0.5" />
+                      <span className="text-gray-700">{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </TabsContent>
+              <TabsContent
+                value="facilities"
+                className="bg-white rounded-xl shadow-sm p-6"
+              >
+                <h3 className="text-xl font-semibold text-blue-500 mb-4">
+                  State-of-the-Art Facilities
+                </h3>
+                <p className="text-gray-700 mb-4">
+                  Our campus is equipped with modern facilities to enhance your
+                  learning experience and prepare you for the corporate world.
+                </p>
+                <ul className="space-y-3">
+                  {[
+                    "Smart classrooms with advanced audio-visual equipment",
+                    "Well-stocked library with digital resources and databases",
+                    "Computer labs with industry-standard software",
+                    "Innovation hub for entrepreneurial projects",
+                    "Recreation areas for holistic development",
+                  ].map((item, index) => (
+                    <li key={index} className="flex items-start">
+                      <CheckCircle className="h-5 w-5 text-blue-600 mr-2 mt-0.5" />
+                      <span className="text-gray-700">{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </TabsContent>
+            </Tabs>
+          </motion.div>
         </div>
       </section>
 
       {/* Accordion Section */}
       <section className="py-8 sm:py-20 bg-gradient-to-r from-blue-900 to-blue-700">
         <div className="container mx-auto px-4">
-          <div className="text-center max-w-3xl mx-auto mb-12">
+          <motion.div
+            className="text-center max-w-7xl mx-auto mb-12"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1, delay: 0.2 }}
+          >
             <Badge className="bg-blue-100 text-blue-800 hover:bg-blue-200 mb-4">
               FAQ
             </Badge>
             <h2 className="text-3xl font-bold text-white mb-6">
               We guarantee you the finest & quality business education
             </h2>
-          </div>
+          </motion.div>
 
-          <div className="max-w-3xl mx-auto">
+          <motion.div
+            className="max-w-4xl mx-auto"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1, delay: 0.4 }}
+          >
             <Accordion type="single" collapsible className="w-full">
               <AccordionItem
                 value="item-1"
@@ -843,8 +1023,8 @@ const BBAProgram = () => {
                   Our BBA program is designed with the National Education Policy
                   2020 (NEP2020) in mind, focusing on holistic and
                   multidisciplinary education. We aim to nurture your critical
-                  thinking, creativity, and ethical leadership, ensuring you're
-                  ready to thrive in today's business world.
+                  thinking, creativity, and ethical leadership, ensuring
+                  you&apos;re ready to thrive in today&apos;s business world.
                 </AccordionContent>
               </AccordionItem>
 
@@ -872,11 +1052,11 @@ const BBAProgram = () => {
                   Pioneering AICTE-Approved BBA
                 </AccordionTrigger>
                 <AccordionContent className="text-gray-700 px-6 pb-4">
-                  We're proud to be among the first to receive AICTE approval
-                  for our BBA program, highlighting our commitment to high
-                  standards and relevant education. Our curriculum incorporates
-                  the latest trends and technologies to keep you ahead in the
-                  business game.
+                  We&apos;re proud to be among the first to receive AICTE
+                  approval for our BBA program, highlighting our commitment to
+                  high standards and relevant education. Our curriculum
+                  incorporates the latest trends and technologies to keep you
+                  ahead in the business game.
                 </AccordionContent>
               </AccordionItem>
 
@@ -912,10 +1092,11 @@ const BBAProgram = () => {
                   Multidisciplinary Corporate Immersion Programme for Problem
                   Solving (MCIPPS). This unique, hands-on experiential learning
                   initiative runs concurrently with your studies, offering
-                  real-world corporate exposure. Through MCIPPS, you'll engage
-                  in practical problem-solving within diverse business
-                  environments, ensuring that you "hit the ground running" when
-                  you enter the business and/or your chosen corporate domain.
+                  real-world corporate exposure. Through MCIPPS, you&apos;ll
+                  engage in practical problem-solving within diverse business
+                  environments, ensuring that you &quot;hit the ground
+                  running&quot; when you enter the business and/or your chosen
+                  corporate domain.
                 </AccordionContent>
               </AccordionItem>
 
@@ -935,14 +1116,20 @@ const BBAProgram = () => {
                 </AccordionContent>
               </AccordionItem>
             </Accordion>
-          </div>
+          </motion.div>
         </div>
       </section>
 
       {/* Fee Structure Section */}
       <section id="fees" className="py-8 sm:py-20 bg-white">
         <div className="container mx-auto px-4">
-          <div className="text-center max-w-3xl mx-auto mb-12">
+          <motion.div
+            className="text-center max-w-3xl mx-auto mb-12"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1, delay: 0.2 }}
+          >
             <Badge className="bg-blue-100 text-blue-800 hover:bg-blue-200 mb-4">
               Fee Structure
             </Badge>
@@ -953,9 +1140,15 @@ const BBAProgram = () => {
               Our fee structure is designed to provide quality education at a
               competitive price.
             </p>
-          </div>
+          </motion.div>
 
-          <div className="w-full max-w-4xl mx-auto space-y-6 ">
+          <motion.div
+            className="w-full max-w-4xl mx-auto space-y-6"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1, delay: 0.4 }}
+          >
             <Card className="border-2 shadow-md rounded-lg overflow-hidden">
               <CardHeader className="bg-blue-700 border-b">
                 <CardTitle className="text-center text-2xl font-bold text-white">
@@ -1020,44 +1213,64 @@ const BBAProgram = () => {
                 </p>
               </CardFooter>
             </Card>
-          </div>
+          </motion.div>
         </div>
       </section>
 
       {/* Join Us Section */}
       <section className="py-20 bg-gradient-to-r from-blue-900 to-blue-700 text-white">
         <div className="container mx-auto px-4">
-          <div className="max-w-3xl mx-auto text-center">
+          <motion.div
+            className="max-w-3xl mx-auto text-center"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1, delay: 0.2 }}
+          >
             <h2 className="text-3xl font-bold mb-6">Join Us Today</h2>
             <p className="mb-6 text-lg leading-relaxed">
               At IMM Business School, we believe our BBA program is more than
-              just a degree—it's a journey of growth and transformation. Join
-              our vibrant community and be part of an institution that has been
-              pioneering business education for 56 years.
+              just a degree—it&apos;s a journey of growth and transformation.
+              Join our vibrant community and be part of an institution that has
+              been pioneering business education for 56 years.
             </p>
             <p className="text-lg leading-relaxed mb-8">
               Enrol today and start your exciting journey into the world of
-              business with us! We can't wait to welcome you to IMM Business
-              School, where your future begins.
+              business with us ! <br/> We can&apos;t wait to welcome you to IMM
+              Business School, where your future begins.
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <motion.div
+              className="flex flex-col sm:flex-row gap-4 justify-center"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.5 }}
+            >
               <a href="#form">
-                <Button className="bg-white text-blue-900 hover:bg-gray-100">
+                <Button
+                  className="bg-white text-blue-900 hover:bg-gray-100"
+                  onClick={toggleForm}
+                >
                   Apply Now
                 </Button>
               </a>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
         </div>
       </section>
 
       {/* Success Toast */}
       {isSuccess && (
-        <div className="fixed z-50 bottom-4 right-4 bg-white border border-green-500 text-green-700 px-6 py-4 rounded-lg shadow-lg flex items-center space-x-3 animate-in slide-in-from-right">
+        <motion.div
+          initial={{ opacity: 0, x: 100 }}
+          animate={{ opacity: 1, x: 0 }}
+          exit={{ opacity: 0, x: 100 }}
+          className="fixed z-50 bottom-4 right-4 bg-white border border-green-500 text-green-700 px-6 py-4 rounded-lg shadow-lg flex items-center space-x-3"
+        >
           <CheckCircle className="h-5 w-5 text-green-500" />
           <span>
-            Application submitted successfully! We'll contact you soon.
+            Application submitted successfully! We&apos;ll contact you soon.
           </span>
           <button
             onClick={() => setIsSuccess(false)}
@@ -1065,7 +1278,7 @@ const BBAProgram = () => {
           >
             ×
           </button>
-        </div>
+        </motion.div>
       )}
     </div>
   );

@@ -29,7 +29,7 @@ const TeamMemberCard = memo(({ name, role, imageSrc, linkedinLink }) => {
           <img
             src={imageSrc}
             alt={name}
-            className={`w-full h-auto sm:h-60 object-cover rounded-lg hover:scale-110 transition-all duration-300 ${
+            className={`w-full h-auto sm:h-80 object-cover rounded-lg hover:scale-110 transition-all duration-300 ${
               imageLoaded ? 'opacity-100' : 'opacity-0'
             }`}
             loading="lazy" // Native lazy loading
@@ -68,7 +68,7 @@ const FacultyHeading = memo(() => {
     <section className="py-10 sm:py-14 mx-auto">
       <div className="max-w-screen-xl mx-auto">
         <div className="items-center gap-x-12 sm:px-4 md:px-0 lg:flex">
-          <div className="max-w-xl space-y-3 mt-6 sm:px-0 md:mt-0 lg:max-w-6xl">
+          <div className="max-w-xl space-y-3 mt-6 sm:px-0 md:mt-0 lg:max-w-7xl">
             <h3 className="text-primary-color text-center text-2xl font-semibold">
               Our Faculty
             </h3>
@@ -76,20 +76,13 @@ const FacultyHeading = memo(() => {
               Excellence in Teaching & Research
             </p>
             <p className="sm:!mt-8 text-gray-600 text-justify sm:text-center">
-              The IMM Business School has Faculty members who have earned PhDs
-              or are Fellows from top schools in India. We attract Adjunct and
-              Visiting Faculty from prestigious institutions like IIM Ahmedabad,
-              IIM Lucknow, IIT Kanpur, IIT Roorkee, Jamnalal Bajaj, FMS, IIFT
-              and other prominent business schools globally. Top industry
-              executives serve as Visiting Faculty, bringing real-world
-              experience to the classroom.
-              <br />
-              <br />
-              Our Faculty regularly publish research papers in renowned
-              international and national journals, engage in consultancy work,
-              and employ analytical tools in their teaching pedagogy. Students
-              benefit from complete access to journals and publications,
-              enhancing their subject knowledge through research-based lectures.
+            At IMM Business School, the foundation of academic distinction lies in our exceptional faculty. Our core team includes accomplished scholars—PhDs and Fellows—from India’s most esteemed institutions. Their academic rigor is complemented by an elite roster of Adjunct and Visiting Faculty from globally recognized and prestigious institutions.
+            <br />
+            <br />
+            Beyond academia, senior corporate leaders and industry veterans enrich the classroom as Visiting Faculty, offering students a dynamic blend of theoretical depth and real-world relevance. Our faculty are active thought leaders, consistently publishing in top-tier national and international journals, driving cutting-edge research, and engaging in high-impact consulting projects.
+            <br />
+            <br />
+            The pedagogy at IMM is rooted in analytical thinking and research orientation. Faculty members leverage data-driven tools and case-based learning to challenge conventional perspectives and build critical insight. Students benefit from unfettered access to leading academic journals and knowledge repositories, nurturing an environment where inquiry is encouraged and innovation thrives.
             </p>
           </div>
         </div>
@@ -246,7 +239,7 @@ const Faculty = () => {
           <div className="text-center py-10">
             <p className="text-lg">Loading faculty information...</p>
             {/* Show skeleton placeholders while loading */}
-            <div className="grid grid-cols-1 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-5 gap-6 mt-6">
+            <div className="grid grid-cols-1 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-4 gap-6 mt-6">
               {[...Array(10)].map((_, index) => (
                 <div key={index} className="bg-white shadow-xl rounded-xl p-2">
                   <div className="w-full h-60 bg-slate-200 animate-pulse rounded-lg"></div>
@@ -274,7 +267,7 @@ const Faculty = () => {
         
         {!loading && !error && (
           <>
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 mx-auto justify-center items-stretch text-center">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mx-auto justify-center items-stretch text-center">
               {visibleFaculty.map((member) => (
                 <TeamMemberCard
                   key={member.id}

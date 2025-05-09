@@ -65,7 +65,7 @@ export const yearGroups = [
       { year: "2004-06", pdf: pdf2004 },
       { year: "2003-04", pdf: pdf2003 },
       { year: "2002-03", pdf: pdf2002 },
-      { year: "2000-02", pdf: pdf2000 },
+      { year: "2001-02", pdf: pdf2000 },
     ],
   },
   {

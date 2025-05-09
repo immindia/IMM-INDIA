@@ -96,7 +96,7 @@ export default function PlacementPieChart() {
   return (
     <div className="flex flex-col w-full  mx-auto max-w-7xl pt-4 sm:py-10">
       <div className="bg-gradient-to-r from-[#9c3353] to-[#b23f63] text-white p-6 mx-4 sm:mx-0 text-center mb-6 rounded-lg shadow-md">
-        <h1 className="text-2xl md:text-4xl font-bold tracking-tight">IMM CORPORATE RESOURCE CENTRE</h1>
+        <h1 className="text-2xl md:text-4xl font-bold tracking-tight">IMM CORPORATE CONNECT HUB</h1>
         <p className="mt-2 text-white/80">Sector-wise placement and internship statistics</p>
       </div>
 

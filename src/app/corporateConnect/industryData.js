@@ -36,7 +36,7 @@ export const industryData = [
     category: "education",
     title: "CISCO Network Training @ Network Bulls",
     tags: ["IT", "Networking", "Learning"],
-    description: `Institute of Marketing & Management organized an Industrial Visit to CISCO Network Training at Network Bulls, Gurgaon, for its PGDM 2023 -2025 batch and PGDM 2022 -2024 batch (Information Technology Specialisation) students on 12th January 2023. The students underwent in-depth training on CISCO Networking Concepts from CISCO-Certified Trainers Mr. Surrender, Mr.Pramod and Mr. Pankaj. The students were given practical exposure to routers and switches in CISCO Lab. The student not only gained knowledge of networking concepts but also acquired hands-on experience. Dr. Smita Agarwal and Ms. Nisha Anand accompanied the students for the visit.`,
+    description: `Institute of Marketing & Management organized an Industrial Visit to CISCO Network Training at Network Bulls, Gurgaon, for its PGDM 2023 -2025 batch and PGDM 2022 -2024 batch (Information Technology Specialization) students on 12th January 2023. The students underwent in-depth training on CISCO Networking Concepts from CISCO-Certified Trainers Mr. Surrender, Mr.Pramod and Mr. Pankaj. The students were given practical exposure to routers and switches in CISCO Lab. The student not only gained knowledge of networking concepts but also acquired hands-on experience. Dr. Smita Agarwal and Ms. Nisha Anand accompanied the students for the visit.`,
     gallery: [],
   },
   {

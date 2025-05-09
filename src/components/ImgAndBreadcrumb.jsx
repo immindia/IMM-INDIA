@@ -32,7 +32,7 @@ const ImgAndBreadcrumb = ({ imageSrc, imageAlt, breadcrumbItems, title }) => {
   const isDesktop = useMediaQuery("(min-width: 768px)");
 
   return (
-    <div className="relative flex items-end justify-center h-44 sm:h-[30rem]">
+    <div className="relative flex items-end justify-center h-32 sm:h-[30rem]">
       <img
         src={imageSrc}
         alt={imageAlt || "Image"}
@@ -43,13 +43,15 @@ const ImgAndBreadcrumb = ({ imageSrc, imageAlt, breadcrumbItems, title }) => {
         decoding="async"
       />
       {/* <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-t from-black via-black/70 to-black/30"></div> */}
+      {title && (
       <div className=" absolute top-10 sm:top-[45%] p-5 bg-black/50 rounded-md ">
         <WordPullUp
           words={title}
           className="sm:text-6xl text-white font-extrabold  tracking-wide leading-tight sm:leading-none"
         />
-      </div>
-      <Breadcrumb className="relative z-10 -mb-8 transition-all duration-300 ease-in-out hover:drop-shadow-2xl drop-shadow-xl hover:scale-105">
+        </div>
+      )}
+      <Breadcrumb className=" relative z-10 -mb-8 transition-all duration-300 ease-in-out hover:drop-shadow-2xl drop-shadow-xl hover:scale-105">
         <BreadcrumbList className="px-8  py-4 bg-pink-800 rounded-md">
           {isDesktop ? (
             // Desktop view: show all breadcrumbs

@@ -10,17 +10,23 @@ const PlacementStats = () => {
     {
       data: "21",
       title: "International Package",
-      icon: <Building2 className="w-12 h-12 text-yellow-500 mb-2 group-hover:text-white" />,
+      icon: (
+        <Building2 className="w-12 h-12 text-yellow-500 mb-2 group-hover:text-white" />
+      ),
     },
     {
       data: "19.35",
       title: "Domestic Package",
-      icon: <Building className="w-12 h-12 text-yellow-500 mb-2 group-hover:text-white" />,
+      icon: (
+        <Building className="w-12 h-12 text-yellow-500 mb-2 group-hover:text-white" />
+      ),
     },
     {
       data: "9.5",
       title: "Average Package",
-      icon: <BarChart className="w-12 h-12 text-yellow-500 mb-2 group-hover:text-white" />,
+      icon: (
+        <BarChart className="w-12 h-12 text-yellow-500 mb-2 group-hover:text-white" />
+      ),
     },
   ];
 
@@ -34,7 +40,7 @@ const PlacementStats = () => {
       <div className="absolute inset-0 z-20 bg-black opacity-20" />
       <div className="relative z-30 max-w-screen-xl px-4 mx-auto md:px-8">
         <Heading
-          title="Placement Stats"
+          title={"Placement\u00A0\u00A0Metrics"}
           subtitle=""
           titleClassName="text-4xl md:text-6xl font-bold text-yellow-400"
           subtitleClassName="text-gray-300 text-base md:text-lg"
@@ -44,7 +50,15 @@ const PlacementStats = () => {
 
         <div className="grid grid-cols-2 gap-8 md:grid-cols-3 md:gap-5 md:divide-yellow-500">
           {stats.map((item, index) => (
-            <div key={index} className={"flex flex-col hover:bg-yellow-500 group rounded-xl  items-center p-4 border border-yellow-500 transition-all duration-300 group-hover:border-white hover:ring-2 hover:-translate-y-2  hover:ring-yellow-500" + (index === stats.length - 1 ? " col-span-2 sm:col-span-1" : "  ")}>
+            <div
+              key={index}
+              className={
+                "flex flex-col hover:bg-yellow-500 group rounded-xl  items-center p-4 border border-yellow-500 transition-all duration-300 group-hover:border-white hover:ring-2 hover:-translate-y-2  hover:ring-yellow-500" +
+                (index === stats.length - 1
+                  ? " col-span-2 sm:col-span-1"
+                  : "  ")
+              }
+            >
               {item.icon}
               <div className="text-5xl font-bold text-white font sm:text-6xl">
                 <NumberTicker
