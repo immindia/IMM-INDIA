@@ -14,7 +14,8 @@ import Header from "./app/header/Header";
 import Footer from "./app/footer/Footer";
 import Landing from "./app/LandingPage/Landing";
 import Pgdm from "./app/programs/Pgdm";
-import BBAProgram from "./app/programs/BBAProgram";
+// import BBAProgram from "./app/programs/BBAProgram";
+import BBAProgram from "./app/programs/bba/bba-program";
 import ImmLegacy from "./app/about/ImmLegacy";
 import Leadership from "./app/about/Leadership";
 import AdvisoryBoard from "./app/about/AdvisoryBoard";
@@ -125,6 +126,7 @@ function App() {
 
             {/* Programs */}
             <Route path="/programs/pgdm" element={<Pgdm />} />
+            {/* <Route path="/programs/bba" element={<BBAProgram />} /> */}
             <Route path="/programs/bba" element={<BBAProgram />} />
 
             {/* Faculty and Research */}
