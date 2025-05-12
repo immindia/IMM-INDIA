@@ -243,9 +243,9 @@ const BBAProgram = () => {
       </section>
 
       {/* Welcome Section with Image Accordion */}
-      <section ref={welcomeRef} className="py-16 bg-white">
+      <section ref={welcomeRef} className="py-10 sm:py-16 bg-white">
         <div className="container sm:max-w-5xl md:max-w-6xl lg:max-w-7xl  mx-auto px-4">
-          <div className="flex flex-col md:flex-row gap-12 items-center">
+          <div className="flex flex-col md:flex-row gap-12 sm:items-center">
             <motion.div
               className="md:w-1/2"
               initial={{ opacity: 0, x: -50 }}

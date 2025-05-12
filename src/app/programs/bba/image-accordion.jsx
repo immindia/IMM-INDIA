@@ -52,8 +52,8 @@ const ImageAccordion = () => {
             key={image.id}
             className={`relative overflow-hidden rounded-lg sm:rounded-xl ${
               isExpanded
-                ? "w-full h-4/6 sm:w-4/6 shadow-lg shadow-black/50"
-                : "w-full h-1/6 sm:w-1/6 drop-shadow-sm"
+                ? "w-full h-4/6 sm:w-4/6 shadow-lg shadow-black/50 brightness-110"
+                : "w-full h-1/6 sm:w-1/6 drop-shadow-sm  brightness-75"
             } transition-all duration-500 ease-in-out sm:h-full`}
             onMouseEnter={() => setExpandedIndex(index)}
             initial={{ opacity: 0, y: 20 }}
