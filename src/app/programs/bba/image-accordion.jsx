@@ -50,11 +50,11 @@ const ImageAccordion = () => {
         return (
           <motion.div
             key={image.id}
-            className={`relative overflow-hidden rounded-xl ${
+            className={`relative overflow-hidden rounded-lg sm:rounded-xl ${
               isExpanded
                 ? "w-full h-4/6 sm:w-4/6 shadow-lg shadow-black/50"
                 : "w-full h-1/6 sm:w-1/6 drop-shadow-sm"
-            } transition-all duration-500 ease-in- out h-[100px] sm:h-full`}
+            } transition-all duration-500 ease-in-out sm:h-full`}
             onMouseEnter={() => setExpandedIndex(index)}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -63,12 +63,12 @@ const ImageAccordion = () => {
             <img
               src={image.src || "/placeholder.svg"}
               alt={image.alt}
-              className="object-cover h-full w-full"
+              className="object-cover w-full h-full"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/0 to-transparent"></div>
 
             <motion.div
-              className="absolute bottom-0 left-0 p-4 text-white z-10"
+              className="absolute bottom-0 left-0 z-10 p-4 text-white"
               initial={{ opacity: 0 }}
               animate={{ opacity: isExpanded ? 1 : 0 }}
               transition={{ duration: 0.5, delay: isExpanded ? 0.5 : 0 }}
@@ -87,7 +87,7 @@ const ImageAccordion = () => {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: isExpanded ? 1 : 0 }}
                 transition={{ duration: 0.5, delay: isExpanded ? 0.5 : 0 }}
-                className="text-sm text-white/90 max-w-xs"
+                className="max-w-xs text-sm text-white/90"
               >
                 {image.description}
               </motion.p>

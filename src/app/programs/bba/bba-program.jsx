@@ -142,7 +142,7 @@ const BBAProgram = () => {
       <section
         ref={heroRef}
         id="overview"
-        className="relative h-[80vh] flex items-center justify-center text-white overflow-hidden"
+        className="relative py-10 sm:h-[80vh] flex items-center justify-center text-white overflow-hidden"
       >
         <motion.div
           style={{ opacity: heroOpacity, scale: heroScale }}
