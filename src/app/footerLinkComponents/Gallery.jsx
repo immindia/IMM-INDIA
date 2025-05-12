@@ -47,12 +47,19 @@ const Gallery = () => {
             )
         );
 
-        // Extract unique categories
-        const uniqueCategories = [
-          "All",
-          ...new Set(filteredImages.reverse().map((image) => image.category)),
-        ];
-        setCategories(uniqueCategories);
+        // Define the desired category order
+        const desiredCategories = ["Campus", "Infrastructure", "Classroom", "Library", "Canteen", "Other"];
+        
+        // Get unique categories from filtered images
+        const uniqueCategories = new Set(filteredImages.map((image) => image.category));
+        
+        // Sort categories according to desired order, keeping only existing ones
+        const sortedCategories = desiredCategories.filter(category => uniqueCategories.has(category));
+        
+        // Add "All" at the beginning
+        const finalCategories = ["All", ...sortedCategories];
+        
+        setCategories(finalCategories);
 
         // Store the filtered data
         setFilteredData(filteredImages.reverse());
