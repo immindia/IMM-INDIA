@@ -34,6 +34,7 @@ import RecruitAndPartner from "./app/corporateConnect/RecruitAndPartner";
 import PlacementRecords from "./app/placements/PlacementRecords";
 import DazzlingDivas from "./app/alumni/AluminiDirectory";
 import HallofFame from "./app/alumni/HallofFame";
+// import HallofFame from "./app/alumni/ProfileCard";
 import Blog from "./app/blog/Blog";
 import BlogDetails from "./app/blog/BlogDetails";
 import Contact from "./app/contact/Contact";
