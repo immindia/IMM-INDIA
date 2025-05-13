@@ -124,7 +124,17 @@ export default function HallofFame() {
         breadcrumbItems={breadcrumbItems}
       />
 
-      <section className="pt-12 sm:pt-20 bg-gradient-to-b ">
+      <section className="pt-12 sm:pt-20 bg-gradient-to-b relative">
+        <div className="absolute inset-0 opacity-5 -z-20">
+          <div
+            className="w-full h-full"
+            style={{
+              backgroundImage:
+                "linear-gradient(to right, black 1px, transparent 1px), linear-gradient(gray 1px, transparent 1px)",
+              backgroundSize: "50px 50px",
+            }}
+          ></div>
+        </div>
         <div className="container sm:max-w-6xl md:max-w-6xl lg:max-w-7xl xl:max-w-7xl mx-auto py-6 px-4 sm:py-8">
           <Heading
             title="Alumni Directory"
