@@ -26,7 +26,10 @@ const Research = () => {
     <div className="relative min-h-screen">
       <ImgAndBreadcrumb
         title="Research"
-        imageSrc={banner[0]?.url || "https://stealthlearn.in/imm-admin/api/uploads/680fd14484b0a.png"}
+        imageSrc={
+          banner[0]?.url ||
+          "https://stealthlearn.in/imm-admin/api/uploads/680fd14484b0a.png"
+        }
         imageAlt="Description of the image"
         breadcrumbItems={breadcrumbItems}
       />
@@ -43,36 +46,33 @@ const Research = () => {
 
         <div className="pb-12 grid grid-cols-1 md:grid-cols-2 gap-8">
           {[
-            { 
-              title: "International Conference", 
+            {
+              title: "International Conference",
               image: international,
-              path: "/faculty-and-research/international-conference"
+              path: "/faculty-and-research/international-conference",
             },
-            { 
-              title: "National Conference", 
+            {
+              title: "National Conference",
               image: national,
-              path: "/faculty-and-research/national-conference"  
-            }
+              path: "/faculty-and-research/national-conference",
+            },
           ].map((conference, index) => (
-            <Link 
-              key={index} 
+            <Link
+              key={index}
               to={conference.path}
-              className="relative h-[300px] group cursor-pointer overflow-hidden rounded"
+              className="relative   border-2 border-pink-900/50 group cursor-pointer overflow-hidden rounded shadow"
             >
-              <img
-                src={conference.image}
-                alt={conference.title}
-                className="absolute inset-0 w-full h-full object-cover"
-              />
-              <div 
-                className="absolute inset-0 bg-black/50 group-hover:bg-black/40 transition-all duration-300"
-              />
-              <div 
-                className="absolute inset-0 flex items-center justify-center"
-              >
-                <h3 className="text-white text-2xl md:text-4xl font-semibold text-center rounded bg-black/50 p-4 hover:bg-black/40 transition-all duration-300 sm:hover:scale-105 sm:hover:animate-bounce">
+              <div className="rounded ">
+                <img
+                  src={conference.image}
+                  alt={conference.title}
+                  className=" inset-0 w-full h-80 object-cover"
+                />
+                <div className=" inset-0 bg-black/50 group-hover:bg-black/40 transition-all duration-300" />
+
+                <div className="text-white/90 text-2xl md:text-3xl font-bold text-center p-4 hover:bg-pink-950 transition-all duration-300 h-full  rounded-b bg-pink-800">
                   {conference.title}
-                </h3>
+                </div>
               </div>
             </Link>
           ))}
