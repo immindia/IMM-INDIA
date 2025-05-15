@@ -291,7 +291,7 @@ const Faculty = () => {
   return (
     <div className="relative min-h-screen">
       <ImgAndBreadcrumb
-        title=""
+        title="Faculty"
         imageSrc={
           banner[0]?.url ||
           "https://stealthlearn.in/imm-admin/api/uploads/680fd14484b0a.png"

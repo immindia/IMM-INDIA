@@ -48,11 +48,14 @@ const Research = () => {
           {[
             {
               title: "International Conference",
+              description:
+                "Emerging Trends & Technological Advancements Towards Innovation & Sustainability for Societal & Business Progress",
               image: international,
               path: "/faculty-and-research/international-conference",
             },
             {
               title: "National Conference",
+              description: "Evolving World of Business",
               image: national,
               path: "/faculty-and-research/national-conference",
             },
@@ -62,16 +65,19 @@ const Research = () => {
               to={conference.path}
               className="relative   border-2 border-pink-900/50 group cursor-pointer overflow-hidden rounded shadow"
             >
-              <div className="rounded ">
+              <div className="rounded  h-full">
                 <img
                   src={conference.image}
                   alt={conference.title}
                   className=" inset-0 w-full h-80 object-cover"
                 />
-                <div className=" inset-0 bg-black/50 group-hover:bg-black/40 transition-all duration-300" />
+                <div className=" inset-0 bg-black/50 group-hover:bg-black/40 transition-all duration-300 " />
 
-                <div className="text-white/90 text-2xl md:text-3xl font-bold text-center p-4 hover:bg-pink-950 transition-all duration-300 h-full  rounded-b bg-pink-800">
+                <div className="text-white/90 text-2xl mb-5 md:text-3xl font-bold text-center p-4 hover:bg-pink-950 transition-all duration-300 h-full  rounded-b bg-pink-800">
                   {conference.title}
+                  <p className="mt-4 italic bg-white p-6 rounded underline text-lg font-normal text-pink-900/90">
+                    {conference.description}
+                  </p>
                 </div>
               </div>
             </Link>
