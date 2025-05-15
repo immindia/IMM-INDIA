@@ -112,7 +112,7 @@ const LeadershipContent = () => {
       )}
       {!loading && !error && (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {leadershipMembers.map((leader) => (
+          {leadershipMembers.map((leader, index) => (
             <LeaderCard
               key={leader.id}
               leader={{
@@ -123,6 +123,7 @@ const LeadershipContent = () => {
                 message: leader.message || "No message available.",
               }}
               onReadMore={handleReadMore}
+              index={index}
             />
           ))}
         </div>
@@ -136,7 +137,7 @@ const LeadershipContent = () => {
   );
 };
 
-const LeaderCard = ({ leader, onReadMore }) => {
+const LeaderCard = ({ leader, onReadMore, index }) => {
   return (
     <Card className="flex flex-col h-full">
       <CardContent className="flex-grow p-6">
@@ -144,7 +145,7 @@ const LeaderCard = ({ leader, onReadMore }) => {
           <img
             src={leader.image}
             alt={leader.name}
-            className="object-cover rounded-lg"
+            className="object-cover rounded-lg shadow border border-gray-50"
           />
         </div>
         <div className="flex items-start justify-between">
@@ -176,7 +177,7 @@ const LeaderCard = ({ leader, onReadMore }) => {
           onClick={() => onReadMore(leader)}
           className="w-full flex items-center justify-center group"
         >
-          Read Message{" "}
+          {index === 0 || index === 1 ? "View Legacy" : "View Message"}
           <Mail
             size={20}
             className="mt-1 ml-2 group-hover:hidden transition-all duration-300"
@@ -225,6 +226,7 @@ LeaderCard.propTypes = {
     message: PropTypes.string,
   }).isRequired,
   onReadMore: PropTypes.func.isRequired,
+  index: PropTypes.number.isRequired,
 };
 
 ReadMoreDialog.propTypes = {

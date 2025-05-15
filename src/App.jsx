@@ -32,7 +32,7 @@ import LifeAtIMM from "./app/lifeAtIMM/LifeAtIMM";
 import CampusRecruitment from "./app/placements/CampusRecruitment";
 import RecruitAndPartner from "./app/corporateConnect/RecruitAndPartner";
 import PlacementRecords from "./app/placements/PlacementRecords";
-import DazzlingDivas from "./app/alumni/AluminiDirectory";
+import DazzlingDivas from "./app/alumni/DazzlingDivas";
 import HallofFame from "./app/alumni/HallofFame";
 // import HallofFame from "./app/alumni/ProfileCard";
 import Blog from "./app/blog/Blog";

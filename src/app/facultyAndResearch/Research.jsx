@@ -19,7 +19,7 @@ const Research = () => {
   }, [data]);
   const breadcrumbItems = [
     { href: "/", label: "Home" },
-    { href: "/research", label: "Research" },
+    { href: "/research", label: "Faculty & Research" },
     { label: "Research" },
   ];
   return (

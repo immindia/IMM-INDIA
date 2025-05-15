@@ -23,7 +23,7 @@ const CampusRecruitment = () => {
 
   const breadcrumbItems = [
     { href: "/", label: "Home" },
-    { href: "/placements/campus-recruitment", label: "Campus Recruitment" },
+    { href: "/placements/campus-recruitment", label: "Placements" },
     { label: "Campus Recruitment" },
   ];
 

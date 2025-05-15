@@ -13,9 +13,9 @@ import ProfileCard from "./ProfileCard";
 const breadcrumbItems = [
   { href: "/", label: "Home" },
   { href: "/alumni", label: "Alumni" },
-  { label: "Alumni Directory" },
+  { label: "Dazzling Divas" },
 ];
-export default function AluminiDirectory() {
+export default function DazzlingDivas() {
   const [alumniData, setAlumniData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);

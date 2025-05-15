@@ -24,7 +24,7 @@ const PlacementRecords = () => {
 
   const breadcrumbItems = [
     { href: "/", label: "Home" },
-    { href: "/placements/placement-records", label: "Placement Records" },
+    { href: "/placements/placement-records", label: "Placements" },
     { label: "Placement Records" },
   ];
 

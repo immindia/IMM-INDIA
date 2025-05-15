@@ -46,7 +46,7 @@ const TeamMemberCard = memo(({ name, role, imageSrc, linkedinLink }) => {
           <img
             src={imageSrc}
             alt={name}
-            className={`w-full h-auto sm:h-80 object-cover rounded-lg hover:scale-110 transition-all duration-300 ${
+            className={`w-full border h-auto sm:h-80 object-cover rounded-lg hover:scale-110 transition-all duration-300 ${
               imageLoaded ? "opacity-100" : "opacity-0"
             }`}
             loading="lazy" // Native lazy loading
@@ -54,15 +54,18 @@ const TeamMemberCard = memo(({ name, role, imageSrc, linkedinLink }) => {
             onError={() => setImageError(true)}
           />
         </div>
-        <div className="px-4 py-6">
+        <div className="px-4 py-6 min-h-40 grid grid-cols-1 justify-between">
+          <div>
+
           <h4 className="text-xl font-medium mb-1 line-clamp-1 hover:line-clamp-none transition-all duration-300">
             {name}
           </h4>
-          <p className="mb-4 text-sm line-clamp-none sm:line-clamp-2 group-hover:line-clamp-none transition-all duration-300">
+          <p className=" text-sm line-clamp-none sm:line-clamp-2 group-hover:line-clamp-none transition-all duration-300">
             {role}
           </p>
+          </div>
 
-          <div className="mt-6 flex justify-center">
+          <div className="items-end h-fit flex justify-center">
             <a href={linkedinLink} target="_blank" rel="noopener noreferrer">
               <LinkedinIcon size={20} />
             </a>
@@ -97,7 +100,7 @@ const FacultyHeading = memo(() => {
             <p className="sm:!mt-8 text-gray-600 text-justify sm:text-center">
               At IMM Business School, the foundation of academic distinction
               lies in our exceptional faculty. Our core team includes
-              accomplished scholars—PhDs and Fellows—from India's most esteemed
+              accomplished scholars—PhDs and Fellows—from India&apos;s most esteemed
               institutions. Their academic rigor is complemented by an elite
               roster of Adjunct and Visiting Faculty from globally recognized
               and prestigious institutions.
