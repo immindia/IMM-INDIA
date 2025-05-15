@@ -75,8 +75,8 @@ const Research = () => {
 
                 <div className="text-white/90 text-2xl mb-5 md:text-3xl font-bold text-center p-4 hover:bg-pink-950 transition-all duration-300 h-full  rounded-b bg-pink-800">
                   {conference.title}
-                  <p className="mt-4 italic bg-white p-6 rounded underline text-lg font-normal text-pink-900/90">
-                    {conference.description}
+                  <p className="mt-4 italic bg-white p-6 text-lg font-normal text-blue-500/90">
+                    &quot;{conference.description}&quot;
                   </p>
                 </div>
               </div>

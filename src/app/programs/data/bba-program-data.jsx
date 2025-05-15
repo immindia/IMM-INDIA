@@ -18,7 +18,7 @@ import {
 import logo from "@/assets/about/accreditations/logos-2.png";
 import curriculum from "@/assets/programsoffered.webp"
 
-import mcips from "@/assets/bba/mcips.jpg"
+import mcips from "@/assets/bba/mcips.png"
 import industryImmersion from "@/assets/bba/industry-integration.jpg"
 import innovativeTeaching from "@/assets/bba/innovative-teaching.jpg"
 // Specializations data
@@ -89,17 +89,19 @@ export const features = [
     icon: <Cpu className="h-10 w-10 text-white" />,
     imageUrl: "https://img.freepik.com/premium-photo/silhouette-woman-stands-symbolizing-integration-human-artificial-intelligence_668889-735.jpg",
   },
-  {
-    title: "INNOVATIVE TEACHING",
-    description: "A mix of traditional methods, digital tools, and case studies.",
-    icon: <Lightbulb className="h-10 w-10 text-white" />,
-    imageUrl: innovativeTeaching,
-  },
+  
   {
     title: "MCIPPS",
     description: "Gain practical, hands-on experience through our unique corporate immersion programme.",
     icon: <FileText className="h-10 w-10 text-white" />,
     imageUrl: mcips,
+    
+  },
+  {
+    title: "INNOVATIVE TEACHING",
+    description: "A mix of traditional methods, digital tools, and case studies.",
+    icon: <Lightbulb className="h-10 w-10 text-white" />,
+    imageUrl: innovativeTeaching,
     size: "",
   },
   
