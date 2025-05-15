@@ -37,7 +37,7 @@ const Leadership = () => {
   return (
     <div className="relative min-h-screen ">
       <ImgAndBreadcrumb
-        title="Leadership"
+        title=""
         imageSrc={banner[0]?.url || "https://stealthlearn.in/imm-admin/api/uploads/680fd14484b0a.png"}
         imageAlt="Description of the image"
         breadcrumbItems={breadcrumbItems}

@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 const BentoGrid = ({ features }) => {
   // Define grid layout - which items take up more space
   const getGridClass = (index, size) => {
-    if (size === "large") return "md:col-span-2 md:row-span-2";
+    if (size === "large") return "md:col-span-2 md:row-span-2 ";
     if (size === "medium") return "md:col-span-2 md:row-span-1 ";
     if (size === "") return "md:col-span-3 md:row-span-1";
     return "md:col-span-1 md:row-span-1";
@@ -33,7 +33,7 @@ const BentoGrid = ({ features }) => {
             className="object-cover h-full w-full transition-transform duration-700 group-hover:scale-110"
           />
 
-          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/30 to-black/10 z-10"></div>
+          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-black/10 z-0"></div>
 
           <div className="absolute inset- -bottom-0 flex flex-col justify-end p-6 text-white z-20 ">
             <div className="bg-white/10 backdrop-blur-sm rounded-full p-3 w-14 h-14 flex items-center justify-center mb-4">

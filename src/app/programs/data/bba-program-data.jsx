@@ -18,6 +18,9 @@ import {
 import logo from "@/assets/about/accreditations/logos-2.png";
 import curriculum from "@/assets/programsoffered.webp"
 
+import mcips from "@/assets/bba/mcips.jpg"
+import industryImmersion from "@/assets/bba/industry-integration.jpg"
+import innovativeTeaching from "@/assets/bba/innovative-teaching.jpg"
 // Specializations data
 export const specializations = [
   {
@@ -78,7 +81,7 @@ export const features = [
     title: "INDUSTRY INTEGRATION",
     description: "Experience through internships, live projects, and interactions with industry leaders.",
     icon: <Building className="h-10 w-10 text-white" />,
-    imageUrl: "/corporate-internship.png",
+    imageUrl: industryImmersion,
   },
   {
     title: "EMERGING TECHNOLOGIES",
@@ -90,13 +93,13 @@ export const features = [
     title: "INNOVATIVE TEACHING",
     description: "A mix of traditional methods, digital tools, and case studies.",
     icon: <Lightbulb className="h-10 w-10 text-white" />,
-    imageUrl: "https://img.freepik.com/premium-photo/teacher-writing-digital-smartboard-modern-classroom-students-paying-attention-clean-minimalistic-setup-ar-45-v-6-job-id-e7711cd0820e47f8a0b891202e0213a9_984027-290755.jpg",
+    imageUrl: innovativeTeaching,
   },
   {
     title: "MCIPPS",
     description: "Gain practical, hands-on experience through our unique corporate immersion programme.",
     icon: <FileText className="h-10 w-10 text-white" />,
-    imageUrl: "https://img.freepik.com/premium-photo/business-colleague-team-working-analyzing-with-new-project-accounting-finance_926199-3799398.jpg?w=1000",
+    imageUrl: mcips,
     size: "",
   },
   

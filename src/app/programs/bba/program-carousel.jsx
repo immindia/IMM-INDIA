@@ -80,7 +80,7 @@ const ProgramCarousel = ({ items }) => {
 
                   <div className="p-4 overflow-hidden h-96 md:h-[500px]">
                     <p className="text-gray-700 mb-6">{item.description}</p>
-                    <AnimatedList className="space-y-1 w-full " delay={1000}>
+                    <AnimatedList className="space-y-1 w-full " delay={1500}>
                       {item.points.map((point, idx) => (
                         <Card
                           key={idx}
