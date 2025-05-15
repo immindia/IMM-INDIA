@@ -84,11 +84,11 @@ const ProgramCarousel = ({ items }) => {
                       {item.points.map((point, idx) => (
                         <Card
                           key={idx}
-                          className="border border-blue-100 shadow-sm hover:shadow-md transition-shadow"
+                          className="border bg-gradient-to-r from-blue-500 via-blue-700 to-blue-800  shadow-sm hover:shadow-md transition-shadow"
                         >
                           <CardContent className="p-4 flex items-start">
-                            <CheckCircle className="h-5 w-5 text-blue-600 mr-3 mt-0.5 flex-shrink-0" />
-                            <span className="text-gray-700 text-sm">{point}</span>
+                            <CheckCircle className="h-5 w-5 text-white mr-3 mt-0.5 flex-shrink-0" />
+                            <span className="text-white text-sm">{point}</span>
                           </CardContent>
                         </Card>
                       ))}
@@ -104,7 +104,7 @@ const ProgramCarousel = ({ items }) => {
       <div className="flex justify-between mt-6">
         <button
           onClick={prevSlide}
-          className="bg-blue-600 text-white p-2 rounded-full hover:bg-blue-700 transition-colors"
+          className="bg-blue-500 text-white p-2 rounded-full hover:bg-blue-700 transition-colors"
           aria-label="Previous slide"
         >
           <ChevronLeft className="h-5 w-5" />
@@ -128,7 +128,7 @@ const ProgramCarousel = ({ items }) => {
 
         <button
           onClick={nextSlide}
-          className="bg-blue-600 text-white p-2 rounded-full hover:bg-blue-700 transition-colors"
+          className="bg-blue-600 text-white p-2 rounded-full hover:bg-blue-500 transition-colors"
           aria-label="Next slide"
         >
           <ChevronRight className="h-5 w-5" />

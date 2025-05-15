@@ -21,6 +21,7 @@ import curriculum from "@/assets/programsoffered.webp"
 import mcips from "@/assets/bba/mcips.png"
 import industryImmersion from "@/assets/bba/industry-integration.jpg"
 import innovativeTeaching from "@/assets/bba/innovative-teaching.jpg"
+import bbaFaculty from "@/assets/bba/bbafaculty.webp"
 // Specializations data
 export const specializations = [
   {
@@ -191,7 +192,7 @@ export const programCarouselItems = [
     title: "Expert Faculty",
     description:
       "Learn from industry experts and experienced academicians who bring real-world knowledge to the classroom.",
-    imageUrl: "https://www.immindia.edu.in/images_webp/faculty/update-faculty.webp",
+    imageUrl: bbaFaculty,
     points: [
       "Professors with extensive industry experience",
       "Visiting faculty from top corporations",
