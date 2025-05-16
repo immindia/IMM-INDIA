@@ -61,7 +61,7 @@ const ClubsAtIMM = () => {
   return (
     <div className="relative min-h-screen">
       <ImgAndBreadcrumb
-        title="Clubs at IMM"
+        title=""
         imageSrc={
           banner[0]?.url ||
           "https://stealthlearn.in/imm-admin/api/uploads/680fd14484b0a.png"

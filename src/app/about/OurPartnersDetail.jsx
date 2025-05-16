@@ -116,7 +116,7 @@ export default function OurPartnersDetail() {
     <div className="relative">
      
       <ImgAndBreadcrumb
-        title="IMM Partners"
+        title=""
         imageSrc={banner[0]?.url || "https://stealthlearn.in/imm-admin/api/uploads/680fd14484b0a.png"}
         imageAlt="Description of the image"
         breadcrumbItems={breadcrumbItems}

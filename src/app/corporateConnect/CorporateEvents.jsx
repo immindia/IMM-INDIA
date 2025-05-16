@@ -147,7 +147,7 @@ const CorporateEvents = () => {
   return (
     <section className="relative min-h-screen">
       <ImgAndBreadcrumb
-        title="Corporate Events"
+        title=""
         imageSrc={
           banner[0]?.url ||
           "https://stealthlearn.in/imm-admin/api/uploads/680fd14484b0a.png"

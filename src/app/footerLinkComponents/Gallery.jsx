@@ -105,7 +105,7 @@ const Gallery = () => {
       <Container className="container">
         <div className="col-span-1 pt-12 md:col-span-3">
           <Heading
-            title="Our Gallery"
+            title=""
             titleClassName="text-4xl font-bold text-center text-gray-900"
             subtitleClassName="text-gray-600 text-lg text-center leading-8"
             subtitle="Explore our vibrant campus life through these moments."
