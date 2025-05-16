@@ -1,6 +1,6 @@
 "use client";
 
-import { forwardRef, useRef } from "react";
+import { forwardRef, useRef, useState, useEffect } from "react";
 import { User, Cpu } from "lucide-react";
 import PropTypes from "prop-types";
 import { cn } from "@/lib/utils";
@@ -34,6 +34,7 @@ export function AnimatedBeamMultipleOutputDemo({
   const containerRef = useRef(null);
   const centerRef = useRef(null);
   const userRef = useRef(null);
+  const [beamsReady, setBeamsReady] = useState(false);
 
   // Create individual refs for each possible module (max 10)
   const ref0 = useRef(null);
@@ -69,6 +70,16 @@ export function AnimatedBeamMultipleOutputDemo({
   // Number of modules to display
   const moduleCount = activeSemester?.modules?.length || 0;
 
+  // Reset and set up beams when tab changes
+  useEffect(() => {
+    setBeamsReady(false);
+    const timer = setTimeout(() => {
+      setBeamsReady(true);
+    }, 150); // Small delay to ensure DOM elements are properly rendered
+
+    return () => clearTimeout(timer);
+  }, [activeSemesterIndex]);
+
   return (
     <div
       className={cn(
@@ -87,7 +98,7 @@ export function AnimatedBeamMultipleOutputDemo({
           <div className="flex flex-col justify-center">
             <Circle
               ref={centerRef}
-              className="size- flex flex-col items-center justify-between"
+              className="size- flex flex-col items-center justify-between p-4"
             >
               <Cpu />
               <p className="text-sm font-medium text-center text-slate-500 w-max">
@@ -106,8 +117,8 @@ export function AnimatedBeamMultipleOutputDemo({
                   ref={moduleRefs[index]}
                   className="flex flex-col items-center justify-between"
                 >
-                  <ModuleIcon size={18} />
-                  <p className="text-sm font-medium text-center text-slate-500 w-max">
+                  <ModuleIcon size={36} />
+                  <p className="text-sm font-medium text-center text-slate-500 w-max p-2">
                     {module.name}
                   </p>
                 </Circle>
@@ -120,7 +131,8 @@ export function AnimatedBeamMultipleOutputDemo({
       )}
 
       {/* AnimatedBeams */}
-      {activeSemester &&
+      {beamsReady &&
+        activeSemester &&
         moduleRefs
           .slice(0, moduleCount)
           .map(
@@ -137,14 +149,18 @@ export function AnimatedBeamMultipleOutputDemo({
               )
           )}
 
-      {centerRef && centerRef.current && userRef && userRef.current && (
-        <AnimatedBeam
-          containerRef={containerRef}
-          fromRef={centerRef}
-          toRef={userRef}
-          duration={5}
-        />
-      )}
+      {beamsReady &&
+        centerRef &&
+        centerRef.current &&
+        userRef &&
+        userRef.current && (
+          <AnimatedBeam
+            containerRef={containerRef}
+            fromRef={centerRef}
+            toRef={userRef}
+            duration={5}
+          />
+        )}
     </div>
   );
 }

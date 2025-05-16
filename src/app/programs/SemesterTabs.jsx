@@ -1,14 +1,26 @@
 "use client";
 import { BookOpen } from "lucide-react";
-import { useState } from "react";
+import { useState, useCallback } from "react";
 import { cn } from "@/lib/utils";
 import { motion, AnimatePresence } from "framer-motion";
 import { AnimatedBeamMultipleOutputDemo } from "./AnimatedCertification";
 import { curriculum } from "./data/pgdm-program-data";
+import React from "react";
 
 export default function SemesterTabs() {
   const [activeTab, setActiveTab] = useState(0);
   const [hoveredTab, setHoveredTab] = useState(null);
+
+  // Use a debounced tab change to avoid rapid switching on hover
+  const handleTabHover = useCallback((index) => {
+    setHoveredTab(index);
+    // Only change the active tab if the hover persists
+    const timer = setTimeout(() => {
+      setActiveTab(index);
+    }, 100);
+
+    return () => clearTimeout(timer);
+  }, []);
 
   return (
     <div className="flex flex-col md:flex-row w-full max-w-7xl mx-auto gap-6 px-4">
@@ -18,10 +30,7 @@ export default function SemesterTabs() {
           {curriculum.map((semester, index) => (
             <motion.button
               key={index}
-              onMouseEnter={() => {
-                setActiveTab(index);
-                setHoveredTab(index);
-              }}
+              onMouseEnter={() => handleTabHover(index)}
               onMouseLeave={() => setHoveredTab(null)}
               onClick={() => setActiveTab(index)}
               className={cn(
@@ -52,8 +61,10 @@ export default function SemesterTabs() {
                 }
                 className="flex items-center"
               >
-                {semester.icon ? (
-                  semester.icon
+                {semester.modules && semester.modules[0] ? (
+                  React.createElement(semester.modules[0].icon, {
+                    className: "mr-2 h-5 w-5",
+                  })
                 ) : (
                   <BookOpen className="mr-2 h-5 w-5" />
                 )}
@@ -82,7 +93,7 @@ export default function SemesterTabs() {
 
       {/* Content Display with Animation */}
       <div className="flex-1 bg-white p-6 rounded-lg shadow-md min-h-[300px]">
-        <AnimatePresence >
+        <AnimatePresence>
           <motion.div
             key={activeTab}
             initial={{ opacity: 0, y: 10 }}
