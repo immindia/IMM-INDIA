@@ -38,10 +38,10 @@ export default function SemesterTabs() {
           career goals and industry demands.
         </p>
       </motion.div>
-      <div className="flex flex-col md:flex-row w-full sm:max-w-7xl mx-auto gap-6 sm:px-4">
+      <div className="flex flex-col md:flex-row w-full sm:max-w-7xl mx-auto gap-6 sm:px-0">
         {/* Vertical Tab Navigation */}
         <div className="w-full md:w-64 flex-shrink-0">
-          <div className="flex flex-col space-y-2">
+          <div className="flex flex-col space-y-4">
             {curriculum.map((semester, index) => (
               <motion.button
                 key={index}
@@ -53,8 +53,8 @@ export default function SemesterTabs() {
                   "hover:shadow-md focus:outline-none focus:ring-2 focus:ring-pink-500 focus:ring-opacity-50",
                   "flex items-center relative overflow-hidden",
                   activeTab === index
-                    ? "bg-gradient-to-r from-pink-700 to-pink-900 text-white"
-                    : "bg-white border-2 border-slate-100 hover:bg-gradient-to-r hover:from-pink-700 hover:to-pink-900 hover:text-white "
+                    ? "bg-gradient-to-r from-pink-700 to-pink-900 text-white drop-shadow-lg text-lg "
+                    : "bg-white border-2 border-slate-100 hover:bg-gradient-to-r hover:from-pink-700 hover:to-pink-900 hover:text-white shadow-md shadow-black/20"
                 )}
                 whileHover={{
                   scale: 1.03,

@@ -81,8 +81,8 @@ const Pgdm = () => {
               </TabsList>
               <TabsContent value="pgdm" className="mt-6">
                 <div className="space-y-8 sm:px-4">
-                  <SemesterTabs />
                   <PgdmProgramTab />
+                  
                 </div>
               </TabsContent>
 
@@ -96,16 +96,7 @@ const Pgdm = () => {
                 </div>
               </TabsContent>
 
-              <TabsContent value="global" className="mt-6">
-                <div className="space-y-4">
-                  <h2 className="text-2xl font-semibold">IMM Goes Global</h2>
-                  <p className="text-gray-600">
-                    Our international partnerships and global exposure
-                    initiatives...
-                    {/* Add your global content here */}
-                  </p>
-                </div>
-              </TabsContent>
+              
             </Tabs>
           </div>
         </Container>{" "}

@@ -119,7 +119,7 @@ FeatureItem.propTypes = {
 
 const PgdmFeatures = () => {
   return (
-    <section className="pt-14 md:pt-20 bg-white dark:bg-[#0b1727] text-zinc-900 dark:text-white relative overflow-hidden z-10">
+    <section className="pt-14 md:pt-20 sm:mt-10 rounded-lg sm:shadow-lg bg-white dark:bg-[#0b1727] text-zinc-900 dark:text-white relative overflow-hidden z-10">
       <div className="container  mx-auto">
         <div className="flex max-w-3xl justify-center text-center mb-6 md:mb-12 mx-auto">
         <Heading

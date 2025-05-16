@@ -2,12 +2,14 @@ import PgdmSpecialization from "./PgdmSpecialization";
 import PgdmFeatures from "./PgdmFeatures";
 import { useState } from "react";
 import { ArrowRight, ArrowUp } from "lucide-react";
+import SemesterTabs from "./SemesterTabs";
+import SemesterTabMobile from "./SemesterTabMobile";
 const PgdmProgram = () => {
   const [isOpen, setIsOpen] = useState(false);
   return (
     <section className=" ">
       <div className="space-y-4">
-        <h1 className="text-3xl font-bold text-pink-900 mb-6 drop-shadow-md">
+        <h1 className="sm:text-4xl text-3xl font-bold text-pink-900 mb-6 drop-shadow-md backdrop-blur-sm w-fit">
           PGDM Program with Dual Specializations
         </h1>
         <p className="text-gray-600 text-base backdrop-blur-sm">
@@ -44,9 +46,18 @@ const PgdmProgram = () => {
           )}
         </button>
       </div>
-      <div className="sm:mt-10 grid sm:grid-cols-2 gap-4">
-        <PgdmSpecialization />
-        <div className="pt-20">
+      <div className="sm:hidden">
+        <SemesterTabMobile />
+      </div>
+      <div className="hidden sm:block">
+        <SemesterTabs />
+      </div>
+
+      <div className="sm:mt-16 pt-10 grid sm:grid-cols-2 gap-4">
+        <div className="order-2 sm:order-1">
+          <PgdmSpecialization />
+        </div>
+        <div className="order-1 sm:order-2 sm:pt-20">
           <div className="text-justify sm:text-left lg:px-20">
             <p className="opacity-75 text-center sm:text-left uppercase">
               SPECIALIZATIONS

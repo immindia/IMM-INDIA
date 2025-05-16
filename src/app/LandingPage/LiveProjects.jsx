@@ -9,7 +9,7 @@ const LiveProjects = () => {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <Container className="ezy__about11 pt-20 sm:px-8 light  bg-white dark:bg-[#0b1727] text-zinc-900 dark:text-white">
+    <Container className="ezy__about11 sm:pt-20 sm:px-8 light  bg-white dark:bg-[#0b1727] text-zinc-900 dark:text-white">
       <motion.div
         ref={ref}
         initial={{ opacity: 0, y: 100 }}
