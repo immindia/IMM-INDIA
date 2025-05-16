@@ -3,10 +3,9 @@ import { BookOpen } from "lucide-react";
 import { useState, useCallback } from "react";
 import { cn } from "@/lib/utils";
 import { motion, AnimatePresence } from "framer-motion";
-import React from "react";
 import { AnimatedBeamMultipleOutputDemo } from "./AnimatedCertification";
 import { curriculum } from "./data/pgdm-program-data";
-import { Badge } from "@/components/ui/badge";
+
 export default function SemesterTabs() {
   const [activeTab, setActiveTab] = useState(0);
   const [hoveredTab, setHoveredTab] = useState(null);
@@ -31,9 +30,8 @@ export default function SemesterTabs() {
         viewport={{ once: true }}
         transition={{ duration: 1, delay: 0.2 }}
       >
-       
         <h2 className="sm:text-4xl text-3xl font-bold text-pink-900 mb-6 drop-shadow-md backdrop-blur-sm  w-fit">
-        13 SKILL CERTIFICATIONS BY KLADIO
+          13 SKILL CERTIFICATIONS BY KLADIO
         </h2>
         <p className="text-gray-700 text-lg drop-shadow-sm backdrop-blur-sm">
           Choose from a variety of specializations designed to align with your
@@ -78,10 +76,14 @@ export default function SemesterTabs() {
                   }
                   className="flex items-center"
                 >
-                  {semester.modules && semester.modules[0] ? (
-                    React.createElement(semester.modules[0].icon, {
-                      className: "mr-2 h-5 w-5",
-                    })
+                  {semester.modules &&
+                  semester.modules[0] &&
+                  semester.modules[0].icon ? (
+                    <img
+                      src={semester.modules[0].icon}
+                      alt={semester.modules[0].name || semester.semester}
+                      className="mr-2 h-5 w-5 object-contain"
+                    />
                   ) : (
                     <BookOpen className="mr-2 h-5 w-5" />
                   )}
@@ -109,7 +111,7 @@ export default function SemesterTabs() {
         </div>
 
         {/* Content Display with Animation */}
-        <div className="flex-1 bg-white p-6 rounded-lg shadow-md min-h-[300px]">
+        <div className="flex-1 bg-white/80 p-6 rounded-lg shadow-md min-h-[300px]">
           <AnimatePresence>
             <motion.div
               key={activeTab}
@@ -119,6 +121,15 @@ export default function SemesterTabs() {
               transition={{ duration: 0.3 }}
               className="h-full"
             >
+              <div>
+                <h2 className="text-2xl font-bold text-pink-800">
+                  {curriculum[activeTab].title.name}
+                </h2>
+                <p className="text-gray-500">
+                  {curriculum[activeTab].semester}
+                </p>
+              </div>
+              <hr className="my-4" /> 
               <AnimatedBeamMultipleOutputDemo
                 curriculumData={curriculum}
                 activeSemesterIndex={activeTab}

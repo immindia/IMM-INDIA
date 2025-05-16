@@ -1,11 +1,11 @@
 "use client";
 
 import { forwardRef, useRef, useState, useEffect } from "react";
-import { User, Cpu } from "lucide-react";
+// import { User } from "lucide-react";
 import PropTypes from "prop-types";
 import { cn } from "@/lib/utils";
 import { AnimatedBeam } from "@/components/magicui/animated-beam";
-
+import User from "@/assets/bba/icons/User.gif"
 const Circle = forwardRef(({ className, children }, ref) => {
   return (
     <div
@@ -101,7 +101,7 @@ export function AnimatedBeamMultipleOutputDemo({
   return (
     <div
       className={cn(
-        "relative flex h-max w-full items-center justify-center overflow-hidden sm:p-10 ",
+        "relative flex min-h-[500px] w-full items-center justify-center overflow-hidden sm:p-10 ",
         className
       )}
       ref={containerRef}
@@ -109,33 +109,46 @@ export function AnimatedBeamMultipleOutputDemo({
       {activeSemester ? (
         <div className="flex size-full sm:max-w-3xl flex-row items-stretch justify-between gap-10">
           <div className="flex flex-col justify-center">
-            <Circle ref={userRef}>
-              <User />
+            <Circle ref={userRef} 
+            className="hover:scale-110 transition-all duration-300"
+            >
+              <img src={User} alt="User" width="100" height="100" className="w-16 h-16 object-contain" />
             </Circle>
           </div>
           <div className="flex flex-col justify-center">
-            <Rectangle  
+            <Rectangle
               ref={centerRef}
-              className="size- flex flex-col items-center justify-between p-4"
+              className=" hover:scale-105 transition-all duration-300 flex flex-col items-center justify-between p-4"
             >
-              <Cpu />
+              <img
+                src={activeSemester.title.icon}
+                alt={activeSemester.title.name}
+                width="100"
+                height="100"
+                className="w-16 h-16 object-contain"
+              />
               <p className="text-sm font-medium text-center text-slate-500 w-max">
-                {activeSemester.title }
+                {activeSemester.title.name}
               </p>
             </Rectangle>
           </div>
           <div className="flex flex-col justify-center gap-10">
             {activeSemester.modules.map((module, index) => {
               if (index >= 10) return null; // Limit to 10 modules maximum
-              const ModuleIcon = module.icon;
 
               return (
                 <Rectangle
                   key={index}
                   ref={moduleRefs[index]}
-                  className="flex flex-col items-center justify-between"
+                  className="flex flex-col items-center hover:scale-105 transition-all duration-300 justify-between"
                 >
-                  <ModuleIcon size={32} />
+                  <img
+                    src={module.icon}
+                    alt={module.name}
+                    width="100"
+                    height="100"
+                    className="w-16 h-16 object-contain"
+                  />
                   <p className="text-sm font-medium text-center text-slate-500 w-max p-2">
                     {module.name}
                   </p>
