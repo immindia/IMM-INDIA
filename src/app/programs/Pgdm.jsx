@@ -7,7 +7,8 @@ import ImgAndBreadcrumb from "../../components/ImgAndBreadcrumb";
 import img from "../../assets/pgdm/pgdmBanner.jpg";
 import { useState, useEffect } from "react";
 import { useFetch } from "../../hooks/useFetch";
-
+import { AnimatedBeamMultipleOutputDemo } from "./AnimatedCertification";
+import SemesterTabs from "./SemesterTabs";
 const Pgdm = () => {
   const { data } = useFetch("/api/indexBanner.php");
   const [banner, setBanner] = useState([]);
@@ -73,6 +74,8 @@ const Pgdm = () => {
             </TabsList>
             <TabsContent value="pgdm" className="mt-6">
               <div className="space-y-8 sm:px-4">
+                
+                <SemesterTabs />
                 <PgdmProgramTab />
               </div>
             </TabsContent>

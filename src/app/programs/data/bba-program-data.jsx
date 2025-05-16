@@ -19,7 +19,7 @@ import logo from "@/assets/about/accreditations/logos-2.png";
 import curriculum from "@/assets/programsoffered.webp"
 
 import mcips from "@/assets/bba/mcips.png"
-import industryImmersion from "@/assets/bba/industry-integration.jpg"
+import industryImmersion from "@/assets/bba/industry-integration.PNG"
 import innovativeTeaching from "@/assets/bba/innovative-teaching.jpg"
 import bbaFaculty from "@/assets/bba/bbafaculty.webp"
 // Specializations data
