@@ -9,6 +9,8 @@ import { useState, useEffect } from "react";
 import { useFetch } from "../../hooks/useFetch";
 import { AnimatedBeamMultipleOutputDemo } from "./AnimatedCertification";
 import SemesterTabs from "./SemesterTabs";
+import { cn } from "@/lib/utils";
+import { DotPattern } from "@/components/magicui/dot-pattern";
 const Pgdm = () => {
   const { data } = useFetch("/api/indexBanner.php");
   const [banner, setBanner] = useState([]);
@@ -35,13 +37,23 @@ const Pgdm = () => {
         imageAlt="Description of the image"
         breadcrumbItems={breadcrumbItems}
       />
+      <section className="relative">
+      <DotPattern
+        glow={true}
+        className={cn(
+          "[mask-image:radial-gradient(200px_circle_at_center,white,transparent, z-[-99] relative)], hidden md:block",
+        )}
+      />
+
+     
       <Container>
+
         <div className="">
           <Heading
             title="Post Graduate Diploma in Management"
             titleClassName="lg:font-extrabold font-bold text-primary-color"
             subtitle="Our PGDM program is designed to provide a comprehensive understanding of modern business practices"
-            subtitleClassName="text-gray-500 text-justify m-0 lg:text-lg lg:font-normal  text-center mx-auto max-w-5xl"
+            subtitleClassName="text-gray-500 text-justify m-0 lg:text-lg lg:font-normal  text-center mx-auto max-w-4xl backdrop-blur-sm"
             className="w-full text-center sm:col-span-4 pt-12"
           />
 
@@ -102,7 +114,7 @@ const Pgdm = () => {
             </TabsContent>
           </Tabs>
         </div>
-      </Container>
+      </Container> </section>
     </div>
   );
 };

@@ -11,6 +11,19 @@ const Circle = forwardRef(({ className, children }, ref) => {
     <div
       ref={ref}
       className={cn(
+        "z-10 flex  items-center  justify-center rounded-full  border-2 bg-white p-3 shadow-[0_0_20px_-12px_rgba(0,0,0,0.8)]",
+        className
+      )}
+    >
+      {children}
+    </div>
+  );
+});
+const Rectangle = forwardRef(({ className, children }, ref) => {
+  return (
+    <div
+      ref={ref}
+      className={cn(
         "z-10 flex  items-center  justify-center rounded  border-2 bg-white p-3 shadow-[0_0_20px_-12px_rgba(0,0,0,0.8)]",
         className
       )}
@@ -22,6 +35,11 @@ const Circle = forwardRef(({ className, children }, ref) => {
 
 Circle.displayName = "Circle";
 Circle.propTypes = {
+  className: PropTypes.string,
+  children: PropTypes.node,
+};
+Rectangle.displayName = "Rectangle";
+Rectangle.propTypes = {
   className: PropTypes.string,
   children: PropTypes.node,
 };
@@ -83,28 +101,28 @@ export function AnimatedBeamMultipleOutputDemo({
   return (
     <div
       className={cn(
-        "relative flex h-max w-full items-center justify-center overflow-hidden p-10",
+        "relative flex h-max w-full items-center justify-center overflow-hidden sm:p-10 ",
         className
       )}
       ref={containerRef}
     >
       {activeSemester ? (
-        <div className="flex size-full max-w-3xl flex-row items-stretch justify-between gap-10">
+        <div className="flex size-full sm:max-w-3xl flex-row items-stretch justify-between gap-10">
           <div className="flex flex-col justify-center">
             <Circle ref={userRef}>
               <User />
             </Circle>
           </div>
           <div className="flex flex-col justify-center">
-            <Circle
+            <Rectangle  
               ref={centerRef}
               className="size- flex flex-col items-center justify-between p-4"
             >
               <Cpu />
               <p className="text-sm font-medium text-center text-slate-500 w-max">
-                {activeSemester.semester}
+                {activeSemester.title }
               </p>
-            </Circle>
+            </Rectangle>
           </div>
           <div className="flex flex-col justify-center gap-10">
             {activeSemester.modules.map((module, index) => {
@@ -112,16 +130,16 @@ export function AnimatedBeamMultipleOutputDemo({
               const ModuleIcon = module.icon;
 
               return (
-                <Circle
+                <Rectangle
                   key={index}
                   ref={moduleRefs[index]}
                   className="flex flex-col items-center justify-between"
                 >
-                  <ModuleIcon size={36} />
+                  <ModuleIcon size={32} />
                   <p className="text-sm font-medium text-center text-slate-500 w-max p-2">
                     {module.name}
                   </p>
-                </Circle>
+                </Rectangle>
               );
             })}
           </div>

@@ -36,10 +36,10 @@ export default function PgdmSpecialization() {
 
   return (
     <div
-      className="relative flex items-center justify-center w-full py-10 sm:py-20 bg-background "
+      className="relative flex items-center justify-center w-full py-10 sm:p-20 sm:bg-background  sm:shadow-lg my-5 rounded-lg"
       ref={containerRef}
     >
-      <div className="flex size-full flex-col max-w-lg max-h-[300px] items-stretch justify-between gap-14">
+      <div className="flex size-full flex-col max-w-lg max-h-[350px] items-stretch justify-between gap-14">
         {/* Top Row */}
         <div className="flex flex-row items-center justify-between">
           <Circle
