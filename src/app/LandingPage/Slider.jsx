@@ -7,6 +7,7 @@ import { motion, AnimatePresence } from "framer-motion";
 // import { SparklesText } from "@/components/magicui/sparkles-text";
 import { BorderBeam } from "@/components/magicui/border-beam";
 import { Link } from "react-router-dom";
+import Magnet from "../../../yes/Magnet/Magnet";
 // import AccreditationLogo from "./AccreditationLogo";
 // import { AccreditationLogoMobile } from "./AccreditationLogoMobile";
 // import logos from "../../assets/Hero/logo-1.webp";
@@ -245,25 +246,29 @@ export default function Slider({
                     {slides[currentSlide].description}
                   </p>
 
-                  <div className="flex flex-wrap justify-center sm:justify-start gap-4 mt-5 sm:mt-14">
+                  <div className="flex flex-wrap justify-center sm:justify-start gap-8 mt-5 sm:mt-14">
+                  <Magnet padding={100} disabled={false} magnetStrength={10} className="relative">
                     <Link
                       to="/programs/pgdm"
                       className="relative overflow-hidden rounded-full bg-[#C4184B] px-6 py-2 text-sm lg:text-lg font-semibold text-white hover:bg-white hover:text-black duration-150 transition-all hover:-translate-y-2"
                     >
                       <span>
-                        <BorderBeam className="absolute inset-0" />
                         PGDM Program
                       </span>
+                        <BorderBeam className="absolute inset-0" />
                     </Link>
+                    </Magnet>
+                    <Magnet padding={100} disabled={false} magnetStrength={10} className="relative">
                     <Link
                       to="/programs/bba"
                       className="relative overflow-hidden rounded-full bg-[#C4184B] px-6 py-2 text-sm lg:text-lg font-semibold text-white hover:bg-white hover:text-black duration-150 transition-all hover:-translate-y-2"
                     >
                       <span>
-                        <BorderBeam className="absolute inset-0" />
                         BBA Program
                       </span>
+                        <BorderBeam className="absolute inset-0" />
                     </Link>
+                    </Magnet>
                   </div>
 
                   {/* <img

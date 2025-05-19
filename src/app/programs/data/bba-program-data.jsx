@@ -142,9 +142,9 @@ export const programHighlights = [
 // FAQ items
 export const faqItems = [
   {
-    question: "Embracing NEP2020",
+    question: "Pioneering AICTE-Approved BBA",
     answer:
-      "Our BBA program is designed with the National Education Policy 2020 (NEP2020) in mind, focusing on holistic and multidisciplinary education. We aim to nurture your critical thinking, creativity, and ethical leadership, ensuring you're ready to thrive in today's business world.",
+      "We're proud to be among the first to receive AICTE approval for our BBA program, highlighting our commitment to high standards and relevant education. Our curriculum incorporates the latest trends and technologies to keep you ahead in the business game.",
   },
   {
     question: "A Proud Legacy",
@@ -152,9 +152,9 @@ export const faqItems = [
       "For over five decades, IMM Business School has been a cornerstone of business education in India. Our graduates are successful leaders across various industries, and our global alumni network is a testament to the impact of an IMM education.",
   },
   {
-    question: "Pioneering AICTE-Approved BBA",
+    question: "Embracing NEP2020",
     answer:
-      "We're proud to be among the first to receive AICTE approval for our BBA program, highlighting our commitment to high standards and relevant education. Our curriculum incorporates the latest trends and technologies to keep you ahead in the business game.",
+      "Our BBA program is designed with the National Education Policy 2020 (NEP2020) in mind, focusing on holistic and multidisciplinary education. We aim to nurture your critical thinking, creativity, and ethical leadership, ensuring you're ready to thrive in today's business world.",
   },
   {
     question: "Integrating AI, ML, and Emerging Technologies",
