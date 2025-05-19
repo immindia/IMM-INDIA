@@ -84,17 +84,19 @@ function CompanyLogos() {
   const recruitersData = recruiters
     .filter(
       (recruiter) =>
+        recruiter.category === "Home Page Recruiter" ||
         recruiter.category === "Final Placement Recruiter" ||
-        recruiter.category === "Summer Internship Recruiter"
+        recruiter.category === "Summer Internship Recruiter" 
     )
     .map((recruiter) => ({
       id: recruiter.id,
       name: recruiter.title,
       logo: recruiter.url,
       category:
-        recruiter.category === "Final Placement Recruiter"
+        (recruiter.category === "Final Placement Recruiter" ||
+          recruiter.category === "Home Page Recruiter"
           ? "final"
-          : "internship",
+          : "internship"),
     }));
 
   // Filter logos based on search term
@@ -114,7 +116,7 @@ function CompanyLogos() {
   const getVisibleLogos = (companies) => {
     return showAll
       ? companies
-      : companies.slice(0, window.innerWidth < 768 ? 24 : 25);
+      : companies.slice(0, window.innerWidth < 768 ? 24 : 65);
   };
 
   return (
@@ -227,7 +229,7 @@ const FinalPlacementCompanies = ({
                 transition={{ duration: 0.5 }}
               />
               <p className="mt-2 text-sm font-light group-hover:font-normal transition-all text-gray-700 text-center group-hover:text-pink-900 duration-300">
-                {company.name}
+                {company.name.toLowerCase().split(" ").map((word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()).join(" ") }
               </p>
             </motion.div>
           </motion.div>

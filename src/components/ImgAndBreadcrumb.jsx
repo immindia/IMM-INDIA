@@ -32,7 +32,7 @@ const ImgAndBreadcrumb = ({ imageSrc, imageAlt, breadcrumbItems, title }) => {
   const isDesktop = useMediaQuery("(min-width: 768px)");
 
   return (
-    <div className="relative flex items-end justify-center h-32 sm:h-[30rem]">
+    <div className="relative flex items-end justify-center h-56 sm:h-[30rem]">
       <img
         src={imageSrc}
         alt={imageAlt || "Image"}

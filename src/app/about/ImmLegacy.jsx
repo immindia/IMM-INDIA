@@ -16,7 +16,7 @@ const ImmLegacy = () => {
   const [banner, setBanner] = useState([]);
   useEffect(() => {
     if (data) {
-      setBanner(data.filter((item) => item.category === "IMM Legacy"));
+      setBanner(data.filter((item) => item.category === "IMM Legacy" || item.category === "IMM Legacy Mobile"));
     }
   }, [data]);
 
@@ -30,7 +30,7 @@ const ImmLegacy = () => {
       <ImgAndBreadcrumb
         title=""
         imageSrc={
-          banner[0]?.url ||
+          window.innerWidth < 768 ? banner[0]?.url : banner[1]?.url ||
           "https://stealthlearn.in/imm-admin/api/uploads/680fd14484b0a.png"
         }
         imageAlt="Description of the image"
