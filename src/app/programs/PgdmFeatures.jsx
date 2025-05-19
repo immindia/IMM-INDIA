@@ -7,7 +7,7 @@ import Heading from "../../components/Heading";
 const features = [
   {
     id: 1,
-    img: "https://img.freepik.com/free-photo/analytics-comparison-information-networking-concept_53876-15846.jpg",
+    img: "/marketing-innovation-meeting.png",
     title: "Marketing & Innovation Management",
     description:
       "Marketing Management is a critical factor that has a direct impact on any organization's organic growth and sustainability. The Marketing courses in IMM's PGDM programme teach students how to develop and implement effective marketing strategies so as to overcome business challenges. The primary goal of incorporating Marketing into the programme is to develop effective managers and leaders capable of applying functional knowledge, to address business challenges in a socially and ethically responsible manner. The goal of the programme is to sharpen knowledge of the marketing function while also gaining a broad understanding of other related disciplines.",

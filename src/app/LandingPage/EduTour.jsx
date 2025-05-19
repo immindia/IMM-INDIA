@@ -85,9 +85,15 @@ export default function GlobalExcursion() {
         ? slides
         : slides.filter((slide) => slide.category === selectedCategory);
 
+    const allCategories = [...new Set(slides.map((slide) => slide.category))];
+    const priorityCategories = ["London", "Manali"];
+    const otherCategories = allCategories.filter(
+      (cat) => !priorityCategories.includes(cat)
+    );
     const categories = [
       "All",
-      ...new Set(slides.map((slide) => slide.category)),
+      ...priorityCategories.filter((cat) => allCategories.includes(cat)),
+      ...otherCategories,
     ];
 
     return (
@@ -163,7 +169,7 @@ export default function GlobalExcursion() {
           />
           <ExcursionCard
             slides={nationalExcursion}
-            heading="National EduTour"
+            heading="National Offsite Bonding"
             onCategoryChange={handleNationalCategoryChange}
             selectedCategory={selectedNationalCategory}
             isLoading={loading}

@@ -48,7 +48,8 @@ export default function PgdmSpecialization() {
           >
             <Icons.dataScience />
             <p className="text-sm font-medium text-center mt-28 text-slate-500 w-max ">
-              Data Science
+              {/* Data Science */}
+              Marketing &  <br /> Innovation Management
             </p>
           </Circle>
           <Circle

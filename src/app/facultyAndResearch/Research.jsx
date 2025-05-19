@@ -47,8 +47,8 @@ const Research = () => {
   }, [data, isMobile]);
   const breadcrumbItems = [
     { href: "/", label: "Home" },
-    { href: "/research", label: "Faculty & Research" },
-    { label: "Research" },
+    { href: "/faculty-and-research/research", label: "Faculty & Research" },
+    { label: "IMMRC" },
   ];
   return (
     <div className="relative min-h-screen">
@@ -72,14 +72,14 @@ const Research = () => {
         <div className="pb-12 grid grid-cols-1 md:grid-cols-2 gap-8">
           {[
             {
-              title: "International Conference",
+              title: "IMMRC - 2025",
               description:
                 "Emerging Trends & Technological Advancements Towards Innovation & Sustainability for Societal & Business Progress",
               image: international,
               path: "/faculty-and-research/international-conference",
             },
             {
-              title: "National Conference",
+              title: "IMMRC - 2024",
               description: "Evolving World of Business",
               image: national,
               path: "/faculty-and-research/national-conference",

@@ -175,7 +175,8 @@ export function AnimatedBeamMultipleOutputDemo({
                   containerRef={containerRef}
                   fromRef={moduleRef}
                   toRef={centerRef}
-                  duration={2}
+                  duration={4}
+                  reverse={true}
                 />
               )
           )}
@@ -189,7 +190,8 @@ export function AnimatedBeamMultipleOutputDemo({
             containerRef={containerRef}
             fromRef={centerRef}
             toRef={userRef}
-            duration={2}
+            duration={4}
+            reverse={true}
           />
         )}
     </div>

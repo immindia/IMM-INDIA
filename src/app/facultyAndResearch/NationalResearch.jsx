@@ -44,8 +44,8 @@ const Research = () => {
 
   const breadcrumbItems = [
     { href: "/", label: "Home" },
-    { href: "/research", label: "Research" },
-    { label: "Research" },
+    { href: "/faculty-and-research/research", label: "Research" },
+    { label: "IMMRC - 2024" },
   ];
   return (
     <div className="relative min-h-screen">
@@ -58,7 +58,7 @@ const Research = () => {
       <Container className="container grid ">
         <div className="pt-12">
           <Heading
-            title="Research Conference"
+            title="National Conference"
             titleClassName="text-primary-color lg:text-5xl"
             subtitleClassName="text-gray-500 text-center m-0 lg:text-lg lg:font-normal lg:max-w-full"
             subtitle="Fostering academic excellence through research conferences that bring together scholars, industry experts, and students to share groundbreaking insights and drive innovation in management education."

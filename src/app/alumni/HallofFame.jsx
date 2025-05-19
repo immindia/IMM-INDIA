@@ -9,7 +9,7 @@ import Heading from "../../components/Heading";
 import ImgAndBreadcrumb from "../../components/ImgAndBreadcrumb";
 import { useFetch } from "../../hooks/useFetch";
 import ProfileCard from "./ProfileCard";
-
+import divas from "../../assets/alumni/divas.webp";
 const breadcrumbItems = [
   { href: "/", label: "Home" },
   { href: "/alumni", label: "Alumni" },
@@ -162,7 +162,24 @@ export default function HallofFame() {
         </div>
         <div className="container sm:max-w-6xl md:max-w-6xl lg:max-w-7xl xl:max-w-7xl mx-auto py-6 px-4 sm:py-8">
           <Heading
-            title="Alumni Directory"
+            title="IMM DAZZLING DIVAS"
+            titleClassName="text-primary-color text-center lg:text-5xl"
+            subtitleClassName="text-gray-500 m-0 lg:text-lg lg:font-normal lg:max-w-full"
+            subtitle="Connect with our global network of alumni"
+            className=""
+          />
+
+          <div className="hover:scale-105 transition-all duration-300 hover:-translate-y-2 hover:shadow-lg  rounded-xl">
+            <img
+              src={divas}
+              alt="IMM DAZZLING DIVAS"
+              className="w-full h-full object-cover rounded-xl"
+            />
+          </div>
+        </div>
+        <div className="container sm:max-w-6xl md:max-w-6xl lg:max-w-7xl xl:max-w-7xl mx-auto py-6 px-4 sm:py-8">
+          <Heading
+            title="IMM Alumni Hall of Fame"
             titleClassName="text-primary-color text-center lg:text-5xl"
             subtitleClassName="text-gray-500 m-0 lg:text-lg lg:font-normal lg:max-w-full"
             subtitle="Connect with our global network of alumni"
@@ -270,6 +287,20 @@ export default function HallofFame() {
               </div>
             )}
           </div>
+        </div>
+
+        <div className="container sm:max-w-6xl md:max-w-6xl lg:max-w-7xl xl:max-w-7xl mx-auto py-6 px-4 sm:py-8 flex justify-center">
+          <a
+            href="https://alumni.immindia.edu.in/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Button className="bg-primary-color mx-auto hover:bg-primary-color/90 sm:text-lg hover:scale-105 transition-all duration-300 hover:-translate-y-2 hover:shadow-lg group">
+              {/* <Link href="/alumni/mentorship-program"> */}
+              View More
+              {/* </Link> */}
+            </Button>
+          </a>
         </div>
       </section>
     </div>

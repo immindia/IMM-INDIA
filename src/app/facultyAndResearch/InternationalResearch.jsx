@@ -40,8 +40,8 @@ const InternationalResearch = () => {
 
   const breadcrumbItems = [
     { href: "/", label: "Home" },
-    { href: "/research", label: "Research" },
-    { label: "International Research" },
+    { href: "/faculty-and-research/research", label: "Research" },
+    { label: "IMMRC - 2025" },
   ];
 
   return (
@@ -70,7 +70,7 @@ const InternationalResearch = () => {
             <Gallery images={internationalImages} />
           )}
         </div>
-
+{/* 
         <div className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-8">
           <Button
             asChild
@@ -105,7 +105,7 @@ const InternationalResearch = () => {
               IMMRC Day 2
             </a>
           </Button>
-        </div>
+        </div> */}
       </Container>
     </div>
   );

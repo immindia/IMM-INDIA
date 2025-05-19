@@ -114,7 +114,7 @@ export default ClubsAtIMM;
 const clubs = [
   "All Clubs",
   "IT Club",
-  "Maestros Club",
+  "Marketing Club",
   "Finance Club",
   "HR Club",
   "Operations Club",
@@ -128,7 +128,7 @@ const clubs = [
 const clubIcons = {
   "All Clubs": Calendar,
   "IT Club": Laptop,
-  "Maestros Club": Music,
+  "Marketing Club": Music,
   "Finance Club": Coins,
   "HR Club": Users,
   "Operations Club": Box,

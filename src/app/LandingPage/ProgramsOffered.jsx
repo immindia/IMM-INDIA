@@ -3,7 +3,8 @@ import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import Heading from "../../components/Heading";
-import img from "../../assets/pgdm.webp";
+// import img from "../../assets/pgdm.webp";
+import img from "../../assets/landing/programs/bba.webp";
 import img2 from "../../assets/programsoffered.webp";
 import VideoDialog from "@/components/VideoDialog";
 import { Link } from "react-router-dom";
@@ -78,8 +79,8 @@ export default function ProgramsOffered() {
             </TabsContent>
             <TabsContent value="bba">
               <ProgramContent
-                title="BBA Program"
-                specializations={specializations.slice(0, 5)}
+                title="Bachelor of Business Administration"
+                specializations={specializations.slice(0, 6)}
                 imageSrc={img}
                 imageAlt="BBA students in classroom"
                 videoSrc="https://youtu.be/eOa-I0MSmUs?si=PgNnCNLBGcJRmer7"
