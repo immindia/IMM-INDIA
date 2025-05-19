@@ -70,13 +70,38 @@ const BBAProgram = () => {
   }, [updateColors]);
 
   const { data } = useFetch("/api/indexBanner.php");
-  const [banner, setBanner] = useState([]);
+  const [bannerImage, setBannerImage] = useState(
+    "https://stealthlearn.in/imm-admin/api/uploads/680fd14484b0a.png"
+  ); // Default image
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   useEffect(() => {
     if (data) {
-      setBanner(data.filter((item) => item.category === "BBA"));
+      const mobileImage = data.find(
+        (item) => item.category === "BBA Mobile"
+      )?.url;
+      const desktopImage = data.find((item) => item.category === "BBA")?.url;
+
+      if (isMobile && mobileImage) {
+        setBannerImage(mobileImage);
+      } else if (!isMobile && desktopImage) {
+        setBannerImage(desktopImage);
+      } else if (desktopImage) {
+        setBannerImage(desktopImage);
+      } else if (mobileImage) {
+        setBannerImage(mobileImage);
+      }
     }
-  }, [data]);
+  }, [data, isMobile]);
   // Refs for scroll animations
   const heroRef = useRef(null);
   const { scrollYProgress } = useScroll({
@@ -149,10 +174,7 @@ const BBAProgram = () => {
           className="absolute inset-0 z-0"
         >
           <img
-            src={
-              banner[0]?.url ||
-              "https://stealthlearn.in/imm-admin/api/uploads/680fd14484b0a.png"
-            }
+            src={bannerImage}
             alt="IMM Business School Campus"
             className="object-cover h-full w-full"
           />
@@ -314,13 +336,12 @@ const BBAProgram = () => {
 
       {/* Specializations Section with Creative Cards */}
       <section id="specializations" className="py-16 relative">
-
-      <DotPattern
-        glow={true}
-        className={cn(
-          "[mask-image:radial-gradient(200px_circle_at_center,white,transparent, top-50 left-50 right-50 bottom-50,)]",
-        )}
-      />
+        <DotPattern
+          glow={true}
+          className={cn(
+            "[mask-image:radial-gradient(200px_circle_at_center,white,transparent, top-50 left-50 right-50 bottom-50,)]"
+          )}
+        />
         <div className="container sm:max-w-5xl md:max-w-6xl lg:max-w-7xl  mx-auto px-4">
           <motion.div
             className="text-center max-w-4xl mx-auto mb-16 relative z-10"

@@ -13,13 +13,40 @@ import { useFetch } from "../../hooks/useFetch";
 
 const CampusRecruitment = () => {
   const { data } = useFetch("/api/indexBanner.php");
-  const [banner, setBanner] = useState([]);
+  const [bannerImage, setBannerImage] = useState(
+    "https://stealthlearn.in/imm-admin/api/uploads/680fd14484b0a.png"
+  ); // Default image
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   useEffect(() => {
     if (data) {
-      setBanner(data.filter((item) => item.category === "Campus Recruitment"));
+      const mobileImage = data.find(
+        (item) => item.category === "Campus Recruitment Mobile"
+      )?.url;
+      const desktopImage = data.find(
+        (item) => item.category === "Campus Recruitment"
+      )?.url;
+
+      if (isMobile && mobileImage) {
+        setBannerImage(mobileImage);
+      } else if (!isMobile && desktopImage) {
+        setBannerImage(desktopImage);
+      } else if (desktopImage) {
+        setBannerImage(desktopImage);
+      } else if (mobileImage) {
+        setBannerImage(mobileImage);
+      }
     }
-  }, [data]);
+  }, [data, isMobile]);
 
   const breadcrumbItems = [
     { href: "/", label: "Home" },
@@ -31,10 +58,7 @@ const CampusRecruitment = () => {
     <div className="relative min-h-screen ">
       <ImgAndBreadcrumb
         title="Campus Recruitment"
-        imageSrc={
-          banner[0]?.url ||
-          "https://stealthlearn.in/imm-admin/api/uploads/680fd14484b0a.png"
-        }
+        imageSrc={bannerImage}
         imageAlt="Description of the image"
         breadcrumbItems={breadcrumbItems}
       />
@@ -86,17 +110,17 @@ function CompanyLogos() {
       (recruiter) =>
         recruiter.category === "Home Page Recruiter" ||
         recruiter.category === "Final Placement Recruiter" ||
-        recruiter.category === "Summer Internship Recruiter" 
+        recruiter.category === "Summer Internship Recruiter"
     )
     .map((recruiter) => ({
       id: recruiter.id,
       name: recruiter.title,
       logo: recruiter.url,
       category:
-        (recruiter.category === "Final Placement Recruiter" ||
-          recruiter.category === "Home Page Recruiter"
+        recruiter.category === "Final Placement Recruiter" ||
+        recruiter.category === "Home Page Recruiter"
           ? "final"
-          : "internship"),
+          : "internship",
     }));
 
   // Filter logos based on search term
@@ -229,7 +253,14 @@ const FinalPlacementCompanies = ({
                 transition={{ duration: 0.5 }}
               />
               <p className="mt-2 text-sm font-light group-hover:font-normal transition-all text-gray-700 text-center group-hover:text-pink-900 duration-300">
-                {company.name.toLowerCase().split(" ").map((word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()).join(" ") }
+                {company.name
+                  .toLowerCase()
+                  .split(" ")
+                  .map(
+                    (word) =>
+                      word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()
+                  )
+                  .join(" ")}
               </p>
             </motion.div>
           </motion.div>

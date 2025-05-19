@@ -6,18 +6,46 @@ import img from "../../assets/about/AboutBanner.webp";
 // import Stats from "../../components/Stats";
 // import Newsletter from "../../components/Newsletter";
 // import AboutSidebar from "../../components/AboutSidebar";
-  import { useFetch } from "../../hooks/useFetch";
+import { useFetch } from "../../hooks/useFetch";
 import { LinkedinIcon } from "lucide-react";
 import PropTypes from "prop-types";
 
 const AdvisoryBoard = () => {
   const { data } = useFetch("/api/indexBanner.php");
-  const [banner, setBanner] = useState([]);
-    useEffect(() => {
-      if (data) {
-        setBanner(data.filter((item) => item.category === "Advisory Board"));
+  const [bannerImage, setBannerImage] = useState(
+    "https://stealthlearn.in/imm-admin/api/uploads/680fd14484b0a.png"
+  ); // Default image
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  useEffect(() => {
+    if (data) {
+      const mobileImage = data.find(
+        (item) => item.category === "Advisory Board Mobile"
+      )?.url;
+      const desktopImage = data.find(
+        (item) => item.category === "Advisory Board"
+      )?.url;
+
+      if (isMobile && mobileImage) {
+        setBannerImage(mobileImage);
+      } else if (!isMobile && desktopImage) {
+        setBannerImage(desktopImage);
+      } else if (desktopImage) {
+        setBannerImage(desktopImage);
+      } else if (mobileImage) {
+        setBannerImage(mobileImage);
       }
-    }, [data]);
+    }
+  }, [data, isMobile]);
 
   const breadcrumbItems = [
     { href: "/", label: "Home" },
@@ -28,7 +56,7 @@ const AdvisoryBoard = () => {
     <div className="relative min-h-screen ">
       <ImgAndBreadcrumb
         title=""
-        imageSrc={banner[0]?.url || "https://stealthlearn.in/imm-admin/api/uploads/680fd14484b0a.png"}
+        imageSrc={bannerImage}
         imageAlt="Description of the image"
         breadcrumbItems={breadcrumbItems}
       />

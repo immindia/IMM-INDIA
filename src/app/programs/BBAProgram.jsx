@@ -69,6 +69,7 @@ import { useForm } from "react-hook-form";
 import * as z from "zod";
 import { useFetch } from "../../hooks/useFetch";
 import campus from "../../assets/bba/bbaAbout.jpg";
+import ImgAndBreadcrumb from "@/components/ImgAndBreadcrumb";
 
 // Add this style to your component or global CSS
 const verticalTextStyle = {
@@ -130,12 +131,38 @@ const BBAProgram = () => {
   const [activeTab, setActiveTab] = useState("overview");
 
   const { data } = useFetch("/api/indexBanner.php");
-  const [banner, setBanner] = useState([]);
+  const [bannerImage, setBannerImage] = useState(
+    "https://stealthlearn.in/imm-admin/api/uploads/680fd14484b0a.png"
+  ); // Default image
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   useEffect(() => {
     if (data) {
-      setBanner(data.filter((item) => item.category === "BBA"));
+      const mobileImage = data.find(
+        (item) => item.category === "BBA Mobile"
+      )?.url;
+      const desktopImage = data.find((item) => item.category === "BBA")?.url;
+
+      if (isMobile && mobileImage) {
+        setBannerImage(mobileImage);
+      } else if (!isMobile && desktopImage) {
+        setBannerImage(desktopImage);
+      } else if (desktopImage) {
+        setBannerImage(desktopImage);
+      } else if (mobileImage) {
+        setBannerImage(mobileImage);
+      }
     }
-  }, [data]);
+  }, [data, isMobile]);
 
   // Toggle form visibility
   const toggleForm = () => {
@@ -343,8 +370,24 @@ const BBAProgram = () => {
     { value: "520+", label: "Industry Partners" },
   ];
 
+  // Breadcrumb items
+  const breadcrumbItems = [
+    { href: "/", label: "Home" },
+    { href: "/programs/bba", label: "Programs" },
+    { label: "BBA" },
+  ];
+
   return (
     <div className="min-h-screen" id="form">
+      <ImgAndBreadcrumb
+        title="BBA Program"
+        imageSrc={bannerImage}
+        imageAlt="BBA Program Banner"
+        breadcrumbItems={breadcrumbItems}
+        buttonText="Apply Now"
+        onButtonClick={toggleForm}
+      />
+
       {/* Enquiry Form Toggle Button */}
       <div className="fixed right-0 top-1/2 z-50 transform -translate-y-1/2">
         <button
@@ -368,10 +411,7 @@ const BBAProgram = () => {
       >
         <img
           className="absolute h-full w-full object-cover -z-[99]"
-          src={
-            banner[0]?.url ||
-            "https://stealthlearn.in/imm-admin/api/uploads/680fd14484b0a.png"
-          }
+          src={bannerImage}
           alt="IMM Business School Campus"
         />
         <div className="absolute inset-0 bg-black/10 bg-gradient-to-r from-blue-900/60 to-blue-700/10"></div>
@@ -389,8 +429,10 @@ const BBAProgram = () => {
                 </Badge>
                 <h1 className="text-4xl text-shadow-lg md:text-5xl lg:text-6xl font-bold tracking-tight leading-tight">
                   AI & ML Infused{" "}
-                  <span className="text-amber-400 text-shadow-lg">BBA Program</span> in New
-                  Delhi
+                  <span className="text-amber-400 text-shadow-lg">
+                    BBA Program
+                  </span>{" "}
+                  in New Delhi
                 </h1>
                 <p className="text-lg md:text-xl text-shadow-md text-slate-100 max-w-2xl">
                   Prepare for the future of business with our innovative program
@@ -897,9 +939,24 @@ const BBAProgram = () => {
           >
             <Tabs defaultValue="curriculum" className="max-w-4xl mx-auto">
               <TabsList className="grid grid-cols-3 mb-8">
-                <TabsTrigger value="curriculum" className=" data-[state=active]:bg-blue-700 data-[state=active]:text-white">Curriculum</TabsTrigger>
-                <TabsTrigger value="faculty" className=" data-[state=active]:bg-blue-700 data-[state=active]:text-white">Faculty</TabsTrigger>
-                <TabsTrigger value="facilities" className=" data-[state=active]:bg-blue-700 data-[state=active]:text-white">Facilities</TabsTrigger>
+                <TabsTrigger
+                  value="curriculum"
+                  className=" data-[state=active]:bg-blue-700 data-[state=active]:text-white"
+                >
+                  Curriculum
+                </TabsTrigger>
+                <TabsTrigger
+                  value="faculty"
+                  className=" data-[state=active]:bg-blue-700 data-[state=active]:text-white"
+                >
+                  Faculty
+                </TabsTrigger>
+                <TabsTrigger
+                  value="facilities"
+                  className=" data-[state=active]:bg-blue-700 data-[state=active]:text-white"
+                >
+                  Facilities
+                </TabsTrigger>
               </TabsList>
               <TabsContent
                 value="curriculum"
@@ -1236,7 +1293,7 @@ const BBAProgram = () => {
             </p>
             <p className="text-lg leading-relaxed mb-8">
               Enrol today and start your exciting journey into the world of
-              business with us ! <br/> We can&apos;t wait to welcome you to IMM
+              business with us ! <br /> We can&apos;t wait to welcome you to IMM
               Business School, where your future begins.
             </p>
 

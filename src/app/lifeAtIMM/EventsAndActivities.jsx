@@ -32,13 +32,40 @@ import { useFetch } from "../../hooks/useFetch";
 
 const EventsAndActivities = () => {
   const { data } = useFetch("/api/indexBanner.php");
-  const [banner, setBanner] = useState([]);
+  const [bannerImage, setBannerImage] = useState(
+    "https://stealthlearn.in/imm-admin/api/uploads/680fd14484b0a.png"
+  ); // Default image
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   useEffect(() => {
     if (data) {
-      setBanner(data.filter((item) => item.category === "Events & Activities"));
+      const mobileImage = data.find(
+        (item) => item.category === "Events & Activities Mobile"
+      )?.url;
+      const desktopImage = data.find(
+        (item) => item.category === "Events & Activities"
+      )?.url;
+
+      if (isMobile && mobileImage) {
+        setBannerImage(mobileImage);
+      } else if (!isMobile && desktopImage) {
+        setBannerImage(desktopImage);
+      } else if (desktopImage) {
+        setBannerImage(desktopImage);
+      } else if (mobileImage) {
+        setBannerImage(mobileImage);
+      }
     }
-  }, [data]);
+  }, [data, isMobile]);
 
   const breadcrumbItems = [
     { href: "/", label: "Home" },
@@ -49,10 +76,7 @@ const EventsAndActivities = () => {
     <div className="relative min-h-screen">
       <ImgAndBreadcrumb
         title=""
-        imageSrc={
-          banner[0]?.url ||
-          "https://stealthlearn.in/imm-admin/api/uploads/680fd14484b0a.png"
-        }
+        imageSrc={bannerImage}
         imageAlt="Description of the image"
         breadcrumbItems={breadcrumbItems}
       />
@@ -133,7 +157,7 @@ function EventGallery() {
         const dateB = new Date(b.date);
         const createdAtA = new Date(a.created_at);
         const createdAtB = new Date(b.created_at);
-  
+
         if (dateA > dateB) return -1;
         if (dateA < dateB) return 1;
         if (createdAtA > createdAtB) return -1;
@@ -288,7 +312,11 @@ function EventGallery() {
                   <div className="flex items-center text-sm text-muted-foreground">
                     <Calendar className="mr-2 h-4 w-4" />
                     <time dateTime={selectedEvent.date}>
-                      {new Intl.DateTimeFormat('en-IN', { day: '2-digit', month: '2-digit', year: 'numeric' }).format(new Date(selectedEvent.date))}
+                      {new Intl.DateTimeFormat("en-IN", {
+                        day: "2-digit",
+                        month: "2-digit",
+                        year: "numeric",
+                      }).format(new Date(selectedEvent.date))}
                     </time>
                   </div>
                 </div>

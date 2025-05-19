@@ -11,13 +11,38 @@ import { cn } from "@/lib/utils";
 import { DotPattern } from "@/components/magicui/dot-pattern";
 const Pgdm = () => {
   const { data } = useFetch("/api/indexBanner.php");
-  const [banner, setBanner] = useState([]);
+  const [bannerImage, setBannerImage] = useState(
+    "https://stealthlearn.in/imm-admin/api/uploads/680fd14484b0a.png"
+  ); // Default image
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   useEffect(() => {
     if (data) {
-      setBanner(data.filter((item) => item.category === "PGDM"));
+      const mobileImage = data.find(
+        (item) => item.category === "PGDM Mobile"
+      )?.url;
+      const desktopImage = data.find((item) => item.category === "PGDM")?.url;
+
+      if (isMobile && mobileImage) {
+        setBannerImage(mobileImage);
+      } else if (!isMobile && desktopImage) {
+        setBannerImage(desktopImage);
+      } else if (desktopImage) {
+        setBannerImage(desktopImage);
+      } else if (mobileImage) {
+        setBannerImage(mobileImage);
+      }
     }
-  }, [data]);
+  }, [data, isMobile]);
 
   const breadcrumbItems = [
     { href: "/", label: "Home" },
@@ -28,10 +53,7 @@ const Pgdm = () => {
     <div className="relative min-h-screen">
       <ImgAndBreadcrumb
         title=""
-        imageSrc={
-          banner[0]?.url ||
-          "https://stealthlearn.in/imm-admin/api/uploads/680fd14484b0a.png"
-        }
+        imageSrc={bannerImage}
         imageAlt="Description of the image"
         breadcrumbItems={breadcrumbItems}
       />
@@ -82,7 +104,6 @@ const Pgdm = () => {
               <TabsContent value="pgdm" className="mt-6">
                 <div className="space-y-8 sm:px-4">
                   <PgdmProgramTab />
-                  
                 </div>
               </TabsContent>
 
@@ -95,8 +116,6 @@ const Pgdm = () => {
                   <ProjectTab />
                 </div>
               </TabsContent>
-
-              
             </Tabs>
           </div>
         </Container>{" "}

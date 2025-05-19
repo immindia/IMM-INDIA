@@ -51,13 +51,40 @@ const breadcrumbItems = [
 
 const IndustryVisit = () => {
   const { data } = useFetch("/api/indexBanner.php");
-  const [banner, setBanner] = useState([]);
+  const [bannerImage, setBannerImage] = useState(
+    "https://stealthlearn.in/imm-admin/api/uploads/680fd14484b0a.png"
+  ); // Default image
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   useEffect(() => {
     if (data) {
-      setBanner(data.filter((item) => item.category === "Industry Visits"));
+      const mobileImage = data.find(
+        (item) => item.category === "Industry Visits Mobile"
+      )?.url;
+      const desktopImage = data.find(
+        (item) => item.category === "Industry Visits"
+      )?.url;
+
+      if (isMobile && mobileImage) {
+        setBannerImage(mobileImage);
+      } else if (!isMobile && desktopImage) {
+        setBannerImage(desktopImage);
+      } else if (desktopImage) {
+        setBannerImage(desktopImage);
+      } else if (mobileImage) {
+        setBannerImage(mobileImage);
+      }
     }
-  }, [data]);
+  }, [data, isMobile]);
 
   const [searchTerm, setSearchTerm] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
@@ -148,10 +175,7 @@ const IndustryVisit = () => {
     <section className="relative min-h-screen">
       <ImgAndBreadcrumb
         title=""
-        imageSrc={
-          banner[0]?.url ||
-          "https://stealthlearn.in/imm-admin/api/uploads/680fd14484b0a.png"
-        }
+        imageSrc={bannerImage}
         imageAlt="Description of the image"
         breadcrumbItems={breadcrumbItems}
       />

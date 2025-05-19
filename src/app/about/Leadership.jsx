@@ -1,7 +1,6 @@
 import Heading from "../../components/Heading";
 import ImgAndBreadcrumb from "../../components/ImgAndBreadcrumb";
 import Container from "../../components/wrappers/Container";
-import img from "../../assets/about/AboutBanner.webp";
 // import Stats from "../../components/Stats";
 // import Newsletter from "../../components/Newsletter";
 // import AboutSidebar from "../../components/AboutSidebar";
@@ -22,12 +21,42 @@ import PropTypes from "prop-types";
 
 const Leadership = () => {
   const { data } = useFetch("/api/indexBanner.php");
-  const [banner, setBanner] = useState([]);
-    useEffect(() => {
-      if (data) {
-        setBanner(data.filter((item) => item.category === "Leadership"));
+  const [bannerImage, setBannerImage] = useState(
+    "https://stealthlearn.in/imm-admin/api/uploads/680fd14484b0a.png"
+  ); // Default image
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  useEffect(() => {
+    if (data) {
+      const mobileImage = data.find(
+        (item) => item.category === "Leadership Mobile"
+      )?.url;
+      const desktopImage = data.find(
+        (item) => item.category === "Leadership"
+      )?.url;
+
+      if (isMobile && mobileImage) {
+        setBannerImage(mobileImage);
+      } else if (!isMobile && desktopImage) {
+        setBannerImage(desktopImage);
       }
-    }, [data]);
+      // Optional: Fallback to a general category image if specific ones are not found
+      // else if (desktopImage) { // Fallback to desktop if mobile-specific not found on mobile
+      //   setBannerImage(desktopImage);
+      // } else if (mobileImage) { // Fallback to mobile if desktop-specific not found on desktop
+      //  setBannerImage(mobileImage);
+      // }
+    }
+  }, [data, isMobile]);
 
   const breadcrumbItems = [
     { href: "/", label: "Home" },
@@ -38,7 +67,7 @@ const Leadership = () => {
     <div className="relative min-h-screen ">
       <ImgAndBreadcrumb
         title=""
-        imageSrc={banner[0]?.url || "https://stealthlearn.in/imm-admin/api/uploads/680fd14484b0a.png"}
+        imageSrc={bannerImage}
         imageAlt="Description of the image"
         breadcrumbItems={breadcrumbItems}
       />
@@ -154,22 +183,19 @@ const LeaderCard = ({ leader, onReadMore, index }) => {
             <p className="text-gray-600 mb-4">{leader.position}</p>
           </div>
 
-          
-            <a
-              href={leader.linkedin || "javascript:void(0)"}
-              // target="_blank"
-              rel="noopener noreferrer"
-              className="hover:scale-110 transition-all duration-300"
-              
-            >
-              <img
-                width="48"
-                height="48"
-                src="https://img.icons8.com/color/48/linkedin.png"
-                alt="linkedin"
-              />
-            </a>
-     
+          <a
+            href={leader.linkedin || "javascript:void(0)"}
+            // target="_blank"
+            rel="noopener noreferrer"
+            className="hover:scale-110 transition-all duration-300"
+          >
+            <img
+              width="48"
+              height="48"
+              src="https://img.icons8.com/color/48/linkedin.png"
+              alt="linkedin"
+            />
+          </a>
         </div>
       </CardContent>
       <CardFooter className="p-6 pt-0">

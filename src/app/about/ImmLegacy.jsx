@@ -13,12 +13,42 @@ import building from "../../assets/Building.webp";
 import { useFetch } from "../../hooks/useFetch";
 const ImmLegacy = () => {
   const { data } = useFetch("/api/indexBanner.php");
-  const [banner, setBanner] = useState([]);
+  const [bannerImage, setBannerImage] = useState(
+    "https://stealthlearn.in/imm-admin/api/uploads/680fd14484b0a.png"
+  ); // Default image
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   useEffect(() => {
     if (data) {
-      setBanner(data.filter((item) => item.category === "IMM Legacy" || item.category === "IMM Legacy Mobile"));
+      const mobileImage = data.find(
+        (item) => item.category === "IMM Legacy Mobile"
+      )?.url;
+      const desktopImage = data.find(
+        (item) => item.category === "IMM Legacy"
+      )?.url;
+
+      if (isMobile && mobileImage) {
+        setBannerImage(mobileImage);
+      } else if (!isMobile && desktopImage) {
+        setBannerImage(desktopImage);
+      } else if (desktopImage) {
+        // Fallback to desktop if mobile-specific not found on mobile
+        setBannerImage(desktopImage);
+      } else if (mobileImage) {
+        // Fallback to mobile if desktop-specific not found on desktop
+        setBannerImage(mobileImage);
+      }
     }
-  }, [data]);
+  }, [data, isMobile]);
 
   const breadcrumbItems = [
     { href: "/", label: "Home" },
@@ -29,10 +59,7 @@ const ImmLegacy = () => {
     <div className="relative min-h-screen">
       <ImgAndBreadcrumb
         title=""
-        imageSrc={
-          window.innerWidth < 768 ? banner[0]?.url : banner[1]?.url ||
-          "https://stealthlearn.in/imm-admin/api/uploads/680fd14484b0a.png"
-        }
+        imageSrc={bannerImage}
         imageAlt="Description of the image"
         breadcrumbItems={breadcrumbItems}
       />
