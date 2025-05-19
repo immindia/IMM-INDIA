@@ -144,7 +144,7 @@ const BBAProgram = () => {
   });
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen overflow-x-hidden  ">
       {/* Enquiry Form Toggle Button - Sticky */}
       <div className="fixed right-0 top-1/2 z-50 transform -translate-y-1/2">
         <button

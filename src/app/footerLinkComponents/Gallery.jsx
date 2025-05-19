@@ -4,8 +4,49 @@ import ImgAndBreadcrumb from "../../components/ImgAndBreadcrumb";
 import Container from "../../components/wrappers/Container";
 import img from "../../assets/banner/GalleryBanner.jpg";
 import PropTypes from "prop-types";
+import { useFetch } from "../../hooks/useFetch";
 
 const Gallery = () => {
+
+
+  const { data } = useFetch("/api/indexBanner.php");
+  const [bannerImage, setBannerImage] = useState(
+    "https://stealthlearn.in/imm-admin/api/uploads/680fd14484b0a.png"
+  ); // Default image
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  useEffect(() => {
+    if (data) {
+      const mobileImage = data.find(
+        (item) => item.category === "State-of-the Art Campus Mobile"
+      )?.url;
+      const desktopImage = data.find(
+        (item) => item.category === "State-of-the Art Campus"
+      )?.url;
+
+      if (isMobile && mobileImage) {
+        setBannerImage(mobileImage);
+      } else if (!isMobile && desktopImage) {
+        setBannerImage(desktopImage);
+      } else if (desktopImage) {
+        setBannerImage(desktopImage);
+      } else if (mobileImage) {
+        setBannerImage(mobileImage);
+      }
+    }
+  }, [data, isMobile]);
+
+
+
   const [selectedImage, setSelectedImage] = useState(null);
   const [galleryImages, setGalleryImages] = useState([]);
   const [categories, setCategories] = useState([]);
@@ -97,8 +138,8 @@ const Gallery = () => {
   return (
     <div className="relative min-h-screen">
       <ImgAndBreadcrumb
-        title="State-of-the Art Campus"
-        imageSrc={img}
+        title=""
+        imageSrc={bannerImage}
         imageAlt="Description of the image"
         breadcrumbItems={breadcrumbItems}
       />
