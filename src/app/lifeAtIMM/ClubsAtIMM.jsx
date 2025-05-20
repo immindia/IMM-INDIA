@@ -19,6 +19,7 @@ import {
   Globe,
   BookOpen,
   Trophy,
+  ChartSpline
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
@@ -128,7 +129,7 @@ const clubs = [
 const clubIcons = {
   "All Clubs": Calendar,
   "IT Club": Laptop,
-  "Marketing Club": Music,
+  "Marketing Club": ChartSpline,
   "Finance Club": Coins,
   "HR Club": Users,
   "Operations Club": Box,
@@ -281,10 +282,10 @@ function EventGallery() {
               </div>
             </CardHeader>
             <CardContent className="p-4">
-              <div className="flex items-center gap-2 text-sm text-muted-foreground mb-2">
+              {/* <div className="flex items-center gap-2 text-sm text-muted-foreground mb-2">
                 <Calendar className="w-4 h-4" />
                 <time dateTime={event.date}>{event.date}</time>
-              </div>
+              </div> */}
               <h3 className="text-xl font-bold mb-2 line-clamp-1 hover:text-primary-color duration-300 transition-all hover:line-clamp-none">
                 {event.title}
               </h3>
@@ -298,7 +299,7 @@ function EventGallery() {
                 className="w-full bg-primary-color"
                 onClick={() => handleImageClick(event)}
               >
-                <Link href={event.href}>View Gallery</Link>
+                <Link href={event.href}>View</Link>
               </Button>
             </CardFooter>
           </Card>

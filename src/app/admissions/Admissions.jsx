@@ -6,6 +6,7 @@ import ProcessAndFees from "./ProcessAndFees";
 import { useState, useEffect } from "react";
 
 import { useFetch } from "../../hooks/useFetch";
+import Magnet from "../../../yes/Magnet/Magnet";
 
 const Admissions = () => {
   const { data } = useFetch("/api/indexBanner.php");
@@ -75,6 +76,26 @@ const Admissions = () => {
           />
         </div> */}
       </Container>
+
+
+      <div className="fixed -right-10 top-1/2 z-50 transform -translate-y-1/2">
+        <Magnet
+          padding={150}
+          disabled={window.innerWidth < 768 ? true : false}
+          magnetStrength={2}
+          className=""
+        >
+          <button
+            onClick={() => {
+              window.location.href = "https://admissions.immindia.edu.in/";
+            }}
+            target="_blank"
+            className={`flex items-center rotate-[270deg] bg-blue-600 hover:bg-blue-700 text-white px-4 pt-2 pb-5 rounded-lg drop-shadow-lg transition-all duration-300 animate-pulse `}
+          >
+            Apply Now
+          </button>
+        </Magnet>
+      </div>
     </div>
   );
 };

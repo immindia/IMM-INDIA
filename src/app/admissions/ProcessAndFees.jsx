@@ -16,12 +16,12 @@ const steps = [
     title: "ADMISSION",
     content: [
       "Fill the Form Online or at the Campus.",
-      "Application Fee 900/- (Online Mode) Apply now",
+      "Application Fee ₹900.",
       "Submit the necessary documents for 10th, 12th, and graduation.",
       "Submit your CAT / MAT / XAT / ATMA / CMAT / GMAT score.",
       "Attend the IMM PGDM GD/PI process.",
       "Follow the admission registration procedure in case selected by IMM Admission Committee.",
-      "Preference will be given to work experience candidates",
+      "Preference will be given to work experience candidates.",
     ],
   },
   {
