@@ -208,7 +208,6 @@ export default function Testimonial() {
             </span>
 
             {/* Orbiting Circles */}
-            <div></div>
             {testimonials.map((testimonial, index) => (
               <OrbitingCircles
                 key={testimonial.id}
@@ -247,28 +246,26 @@ export default function Testimonial() {
             </span>
 
             {/* Orbiting Circles */}
-            <div>
-              {testimonials.map((testimonial, index) => (
-                <OrbitingCircles
-                  key={testimonial.id}
-                  className="size-[50px] border-none overflow-hidden"
-                  radius={index % 2 === 0 ? 90 : 140} // Adjust radius for alternate circles
-                  duration={20}
-                  delay={index * 5} // Use index to stagger delays
-                  reverse={index % 2 === 1} // Reverse effect for alternate circles
-                >
-                  <img
-                    src={testimonial.image}
-                    alt={`Person ${index + 1}`}
-                    className={`w-[50px] cursor-pointer transition-opacity rounded-full border border-blue-900 duration-300 ${
-                      fade ? "opacity-0" : "opacity-100"
-                    }`}
-                    onClick={() => handleOrbitingCircleClick(index)} // Update click handler
-                    onError={handleImageError}
-                  />
-                </OrbitingCircles>
-              ))}
-            </div>
+            {testimonials.map((testimonial, index) => (
+              <OrbitingCircles
+                key={testimonial.id}
+                className="size-[50px] border-none overflow-hidden"
+                radius={index % 2 === 0 ? 90 : 140} // Adjust radius for alternate circles
+                duration={20}
+                delay={index * 5} // Use index to stagger delays
+                reverse={index % 2 === 1} // Reverse effect for alternate circles
+              >
+                <img
+                  src={testimonial.image}
+                  alt={`Person ${index + 1}`}
+                  className={`w-[50px] cursor-pointer transition-opacity rounded-full border border-blue-900 duration-300 ${
+                    fade ? "opacity-0" : "opacity-100"
+                  }`}
+                  onClick={() => handleOrbitingCircleClick(index)} // Update click handler
+                  onError={handleImageError}
+                />
+              </OrbitingCircles>
+            ))}
           </div>
 
           <div className="w-full h-full">
