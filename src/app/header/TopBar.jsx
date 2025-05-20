@@ -115,12 +115,12 @@ const TopBar = () => {
           </div>
         </div>          
 
-        <div className="flex items-center gap-16" >
+        {/* <div className="flex items-center gap-10" > */}
           {/* Marquee */}
           <div className="text-pink-700 justify-center items-center bg-slate-50 p-3 gap-2 rounded-full border shadow-sm flex max-w-xl overflow-hidden">
             <div className="h-2 w-2 bg-pink-900 rounded-full animate-ping"></div>
             <marquee className="font-bold" behavior="scroll" direction="left">
-              Admissions Open for PGDM 2025 |  Admissions Open for PGDM 2025 | Admissions Open for PGDM 2025 | Admissions Open for PGDM 2025 | Admissions Open for PGDM 2025 | Admissions Open for PGDM 2025 | Admissions Open for PGDM 2025 | Admissions Open for PGDM 2025
+             Phase 3 Applications Closed for PGDM 2025-2027
             </marquee>
           </div>
 
@@ -202,7 +202,7 @@ const TopBar = () => {
           </PulsatingButton>
           </Link> */}
           </div>
-        </div>
+        {/* </div> */}
       </div>
     </div>
   );

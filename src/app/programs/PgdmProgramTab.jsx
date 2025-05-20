@@ -46,18 +46,13 @@ const PgdmProgram = () => {
           )}
         </button>
       </div>
-      <div className="sm:hidden">
-        <SemesterTabMobile />
-      </div>
-      <div className="hidden sm:block">
-        <SemesterTabs />
-      </div>
+      
 
-      <div className="sm:mt-16 pt-10 grid sm:grid-cols-2 gap-4">
+      <div className=" pt-10 grid sm:grid-cols-2 gap-4">
         <div className="order-2 sm:order-1">
           <PgdmSpecialization />
         </div>
-        <div className="order-1 sm:order-2 sm:pt-20">
+        <div className="order-1 sm:order-2 sm:pt- grid justify-center items-center">
           <div className="text-justify sm:text-left lg:px-20">
             <p className="opacity-75 text-center sm:text-left uppercase">
               SPECIALIZATIONS
@@ -67,21 +62,22 @@ const PgdmProgram = () => {
               <span className="inline-flex w-3 h-3 rounded-full bg-pink-800 ml-2"></span>
             </h1>
             <p className=" text-lg sm:text-xl leading-normal opacity-75 mt-4 mb-6 backdrop-blur-sm">
-              Our PGDM program offers cutting-edge specializations in emerging
-              technologies and modern business practices. Students gain
-              expertise in Data Science, Machine Learning, Python, R
-              Programming, and more.
+            Our PGDM prog offers cutting edge specializations in emerging technologies and modern business practices .
             </p>
             <p className="opacity-50 text-sm lg:mx backdrop-blur-sm">
-              The dual specialization approach allows students to combine
-              traditional management skills with technical expertise, preparing
-              them for leadership roles in the digital age.
+            We offer seven future-focused specializations — Marketing, Human Resources, Finance, Operations, International Business, Business Analytics, and Entrepreneurship — complemented by a range of globally recognized certifications. Our forward-looking curriculum seamlessly integrates technology with business strategy, empowering you to thrive in an ever-evolving digital landscape. With immersive learning in the dynamic visualisations through Power BI, advanced data analysis using Python and R,*and *experiential learning in metaverse you’ll graduate with the cutting-edge skills and innovative mindset needed to lead in a data-driven world.
             </p>
           </div>
         </div>
       </div>
       <div className="">
         <PgdmFeatures />
+      </div>
+      <div className="sm:hidden mt-10 sm:mt-20">
+        <SemesterTabMobile /> 
+      </div>
+      <div className="hidden sm:block mt-10 sm:mt-20">
+        <SemesterTabs />
       </div>
     </section>
   );

@@ -1,5 +1,5 @@
 "use client";
-
+ import celebratingSuccess  from "../../../assets/bba/celebratingsuccess.webp"
 import { useState } from "react";
 
 import { motion } from "framer-motion";
@@ -31,7 +31,7 @@ const images = [
   },
   {
     id: 4,
-    src: "https://www.immindia.edu.in/images/Divas%20(1).png",
+    src: celebratingSuccess,
     alt: "Graduation ceremony",
     title: "Celebrating Success",
     description:

@@ -10,6 +10,8 @@ import MV from "@/assets/pgdm/MV.gif";
 import DT from "@/assets/pgdm/DT.gif";
 import R from "@/assets/pgdm/R.gif";
 import python from "@/assets/pgdm/Python Logo.mp4";
+import logo from "@/assets/pgdm/imm.jpg";
+import aicte from "@/assets/pgdm/aicet.png";
 
 const Circle = forwardRef(({ className, children }, ref) => {
   return (
@@ -30,7 +32,7 @@ Circle.displayName = "Circle";
 export default function PgdmSpecialization() {
   // Create refs for each circle
   const containerRef = useRef(null);
-  const circleRefs = Array(7)
+  const circleRefs = Array(8)
     .fill(null)
     .map(() => useRef(null));
 
@@ -39,7 +41,7 @@ export default function PgdmSpecialization() {
       className="relative flex items-center justify-center w-full py-2 sm:p-20 sm:bg-background  sm:shadow-lg my-5 rounded-lg"
       ref={containerRef}
     >
-      <div className="flex size-full flex-col max-w-lg max-h-[350px] items-stretch justify-between gap-14">
+      <div className="flex size-full flex-col max-w-lg max-h-[550px] sm:-mt-10 sm:py-10 items-stretch justify-between gap-20">
         {/* Top Row */}
         <div className="flex flex-row items-center justify-between">
           <Circle
@@ -47,18 +49,19 @@ export default function PgdmSpecialization() {
             className="relative flex flex-col items-center justify-center"
           >
             <Icons.dataScience />
-            <p className="text-sm font-medium text-center mt-28 text-slate-500 w-max ">
+            <p className="text-sm font-medium text-center mt-36 text-slate-500 w-max ">
               {/* Data Science */}
-              Marketing &  <br /> Innovation Management
+              Marketing &  <br /> Innovation  <br /> Management
             </p>
           </Circle>
+          <img src={aicte} alt="aicte" className="w-20 h-20 drop-shadow-lg  hover:scale-110 transition-all duration-300 hover:drop-shadow-[0_0_20px_-12px_rgba(0,0,0,0.8)]" />
           <Circle
             ref={circleRefs[4]}
             className="relative flex flex-col items-center justify-center"
           >
             <Icons.python />
-            <p className="text-sm font-medium text-center mt-28 text-slate-500 w-max">
-              Python
+            <p className="text-sm font-medium text-center mt-36 text-slate-500 w-max">
+            Financial <br /> Management
             </p>
           </Circle>
         </div>
@@ -70,17 +73,17 @@ export default function PgdmSpecialization() {
             className="relative flex flex-col items-center justify-center"
           >
             <Icons.designThinking />
-            <p className="text-sm font-medium text-center mt-28 text-slate-500 w-max ">
-              Design Thinking
+            <p className="text-sm font-medium text-center mt-36 text-slate-500 w-max ">
+            Human Resource <br /> Management
             </p>
           </Circle>
           <Circle
             ref={circleRefs[3]}
-            className="relative flex flex-col items-center justify-center"
+            className="relative flex flex-col items-center justify-center bg-[#F7F7F7]"
           >
-            <Icons.pgdm />
-            <p className="text-sm font-medium text-center mt-28 text-slate-500 w-max ">
-              PGDM Tools
+            <Icons.imm />
+            <p className="text-sm font-medium text-center mt-40 bg-white border  rounded-lg p-1 text-slate-500 w-max ">
+              PGDM <br /> Specialization
             </p>
           </Circle>
           <Circle
@@ -88,8 +91,8 @@ export default function PgdmSpecialization() {
             className="relative flex flex-col items-center justify-center"
           >
             <Icons.machineLearning />
-            <p className="text-sm font-medium text-center mt-28 text-slate-500 w-max ">
-              Machine Learning
+            <p className="text-sm font-medium text-center mt-36 text-slate-500 w-max ">
+            Business  <br /> Analytics & <br /> Research
             </p>
           </Circle>
         </div>
@@ -101,8 +104,8 @@ export default function PgdmSpecialization() {
             className="relative flex flex-col items-center justify-center"
           >
             <Icons.metaverse />
-            <p className="text-sm font-medium text-center mt-28 text-slate-500 w-max ">
-              Metaverse 2.0
+            <p className="text-sm font-medium text-center mt-36 text-slate-500 w-max ">
+            International  <br /> Business <br /> Management
             </p>
           </Circle>
           <Circle
@@ -110,8 +113,17 @@ export default function PgdmSpecialization() {
             className="relative flex flex-col items-center justify-center"
           >
             <Icons.rProgramming />
-            <p className="text-sm font-medium text-center mt-28 text-slate-500 w-max ">
-              R Programming
+            <p className="text-sm font-medium text-center mt-36 text-slate-500 w-max ">
+            Entrepreneurship <br /> Management
+            </p>
+          </Circle>
+          <Circle
+            ref={circleRefs[7]}
+            className="relative flex flex-col items-center justify-center"
+          >
+            <Icons.pgdm />
+            <p className="text-sm font-medium text-center mt-36 text-slate-500 w-max ">
+            Operations & <br /> Supply Chain <br /> Management
             </p>
           </Circle>
         </div>
@@ -125,6 +137,7 @@ export default function PgdmSpecialization() {
         { from: 4, to: 3, curvature: -75, endYOffset: -10, reverse: true },
         { from: 5, to: 3, reverse: true },
         { from: 6, to: 3, curvature: 75, endYOffset: 10, reverse: true },
+        { from: 7, to: 3, curvature: 75, endYOffset: 10 },
       ].map((beam, index) => (
         <AnimatedBeam
           key={index}
@@ -161,6 +174,9 @@ const Icons = {
       alt="ML"
       className="absolute top-0 left-0 w-full h-full p-3"
     />
+  ),
+  imm: () => (
+    <img src={logo} alt="imm" className="absolute top-0 left-0 w-full h-full p-3" />
   ),
   designThinking: () => (
     <img

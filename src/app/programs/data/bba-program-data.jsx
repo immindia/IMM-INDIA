@@ -21,7 +21,7 @@ import curriculum from "@/assets/programsoffered.webp"
 import mcips from "@/assets/bba/mcips.png"
 import industryImmersion from "@/assets/bba/industry-integration.png"
 import innovativeTeaching from "@/assets/bba/innovative-teaching.jpg"
-import bbaFaculty from "@/assets/bba/bbafaculty.webp"
+import bbaFaculty from "@/assets/bba/faculty.jpg"
 // Specializations data
 export const specializations = [
   {
@@ -92,7 +92,7 @@ export const features = [
   },
   
   {
-    title: "MCIPPS",
+    title: "CORPORATE IMMERSION PROGRAM",
     description: "Gain practical, hands-on experience through our unique corporate immersion programme.",
     icon: <FileText className="h-10 w-10 text-white" />,
     imageUrl: mcips,
