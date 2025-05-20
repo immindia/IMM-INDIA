@@ -16,6 +16,7 @@ import LiveProjects from "./LiveProjects";
 import HeroSlider from "./HeroSlider";
 import Placements from "./Placements";
 import OurPartners from "./OurPartners";
+import Magnet from "../../../yes/Magnet/Magnet";
 // import AwardsThreeD from "./AwardsThreeD";
 // const sectionVariants = {
 //   hidden: { scale: 0.8, opacity: 0 },
@@ -86,6 +87,42 @@ const Landing = () => {
 
   return (
     <div className="overflow-x-hidden">
+      <div className="fixed -right-9 top-[40vh] z-50 transform -translate-y-1/2 animate-pulse">
+        <Magnet
+          padding={150}
+          disabled={window.innerWidth < 768 ? true : false}
+          magnetStrength={20}
+          className=""
+        >
+          <button
+            onClick={() => {
+              window.location.href = "https://admissions.immindia.edu.in/";
+            }}
+            target="_blank"
+            className={`flex items-center  rotate-[270deg] bg-red-800 hover:bg-red-900 text-white px-4 pt-2 pb-5 rounded-lg drop-shadow-lg transition-all duration-300 animate-pulse font-semibold`}
+          >
+            Apply Now
+          </button>
+        </Magnet>
+      </div>
+      <div className="fixed -right-[4.2rem] top-[65vh] z-50 transform -translate-y-1/2">
+        <Magnet
+          padding={150}
+          disabled={window.innerWidth < 768 ? true : false}
+          magnetStrength={20}
+          className=""
+        >
+          <button
+            onClick={() => {
+              window.location.href = "https://admissions.immindia.edu.in/";
+            }}
+            target="_blank"
+            className={`flex items-center rotate-[270deg] bg-red-800 hover:bg-red-900 text-white px-4 pt-2 pb-5 rounded-lg drop-shadow-lg transition-all duration-300 animate-pulse font-semibold`}
+          >
+            Download Brochure
+          </button>
+        </Magnet>
+      </div>
       {/* <motion.div
         ref={heroRef}
         variants={sectionVariants}

@@ -22,7 +22,8 @@ import industryImmersion from "@/assets/bba/industry-integration.png"
 import mcips from "@/assets/bba/mcips.png"
 // import industryImmersion from "@/assets/bba/industry-integration.png"
 import innovativeTeaching from "@/assets/bba/innovative-teaching.jpg"
-import bbaFaculty from "@/assets/bba/faculty.jpg"
+
+import bbaFaculty from "@/assets/bba/bbafaculty.webp"
 // Specializations data
 export const specializations = [
   {

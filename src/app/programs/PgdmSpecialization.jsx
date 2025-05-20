@@ -150,9 +150,9 @@ export default function PgdmSpecialization() {
         { from: 0, to: 3, curvature: -75, endYOffset: -10 },
         { from: 1, to: 3 },
         { from: 2, to: 3, curvature: 75, endYOffset: 10 },
-        { from: 4, to: 3, curvature: -75, endYOffset: -10, reverse: true },
-        { from: 5, to: 3, reverse: true },
-        { from: 6, to: 3, curvature: 75, endYOffset: 10, reverse: true },
+        { from: 4, to: 3, curvature: -75, endYOffset: -10, },
+        { from: 5, to: 3, },
+        { from: 6, to: 3, curvature: 75, endYOffset: 10,},
         { from: 7, to: 3, curvature: 75, endYOffset: 10 },
       ].map((beam, index) => (
         <AnimatedBeam
