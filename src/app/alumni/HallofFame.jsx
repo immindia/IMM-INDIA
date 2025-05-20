@@ -13,7 +13,7 @@ import divas from "../../assets/alumni/divas.webp";
 const breadcrumbItems = [
   { href: "/", label: "Home" },
   { href: "/alumni", label: "Alumni" },
-  { label: "Hall of Fame" },
+  { label: "Dazzling Divas & Hall of Fame" },
 ];
 export default function HallofFame() {
   const [alumniData, setAlumniData] = useState([]);
@@ -40,10 +40,10 @@ export default function HallofFame() {
   useEffect(() => {
     if (data) {
       const mobileImage = data.find(
-        (item) => item.category === "Hall of Fame Mobile"
+        (item) => item.category === "Dazzling Divas & Hall of Fame Mobile"
       )?.url;
       const desktopImage = data.find(
-        (item) => item.category === "Hall of Fame"
+        (item) => item.category === "Dazzling Divas & Hall of Fame"
       )?.url;
 
       if (isMobile && mobileImage) {
@@ -143,7 +143,7 @@ export default function HallofFame() {
   return (
     <div className="relative min-h-screen">
       <ImgAndBreadcrumb
-        title="Hall of Fame"
+        title="Dazzling Divas & Hall of Fame"
         imageSrc={bannerImage}
         imageAlt="Description of the image"
         breadcrumbItems={breadcrumbItems}
