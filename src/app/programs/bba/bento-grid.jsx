@@ -8,6 +8,7 @@ const BentoGrid = ({ features }) => {
   const getGridClass = (index, size) => {
     if (size === "large") return "md:col-span-2 md:row-span-2";
     if (size === "medium") return "md:col-span-2 md:row-span-1 ";
+    // if (size === "medium-small") return "md:col-span-2 h-80 ";
     if (size === "") return "md:col-span-3 md:row-span-1";
     return "md:col-span-1 md:row-span-1";
   };

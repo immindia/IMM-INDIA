@@ -16,10 +16,11 @@ import {
 } from "lucide-react"
 
 import logo from "@/assets/about/accreditations/logos-2.png";
-import curriculum from "@/assets/programsoffered.webp"
-
-import mcips from "@/assets/bba/mcips.png"
+// import curriculum from "@/assets/programsoffered.webp"
+import curriculum from "@/assets/bba/bbaStudents.jpg"
 import industryImmersion from "@/assets/bba/industry-integration.png"
+import mcips from "@/assets/bba/mcips.png"
+// import industryImmersion from "@/assets/bba/industry-integration.png"
 import innovativeTeaching from "@/assets/bba/innovative-teaching.jpg"
 import bbaFaculty from "@/assets/bba/faculty.jpg"
 // Specializations data

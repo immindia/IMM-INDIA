@@ -55,7 +55,7 @@ export default function OurPartnersDetail() {
     }
   }, [data, isMobile]);
 
-  const [isLoaded, setIsLoaded] = useState(false);
+  const [isLoaded, setIsLoaded] = useState(true);
   const breadcrumbItems = [
     { href: "/", label: "Home" },
     { href: "/about/imm-partners", label: "About" },

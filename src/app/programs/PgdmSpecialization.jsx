@@ -44,6 +44,7 @@ export default function PgdmSpecialization() {
       <div className="flex size-full flex-col max-w-lg max-h-[550px] sm:-mt-10 sm:py-10 items-stretch justify-between gap-20">
         {/* Top Row */}
         <div className="flex flex-row items-center justify-between">
+          <a href="#Marketing & Innovation Management">
           <Circle
             ref={circleRefs[0]}
             className="relative flex flex-col items-center justify-center"
@@ -54,7 +55,9 @@ export default function PgdmSpecialization() {
               Marketing &  <br /> Innovation  <br /> Management
             </p>
           </Circle>
+          </a>
           <img src={aicte} alt="aicte" className="w-20 h-20 drop-shadow-lg  hover:scale-110 transition-all duration-300 hover:drop-shadow-[0_0_20px_-12px_rgba(0,0,0,0.8)]" />
+          <a href="#Financial Management">
           <Circle
             ref={circleRefs[4]}
             className="relative flex flex-col items-center justify-center"
@@ -64,10 +67,12 @@ export default function PgdmSpecialization() {
             Financial <br /> Management
             </p>
           </Circle>
+          </a>
         </div>
 
         {/* Middle Row */}
         <div className="flex flex-row items-center justify-between ">
+          <a href="#Human Resource Management">
           <Circle
             ref={circleRefs[1]}
             className="relative flex flex-col items-center justify-center"
@@ -77,6 +82,8 @@ export default function PgdmSpecialization() {
             Human Resource <br /> Management
             </p>
           </Circle>
+          </a>
+          <a href="#Business Analytics & Research">
           <Circle
             ref={circleRefs[3]}
             className="relative flex flex-col items-center justify-center bg-[#F7F7F7]"
@@ -86,6 +93,8 @@ export default function PgdmSpecialization() {
               PGDM <br /> Specialization
             </p>
           </Circle>
+          </a>
+          <a href="#International Business Management">
           <Circle
             ref={circleRefs[5]}
             className="relative flex flex-col items-center justify-center"
@@ -95,10 +104,12 @@ export default function PgdmSpecialization() {
             Business  <br /> Analytics & <br /> Research
             </p>
           </Circle>
+          </a>
         </div>
 
         {/* Bottom Row */}
         <div className="flex flex-row items-center justify-between">
+          <a href="#International Business Management">
           <Circle
             ref={circleRefs[2]}
             className="relative flex flex-col items-center justify-center"
@@ -108,6 +119,8 @@ export default function PgdmSpecialization() {
             International  <br /> Business <br /> Management
             </p>
           </Circle>
+          </a>
+          <a href="#Entrepreneurship Management">
           <Circle
             ref={circleRefs[6]}
             className="relative flex flex-col items-center justify-center"
@@ -117,6 +130,8 @@ export default function PgdmSpecialization() {
             Entrepreneurship <br /> Management
             </p>
           </Circle>
+          </a>
+          <a href="#Operations & Supply Chain Management">
           <Circle
             ref={circleRefs[7]}
             className="relative flex flex-col items-center justify-center"
@@ -126,6 +141,7 @@ export default function PgdmSpecialization() {
             Operations & <br /> Supply Chain <br /> Management
             </p>
           </Circle>
+          </a>
         </div>
       </div>
 

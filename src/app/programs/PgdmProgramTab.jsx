@@ -70,7 +70,7 @@ const PgdmProgram = () => {
           </div>
         </div>
       </div>
-      <div className="">
+      <div className=" mt-10 sm:mt-20">
         <PgdmFeatures />
       </div>
       <div className="sm:hidden mt-10 sm:mt-20">

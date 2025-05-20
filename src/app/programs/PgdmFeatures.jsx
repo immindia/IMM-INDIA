@@ -61,8 +61,9 @@ const FeatureItem = ({ feature, index }) => {
   const [isExpanded, setIsExpanded] = useState(false);
 
   return (
-    <div className="grid grid-cols-12 mx-0 mb-6 md:mb-0">
+    <div className="grid grid-cols-12 mx-0 mb-6 md:mb-0" id={feature.title}>
       <div
+        
         className={cn("col-span-12 md:col-span-6 relative z-20 p-0", {
           "md:order-2": index % 2,
         })}

@@ -457,7 +457,7 @@ const BBAProgram = () => {
               FAQ
             </Badge>
             <h2 className="text-3xl font-bold text-white mb-6">
-              We guarantee you the finest & quality business education
+              We assure you the finest & quality business education
             </h2>
           </motion.div>
 
