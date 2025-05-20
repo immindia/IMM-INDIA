@@ -73,7 +73,7 @@ export default function PlacementGrid() {
             transition={{ duration: 0.5 }}
           >
             <h1 className="text-4xl font-bold text-gray-900 mb-4">
-              Summer Placement Highlights
+              Final Placement Highlights
             </h1>
             <p className="text-xl text-gray-600">
               Our talented students securing positions at leading companies

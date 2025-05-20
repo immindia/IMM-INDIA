@@ -295,18 +295,7 @@ export default function RecruitAndPartner() {
                               <FormItem className="flex items-center space-x-3 space-y-0 p-3 rounded-lg hover:bg-pink-50 transition-colors">
                                 <FormControl>
                                   <RadioGroupItem
-                                    value="hireIntern"
-                                    className="text-pink-600"
-                                  />
-                                </FormControl>
-                                <FormLabel className="font-normal text-pink-800 cursor-pointer">
-                                  Hire Intern
-                                </FormLabel>
-                              </FormItem>
-                              <FormItem className="flex items-center space-x-3 space-y-0 p-3 rounded-lg hover:bg-pink-50 transition-colors">
-                                <FormControl>
-                                  <RadioGroupItem
-                                    value="fullTimeJob"
+                                    value="Full-Time Job"
                                     className="text-pink-600"
                                   />
                                 </FormControl>
@@ -317,12 +306,24 @@ export default function RecruitAndPartner() {
                               <FormItem className="flex items-center space-x-3 space-y-0 p-3 rounded-lg hover:bg-pink-50 transition-colors">
                                 <FormControl>
                                   <RadioGroupItem
-                                    value="collaborate"
+                                    value="Hire Intern"
                                     className="text-pink-600"
                                   />
                                 </FormControl>
                                 <FormLabel className="font-normal text-pink-800 cursor-pointer">
-                                  Collaborate with us
+                                  Hire Intern
+                                </FormLabel>
+                              </FormItem>
+                              
+                              <FormItem className="flex items-center space-x-3 space-y-0 p-3 rounded-lg hover:bg-pink-50 transition-colors">
+                                <FormControl>
+                                  <RadioGroupItem
+                                    value="live Project/Industry Session"
+                                    className="text-pink-600"
+                                  />
+                                </FormControl>
+                                <FormLabel className="font-normal text-pink-800 cursor-pointer">
+                                  Live Project / Industry Session
                                 </FormLabel>
                               </FormItem>
                             </RadioGroup>
