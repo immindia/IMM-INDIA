@@ -155,7 +155,7 @@ export default function OurPartnersDetail() {
             titleClassName="text-primary-color text-center lg:text-5xl"
             subtitleClassName="text-gray-500 text-center m-0 lg:text-lg lg:font-normal lg:max-w-full"
             subtitle="As a leading service provider, we are committed to collaborating with industry experts to deliver exceptional solutions that drive business success."
-            className="pt-1 mx-auto"
+            className="pt-12 mx-auto"
           />
 
           <div className="space-y-12 md:space-y-16 -mt-6">

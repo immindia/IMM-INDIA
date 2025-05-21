@@ -12,9 +12,25 @@ export default function SemesterTabMobile() {
 
   return (
     <div className="flex flex-col md:flex-row w-full max-w-5xl mx-auto gap-6 pt-4">
+      <motion.div
+        className="text-left sm:text-left  mx mb-4 relative z-10"
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 1, delay: 0.2 }}
+      >
+        <h2 className="text-3xl font-bold text-pink-900 mb-6 drop-shadow-md backdrop-blur-sm  w-fit">
+          13 SKILL CERTIFICATIONS BY KLADIO
+        </h2>
+        <p className="text-gray-700 text-base drop-shadow-sm backdrop-blur-sm">
+          Choose from a variety of specializations designed to align with your
+          career goals and industry demands.
+        </p>
+      </motion.div>
+
       {/* Vertical Tab Navigation */}
       <div className="w-full md:w-64 flex-shrink-0">
-        <div className="flex flex-col space-y-2">
+        <div className="grid grid-cols-2 sm:flex sm:flex-col gap-3 sm:space-y-2">
           {semesterData.map((semester, index) => (
             <motion.button
               key={index}
