@@ -9,6 +9,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowUp } from "lucide-react";
 import { useState, useEffect } from "react";
 import { ThemeProvider } from "@/context/ThemeContext";
+import { MarqueeProvider } from "./context/MarqueeContext.jsx";
 
 import Header from "./app/header/Header";
 import Footer from "./app/footer/Footer";
@@ -105,111 +106,125 @@ const ScrollToTop = () => {
 
 function App() {
   return (
-    <ThemeProvider>
-      <HelmetProvider>
-        <Router>
-          <ScrollToTopOnMount />
-          <ScrollToTop />
-          <Header />
-          <Routes>
-            {/* Landing */}
-            <Route path="/" element={<Landing />} />
+    <MarqueeProvider>
+      <ThemeProvider>
+        <HelmetProvider>
+          <Router>
+            <ScrollToTopOnMount />
+            <ScrollToTop />
+            <Header />
+            <Routes>
+              {/* Landing */}
+              <Route path="/" element={<Landing />} />
 
-            {/* About us */}
-            <Route path="/about/imm-legacy" element={<ImmLegacy />} />
-            <Route path="/about/leadership" element={<Leadership />} />
-            <Route path="/about/advisory-board" element={<AdvisoryBoard />} />
-            <Route path="/about/imm-partners" element={<OurPartnersDetail />} />
-            <Route
-              path="/about/accreditations-awards"
-              element={<AffiliationAwards />}
-            />
+              {/* About us */}
+              <Route path="/about/imm-legacy" element={<ImmLegacy />} />
+              <Route path="/about/leadership" element={<Leadership />} />
+              <Route path="/about/advisory-board" element={<AdvisoryBoard />} />
+              <Route
+                path="/about/imm-partners"
+                element={<OurPartnersDetail />}
+              />
+              <Route
+                path="/about/accreditations-awards"
+                element={<AffiliationAwards />}
+              />
 
-            {/* Programs */}
-            <Route path="/programs/pgdm" element={<Pgdm />} />
-            {/* <Route path="/programs/bba" element={<BBAProgram />} /> */}
-            <Route path="/programs/bba" element={<BBAProgram />} />
+              {/* Programs */}
+              <Route path="/programs/pgdm" element={<Pgdm />} />
+              {/* <Route path="/programs/bba" element={<BBAProgram />} /> */}
+              <Route path="/programs/bba" element={<BBAProgram />} />
 
-            {/* Faculty and Research */}
-            <Route path="/faculty-and-research/faculty" element={<Faculty />} />
-            <Route
-              path="/faculty-and-research/research"
-              element={<Research />}
-            />
-            <Route
-              path="/faculty-and-research/international-conference"
-              element={<InternationalResearch />}
-            />
-            <Route
-              path="/faculty-and-research/national-conference"
-              element={<NationalResearch />}
-            />
+              {/* Faculty and Research */}
+              <Route
+                path="/faculty-and-research/faculty"
+                element={<Faculty />}
+              />
+              <Route
+                path="/faculty-and-research/research"
+                element={<Research />}
+              />
+              <Route
+                path="/faculty-and-research/international-conference"
+                element={<InternationalResearch />}
+              />
+              <Route
+                path="/faculty-and-research/national-conference"
+                element={<NationalResearch />}
+              />
 
-            {/* Admissions */}
-            <Route path="/admissions" element={<Admissions />} />
+              {/* Admissions */}
+              <Route path="/admissions" element={<Admissions />} />
 
-            {/* Corporate Connect */}
-            <Route
-              path="/corporate-connect/industry-visit"
-              element={<IndustryVisit />}
-            />
-            <Route
-              path="/corporate-connect/industry-lectures-and-webinars"
-              element={<IndustryLecturesAndWebinars />}
-            />
-            <Route
-              path="/corporate-connect/corporate-events"
-              element={<CorporateEvents />}
-            />
-            <Route
-              path="/corporate-connect/recruit-and-partner"
-              element={<RecruitAndPartner />}
-            />
+              {/* Corporate Connect */}
+              <Route
+                path="/corporate-connect/industry-visit"
+                element={<IndustryVisit />}
+              />
+              <Route
+                path="/corporate-connect/industry-lectures-and-webinars"
+                element={<IndustryLecturesAndWebinars />}
+              />
+              <Route
+                path="/corporate-connect/corporate-events"
+                element={<CorporateEvents />}
+              />
+              <Route
+                path="/corporate-connect/recruit-and-partner"
+                element={<RecruitAndPartner />}
+              />
 
-            {/*Life at IMM*/}
-            <Route
-              path="/life-at-imm/events-and-activities"
-              element={<EventsAndActivities />}
-            />
-            <Route path="/life-at-imm/clubs-at-imm" element={<ClubsAtIMM />} />
-            <Route path="/life-at-imm/life-at-imm" element={<LifeAtIMM />} />
+              {/*Life at IMM*/}
+              <Route
+                path="/life-at-imm/events-and-activities"
+                element={<EventsAndActivities />}
+              />
+              <Route
+                path="/life-at-imm/clubs-at-imm"
+                element={<ClubsAtIMM />}
+              />
+              <Route path="/life-at-imm/life-at-imm" element={<LifeAtIMM />} />
 
-            {/* Placements */}
-            <Route
-              path="/placements/campus-recruitment"
-              element={<CampusRecruitment />}
-            />
-            <Route
-              path="/placements/placement-records"
-              element={<PlacementRecords />}
-            />
+              {/* Placements */}
+              <Route
+                path="/placements/campus-recruitment"
+                element={<CampusRecruitment />}
+              />
+              <Route
+                path="/placements/placement-records"
+                element={<PlacementRecords />}
+              />
 
-            {/* Alumni */}
-            <Route path="/alumni/dazzling-divas" element={<DazzlingDivas />} />
-            <Route path="/alumni/hall-of-fame" element={<HallofFame />} />
+              {/* Alumni */}
+              <Route
+                path="/alumni/dazzling-divas"
+                element={<DazzlingDivas />}
+              />
+              <Route path="/alumni/hall-of-fame" element={<HallofFame />} />
 
-            {/* Blog */}
-            <Route path="/blog" element={<Blog />} />
-            <Route path="/blog/:slug" element={<BlogDetails />} />
+              {/* Blog */}
+              <Route path="/blog" element={<Blog />} />
+              <Route path="/blog/:slug" element={<BlogDetails />} />
 
-            {/* Contact */}
-            <Route path="/contact-us" element={<Contact />} />
+              {/* Contact */}
+              <Route path="/contact-us" element={<Contact />} />
 
-            {/* Footer Components */}
-            <Route path="/life-at-imm/gallery" element={<Gallery />} />
-            <Route path="/gallery" element={<Gallery />} />
-            <Route path="/privacy-policy" element={<PolicyPrivacy />} />
-            <Route path="/disclaimer" element={<Disclaimer />} />
-            <Route path="/aicte-approval" element={<AICTE />} />
-            <Route path="/career" element={<Career />} />
-            <Route path="/career/:job-opening" element={<CareerDetail />} />
-            <Route path="/feedback" element={<Feedback />} />
-          </Routes>
+              {/* Footer Components */}
+              <Route path="/life-at-imm/gallery" element={<Gallery />} />
+              <Route path="/gallery" element={<Gallery />} />
+              <Route path="/privacy-policy" element={<PolicyPrivacy />} />
+              <Route path="/disclaimer" element={<Disclaimer />} />
+              <Route path="/aicte-approval" element={<AICTE />} />
+              <Route path="/career" element={<Career />} />
+              <Route path="/career/:job-opening" element={<CareerDetail />} />
+              <Route path="/feedback" element={<Feedback />} />
+            </Routes>
 
-          <Footer />
-        </Router>
-      </HelmetProvider>
-    </ThemeProvider>
+            <Footer />
+          </Router>
+        </HelmetProvider>
+      </ThemeProvider>
+    </MarqueeProvider>
   );
 }
 

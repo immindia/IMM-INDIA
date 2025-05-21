@@ -2,18 +2,18 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import PulsatingButton from "@/components/ui/pulsating-button";
-import { Link } from "react-router-dom";
 import {
   Instagram,
   Facebook,
   Youtube,
-  Twitter,
   Linkedin,
   QrCode,
   CreditCard,
 } from "lucide-react";
 import { RiTwitterXLine } from "react-icons/ri";
 import img from "../../assets/header/QR-img.webp";
+import { useMarquee } from "../../context/MarqueeContext.jsx";
+
 const TopBar = () => {
   const [iconsLoaded, setIconsLoaded] = useState([
     false,
@@ -23,6 +23,7 @@ const TopBar = () => {
     false,
   ]);
   const [isPayFeeOpen, setIsPayFeeOpen] = useState(false);
+  const { marqueeText } = useMarquee();
 
   useEffect(() => {
     // Animate icons one by one with a delay
@@ -113,86 +114,86 @@ const TopBar = () => {
               </motion.a>
             ))}
           </div>
-        </div>          
+        </div>
 
         {/* <div className="flex items-center gap-10" > */}
-          {/* Marquee */}
-          <div className="text-pink-700 justify-center items-center bg-slate-50 p-3 gap-2 rounded-full border shadow-sm flex max-w-xl overflow-hidden">
-            <div className="h-2 w-2 bg-pink-900 rounded-full animate-ping"></div>
-            <marquee className="font-bold" behavior="scroll" direction="left">
-             Phase 3 Applications Closed for PGDM 2025-2027
-            </marquee>
-          </div>
+        {/* Marquee */}
+        <div className="text-pink-700 justify-center items-center bg-slate-50 p-3 gap-2 rounded-full border shadow-sm flex w-96 overflow-hidden">
+          <div className="h-2 w-2 bg-pink-900 rounded-full animate-ping"></div>
+          <marquee className="font-bold" behavior="scroll" direction="left">
+            {marqueeText} | {marqueeText} | {marqueeText} | {marqueeText}
+          </marquee>
+        </div>
 
-          {/* Contact Info */}
-          <div className="flex flex-wrap items-center gap-6 text-gray-600">
-            {/* <PulsatingButton
+        {/* Contact Info */}
+        <div className="flex flex-wrap items-center gap-6 text-gray-600">
+          {/* <PulsatingButton
             size="sm"
             className="text-xs bg-black hover:bg-black/80"
             pulseColor="#000"
           >
             International Conference
           </PulsatingButton> */}
-            <a
-              href="https://admissions.immindia.edu.in/"
-              target="_blank"
-              rel="noopener noreferrer"
+          <a
+            href="https://admissions.immindia.edu.in/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <PulsatingButton
+              size="sm"
+              className="text-xs bg-black hover:bg-black/80"
+              pulseColor="#000"
+            >
+              Apply Now
+            </PulsatingButton>
+          </a>
+
+          {/* Pay Fee Dropdown */}
+          <div className="relative">
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                setIsPayFeeOpen(!isPayFeeOpen);
+              }}
+              className="relative"
             >
               <PulsatingButton
                 size="sm"
                 className="text-xs bg-black hover:bg-black/80"
                 pulseColor="#000"
               >
-                Apply Now
+                Pay Fee
               </PulsatingButton>
-            </a>
+            </button>
 
-            {/* Pay Fee Dropdown */}
-            <div className="relative">
-              <button
-                onClick={(e) => {
-                  e.stopPropagation();
-                  setIsPayFeeOpen(!isPayFeeOpen);
-                }}
-                className="relative"
-              >
-                <PulsatingButton
-                  size="sm"
-                  className="text-xs bg-black hover:bg-black/80"
-                  pulseColor="#000"
-                >
-                  Pay Fee
-                </PulsatingButton>
-              </button>
-
-              {isPayFeeOpen && (
-                <>
-                  {/* Invisible bridge between button and dropdown */}
-                  <div className="absolute w-full h-2 -bottom-2"></div>
-                  <ul
-                    className="absolute right-0 top-full p-1 mt-2 overflow-hidden bg-white rounded shadow-lg z-[9999] min-w-[150px] w-max
+            {isPayFeeOpen && (
+              <>
+                {/* Invisible bridge between button and dropdown */}
+                <div className="absolute w-full h-2 -bottom-2"></div>
+                <ul
+                  className="absolute right-0 top-full p-1 mt-2 overflow-hidden bg-white rounded shadow-lg z-[9999] min-w-[150px] w-max
                              animate-fadeIn transform origin-top-right"
-                  >
-                    {paymentOptions.map((option, index) => (
-                      <li key={index} onClick={() => setIsPayFeeOpen(false)}>
-                        <a
-                          href={option.url}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="flex items-center gap-2 block px-4 py-2 text-sm text-gray-700 rounded-sm transition-all duration-200
+                >
+                  {paymentOptions.map((option, index) => (
+                    <li key={index} onClick={() => setIsPayFeeOpen(false)}>
+                      <a
+                        href={option.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-2 block px-4 py-2 text-sm text-gray-700 rounded-sm transition-all duration-200
                                  hover:bg-gray-200 hover:pl-6 hover:text-primary-color"
-                        >
-                          {option.icon}
-                          {option.name}
-                        </a>
-                      </li>
-                    ))}
-                  </ul>
-                </>
-              )}
-            </div>
+                      >
+                        {option.icon}
+                        {option.name}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </>
+            )}
+          </div>
 
-            {/* <Link to="/blog">
+          {/* <Link to="/blog">
           <PulsatingButton
             size="sm"
             className="text-xs bg-black hover:bg-black/80"
@@ -201,7 +202,7 @@ const TopBar = () => {
            Blogs
           </PulsatingButton>
           </Link> */}
-          </div>
+        </div>
         {/* </div> */}
       </div>
     </div>

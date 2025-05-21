@@ -40,6 +40,7 @@ import BentoGrid from "./bento-grid";
 import ProgramCarousel from "./program-carousel";
 import SpecializationCard from "./specialization-card";
 import { useTheme } from "@/context/ThemeContext";
+import { useMarquee } from "../../../context/MarqueeContext.jsx";
 // Data arrays
 import {
   specializations,
@@ -56,6 +57,7 @@ import { DotPattern } from "@/components/magicui/dot-pattern";
 import pgdm from "../../../assets/pdfs/BBA Brochure 2025-2028.pdf";
 const BBAProgram = () => {
   const { updateColors } = useTheme();
+  const { setMarqueeText } = useMarquee();
   const [isFormVisible, setIsFormVisible] = useState(false);
   const [activeTab, setActiveTab] = useState("curriculum");
   const [isSuccess, setIsSuccess] = useState(false);
@@ -63,12 +65,14 @@ const BBAProgram = () => {
   // Set custom colors when component mounts
   useEffect(() => {
     updateColors("bg-blue-900", "bg-blue-900");
+    setMarqueeText("Admission Open 2025-28 Session");
 
     // Reset colors when component unmounts
     return () => {
       updateColors("bg-primary-color", "bg-primary-color");
+      setMarqueeText("Phase 3 Applications Closed for PGDM 2025-2027");
     };
-  }, [updateColors]);
+  }, [updateColors, setMarqueeText]);
 
   const { data } = useFetch("/api/indexBanner.php");
   const [bannerImage, setBannerImage] = useState(
@@ -170,13 +174,13 @@ const BBAProgram = () => {
           magnetStrength={20}
           className=""
         > */}
-          <a
-            href={pgdm}
-            target="_blank"
-            className={`flex items-center rotate-[270deg] bg-amber-500 hover:bg-amber-600 text-white px-4 pt-2 pb-5 rounded-lg drop-shadow-lg transition-all duration-300 animate-pulse `}
-          >
-            Download Brochure
-          </a>
+        <a
+          href={pgdm}
+          target="_blank"
+          className={`flex items-center rotate-[270deg] bg-amber-500 hover:bg-amber-600 text-white px-4 pt-2 pb-5 rounded-lg drop-shadow-lg transition-all duration-300 animate-pulse `}
+        >
+          Download Brochure
+        </a>
         {/* </Magnet> */}
       </div>
 
