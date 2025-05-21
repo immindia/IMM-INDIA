@@ -76,6 +76,7 @@ export default function Footer() {
     { name: "Grievance Redressal", href: AntiRagging },
     { name: "PGDM Brochure", href: pgdm },
     { name: "Feedback", path: "/feedback" },
+    { name: "NIRF", href: "#" },
   ];
 
   // Split links into columns
