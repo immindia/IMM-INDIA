@@ -19,7 +19,7 @@ import {
   Globe,
   BookOpen,
   Trophy,
-  ChartSpline
+  ChartSpline,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
@@ -121,9 +121,9 @@ const clubs = [
   "Operations Club",
   "E-Cell Club",
   "Soft Skills Club",
-  "Global Voices Club",
   "Research Club",
   "Sports Club",
+  "Global Voices Club",
 ];
 
 const clubIcons = {
@@ -233,30 +233,31 @@ function EventGallery() {
           <h3 className="text-xl font-bold mb-2 text-white border-b border-slate-200 pb-2">
             Clubs at IMM
           </h3>
-
-          {clubs.map((club) => {
-            const Icon = clubIcons[club];
-            return (
-              <div
-                key={club}
-                onClick={() => {
-                  if (club === "Research Club") {
-                    navigate("/faculty-and-research/research");
-                  } else {
-                    setSelectedClub(club);
-                    setSelectedEvent(null);
-                  }
-                }}
-                className={`w-full flex items-center gap-2 text-left text-sm cursor-pointer hover:text-primary-color hover:bg-slate-50 duration-300 transition-all rounded-md p-2 ${
-                  club === selectedClub
-                    ? "bg-slate-50 text-primary-color font-bold"
-                    : " text-white font-medium"
-                }`}
-              >
-                <Icon className="w-4 h-4" /> {club}
-              </div>
-            );
-          })}
+          <div className="grid grid-cols-2 sm:flex sm:flex-col gap-2">
+            {clubs.map((club) => {
+              const Icon = clubIcons[club];
+              return (
+                <div
+                  key={club}
+                  onClick={() => {
+                    if (club === "Research Club") {
+                      navigate("/faculty-and-research/research");
+                    } else {
+                      setSelectedClub(club);
+                      setSelectedEvent(null);
+                    }
+                  }}
+                  className={`w-full flex items-center gap-2 text-left text-sm cursor-pointer hover:text-primary-color hover:bg-slate-50 duration-300 transition-all rounded-md p-2 ${
+                    club === selectedClub
+                      ? "bg-slate-50 text-primary-color font-bold"
+                      : " text-white font-medium border"
+                  }`}
+                >
+                  <Icon className="w-4 h-4" /> {club}
+                </div>
+              );
+            })}
+          </div>
         </div>
       </div>
       <div className="events col-span-3 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">

@@ -15,6 +15,7 @@ import {
 import { RiTwitterXLine } from "react-icons/ri";
 import { Link } from "react-router-dom";
 import { useTheme } from "@/context/ThemeContext";
+import pgdm from "../../assets/pdfs/PGDM Brochure 2025-2027.pdf";
 
 export default function Footer() {
   const { footerColor } = useTheme();
@@ -60,7 +61,7 @@ export default function Footer() {
     { name: "Gallery", path: "/gallery" },
     { name: "Career", path: "/career" },
 
-    { name: "Enquire Now", href: "https://admissions.immindia.edu.in/" },
+    // { name: "Enquire Now", href: "https://admissions.immindia.edu.in/" },
     {
       name: "Online Fees Payment Atom",
       href: "https://payment.atomtech.in/payment/form/pay.action?mId=A95D13C110F64630E963122D5321258A",
@@ -73,7 +74,7 @@ export default function Footer() {
     { name: "Disclaimer", path: "/disclaimer" },
     { name: "AICTE Approval Letter", path: "/aicte-approval" },
     { name: "Grievance Redressal", href: AntiRagging },
-    { name: "PGDM Brochure", href: pgdmBrochure },
+    { name: "PGDM Brochure", href: pgdm },
     { name: "Feedback", path: "/feedback" },
   ];
 

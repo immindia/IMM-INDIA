@@ -10,12 +10,13 @@ import {
   Twitter,
   Instagram,
   Linkedin,
+  Youtube,
 } from "lucide-react";
 import { Label } from "@/components/ui/label";
 import Heading from "@/components/Heading";
 import ImgAndBreadcrumb from "../../components/ImgAndBreadcrumb";
 import { useFetch } from "../../hooks/useFetch";
-
+import { RiTwitterXLine } from "react-icons/ri";
 function ContactForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -152,17 +153,45 @@ function SocialLinks() {
     <div className="mt-6">
       <h3 className="mb-3 text-lg font-semibold text-gray-800">Follow Us</h3>
       <div className="flex space-x-4">
-        <a href="#" className="text-gray-400 hover:text-pink-900">
-          <Facebook className="w-6 h-6" />
+        <a
+          href="https://www.facebook.com/indiaimm"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="p-2 overflow-hidden transition-all duration-300 bg-white rounded-full cursor-pointer hover:scale-110 hover:rotate-12 group"
+        >
+          <Facebook className="w-6 h-6 text-pink-800 transition-colors duration-300 group-hover:text-pink-600" />
         </a>
-        <a href="#" className="text-gray-400 hover:text-pink-900">
-          <Twitter className="w-6 h-6" />
+        <a
+          href="https://x.com/imm_bschool" 
+          target="_blank"
+          rel="noopener noreferrer"
+          className="p-2 overflow-hidden transition-all duration-300 bg-white rounded-full cursor-pointer hover:scale-110 hover:rotate-12 group"
+        >
+          <RiTwitterXLine className="w-6 h-6 text-pink-800 transition-colors duration-300 group-hover:text-pink-600" />
         </a>
-        <a href="#" className="text-gray-400 hover:text-pink-900">
-          <Instagram className="w-6 h-6" />
+        <a
+          href="https://www.instagram.com/imm_india"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="p-2 overflow-hidden transition-all duration-300 bg-white rounded-full cursor-pointer hover:scale-110 hover:-rotate-12 group"
+        >
+          <Instagram className="w-6 h-6 text-pink-800 transition-colors duration-300 group-hover:text-pink-600" />
         </a>
-        <a href="#" className="text-gray-400 hover:text-pink-900">
-          <Linkedin className="w-6 h-6" />
+        <a
+          href="https://www.linkedin.com/school/institute-of-marketing-and-management/?originalSubdomain=in"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="p-2 overflow-hidden transition-all duration-300 bg-white rounded-full cursor-pointer hover:scale-110 hover:-rotate-12 group"
+        >
+          <Linkedin className="w-6 h-6 text-pink-800 transition-colors duration-300 group-hover:text-pink-600" />
+        </a>
+        <a
+          href="https://www.youtube.com/channel/UCsFZ4Ove-nEuyZSaBggG3eQ"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="p-2 overflow-hidden transition-all duration-300 bg-white rounded-full cursor-pointer hover:scale-110 hover:rotate-12 group"
+        >
+          <Youtube className="w-6 h-6 text-pink-800 transition-colors duration-300 group-hover:text-pink-600" />
         </a>
       </div>
     </div>
