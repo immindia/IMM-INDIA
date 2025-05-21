@@ -58,7 +58,7 @@ const PlacementRecords = () => {
   return (
     <div className="relative min-h-screen overflow-x-hidden">
       <ImgAndBreadcrumb
-        title="Placement Records"
+        title=""
         imageSrc={bannerImage}
         imageAlt="Description of the image"
         breadcrumbItems={breadcrumbItems}

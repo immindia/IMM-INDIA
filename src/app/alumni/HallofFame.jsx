@@ -40,10 +40,10 @@ export default function HallofFame() {
   useEffect(() => {
     if (data) {
       const mobileImage = data.find(
-        (item) => item.category === "Dazzling Divas & Hall of Fame Mobile"
+        (item) => item.category === "Hall of Fame Mobile"
       )?.url;
       const desktopImage = data.find(
-        (item) => item.category === "Dazzling Divas & Hall of Fame"
+        (item) => item.category === "Hall of Fame"
       )?.url;
 
       if (isMobile && mobileImage) {

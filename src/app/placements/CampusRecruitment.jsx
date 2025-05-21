@@ -57,7 +57,7 @@ const CampusRecruitment = () => {
   return (
     <div className="relative min-h-screen ">
       <ImgAndBreadcrumb
-        title="Campus Recruitment"
+        title=""
         imageSrc={bannerImage}
         imageAlt="Description of the image"
         breadcrumbItems={breadcrumbItems}

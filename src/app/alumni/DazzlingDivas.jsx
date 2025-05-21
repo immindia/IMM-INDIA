@@ -13,7 +13,7 @@ import ProfileCard from "./ProfileCard";
 const breadcrumbItems = [
   { href: "/", label: "Home" },
   { href: "/alumni", label: "Alumni" },
-  { label: "Alumni Mentorship Program" },
+  { label: "Dazzling Divas" },
 ];
 export default function DazzlingDivas() {
   const [alumniData, setAlumniData] = useState([]);
@@ -40,10 +40,10 @@ export default function DazzlingDivas() {
   useEffect(() => {
     if (data) {
       const mobileImage = data.find(
-        (item) => item.category === "Alumni Mentorship Program Mobile"
+        (item) => item.category === "Dazzling Divas Mobile"
       )?.url;
       const desktopImage = data.find(
-        (item) => item.category === "Alumni Mentorship Program"
+        (item) => item.category === "Dazzling Divas"
       )?.url;
 
       if (isMobile && mobileImage) {
@@ -143,7 +143,7 @@ export default function DazzlingDivas() {
   return (
     <div className="relative min-h-screen">
       <ImgAndBreadcrumb
-        title="Alumni Mentorship Program"
+        title="Dazzling Divas"
         imageSrc={bannerImage}
         imageAlt="Description of the image"
         breadcrumbItems={breadcrumbItems}
