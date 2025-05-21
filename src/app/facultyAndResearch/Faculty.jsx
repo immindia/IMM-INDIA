@@ -289,7 +289,7 @@ const Faculty = () => {
   }, [loading, facultyMembers.length, visibleFaculty.length]);
 
   return (
-    <div className="relative min-h-screen">
+    <div className="relative min-h-screen overflow-x-hidden">
       <ImgAndBreadcrumb
         title="Faculty"
         imageSrc={

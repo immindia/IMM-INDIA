@@ -15,6 +15,7 @@ import { Label } from "@/components/ui/label";
 import Heading from "@/components/Heading";
 import ImgAndBreadcrumb from "../../components/ImgAndBreadcrumb";
 import { useFetch } from "../../hooks/useFetch";
+
 function ContactForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -187,13 +188,40 @@ function Map() {
 
 export default function Contact() {
   const { data } = useFetch("/api/indexBanner.php");
-  const [banner, setBanner] = useState([]);
+  const [bannerImage, setBannerImage] = useState(
+    "https://stealthlearn.in/imm-admin/api/uploads/680fd14484b0a.png"
+  ); // Default image
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   useEffect(() => {
     if (data) {
-      setBanner(data.filter((item) => item.category === "Contact"));
+      const mobileImage = data.find(
+        (item) => item.category === "Contact Us Mobile"
+      )?.url;
+      const desktopImage = data.find(
+        (item) => item.category === "Contact Us"
+      )?.url;
+
+      if (isMobile && mobileImage) {
+        setBannerImage(mobileImage);
+      } else if (!isMobile && desktopImage) {
+        setBannerImage(desktopImage);
+      } else if (desktopImage) {
+        setBannerImage(desktopImage);
+      } else if (mobileImage) {
+        setBannerImage(mobileImage);
+      }
     }
-  }, [data]);
+  }, [data, isMobile]);
 
   const breadcrumbItems = [
     { href: "/", label: "Home" },
@@ -201,13 +229,10 @@ export default function Contact() {
   ];
 
   return (
-    <div className="min-h-screen bg-gray-100">
+    <div className="min-h-screen">
       <ImgAndBreadcrumb
-        title="Contact Us"
-        imageSrc={
-          banner[0]?.url ||
-          "https://stealthlearn.in/imm-admin/api/uploads/680fd14484b0a.png"
-        }
+        title=""
+        imageSrc={bannerImage}
         imageAlt="Contact Us"
         breadcrumbItems={breadcrumbItems}
       />
