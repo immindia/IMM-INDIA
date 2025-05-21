@@ -13,7 +13,7 @@ import ProfileCard from "./ProfileCard";
 const breadcrumbItems = [
   { href: "/", label: "Home" },
   { href: "/alumni", label: "Alumni" },
-  { label: "Dazzling Divas" },
+  { label: "Alumni Mentorship Program" },
 ];
 export default function DazzlingDivas() {
   const [alumniData, setAlumniData] = useState([]);
@@ -143,7 +143,7 @@ export default function DazzlingDivas() {
   return (
     <div className="relative min-h-screen">
       <ImgAndBreadcrumb
-        title="Dazzling Divas"
+        title=""
         imageSrc={bannerImage}
         imageAlt="Description of the image"
         breadcrumbItems={breadcrumbItems}

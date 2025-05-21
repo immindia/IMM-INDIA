@@ -1,17 +1,20 @@
 "use client";
 
-import React, { forwardRef, useRef } from "react";
+import { forwardRef, useRef } from "react";
 import { cn } from "@/lib/utils";
-import { AnimatedBeam } from "@/components/ui/animated-beam";
-import ML from "@/assets/pgdm/ML.gif";
+  import { AnimatedBeam } from "@/components/ui/animated-beam";
 import P from "@/assets/pgdm/P.gif";
-import DS from "@/assets/pgdm/DS.gif";
-import MV from "@/assets/pgdm/MV.gif";
-import DT from "@/assets/pgdm/DT.gif";
+
 import R from "@/assets/pgdm/R.gif";
-import python from "@/assets/pgdm/Python Logo.mp4";
 import logo from "@/assets/pgdm/imm.jpg";
 import aicte from "@/assets/pgdm/aicet.png";
+
+
+import body from "@/assets/bba/icons/body.gif";
+import digital from "@/assets/bba/icons/digital.gif";
+import nudge from "@/assets/bba/icons/nudge.gif";
+import projects from "@/assets/bba/icons/projects.gif";
+import research from "@/assets/bba/icons/research.gif";
 
 const Circle = forwardRef(({ className, children }, ref) => {
   return (
@@ -90,7 +93,7 @@ export default function PgdmSpecialization() {
           >
             <Icons.imm />
             <p className="text-sm font-medium text-center mt-40 bg-white border  rounded-lg p-1 text-slate-500 w-max ">
-              PGDM <br /> Specialization
+              PGDM <br /> Specializations
             </p>
           </Circle>
           </a>
@@ -173,20 +176,20 @@ export default function PgdmSpecialization() {
 const Icons = {
   dataScience: () => (
     <img
-      src={DS}
+      src={digital}
       alt="DS"
       className="absolute top-0 left-0 w-full h-full p-3"
     />
   ),
   python: () => (
-    <video src={python} className="absolute top-0 left-0 w-full h-full p-3" />
+    <img src={nudge} alt="python" className="absolute top-0 left-0 w-full h-full p-3" />
   ),
   pgdm: () => (
     <img src={P} alt="P" className="absolute top-0 left-0 w-full h-full p-3" />
   ),
   machineLearning: () => (
     <img
-      src={ML}
+      src={research}
       alt="ML"
       className="absolute top-0 left-0 w-full h-full p-3"
     />
@@ -196,14 +199,14 @@ const Icons = {
   ),
   designThinking: () => (
     <img
-      src={DT}
+      src={body}
       alt="DT"
       className="absolute top-0 left-0 w-full h-full p-3"
     />
   ),
   metaverse: () => (
     <img
-      src={MV}
+      src={projects}
       alt="MV"
       className="absolute top-0 left-0 w-full h-full p-3"
     />

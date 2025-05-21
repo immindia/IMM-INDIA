@@ -1,5 +1,6 @@
 import PgdmSpecialization from "./PgdmSpecialization";
 import PgdmFeatures from "./PgdmFeatures";
+
 import { useState } from "react";
 import { ArrowRight, ArrowUp } from "lucide-react";
 import SemesterTabs from "./SemesterTabs";
@@ -62,7 +63,7 @@ const PgdmProgram = () => {
               <span className="inline-flex w-3 h-3 rounded-full bg-pink-800 ml-2"></span>
             </h1>
             <p className=" text-lg sm:text-xl leading-normal opacity-75 mt-4 mb-6 backdrop-blur-sm">
-            Our PGDM prog offers cutting edge specializations in emerging technologies and modern business practices .
+            Our PGDM program offers cutting edge specializations in emerging technologies and modern business practices.
             </p>
             <p className="opacity-50 text-sm lg:mx backdrop-blur-sm">
             We offer seven future-focused specializations — Marketing, Human Resources, Finance, Operations, International Business, Business Analytics, and Entrepreneurship — complemented by a range of globally recognized certifications. Our forward-looking curriculum seamlessly integrates technology with business strategy, empowering you to thrive in an ever-evolving digital landscape. With immersive learning in the dynamic visualisations through Power BI, advanced data analysis using Python and R,*and *experiential learning in metaverse you’ll graduate with the cutting-edge skills and innovative mindset needed to lead in a data-driven world.

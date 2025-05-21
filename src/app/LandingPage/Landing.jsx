@@ -17,6 +17,7 @@ import HeroSlider from "./HeroSlider";
 import Placements from "./Placements";
 import OurPartners from "./OurPartners";
 import Magnet from "../../../yes/Magnet/Magnet";
+import pgdm from "../../assets/pdfs/PGDM Brochure 2025-2027.pdf";
 // import AwardsThreeD from "./AwardsThreeD";
 // const sectionVariants = {
 //   hidden: { scale: 0.8, opacity: 0 },
@@ -112,15 +113,13 @@ const Landing = () => {
           magnetStrength={20}
           className=""
         >
-          <button
-            onClick={() => {
-              window.location.href = "https://admissions.immindia.edu.in/";
-            }}
+          <a
+            href={pgdm}
             target="_blank"
             className={`flex items-center rotate-[270deg] bg-red-800 hover:bg-red-900 text-white px-4 pt-2 pb-5 rounded-lg drop-shadow-lg transition-all duration-300 animate-pulse font-semibold`}
           >
             Download Brochure
-          </button>
+          </a>
         </Magnet>
       </div>
       {/* <motion.div

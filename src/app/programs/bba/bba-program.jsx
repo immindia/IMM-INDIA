@@ -53,6 +53,7 @@ import {
 import { useFetch } from "../../../hooks/useFetch";
 import { cn } from "@/lib/utils";
 import { DotPattern } from "@/components/magicui/dot-pattern";
+import pgdm from "../../../assets/pdfs/BBA Brochure 2025-2028.pdf";
 const BBAProgram = () => {
   const { updateColors } = useTheme();
   const [isFormVisible, setIsFormVisible] = useState(false);
@@ -146,21 +147,37 @@ const BBAProgram = () => {
   return (
     <div className="min-h-screen overflow-x-hidden  ">
       {/* Enquiry Form Toggle Button - Sticky */}
-      <div className="fixed right-0 top-1/2 z-50 transform -translate-y-1/2">
+      <div className="fixed right-0 top-[40vh] z-50 transform -translate-y-1/2">
         <button
           onClick={toggleForm}
-          className={`flex items-center bg-amber-500 hover:bg-amber-600 text-white px-2 py-3 rounded-l-lg shadow-lg transition-all duration-300 animate-[fadeIn_1s_ease-in-out_1_normal_backwards_running] ${
+          className={`flex items-center bg-amber-500 hover:bg-amber-600 text-white px-2 py-3 rounded-r  -lg shadow-lg transition-all duration-300 animate-[fadeIn_1s_ease-in-out_1_normal_backwards_running] ${
             isFormVisible ? "opacity-100" : "opacity-100"
           }`}
           style={{
             writingMode: "vertical-rl",
             transform: isFormVisible
               ? "translateX(0) rotate(0deg)"
-              : "translateX(0) rotate(0deg)",
+              : "translateX(0) rotate(180deg)",
           }}
         >
           {isFormVisible ? <X className="h-5 w-5 mb-2" /> : "Enquire Now"}
         </button>
+      </div>
+      <div className="fixed -right-[4.5rem] sm:-right-[4.5rem] top-[65vh] z-50 transform -translate-y-1/2">
+        {/* <Magnet
+          padding={150}
+          disabled={window.innerWidth < 768 ? true : false}
+          magnetStrength={20}
+          className=""
+        > */}
+          <a
+            href={pgdm}
+            target="_blank"
+            className={`flex items-center rotate-[270deg] bg-amber-500 hover:bg-amber-600 text-white px-4 pt-2 pb-5 rounded-lg drop-shadow-lg transition-all duration-300 animate-pulse `}
+          >
+            Download Brochure
+          </a>
+        {/* </Magnet> */}
       </div>
 
       {/* Hero Banner Section with Parallax Effect */}
