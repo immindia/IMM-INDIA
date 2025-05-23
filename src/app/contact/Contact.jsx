@@ -296,14 +296,14 @@ export default function Contact() {
             <div className="grid gap-5 sm:gap-8">
               <div className="p-6 bg-white rounded-lg shadow-lg">
                 <h2 className="mb-6 text-2xl font-semibold text-gray-800">
-                  Admission Head
+                Prof. Mukul Kumar - Admission Director
                 </h2>
                 <AdmissionHead />
               </div>
 
               <div className="p-6 bg-white rounded-lg shadow-lg">
                 <h2 className="mb-6 text-2xl font-semibold text-gray-800">
-                  Corporate Resource Centre Head
+                Corporate Connect Hub 
                 </h2>
                 <CorporateResourceCentreHead />
               </div>

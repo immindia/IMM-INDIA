@@ -46,7 +46,7 @@ const AffiliationAwards = () => {
   const breadcrumbItems = [
     { href: "/", label: "Home" },
     { href: "/about/accreditations-awards", label: "About" },
-    { label: "Affiliation & Accreditation" },
+    { label: "Awards & Accreditations" },
   ];
 
   return (
@@ -86,7 +86,7 @@ export default AffiliationAwards;
 
 const AffiliationAwardsContent = () => {
   return (
-    <section className=" pt-12">
+    <section className=" pt-8 sm:pt-12">
       <div className="max-w-screen-xl mx-auto md:px-8">
         <div className="items-center gap-6 sm:gap-12 sm:px-4 md:px-0 flex flex-col sm:flex-row">
           <div className="flex-1 order-2 sm:order-1 flex justify-center items-center  gap-5 sm:gap-12">
@@ -100,7 +100,7 @@ const AffiliationAwardsContent = () => {
           </div>
           <div className="max-w-xl order-1 sm:order-2 space-y-3 mt-6 sm:px-0 md:mt-0 lg:max-w-2xl">
             <h3 className="text-primary-color text-2xl font-semibold">
-              Affiliations and Accreditations
+              Awards & Accreditations
             </h3>
             <p className="text-gray-800 text-3xl font-semibold sm:text-4xl">
               IMM has established itself as one of the Top Business Schools in

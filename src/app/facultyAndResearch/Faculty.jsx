@@ -93,7 +93,7 @@ const FacultyHeading = memo(() => {
             <p className="text-gray-800 text-3xl font-semibold text-center sm:text-4xl">
               Excellence in Teaching & Research
             </p>
-            <p className="sm:!mt-8 text-gray-600 text-justify sm:text-center">
+            <p className="sm:!mt-8 text-gray-600 text-justify sm:text-left">
               At IMM Business School, the foundation of academic distinction
               lies in our exceptional faculty. Our core team includes
               accomplished scholars—PhDs and Fellows—from India&apos;s most
@@ -103,7 +103,7 @@ const FacultyHeading = memo(() => {
             </p>
             {isOpen && (
               <>
-                <p className="text-gray-600 text-justify sm:text-center">
+                <p className="text-gray-600 text-justify sm:text-left">
                   Beyond academia, senior corporate leaders and industry
                   veterans enrich the classroom as Visiting Faculty, offering
                   students a dynamic blend of theoretical depth and real-world
@@ -336,8 +336,10 @@ const Faculty = () => {
         imageAlt="Faculty Banner"
         breadcrumbItems={breadcrumbItems}
       />
-      <Container className="container grid">
-        <FacultyHeading />
+
+      <div className="bg-slate-50">
+        <Container className="container grid">
+          <FacultyHeading />
         {loading && (
           <div className="text-center py-10">
             <p className="text-lg">Loading faculty information...</p>
@@ -394,6 +396,7 @@ const Faculty = () => {
           </>
         )}
       </Container>
+      </div>
       {/* <div className="bg-slate-50"></div> */}
     </div>
   );

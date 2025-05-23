@@ -7,7 +7,7 @@ export const navlinks = [
       { name: "IMM Legacy", path: "/about/imm-legacy" },
       { name: "Leadership", path: "/about/leadership" },
       { name: "Advisory Board", path: "/about/advisory-board" },
-      { name: "Accreditations & Awards", path: "/about/accreditations-awards" },
+      { name: "Awards & Accreditations", path: "/about/accreditations-awards" },
       { name: "IMM Partners", path: "/about/imm-partners" },
     ],
   },
