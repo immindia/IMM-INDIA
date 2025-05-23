@@ -59,7 +59,7 @@ const Admissions = () => {
         breadcrumbItems={breadcrumbItems}
       />
       <Container className="container grid grid-cols-1 md:grid-cols-4 gap-14">
-        <div className="col-span-1 pt-12 md:col-span-4">
+        <div className="col-span-1 pt-8 md:col-span-4">
           <Heading
             title="Admission Process & Fees"
             titleClassName="text-primary-color  lg:text-5xl"
