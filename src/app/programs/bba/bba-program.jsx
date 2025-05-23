@@ -57,7 +57,7 @@ import { DotPattern } from "@/components/magicui/dot-pattern";
 import pgdm from "../../../assets/pdfs/BBA Brochure 2025-2028.pdf";
 const BBAProgram = () => {
   const { updateColors } = useTheme();
-  const { setMarqueeText } = useMarquee();
+  const { setMarqueeText, setIsBBAPage } = useMarquee();
   const [isFormVisible, setIsFormVisible] = useState(false);
   const [activeTab, setActiveTab] = useState("curriculum");
   const [isSuccess, setIsSuccess] = useState(false);
@@ -66,13 +66,15 @@ const BBAProgram = () => {
   useEffect(() => {
     updateColors("bg-blue-900", "bg-blue-900");
     setMarqueeText("Admission Open 2025-28 Session");
+    setIsBBAPage(true);
 
     // Reset colors when component unmounts
     return () => {
       updateColors("bg-primary-color", "bg-primary-color");
       setMarqueeText("Phase 3 Applications Closed for PGDM 2025-2027");
+      setIsBBAPage(false);
     };
-  }, [updateColors, setMarqueeText]);
+  }, [updateColors, setMarqueeText, setIsBBAPage]);
 
   const { data } = useFetch("/api/indexBanner.php");
   const [bannerImage, setBannerImage] = useState(
@@ -151,7 +153,7 @@ const BBAProgram = () => {
   return (
     <div className="min-h-screen overflow-x-hidden  ">
       {/* Enquiry Form Toggle Button - Sticky */}
-      <div className="fixed right-0 top-[40vh] z-50 transform -translate-y-1/2">
+      <div className="fixed right-0 sm:right-0 top-[35vh] z-[999] transform -translate-y-1/3">
         <button
           onClick={toggleForm}
           className={`flex items-center bg-amber-500 hover:bg-amber-600 text-white px-2 py-3 rounded-r  -lg shadow-lg transition-all duration-300 animate-[fadeIn_1s_ease-in-out_1_normal_backwards_running] ${
@@ -188,7 +190,7 @@ const BBAProgram = () => {
       <section
         ref={heroRef}
         id="overview"
-        className="relative py-10 sm:h-[80vh] flex items-center justify-center text-white overflow-hidden"
+        className="relative py-5 sm:py-10 sm:h-[80vh] flex items-center justify-center text-white overflow-hidden"
       >
         <motion.div
           style={{ opacity: heroOpacity, scale: heroScale }}
@@ -199,11 +201,11 @@ const BBAProgram = () => {
             alt="IMM Business School Campus"
             className="object-cover h-full w-full"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-blue-900/70 to-blue-700/10 sm:bg-none"></div>
+          <div className="absolute inset-0 "></div>
         </motion.div>
 
-        <div className="container sm:max-w-5xl md:max-w-6xl lg:max-w-7xl  mx-auto px-4 relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+        <div className="container sm:max-w-5xl md:max-w-6xl lg:max-w-7xl  mx-auto px-4 relative z-10 min-h-[70vh]   grid justify-end items-end sm:items-center sm:justify-start">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center ">
             <div className="lg:col-span-8">
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
@@ -211,29 +213,34 @@ const BBAProgram = () => {
                 transition={{ duration: 1, delay: 0.2 }}
                 className="space-y-6"
               >
-                <Badge className="bg-amber-500 hover:bg-amber-600 text-white px-4 py-1 text-sm font-medium">
+                <Badge className="bg-amber-500 hover:bg-amber-600 text-white px-2 sm:px-4 py-1 text-xs   sm:text-sm font-medium">
                   1st Time in India
                 </Badge>
-                <h1 className="text-4xl max-w-lg md:text-5xl lg:text-6xl font-bold tracking-wide  drop-shadow-md">
+                <h1 className="hidden sm:block text-4xl max-w-lg md:text-5xl lg:text-6xl font-bold tracking-wide  drop-shadow-md">
                   AI & ML Infused{" "}
                   <span className="text-amber-400">BBA Program</span> in New
                   Delhi
                 </h1>
-                <p className="text-lg md:text-xl text-slate-100 max-w-2xl drop-shadow-sm">
+                <h1 className="block sm:hidden text-4xl max-w-lg md:text-5xl lg:text-6xl font-bold tracking-wide  drop-shadow-md">
+                  AI & ML infused <br />
+                  <span className="text-amber-400">BBA</span>
+                </h1>
+                <p className="hidden sm:block text-lg md:text-xl text-slate-100 max-w-2xl drop-shadow-sm">
                   Prepare for the future of business with our innovative program
                   that combines traditional business education with cutting-edge
                   technology.
                 </p>
                 <div className="flex flex-wrap gap-4 pt-2">
-                  <Badge className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-1.5">
+                  <Badge className="bg-blue-600 hover:bg-blue-700 text-white px-1 sm:px-4 sm:py-1.5 py-1">
                     AICTE Approved
                   </Badge>
-                  <Badge className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-1.5">
+                  <Badge className="bg-blue-600 hover:bg-blue-700 text-white px-1 sm:px-4 sm:py-1.5 py-1">
                     NEP 2020 Aligned
                   </Badge>
-                  <Badge className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-1.5">
+                  <Badge className="bg-blue-600 hover:bg-blue-700 text-white px-1 sm:px-4 sm:py-1.5 py-1">
                     Industry Immersion
                   </Badge>
+                  
                 </div>
               </motion.div>
             </div>

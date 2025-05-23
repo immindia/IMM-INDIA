@@ -23,7 +23,7 @@ const TopBar = () => {
     false,
   ]);
   const [isPayFeeOpen, setIsPayFeeOpen] = useState(false);
-  const { marqueeText } = useMarquee();
+  const { marqueeText, isBBAPage } = useMarquee();
 
   useEffect(() => {
     // Animate icons one by one with a delay
@@ -134,19 +134,21 @@ const TopBar = () => {
           >
             International Conference
           </PulsatingButton> */}
-          <a
-            href="https://admissions.immindia.edu.in/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <PulsatingButton
-              size="sm"
-              className="text-xs bg-black hover:bg-black/80"
-              pulseColor="#000"
+          {!isBBAPage && (
+            <a
+              href="https://admissions.immindia.edu.in/"
+              target="_blank"
+              rel="noopener noreferrer"
             >
-              Apply Now
-            </PulsatingButton>
-          </a>
+              <PulsatingButton
+                size="sm"
+                className="text-xs bg-black hover:bg-black/80"
+                pulseColor="#000"
+              >
+                Apply Now
+              </PulsatingButton>
+            </a>
+          )}
 
           {/* Pay Fee Dropdown */}
           <div className="relative">
