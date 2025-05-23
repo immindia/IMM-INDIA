@@ -11,26 +11,20 @@ const TeamMemberCard = memo(({ name, role, imageSrc, linkedinLink }) => {
   const [imageLoaded, setImageLoaded] = useState(false);
   const [imageError, setImageError] = useState(false);
 
-
   return (
-
     <div className="hover:-translate-y-2 transition-all duration-300 ">
-       
-
       <div className="bg-white shadow-xl dark:bg-slate-800 rounded-xl h-full p-2 group relative">
-
-
-      <BorderBeam
-        duration={6}
-        size={600}
-        className="from-transparent via-red-500 to-transparent"
-      />
-      <BorderBeam
-        duration={6}
-        delay={3}
-        size={600}
-        className="from-transparent via-blue-500 to-transparent"
-      />
+        {/* <BorderBeam
+          duration={6}
+          size={600}
+          className="from-transparent via-red-500 to-transparent"
+        />
+        <BorderBeam
+          duration={6}
+          delay={3}
+          size={600}
+          className="from-transparent via-blue-500 to-transparent"
+        /> */}
         <div className="flex justify-center overflow-hidden rounded-lg relative">
           {/* Show placeholder until image loads */}
           {!imageLoaded && !imageError && (
@@ -57,16 +51,15 @@ const TeamMemberCard = memo(({ name, role, imageSrc, linkedinLink }) => {
         </div>
         <div className="px-4 py-6 min-h-40 grid grid-cols-1 justify-between">
           <div>
-
-          <h4 className="text-xl font-medium mb-1 line-clamp-1 hover:line-clamp-none transition-all duration-300">
-            {name}
-          </h4>
-          <p className=" text-sm line-clamp-none sm:line-clamp-2 group-hover:line-clamp-none transition-all duration-300">
-            {role}
-          </p>
+            <h4 className="text-xl font-medium mb-1 line-clamp-1 hover:line-clamp-none transition-all duration-300">
+              {name}
+            </h4>
+            <p className="max-w-60 mx-auto text-sm line-clamp-none sm:line-clamp-2 group-hover:line-clamp-none transition-all duration-300">
+              {role}
+            </p>
           </div>
 
-          <div className="items-end h-fit flex justify-center">
+          <div className="items-end h-fit mt-1 flex justify-center">
             <a href={linkedinLink} target="_blank" rel="noopener noreferrer">
               <LinkedinIcon size={20} />
             </a>
@@ -90,7 +83,7 @@ const FacultyHeading = memo(() => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <section className="pt-5 pb-10 sm:py-14 mx-auto">
+    <section className="pt-5 pb-10 sm:py-10 mx-auto">
       <div className="max-w-screen-xl mx-auto">
         <div className="items-center gap-x-12 sm:px-4 md:px-0 lg:flex">
           <div className="max-w-xl space-y-3 mt-6 sm:px-0 md:mt-0 lg:max-w-7xl">
@@ -103,43 +96,44 @@ const FacultyHeading = memo(() => {
             <p className="sm:!mt-8 text-gray-600 text-justify sm:text-center">
               At IMM Business School, the foundation of academic distinction
               lies in our exceptional faculty. Our core team includes
-              accomplished scholars—PhDs and Fellows—from India&apos;s most esteemed
-              institutions. Their academic rigor is complemented by an elite
-              roster of Adjunct and Visiting Faculty from globally recognized
-              and prestigious institutions.
+              accomplished scholars—PhDs and Fellows—from India&apos;s most
+              esteemed institutions. Their academic rigor is complemented by an
+              elite roster of Adjunct and Visiting Faculty from globally
+              recognized and prestigious institutions.
             </p>
             {isOpen && (
               <>
-
                 <p className="text-gray-600 text-justify sm:text-center">
-              Beyond academia, senior corporate leaders and industry veterans
-              enrich the classroom as Visiting Faculty, offering students a
-              dynamic blend of theoretical depth and real-world relevance. Our
-              faculty are active thought leaders, consistently publishing in
-              top-tier national and international journals, driving cutting-edge
-              research, and engaging in high-impact consulting projects.
-              <br />
-              <br />
-              The pedagogy at IMM is rooted in analytical thinking and research
-              orientation. Faculty members leverage data-driven tools and
-              case-based learning to challenge conventional perspectives and
-              build critical insight. Students benefit from unfettered access to
-              leading academic journals and knowledge repositories, nurturing an
-              environment where inquiry is encouraged and innovation thrives.
-            </p>
-            </>
-          )}
+                  Beyond academia, senior corporate leaders and industry
+                  veterans enrich the classroom as Visiting Faculty, offering
+                  students a dynamic blend of theoretical depth and real-world
+                  relevance. Our faculty are active thought leaders,
+                  consistently publishing in top-tier national and international
+                  journals, driving cutting-edge research, and engaging in
+                  high-impact consulting projects.
+                  <br />
+                  <br />
+                  The pedagogy at IMM is rooted in analytical thinking and
+                  research orientation. Faculty members leverage data-driven
+                  tools and case-based learning to challenge conventional
+                  perspectives and build critical insight. Students benefit from
+                  unfettered access to leading academic journals and knowledge
+                  repositories, nurturing an environment where inquiry is
+                  encouraged and innovation thrives.
+                </p>
+              </>
+            )}
             <button
-          onClick={() => setIsOpen(!isOpen)}
-          className="text-primary-color flex group items-center  animate-pulse"
-        >
-          {isOpen ? "Read Less" : "Read More"}
-          {isOpen ? (
-            <ArrowUp className="ml-1 mt-1 h-4 w-4 group-hover:rotate-90 group-hover:ml-2 transition-all duration-300" />
-          ) : (
-            <ArrowRight className="ml-1 mt-1 h-4 w-4 group-hover:rotate-90 group-hover:ml-2 transition-all duration-300" />
-          )}
-        </button>
+              onClick={() => setIsOpen(!isOpen)}
+              className="text-primary-color flex group items-center  animate-pulse"
+            >
+              {isOpen ? "Read Less" : "Read More"}
+              {isOpen ? (
+                <ArrowUp className="ml-1 mt-1 h-4 w-4 group-hover:rotate-90 group-hover:ml-2 transition-all duration-300" />
+              ) : (
+                <ArrowRight className="ml-1 mt-1 h-4 w-4 group-hover:rotate-90 group-hover:ml-2 transition-all duration-300" />
+              )}
+            </button>
           </div>
         </div>
       </div>
@@ -232,8 +226,6 @@ const Faculty = () => {
   useEffect(() => {
     return () => setIsMounted(false); // Cleanup on unmount
   }, []);
-
-
 
   const breadcrumbItems = [
     { href: "/", label: "Home" },
@@ -352,7 +344,10 @@ const Faculty = () => {
             {/* Show skeleton placeholders while loading */}
             <div className="grid grid-cols-1 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-4 gap-6 mt-6">
               {[...Array(10)].map((_, index) => (
-                <div key={index} className="bg-white shadow-xl rounded-xl p-2 w-full">
+                <div
+                  key={index}
+                  className="bg-white shadow-xl rounded-xl p-2 w-full"
+                >
                   <div className="w-full aspect-square h-60 bg-slate-200 animate-pulse rounded-lg"></div>
                   <div className="px-4 py-6">
                     <div className="h-6 bg-slate-200 animate-pulse rounded mb-2"></div>
