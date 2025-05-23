@@ -5,11 +5,12 @@ import { useFetch } from "../../hooks/useFetch";
 import { LinkedinIcon } from "lucide-react";
 import { BorderBeam } from "@/components/magicui/border-beam";
 import PropTypes from "prop-types";
-
+import { ArrowUp, ArrowRight } from "lucide-react";
 // Memoized TeamMemberCard component to prevent unnecessary re-renders
 const TeamMemberCard = memo(({ name, role, imageSrc, linkedinLink }) => {
   const [imageLoaded, setImageLoaded] = useState(false);
   const [imageError, setImageError] = useState(false);
+
 
   return (
 
@@ -86,8 +87,10 @@ TeamMemberCard.propTypes = {
 };
 
 const FacultyHeading = memo(() => {
+  const [isOpen, setIsOpen] = useState(false);
+
   return (
-    <section className="py-10 sm:py-14 mx-auto">
+    <section className="pt-5 pb-10 sm:py-14 mx-auto">
       <div className="max-w-screen-xl mx-auto">
         <div className="items-center gap-x-12 sm:px-4 md:px-0 lg:flex">
           <div className="max-w-xl space-y-3 mt-6 sm:px-0 md:mt-0 lg:max-w-7xl">
@@ -104,8 +107,11 @@ const FacultyHeading = memo(() => {
               institutions. Their academic rigor is complemented by an elite
               roster of Adjunct and Visiting Faculty from globally recognized
               and prestigious institutions.
-              <br />
-              <br />
+            </p>
+            {isOpen && (
+              <>
+
+                <p className="text-gray-600 text-justify sm:text-center">
               Beyond academia, senior corporate leaders and industry veterans
               enrich the classroom as Visiting Faculty, offering students a
               dynamic blend of theoretical depth and real-world relevance. Our
@@ -121,6 +127,19 @@ const FacultyHeading = memo(() => {
               leading academic journals and knowledge repositories, nurturing an
               environment where inquiry is encouraged and innovation thrives.
             </p>
+            </>
+          )}
+            <button
+          onClick={() => setIsOpen(!isOpen)}
+          className="text-primary-color flex group items-center  animate-pulse"
+        >
+          {isOpen ? "Read Less" : "Read More"}
+          {isOpen ? (
+            <ArrowUp className="ml-1 mt-1 h-4 w-4 group-hover:rotate-90 group-hover:ml-2 transition-all duration-300" />
+          ) : (
+            <ArrowRight className="ml-1 mt-1 h-4 w-4 group-hover:rotate-90 group-hover:ml-2 transition-all duration-300" />
+          )}
+        </button>
           </div>
         </div>
       </div>
@@ -139,7 +158,40 @@ const Faculty = () => {
   const membersPerPage = 10; // Load 10 members at a time
 
   const { data } = useFetch("/api/indexBanner.php");
-  const [banner, setBanner] = useState([]);
+  const [bannerImage, setBannerImage] = useState(
+    "https://stealthlearn.in/imm-admin/api/uploads/680fd14484b0a.png"
+  ); // Default image
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  useEffect(() => {
+    if (data) {
+      const mobileImage = data.find(
+        (item) => item.category === "Faculty Mobile"
+      )?.url;
+      const desktopImage = data.find(
+        (item) => item.category === "Faculty"
+      )?.url;
+
+      if (isMobile && mobileImage) {
+        setBannerImage(mobileImage);
+      } else if (!isMobile && desktopImage) {
+        setBannerImage(desktopImage);
+      } else if (desktopImage) {
+        setBannerImage(desktopImage);
+      } else if (mobileImage) {
+        setBannerImage(mobileImage);
+      }
+    }
+  }, [data, isMobile]);
 
   // Track if component is mounted to avoid state updates after unmount
   const [isMounted, setIsMounted] = useState(true);
@@ -181,11 +233,7 @@ const Faculty = () => {
     return () => setIsMounted(false); // Cleanup on unmount
   }, []);
 
-  useEffect(() => {
-    if (data) {
-      setBanner(data.filter((item) => item.category === "Faculty"));
-    }
-  }, [data]);
+
 
   const breadcrumbItems = [
     { href: "/", label: "Home" },
@@ -292,10 +340,7 @@ const Faculty = () => {
     <div className="relative min-h-screen overflow-x-hidden">
       <ImgAndBreadcrumb
         title="Faculty"
-        imageSrc={
-          banner[0]?.url ||
-          "https://stealthlearn.in/imm-admin/api/uploads/680fd14484b0a.png"
-        }
+        imageSrc={bannerImage}
         imageAlt="Faculty Banner"
         breadcrumbItems={breadcrumbItems}
       />
