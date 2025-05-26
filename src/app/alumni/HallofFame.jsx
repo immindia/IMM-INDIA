@@ -143,7 +143,7 @@ export default function HallofFame() {
   return (
     <div className="relative min-h-screen">
       <ImgAndBreadcrumb
-        title="Dazzling Divas & Hall of Fame"
+        title=""
         imageSrc={bannerImage}
         imageAlt="Description of the image"
         breadcrumbItems={breadcrumbItems}
@@ -162,7 +162,7 @@ export default function HallofFame() {
         </div>
         <div className="container sm:max-w-6xl md:max-w-6xl lg:max-w-7xl xl:max-w-7xl mx-auto py-6 px-4 sm:py-8">
           <Heading
-            title="IMM DAZZLING DIVAS"
+            title="IMM Dazzling Divas"
             titleClassName="text-primary-color text-center lg:text-5xl"
             subtitleClassName="text-gray-500 m-0 lg:text-lg lg:font-normal lg:max-w-full"
             subtitle="Connect with our global network of alumni"

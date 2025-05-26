@@ -238,6 +238,8 @@ const Faculty = () => {
       "Prof. Sanjay Blaggan",
       "Prof. Anurag Arora",
       "Prof. Madan Lal",
+      "Prof. Dheeraj Jha",
+      "Dr. Vibha Dua Satija"
     ],
     []
   );

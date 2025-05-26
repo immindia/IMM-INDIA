@@ -1,6 +1,5 @@
 "use client";
 
-import { BookOpen, Layers, Code, GraduationCap } from "lucide-react";
 import { useState } from "react";
 import { cn } from "@/lib/utils";
 import { motion, AnimatePresence } from "framer-motion";
@@ -20,7 +19,7 @@ export default function SemesterTabMobile() {
         transition={{ duration: 1, delay: 0.2 }}
       >
         <h2 className="text-3xl font-bold text-pink-900 mb-6 drop-shadow-md backdrop-blur-sm  w-fit">
-          13 SKILL CERTIFICATIONS BY KLADIO
+          13 Skill Certifications by Kladio
         </h2>
         <p className="text-gray-700 text-base drop-shadow-sm backdrop-blur-sm">
           Choose from a variety of specializations designed to align with your

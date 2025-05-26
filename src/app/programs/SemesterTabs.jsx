@@ -31,7 +31,7 @@ export default function SemesterTabs() {
         transition={{ duration: 1, delay: 0.2 }}
       >
         <h2 className="sm:text-4xl text-3xl font-bold text-pink-900 mb-6 drop-shadow-md backdrop-blur-sm  w-fit">
-          13 SKILL CERTIFICATIONS BY KLADIO
+          13 Skill Certifications by Kladio
         </h2>
         <p className="text-gray-700 text-lg drop-shadow-sm backdrop-blur-sm">
           Choose from a variety of specializations designed to align with your

@@ -36,7 +36,7 @@ const ImgAndBreadcrumb = ({ imageSrc, imageAlt, breadcrumbItems, title }) => {
       <img
         src={imageSrc}
         alt={imageAlt || "Image"}
-        className="object-cover w-full h-min shadow-sm -z-10 "
+        className="object-cover w-full h-min max-h-[30rem] shadow-sm -z-10 "
         width={1920}
         height={1080}
         fetchPriority="high"
@@ -44,10 +44,10 @@ const ImgAndBreadcrumb = ({ imageSrc, imageAlt, breadcrumbItems, title }) => {
       />
       {/* <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-t from-black via-black/70 to-black/30"></div> */}
       {title && (
-      <div className=" absolute top-20 sm:top-[45%] mx-3  p-3 sm:p-5 bg-black/50 rounded-md ">
+      <div className=" absolute top-1/2 left-1/2 transform w-max max-w-[80%] -translate-x-1/2 -translate-y-1/2 mx-3  p-3 sm:p-5 bg-black/50 rounded-md ">
         <WordPullUp
           words={title}
-          className="sm:text-6xl text-3xl text-white sm:font-extrabold  tracking-widest   leading-tight sm:leading-none"
+          className="sm:text-6xl text-3xl  text-white sm:font-extrabold  tracking-widest   leading-tight sm:leading-none"
         />
         </div>
       )}
