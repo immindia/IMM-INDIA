@@ -20,7 +20,55 @@ export default function PlacementGrid() {
         const summerPlacements = data.filter(
           (item) => item.category === "Summer Placement"
         );
-        setPlacements(summerPlacements);
+
+        // Prioritize specific names
+        const prioritizedNames = [
+          "Vipin Yadav",
+          "Divya Bansal",
+          "Dheeraj Satija",
+          "Abhay Bhadouria",
+          "Muskan Garg",
+          "Milind K Yadav",
+          "Tamanna Bhardwaj",
+          "Ankur Sharma",
+          "Shweta Singh",
+          "Diksha Joshi",
+          "Ritam Kalkhandey",
+          "Shambhavi Mishra",
+          "Gaurav Sahu",
+          "Akshay Kumar",
+        ];
+
+        const prioritizedPlacements = [];
+        const otherPlacements = [];
+
+        summerPlacements.forEach((placement) => {
+          if (prioritizedNames.includes(placement.title)) {
+            prioritizedPlacements.push(placement);
+          } else {
+            otherPlacements.push(placement);
+          }
+        });
+
+        // Ensure prioritized names appear in the specified order and handle duplicates like "Dheeraj Satija"
+        const finalPrioritized = [];
+        const seenTitles = new Set();
+
+        prioritizedNames.forEach((name) => {
+          summerPlacements.forEach((p) => {
+            if (p.title === name && !seenTitles.has(p.id)) {
+              // Use ID to distinguish if names can be non-unique
+              finalPrioritized.push(p);
+              seenTitles.add(p.id);
+            }
+          });
+        });
+
+        const remainingPlacements = summerPlacements.filter(
+          (p) => !finalPrioritized.find((fp) => fp.id === p.id)
+        );
+
+        setPlacements([...finalPrioritized, ...remainingPlacements]);
       } catch (error) {
         console.error("Error fetching placements:", error);
       } finally {
@@ -120,14 +168,16 @@ export default function PlacementGrid() {
                         {placement.title}
                       </h3>
                       <div className="flex items-center text-sm text-gray-600">
-                        <img
-                          src={placement.logo_url}
-                          alt={placement.title}
-                          className="h-8"
-                          loading="lazy"
-                          height={32}
-                          decoding="async"
-                        />
+                        {placement.logo_url && (
+                          <img
+                            src={placement.logo_url}
+                            alt={placement.title}
+                            className="h-8"
+                            loading="lazy"
+                            height={32}
+                            decoding="async"
+                          />
+                        )}
                       </div>
                     </div>
                   </div>
