@@ -182,7 +182,7 @@ const BlogCard = ({ id, date, title, description, imageUrl, slug }) => {
     >
       <div className="flex items-center">
         <img
-          src={"/placeholder.svg"}
+          src={imageUrl || "/placeholder.svg"}
           alt={title}
           className="rounded-t-2xl w-full object-cover h-44 sm:h-48 aspect-video"
         />

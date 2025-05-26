@@ -32,11 +32,11 @@ const ImgAndBreadcrumb = ({ imageSrc, imageAlt, breadcrumbItems, title }) => {
   const isDesktop = useMediaQuery("(min-width: 768px)");
 
   return (
-    <div className="relative flex items-end justify-center h-56 sm:h-[30rem]">
+    <div className="relative flex items-end justify-center h-max">
       <img
         src={imageSrc}
         alt={imageAlt || "Image"}
-        className="absolute top-0 left-0 object-cover w-full h-full shadow-sm -z-10 "
+        className="object-cover w-full h-min shadow-sm -z-10 "
         width={1920}
         height={1080}
         fetchPriority="high"
@@ -51,7 +51,7 @@ const ImgAndBreadcrumb = ({ imageSrc, imageAlt, breadcrumbItems, title }) => {
         />
         </div>
       )}
-      <Breadcrumb className=" relative z-10 -mb-8 transition-all duration-300 ease-in-out hover:drop-shadow-2xl drop-shadow-xl hover:scale-105">
+      <Breadcrumb className=" absolute z-10 -mb-8 transition-all duration-300 ease-in-out hover:drop-shadow-2xl drop-shadow-xl hover:scale-105">
         <BreadcrumbList className="px-8  py-4 bg-pink-800 rounded-md">
           {isDesktop ? (
             // Desktop view: show all breadcrumbs

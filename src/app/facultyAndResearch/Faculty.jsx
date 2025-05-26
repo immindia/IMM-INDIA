@@ -3,9 +3,10 @@ import ImgAndBreadcrumb from "../../components/ImgAndBreadcrumb";
 import Container from "../../components/wrappers/Container";
 import { useFetch } from "../../hooks/useFetch";
 import { LinkedinIcon } from "lucide-react";
-import { BorderBeam } from "@/components/magicui/border-beam";
 import PropTypes from "prop-types";
 import { ArrowUp, ArrowRight } from "lucide-react";
+import { visitingFacultyData, guestSpeakerData } from "./facultyData";
+import Heading from "../../components/Heading";
 // Memoized TeamMemberCard component to prevent unnecessary re-renders
 const TeamMemberCard = memo(({ name, role, imageSrc, linkedinLink }) => {
   const [imageLoaded, setImageLoaded] = useState(false);
@@ -142,6 +143,24 @@ const FacultyHeading = memo(() => {
 });
 
 FacultyHeading.displayName = "FacultyHeading";
+
+const FacultyListSection = ({ title, data, renderItem }) => (
+  <section className="py-10">
+    <Heading
+      title={title}
+      titleClassName="text-white text-center lg:text-5xl font-semibold "
+    />
+    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+      {data.map((item, index) => renderItem(item, index))}
+    </div>
+  </section>
+);
+
+FacultyListSection.propTypes = {
+  title: PropTypes.string.isRequired,
+  data: PropTypes.array.isRequired,
+  renderItem: PropTypes.func.isRequired,
+};
 
 const Faculty = () => {
   const [facultyMembers, setFacultyMembers] = useState([]);
@@ -340,64 +359,105 @@ const Faculty = () => {
       <div className="bg-slate-50">
         <Container className="container grid">
           <FacultyHeading />
-        {loading && (
-          <div className="text-center py-10">
-            <p className="text-lg">Loading faculty information...</p>
-            {/* Show skeleton placeholders while loading */}
-            <div className="grid grid-cols-1 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-4 gap-6 mt-6">
-              {[...Array(10)].map((_, index) => (
+          {loading && (
+            <div className="text-center py-10">
+              <p className="text-lg">Loading faculty information...</p>
+              {/* Show skeleton placeholders while loading */}
+              <div className="grid grid-cols-1 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-4 gap-6 mt-6">
+                {[...Array(10)].map((_, index) => (
+                  <div
+                    key={index}
+                    className="bg-white shadow-xl rounded-xl p-2 w-full"
+                  >
+                    <div className="w-full aspect-square h-60 bg-slate-200 animate-pulse rounded-lg"></div>
+                    <div className="px-4 py-6">
+                      <div className="h-6 bg-slate-200 animate-pulse rounded mb-2"></div>
+                      <div className="h-12 bg-slate-200 animate-pulse rounded"></div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {error && (
+            <div className="text-center py-10">
+              <p className="text-lg text-red-500">Error: {error}</p>
+              <button
+                onClick={fetchFaculty}
+                className="mt-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+              >
+                Retry
+              </button>
+            </div>
+          )}
+
+          {!loading && !error && (
+            <>
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mx-auto justify-center items-stretch text-center">
+                {visibleFaculty.map((member) => (
+                  <TeamMemberCard
+                    key={member.id}
+                    name={member.title}
+                    role={member.description}
+                    imageSrc={member.url}
+                    linkedinLink={member.link}
+                  />
+                ))}
+              </div>
+
+              {/* Load more trigger element for infinite scroll */}
+              {visibleFaculty.length < facultyMembers.length && (
+                <div
+                  id="load-more-trigger"
+                  className="flex justify-center py-8"
+                >
+                  <div className="w-8 h-8 border-4 border-blue-500 border-t-transparent rounded-full animate-spin"></div>
+                </div>
+              )}
+            </>
+          )}
+        </Container>
+        <div className="bg-gradient-to-r from-pink-800 via-pink-600 to-pink-800">
+          <div className="faculty-lists mt-12 container sm:max-w-5xl md:max-w-6xl lg:max-w-7xl mx-auto px-5 sm:px-0">
+            <FacultyListSection
+              title="Visiting Faculty @IMM"
+              data={visitingFacultyData}
+              renderItem={(item, index) => (
                 <div
                   key={index}
-                  className="bg-white shadow-xl rounded-xl p-2 w-full"
+                  className="bg-white dark:bg-slate-800 shadow-lg rounded-lg p-6 text-center hover:-translate-y-2 transition-all duration-300"
                 >
-                  <div className="w-full aspect-square h-60 bg-slate-200 animate-pulse rounded-lg"></div>
-                  <div className="px-4 py-6">
-                    <div className="h-6 bg-slate-200 animate-pulse rounded mb-2"></div>
-                    <div className="h-12 bg-slate-200 animate-pulse rounded"></div>
-                  </div>
+                  <h4 className="text-lg font-semibold mb-1 text-primary-color">
+                    {item.name}
+                  </h4>
+                  <p className="text-sm text-gray-600 dark:text-gray-300">
+                    {item.expertise}
+                  </p>
                 </div>
-              ))}
-            </div>
+              )}
+            />
+
+            <FacultyListSection
+              title="Guest Speaker @IMM"
+              data={guestSpeakerData}
+              renderItem={(item, index) => (
+                <div
+                  key={index}
+                  className="bg-white dark:bg-slate-800 shadow-lg rounded-lg p-6 text-center hover:-translate-y-2 transition-all duration-300"
+                >
+                  <h4 className="text-lg font-semibold mb-1 text-primary-color">
+                    {item.name}
+                  </h4>
+                  <p className="text-sm text-gray-600 dark:text-gray-300">
+                    {item.title}
+                  </p>
+                </div>
+              )}
+            />
           </div>
-        )}
-
-        {error && (
-          <div className="text-center py-10">
-            <p className="text-lg text-red-500">Error: {error}</p>
-            <button
-              onClick={fetchFaculty}
-              className="mt-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
-            >
-              Retry
-            </button>
-          </div>
-        )}
-
-        {!loading && !error && (
-          <>
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mx-auto justify-center items-stretch text-center">
-              {visibleFaculty.map((member) => (
-                <TeamMemberCard
-                  key={member.id}
-                  name={member.title}
-                  role={member.description}
-                  imageSrc={member.url}
-                  linkedinLink={member.link}
-                />
-              ))}
-            </div>
-
-            {/* Load more trigger element for infinite scroll */}
-            {visibleFaculty.length < facultyMembers.length && (
-              <div id="load-more-trigger" className="flex justify-center py-8">
-                <div className="w-8 h-8 border-4 border-blue-500 border-t-transparent rounded-full animate-spin"></div>
-              </div>
-            )}
-          </>
-        )}
-      </Container>
+        </div>
       </div>
-      {/* <div className="bg-slate-50"></div> */}
     </div>
   );
 };
