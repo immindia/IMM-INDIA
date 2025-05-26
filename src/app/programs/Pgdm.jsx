@@ -52,7 +52,7 @@ const Pgdm = () => {
   return (
     <div className="relative min-h-screen">
       <ImgAndBreadcrumb
-        title=""
+        title={window.innerWidth < 768 ? "PGDM" : ""}
         imageSrc={bannerImage}
         imageAlt="Description of the image"
         breadcrumbItems={breadcrumbItems}

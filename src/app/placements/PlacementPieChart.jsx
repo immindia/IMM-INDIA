@@ -13,30 +13,41 @@ export default function PlacementPieChart() {
 
   // Data for Final Placements chart
   const finalPlacementsData = [
-    { name: "Consulting", value: 21, color: "hsl(262, 80%, 50%)" },
-    { name: "Banking & Finance", value: 20.5, color: "hsl(220, 70%, 50%)" },
-    { name: "Ecommerce", value: 20.1, color: "hsl(190, 90%, 40%)" },
-    { name: "Manufacturing", value: 12.9, color: "hsl(150, 60%, 40%)" },
-    { name: "Others", value: 5.3, color: "hsl(280, 50%, 60%)" },
-    { name: "Conglomerate", value: 4.6, color: "hsl(320, 70%, 50%)" },
-    { name: "IT", value: 4.7, color: "hsl(200, 80%, 50%)" },
-    { name: "Retail", value: 4.7, color: "hsl(30, 90%, 60%)" },
-    { name: "Healthcare", value: 3.7, color: "hsl(340, 80%, 65%)" },
-    { name: "Telecom", value: 2.9, color: "hsl(170, 70%, 45%)" },
+    { name: "Banking & Finance", value: 24, color: "hsl(0, 80%, 60%)" },
+    { name: "Consulting", value: 24, color: "hsl(260, 70%, 65%)" },
+    { name: "Ed-Tech", value: 16, color: "hsl(30, 90%, 60%)" },
+    { name: "FMCG/FMCD", value: 6, color: "hsl(280, 70%, 45%)" },
+    { name: "Insurance & Healthcare", value: 7, color: "hsl(200, 80%, 50%)" },
+    { name: "HR", value: 6, color: "hsl(320, 70%, 50%)" },
+    { name: "IT & Telecom", value: 24, color: "hsl(180, 60%, 50%)" },
+    { name: "Manufacturing", value: 15, color: "hsl(150, 60%, 40%)" },
+    { name: "Media & Advertising", value: 6, color: "hsl(200, 80%, 50%)" },
+    { name: "Operations & Supply Chain", value: 12.5, color: "hsl(120, 50%, 50%)" },
+    { name: "Real Estate", value: 8, color: "hsl(120, 40%, 50%)" },
+    { name: "Research", value: 5, color: "hsl(126, 50%, 50%)" },
+    { name: "Retail", value: 4, color: "hsl(120, 50%, 50%)" },
+    { name: "Sports & Energy", value: 4, color: "hsl(120, 50%, 50%)" },
+    { name: "Travel & Hospitality", value: 6, color: "hsl(120, 50%, 50%)" },
   ]
 
   // Data for Summer Internships chart
   const summerInternshipsData = [
-    { name: "Ecommerce", value: 31.2, color: "hsl(0, 80%, 60%)" },
-    { name: "Consulting", value: 18.4, color: "hsl(260, 70%, 65%)" },
-    { name: "Finance", value: 9.7, color: "hsl(220, 80%, 45%)" },
-    { name: "Retail", value: 8.4, color: "hsl(30, 90%, 60%)" },
-    { name: "Sports", value: 6.7, color: "hsl(120, 50%, 50%)" },
-    { name: "Manufacturing", value: 6.7, color: "hsl(150, 60%, 40%)" },
-    { name: "FMCG", value: 6.7, color: "hsl(280, 70%, 45%)" },
-    { name: "Automobiles", value: 2.1, color: "hsl(200, 80%, 50%)" },
-    { name: "Conglomerate", value: 1.7, color: "hsl(320, 70%, 50%)" },
-    { name: "Supply Chain & Logistics", value: 8.4, color: "hsl(180, 60%, 50%)" },
+    { name: "Banking & Finance", value: 10, color: "hsl(0, 80%, 60%)" },
+    { name: "Consulting", value: 8, color: "hsl(260, 70%, 65%)" },
+    { name: "E-Commerce", value: 6, color: "hsl(220, 80%, 45%)" },
+    { name: "Ed-Tech", value: 5, color: "hsl(30, 90%, 60%)" },
+    { name: "Fashion", value: 1, color: "hsl(150, 60%, 40%)" },
+    { name: "FMCG", value: 4, color: "hsl(280, 70%, 45%)" },
+    { name: "Healthcare", value: 1, color: "hsl(200, 80%, 50%)" },
+    { name: "HR", value: 8, color: "hsl(320, 70%, 50%)" },
+    { name: "IT & Telecom", value: 4, color: "hsl(180, 60%, 50%)" },
+    { name: "Manufacturing", value: 3, color: "hsl(150, 60%, 40%)" },
+    { name: "Media & Advertising", value: 5, color: "hsl(200, 80%, 50%)" },
+    { name: "NGO", value: 1, color: "hsl(120, 50%, 50%)" },
+    { name: "Real Estate", value: 5, color: "hsl(120, 40%, 50%)" },
+    { name: "Research", value: 1, color: "hsl(126, 50%, 50%)" },
+    { name: "Retail", value: 5, color: "hsl(120, 50%, 50%)" },
+    { name: "Travel & Hospitality", value: 3, color: "hsl(120, 50%, 50%)" },
   ]
 
   // Create chart configs for shadcn ChartContainer
@@ -62,14 +73,15 @@ export default function PlacementPieChart() {
 
     return (
       <g>
-        <text x={cx} y={cy} dy={-20} textAnchor="middle" fill="#333" className="text-lg bg-white font-medium" style={{ backgroundColor: 'white' }}>
+        <text x={cx} y={cy} dy={-7} textAnchor="middle" fill="#333" className="text-lg bg-white font-medium" style={{ backgroundColor: 'white' }}>
           {payload.name}
         </text>
-        <text x={cx} y={cy} dy={10} textAnchor="middle" fill="#333" className="text-xl font-bold">
+        {/* <text x={cx} y={cy} dy={10} textAnchor="middle" fill="#333" className="text-xl font-bold">
           {`${value}%`}
-        </text>
+        </text> */}
         <text x={cx} y={cy} dy={30} textAnchor="middle" fill="#666" className="text-sm">
-          {`(${(percent * 100).toFixed(1)}% of total)`}
+          {/* {`(${(percent * 100).toFixed(1)}% of total)`} */}
+          {`(${value}% of total)`}
         </text>
         <Sector
           cx={cx}

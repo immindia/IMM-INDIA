@@ -219,11 +219,12 @@ const Faculty = () => {
       "Dr. Swati Jha",
       "Dr. Tanu Manocha",
       "Dr. Shivangi",
-      "Dr. Sakshi Sharma",
+      "Prof. Mukul Kumar",
       "Prof. Sanjay Verma",
       "Prof. Nisha Anand",
+      "Prof. Dheeraj Jha",
       "Prof. Sonalika Singh",
-      "Prof. Mukul Kumar",
+      "Dr. Sakshi Sharma",
       "Prof. Suket Chauhan",
       "Prof. Kapil Kumar Bali",
       "Prof. Kamlesh Kumar Verma",
@@ -238,7 +239,7 @@ const Faculty = () => {
       "Prof. Sanjay Blaggan",
       "Prof. Anurag Arora",
       "Prof. Madan Lal",
-      "Prof. Dheeraj Jha",
+      
       "Dr. Vibha Dua Satija"
     ],
     []
@@ -441,7 +442,7 @@ const Faculty = () => {
             />
 
             <FacultyListSection
-              title="Guest Speaker @IMM"
+              title="Some Corporate Speakers @IMM"
               data={guestSpeakerData}
               renderItem={(item, index) => (
                 <div

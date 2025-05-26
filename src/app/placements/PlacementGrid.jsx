@@ -102,7 +102,7 @@ export default function PlacementGrid() {
                     <img
                       src={placement.url || "/placeholder.svg"}
                       alt={`${placement.title}'s placement`}
-                      className="sm:h-full h-[200px] w-full object-cover"
+                      className="sm:h-full h-[200px] w-full object-cover object-top"
                       loading="lazy"
                       width={300}
                       height={400}

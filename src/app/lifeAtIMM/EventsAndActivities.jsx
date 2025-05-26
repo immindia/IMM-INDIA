@@ -75,7 +75,7 @@ const EventsAndActivities = () => {
   return (
     <div className="relative min-h-screen">
       <ImgAndBreadcrumb
-        title=""
+        title={window.innerWidth < 768 ? "" : "Events & Activities"}
         imageSrc={bannerImage}
         imageAlt="Description of the image"
         breadcrumbItems={breadcrumbItems}

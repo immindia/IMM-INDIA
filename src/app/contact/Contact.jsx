@@ -86,9 +86,17 @@ function ContactForm() {
 function ContactInfo() {
   return (
     <div className="space-y-4">
-      <div className="flex items-center space-x-3 text-gray-600">
+      <div className="flex items-start space-x-3 text-gray-600">
         <MapPin className="w-5 h-5 text-pink-900" />
-        <span>B-11 Qutab Institutional Area, New Delhi - 110016</span>
+        <span>
+          B-11 Qutab Institutional Area,
+          <span className="block sm:hidden">
+            <br /> New Delhi - 110016
+          </span>
+          <span className="hidden sm:inline">
+            &nbsp; New Delhi - 110016
+          </span>
+        </span>
       </div>
       <div className="flex items-center space-x-3 text-gray-600">
         <Phone className="w-5 h-5 text-pink-900" />
@@ -162,7 +170,7 @@ function SocialLinks() {
           <Facebook className="w-6 h-6 text-pink-800 transition-colors duration-300 group-hover:text-pink-600" />
         </a>
         <a
-          href="https://x.com/imm_bschool" 
+          href="https://x.com/imm_bschool"
           target="_blank"
           rel="noopener noreferrer"
           className="p-2 overflow-hidden transition-all duration-300 bg-white rounded-full cursor-pointer hover:scale-110 hover:rotate-12 group"
@@ -296,14 +304,15 @@ export default function Contact() {
             <div className="grid gap-5 sm:gap-8">
               <div className="p-6 bg-white rounded-lg shadow-lg">
                 <h2 className="mb-6 text-2xl font-semibold text-gray-800">
-                Prof. Mukul Kumar - Admission Director
+                  Prof. Mukul Kumar {window.innerWidth < 768 ? " " : " - "}{" "}
+                  Admission Director
                 </h2>
                 <AdmissionHead />
               </div>
 
               <div className="p-6 bg-white rounded-lg shadow-lg">
                 <h2 className="mb-6 text-2xl font-semibold text-gray-800">
-                Corporate Connect Hub 
+                  Corporate Connect Hub
                 </h2>
                 <CorporateResourceCentreHead />
               </div>

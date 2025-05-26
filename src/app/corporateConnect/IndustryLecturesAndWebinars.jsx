@@ -316,7 +316,7 @@ const IndustryLecturesAndWebinars = () => {
                     <h3 className="text-base font-bold line-clamp-1">
                       {event.title}
                     </h3>
-                    <p className="text-gray-500 text-xs">{event.date}</p>
+                    {/* <p className="text-gray-500 text-xs">{event.date}</p> */}
                     <div className="flex flex-wrap gap-2 ">
                       {event.tags &&
                         Array.isArray(event.tags) &&
