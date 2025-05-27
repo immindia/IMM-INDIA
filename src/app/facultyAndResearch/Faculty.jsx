@@ -5,6 +5,7 @@ import { useFetch } from "../../hooks/useFetch";
 import { LinkedinIcon } from "lucide-react";
 import PropTypes from "prop-types";
 import { ArrowUp, ArrowRight } from "lucide-react";
+import { UserRoundIcon, Briefcase, Building2 } from "lucide-react";
 import { visitingFacultyData, guestSpeakerData } from "./facultyData";
 import Heading from "../../components/Heading";
 // Memoized TeamMemberCard component to prevent unnecessary re-renders
@@ -150,7 +151,7 @@ const FacultyListSection = ({ title, data, renderItem }) => (
       title={title}
       titleClassName="text-white text-center lg:text-5xl font-semibold "
     />
-    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-6">
       {data.map((item, index) => renderItem(item, index))}
     </div>
   </section>
@@ -239,8 +240,8 @@ const Faculty = () => {
       "Prof. Sanjay Blaggan",
       "Prof. Anurag Arora",
       "Prof. Madan Lal",
-      
-      "Dr. Vibha Dua Satija"
+
+      "Dr. Vibha Dua Satija",
     ],
     []
   );
@@ -431,12 +432,18 @@ const Faculty = () => {
                   key={index}
                   className="bg-white dark:bg-slate-800 shadow-lg rounded-lg p-6 text-center hover:-translate-y-2 transition-all duration-300"
                 >
-                  <h4 className="text-lg font-semibold mb-1 text-primary-color">
+                  <h4 className="text-lg font-semibold mb-1 text-primary-color flex items-center justify-center gap-2">
+                    <UserRoundIcon size={18} className="text-primary-color" />
                     {item.name}
                   </h4>
-                  <p className="text-sm text-gray-600 dark:text-gray-300">
+                  <p className="text-sm text-gray-600 dark:text-gray-300 flex items-center justify-center gap-2">
+                    <Briefcase size={18} className="text-priary-color mt-1" />
                     {item.expertise}
                   </p>
+                  {/* <p className="text-sm text-gray-600 dark:text-gray-300">
+                    <Building2 size={18} className="text-primary-color" />
+                    {item.company}
+                  </p> */}
                 </div>
               )}
             />
@@ -447,13 +454,27 @@ const Faculty = () => {
               renderItem={(item, index) => (
                 <div
                   key={index}
-                  className="bg-white dark:bg-slate-800 shadow-lg rounded-lg p-6 text-center hover:-translate-y-2 transition-all duration-300"
+                  className="bg-white dark:bg-slate-800 shadow-lg rounded-lg p-6 text-center hover:-translate-y-2 transition-all duration-300 space-y-2"
                 >
-                  <h4 className="text-lg font-semibold mb-1 text-primary-color">
+                  <h4 className="text-lg font-semibold mb-1 text-primary-color flex items-center justify-center gap-2">
+                    <UserRoundIcon size={18} className="text-primary-color" />
                     {item.name}
                   </h4>
-                  <p className="text-sm text-gray-600 dark:text-gray-300">
-                    {item.title}
+
+                  <p className="text-sm text-gray-600 dark:text-gray-300 flex items-start justify-center gap-2 max-w- sm:text-base mx-auto">
+                    <Briefcase
+                      size={16}
+                      className="text-gray-500 dark:text-gray-300 mt-1"
+                    />
+                    {item.expertise}
+                  </p>
+
+                  <p className="text-sm text-gray-600 sm:text-base dark:text-gray-300 flex items-start justify-center gap-2">
+                    <Building2
+                      size={16}
+                      className="text-gray-500 dark:text-gray-300 mt-1"
+                    />
+                    {item.company}
                   </p>
                 </div>
               )}

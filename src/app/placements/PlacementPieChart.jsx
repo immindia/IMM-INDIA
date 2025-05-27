@@ -202,9 +202,10 @@ export default function PlacementPieChart() {
                 </CardDescription>
                 <Separator className="my-2" />
               </CardHeader>
-              <CardContent className="pt-10">
+              <CardContent className="pt-1">
                 <div className="w-full h-[350px] sm:h-[350px]">
-                  <ChartContainer config={finalPlacementsConfig}>
+                  <ChartContainer config={finalPlacementsConfig}
+                  className='w-full h-full'>
                     <ResponsiveContainer width="100%" height="100%">
                       <PieChart>
                         <Pie
@@ -215,8 +216,8 @@ export default function PlacementPieChart() {
                           nameKey="name"
                           cx="50%"
                           cy="50%"
-                          innerRadius={100}
-                          outerRadius={150}
+                          innerRadius={window.innerWidth < 768 ? 90 : 100}
+                          outerRadius={window.innerWidth < 768 ? 150 : 150}
                           paddingAngle={2}
                           onMouseEnter={handleFinalPieEnter}
                           isAnimationActive={true}
@@ -265,7 +266,7 @@ export default function PlacementPieChart() {
                 </CardDescription>
                 <Separator className="my-2" />
               </CardHeader>
-              <CardContent className="pt-10">
+              <CardContent className="pt-1">
                 <div className="w-full h-[350px] sm:h-[350px]">
                   <ChartContainer config={summerInternshipsConfig} className='w-full h-full'>
                     <ResponsiveContainer width="100%" height="100%">
@@ -278,8 +279,8 @@ export default function PlacementPieChart() {
                           nameKey="name"
                           cx="50%"
                           cy="50%"
-                          innerRadius={100}
-                          outerRadius={150}
+                          innerRadius={window.innerWidth < 768 ? 90 : 100}
+                          outerRadius={window.innerWidth < 768 ? 150 : 150}
                           paddingAngle={2}
                           onMouseEnter={handleInternPieEnter}
                           isAnimationActive={true}
