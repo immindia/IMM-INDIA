@@ -104,7 +104,10 @@ export default memo(function ThreeDPlacementCard({
         >
           <div className="sm:mb- mt-auto">
             <h3 className="mb-1 sm:text-xl text-center font-bold tracking-tight text-white">
-              {name}
+              {name
+                .split(" ")
+                .map((word) => word[0].toUpperCase() + word.slice(1))
+                .join(" ")}
             </h3>
             <div className="mb flex items-center gap-2 py-2 scale-75 bg-white rounded">
               <img src={logo} alt="logo" className="w-auto mx-auto h-8" />

@@ -164,7 +164,7 @@ export default function PlacementGrid() {
                 <CardContent className="p-4">
                   <div className="flex items-start justify-between">
                     <div>
-                      <h3 className="font-semibold text-lg mb-1 line-clamp-1 sm:line-clamp-none">
+                      <h3 className="font-semibold capitalize text-lg mb-1 line-clamp-1 sm:line-clamp-none">
                         {placement.title}
                       </h3>
                       <div className="flex items-center text-sm text-gray-600">

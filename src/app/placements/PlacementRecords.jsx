@@ -64,7 +64,7 @@ const PlacementRecords = () => {
         breadcrumbItems={breadcrumbItems}
       />
       <PlacementStats />
-      <div className=" bg-slate-50 hidden">
+      <div className=" bg-slate-50 ">
         <PlacementPieChart />
       </div>
       {/* <Container className="container grid "> */}

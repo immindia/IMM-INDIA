@@ -252,15 +252,8 @@ const FinalPlacementCompanies = ({
                 whileHover={{ rotate: 360, scale: 1.5 }}
                 transition={{ duration: 0.5 }}
               />
-              <p className="mt-2 text-sm font-light group-hover:font-normal transition-all text-gray-700 text-center group-hover:text-pink-900 duration-300">
-                {company.name
-                  .toLowerCase()
-                  .split(" ")
-                  .map(
-                    (word) =>
-                      word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()
-                  )
-                  .join(" ")}
+              <p className="mt-2 text-sm font-light group-hover:font-normal transition-all text-gray-700 text-center group-hover:text-pink-900 duration-300 capitalize">
+                {company.name}
               </p>
             </motion.div>
           </motion.div>
