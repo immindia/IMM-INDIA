@@ -203,7 +203,7 @@ export default function PlacementPieChart() {
                 <Separator className="my-2" />
               </CardHeader>
               <CardContent className="pt-0">
-                <div className="w-full h-[350px] sm:h-[450px] grid justify-center ">
+                <div className="w-full h-[350px] sm:h-[450px]">
                   <ChartContainer config={finalPlacementsConfig}>
                     <ResponsiveContainer width="100%" height="100%">
                       <PieChart>
@@ -219,6 +219,7 @@ export default function PlacementPieChart() {
                           outerRadius={150}
                           paddingAngle={2}
                           onMouseEnter={handleFinalPieEnter}
+                          isAnimationActive={true}
                         >
                           {finalPlacementsData.map((entry, index) => (
                             <Cell
@@ -265,7 +266,7 @@ export default function PlacementPieChart() {
                 <Separator className="my-2" />
               </CardHeader>
               <CardContent className="pt-0">
-                <div className="w-full h-[350px] sm:h-[450px] grid justify-center ">
+                <div className="w-full h-[350px] sm:h-[450px]">
                   <ChartContainer config={summerInternshipsConfig}>
                     <ResponsiveContainer width="100%" height="100%">
                       <PieChart>
@@ -281,6 +282,7 @@ export default function PlacementPieChart() {
                           outerRadius={150}
                           paddingAngle={2}
                           onMouseEnter={handleInternPieEnter}
+                          isAnimationActive={true}
                         >
                           {summerInternshipsData.map((entry, index) => (
                             <Cell

@@ -1,7 +1,7 @@
 // import Heading from "../../components/Heading";
 import ImgAndBreadcrumb from "../../components/ImgAndBreadcrumb";
 // import Container from "../../components/wrappers/Container";
-import img from "../../assets/faculty/Banner.webp";
+// import img from "../../assets/faculty/Banner.webp";
 import { useState, useEffect } from "react";
 // import { motion } from "framer-motion";
 // import { Input } from "@/components/ui/input";
