@@ -50,7 +50,7 @@ import AICTE from "./app/footerLinkComponents/AICTE";
 import Career from "./app/footerLinkComponents/career/Career";
 import CareerDetail from "./app/footerLinkComponents/career/CareerDetails";
 import Feedback from "./app/footerLinkComponents/Feedback";
-
+import NIRF from "./app/footerLinkComponents/NIRF";
 // Scroll to top on route change
 function ScrollToTopOnMount() {
   const { pathname } = useLocation();
@@ -218,6 +218,7 @@ function App() {
               <Route path="/career" element={<Career />} />
               <Route path="/career/:job-opening" element={<CareerDetail />} />
               <Route path="/feedback" element={<Feedback />} />
+              <Route path="/nirf" element={<NIRF />} />
             </Routes>
 
             <Footer />
