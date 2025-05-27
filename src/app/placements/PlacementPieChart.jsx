@@ -28,8 +28,8 @@ export default function PlacementPieChart() {
       value: 4.14,
       color: "hsl(200, 80%, 50%)",
     }, // Blue
-    { name: "Human Resource", value: 14.2, color: "hsl(320, 70%, 50%)" }, // Pink
-    { name: "IT & Telecom", value: 3.55, color: "hsl(180, 60%, 50%)" }, // Teal
+    { name: "Human Resource", value: 3.55, color: "hsl(320, 70%, 50%)" }, // Pink
+    { name: "IT & Telecom", value: 14.2, color: "hsl(180, 60%, 50%)" }, // Teal
     { name: "Manufacturing", value: 8.87, color: "hsl(150, 60%, 40%)" }, // Dark Green
     { name: "Media & Advertising", value: 3.55, color: "hsl(210, 70%, 55%)" }, // Different Blue
     {
@@ -53,10 +53,10 @@ export default function PlacementPieChart() {
     { name: "Fashion", value: 1.42, color: "hsl(150, 60%, 40%)" }, // Dark Green
     { name: "FMCG", value: 5.71, color: "hsl(280, 70%, 45%)" }, // Dark Purple
     { name: "Healthcare", value: 1.42, color: "hsl(200, 80%, 50%)" }, // Blue
-    { name: "HR", value: 4.28, color: "hsl(320, 70%, 50%)" }, // Pink
+    { name: "HR", value: 11.42, color: "hsl(320, 70%, 50%)" }, // Pink
     {
       name: "IT & Telecommunication",
-      value: 4.28,
+      value: 5.71,
       color: "hsl(180, 60%, 50%)",
     }, // Teal
     { name: "Manufacturing", value: 4.28, color: "hsl(160, 50%, 45%)" }, // Different Dark Green
@@ -202,8 +202,8 @@ export default function PlacementPieChart() {
                 </CardDescription>
                 <Separator className="my-2" />
               </CardHeader>
-              <CardContent className="pt-0">
-                <div className="w-full h-[350px] sm:h-[450px]">
+              <CardContent className="pt-10">
+                <div className="w-full h-[350px] sm:h-[350px]">
                   <ChartContainer config={finalPlacementsConfig}>
                     <ResponsiveContainer width="100%" height="100%">
                       <PieChart>
@@ -265,9 +265,9 @@ export default function PlacementPieChart() {
                 </CardDescription>
                 <Separator className="my-2" />
               </CardHeader>
-              <CardContent className="pt-0">
-                <div className="w-full h-[350px] sm:h-[450px]">
-                  <ChartContainer config={summerInternshipsConfig}>
+              <CardContent className="pt-10">
+                <div className="w-full h-[350px] sm:h-[350px]">
+                  <ChartContainer config={summerInternshipsConfig} className='w-full h-full'>
                     <ResponsiveContainer width="100%" height="100%">
                       <PieChart>
                         <Pie
