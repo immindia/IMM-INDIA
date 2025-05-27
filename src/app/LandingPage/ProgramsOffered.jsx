@@ -71,8 +71,8 @@ export default function ProgramsOffered() {
                 specializations={specializations}
                 imageSrc={img2}
                 imageAlt="PGDM students studying"
-                videoSrc="https://youtu.be/eOa-I0MSmUs?si=PgNnCNLBGcJRmer7"
-                videoId="eOa-I0MSmUs"
+                videoSrc="https://youtu.be/EGvEEYl9miQ?si=O4agGQCYBtImY31t"
+                videoId="EGvEEYl9miQ"
                 href="https://admissions.immindia.edu.in/"
                 knowMorePath="/programs/pgdm"
               />
@@ -83,8 +83,8 @@ export default function ProgramsOffered() {
                 specializations={specializations.slice(0, 6)}
                 imageSrc={img}
                 imageAlt="BBA students in classroom"
-                videoSrc="https://youtu.be/eOa-I0MSmUs?si=PgNnCNLBGcJRmer7"
-                videoId="eOa-I0MSmUs"
+                videoSrc="https://youtu.be/EGvEEYl9miQ?si=O4agGQCYBtImY31t"
+                videoId="EGvEEYl9miQ"
                 path="/programs/bba"
                 knowMorePath="/programs/bba"
               />

@@ -20,7 +20,7 @@ const Placements = () => {
         const summerPlacements = data.filter(
           (item) => item.category === "Summer Placement"
         );
-        setPlacements(summerPlacements);
+        setPlacements(summerPlacements.reverse().slice(0, 14));
       } catch (error) {
         console.error("Error fetching placements:", error);
       } finally {

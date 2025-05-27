@@ -22,7 +22,7 @@ const PlacementStats = () => {
       ),
     },
     {
-      data: "9.95",
+      data: "9-9.5",
       title: "Average Package",
       icon: (
         <BarChart className="w-12 h-12 text-yellow-500 mb-2 group-hover:text-white" />
@@ -61,14 +61,22 @@ const PlacementStats = () => {
             >
               {item.icon}
               <div className="text-5xl font-bold text-white font sm:text-6xl">
-                <NumberTicker
+                <span
+                  // value={item.data}
+                  
+                  className="text-4xl font-bold text-yellow-500 group-hover:text-white font sm:text-6xl"
+                  // decimalPlaces={item.data === "21" ? 0 : 2}
+                >
+                  {item.data}
+                </span>
+                {/* <NumberTicker
                   value={item.data}
                   
                   className="text-4xl font-bold text-yellow-500 group-hover:text-white font sm:text-6xl"
                   decimalPlaces={item.data === "21" ? 0 : 2}
-                />{" "}
+                />{" "} */}
                 <span className="-ml-3 text-4xl font-bold group-hover:text-white text-yellow-500 font sm:text-6xl">
-                  L
+                  &nbsp;L
                 </span>
               </div>
               <div className="mt-3 text-sm font-medium text-gray-300 group-hover:text-white sm:text-xl text-center max-w-32 sm:max-w-none">
