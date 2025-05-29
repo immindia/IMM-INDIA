@@ -66,7 +66,7 @@ const PgdmProgram = () => {
             Our PGDM program offers cutting edge specializations in emerging technologies and modern business practices.
             </p>
             <p className="opacity-50 text-sm lg:mx backdrop-blur-sm">
-            We offer seven future-focused specializations — Marketing, Human Resources, Finance, Operations, International Business, Business Analytics, and Entrepreneurship — complemented by a range of globally recognized certifications. Our forward-looking curriculum seamlessly integrates technology with business strategy, empowering you to thrive in an ever-evolving digital landscape. With immersive learning in the dynamic visualisations through Power BI, advanced data analysis using Python and R,*and *experiential learning in metaverse you’ll graduate with the cutting-edge skills and innovative mindset needed to lead in a data-driven world.
+            We offer seven future-focused specializations — Marketing, Human Resources, Finance, Operations, International Business, Business Analytics, and Entrepreneurship — complemented by a range of globally recognized certifications. Our forward-looking curriculum seamlessly integrates technology with business strategy, empowering you to thrive in an ever-evolving digital landscape. With immersive learning in the dynamic visualisations through Power BI, advanced data analysis using Python and R, and experiential learning in metaverse you’ll graduate with the cutting-edge skills and innovative mindset needed to lead in a data-driven world.
             </p>
           </div>
         </div>

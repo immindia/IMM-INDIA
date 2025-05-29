@@ -310,7 +310,7 @@ const CorporateEvents = () => {
                     className="w-full h-auto aspect-video object-cover scale-110"
                   />
                   <CardContent className="p-4 mt-4 space-y-3">
-                    <h3 className="text-base font-bold line-clamp-1">
+                    <h3 className="text-base font-bold sm:line-clamp-1 uppercase hover:line-clamp-none">
                       {event.title}
                     </h3>
                     {/* <p className="text-gray-500 text-xs">{event.date}</p> */}
@@ -415,7 +415,7 @@ const CorporateEvents = () => {
           {selectedEvent && (
             <>
               <DialogHeader className="px-1">
-                <DialogTitle className="text-xl font-bold">
+                <DialogTitle className="text-xl font-bold uppercase">
                   {selectedEvent.title}
                 </DialogTitle>
               </DialogHeader>

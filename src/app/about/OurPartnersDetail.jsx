@@ -190,7 +190,7 @@ export default function OurPartnersDetail() {
                   <h2 className="mb-4 text-2xl font-bold text-gray-900 md:text-3xl">
                     {partner.name}
                   </h2>
-                  <p className="mb-6 text-gray-600 line-clamp-5 hover:line-clamp-none sm:line-clamp-none">
+                  <p className="mb-6 text-gray-600 line-clamp-5 hover:line-clamp-none sm:line-clamp-none text-justify">
                     {partner.longDescription || partner.description}
                   </p>
                   {/* <Link

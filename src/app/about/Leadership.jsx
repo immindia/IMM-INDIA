@@ -232,7 +232,7 @@ const ReadMoreDialog = ({ isOpen, onClose, leader }) => {
         </DialogHeader>
         <div className="mt-4 max-h-[60vh] overflow-y-auto">
           {leader.message.split(/\n+/).map((paragraph, index) => (
-            <p key={index} className="mb-4 whitespace-pre-line">
+            <p key={index} className="mb-4 whitespace-pre-line text-justify">
               {paragraph}
             </p>
           ))}
