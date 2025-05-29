@@ -64,9 +64,9 @@ export default function PlacementGrid() {
           });
         });
 
-        const remainingPlacements = summerPlacements.filter(
-          (p) => !finalPrioritized.find((fp) => fp.id === p.id)
-        );
+        const remainingPlacements = summerPlacements
+          .reverse()
+          .filter((p) => !finalPrioritized.find((fp) => fp.id === p.id));
 
         setPlacements([...finalPrioritized, ...remainingPlacements]);
       } catch (error) {
@@ -172,7 +172,7 @@ export default function PlacementGrid() {
                           <img
                             src={placement.logo_url}
                             alt={placement.title}
-                            className="h-8"
+                            className="h-12"
                             loading="lazy"
                             height={32}
                             decoding="async"
