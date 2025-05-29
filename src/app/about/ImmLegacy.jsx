@@ -193,13 +193,16 @@ const FeatureItem = ({ feature, isHovered, onHover }) => {
         {Array.isArray(feature.desc) ? (
           <ul className="list-disc pl-5 space-y-2">
             {feature.desc.map((item, index) => (
-              <li key={index} className="text-muted-foreground leading-relaxed">
+              <li
+                key={index}
+                className="text-muted-foreground leading-relaxed text-justify"
+              >
                 {item}
               </li>
             ))}
           </ul>
         ) : (
-          <p className="text-muted-foreground leading-relaxed">
+          <p className="text-muted-foreground leading-relaxed text-justify">
             {feature.desc}
           </p>
         )}

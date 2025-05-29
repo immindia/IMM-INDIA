@@ -164,9 +164,9 @@ export const faqItems = [
       "What sets our BBA program apart is the integration of Artificial Intelligence (AI), Machine Learning (ML), and other emerging technologies into our courses. These advancements will equip you with the skills to analyse data, drive innovation, and adopt a futuristic approach in your career. You will learn to harness these technologies to solve complex business problems and stay ahead in a rapidly evolving business landscape.",
   },
   {
-    question: "Multidisciplinary Corporate Immersion Programme for Problem Solving (MCIPPS)",
+    question: "Multidisciplinary Corporate Immersion Programme for Problem Solving",
     answer:
-      'A key differentiator of our BBA program is our unique Multidisciplinary Corporate Immersion Programme for Problem Solving (MCIPPS). This unique, hands-on experiential learning initiative runs concurrently with your studies, offering real-world corporate exposure. Through MCIPPS, you\'ll engage in practical problem-solving within diverse business environments, ensuring that you "hit the ground running" when you enter the business and/or your chosen corporate domain.',
+      'A key differentiator of our BBA program is our unique Multidisciplinary Corporate Immersion Programme for Problem Solving. This unique, hands-on experiential learning initiative runs concurrently with your studies, offering real-world corporate exposure. Through Corporate Immersion Programme, you\'ll engage in practical problem-solving within diverse business environments, ensuring that you "hit the ground running" when you enter the business and/or your chosen corporate domain.',
   },
   {
     question: "From Class 12 to Business Leader",

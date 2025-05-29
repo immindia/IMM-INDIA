@@ -354,7 +354,7 @@ const Faculty = () => {
   return (
     <div className="relative min-h-screen overflow-x-hidden">
       <ImgAndBreadcrumb
-        title="Faculty"
+        title=""
         imageSrc={bannerImage}
         imageAlt="Faculty Banner"
         breadcrumbItems={breadcrumbItems}
