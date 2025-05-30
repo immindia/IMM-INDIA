@@ -15,9 +15,9 @@ const AdvisoryBoard = () => {
   const { setTitle, setDescription } = useMeta();
 
   useEffect(() => {
-    setTitle("About Us - IMM");
+    setTitle("About Us - advisory-board");
     setDescription(
-      "Learn more about us with our PGDM programs, know more about our experienced faculty with strong industry connect."
+      "Meet the distinguished Advisory Board of IMM Delhi—industry leaders and academic experts guiding the Institute of Marketing and Management with strategic insights and visionary leadership."
     );
   }, [setTitle, setDescription]);
 

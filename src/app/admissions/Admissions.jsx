@@ -13,9 +13,9 @@ const Admissions = () => {
   const { setTitle, setDescription } = useMeta();
 
   useEffect(() => {
-    setTitle("Admissions - IMM");
+    setTitle("IMM - Admission");
     setDescription(
-      "Know the admissions procedure and availability of seats. Check your eligibility & fee details. Apply now!"
+      "Apply now for IMM Admission – Get into one of India's top management institutes offering industry-focused PGDM and postgraduate courses after BCom. Secure your future with IMM's expert faculty and excellent placement opportunities."
     );
   }, [setTitle, setDescription]);
 

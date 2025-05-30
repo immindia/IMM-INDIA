@@ -17,9 +17,9 @@ const PlacementRecords = () => {
   const { setTitle, setDescription } = useMeta();
 
   useEffect(() => {
-    setTitle("Placements - IMM");
+    setTitle("IMM Placement - Records");
     setDescription(
-      "Unlock your future at IMM Delhi! Get placed in the top management companies with our MBA placements having strong industry connections and successful alumni network."
+      "Explore the latest IMM placement records showcasing top recruiters, high salary packages, and successful career opportunities for graduates from the Institute of Marketing and Management (IMM), Delhi."
     );
   }, [setTitle, setDescription]);
 

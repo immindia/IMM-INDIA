@@ -35,9 +35,9 @@ const EventsAndActivities = () => {
   const { setTitle, setDescription } = useMeta();
 
   useEffect(() => {
-    setTitle("Events & Activities - IMM India");
+    setTitle("Life at IMM - Events and Activities");
     setDescription(
-      "Discover the vibrant Events & Activities at IMM India, where students engage in cultural fests, industry seminars, management workshops, and leadership events—enhancing learning beyond the classroom."
+      "Discover vibrant life at IMM with exciting events, workshops, cultural activities, and industry interactions that enrich student experience and foster holistic development."
     );
   }, [setTitle, setDescription]);
 

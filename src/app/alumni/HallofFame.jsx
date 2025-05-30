@@ -20,9 +20,9 @@ export default function HallofFame() {
   const { setTitle, setDescription } = useMeta();
 
   useEffect(() => {
-    setTitle("Alumni - IMM");
+    setTitle("IMM Alumni - Hall of Fame");
     setDescription(
-      "Connect with IMM Delhi's MBA alumni! Network, find mentors, and explore career opportunities. Reconnect with your batchmates today!"
+      "Discover the inspiring success stories of IMM alumni featured in the Hall of Fame. See how graduates of the Institute of Marketing and Management (IMM) have made their mark across industries worldwide."
     );
   }, [setTitle, setDescription]);
 

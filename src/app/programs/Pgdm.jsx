@@ -14,9 +14,9 @@ const Pgdm = () => {
   const { setTitle, setDescription } = useMeta();
 
   useEffect(() => {
-    setTitle("Programs - IMM");
+    setTitle("IMM Programs - PGDM");
     setDescription(
-      "Unlock your potential with IMM Delhi's AICTE-approved MBA programs. Dual specializations, industry-focused curriculum, and strong placements in the heart of Delhi."
+      "Explore AICTE-approved PGDM programs at IMM Delhi. Specializations in Marketing, Finance, HR, International Business, and more. Launch your career with industry-focused education at one of India's top B-schools."
     );
   }, [setTitle, setDescription]);
 

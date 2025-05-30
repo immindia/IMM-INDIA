@@ -66,9 +66,9 @@ const BBAProgram = () => {
 
   // Set meta tags, custom colors, and marquee text when component mounts
   useEffect(() => {
-    setTitle("BBA Program - IMM Business School");
+    setTitle("IMM Programs - BBA");
     setDescription(
-      "Explore the BBA program at IMM Business School—one of the best BBA colleges in Delhi NCR."
+      "Explore the BBA program at IMM Delhi—gain industry-ready skills in marketing, management, and business strategy. Kickstart your career with one of India's top B-schools."
     );
     updateColors("bg-blue-900", "bg-blue-900");
     setMarqueeText("Admission Open 2025-28 Session");

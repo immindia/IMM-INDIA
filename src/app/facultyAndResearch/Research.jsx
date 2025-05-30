@@ -6,10 +6,20 @@ import Container from "../../components/wrappers/Container";
 import national from "../../assets/research/reserchbanner.webp";
 import international from "../../assets/research/internantionalBanner.webp";
 import { useState, useEffect } from "react";
+import { useMeta } from "@/context/MetaContext";
 import { Link } from "react-router-dom";
 import { useFetch } from "../../hooks/useFetch";
 
 const Research = () => {
+  const { setTitle, setDescription } = useMeta();
+
+  useEffect(() => {
+    setTitle("IMM Faculty and Research - Research");
+    setDescription(
+      "Explore the expert faculty and cutting-edge research initiatives at IMM. Discover how the Institute of Marketing and Management fosters innovation and academic excellence through impactful research."
+    );
+  }, [setTitle, setDescription]);
+
   const { data } = useFetch("/api/indexBanner.php");
   const [bannerImage, setBannerImage] = useState(
     "https://stealthlearn.in/imm-admin/api/uploads/680fd14484b0a.png"

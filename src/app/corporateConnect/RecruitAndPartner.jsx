@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useMeta } from "@/context/MetaContext";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
@@ -41,6 +42,15 @@ const formSchema = z.object({
 });
 
 export default function RecruitAndPartner() {
+  const { setTitle, setDescription } = useMeta();
+
+  useEffect(() => {
+    setTitle("IMM Corporate Connect - Recruit and Partner");
+    setDescription(
+      "Explore IMM's Corporate Connect initiative – Recruit and Partner with the Institute of Marketing and Management (IMM) to access industry-ready talent, foster innovation, and build strong corporate-academic partnerships for future growth."
+    );
+  }, [setTitle, setDescription]);
+
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
 
@@ -314,7 +324,7 @@ export default function RecruitAndPartner() {
                                   Hire Intern
                                 </FormLabel>
                               </FormItem>
-                              
+
                               <FormItem className="flex items-center space-x-3 space-y-0 p-3 rounded-lg hover:bg-pink-50 transition-colors">
                                 <FormControl>
                                   <RadioGroupItem

@@ -11,9 +11,9 @@ const Gallery = () => {
   const { setTitle, setDescription } = useMeta();
 
   useEffect(() => {
-    setTitle("Campus Tour - IMM India");
+    setTitle("Life at IMM - Gallery");
     setDescription(
-      "Discover state-of-the-art facilities, dynamic learning spaces, and a student-friendly environment that makes IMM one of the leading management institutes in Delhi NCR."
+      "Explore the vibrant life at IMM through our gallery showcasing student activities, campus events, and memorable moments that define the IMM experience."
     );
   }, [setTitle, setDescription]);
 

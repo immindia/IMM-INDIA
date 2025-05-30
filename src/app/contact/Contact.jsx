@@ -226,7 +226,7 @@ export default function Contact() {
   const { setTitle, setDescription } = useMeta();
 
   useEffect(() => {
-    setTitle("Contact Us - IMM");
+    setTitle("IMM - Contact Us");
     setDescription(
       "Reach out to IMM Delhi for MBA admissions & inquiries. Get in touch with our office now to know our working hours and location."
     );

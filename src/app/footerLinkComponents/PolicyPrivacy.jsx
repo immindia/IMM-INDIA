@@ -23,7 +23,7 @@ export default function PolicyPrivacy() {
   const { setTitle, setDescription } = useMeta();
 
   useEffect(() => {
-    setTitle("Privacy Policy - IMM India");
+    setTitle("IMM - Privacy Policy");
     setDescription(
       "Read the Privacy Policy of IMM India to understand how we collect, use, and protect your personal information. Your privacy is our priority."
     );

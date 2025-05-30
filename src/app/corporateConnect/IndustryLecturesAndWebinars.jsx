@@ -5,6 +5,7 @@ import Heading from "../../components/Heading";
 // import AboutSidebar from "../../components/AboutSidebar";
 
 import { useState, useMemo, useEffect } from "react";
+import { useMeta } from "@/context/MetaContext";
 import { useFetch } from "../../hooks/useFetch";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
@@ -54,6 +55,15 @@ const breadcrumbItems = [
 ];
 
 const IndustryLecturesAndWebinars = () => {
+  const { setTitle, setDescription } = useMeta();
+
+  useEffect(() => {
+    setTitle("IMM Corporate Connect - Industry Lectures and Webinars");
+    setDescription(
+      "Discover IMM Delhi's strong corporate connect through expert-led industry lectures and webinars. Gain real-world insights, network with professionals, and stay ahead in the business world."
+    );
+  }, [setTitle, setDescription]);
+
   const { data } = useFetch("/api/indexBanner.php");
   const [bannerImage, setBannerImage] = useState(
     "https://stealthlearn.in/imm-admin/api/uploads/680fd14484b0a.png"

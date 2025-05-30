@@ -24,9 +24,9 @@ const Leadership = () => {
   const { setTitle, setDescription } = useMeta();
 
   useEffect(() => {
-    setTitle("About Us - IMM");
+    setTitle("About Us - leadership");
     setDescription(
-      "Learn more about us with our PGDM programs, know more about our experienced faculty with strong industry connect."
+      "Discover the visionary leadership at the Institute of Marketing and Management (IMM), where experienced educators and industry experts drive innovation, excellence, and career-focused learning for future business leaders."
     );
   }, [setTitle, setDescription]);
 

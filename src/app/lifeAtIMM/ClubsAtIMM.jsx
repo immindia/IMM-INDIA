@@ -3,6 +3,7 @@ import ImgAndBreadcrumb from "../../components/ImgAndBreadcrumb";
 import Container from "../../components/wrappers/Container";
 import img from "../../assets/lifeAtIIM/clubs/clubBanner.webp";
 import { useEffect, useMemo, useState } from "react";
+import { useMeta } from "@/context/MetaContext";
 // import Stats from "../../components/Stats";
 // import Newsletter from "../../components/Newsletter";
 // import AboutSidebar from "../../components/AboutSidebar";
@@ -45,6 +46,15 @@ import { Link, useNavigate } from "react-router-dom";
 import { useFetch } from "../../hooks/useFetch";
 
 const ClubsAtIMM = () => {
+  const { setTitle, setDescription } = useMeta();
+
+  useEffect(() => {
+    setTitle("Life at IMM - Clubs at IMM");
+    setDescription(
+      "Experience vibrant campus life at IMM with diverse student clubs that foster leadership, creativity, and teamwork. Discover how clubs at IMM enrich your academic journey and build lifelong skills."
+    );
+  }, [setTitle, setDescription]);
+
   const { data } = useFetch("/api/indexBanner.php");
   const [bannerImage, setBannerImage] = useState(
     "https://stealthlearn.in/imm-admin/api/uploads/680fd14484b0a.png"

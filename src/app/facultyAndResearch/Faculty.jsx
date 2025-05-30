@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback, memo, useMemo } from "react";
 import ImgAndBreadcrumb from "../../components/ImgAndBreadcrumb";
 import Container from "../../components/wrappers/Container";
+import { useMeta } from "@/context/MetaContext";
 import { useFetch } from "../../hooks/useFetch";
 import { LinkedinIcon } from "lucide-react";
 import PropTypes from "prop-types";
@@ -164,6 +165,15 @@ FacultyListSection.propTypes = {
 };
 
 const Faculty = () => {
+  const { setTitle, setDescription } = useMeta();
+
+  useEffect(() => {
+    setTitle("IMM Faculty and Research - Faculty");
+    setDescription(
+      "Discover the expert faculty at IMM, combining academic excellence and industry experience to drive innovative research and deliver quality management education."
+    );
+  }, [setTitle, setDescription]);
+
   const [facultyMembers, setFacultyMembers] = useState([]);
   const [visibleFaculty, setVisibleFaculty] = useState([]);
   const [loading, setLoading] = useState(true);

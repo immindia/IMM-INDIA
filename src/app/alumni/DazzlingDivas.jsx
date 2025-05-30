@@ -20,9 +20,9 @@ export default function DazzlingDivas() {
   const { setTitle, setDescription } = useMeta();
 
   useEffect(() => {
-    setTitle("Alumni - IMM");
+    setTitle("IMM Alumni - Dazzling Divas");
     setDescription(
-      "Connect with IMM Delhi's MBA alumni! Network, find mentors, and explore career opportunities. Reconnect with your batchmates today!"
+      "Discover the inspiring journeys of IMM Alumni - Dazzling Divas, showcasing powerful women leaders who have transformed their careers with IMM's world-class education and mentorship."
     );
   }, [setTitle, setDescription]);
 

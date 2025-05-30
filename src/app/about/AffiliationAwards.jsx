@@ -11,9 +11,9 @@ const AffiliationAwards = () => {
   const { setTitle, setDescription } = useMeta();
 
   useEffect(() => {
-    setTitle("About Us - IMM");
+    setTitle("About Us - accreditations-awards");
     setDescription(
-      "Learn more about us with our PGDM programs, know more about our experienced faculty with strong industry connect."
+      "Discover the prestigious accreditations and awards that establish IMM as a leading business school in India. Learn why the Institute of Management Science, founded in 1969, is recognized for academic excellence and industry relevance."
     );
   }, [setTitle, setDescription]);
 

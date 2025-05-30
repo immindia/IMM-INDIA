@@ -13,7 +13,7 @@ export default function AICTE() {
   const { setTitle, setDescription } = useMeta();
 
   useEffect(() => {
-    setTitle("AICTE Approval Letter - IMM India");
+    setTitle("IMM - AICTE Approval Letter");
     setDescription(
       "Download and verify the AICTE Approval Letter for your institute. Ensure compliance with AICTE norms and maintain transparency for quality technical education in India."
     );

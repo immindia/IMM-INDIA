@@ -6,9 +6,9 @@ function NIRF() {
   const { setTitle, setDescription } = useMeta();
 
   useEffect(() => {
-    setTitle("NIRF - IMM India");
+    setTitle("IMM - NIRF Documents");
     setDescription(
-      "View NIRF ranking details and related information for Institute of Marketing & Management (IMM) India."
+      "Access the latest NIRF documents for Institute of Marketing & Management (IMM) Delhi. Explore IMM's rankings, accreditation details, and official reports for academic excellence and transparency."
     );
   }, [setTitle, setDescription]);
 

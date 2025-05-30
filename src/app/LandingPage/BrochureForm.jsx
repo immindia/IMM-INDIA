@@ -21,9 +21,9 @@ export default function BrochureForm() {
   const { setTitle, setDescription } = useMeta();
 
   useEffect(() => {
-    setTitle("Brochure - IMM India");
+    setTitle("IMM - PGDM Brochure");
     setDescription(
-      "Discover IMM India – one of the best management institutes in Delhi offering PGDM and BBA programs with top-notch faculty, industry exposure, and excellent placement opportunities. Download our brochure to explore courses, admissions, campus life, and more."
+      "Read genuine feedback and reviews about the Institute of Marketing and Management (IMM). Discover student experiences, course quality, faculty insights, and placement support at IMM Delhi."
     );
   }, [setTitle, setDescription]);
 
@@ -99,8 +99,13 @@ export default function BrochureForm() {
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px] bg-white">
         <DialogHeader>
-          <DialogTitle className="text-pink-800">
+          <DialogTitle className="text-pink-800 flex items-center justify-between px-4">
             Download PGDM Brochure
+            <img
+              src="https://www.immindia.edu.in/assets/logo-BPFf0OW6.svg"
+              alt="PGDM Brochure"
+              className="w-auto h-12 mr-2 p-1 bg-pink-900 rounded-sm"
+            />
           </DialogTitle>
           {submitMessage && (
             <p

@@ -5,6 +5,7 @@ import Heading from "../../components/Heading";
 // import AboutSidebar from "../../components/AboutSidebar";
 
 import { useState, useMemo, useEffect } from "react";
+import { useMeta } from "@/context/MetaContext";
 import { useFetch } from "../../hooks/useFetch";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
@@ -51,6 +52,15 @@ const breadcrumbItems = [
 ];
 
 const CorporateEvents = () => {
+  const { setTitle, setDescription } = useMeta();
+
+  useEffect(() => {
+    setTitle("IMM Corporate Connect - Corporate Events");
+    setDescription(
+      "Discover how IMM's Corporate Connect program bridges the gap between classroom learning and industry practice through impactful corporate events, expert sessions, and networking opportunities with top business leaders."
+    );
+  }, [setTitle, setDescription]);
+
   const { data } = useFetch("/api/indexBanner.php");
   const [bannerImage, setBannerImage] = useState(
     "https://stealthlearn.in/imm-admin/api/uploads/680fd14484b0a.png"

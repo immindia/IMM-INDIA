@@ -23,9 +23,9 @@ export default function OurPartnersDetail() {
   const { setTitle, setDescription } = useMeta();
 
   useEffect(() => {
-    setTitle("About Us - IMM");
+    setTitle("About Us - imm-partners");
     setDescription(
-      "Learn more about us with our PGDM programs, know more about our experienced faculty with strong industry connect."
+      "Discover IMM-Partners: A legacy-driven institute empowering future leaders through innovative management education, industry partnerships, and global exposure since 1969."
     );
   }, [setTitle, setDescription]);
 

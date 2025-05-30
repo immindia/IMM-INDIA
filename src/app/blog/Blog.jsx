@@ -3,10 +3,11 @@ import { useMeta } from "@/context/MetaContext";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import Heading from "../../components/Heading";
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 
 const fetchPosts = async (page) => {
   const response = await fetch(
-    `https://www.immindia.edu.in/blog/wp-json/wp/v2/posts?_embed&page=${page}&per_page=9`
+    `https://stealthlearn.in/immblog/wp-json/wp/v2/posts?_embed&page=${page}&per_page=9`
   );
 
   if (!response.ok) {
@@ -28,9 +29,9 @@ const Blog = () => {
   const { setTitle, setDescription } = useMeta();
 
   useEffect(() => {
-    setTitle("Our News - IMM India");
+    setTitle("IMM - Blog");
     setDescription(
-      "Delhi is shaping future leaders through innovation, industry insights, and academic excellence. Stay updated with the latest news, events, and achievements from IMM India."
+      "Discover the top post graduate courses after BCom at IMM Delhi. Learn about the legacy of The Institute of Management Science was founded in 1969, explore career opportunities, and understand the growing scope of event management. Start your path to success today!"
     );
   }, [setTitle, setDescription]);
 
@@ -187,7 +188,7 @@ export default Blog;
 const BlogCard = ({ id, date, title, description, imageUrl, slug }) => {
   return (
     <div
-      id={id}
+      id={id.toString()}
       className="group w-full overflow-hidden border border-gray-300 rounded-2xl"
     >
       <div className="flex items-center">
@@ -214,4 +215,13 @@ const BlogCard = ({ id, date, title, description, imageUrl, slug }) => {
       </div>
     </div>
   );
+};
+
+BlogCard.propTypes = {
+  id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+  date: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
+  imageUrl: PropTypes.string.isRequired,
+  slug: PropTypes.string.isRequired,
 };
