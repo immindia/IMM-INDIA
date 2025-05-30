@@ -5,11 +5,21 @@ import PgdmProgramTab from "./PgdmProgramTab";
 import ProjectTab from "./ProjectTab";
 import ImgAndBreadcrumb from "../../components/ImgAndBreadcrumb";
 import { useState, useEffect } from "react";
+import { useMeta } from "@/context/MetaContext";
 import { useFetch } from "../../hooks/useFetch";
 import SemesterTabs from "./SemesterTabs";
 import { cn } from "@/lib/utils";
 import { DotPattern } from "@/components/magicui/dot-pattern";
 const Pgdm = () => {
+  const { setTitle, setDescription } = useMeta();
+
+  useEffect(() => {
+    setTitle("Programs - IMM");
+    setDescription(
+      "Unlock your potential with IMM Delhi's AICTE-approved MBA programs. Dual specializations, industry-focused curriculum, and strong placements in the heart of Delhi."
+    );
+  }, [setTitle, setDescription]);
+
   const { data } = useFetch("/api/indexBanner.php");
   const [bannerImage, setBannerImage] = useState(
     "https://stealthlearn.in/imm-admin/api/uploads/680fd14484b0a.png"

@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useMeta } from "@/context/MetaContext";
 import Heading from "../../components/Heading";
 import ImgAndBreadcrumb from "../../components/ImgAndBreadcrumb";
 import Container from "../../components/wrappers/Container";
@@ -11,6 +12,15 @@ import { LinkedinIcon } from "lucide-react";
 import PropTypes from "prop-types";
 
 const AdvisoryBoard = () => {
+  const { setTitle, setDescription } = useMeta();
+
+  useEffect(() => {
+    setTitle("About Us - IMM");
+    setDescription(
+      "Learn more about us with our PGDM programs, know more about our experienced faculty with strong industry connect."
+    );
+  }, [setTitle, setDescription]);
+
   const { data } = useFetch("/api/indexBanner.php");
   const [bannerImage, setBannerImage] = useState(
     "https://stealthlearn.in/imm-admin/api/uploads/680fd14484b0a.png"

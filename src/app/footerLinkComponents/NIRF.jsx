@@ -1,7 +1,17 @@
 import { Download, File, X } from "lucide-react";
 import { useState, useEffect } from "react";
+import { useMeta } from "@/context/MetaContext";
 
 function NIRF() {
+  const { setTitle, setDescription } = useMeta();
+
+  useEffect(() => {
+    setTitle("NIRF - IMM India");
+    setDescription(
+      "View NIRF ranking details and related information for Institute of Marketing & Management (IMM) India."
+    );
+  }, [setTitle, setDescription]);
+
   const [dialogOpen, setDialogOpen] = useState(false);
   const [dialogContent, setDialogContent] = useState({
     loading: false,

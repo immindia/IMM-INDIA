@@ -2,11 +2,21 @@ import ImgAndBreadcrumb from "../../components/ImgAndBreadcrumb";
 import Container from "../../components/wrappers/Container";
 import icon2 from "../../assets/about/accreditations/logos-2.png";
 import { useState, useEffect } from "react";
+import { useMeta } from "@/context/MetaContext";
 import Awards from "./Awards";
 import { Suspense } from "react";
 import { useFetch } from "../../hooks/useFetch";
 
 const AffiliationAwards = () => {
+  const { setTitle, setDescription } = useMeta();
+
+  useEffect(() => {
+    setTitle("About Us - IMM");
+    setDescription(
+      "Learn more about us with our PGDM programs, know more about our experienced faculty with strong industry connect."
+    );
+  }, [setTitle, setDescription]);
+
   const { data } = useFetch("/api/indexBanner.php");
   const [bannerImage, setBannerImage] = useState(
     "https://stealthlearn.in/imm-admin/api/uploads/680fd14484b0a.png"

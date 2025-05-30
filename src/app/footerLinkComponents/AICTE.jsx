@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useMeta } from "@/context/MetaContext";
 import { motion } from "framer-motion";
 import { FileDown, ChevronRight } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -9,11 +10,19 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { yearGroups } from "./aicetData";
 
 export default function AICTE() {
+  const { setTitle, setDescription } = useMeta();
+
+  useEffect(() => {
+    setTitle("AICTE Approval Letter - IMM India");
+    setDescription(
+      "Download and verify the AICTE Approval Letter for your institute. Ensure compliance with AICTE norms and maintain transparency for quality technical education in India."
+    );
+  }, [setTitle, setDescription]);
+
   window.scrollTo(0, 0);
   const [selectedYear, setSelectedYear] = useState(null);
 
   // Group years by decade for better organization
-
   const handleYearClick = (year) => {
     setSelectedYear(year.year);
     // In a real application, this would trigger the download

@@ -1,10 +1,18 @@
 import React, { useState, useEffect } from "react";
+import { useMeta } from '@/context/MetaContext';
 import ImgAndBreadcrumb from "../../components/ImgAndBreadcrumb";
 import Container from "../../components/wrappers/Container";
 import Heading from "../../components/Heading";
 import { useFetch } from "../../hooks/useFetch";
 
 const LifeAtIMM = () => {
+  const { setTitle, setDescription } = useMeta();
+
+  useEffect(() => {
+    setTitle("New Infrastructure and Campus - IMM India");
+    setDescription("Discover the new infrastructure and vibrant student life at IMM India. Explore modern classrooms, tech-enabled learning, and a dynamic campus environment that fosters holistic development and career growth.");
+  }, [setTitle, setDescription]);
+
   const { data } = useFetch("/api/indexBanner.php");
   const [bannerImage, setBannerImage] = useState(
     "https://stealthlearn.in/imm-admin/api/uploads/680fd14484b0a.png"

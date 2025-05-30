@@ -29,8 +29,18 @@ import {
 } from "@/components/ui/carousel";
 import { Link } from "react-router-dom";
 import { useFetch } from "../../hooks/useFetch";
+import { useMeta } from "@/context/MetaContext";
 
 const EventsAndActivities = () => {
+  const { setTitle, setDescription } = useMeta();
+
+  useEffect(() => {
+    setTitle("Events & Activities - IMM India");
+    setDescription(
+      "Discover the vibrant Events & Activities at IMM India, where students engage in cultural fests, industry seminars, management workshops, and leadership events—enhancing learning beyond the classroom."
+    );
+  }, [setTitle, setDescription]);
+
   const { data } = useFetch("/api/indexBanner.php");
   const [bannerImage, setBannerImage] = useState(
     "https://stealthlearn.in/imm-admin/api/uploads/680fd14484b0a.png"

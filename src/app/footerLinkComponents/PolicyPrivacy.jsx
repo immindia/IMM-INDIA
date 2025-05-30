@@ -1,4 +1,6 @@
 "use client";
+import { useEffect } from "react";
+import { useMeta } from "@/context/MetaContext";
 import {
   Accordion,
   AccordionContent,
@@ -18,17 +20,26 @@ import Heading from "../../components/Heading";
 import { Link } from "react-router-dom";
 // Main Privacy Policy Component
 export default function PolicyPrivacy() {
+  const { setTitle, setDescription } = useMeta();
+
+  useEffect(() => {
+    setTitle("Privacy Policy - IMM India");
+    setDescription(
+      "Read the Privacy Policy of IMM India to understand how we collect, use, and protect your personal information. Your privacy is our priority."
+    );
+  }, [setTitle, setDescription]);
+
   return (
     <main className="min-h-screen bg-gradient-to-b from-background-light to-background">
       <div className="container mx-auto py-12 px-4 md:px-6">
         <div className="max-w-4xl mx-auto">
           <div className="text-center sm:mt-12">
-          <Heading
-            title="Privacy Policy"
-            titleClassName="text-4xl font-bold text-center text-gray-900"
-            subtitle="For Online Payment Services"
-            subtitleClassName="text-gray-600 text-lg text-center leading-8"
-          />
+            <Heading
+              title="Privacy Policy"
+              titleClassName="text-4xl font-bold text-center text-gray-900"
+              subtitle="For Online Payment Services"
+              subtitleClassName="text-gray-600 text-lg text-center leading-8"
+            />
           </div>
 
           <Card className="mb-8 border-primary/10 shadow-md">
@@ -282,8 +293,6 @@ export default function PolicyPrivacy() {
               </div>
             </CardContent>
           </Card>
-
-        
         </div>
       </div>
     </main>

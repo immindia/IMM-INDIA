@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useMeta } from "@/context/MetaContext";
 import Heading from "../../components/Heading";
 import ImgAndBreadcrumb from "../../components/ImgAndBreadcrumb";
 import Container from "../../components/wrappers/Container";
@@ -7,7 +8,14 @@ import PropTypes from "prop-types";
 import { useFetch } from "../../hooks/useFetch";
 
 const Gallery = () => {
+  const { setTitle, setDescription } = useMeta();
 
+  useEffect(() => {
+    setTitle("Campus Tour - IMM India");
+    setDescription(
+      "Discover state-of-the-art facilities, dynamic learning spaces, and a student-friendly environment that makes IMM one of the leading management institutes in Delhi NCR."
+    );
+  }, [setTitle, setDescription]);
 
   const { data } = useFetch("/api/indexBanner.php");
   const [bannerImage, setBannerImage] = useState(
@@ -45,8 +53,6 @@ const Gallery = () => {
     }
   }, [data, isMobile]);
 
-
-
   const [selectedImage, setSelectedImage] = useState(null);
   const [galleryImages, setGalleryImages] = useState([]);
   const [categories, setCategories] = useState([]);
@@ -83,23 +89,37 @@ const Gallery = () => {
         // Filter out unwanted categories
         const filteredImages = data.filter(
           (image) =>
-            !["Award", "International", "National", "Uncategorized Research"].includes(
-              image.category
-            )
+            ![
+              "Award",
+              "International",
+              "National",
+              "Uncategorized Research",
+            ].includes(image.category)
         );
 
         // Define the desired category order
-        const desiredCategories = ["Campus", "Infrastructure", "Classroom", "Library", "Canteen", "Other"];
-        
+        const desiredCategories = [
+          "Campus",
+          "Infrastructure",
+          "Classroom",
+          "Library",
+          "Canteen",
+          "Other",
+        ];
+
         // Get unique categories from filtered images
-        const uniqueCategories = new Set(filteredImages.map((image) => image.category));
-        
+        const uniqueCategories = new Set(
+          filteredImages.map((image) => image.category)
+        );
+
         // Sort categories according to desired order, keeping only existing ones
-        const sortedCategories = desiredCategories.filter(category => uniqueCategories.has(category));
-        
+        const sortedCategories = desiredCategories.filter((category) =>
+          uniqueCategories.has(category)
+        );
+
         // Add "All" at the beginning
         const finalCategories = ["All", ...sortedCategories];
-        
+
         setCategories(finalCategories);
 
         // Store the filtered data

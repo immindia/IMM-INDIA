@@ -3,6 +3,7 @@ import ImgAndBreadcrumb from "../../components/ImgAndBreadcrumb";
 // import Container from "../../components/wrappers/Container";
 // import img from "../../assets/faculty/Banner.webp";
 import { useState, useEffect } from "react";
+import { useMeta } from "@/context/MetaContext";
 // import { motion } from "framer-motion";
 // import { Input } from "@/components/ui/input";
 // import { Button } from "@/components/ui/button";
@@ -13,6 +14,15 @@ import PlacementPieChart from "./PlacementPieChart";
 import { useFetch } from "../../hooks/useFetch";
 
 const PlacementRecords = () => {
+  const { setTitle, setDescription } = useMeta();
+
+  useEffect(() => {
+    setTitle("Placements - IMM");
+    setDescription(
+      "Unlock your future at IMM Delhi! Get placed in the top management companies with our MBA placements having strong industry connections and successful alumni network."
+    );
+  }, [setTitle, setDescription]);
+
   const { data } = useFetch("/api/indexBanner.php");
   const [bannerImage, setBannerImage] = useState(
     "https://stealthlearn.in/imm-admin/api/uploads/680fd14484b0a.png"

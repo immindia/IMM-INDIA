@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useMeta } from "@/context/MetaContext";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -93,9 +94,7 @@ function ContactInfo() {
           <span className="block sm:hidden">
             <br /> New Delhi - 110016
           </span>
-          <span className="hidden sm:inline">
-            &nbsp; New Delhi - 110016
-          </span>
+          <span className="hidden sm:inline">&nbsp; New Delhi - 110016</span>
         </span>
       </div>
       <div className="flex items-center space-x-3 text-gray-600">
@@ -224,6 +223,15 @@ function Map() {
 }
 
 export default function Contact() {
+  const { setTitle, setDescription } = useMeta();
+
+  useEffect(() => {
+    setTitle("Contact Us - IMM");
+    setDescription(
+      "Reach out to IMM Delhi for MBA admissions & inquiries. Get in touch with our office now to know our working hours and location."
+    );
+  }, [setTitle, setDescription]);
+
   const { data } = useFetch("/api/indexBanner.php");
   const [bannerImage, setBannerImage] = useState(
     "https://stealthlearn.in/imm-admin/api/uploads/680fd14484b0a.png"

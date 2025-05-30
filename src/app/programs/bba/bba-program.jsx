@@ -3,6 +3,7 @@
 
 import { useState, useRef, useEffect } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
+import { useMeta } from "@/context/MetaContext";
 
 import { CheckCircle, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -56,25 +57,30 @@ import { cn } from "@/lib/utils";
 import { DotPattern } from "@/components/magicui/dot-pattern";
 import pgdm from "../../../assets/pdfs/BBA Brochure 2025-2028.pdf";
 const BBAProgram = () => {
+  const { setTitle, setDescription } = useMeta();
   const { updateColors } = useTheme();
   const { setMarqueeText, setIsBBAPage } = useMarquee();
   const [isFormVisible, setIsFormVisible] = useState(false);
   const [activeTab, setActiveTab] = useState("curriculum");
   const [isSuccess, setIsSuccess] = useState(false);
 
-  // Set custom colors when component mounts
+  // Set meta tags, custom colors, and marquee text when component mounts
   useEffect(() => {
+    setTitle("BBA Program - IMM Business School");
+    setDescription(
+      "Explore the BBA program at IMM Business School—one of the best BBA colleges in Delhi NCR."
+    );
     updateColors("bg-blue-900", "bg-blue-900");
     setMarqueeText("Admission Open 2025-28 Session");
     setIsBBAPage(true);
 
-    // Reset colors when component unmounts
+    // Reset colors and marquee when component unmounts
     return () => {
       updateColors("bg-primary-color", "bg-primary-color");
       setMarqueeText("Phase 3 Applications Closed for PGDM 2025-2027");
       setIsBBAPage(false);
     };
-  }, [updateColors, setMarqueeText, setIsBBAPage]);
+  }, [setTitle, setDescription, updateColors, setMarqueeText, setIsBBAPage]);
 
   const { data } = useFetch("/api/indexBanner.php");
   const [bannerImage, setBannerImage] = useState(
@@ -240,7 +246,6 @@ const BBAProgram = () => {
                   <Badge className="bg-blue-600 hover:bg-blue-700 text-white px-1 sm:px-4 sm:py-1.5 py-1">
                     Industry Immersion
                   </Badge>
-                  
                 </div>
               </motion.div>
             </div>

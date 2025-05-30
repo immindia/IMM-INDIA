@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { useMeta } from "@/context/MetaContext";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -16,6 +17,15 @@ const breadcrumbItems = [
   { label: "Dazzling Divas & Hall of Fame" },
 ];
 export default function HallofFame() {
+  const { setTitle, setDescription } = useMeta();
+
+  useEffect(() => {
+    setTitle("Alumni - IMM");
+    setDescription(
+      "Connect with IMM Delhi's MBA alumni! Network, find mentors, and explore career opportunities. Reconnect with your batchmates today!"
+    );
+  }, [setTitle, setDescription]);
+
   const [alumniData, setAlumniData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);

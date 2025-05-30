@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useMeta } from "@/context/MetaContext";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import Heading from "../../components/Heading";
 import { Link } from "react-router-dom";
@@ -24,6 +25,15 @@ const fetchPosts = async (page) => {
 };
 
 const Blog = () => {
+  const { setTitle, setDescription } = useMeta();
+
+  useEffect(() => {
+    setTitle("Our News - IMM India");
+    setDescription(
+      "Delhi is shaping future leaders through innovation, industry insights, and academic excellence. Stay updated with the latest news, events, and achievements from IMM India."
+    );
+  }, [setTitle, setDescription]);
+
   const [page, setPage] = useState(1);
   const queryClient = useQueryClient();
   window.scrollTo(0, 0);

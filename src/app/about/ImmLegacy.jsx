@@ -6,12 +6,22 @@ import img from "../../assets/about/AboutBanner.webp";
 // import Newsletter from "../../components/Newsletter";
 // import AboutSidebar from "../../components/AboutSidebar";
 import { useState, useEffect } from "react";
+import { useMeta } from "@/context/MetaContext";
 import { Eye, Target, Award } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import founder from "../../assets/about/leadership/founder1.webp";
 import building from "../../assets/Building.webp";
 import { useFetch } from "../../hooks/useFetch";
 const ImmLegacy = () => {
+  const { setTitle, setDescription } = useMeta();
+
+  useEffect(() => {
+    setTitle("About Us - IMM");
+    setDescription(
+      "Learn more about us with our PGDM programs, know more about our experienced faculty with strong industry connect."
+    );
+  }, [setTitle, setDescription]);
+
   const { data } = useFetch("/api/indexBanner.php");
   const [bannerImage, setBannerImage] = useState(
     "https://stealthlearn.in/imm-admin/api/uploads/680fd14484b0a.png"

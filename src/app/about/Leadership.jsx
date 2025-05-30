@@ -5,6 +5,7 @@ import Container from "../../components/wrappers/Container";
 // import Newsletter from "../../components/Newsletter";
 // import AboutSidebar from "../../components/AboutSidebar";
 import { useState, useEffect } from "react";
+import { useMeta } from "@/context/MetaContext";
 import { Mail, MailOpen } from "lucide-react";
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -20,6 +21,15 @@ import { useFetch } from "../../hooks/useFetch";
 import PropTypes from "prop-types";
 
 const Leadership = () => {
+  const { setTitle, setDescription } = useMeta();
+
+  useEffect(() => {
+    setTitle("About Us - IMM");
+    setDescription(
+      "Learn more about us with our PGDM programs, know more about our experienced faculty with strong industry connect."
+    );
+  }, [setTitle, setDescription]);
+
   const { data } = useFetch("/api/indexBanner.php");
   const [bannerImage, setBannerImage] = useState(
     "https://stealthlearn.in/imm-admin/api/uploads/680fd14484b0a.png"

@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useMeta } from "@/context/MetaContext";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import {
@@ -28,6 +29,15 @@ import {
 import { jobListings, departments, locations } from "./jobData";
 
 export default function Career() {
+  const { setTitle, setDescription } = useMeta();
+
+  useEffect(() => {
+    setTitle("Career - IMM");
+    setDescription(
+      "Kickstart your leadership journey! Explore MBA career opportunities at IMM, a top business school in Delhi, India. Shape your future with us."
+    );
+  }, [setTitle, setDescription]);
+
   window.scrollTo(0, 0);
 
   const [isLoading, setIsLoading] = useState(true);
@@ -38,12 +48,12 @@ export default function Career() {
   const [showFilters, setShowFilters] = useState(false);
 
   // Simulate loading
-  useState(() => {
+  useEffect(() => {
     const timer = setTimeout(() => {
       setIsLoading(false);
     }, 1500);
     return () => clearTimeout(timer);
-  });
+  }, []);
 
   // Filter jobs based on search and filters
   const filteredJobs = jobListings.filter((job) => {
@@ -106,9 +116,9 @@ export default function Career() {
               <a href="#positions">
                 <Button
                   size="lg"
-                className="group bg-pink-600 hover:bg-pink-700 text-white"
-              >
-                View open positions
+                  className="group bg-pink-600 hover:bg-pink-700 text-white"
+                >
+                  View open positions
                   <ChevronRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                 </Button>
               </a>

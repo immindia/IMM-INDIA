@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useMeta } from "@/context/MetaContext";
 import {
   Dialog,
   DialogContent,
@@ -17,6 +18,15 @@ import { User, Phone, Mail, MapPin } from "lucide-react";
 import pgdm from "../../assets/pdfs/PGDM Brochure 2025-2027.pdf";
 
 export default function BrochureForm() {
+  const { setTitle, setDescription } = useMeta();
+
+  useEffect(() => {
+    setTitle("Brochure - IMM India");
+    setDescription(
+      "Discover IMM India – one of the best management institutes in Delhi offering PGDM and BBA programs with top-notch faculty, industry exposure, and excellent placement opportunities. Download our brochure to explore courses, admissions, campus life, and more."
+    );
+  }, [setTitle, setDescription]);
+
   const [formData, setFormData] = useState({
     name: "",
     mobile: "",

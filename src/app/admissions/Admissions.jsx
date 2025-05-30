@@ -4,11 +4,21 @@ import Container from "../../components/wrappers/Container";
 // import AboutSidebar from "../../components/AboutSidebar";
 import ProcessAndFees from "./ProcessAndFees";
 import { useState, useEffect } from "react";
+import { useMeta } from "@/context/MetaContext";
 
 import { useFetch } from "../../hooks/useFetch";
 import Magnet from "../../../yes/Magnet/Magnet";
 
 const Admissions = () => {
+  const { setTitle, setDescription } = useMeta();
+
+  useEffect(() => {
+    setTitle("Admissions - IMM");
+    setDescription(
+      "Know the admissions procedure and availability of seats. Check your eligibility & fee details. Apply now!"
+    );
+  }, [setTitle, setDescription]);
+
   const { data } = useFetch("/api/indexBanner.php");
   const [bannerImage, setBannerImage] = useState(
     "https://stealthlearn.in/imm-admin/api/uploads/680fd14484b0a.png"
@@ -76,7 +86,6 @@ const Admissions = () => {
           />
         </div> */}
       </Container>
-
 
       <div className="fixed -right-10 top-1/2 z-50 transform -translate-y-1/2">
         <Magnet

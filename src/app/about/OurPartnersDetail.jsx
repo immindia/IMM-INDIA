@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { useMeta } from "@/context/MetaContext";
 
 import EU from "../../assets/partners/EU.png";
 import IIT from "../../assets/partners/iit.png";
@@ -19,6 +20,15 @@ import { useFetch } from "../../hooks/useFetch";
 // import bg from "../../assets/partners/partnerBG.jpg";
 import bg from "../../assets/partners/partnerBG.png";
 export default function OurPartnersDetail() {
+  const { setTitle, setDescription } = useMeta();
+
+  useEffect(() => {
+    setTitle("About Us - IMM");
+    setDescription(
+      "Learn more about us with our PGDM programs, know more about our experienced faculty with strong industry connect."
+    );
+  }, [setTitle, setDescription]);
+
   const { data } = useFetch("/api/indexBanner.php");
   const [bannerImage, setBannerImage] = useState(
     "https://stealthlearn.in/imm-admin/api/uploads/680fd14484b0a.png"

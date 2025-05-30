@@ -4,12 +4,13 @@ import {
   Routes,
   useLocation,
 } from "react-router-dom";
-import { HelmetProvider } from "react-helmet-async";
+import { Helmet, HelmetProvider } from "react-helmet-async";
 import { Button } from "@/components/ui/button";
 import { ArrowUp } from "lucide-react";
 import { useState, useEffect } from "react";
 import { ThemeProvider } from "@/context/ThemeContext";
 import { MarqueeProvider } from "./context/MarqueeContext.jsx";
+import { MetaProvider, useMeta } from "./context/MetaContext.jsx";
 
 import Header from "./app/header/Header";
 import Footer from "./app/footer/Footer";
@@ -51,6 +52,32 @@ import Career from "./app/footerLinkComponents/career/Career";
 import CareerDetail from "./app/footerLinkComponents/career/CareerDetails";
 import Feedback from "./app/footerLinkComponents/Feedback";
 import NIRF from "./app/footerLinkComponents/NIRF";
+
+// PageHelmet component to manage meta tags
+const PageHelmet = () => {
+  const { title, description } = useMeta();
+  const location = useLocation();
+  const canonicalUrl = `https://www.immindia.edu.in${location.pathname}${location.search}`;
+
+  return (
+    <Helmet>
+      <title>{title}</title>
+      <meta name="description" content={description} />
+      <link rel="canonical" href={canonicalUrl} />
+      <meta property="og:title" content={title} />
+      <meta property="og:description" content={description} />
+      <meta property="og:type" content="website" />
+      <meta
+        property="og:site_name"
+        content="Institute of Marketing & Management (IMM)"
+      />
+      <meta property="og:url" content={canonicalUrl} />
+      {/* You can add more meta tags here, like og:image */}
+      {/* <meta property="og:image" content="your-image-url.jpg" /> */}
+    </Helmet>
+  );
+};
+
 // Scroll to top on route change
 function ScrollToTopOnMount() {
   const { pathname } = useLocation();
@@ -108,122 +135,131 @@ function App() {
   return (
     <MarqueeProvider>
       <ThemeProvider>
-        <HelmetProvider>
-          <Router>
-            <ScrollToTopOnMount />
-            <ScrollToTop />
-            <Header />
-            <Routes>
-              {/* Landing */}
-              <Route path="/" element={<Landing />} />
+        <MetaProvider>
+          <HelmetProvider>
+            <Router>
+              <ScrollToTopOnMount />
+              <PageHelmet />
+              <ScrollToTop />
+              <Header />
+              <Routes>
+                {/* Landing */}
+                <Route path="/" element={<Landing />} />
 
-              {/* About us */}
-              <Route path="/about/imm-legacy" element={<ImmLegacy />} />
-              <Route path="/about/leadership" element={<Leadership />} />
-              <Route path="/about/advisory-board" element={<AdvisoryBoard />} />
-              <Route
-                path="/about/imm-partners"
-                element={<OurPartnersDetail />}
-              />
-              <Route
-                path="/about/accreditations-awards"
-                element={<AffiliationAwards />}
-              />
+                {/* About us */}
+                <Route path="/about/imm-legacy" element={<ImmLegacy />} />
+                <Route path="/about/leadership" element={<Leadership />} />
+                <Route
+                  path="/about/advisory-board"
+                  element={<AdvisoryBoard />}
+                />
+                <Route
+                  path="/about/imm-partners"
+                  element={<OurPartnersDetail />}
+                />
+                <Route
+                  path="/about/accreditations-awards"
+                  element={<AffiliationAwards />}
+                />
 
-              {/* Programs */}
-              <Route path="/programs/pgdm" element={<Pgdm />} />
-              {/* <Route path="/programs/bba" element={<BBAProgram />} /> */}
-              <Route path="/programs/bba" element={<BBAProgram />} />
+                {/* Programs */}
+                <Route path="/programs/pgdm" element={<Pgdm />} />
+                {/* <Route path="/programs/bba" element={<BBAProgram />} /> */}
+                <Route path="/programs/bba" element={<BBAProgram />} />
 
-              {/* Faculty and Research */}
-              <Route
-                path="/faculty-and-research/faculty"
-                element={<Faculty />}
-              />
-              <Route
-                path="/faculty-and-research/research"
-                element={<Research />}
-              />
-              <Route
-                path="/faculty-and-research/international-conference"
-                element={<InternationalResearch />}
-              />
-              <Route
-                path="/faculty-and-research/national-conference"
-                element={<NationalResearch />}
-              />
+                {/* Faculty and Research */}
+                <Route
+                  path="/faculty-and-research/faculty"
+                  element={<Faculty />}
+                />
+                <Route
+                  path="/faculty-and-research/research"
+                  element={<Research />}
+                />
+                <Route
+                  path="/faculty-and-research/international-conference"
+                  element={<InternationalResearch />}
+                />
+                <Route
+                  path="/faculty-and-research/national-conference"
+                  element={<NationalResearch />}
+                />
 
-              {/* Admissions */}
-              <Route path="/admissions" element={<Admissions />} />
+                {/* Admissions */}
+                <Route path="/admissions" element={<Admissions />} />
 
-              {/* Corporate Connect */}
-              <Route
-                path="/corporate-connect/industry-visit"
-                element={<IndustryVisit />}
-              />
-              <Route
-                path="/corporate-connect/industry-lectures-and-webinars"
-                element={<IndustryLecturesAndWebinars />}
-              />
-              <Route
-                path="/corporate-connect/corporate-events"
-                element={<CorporateEvents />}
-              />
-              <Route
-                path="/corporate-connect/recruit-and-partner"
-                element={<RecruitAndPartner />}
-              />
+                {/* Corporate Connect */}
+                <Route
+                  path="/corporate-connect/industry-visit"
+                  element={<IndustryVisit />}
+                />
+                <Route
+                  path="/corporate-connect/industry-lectures-and-webinars"
+                  element={<IndustryLecturesAndWebinars />}
+                />
+                <Route
+                  path="/corporate-connect/corporate-events"
+                  element={<CorporateEvents />}
+                />
+                <Route
+                  path="/corporate-connect/recruit-and-partner"
+                  element={<RecruitAndPartner />}
+                />
 
-              {/*Life at IMM*/}
-              <Route
-                path="/life-at-imm/events-and-activities"
-                element={<EventsAndActivities />}
-              />
-              <Route
-                path="/life-at-imm/clubs-at-imm"
-                element={<ClubsAtIMM />}
-              />
-              <Route path="/life-at-imm/life-at-imm" element={<LifeAtIMM />} />
+                {/*Life at IMM*/}
+                <Route
+                  path="/life-at-imm/events-and-activities"
+                  element={<EventsAndActivities />}
+                />
+                <Route
+                  path="/life-at-imm/clubs-at-imm"
+                  element={<ClubsAtIMM />}
+                />
+                <Route
+                  path="/life-at-imm/life-at-imm"
+                  element={<LifeAtIMM />}
+                />
 
-              {/* Placements */}
-              <Route
-                path="/placements/campus-recruitment"
-                element={<CampusRecruitment />}
-              />
-              <Route
-                path="/placements/placement-records"
-                element={<PlacementRecords />}
-              />
+                {/* Placements */}
+                <Route
+                  path="/placements/campus-recruitment"
+                  element={<CampusRecruitment />}
+                />
+                <Route
+                  path="/placements/placement-records"
+                  element={<PlacementRecords />}
+                />
 
-              {/* Alumni */}
-              <Route
-                path="/alumni/dazzling-divas"
-                element={<DazzlingDivas />}
-              />
-              <Route path="/alumni/hall-of-fame" element={<HallofFame />} />
+                {/* Alumni */}
+                <Route
+                  path="/alumni/dazzling-divas"
+                  element={<DazzlingDivas />}
+                />
+                <Route path="/alumni/hall-of-fame" element={<HallofFame />} />
 
-              {/* Blog */}
-              <Route path="/blog" element={<Blog />} />
-              <Route path="/blog/:slug" element={<BlogDetails />} />
+                {/* Blog */}
+                <Route path="/blog" element={<Blog />} />
+                <Route path="/blog/:slug" element={<BlogDetails />} />
 
-              {/* Contact */}
-              <Route path="/contact-us" element={<Contact />} />
+                {/* Contact */}
+                <Route path="/contact-us" element={<Contact />} />
 
-              {/* Footer Components */}
-              <Route path="/life-at-imm/gallery" element={<Gallery />} />
-              <Route path="/gallery" element={<Gallery />} />
-              <Route path="/privacy-policy" element={<PolicyPrivacy />} />
-              <Route path="/disclaimer" element={<Disclaimer />} />
-              <Route path="/aicte-approval" element={<AICTE />} />
-              <Route path="/career" element={<Career />} />
-              <Route path="/career/:job-opening" element={<CareerDetail />} />
-              <Route path="/feedback" element={<Feedback />} />
-              <Route path="/nirf" element={<NIRF />} />
-            </Routes>
+                {/* Footer Components */}
+                <Route path="/life-at-imm/gallery" element={<Gallery />} />
+                <Route path="/gallery" element={<Gallery />} />
+                <Route path="/privacy-policy" element={<PolicyPrivacy />} />
+                <Route path="/disclaimer" element={<Disclaimer />} />
+                <Route path="/aicte-approval" element={<AICTE />} />
+                <Route path="/career" element={<Career />} />
+                <Route path="/career/:job-opening" element={<CareerDetail />} />
+                <Route path="/feedback" element={<Feedback />} />
+                <Route path="/nirf" element={<NIRF />} />
+              </Routes>
 
-            <Footer />
-          </Router>
-        </HelmetProvider>
+              <Footer />
+            </Router>
+          </HelmetProvider>
+        </MetaProvider>
       </ThemeProvider>
     </MarqueeProvider>
   );

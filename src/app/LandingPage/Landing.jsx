@@ -1,4 +1,6 @@
 "use client";
+import { useEffect } from "react";
+import { useMeta } from "@/context/MetaContext";
 // import { motion } from "framer-motion";
 // import { useInView } from "react-intersection-observer";
 import LatestBlogsAndEvents from "./LatestBlogsAndEvents";
@@ -33,6 +35,15 @@ import BrochureForm from "./BrochureForm";
 // };
 
 const Landing = () => {
+  const { setTitle, setDescription } = useMeta();
+
+  useEffect(() => {
+    setTitle("IMM - Best MBA Colleges in Delhi NCR | PGDM Colleges in India");
+    setDescription(
+      "Institute of marketing & management is a top-ranked MBA college in Delhi. Industry-focused curriculum, excellent placements, and strong alumni network."
+    );
+  }, [setTitle, setDescription]);
+
   // const [heroRef, heroInView] = useInView({
   //   threshold: 0.2,
   //   triggerOnce: true,
