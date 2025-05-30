@@ -18,7 +18,7 @@ const BlogDetails = () => {
   const fetchPost = async () => {
     try {
       const response = await fetch(
-        `https://www.immindia.edu.in/blog/wp-json/wp/v2/posts?slug=${slug}&_embed`
+        `https://stealthlearn.in/immblog/wp-json/wp/v2/posts?slug=${slug}&_embed`
       );
       const data = await response.json();
       if (data.length > 0) {
@@ -34,7 +34,7 @@ const BlogDetails = () => {
   const fetchRecentPosts = async () => {
     try {
       const response = await fetch(
-        `https://www.immindia.edu.in/blog/wp-json/wp/v2/posts?_embed&per_page=2&exclude=${
+        `https://stealthlearn.in/immblog/wp-json/wp/v2/posts?_embed&per_page=2&exclude=${
           post?.id || 0
         }`
       );
@@ -65,7 +65,7 @@ const BlogDetails = () => {
   const metaDescription = post.excerpt.rendered
     .replace(/<[^>]+>/g, "")
     .slice(0, 160);
-  const canonicalUrl = `https://www.immindia.edu.in/blog/${slug}`;
+  const canonicalUrl = `https://stealthlearn.in/immblog/${slug}`;
   const featuredImage = post._embedded?.["wp:featuredmedia"]?.[0]?.source_url;
 
   return (
