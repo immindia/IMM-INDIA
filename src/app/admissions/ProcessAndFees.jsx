@@ -69,7 +69,7 @@ const ProcessAndFees = () => {
   };
 
   return (
-    <Card className="w-full pt-8 mx-auto bg-white rounded-md sm:max-w-5xl">
+    <Card className="w-full pt-8 mx-auto bg-white rounded-md sm:max-w-7xl">
       <CardContent>
         <div className="grid items-center justify-between grid-cols-2 gap-4 mb-8 sm:flex">
           {steps.map((step, index) => (

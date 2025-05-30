@@ -8,7 +8,7 @@ import { useMeta } from "@/context/MetaContext";
 
 import { useFetch } from "../../hooks/useFetch";
 import Magnet from "../../../yes/Magnet/Magnet";
-
+import { Creative } from "./Creative";
 const Admissions = () => {
   const { setTitle, setDescription } = useMeta();
 
@@ -85,6 +85,8 @@ const Admissions = () => {
             className="bg-black hover:bg-black/90"
           />
         </div> */}
+
+        <Creative />
       </Container>
 
       <div className="fixed -right-10 top-1/2 z-50 transform -translate-y-1/2">
