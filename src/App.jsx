@@ -61,7 +61,7 @@ const PageHelmet = () => {
 
   return (
     <Helmet>
-      <title>{title}</title>
+      {/* <title>{title}</title>
       <meta name="description" content={description} />
       <link rel="canonical" href={canonicalUrl} />
       <meta property="og:title" content={title} />
@@ -71,7 +71,7 @@ const PageHelmet = () => {
         property="og:site_name"
         content="Institute of Marketing & Management (IMM)"
       />
-      <meta property="og:url" content={canonicalUrl} />
+      <meta property="og:url" content={canonicalUrl} /> */}
       {/* You can add more meta tags here, like og:image */}
       {/* <meta property="og:image" content="your-image-url.jpg" /> */}
     </Helmet>
