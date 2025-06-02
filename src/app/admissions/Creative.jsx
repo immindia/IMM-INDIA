@@ -5,6 +5,9 @@ import img2 from "@/assets/admissions/creative (2).webp";
 import img3 from "@/assets/admissions/creative (3).webp";
 import img4 from "@/assets/admissions/creative (4).webp";
 import img5 from "@/assets/admissions/creative (5).webp";
+import img6 from "@/assets/admissions/creative (6).webp";
+import img7 from "@/assets/admissions/creative (7).webp";
+import img8 from "@/assets/admissions/creative (8).webp";
 
 const reviews = [
   {
@@ -27,10 +30,19 @@ const reviews = [
     id: 5,
     img: img5,
   },
-  
+  {
+    id: 6,
+    img: img6,
+  },
+  {
+    id: 7,
+    img: img7,
+  },
+  {
+    id: 8,
+    img: img8,
+  },
 ];
-
-
 
 const ReviewCard = ({
   img,
