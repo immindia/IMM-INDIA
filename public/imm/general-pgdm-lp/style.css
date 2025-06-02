@@ -352,7 +352,8 @@ header {
   }
 
   .hero-section {
-    min-height: 120vh;
+    min-height: 935px;
+    /* min-height: 120vh; */
   }
 
   .word-animation {
