@@ -8,6 +8,7 @@ import img5 from "@/assets/admissions/creative (5).webp";
 import img6 from "@/assets/admissions/creative (6).webp";
 import img7 from "@/assets/admissions/creative (7).webp";
 import img8 from "@/assets/admissions/creative (8).webp";
+import img9 from "@/assets/admissions/creative (9).webp";
 
 const reviews = [
   {
@@ -41,6 +42,10 @@ const reviews = [
   {
     id: 8,
     img: img8,
+  },
+  {
+    id: 9,
+    img: img9,
   },
 ];
 
