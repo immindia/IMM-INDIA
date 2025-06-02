@@ -97,7 +97,7 @@ export default function BrochureForm() {
           Download Brochure
         </button>
       </DialogTrigger>
-      <DialogContent className="sm:max-w-[425px] bg-white">
+      <DialogContent className="sm:max-w-[425px] bg-white rounded-lg w-[95%]">
         <DialogHeader>
           <DialogTitle className="text-pink-800 flex items-center justify-between px-4">
             Download PGDM Brochure
@@ -120,7 +120,7 @@ export default function BrochureForm() {
           )}
         </DialogHeader>
         <form onSubmit={handleSubmit} className="grid gap-4 py-4">
-          <div className="grid grid-cols-4 items-center gap-4">
+          <div className="grid grid-cols-4 items-center gap-2 sm:gap-4">
             <Label htmlFor="name" className="text-right text-pink-800">
               <User className="inline-block mr-2 h-5 w-5 text-pink-800" />
               Name
@@ -133,7 +133,7 @@ export default function BrochureForm() {
               required
             />
           </div>
-          <div className="grid grid-cols-4 items-center gap-4">
+          <div className="grid grid-cols-4 items-center gap-2 sm:gap-4">
             <Label htmlFor="mobile" className="text-right text-pink-800">
               <Phone className="inline-block mr-2 h-5 w-5 text-pink-800" />
               Mobile
@@ -147,7 +147,7 @@ export default function BrochureForm() {
               required
             />
           </div>
-          <div className="grid grid-cols-4 items-center gap-4">
+          <div className="grid grid-cols-4 items-center gap-2 sm:gap-4">
             <Label htmlFor="email" className="text-right text-pink-800">
               <Mail className="inline-block mr-2 h-5 w-5 text-pink-800" />
               Email
@@ -161,7 +161,7 @@ export default function BrochureForm() {
               required
             />
           </div>
-          <div className="grid grid-cols-4 items-center gap-4">
+          <div className="grid grid-cols-4 items-center gap-2 sm:gap-4">
             <Label htmlFor="state" className="text-right text-pink-800">
               <MapPin className="inline-block mr-2 h-5 w-5 text-pink-800" />
               State
@@ -174,7 +174,7 @@ export default function BrochureForm() {
               required
             />
           </div>
-          <DialogFooter>
+          <DialogFooter className="flex justify-between gap-3 sm:gap-0">
             <DialogClose asChild>
               <Button
                 type="button"
