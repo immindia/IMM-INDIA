@@ -1,44 +1,55 @@
 import Heading from "../../components/Heading";
 import Container from "../../components/wrappers/Container";
 import IconMarquee from "./IconMarquee";
-import { useEffect, useState } from "react";
+import { useRecruitersData } from "../../hooks/useApiData";
+import LazySection from "../../components/LazySection";
 
-const Recruiters = () => {
-  const [icons, setIcons] = useState([]);
-  const [loading, setLoading] = useState(true);
+// Loading skeleton component
+const RecruitersSkeleton = () => (
+  <div className="relative">
+    <Container>
+      <div>
+        <div className="text-center mb-8">
+          <div className="animate-pulse">
+            <div className="h-8 bg-gray-200 rounded w-64 mx-auto mb-4"></div>
+            <div className="h-4 bg-gray-200 rounded w-96 mx-auto"></div>
+          </div>
+        </div>
+        <div className="flex space-x-4 justify-center overflow-hidden">
+          {[...Array(10)].map((_, i) => (
+            <div
+              key={i}
+              className="h-16 w-24 bg-gray-200 rounded animate-pulse"
+            ></div>
+          ))}
+        </div>
+      </div>
+    </Container>
+  </div>
+);
 
-  useEffect(() => {
-    const fetchRecruiters = async () => {
-      try {
-        const response = await fetch(
-          "https://stealthlearn.in/imm-admin/api/indexRecruiter.php"
-        );
-        if (!response.ok) {
-          throw new Error("Failed to fetch recruiters");
-        }
-        const data = await response.json();
+const RecruitersContent = () => {
+  const {
+    data: icons = [],
+    isLoading,
+    error,
+  } = useRecruitersData("Home Page Recruiter");
 
-        // Filter recruiters where category is "Home Page Recruiter"
-        const homePageRecruiters = data.filter(
-          (recruiter) => recruiter.category === "Home Page Recruiter"
-        );
+  if (isLoading) {
+    return <RecruitersSkeleton />;
+  }
 
-        // Transform data to match the icons format
-        const formattedIcons = homePageRecruiters.map((recruiter) => ({
-          src: recruiter.url,
-          alt: recruiter.title,
-        }));
-
-        setIcons(formattedIcons);
-        setLoading(false);
-      } catch (error) {
-        console.error("Error fetching recruiters:", error);
-        setLoading(false);
-      }
-    };
-
-    fetchRecruiters();
-  }, []);
+  if (error) {
+    return (
+      <div className="relative">
+        <Container>
+          <div className="text-center py-10">
+            <p className="text-red-500">Failed to load recruiters data</p>
+          </div>
+        </Container>
+      </div>
+    );
+  }
 
   return (
     <div className="relative">
@@ -52,16 +63,18 @@ const Recruiters = () => {
             className="lg:pb-10"
           />
 
-          {loading ? (
-            <div className="flex justify-center py-10">
-              <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary-color"></div>
-            </div>
-          ) : (
-            <IconMarquee icons={icons} />
-          )}
+          <IconMarquee icons={icons} />
         </div>
       </Container>
     </div>
+  );
+};
+
+const Recruiters = () => {
+  return (
+    <LazySection fallback={<RecruitersSkeleton />} rootMargin="100px">
+      <RecruitersContent />
+    </LazySection>
   );
 };
 

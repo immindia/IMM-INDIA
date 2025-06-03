@@ -1,6 +1,7 @@
 "use client";
 import { useEffect } from "react";
 import { useMeta } from "@/context/MetaContext";
+import { initializePrefetch } from "../../utils/prefetch";
 
 import LatestBlogsAndEvents from "./LatestBlogsAndEvents";
 
@@ -27,6 +28,9 @@ const Landing = () => {
     setDescription(
       "Institute of marketing & management is a top-ranked MBA college in Delhi. Industry-focused curriculum, excellent placements, and strong alumni network."
     );
+
+    // Initialize prefetching for better performance
+    initializePrefetch();
   }, [setTitle, setDescription]);
 
   return (
@@ -68,20 +72,26 @@ const Landing = () => {
 
       <Stats />
 
+      {/* Optimized data fetch with React Query and lazy loading */}
       <Placements />
 
+      {/* Optimized data fetch with React Query and lazy loading */}
       <Awards />
 
+      {/* Optimized data fetch with React Query and lazy loading */}
       <Recruiters />
 
+      {/* Optimized data fetch with React Query and lazy loading */}
       <GlobalExcursion />
 
       <NetworkHappening />
 
       <LatestBlogsAndEvents />
 
+      {/* Optimized data fetch with React Query and lazy loading */}
       <LiveProjects />
 
+      {/* Optimized data fetch with React Query and lazy loading */}
       <Testimonial />
     </div>
   );

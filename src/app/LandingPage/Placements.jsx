@@ -3,47 +3,40 @@ import Container from "@/components/wrappers/Container";
 import Heading from "@/components/Heading";
 import ThreeDPlacementCard from "@/components/ThreeDPlacementCard";
 import PlacementCardMarquee from "@/components/PlacementCardMarquee";
-import { useEffect, memo, useState } from "react";
+import { memo } from "react";
+import { usePlacementsData } from "../../hooks/useApiData";
+import LazySection from "../../components/LazySection";
 
-const Placements = () => {
-  const [placements, setPlacements] = useState([]);
-  const [loading, setLoading] = useState(true);
+// Loading skeleton component
+const PlacementsSkeleton = () => (
+  <div
+    className="relative bg-cover bg-center transform-gpu"
+    style={{ backgroundImage: `url(${bg})`, willChange: "transform" }}
+  >
+    <Container>
+      <div className="text-center py-10">
+        <div className="animate-pulse">
+          <div className="h-8 bg-gray-200 rounded w-64 mx-auto mb-4"></div>
+          <div className="h-4 bg-gray-200 rounded w-96 mx-auto mb-8"></div>
+          <div className="flex space-x-4 justify-center">
+            {[...Array(5)].map((_, i) => (
+              <div key={i} className="h-32 w-24 bg-gray-200 rounded"></div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </Container>
+  </div>
+);
 
-  useEffect(() => {
-    const fetchPlacements = async () => {
-      try {
-        const response = await fetch(
-          "https://stealthlearn.in/imm-admin/api/indexPlacement.php"
-        );
-        const data = await response.json();
-        // Filter for Summer Placement category
-        const summerPlacements = data.filter(
-          (item) => item.category === "Summer Placement"
-        );
-        setPlacements(summerPlacements.reverse().slice(0, 14));
-      } catch (error) {
-        console.error("Error fetching placements:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
+const PlacementsContent = () => {
+  const { data: placements = [], isLoading, error } = usePlacementsData();
 
-    fetchPlacements();
-  }, []);
+  if (isLoading) {
+    return <PlacementsSkeleton />;
+  }
 
-  // Preload images
-  useEffect(() => {
-    if (placements.length > 0) {
-      placements.forEach((card) => {
-        const img = new Image();
-        img.src = card.url;
-        const logo = new Image();
-        logo.src = card.logo_url;
-      });
-    }
-  }, [placements]);
-
-  if (loading) {
+  if (error) {
     return (
       <div
         className="relative bg-cover bg-center transform-gpu"
@@ -51,7 +44,7 @@ const Placements = () => {
       >
         <Container>
           <div className="text-center py-10">
-            <p>Loading placements...</p>
+            <p className="text-red-500">Failed to load placements data</p>
           </div>
         </Container>
       </div>
@@ -91,6 +84,14 @@ const Placements = () => {
         </div>
       </Container>
     </div>
+  );
+};
+
+const Placements = () => {
+  return (
+    <LazySection fallback={<PlacementsSkeleton />} rootMargin="50px">
+      <PlacementsContent />
+    </LazySection>
   );
 };
 

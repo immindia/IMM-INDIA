@@ -3,8 +3,30 @@ import { IndustryMarquee } from "./IndustryMarquee";
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
+import LazySection from "../../components/LazySection";
 
-const LiveProjects = () => {
+// Loading skeleton component
+const LiveProjectsSkeleton = () => (
+  <Container className="ezy__about11 sm:pt-20 sm:px-8 light bg-white dark:bg-[#0b1727] text-zinc-900 dark:text-white">
+    <div className="container">
+      <div className="grid grid-cols-12 gap-5 justify-start items-start">
+        <div className="col-span-12 lg:col-span-6">
+          <div className="text-left md:pr-20 animate-pulse">
+            <div className="h-16 bg-gray-200 rounded mb-4"></div>
+            <div className="h-6 bg-gray-200 rounded mb-4"></div>
+            <div className="h-4 bg-gray-200 rounded mb-2"></div>
+            <div className="h-4 bg-gray-200 rounded w-3/4"></div>
+          </div>
+        </div>
+        <div className="col-span-12 lg:col-span-6">
+          <div className="h-96 bg-gray-200 rounded animate-pulse"></div>
+        </div>
+      </div>
+    </div>
+  </Container>
+);
+
+const LiveProjectsContent = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
@@ -84,6 +106,14 @@ const LiveProjects = () => {
         </div>
       </motion.div>
     </Container>
+  );
+};
+
+const LiveProjects = () => {
+  return (
+    <LazySection fallback={<LiveProjectsSkeleton />} rootMargin="100px">
+      <LiveProjectsContent />
+    </LazySection>
   );
 };
 
