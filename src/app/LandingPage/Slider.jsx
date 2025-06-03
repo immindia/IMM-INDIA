@@ -221,12 +221,12 @@ export default function Slider({
             <img
               src={slides[currentSlide].image || "/placeholder.svg"}
               alt={slides[currentSlide].title}
-              className="object-cover w-full h-full sm:block hidden"
+              className="object-cover w-full h-full sm:block hidden sm:h-[82vh] "
             />
             <img
               src={slides[currentSlide].mobileImage || "/placeholder.svg"}
               alt={slides[currentSlide].title}
-              className="object-cover w-full h-full block sm:hidden"
+              className="object-cover w-full  block sm:hidden h-[400px]"
             />
             <div className="absolute inset-0 bg-black/10" />
             {currentSlide === 0 && slides[currentSlide].slider && (
