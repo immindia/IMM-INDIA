@@ -52,7 +52,8 @@ import Career from "./app/footerLinkComponents/career/Career";
 import CareerDetail from "./app/footerLinkComponents/career/CareerDetails";
 import Feedback from "./app/footerLinkComponents/Feedback";
 import NIRF from "./app/footerLinkComponents/NIRF";
-
+import CallUsButton from "./components/CallUsButton";
+import whatsapp from "./assets/whatsapp.png";
 // PageHelmet component to manage meta tags
 const PageHelmet = () => {
   const { title, description } = useMeta();
@@ -121,7 +122,7 @@ const ScrollToTop = () => {
         <Button
           onClick={scrollToTop}
           size="icon"
-          className="fixed animate-bounce z-[9999] bg-pink-700 hover:bg-pink-600 text-white bottom-16 right-6 h-9 w-9 rounded-full shadow-lg"
+          className="fixed animate-bounce z-[9999] bg-pink-700 hover:bg-pink-600 text-white bottom-5 right-6 h-9 w-9 rounded-full shadow-lg"
           aria-label="Scroll to top"
         >
           <ArrowUp className="h-5 w-5" />
@@ -142,6 +143,12 @@ function App() {
               <PageHelmet />
               <ScrollToTop />
               <Header />
+              <a
+                href="https://wa.me/919999078888"
+                className=" fixed sm:hidden z-[60] bottom-5 left-5 "
+              >
+                <img src={whatsapp} alt="whatsapp" className="w-16 h-16" />
+              </a>
               <Routes>
                 {/* Landing */}
                 <Route path="/" element={<Landing />} />
