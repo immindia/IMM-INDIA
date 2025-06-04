@@ -226,7 +226,7 @@ export default function Slider({
             <img
               src={slides[currentSlide].mobileImage || "/placeholder.svg"}
               alt={slides[currentSlide].title}
-              className="object-cover w-full  block sm:hidden h-[400px]"
+              className="object-cover w-full  block sm:hidden h-full"
             />
             <div className="absolute inset-0 bg-black/10" />
             {currentSlide === 0 && slides[currentSlide].slider && (
