@@ -145,7 +145,8 @@ function App() {
               <Header />
               <a
                 href="https://wa.me/919999078888"
-                className=" fixed sm:hidden z-[60] bottom-5 left-5 "
+                target="_blank"
+                className=" fixed  z-[999] bottom-5 left-5 "
               >
                 <img src={whatsapp} alt="whatsapp" className="w-16 h-16" />
               </a>

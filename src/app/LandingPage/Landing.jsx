@@ -35,7 +35,7 @@ const Landing = () => {
 
   return (
     <div className="overflow-x-hidden">
-      <div className="fixed -right-11 sm:-right-9 top-[40vh] z-50 transform -translate-y-1/2 animate-pulse">
+      <div className="fixed -right-11 sm:-right-9 top-[40vh] z-[9999] transform -translate-y-1/2 animate-pulse">
         <Magnet
           padding={150}
           disabled={window.innerWidth < 768 ? true : false}
@@ -53,7 +53,7 @@ const Landing = () => {
           </button>
         </Magnet>
       </div>
-      <div className="fixed -right-[4.5rem] sm:-right-[4.2rem] top-[65vh] z-50 transform -translate-y-1/2">
+      <div className="fixed -right-[4.7rem] sm:-right-[4.2rem] top-[65vh]  transform z-[9999] -translate-y-1/2">
         <Magnet
           padding={150}
           disabled={window.innerWidth < 768 ? true : false}

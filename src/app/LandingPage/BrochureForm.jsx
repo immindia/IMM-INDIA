@@ -119,9 +119,9 @@ export default function BrochureForm() {
             </p>
           )}
         </DialogHeader>
-        <form onSubmit={handleSubmit} className="grid gap-4 py-4">
-          <div className="grid grid-cols-4 items-center gap-2 sm:gap-4">
-            <Label htmlFor="name" className="text-right text-pink-800">
+        <form onSubmit={handleSubmit} className="grid gap-5 sm:gap-4 py-4">
+          <div className="grid sm:grid-cols-4 items-center gap-2 sm:gap-4">
+            <Label htmlFor="name" className="sm:text-right text-pink-800">
               <User className="inline-block mr-2 h-5 w-5 text-pink-800" />
               Name
             </Label>
@@ -133,8 +133,8 @@ export default function BrochureForm() {
               required
             />
           </div>
-          <div className="grid grid-cols-4 items-center gap-2 sm:gap-4">
-            <Label htmlFor="mobile" className="text-right text-pink-800">
+          <div className="grid sm:grid-cols-4 items-center gap-2 sm:gap-4">
+            <Label htmlFor="mobile" className="sm:text-right text-pink-800">
               <Phone className="inline-block mr-2 h-5 w-5 text-pink-800" />
               Mobile
             </Label>
@@ -147,8 +147,8 @@ export default function BrochureForm() {
               required
             />
           </div>
-          <div className="grid grid-cols-4 items-center gap-2 sm:gap-4">
-            <Label htmlFor="email" className="text-right text-pink-800">
+          <div className="grid sm:grid-cols-4 items-center gap-2 sm:gap-4">
+            <Label htmlFor="email" className="sm:text-right text-pink-800">
               <Mail className="inline-block mr-2 h-5 w-5 text-pink-800" />
               Email
             </Label>
@@ -161,8 +161,8 @@ export default function BrochureForm() {
               required
             />
           </div>
-          <div className="grid grid-cols-4 items-center gap-2 sm:gap-4">
-            <Label htmlFor="state" className="text-right text-pink-800">
+          <div className="grid sm:grid-cols-4 items-center gap-2 sm:gap-4">
+            <Label htmlFor="state" className="sm:text-right text-pink-800">
               <MapPin className="inline-block mr-2 h-5 w-5 text-pink-800" />
               State
             </Label>

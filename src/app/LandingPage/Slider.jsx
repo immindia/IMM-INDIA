@@ -16,7 +16,7 @@ export default function Slider({
   arrowClassName,
   slides,
   autoPlay = true,
-  autoPlayInterval = 6000,
+  autoPlayInterval = 600000,
   indicators = true,
   arrows = true,
   effect = "cube",
