@@ -188,7 +188,11 @@ const IndustryLecturesAndWebinars = () => {
     <section className="relative min-h-screen">
       <ImgAndBreadcrumb
         title=""
-        imageSrc={bannerImage}
+        imageSrc={
+          window.innerWidth < 768
+            ? "/banners/industryLecturesM.png"
+            : "/banners/industryLectures.webp"
+        }
         imageAlt="Description of the image"
         breadcrumbItems={breadcrumbItems}
       />

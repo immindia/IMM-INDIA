@@ -100,7 +100,11 @@ const ClubsAtIMM = () => {
     <div className="relative min-h-screen">
       <ImgAndBreadcrumb
         title=""
-        imageSrc={bannerImage}
+        imageSrc={
+          window.innerWidth < 768
+            ? "/banners/clubsM.png"
+            : "/banners/clubs.webp"
+        }
         imageAlt="Description of the image"
         breadcrumbItems={breadcrumbItems}
       />

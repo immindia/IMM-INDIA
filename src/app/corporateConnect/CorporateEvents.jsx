@@ -185,7 +185,11 @@ const CorporateEvents = () => {
     <section className="relative min-h-screen">
       <ImgAndBreadcrumb
         title=""
-        imageSrc={bannerImage}
+        imageSrc={
+          window.innerWidth < 768
+            ? "/banners/corporateM.png"
+            : "/banners/corporate.webp"
+        }
         imageAlt="Description of the image"
         breadcrumbItems={breadcrumbItems}
       />

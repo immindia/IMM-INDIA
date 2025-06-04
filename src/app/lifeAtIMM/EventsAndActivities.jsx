@@ -77,6 +77,8 @@ const EventsAndActivities = () => {
     }
   }, [data, isMobile]);
 
+
+  
   const breadcrumbItems = [
     { href: "/", label: "Home" },
     { href: "/life-at-imm/events-and-activities", label: "Life at IMM" },
@@ -86,7 +88,11 @@ const EventsAndActivities = () => {
     <div className="relative min-h-screen">
       <ImgAndBreadcrumb
         title={window.innerWidth < 768 ? "" : "Events & Activities"}
-        imageSrc={bannerImage}
+        imageSrc={
+          window.innerWidth < 768
+            ? "/banners/eventsM.webp"
+            : "/banners/events.webp"
+        }
         imageAlt="Description of the image"
         breadcrumbItems={breadcrumbItems}
       />

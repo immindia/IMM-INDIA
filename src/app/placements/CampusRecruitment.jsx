@@ -68,7 +68,11 @@ const CampusRecruitment = () => {
     <div className="relative min-h-screen ">
       <ImgAndBreadcrumb
         title=""
-        imageSrc={bannerImage}
+        imageSrc={
+          window.innerWidth < 768
+            ? "/banners/campusM.webp"
+            : "/banners/campus.webp"
+        }
         imageAlt="Description of the image"
         breadcrumbItems={breadcrumbItems}
       />

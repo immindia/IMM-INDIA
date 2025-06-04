@@ -69,7 +69,11 @@ const PlacementRecords = () => {
     <div className="relative min-h-screen overflow-x-hidden">
       <ImgAndBreadcrumb
         title=""
-        imageSrc={bannerImage}
+        imageSrc={
+          window.innerWidth < 768
+            ? "/banners/placementM.png"
+            : "/banners/placementRecords.webp"
+        }
         imageAlt="Description of the image"
         breadcrumbItems={breadcrumbItems}
       />
