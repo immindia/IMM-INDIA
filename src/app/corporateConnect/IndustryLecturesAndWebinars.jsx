@@ -190,7 +190,7 @@ const IndustryLecturesAndWebinars = () => {
         title=""
         imageSrc={
           window.innerWidth < 768
-            ? "/banners/industryLecturesM.png"
+            ? "/banners/industryLecturesM.webp"
             : "/banners/industryLectures.webp"
         }
         imageAlt="Description of the image"
