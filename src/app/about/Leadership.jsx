@@ -18,8 +18,6 @@ import {
 } from "@/components/ui/dialog";
 import { useFetch } from "../../hooks/useFetch";
 
-import PropTypes from "prop-types";
-
 const Leadership = () => {
   const { setTitle, setDescription } = useMeta();
 
@@ -251,27 +249,3 @@ const ReadMoreDialog = ({ isOpen, onClose, leader }) => {
     </Dialog>
   );
 };
-
-// Add PropTypes for components
-LeaderCard.propTypes = {
-  leader: PropTypes.shape({
-    name: PropTypes.string.isRequired,
-    position: PropTypes.string.isRequired,
-    image: PropTypes.string.isRequired,
-    linkedin: PropTypes.string,
-    message: PropTypes.string,
-  }).isRequired,
-  onReadMore: PropTypes.func.isRequired,
-  index: PropTypes.number.isRequired,
-};
-
-ReadMoreDialog.propTypes = {
-  isOpen: PropTypes.bool.isRequired,
-  onClose: PropTypes.func.isRequired,
-  leader: PropTypes.shape({
-    name: PropTypes.string.isRequired,
-    position: PropTypes.string.isRequired,
-    message: PropTypes.string.isRequired,
-  }),
-};
-
