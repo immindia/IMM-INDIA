@@ -6,7 +6,7 @@ export const useMarquee = () => useContext(MarqueeContext);
 
 export const MarqueeProvider = ({ children }) => {
   const [marqueeText, setMarqueeText] = useState(
-    "PGDM Session 2025-27 Commences from July 7, 2025, onwards for Batch 1*"
+    "PGDM Session 2025-27 Commences from July 7, 2025, onwards for Batch 1* | Phase-3 Applications Closed"
   );
   const [isBBAPage, setIsBBAPage] = useState(false);
 
