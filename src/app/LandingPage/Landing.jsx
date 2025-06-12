@@ -1,16 +1,15 @@
 "use client";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useMeta } from "@/context/MetaContext";
 import { initializePrefetch } from "../../utils/prefetch";
+import { Dialog, DialogContent } from "@/components/ui/dialog";
 
 import LatestBlogsAndEvents from "./LatestBlogsAndEvents";
-
 import Stats from "./Stats";
 import Testimonial from "./Testimonial";
 import GlobalExcursion from "./EduTour";
 import Awards from "./Awards";
 import ProgramsOffered from "./ProgramsOffered";
-
 import Recruiters from "./Recruiters";
 import NetworkHappening from "./NetworkHappening";
 import LiveProjects from "./LiveProjects";
@@ -19,6 +18,40 @@ import Placements from "./Placements";
 import OurPartners from "./OurPartners";
 import Magnet from "../../../yes/Magnet/Magnet";
 import BrochureForm from "./BrochureForm";
+import popup from "../../assets/landing/pop-up.png";
+
+const MobilePopup = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  useEffect(() => {
+    const isMobile = window.innerWidth < 768; // Tailwind's 'md' breakpoint
+    if (isMobile) {
+      const timer = setTimeout(() => {
+        setIsOpen(true);
+      }, 2000); // 2-second delay
+
+      return () => clearTimeout(timer);
+    }
+  }, []);
+
+  return (
+    <Dialog open={isOpen} onOpenChange={setIsOpen}>
+      <DialogContent className="md:hidden z-[9999] p-0 w-full max-w-[90vw] h-full py-10 max-h-[100vh] bg-transparent border-0 rounded-lg overflow-hidden focus:outline-none">
+        <a
+          href="https://www.immindia.edu.in/imm/general-pgdm-lp"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <img
+            src={popup}
+            alt="Special Offer"
+            className="rounded-lg object-cover w-full h-full"
+          />
+        </a>
+      </DialogContent>
+    </Dialog>
+  );
+};
 
 const Landing = () => {
   const { setTitle, setDescription } = useMeta();
@@ -35,6 +68,7 @@ const Landing = () => {
 
   return (
     <div className="overflow-x-hidden">
+      <MobilePopup />
       <div className="fixed -right-11 sm:-right-9 top-[40vh] z-[9999] transform -translate-y-1/2 animate-pulse">
         <Magnet
           padding={150}
