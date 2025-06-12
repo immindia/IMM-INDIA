@@ -40,6 +40,7 @@ const MobilePopup = () => {
         <a
           href="https://www.immindia.edu.in/imm/general-pgdm-lp/"
           target="_blank"
+          className="flex items-center justify-center"
           rel="noopener noreferrer"
         >
           <img
