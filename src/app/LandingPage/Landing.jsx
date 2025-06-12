@@ -36,7 +36,7 @@ const MobilePopup = () => {
 
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
-      <DialogContent className="md:hidden z-[9999] w-full h-full px-5 py-10  bg-transparent border-0 rounded-lg overflow-hidden focus:outline-none">
+      <DialogContent className="md:hidden z-[9999] w-full h-full px-5 py-20  bg-transparent border-0 rounded-lg overflow-hidden focus:outline-none">
         <a
           href="https://www.immindia.edu.in/imm/general-pgdm-lp/"
           target="_blank"
@@ -45,7 +45,7 @@ const MobilePopup = () => {
           <img
             src={popup}
             alt="Special Offer"
-            className="rounded-lg object-fit w-full h-full"
+            className="rounded-lg object-cover w-full h-full"
           />
         </a>
       </DialogContent>
