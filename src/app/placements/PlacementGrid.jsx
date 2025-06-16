@@ -13,13 +13,14 @@ export default function PlacementGrid() {
     const fetchPlacements = async () => {
       try {
         const response = await fetch(
-          "https://stealthlearn.in/imm-admin/api/indexPlacement.php"
+          `https://stealthlearn.in/imm-admin/api/indexPlacement.php?category=${encodeURIComponent("Summer Placement")}`
         );
         const data = await response.json();
         // Filter for Summer Placement category
-        const summerPlacements = data.filter(
-          (item) => item.category === "Summer Placement"
-        );
+        const summerPlacements = data;
+        // const summerPlacements = data.filter(
+        //   (item) => item.category === "Summer Placement"
+        // );
 
         // Prioritize specific names
         const prioritizedNames = [

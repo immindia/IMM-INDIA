@@ -33,23 +33,20 @@ const preloadImages = (imageUrls) => {
 export const usePlacementsData = (options = {}) => {
   return useQuery({
     queryKey: ["placements"],
-    queryFn: () => fetchApiData("/indexPlacement.php"),
+    queryFn: () =>
+      fetchApiData(
+        `/indexPlacement.php?category=${encodeURIComponent("Summer Placement")}&count=10`
+      ),
     staleTime: 10 * 60 * 1000, // 10 minutes
     cacheTime: 30 * 60 * 1000, // 30 minutes
     select: (data) => {
-      // Filter for Summer Placement category and process data
-      const summerPlacements = data
-        .filter((item) => item.category === "Summer Placement")
-        .reverse()
-        .slice(0, 14);
-
       // Preload images after data is processed
-      const imageUrls = summerPlacements
+      const imageUrls = data
         .flatMap((item) => [item.url, item.logo_url])
         .filter(Boolean);
       preloadImages(imageUrls);
 
-      return summerPlacements;
+      return data;
     },
     ...options,
   });

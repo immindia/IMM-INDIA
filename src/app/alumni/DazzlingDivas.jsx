@@ -74,7 +74,7 @@ export default function DazzlingDivas() {
       try {
         setLoading(true);
         const response = await fetch(
-          "https://stealthlearn.in/imm-admin/api/indexPlacement.php"
+          `https://stealthlearn.in/imm-admin/api/indexPlacement.php?category=${encodeURIComponent("Dazzling Divas")}`
         );
 
         if (!response.ok) {
@@ -84,9 +84,7 @@ export default function DazzlingDivas() {
         const data = await response.json();
 
         // Filter for "Hall of Fame" category only
-        const hallOfFameData = data.filter(
-          (item) => item.category === "Dazzling Divas"
-        );
+        const hallOfFameData = data;
 
         // Transform data to match component format
         const transformedData = hallOfFameData.map((item) => ({

@@ -74,7 +74,7 @@ export default function HallofFame() {
       try {
         setLoading(true);
         const response = await fetch(
-          "https://stealthlearn.in/imm-admin/api/indexPlacement.php"
+          `https://stealthlearn.in/imm-admin/api/indexPlacement.php?category=${encodeURIComponent("Hall of Fame")}`
         );
 
         if (!response.ok) {
@@ -84,9 +84,7 @@ export default function HallofFame() {
         const data = await response.json();
 
         // Filter for "Hall of Fame" category only
-        const hallOfFameData = data.filter(
-          (item) => item.category === "Hall of Fame"
-        );
+        const hallOfFameData = data;
 
         // Transform data to match component format
         const transformedData = hallOfFameData.map((item) => ({
