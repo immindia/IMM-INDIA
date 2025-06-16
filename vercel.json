@@ -1,6 +1,10 @@
 {
-    "rewrites":  [
-        {"source": "/(.*)", "destination": "/"}
-     ]
- 
-  }
+  "rewrites": [{ "source": "/(.*)", "destination": "/" }],
+  "redirects": [
+    {
+      "source": "/placement.php",
+      "destination": "/placements/placement-records",
+      "permanent": true
+    }
+  ]
+}

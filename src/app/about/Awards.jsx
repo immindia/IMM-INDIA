@@ -134,7 +134,7 @@ const CardItem = ({ item, index }) => (
         duration: 0.5,
         delay: 0.2 + index * 0.1,
       }}
-      className="text-sm text-white font-medium leading-relaxed mb-0 text-center max-w-[300px] break-words mx-auto"
+      className="text-sm text-white font-medium leading-relaxed mb-0 text-center max-w-[300px] break-words mx-auto capitalize"
     >
       {/* {item.title
         .split(" ")
