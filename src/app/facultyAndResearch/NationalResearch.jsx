@@ -20,11 +20,11 @@ const Research = () => {
     const fetchInternationalData = async () => {
       try {
         const response = await fetch(
-          "https://stealthlearn.in/imm-admin/api/index.php"
+          "https://stealthlearn.in/imm-admin/api/index.php?category=National"
         );
         const data = await response.json();
         const filtered = data
-          .filter((item) => item.category === "National")
+          // .filter((item) => item.category === "National")
           .map((item) => ({
             id: item.id,
             src: item.url,
