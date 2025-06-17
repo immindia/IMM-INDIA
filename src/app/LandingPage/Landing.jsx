@@ -18,7 +18,7 @@ import Placements from "./Placements";
 import OurPartners from "./OurPartners";
 import Magnet from "../../../yes/Magnet/Magnet";
 import BrochureForm from "./BrochureForm";
-import popup from "../../assets/landing/pop-up.png";
+
 
 const MobilePopup = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -28,7 +28,7 @@ const MobilePopup = () => {
     if (isMobile) {
       const timer = setTimeout(() => {
         setIsOpen(true);
-      }, 2000); // 2-second delay
+      }, 6000); // 2-second delay
 
       return () => clearTimeout(timer);
     }
@@ -44,7 +44,7 @@ const MobilePopup = () => {
           rel="noopener noreferrer"
         >
           <img
-            src={popup}
+            src="/pop-up.webp"
             alt="Special Offer"
             className="rounded-lg object-cover w-full h-full max-h-[500px]"
           />

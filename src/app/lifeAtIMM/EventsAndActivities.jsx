@@ -127,13 +127,13 @@ function EventGallery() {
     const fetchEvents = async () => {
       try {
         const response = await fetch(
-          "https://stealthlearn.in/imm-admin/api/index2.php?resource=events"
+          "https://stealthlearn.in/imm-admin/api/index2.php?resource=events&categories=Events"
         );
         const data = await response.json();
 
         // Process events and extract unique years
         const processedEvents = data
-          .filter((event) => event.category === "Events")
+          // .filter((event) => event.category === "Events")
           .map((event) => ({
             ...event,
             photoCount: event.gallery ? event.gallery.length : 0,

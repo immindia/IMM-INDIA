@@ -13,7 +13,7 @@ export const  useAwardsData = () => {
     const fetchAwards = async () => {
       try {
         const response = await fetch(
-          "https://stealthlearn.in/imm-admin/api/index.php"
+          "https://stealthlearn.in/imm-admin/api/index.php?category=Award"
         );
 
         if (!response.ok) {
@@ -24,7 +24,6 @@ export const  useAwardsData = () => {
 
         // Filter and process awards
         const processedAwards = data
-          .filter((item) => item.category === "Award")
           .map((award) => ({
             ...award,
             id: award.id || Math.random().toString(36).substr(2, 9),

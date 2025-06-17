@@ -57,9 +57,11 @@ const AwardsInternal = () => {
   const buttonRef = useRef(null);
 
   // Data fetching with React Query
-  const { data: awards = [], isLoading, error } = useAwardsData();
+  const { data: awardData = [], isLoading, error } = useAwardsData({
+    count: 5,
+  });
   // Slicing to 5 items as per original UI logic
-  const awardData = awards.slice(0, 5);
+  // const awardData = awards.slice(0, 21);
 
   // const isHeadingInView = useInView(headingRef, { once: true, amount: 0.5 }); // Temporarily commenting out
   // const isButtonInView = useInView(buttonRef, { once: true, amount: 0.5 }); // Temporarily commenting out

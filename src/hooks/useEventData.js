@@ -14,7 +14,7 @@ export const useEventData = (category) => {
     const fetchEvents = async () => {
       try {
         const response = await fetch(
-          "https://stealthlearn.in/imm-admin/api/index2.php?resource=events"
+          `https://stealthlearn.in/imm-admin/api/index2.php?resource=events&categories=${category}`
         );
 
         if (!response.ok) {

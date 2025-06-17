@@ -52,25 +52,37 @@ export const usePlacementsData = (options = {}) => {
   });
 };
 
-// Hook for Awards data
-export const useAwardsData = (options = {}) => {
+// Hook for Awards data (Refactored for efficiency)
+export const useAwardsData = ({ count, ...options } = {}) => {
+  const category = "Award";
+  // The query key includes the parameters to ensure different requests are cached separately.
+  const queryKey = ["awards", { category, count }];
+
   return useQuery({
-    queryKey: ["awards"],
-    queryFn: () => fetchApiData("/index.php"),
-    staleTime: 15 * 60 * 1000, // 15 minutes (awards change less frequently)
+    queryKey,
+    queryFn: () => {
+      // Build the query string dynamically.
+      const params = new URLSearchParams();
+      params.append('category', category);
+      if (count) {
+        params.append('count', count);
+      }
+      // fetchApiData will now call a URL like: /index.php?category=Award&count=5
+      return fetchApiData(`/index.php?${params.toString()}`);
+    },
+    staleTime: 15 * 60 * 1000, // 15 minutes
     cacheTime: 60 * 60 * 1000, // 1 hour
     select: (data) => {
-      // Filter awards and process data
-      const processedAwards = data
-        .filter((item) => item.category === "Award")
-        .map((award) => ({
-          ...award,
-          id: award.id || Math.random().toString(36).substr(2, 9),
-          image: award.url || `${BASE_URL}/uploads/${award.file_name}`,
-          title: award.title || "",
-        }));
+      // The backend has already done the filtering and limiting.
+      // We just need to map the data to the format the component expects.
+      const processedAwards = data.map((award) => ({
+        ...award,
+        id: award.id || Math.random().toString(36).substr(2, 9),
+        image: award.url || `${BASE_URL}/uploads/${award.file_name}`,
+        title: award.title || "",
+      }));
 
-      // Preload award images
+      // Preload award images (this logic remains the same)
       const imageUrls = processedAwards
         .map((award) => award.image)
         .filter(Boolean);
@@ -81,7 +93,6 @@ export const useAwardsData = (options = {}) => {
     ...options,
   });
 };
-
 // Hook for Recruiters data
 export const useRecruitersData = (
   category = "Home Page Recruiter",
