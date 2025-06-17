@@ -10,32 +10,38 @@ import { useRef, useEffect } from "react";
 import { useAwardsData } from "../../hooks/useApiData";
 import LazySection from "../../components/LazySection";
 
-// Skeleton for loading state, styled to match original loading text vibe but more structured
-const AwardsSkeleton = () => (
-  <section className="relative px-0 py-10 lg:py-20 md:py-12 sm:px-0 bg-gradient-to-bl from-blue-950 via-blue-900 to-blue-950">
-    <div className="relative z-30 px-4 mx-auto max-w-screen-xl md:px-8">
-      {/* Skeleton for Heading */}
-      <div className="animate-pulse text-center mb-10">
-        <div className="h-10 md:h-12 bg-blue-800 rounded w-3/4 md:w-1/2 mx-auto mb-3"></div>
-        <div className="h-4 md:h-5 bg-blue-800 rounded w-full md:w-3/4 mx-auto"></div>
-      </div>
-      {/* Skeleton for AwardsCards */}
-      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-6">
-        {[...Array(5)].map((_, i) => (
-          <div key={i} className="animate-pulse">
-            <div className="h-32 sm:h-40 bg-blue-800 rounded-full w-32 sm:w-40 mx-auto mb-2"></div>{" "}
-            {/* Leaf-like shape */}
-            <div className="h-4 bg-blue-800 rounded w-20 mx-auto"></div>
-          </div>
-        ))}
-      </div>
-      {/* Skeleton for ShimmerButton */}
-      <div className="animate-pulse text-center mt-12">
-        <div className="h-10 w-32 bg-gray-400 rounded-lg mx-auto"></div>
-      </div>
-    </div>
-  </section>
-);
+const placeholderAwards = [
+  {
+    id: "p1",
+    image: "/awards/award (1).webp",
+    description:
+      "Most Preferred B-School\nProviding Global Exposure\nby MyBrand Better",
+  },
+  {
+    id: "p2",
+    image: "/awards/award (2).webp",
+    description:
+      "Outstanding Performance in\nVirtual Knowledge Delivery\nby Begin Up Research Intelligence",
+  },
+  {
+    id: "p3",
+    image: "/awards/award (3).webp",
+    description:
+      "Top & Most Innovative\nPrivate Business School\nby National Education Excellence Awards",
+  },
+  {
+    id: "p4",
+    image: "/awards/award (4).webp",
+    description:
+      "Top 10 Promising Colleges\nProviding Logistics & Supply\nChain Management Programs\nby Higher Education Review",
+  },
+  {
+    id: "p5",
+    image: "/awards/award (5).webp",
+    description:
+      "Top 10 Sales & Marketing\nColleges In India\nby Higher Education Review",
+  },
+];
 
 const preloadImages = (images) => {
   if (typeof window !== "undefined") {
@@ -57,7 +63,11 @@ const AwardsInternal = () => {
   const buttonRef = useRef(null);
 
   // Data fetching with React Query
-  const { data: awardData = [], isLoading, error } = useAwardsData({
+  const {
+    data: awardData = [],
+    isLoading,
+    error,
+  } = useAwardsData({
     count: 5,
   });
   // Slicing to 5 items as per original UI logic
@@ -67,25 +77,19 @@ const AwardsInternal = () => {
   // const isButtonInView = useInView(buttonRef, { once: true, amount: 0.5 }); // Temporarily commenting out
 
   useEffect(() => {
+    // Preload leaf and placeholder images on mount
+    const placeholderImages = placeholderAwards.map((award) => award.image);
+    preloadImages([leaf, ...placeholderImages]);
+  }, []); // Run only on mount
+
+  useEffect(() => {
     if (awardData.length > 0) {
       const imagesToPreload = [
-        leaf,
         ...awardData.map((award) => award.image).filter(Boolean),
       ];
       preloadImages(imagesToPreload);
     }
   }, [awardData]); // Dependency on awardData (the sliced version) is fine here for preloading these specific images
-
-  if (isLoading) {
-    // Original loading state was simpler, this could be a simple text or the skeleton
-    // For consistency with other lazy-loaded sections, we use the skeleton as fallback for LazySection
-    // This direct return will only hit if LazySection is already visible and data is still loading.
-    return (
-      <section className="relative px-0 py-10 lg:py-20 md:py-12 sm:px-0 bg-gradient-to-bl from-blue-950 via-blue-900 to-blue-950">
-        <div className="text-white text-center py-10">Loading awards...</div>
-      </section>
-    );
-  }
 
   if (error) {
     return (
@@ -100,6 +104,8 @@ const AwardsInternal = () => {
       </section>
     );
   }
+
+  const displayAwards = isLoading ? placeholderAwards : awardData;
 
   return (
     <section
@@ -126,8 +132,8 @@ const AwardsInternal = () => {
         </motion.div>
 
         {/* Display AwardsCards only if awardData has items to prevent errors if API is slow or returns empty post-slice */}
-        {awardData.length > 0 ? (
-          <AwardsCards cardsRef={cardsRef} awards={awardData} />
+        {displayAwards.length > 0 ? (
+          <AwardsCards cardsRef={cardsRef} awards={displayAwards} />
         ) : (
           !isLoading && (
             <div className="text-white text-center py-10">
@@ -170,7 +176,7 @@ const AwardsInternal = () => {
 // Main exported component using LazySection
 const Awards = () => {
   return (
-    <LazySection fallback={<AwardsSkeleton />} rootMargin="100px">
+    <LazySection rootMargin="100px">
       <AwardsInternal />
     </LazySection>
   );

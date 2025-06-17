@@ -3,38 +3,81 @@ import Container from "@/components/wrappers/Container";
 import Heading from "@/components/Heading";
 import ThreeDPlacementCard from "@/components/ThreeDPlacementCard";
 import PlacementCardMarquee from "@/components/PlacementCardMarquee";
-import { memo } from "react";
+import { memo, useEffect } from "react";
 import { usePlacementsData } from "../../hooks/useApiData";
 import LazySection from "../../components/LazySection";
 
-// Loading skeleton component
-const PlacementsSkeleton = () => (
-  <div
-    className="relative bg-cover bg-center transform-gpu"
-    style={{ backgroundImage: `url(${bg})`, willChange: "transform" }}
-  >
-    <Container>
-      <div className="text-center py-10">
-        <div className="animate-pulse">
-          <div className="h-8 bg-gray-200 rounded w-64 mx-auto mb-4"></div>
-          <div className="h-4 bg-gray-200 rounded w-96 mx-auto mb-8"></div>
-          <div className="flex space-x-4 justify-center">
-            {[...Array(5)].map((_, i) => (
-              <div key={i} className="h-32 w-24 bg-gray-200 rounded"></div>
-            ))}
-          </div>
-        </div>
-      </div>
-    </Container>
-  </div>
-);
+const placeholderPlacements = [
+  {
+    id: "p1",
+    title: "Vipin Yadav",
+    url: "/placement/placement (1).webp",
+    logo_url: "/placeholder.svg",
+    description: "Leading MNC",
+  },
+  {
+    id: "p2",
+    title: "Divya Bansal",
+    url: "/placement/placement (2).webp",
+    logo_url: "/placeholder.svg",
+    description: "Fortune 500 Company",
+  },
+  {
+    id: "p3",
+    title: "Dheeraj Satija",
+    url: "/placement/placement (3).webp",
+    logo_url: "/placeholder.svg",
+    description: "Top Recruiter",
+  },
+  {
+    id: "p4",
+    title: "Abhay Bhadouria",
+    url: "/placement/placement (4).webp",
+    logo_url: "/placeholder.svg",
+    description: "Global Innovator",
+  },
+  {
+    id: "p5",
+    title: "Muskan Garg",
+    url: "/placement/placement (5).webp",
+    logo_url: "/placeholder.svg",
+    description: "Industry Leader",
+  },
+  {
+    id: "p6",
+    title: "Milind K Yadav",
+    url: "/placement/placement (6).webp",
+    logo_url: "/placeholder.svg",
+    description: "Creative Agency",
+  },
+];
 
 const PlacementsContent = () => {
   const { data: placements = [], isLoading, error } = usePlacementsData();
 
-  if (isLoading) {
-    return <PlacementsSkeleton />;
-  }
+  useEffect(() => {
+    const placeholderImages = placeholderPlacements.map(
+      (placement) => placement.url
+    );
+    const imagesToPreload = [bg, ...placeholderImages];
+    imagesToPreload.forEach((imageUrl) => {
+      if (imageUrl) {
+        const img = new Image();
+        img.src = imageUrl;
+      }
+    });
+  }, []);
+
+  useEffect(() => {
+    if (placements.length > 0) {
+      const placementImages = placements.map((p) => [p.url, p.logo_url]).flat();
+      const imagesToPreload = [...new Set(placementImages.filter(Boolean))]; // get unique urls
+      imagesToPreload.forEach((imageUrl) => {
+        const img = new Image();
+        img.src = imageUrl;
+      });
+    }
+  }, [placements]);
 
   if (error) {
     return (
@@ -50,6 +93,8 @@ const PlacementsContent = () => {
       </div>
     );
   }
+
+  const displayPlacements = isLoading ? placeholderPlacements : placements;
 
   return (
     <div
@@ -70,7 +115,7 @@ const PlacementsContent = () => {
           />
 
           <PlacementCardMarquee>
-            {placements.map((card) => (
+            {displayPlacements.map((card) => (
               <ThreeDPlacementCard
                 key={card.id}
                 id={card.id}
@@ -89,7 +134,7 @@ const PlacementsContent = () => {
 
 const Placements = () => {
   return (
-    <LazySection fallback={<PlacementsSkeleton />} rootMargin="50px">
+    <LazySection rootMargin="50px">
       <PlacementsContent />
     </LazySection>
   );
