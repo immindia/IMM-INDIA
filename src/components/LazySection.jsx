@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import { useInView } from "react-intersection-observer";
 
 const LazySection = ({
