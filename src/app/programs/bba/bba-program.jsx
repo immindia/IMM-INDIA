@@ -205,7 +205,11 @@ const BBAProgram = () => {
           className="absolute inset-0 z-0"
         >
           <img
-            src={bannerImage}
+            src={
+              window.innerWidth < 768
+                ? "/banners/bbaM.webp"
+                : "/banners/bba.webp"
+            }
             alt="IMM Business School Campus"
             className="object-cover h-full w-full"
           />
