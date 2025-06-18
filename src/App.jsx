@@ -34,8 +34,8 @@ import LifeAtIMM from "./app/lifeAtIMM/LifeAtIMM";
 import CampusRecruitment from "./app/placements/CampusRecruitment";
 import RecruitAndPartner from "./app/corporateConnect/RecruitAndPartner";
 import PlacementRecords from "./app/placements/PlacementRecords";
-import DazzlingDivas from "./app/alumni/DazzlingDivas";
-import HallofFame from "./app/alumni/HallofFame";
+import AlumniMentorshipProgram from "./app/alumni/AlumniMentorshipProgram";
+import DazzlingDivasAndHallOfFame from "./app/alumni/DazzlingDivasAndHallOfFame";
 // import HallofFame from "./app/alumni/ProfileCard";
 import Blog from "./app/blog/Blog";
 import BlogDetails from "./app/blog/BlogDetails";
@@ -240,10 +240,13 @@ function App() {
 
                 {/* Alumni */}
                 <Route
-                  path="/alumni/dazzling-divas"
-                  element={<DazzlingDivas />}
+                  path="/alumni/alumni-mentorship-program"
+                  element={<AlumniMentorshipProgram />}
                 />
-                <Route path="/alumni/hall-of-fame" element={<HallofFame />} />
+                <Route
+                  path="/alumni/dazzling-divas-and-hall-of-fame"
+                  element={<DazzlingDivasAndHallOfFame />}
+                />
 
                 {/* Blog */}
                 <Route path="/blog" element={<Blog />} />

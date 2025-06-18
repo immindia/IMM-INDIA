@@ -1,5 +1,5 @@
 import ImgAndBreadcrumb from "../../components/ImgAndBreadcrumb";
-import img from "../../assets/banner/IndustryVisitBanner.jpg";
+
 import Container from "../../components/wrappers/Container";
 import Heading from "../../components/Heading";
 // import AboutSidebar from "../../components/AboutSidebar";
@@ -20,7 +20,7 @@ import {
   PaginationNext,
   PaginationEllipsis,
 } from "@/components/ui/pagination";
-import { Search, BookOpen, BookOpenCheck, X } from "lucide-react";
+import { Search, BookOpen, BookOpenCheck,  } from "lucide-react";
 import {
   Dialog,
   DialogContent,
@@ -62,6 +62,7 @@ const CorporateEvents = () => {
   }, [setTitle, setDescription]);
 
   const { data } = useFetch("/api/indexBanner.php");
+  // eslint-disable-next-line no-unused-vars
   const [bannerImage, setBannerImage] = useState(
     "https://stealthlearn.in/imm-admin/api/uploads/680fd14484b0a.png"
   ); // Default image
@@ -424,8 +425,8 @@ const CorporateEvents = () => {
         </div>
       </Container>
 
-      <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen} modal={true}>
-        <DialogContent className="w-[95%] max-w-[600px] rounded-lg overflow-y-auto max-h-[90vh]">
+      <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen} modal={true} >
+        <DialogContent className="w-[95%] max-w-[600px] rounded-lg overflow-y-auto max-h-[90vh] z-[999999]">
           {selectedEvent && (
             <>
               <DialogHeader className="px-1">

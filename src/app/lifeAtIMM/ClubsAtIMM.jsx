@@ -328,8 +328,8 @@ function EventGallery() {
         )}
       </div>
 
-      <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen} modal={true}>
-        <DialogContent className="w-[95%] max-w-[600px] rounded-lg overflow-y-auto max-h-[90vh]">
+      <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen} modal={true} >
+        <DialogContent className="w-[95%] max-w-[600px] rounded-lg overflow-y-auto max-h-[90vh] z-[999999]">
           {selectedEvent && (
             <>
               <DialogHeader className="px-1">

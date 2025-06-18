@@ -71,8 +71,14 @@ export const navlinks = [
     name: "Alumni",
     path: "/",
     submenu: [
-      { name: "Alumni Mentorship Program", path: "/alumni/dazzling-divas" },
-      { name: "Dazzling Divas & Hall of Fame", path: "/alumni/hall-of-fame" },
+      {
+        name: "Alumni Mentorship Program",
+        path: "/alumni/alumni-mentorship-program",
+      },
+      {
+        name: "Dazzling Divas & Hall of Fame",
+        path: "/alumni/dazzling-divas-and-hall-of-fame",
+      },
       { name: "Alumni Connect", href: "https://alumni.immindia.edu.in/" },
     ],
   },

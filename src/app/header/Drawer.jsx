@@ -46,14 +46,27 @@ const Drawer = () => {
                 key={subIndex}
                 className="transition-transform duration-300 hover:translate-x-2"
               >
-                <SheetClose asChild>
-                  <Link
-                    to={subItem.path}
-                    className="block py-2 px-4 w-fit text-sm text-slate-200 hover:bg-white/10 hover:text-white rounded transition-all duration-300"
-                  >
-                    {subItem.name}
-                  </Link>
-                </SheetClose>
+                {subItem.href ? (
+                  <SheetClose asChild>
+                    <a
+                      href={subItem.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="block py-2 px-4 w-fit text-sm text-slate-200 hover:bg-white/10 hover:text-white rounded transition-all duration-300"
+                    >
+                      {subItem.name}
+                    </a>
+                  </SheetClose>
+                ) : (
+                  <SheetClose asChild>
+                    <Link
+                      to={subItem.path}
+                      className="block py-2 px-4 w-fit text-sm text-slate-200 hover:bg-white/10 hover:text-white rounded transition-all duration-300"
+                    >
+                      {subItem.name}
+                    </Link>
+                  </SheetClose>
+                )}
               </li>
             ))}
           </ul>
@@ -96,6 +109,21 @@ const Drawer = () => {
                   >
                     {item.submenu ? (
                       <CollapsibleNavItem item={item} />
+                    ) : item.href ? (
+                      <SheetClose asChild>
+                        <a
+                          href={item.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="relative block py-2 px-4 w-fit font-semibold text-slate-200 tracking-wider hover:bg-white/10 
+                                  hover:text-white rounded transition-all duration-300 hover:translate-x-1
+                                  after:content-[''] after:absolute after:w-0 after:h-0.5 after:bg-white 
+                                  after:left-4 after:bottom-1 after:transition-all after:duration-300
+                                  hover:after:w-[calc(100%-2rem)]"
+                        >
+                          {item.name}
+                        </a>
+                      </SheetClose>
                     ) : (
                       <SheetClose asChild>
                         <Link

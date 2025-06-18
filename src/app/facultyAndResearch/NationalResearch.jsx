@@ -50,7 +50,7 @@ const Research = () => {
   return (
     <div className="relative min-h-screen">
       <ImgAndBreadcrumb
-        title="Research"
+        title="National Research"
         imageSrc={international}
         imageAlt="Description of the image"
         breadcrumbItems={breadcrumbItems}

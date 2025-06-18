@@ -274,7 +274,7 @@ function EventGallery() {
         )}
       </div>
 
-      <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen} modal={true}>
+      <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen} modal={true} >
         <DialogContent className="p-0 w-[95vw] sm:max-w-[60vw] max-h-[95vh] rounded-xl overflow-hidden border-none shadow-lg z-[99999] ">
           {selectedEvent && (
             <div className="relative flex flex-col h-full">

@@ -98,7 +98,7 @@ const Gallery = ({ images = [] }) => {
               className="rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300 cursor-pointer"
               onClick={() => handleImageClick(image)}
             >
-              <div className="relative aspect-[4/3] overflow-hidden">
+              <div className="relative aspect-square overflow-hidden">
                 <img
                   src={image.src}
                   alt={image.title}

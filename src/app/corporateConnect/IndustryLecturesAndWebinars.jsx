@@ -1,8 +1,8 @@
 import ImgAndBreadcrumb from "../../components/ImgAndBreadcrumb";
-import img from "../../assets/banner/IndustryLecturesBanner.jpg";
+
 import Container from "../../components/wrappers/Container";
 import Heading from "../../components/Heading";
-// import AboutSidebar from "../../components/AboutSidebar";
+
 
 import { useState, useMemo, useEffect } from "react";
 import { useMeta } from "@/context/MetaContext";
@@ -426,8 +426,8 @@ const IndustryLecturesAndWebinars = () => {
           )}
         </div>
       </Container>
-      <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen} modal={true}>
-        <DialogContent className="w-[95%] max-w-[600px] rounded-lg overflow-y-auto max-h-[90vh]">
+      <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen} modal={true} >
+        <DialogContent className="w-[95%] max-w-[600px] rounded-lg overflow-y-auto max-h-[90vh] z-[999999]">
           {selectedEvent && (
             <>
               <DialogHeader className="px-1">

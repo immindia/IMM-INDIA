@@ -3,9 +3,7 @@
 import { useState, useEffect } from "react";
 import { useMeta } from "@/context/MetaContext";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { Users } from "lucide-react";
+
 import Heading from "../../components/Heading";
 import ImgAndBreadcrumb from "../../components/ImgAndBreadcrumb";
 import { useFetch } from "../../hooks/useFetch";
@@ -13,10 +11,10 @@ import ProfileCard from "./ProfileCard";
 
 const breadcrumbItems = [
   { href: "/", label: "Home" },
-  { href: "/alumni", label: "Alumni" },
+  { href: "/alumni/alumni-mentorship-program", label: "Alumni" },
   { label: "Alumni Mentorship Program" },
 ];
-export default function DazzlingDivas() {
+export default function AlumniMentorshipProgram() {
   const { setTitle, setDescription } = useMeta();
 
   useEffect(() => {
