@@ -424,10 +424,10 @@ const IndustryVisit = () => {
         </div>
       </Container>
       <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen} modal={true}>
-        <DialogContent className="w-[95%] max-w-[600px] rounded-lg overflow-y-auto max-h-[90vh]">
+        <DialogContent className="w-[95%] max-w-[600px] rounded-lg  max-h-[90vh]">
           {selectedEvent && (
             <>
-              <DialogHeader className="px-1">
+              <DialogHeader className="px-1 w-full">
                 <DialogTitle className="text-xl font-bold uppercase">
                   {selectedEvent.title}
                 </DialogTitle>
@@ -441,17 +441,17 @@ const IndustryVisit = () => {
                       loop: true,
                     }}
                   >
-                    <CarouselContent className="flex">
+                    <CarouselContent className="ml-0">
                       {selectedEvent.gallery.map((image, index) => (
                         <CarouselItem
                           key={index}
-                          className="basis-full flex justify-center items-center"
+                          className="pl-0 basis-full flex justify-center items-center"
                         >
                           <div className="w-full max-h-[60vh] flex justify-center">
                             <img
                               src={image}
                               alt={`Gallery image ${index + 1}`}
-                              className="max-w-full max-h-full object-contain rounded-md"
+                              className="max-w-full max-h-full min-h-96 object-contain rounded-md"
                               style={{
                                 maxWidth: "100%",
                                 maxHeight: "60vh",

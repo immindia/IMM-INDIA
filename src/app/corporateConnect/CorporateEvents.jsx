@@ -442,11 +442,11 @@ const CorporateEvents = () => {
                       loop: true,
                     }}
                   >
-                    <CarouselContent className="flex">
+                    <CarouselContent className="ml-0">
                       {selectedEvent.gallery.map((image, index) => (
                         <CarouselItem
                           key={index}
-                          className="basis-full flex justify-center items-center"
+                          className="pl-0 basis-full flex justify-center items-center"
                         >
                           <div className="w-full max-h-[60vh] flex justify-center">
                             <img

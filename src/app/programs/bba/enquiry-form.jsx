@@ -110,13 +110,13 @@ const EnquiryForm = ({ toggleForm, onSuccess }) => {
   return (
     <Card className="bg-white text-foreground shadow-xl border-0">
       <CardHeader className="bg-blue-700 text-white rounded-t-lg">
-        <div className="flex justify-between items-center">
-          <CardTitle className="text-center text-xl font-bold">Register for Admission 2025-2028</CardTitle>
+        <div className="flex justify-between items-start gap-2">
+          <CardTitle className="text-center sm:text-xl font-bold">Register for Admission 2025-2028</CardTitle>
           <button onClick={toggleForm} className="text-white hover:text-gray-200">
             <X className="h-5 w-5" />
           </button>
         </div>
-        <CardDescription className="text-blue-100">Fill the form below to start your application</CardDescription>
+        <CardDescription className="text-blue-100  text-sm sm:text-base">Fill the form below to start your application</CardDescription>
       </CardHeader>
       <CardContent className="p-6">
         <Form {...form}>
