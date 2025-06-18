@@ -164,8 +164,8 @@ const BBAProgram = () => {
       <div className="fixed right-0 sm:right-0 top-[35vh] z-[999] transform -translate-y-1/3">
         <button
           onClick={toggleForm}
-          className={`flex items-center bg-amber-500 hover:bg-amber-600 text-white px-2 py-3 rounded-r  -lg shadow-lg transition-all duration-300 animate-[fadeIn_1s_ease-in-out_1_normal_backwards_running] ${
-            isFormVisible ? "opacity-100" : "opacity-100"
+          className={`flex items-center bg-amber-500 hover:bg-amber-600 text-white px-2 py-3  shadow-lg transition-all duration-300 animate-[fadeIn_1s_ease-in-out_1_normal_backwards_running] ${
+            isFormVisible ? "opacity-100 rounded-l-lg" : "opacity-100 rounded-r-lg"
           }`}
           style={{
             writingMode: "vertical-rl",
@@ -198,7 +198,7 @@ const BBAProgram = () => {
       <section
         ref={heroRef}
         id="overview"
-        className="relative py-5 sm:py-10 sm:h-[80vh] flex items-center justify-center text-white overflow-hidden"
+        className="relative py-5 sm:py-10 sm:min-h-[80vh] flex items-center justify-center text-white overflow-hidden"
       >
         <motion.div
           style={{ opacity: heroOpacity, scale: heroScale }}

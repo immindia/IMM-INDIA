@@ -1,9 +1,7 @@
 import TopBar from "./TopBar";
 import Navbar from "./Navbar";
 import { useEffect, useState } from "react";
-// If you have these resources, uncomment these imports:
-// import logo from "../../assets/logo.png"
-// import Drawer from "./Drawer"
+
 
 const Header = () => {
   const [isVisible, setIsVisible] = useState(true);
@@ -15,7 +13,7 @@ const Header = () => {
 
       // Add delay using setTimeout
       setTimeout(() => {
-        setIsVisible(prevScrollPos > currentScrollPos || currentScrollPos < 10);
+        setIsVisible(prevScrollPos > currentScrollPos || currentScrollPos < 100);
         setPrevScrollPos(currentScrollPos);
       }, 20); // 100ms delay
     };
