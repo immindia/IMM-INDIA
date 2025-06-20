@@ -148,7 +148,7 @@ export default function RecruitAndPartner() {
 
   return (
     <div className="min-h-screen py-10 px-4 bg-gradient-to-br from-pink-50 to-white">
-      <div className="max-w-5xl mx-auto relative">
+      <div className="max-w-5xl mx-auto relative overflow-hidden">
         {/* Decorative elements */}
         <div className="absolute top-0 right-0 w-40 h-40 -mt-10 -mr-10 bg-pink-100 rounded-full opacity-70"></div>
         <div className="absolute bottom-0 left-0 w-48 h-48 -mb-10 -ml-10 bg-pink-100 rounded-full opacity-70"></div>

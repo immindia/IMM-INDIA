@@ -14,20 +14,91 @@ import {
   Youtube,
 } from "lucide-react";
 import { Label } from "@/components/ui/label";
-import Heading from "@/components/Heading";
+
 import ImgAndBreadcrumb from "../../components/ImgAndBreadcrumb";
 import { useFetch } from "../../hooks/useFetch";
 import { RiTwitterXLine } from "react-icons/ri";
+import { useToast } from "@/hooks/use-toast";
+import { Toaster } from "@/components/ui/toaster";
+
 function ContactForm() {
+  const { toast } = useToast();
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    message: "",
+  });
+  const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const validate = () => {
+    const newErrors = {};
+    if (!/^[a-zA-Z\s]+$/.test(formData.name)) {
+      newErrors.name = "Name must not contain special characters or numbers.";
+    }
+    if (!/^[6-9]\d{9}$/.test(formData.phone)) {
+      newErrors.phone = "Mobile must be 10 digits and start with 6-9.";
+    }
+    if (!/\S+@\S+\.\S+/.test(formData.email)) {
+      newErrors.email = "Please enter a valid email address.";
+    }
+    if (!formData.message.trim()) {
+      newErrors.message = "Message cannot be empty.";
+    }
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
+  const handleChange = (e) => {
+    const { id, value } = e.target;
+    setFormData((prev) => ({ ...prev, [id]: value }));
+  };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    if (!validate()) {
+      return;
+    }
     setIsSubmitting(true);
-    // Here you would typically send the form data to your server
-    await new Promise((resolve) => setTimeout(resolve, 1000)); // Simulating server delay
-    setIsSubmitting(false);
-    alert("Thank you for your message. We'll get back to you soon!");
+    try {
+      const response = await fetch(
+        "https://stealthlearn.in/imm-admin/api/indexContact.php",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formData),
+        }
+      );
+
+      const result = await response.json();
+
+      if (response.ok && result.success) {
+        toast({
+          title: "Success!",
+          description: "Your message has been sent successfully.",
+        });
+        setFormData({ name: "", email: "", phone: "", message: "" });
+        setErrors({});
+      } else {
+        toast({
+          variant: "destructive",
+          title: "Uh oh! Something went wrong.",
+          description:
+            result.message || "There was a problem with your request.",
+        });
+      }
+    } catch {
+      toast({
+        variant: "destructive",
+        title: "Uh oh! Something went wrong.",
+        description: "Could not connect to the server. Please try again later.",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -39,7 +110,15 @@ function ContactForm() {
         >
           Your Name
         </Label>
-        <Input id="name" type="text" placeholder="Your Name" required />
+        <Input
+          id="name"
+          type="text"
+          placeholder="Your Name"
+          value={formData.name}
+          onChange={handleChange}
+          required
+        />
+        {errors.name && <p className="text-red-500 text-xs">{errors.name}</p>}
       </div>
       <div className="space-y-2">
         <Label
@@ -48,7 +127,15 @@ function ContactForm() {
         >
           Your Email
         </Label>
-        <Input id="email" type="email" placeholder="Your Email" required />
+        <Input
+          id="email"
+          type="email"
+          placeholder="Your Email"
+          value={formData.email}
+          onChange={handleChange}
+          required
+        />
+        {errors.email && <p className="text-red-500 text-xs">{errors.email}</p>}
       </div>
       <div className="space-y-2">
         <Label
@@ -57,7 +144,15 @@ function ContactForm() {
         >
           Phone Number
         </Label>
-        <Input id="phone" type="text" placeholder="Phone Number" required />
+        <Input
+          id="phone"
+          type="text"
+          placeholder="Phone Number"
+          value={formData.phone}
+          onChange={handleChange}
+          required
+        />
+        {errors.phone && <p className="text-red-500 text-xs">{errors.phone}</p>}
       </div>
       <div className="space-y-2">
         <Label
@@ -69,9 +164,14 @@ function ContactForm() {
         <Textarea
           id="message"
           placeholder="Your Message"
+          value={formData.message}
+          onChange={handleChange}
           required
           className="h-[5rem]"
         />
+        {errors.message && (
+          <p className="text-red-500 text-xs">{errors.message}</p>
+        )}
       </div>
       <Button
         type="submit"
@@ -275,6 +375,7 @@ export default function Contact() {
 
   return (
     <div className="min-h-screen">
+      <Toaster />
       <ImgAndBreadcrumb
         title=""
         imageSrc={bannerImage}

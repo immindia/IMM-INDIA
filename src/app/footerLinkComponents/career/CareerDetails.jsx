@@ -23,7 +23,7 @@ import { Alert, AlertDescription } from "@/components/ui/alert";
 import { jobListings } from "./jobData";
 
 export default function CareerDetails() {
-  window.scrollTo(0, 0);
+
   const { "job-opening": jobSlug } = useParams();
   const [formData, setFormData] = useState({
     name: "",
