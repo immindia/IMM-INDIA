@@ -9,6 +9,8 @@ import { ArrowUp, ArrowRight } from "lucide-react";
 import { UserRoundIcon, Briefcase, Building2 } from "lucide-react";
 import { visitingFacultyData, guestSpeakerData } from "./facultyData";
 import Heading from "../../components/Heading";
+import { API_ENDPOINTS } from "@/lib/api";
+
 // Memoized TeamMemberCard component to prevent unnecessary re-renders
 const TeamMemberCard = memo(({ name, role, imageSrc, linkedinLink }) => {
   const [imageLoaded, setImageLoaded] = useState(false);
@@ -183,7 +185,7 @@ const Faculty = () => {
 
   const { data } = useFetch("/api/indexBanner.php");
   const [bannerImage, setBannerImage] = useState(
-    "https://stealthlearn.in/imm-admin/api/uploads/680fd14484b0a.png"
+    `${API_ENDPOINTS.UPLOADS}/680fd14484b0a.png`
   ); // Default image
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
 
@@ -271,9 +273,7 @@ const Faculty = () => {
     if (!isMounted) return;
 
     try {
-      const response = await fetch(
-        "https://stealthlearn.in/imm-admin/api/indexFaculty.php"
-      );
+      const response = await fetch(API_ENDPOINTS.FACULTY);
 
       if (!response.ok) {
         throw new Error("Failed to fetch faculty data");

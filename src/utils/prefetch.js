@@ -1,4 +1,5 @@
 import { QueryClient } from "@tanstack/react-query";
+import { API_ENDPOINTS } from "../lib/api";
 
 // Create a separate query client for prefetching
 const prefetchQueryClient = new QueryClient({
@@ -12,12 +13,9 @@ const prefetchQueryClient = new QueryClient({
   },
 });
 
-// Base API URL
-const BASE_URL = "https://stealthlearn.in/imm-admin/api";
-
 // Generic fetch function
 const fetchApiData = async (endpoint) => {
-  const response = await fetch(`${BASE_URL}${endpoint}`);
+  const response = await fetch(`${API_ENDPOINTS.API}${endpoint}`);
   if (!response.ok) {
     throw new Error(
       `Failed to fetch data from ${endpoint}: ${response.status}`

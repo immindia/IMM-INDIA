@@ -30,6 +30,7 @@ import {
 import { Link } from "react-router-dom";
 import { useFetch } from "../../hooks/useFetch";
 import { useMeta } from "@/context/MetaContext";
+import { API_ENDPOINTS } from "@/lib/api";
 
 const EventsAndActivities = () => {
   const { setTitle, setDescription } = useMeta();
@@ -43,7 +44,7 @@ const EventsAndActivities = () => {
 
   const { data } = useFetch("/api/indexBanner.php");
   const [bannerImage, setBannerImage] = useState(
-    "https://stealthlearn.in/imm-admin/api/uploads/680fd14484b0a.png"
+    `${API_ENDPOINTS.UPLOADS}/680fd14484b0a.png`
   ); // Default image
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
 
@@ -77,8 +78,6 @@ const EventsAndActivities = () => {
     }
   }, [data, isMobile]);
 
-
-  
   const breadcrumbItems = [
     { href: "/", label: "Home" },
     { href: "/life-at-imm/events-and-activities", label: "Life at IMM" },
@@ -127,7 +126,7 @@ function EventGallery() {
     const fetchEvents = async () => {
       try {
         const response = await fetch(
-          "https://stealthlearn.in/imm-admin/api/index2.php?resource=events&categories=Events"
+          `${API_ENDPOINTS.EVENTS}&categories=Events`
         );
         const data = await response.json();
 
@@ -230,7 +229,7 @@ function EventGallery() {
             <CardHeader className="p-0">
               <div className="relative aspect-video overflow-hidden ">
                 <img
-                  src={`https://stealthlearn.in/imm-admin/api/${event.image}`}
+                  src={`${API_ENDPOINTS.API}/${event.image}`}
                   alt={event.title}
                   className="object-cover h-full w-full transition-transform group-hover:scale-105"
                 />
@@ -274,7 +273,7 @@ function EventGallery() {
         )}
       </div>
 
-      <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen} modal={true} >
+      <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen} modal={true}>
         <DialogContent className="p-0 w-[95vw] sm:max-w-[60vw] max-h-[95vh] rounded-xl overflow-hidden border-none shadow-lg z-[99999] ">
           {selectedEvent && (
             <div className="relative flex flex-col h-full">
@@ -290,23 +289,23 @@ function EventGallery() {
                   >
                     <CarouselContent>
                       {selectedEvent.gallery.map((image, index) => (
-                        <CarouselItem key={index} className="basis-full w-full">
+                        <CarouselItem key={index}>
                           <img
-                            src={`https://stealthlearn.in/imm-admin/api/${image}`}
-                            alt={`Gallery image ${index + 1}`}
-                            className="w-auto mx-auto h-[200px] sm:h-[500px] object-cover transition-transform hover:scale-105 duration-700"
+                            src={`${API_ENDPOINTS.API}/${image}`}
+                            alt={`Event image ${index + 1}`}
+                            className="w-full h-auto object-contain rounded-lg"
                           />
                         </CarouselItem>
                       ))}
                     </CarouselContent>
-                    <CarouselPrevious className="absolute left-2 top-1/2 -translate-y-1/2 z-10" />
-                    <CarouselNext className="absolute right-2 top-1/2 -translate-y-1/2 z-10" />
+                    <CarouselPrevious />
+                    <CarouselNext />
                   </Carousel>
                 ) : (
                   <img
-                    src={`https://stealthlearn.in/imm-admin/api/${selectedEvent.image}`}
+                    src={`${API_ENDPOINTS.API}/${selectedEvent.image}`}
                     alt={selectedEvent.title}
-                    className="w-full h-[200px] sm:h-[400px] object-cover transition-transform hover:scale-105 duration-700"
+                    className="w-full h-auto object-cover rounded-lg"
                   />
                 )}
                 <Button

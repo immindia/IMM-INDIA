@@ -9,6 +9,7 @@ import { useState, useEffect } from "react";
 import { useMeta } from "@/context/MetaContext";
 import { Link } from "react-router-dom";
 import { useFetch } from "../../hooks/useFetch";
+import { API_ENDPOINTS } from "@/lib/api";
 
 const Research = () => {
   const { setTitle, setDescription } = useMeta();
@@ -22,7 +23,7 @@ const Research = () => {
 
   const { data } = useFetch("/api/indexBanner.php");
   const [bannerImage, setBannerImage] = useState(
-    "https://stealthlearn.in/imm-admin/api/uploads/680fd14484b0a.png"
+    `${API_ENDPOINTS.UPLOADS}/680fd14484b0a.png`
   ); // Default image
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
 

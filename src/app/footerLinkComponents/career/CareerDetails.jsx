@@ -19,10 +19,10 @@ import { Label } from "@/components/ui/label";
 import { Badge } from "@/components/ui/badge";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Skeleton } from "@/components/ui/skeleton";
+import { API_ENDPOINTS } from "@/lib/api";
 
-const CAREER_API_URL = "https://stealthlearn.in/imm-admin/api/indexCareer.php";
-const APPLICATION_API_URL =
-  "https://stealthlearn.in/imm-admin/api/indexJobApplication.php";
+const CAREER_API_URL = API_ENDPOINTS.CAREER_DETAILS;
+const APPLICATION_API_URL = API_ENDPOINTS.JOB_APPLICATION;
 
 export default function CareerDetails() {
   const { "job-opening": jobSlug } = useParams();

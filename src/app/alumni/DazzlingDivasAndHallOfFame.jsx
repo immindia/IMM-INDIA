@@ -4,12 +4,12 @@ import { useState, useEffect } from "react";
 import { useMeta } from "@/context/MetaContext";
 import { Button } from "@/components/ui/button";
 
-
 import Heading from "../../components/Heading";
 import ImgAndBreadcrumb from "../../components/ImgAndBreadcrumb";
 import { useFetch } from "../../hooks/useFetch";
 import ProfileCard from "./ProfileCard";
 import divas from "../../assets/alumni/divas.webp";
+import { API_ENDPOINTS } from "@/lib/api";
 const breadcrumbItems = [
   { href: "/", label: "Home" },
   { href: "/alumni/dazzling-divas-and-hall-of-fame", label: "Alumni" },
@@ -33,7 +33,7 @@ export default function DazzlingDivasAndHallOfFame() {
 
   const { data } = useFetch("/api/indexBanner.php");
   const [bannerImage, setBannerImage] = useState(
-    "https://stealthlearn.in/imm-admin/api/uploads/680fd14484b0a.png"
+    `${API_ENDPOINTS.UPLOADS}/680fd14484b0a.png`
   ); // Default image
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
 
@@ -72,9 +72,7 @@ export default function DazzlingDivasAndHallOfFame() {
     const fetchData = async () => {
       try {
         setLoading(true);
-        const response = await fetch(
-          `https://stealthlearn.in/imm-admin/api/indexPlacement.php?category=${encodeURIComponent("Hall of Fame")}`
-        );
+        const response = await fetch(API_ENDPOINTS.HALL_OF_FAME);
 
         if (!response.ok) {
           throw new Error(`Error: ${response.status}`);

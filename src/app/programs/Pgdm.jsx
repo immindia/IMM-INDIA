@@ -10,6 +10,8 @@ import { useFetch } from "../../hooks/useFetch";
 import SemesterTabs from "./SemesterTabs";
 import { cn } from "@/lib/utils";
 import { DotPattern } from "@/components/magicui/dot-pattern";
+import { API_ENDPOINTS } from "@/lib/api";
+
 const Pgdm = () => {
   const { setTitle, setDescription } = useMeta();
 
@@ -22,7 +24,7 @@ const Pgdm = () => {
 
   const { data } = useFetch("/api/indexBanner.php");
   const [bannerImage, setBannerImage] = useState(
-    "https://stealthlearn.in/imm-admin/api/uploads/680fd14484b0a.png"
+    `${API_ENDPOINTS.UPLOADS}/680fd14484b0a.png`
   ); // Default image
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
 
@@ -64,9 +66,7 @@ const Pgdm = () => {
       <ImgAndBreadcrumb
         title={window.innerWidth < 768 ? "PGDM" : ""}
         imageSrc={
-          window.innerWidth < 768
-            ? "/banners/pgdmM.webp"
-            : "/banners/pgdm.webp"
+          window.innerWidth < 768 ? "/banners/pgdmM.webp" : "/banners/pgdm.webp"
         }
         imageAlt="Description of the image"
         breadcrumbItems={breadcrumbItems}

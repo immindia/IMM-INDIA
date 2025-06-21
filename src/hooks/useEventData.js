@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { API_ENDPOINTS } from "../lib/api";
 
 /**
  * Custom hook to fetch and manage event data from the API
@@ -14,7 +15,7 @@ export const useEventData = (category) => {
     const fetchEvents = async () => {
       try {
         const response = await fetch(
-          `https://stealthlearn.in/imm-admin/api/index2.php?resource=events&categories=${category}`
+          `${API_ENDPOINTS.EVENTS}&categories=${category}`
         );
 
         if (!response.ok) {
@@ -32,12 +33,10 @@ export const useEventData = (category) => {
             photoCount: event.gallery ? event.gallery.length : 0,
             image: event.image.startsWith("http")
               ? event.image
-              : `https://stealthlearn.in/imm-admin/api/${event.image}`,
+              : `${API_ENDPOINTS.API}/${event.image}`,
             gallery: event.gallery
               ? event.gallery.map((img) =>
-                  img.startsWith("http")
-                    ? img
-                    : `https://stealthlearn.in/imm-admin/api/${img}`
+                  img.startsWith("http") ? img : `${API_ENDPOINTS.API}/${img}`
                 )
               : [],
           }))

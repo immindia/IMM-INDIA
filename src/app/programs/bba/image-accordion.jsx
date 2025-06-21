@@ -1,13 +1,13 @@
 "use client";
- import celebratingSuccess  from "../../../assets/bba/celebratingsuccess.webp"
+import celebratingSuccess from "../../../assets/bba/celebratingsuccess.webp";
 import { useState } from "react";
-
+import { API_ENDPOINTS } from "@/lib/api";
 import { motion } from "framer-motion";
 
 const images = [
   {
     id: 1,
-    src: "https://stealthlearn.in/imm-admin/api/uploads/68075cde8b051.webp",
+    src: `${API_ENDPOINTS.UPLOADS}/68075cde8b051.webp`,
     alt: "IMM Business School Campus",
     title: "Our Campus",
     description:
@@ -15,7 +15,7 @@ const images = [
   },
   {
     id: 2,
-    src: "https://stealthlearn.in/imm-admin/api/uploads/68073314afec4.webp",
+    src: `${API_ENDPOINTS.UPLOADS}/68073314afec4.webp`,
     alt: "Students in classroom",
     title: "Interactive Learning",
     description:
@@ -23,7 +23,7 @@ const images = [
   },
   {
     id: 3,
-    src: "https://stealthlearn.in/imm-admin/api/uploads/6807331471a47.webp",
+    src: `${API_ENDPOINTS.UPLOADS}/6807331471a47.webp`,
     alt: "Students studying",
     title: "Modern Facilities",
     description:

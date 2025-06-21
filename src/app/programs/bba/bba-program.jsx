@@ -56,6 +56,7 @@ import { useFetch } from "../../../hooks/useFetch";
 import { cn } from "@/lib/utils";
 import { DotPattern } from "@/components/magicui/dot-pattern";
 import pgdm from "../../../assets/pdfs/BBA Brochure 2025-2028.pdf";
+import { API_ENDPOINTS } from "@/lib/api";
 const BBAProgram = () => {
   const { setTitle, setDescription } = useMeta();
   const { updateColors } = useTheme();
@@ -86,7 +87,7 @@ const BBAProgram = () => {
 
   const { data } = useFetch("/api/indexBanner.php");
   const [bannerImage, setBannerImage] = useState(
-    "https://stealthlearn.in/imm-admin/api/uploads/680fd14484b0a.png"
+    `${API_ENDPOINTS.UPLOADS}/680fd14484b0a.png`
   ); // Default image
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
 
@@ -165,7 +166,9 @@ const BBAProgram = () => {
         <button
           onClick={toggleForm}
           className={`flex items-center bg-amber-500 hover:bg-amber-600 text-white px-2 py-3  shadow-lg transition-all duration-300 animate-[fadeIn_1s_ease-in-out_1_normal_backwards_running] ${
-            isFormVisible ? "opacity-100 rounded-l-lg" : "opacity-100 rounded-r-lg"
+            isFormVisible
+              ? "opacity-100 rounded-l-lg"
+              : "opacity-100 rounded-r-lg"
           }`}
           style={{
             writingMode: "vertical-rl",

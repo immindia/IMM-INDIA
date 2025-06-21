@@ -20,6 +20,7 @@ import { useFetch } from "../../hooks/useFetch";
 import { RiTwitterXLine } from "react-icons/ri";
 import { useToast } from "@/hooks/use-toast";
 import { Toaster } from "@/components/ui/toaster";
+import { API_ENDPOINTS } from "@/lib/api";
 
 function ContactForm() {
   const { toast } = useToast();
@@ -62,16 +63,13 @@ function ContactForm() {
     }
     setIsSubmitting(true);
     try {
-      const response = await fetch(
-        "https://stealthlearn.in/imm-admin/api/indexContact.php",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(formData),
-        }
-      );
+      const response = await fetch(API_ENDPOINTS.CONTACT, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
 
       const result = await response.json();
 
@@ -326,15 +324,15 @@ export default function Contact() {
   const { setTitle, setDescription } = useMeta();
 
   useEffect(() => {
-    setTitle("IMM - Contact Us");
+    setTitle("Contact Us");
     setDescription(
-      "Reach out to IMM Delhi for MBA admissions & inquiries. Get in touch with our office now to know our working hours and location."
+      "Get in touch with the Institute of Marketing and Management (IMM) in Delhi. Find our contact details, address, and directions to our campus. Reach out for admissions, inquiries, or any other information."
     );
   }, [setTitle, setDescription]);
 
   const { data } = useFetch("/api/indexBanner.php");
   const [bannerImage, setBannerImage] = useState(
-    "https://stealthlearn.in/imm-admin/api/uploads/680fd14484b0a.png"
+    `${API_ENDPOINTS.UPLOADS}/680fd14484b0a.png`
   ); // Default image
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
 

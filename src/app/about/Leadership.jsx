@@ -17,6 +17,7 @@ import {
   DialogDescription,
 } from "@/components/ui/dialog";
 import { useFetch } from "../../hooks/useFetch";
+import { API_ENDPOINTS } from "@/lib/api";
 
 const Leadership = () => {
   const { setTitle, setDescription } = useMeta();
@@ -30,7 +31,7 @@ const Leadership = () => {
 
   const { data } = useFetch("/api/indexBanner.php");
   const [bannerImage, setBannerImage] = useState(
-    "https://stealthlearn.in/imm-admin/api/uploads/680fd14484b0a.png"
+    `${API_ENDPOINTS.UPLOADS}/680fd14484b0a.png`
   ); // Default image
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
 
@@ -108,9 +109,7 @@ const LeadershipContent = () => {
   useEffect(() => {
     const fetchLeadership = async () => {
       try {
-        const response = await fetch(
-          "https://stealthlearn.in/imm-admin/api/indexFaculty.php"
-        );
+        const response = await fetch(API_ENDPOINTS.FACULTY);
         if (!response.ok) {
           throw new Error("Failed to fetch leadership data");
         }

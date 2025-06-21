@@ -6,6 +6,7 @@ import { AnimatedList } from "@/components/ui/animated-list";
 import { memo, useEffect, useState } from "react";
 import LazySection from "@/components/LazySection";
 import { Skeleton } from "@/components/ui/skeleton";
+import { API_ENDPOINTS } from "@/lib/api";
 
 import img1 from "../../assets/landing/events/1.webp";
 import img2 from "../../assets/landing/events/bse.webp";
@@ -55,7 +56,7 @@ const LatestBlogsAndEventsContent = () => {
           count: "5",
         });
         const response = await fetch(
-          `https://stealthlearn.in/imm-admin/api/index2.php?${params.toString()}`
+          `${API_ENDPOINTS.API}/index2.php?${params.toString()}`
         );
 
         if (!response.ok) {
@@ -71,12 +72,10 @@ const LatestBlogsAndEventsContent = () => {
             photoCount: event.gallery ? event.gallery.length : 0,
             image: event.image.startsWith("http")
               ? event.image
-              : `https://stealthlearn.in/imm-admin/api/${event.image}`,
+              : `${API_ENDPOINTS.API}/${event.image}`,
             gallery: event.gallery
               ? event.gallery.map((img) =>
-                  img.startsWith("http")
-                    ? img
-                    : `https://stealthlearn.in/imm-admin/api/${img}`
+                  img.startsWith("http") ? img : `${API_ENDPOINTS.API}/${img}`
                 )
               : [],
           }))

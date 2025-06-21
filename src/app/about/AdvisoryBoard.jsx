@@ -10,6 +10,7 @@ import img from "../../assets/about/AboutBanner.webp";
 import { useFetch } from "../../hooks/useFetch";
 import { LinkedinIcon } from "lucide-react";
 import PropTypes from "prop-types";
+import { API_ENDPOINTS } from "@/lib/api";
 
 const AdvisoryBoard = () => {
   const { setTitle, setDescription } = useMeta();
@@ -23,7 +24,7 @@ const AdvisoryBoard = () => {
 
   const { data } = useFetch("/api/indexBanner.php");
   const [bannerImage, setBannerImage] = useState(
-    "https://stealthlearn.in/imm-admin/api/uploads/680fd14484b0a.png"
+    `${API_ENDPOINTS.UPLOADS}/680fd14484b0a.png`
   ); // Default image
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
 
@@ -129,9 +130,7 @@ const AdvisoryBoardContent = () => {
   useEffect(() => {
     const fetchAdvisoryBoard = async () => {
       try {
-        const response = await fetch(
-          "https://stealthlearn.in/imm-admin/api/indexFaculty.php"
-        );
+        const response = await fetch(API_ENDPOINTS.FACULTY);
         if (!response.ok) {
           throw new Error("Failed to fetch advisory board data");
         }

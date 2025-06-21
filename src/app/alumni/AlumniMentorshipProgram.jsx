@@ -8,6 +8,7 @@ import Heading from "../../components/Heading";
 import ImgAndBreadcrumb from "../../components/ImgAndBreadcrumb";
 import { useFetch } from "../../hooks/useFetch";
 import ProfileCard from "./ProfileCard";
+import { API_ENDPOINTS } from "@/lib/api";
 
 const breadcrumbItems = [
   { href: "/", label: "Home" },
@@ -32,7 +33,7 @@ export default function AlumniMentorshipProgram() {
 
   const { data } = useFetch("/api/indexBanner.php");
   const [bannerImage, setBannerImage] = useState(
-    "https://stealthlearn.in/imm-admin/api/uploads/680fd14484b0a.png"
+    `${API_ENDPOINTS.UPLOADS}/680fd14484b0a.png`
   ); // Default image
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
 
@@ -71,9 +72,7 @@ export default function AlumniMentorshipProgram() {
     const fetchData = async () => {
       try {
         setLoading(true);
-        const response = await fetch(
-          `https://stealthlearn.in/imm-admin/api/indexPlacement.php?category=${encodeURIComponent("Dazzling Divas")}`
-        );
+        const response = await fetch(API_ENDPOINTS.DAZZLING_DIVAS);
 
         if (!response.ok) {
           throw new Error(`Error: ${response.status}`);

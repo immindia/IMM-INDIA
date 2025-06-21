@@ -24,6 +24,7 @@ import mcips from "@/assets/bba/mcips.png"
 import innovativeTeaching from "@/assets/bba/innovative-teaching.jpg"
 
 import bbaFaculty from "@/assets/bba/bbafaculty.webp"
+import { API_ENDPOINTS } from "@/lib/api";
 // Specializations data
 export const specializations = [
   {
@@ -207,7 +208,7 @@ export const programCarouselItems = [
     title: "State-of-the-Art Facilities",
     description:
       "Our campus is equipped with modern facilities to enhance your learning experience and prepare you for the corporate world.",
-    imageUrl: "https://stealthlearn.in/imm-admin/api/uploads/680733147548c.webp",
+    imageUrl: `${API_ENDPOINTS.UPLOADS}/680733147548c.webp`,
     points: [
       "Smart classrooms with advanced audio-visual equipment",
       "Well-stocked library with digital resources and databases",

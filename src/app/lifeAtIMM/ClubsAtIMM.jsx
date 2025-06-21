@@ -44,6 +44,7 @@ import {
 } from "@/components/ui/carousel";
 import { Link, useNavigate } from "react-router-dom";
 import { useFetch } from "../../hooks/useFetch";
+import { API_ENDPOINTS } from "@/lib/api";
 
 const ClubsAtIMM = () => {
   const { setTitle, setDescription } = useMeta();
@@ -57,7 +58,7 @@ const ClubsAtIMM = () => {
 
   const { data } = useFetch("/api/indexBanner.php");
   const [bannerImage, setBannerImage] = useState(
-    "https://stealthlearn.in/imm-admin/api/uploads/680fd14484b0a.png"
+    `${API_ENDPOINTS.UPLOADS}/680fd14484b0a.png`
   ); // Default image
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
 
@@ -154,9 +155,8 @@ const clubIcons = {
   "Sports Club": Trophy,
 };
 
-const API_URL =
-  "https://stealthlearn.in/imm-admin/api/index3.php?resource=clubs";
-const BASE_IMAGE_URL = "https://stealthlearn.in/imm-admin/api/";
+const API_URL = API_ENDPOINTS.CLUBS;
+const BASE_IMAGE_URL = API_ENDPOINTS.API;
 
 function EventGallery() {
   const [selectedClub, setSelectedClub] = useState("All Clubs");
@@ -198,8 +198,8 @@ function EventGallery() {
         .filter((event) => event.category === "All Clubs")
         .map((event) => ({
           ...event,
-          image: BASE_IMAGE_URL + event.image,
-          gallery: event.gallery.map((img) => BASE_IMAGE_URL + img),
+          image: BASE_IMAGE_URL + "/" + event.image,
+          gallery: event.gallery.map((img) => BASE_IMAGE_URL + "/" + img),
           href: "#",
           photoCount: event.gallery?.length || 0,
         })),
@@ -213,8 +213,8 @@ function EventGallery() {
         .filter((event) => event.category === club)
         .map((event) => ({
           ...event,
-          image: BASE_IMAGE_URL + event.image,
-          gallery: event.gallery.map((img) => BASE_IMAGE_URL + img),
+          image: BASE_IMAGE_URL + "/" + event.image,
+          gallery: event.gallery.map((img) => BASE_IMAGE_URL + "/" + img),
           href: "#",
           photoCount: event.gallery?.length || 0,
         }));
@@ -328,7 +328,7 @@ function EventGallery() {
         )}
       </div>
 
-      <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen} modal={true} >
+      <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen} modal={true}>
         <DialogContent className="w-[95%] max-w-[600px] rounded-lg overflow-y-auto max-h-[90vh] z-[999999]">
           {selectedEvent && (
             <>

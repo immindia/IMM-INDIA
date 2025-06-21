@@ -19,6 +19,8 @@ import Container from "../../components/wrappers/Container";
 import { useFetch } from "../../hooks/useFetch";
 // import bg from "../../assets/partners/partnerBG.jpg";
 import bg from "../../assets/partners/partnerBG.png";
+import { API_ENDPOINTS } from "@/lib/api";
+
 export default function OurPartnersDetail() {
   const { setTitle, setDescription } = useMeta();
 
@@ -31,7 +33,7 @@ export default function OurPartnersDetail() {
 
   const { data } = useFetch("/api/indexBanner.php");
   const [bannerImage, setBannerImage] = useState(
-    "https://stealthlearn.in/imm-admin/api/uploads/680fd14484b0a.png"
+    `${API_ENDPOINTS.UPLOADS}/680fd14484b0a.png`
   ); // Default image
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
 

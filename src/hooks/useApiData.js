@@ -1,12 +1,10 @@
 import { useQuery } from "@tanstack/react-query";
 import { useMemo } from "react";
-
-// Base API URL
-const BASE_URL = "https://stealthlearn.in/imm-admin/api";
+import { API_ENDPOINTS } from "../lib/api";
 
 // Generic fetch function with error handling
 const fetchApiData = async (endpoint) => {
-  const response = await fetch(`${BASE_URL}${endpoint}`);
+  const response = await fetch(`${API_ENDPOINTS.API}${endpoint}`);
 
   if (!response.ok) {
     throw new Error(
@@ -35,7 +33,9 @@ export const usePlacementsData = (options = {}) => {
     queryKey: ["placements"],
     queryFn: () =>
       fetchApiData(
-        `/indexPlacement.php?category=${encodeURIComponent("Summer Placement")}&count=10`
+        `/indexPlacement.php?category=${encodeURIComponent(
+          "Summer Placement"
+        )}&count=10`
       ),
     staleTime: 10 * 60 * 1000, // 10 minutes
     cacheTime: 30 * 60 * 1000, // 30 minutes
@@ -63,9 +63,9 @@ export const useAwardsData = ({ count, ...options } = {}) => {
     queryFn: () => {
       // Build the query string dynamically.
       const params = new URLSearchParams();
-      params.append('category', category);
+      params.append("category", category);
       if (count) {
-        params.append('count', count);
+        params.append("count", count);
       }
       // fetchApiData will now call a URL like: /index.php?category=Award&count=5
       return fetchApiData(`/index.php?${params.toString()}`);
@@ -78,7 +78,7 @@ export const useAwardsData = ({ count, ...options } = {}) => {
       const processedAwards = data.map((award) => ({
         ...award,
         id: award.id || Math.random().toString(36).substr(2, 9),
-        image: award.url || `${BASE_URL}/uploads/${award.file_name}`,
+        image: award.url || `${API_ENDPOINTS.UPLOADS}/${award.file_name}`,
         title: award.title || "",
       }));
 

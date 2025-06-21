@@ -12,6 +12,7 @@ import PlacementStats from "./PlacementStats";
 import PlacementGrid from "./PlacementGrid";
 import PlacementPieChart from "./PlacementPieChart";
 import { useFetch } from "../../hooks/useFetch";
+import { API_ENDPOINTS } from "@/lib/api";
 
 const PlacementRecords = () => {
   const { setTitle, setDescription } = useMeta();
@@ -25,7 +26,7 @@ const PlacementRecords = () => {
 
   const { data } = useFetch("/api/indexBanner.php");
   const [bannerImage, setBannerImage] = useState(
-    "https://stealthlearn.in/imm-admin/api/uploads/680fd14484b0a.png"
+    `${API_ENDPOINTS.UPLOADS}/680fd14484b0a.png`
   ); // Default image
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
 

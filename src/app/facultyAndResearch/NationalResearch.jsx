@@ -6,22 +6,17 @@ import galleryData from "../../data/galleryData";
 // import national from "../../assets/research/reserchbanner.webp";
 import international from "../../assets/research/internantionalBanner.webp";
 import { useState, useEffect } from "react";
+import { API_ENDPOINTS } from "@/lib/api";
 // import { Link } from "react-router-dom";
 
-
-
-
 const Research = () => {
-
   const [nationalImages, setNationalImages] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchInternationalData = async () => {
       try {
-        const response = await fetch(
-          "https://stealthlearn.in/imm-admin/api/index.php?category=National"
-        );
+        const response = await fetch(API_ENDPOINTS.NATIONAL_RESEARCH);
         const data = await response.json();
         const filtered = data
           // .filter((item) => item.category === "National")

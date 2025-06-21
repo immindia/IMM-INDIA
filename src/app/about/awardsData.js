@@ -119,6 +119,7 @@ export const cards = [
 ];
 
 import { useState, useEffect } from "react";
+import { API_ENDPOINTS } from "@/lib/api";
 
 /**
  * Custom hook to fetch and manage awards data from the API
@@ -132,9 +133,7 @@ export const useAwardsData = () => {
   useEffect(() => {
     const fetchAwards = async () => {
       try {
-        const response = await fetch(
-          "https://stealthlearn.in/imm-admin/api/index.php"
-        );
+        const response = await fetch(API_ENDPOINTS.GALLERY);
 
         if (!response.ok) {
           throw new Error("Failed to fetch awards");

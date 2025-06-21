@@ -3,7 +3,6 @@ import ImgAndBreadcrumb from "../../components/ImgAndBreadcrumb";
 import Container from "../../components/wrappers/Container";
 import Heading from "../../components/Heading";
 
-
 import { useState, useMemo, useEffect } from "react";
 import { useMeta } from "@/context/MetaContext";
 import { useFetch } from "../../hooks/useFetch";
@@ -44,6 +43,7 @@ import {
 
 import { useEventData } from "../../hooks/useEventData";
 import { usePagination } from "../../hooks/usePagination";
+import { API_ENDPOINTS } from "@/lib/api";
 
 const breadcrumbItems = [
   { href: "/", label: "Home" },
@@ -66,7 +66,7 @@ const IndustryLecturesAndWebinars = () => {
 
   const { data } = useFetch("/api/indexBanner.php");
   const [bannerImage, setBannerImage] = useState(
-    "https://stealthlearn.in/imm-admin/api/uploads/680fd14484b0a.png"
+    `${API_ENDPOINTS.UPLOADS}/680fd14484b0a.png`
   ); // Default image
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
 
@@ -426,7 +426,7 @@ const IndustryLecturesAndWebinars = () => {
           )}
         </div>
       </Container>
-      <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen} modal={true} >
+      <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen} modal={true}>
         <DialogContent className="w-[95%] max-w-[600px] rounded-lg overflow-y-auto max-h-[90vh] z-[999999]">
           {selectedEvent && (
             <>

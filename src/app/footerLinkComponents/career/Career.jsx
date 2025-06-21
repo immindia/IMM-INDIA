@@ -24,9 +24,9 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { API_ENDPOINTS } from "@/lib/api";
 
-const API_URL =
-  "https://stealthlearn.in/imm-admin/api/indexCareer.php?scope=active";
+const API_URL = API_ENDPOINTS.CAREER;
 
 export default function Career() {
   const [jobListings, setJobListings] = useState([]);

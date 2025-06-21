@@ -43,6 +43,7 @@ import {
 } from "@/components/ui/sheet";
 import { useEventData } from "../../hooks/useEventData";
 import { usePagination } from "../../hooks/usePagination";
+import { API_ENDPOINTS } from "@/lib/api";
 
 const breadcrumbItems = [
   { href: "/", label: "Home" },
@@ -63,7 +64,7 @@ const IndustryVisit = () => {
   const { data } = useFetch("/api/indexBanner.php");
   // eslint-disable-next-line no-unused-vars
   const [bannerImage, setBannerImage] = useState(
-    "https://stealthlearn.in/imm-admin/api/uploads/680fd14484b0a.png"
+    `${API_ENDPOINTS.UPLOADS}/680fd14484b0a.png`
   ); // Default image
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
 
@@ -424,7 +425,7 @@ const IndustryVisit = () => {
           )}
         </div>
       </Container>
-      <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen} modal={true} >
+      <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen} modal={true}>
         <DialogContent className="w-[95%] max-w-[600px] rounded-lg  max-h-[90vh] z-[999999]">
           {selectedEvent && (
             <>

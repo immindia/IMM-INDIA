@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { Card, CardHeader, CardContent } from "@/components/ui/card";
 import { useEffect, useState } from "react";
+import { API_ENDPOINTS } from "@/lib/api";
 
 export default function PlacementGrid() {
   const [imagesLoaded, setImagesLoaded] = useState({});
@@ -12,9 +13,7 @@ export default function PlacementGrid() {
   useEffect(() => {
     const fetchPlacements = async () => {
       try {
-        const response = await fetch(
-          `https://stealthlearn.in/imm-admin/api/indexPlacement.php?category=${encodeURIComponent("Summer Placement")}`
-        );
+        const response = await fetch(API_ENDPOINTS.SUMMER_PLACEMENT);
         const data = await response.json();
         // Filter for Summer Placement category
         const summerPlacements = data;

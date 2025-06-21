@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
-
-const BASE_URL = "https://stealthlearn.in/imm-admin"; // Replace with your actual base URL
+import { API_ENDPOINTS } from "../lib/api";
 
 export const useFetch = (endpoint, options = {}) => {
   const [data, setData] = useState(null);
@@ -11,7 +10,7 @@ export const useFetch = (endpoint, options = {}) => {
     const fetchData = async () => {
       try {
         setLoading(true);
-        const response = await fetch(`${BASE_URL}${endpoint}`, {
+        const response = await fetch(`${API_ENDPOINTS.BASE}${endpoint}`, {
           ...options,
           headers: {
             "Content-Type": "application/json",

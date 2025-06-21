@@ -29,6 +29,7 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Textarea } from "@/components/ui/textarea";
 import { toast } from "@/hooks/use-toast";
 import axios from "axios";
+import { API_ENDPOINTS } from "@/lib/api";
 
 const formSchema = z.object({
   fullName: z.string().min(2, { message: "Full name is required" }),
@@ -76,7 +77,7 @@ export default function RecruitAndPartner() {
       // Submit to backend API
       console.log("Submitting form:", values);
       const response = await axios.post(
-        "https://stealthlearn.in/imm-admin/api/indexRecruitAndPartner.php",
+        API_ENDPOINTS.RECRUIT_AND_PARTNER,
         values
       );
 

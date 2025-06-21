@@ -11,6 +11,7 @@ import { Search, ChevronDown, ChevronUp } from "lucide-react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import PropTypes from "prop-types";
 import { useFetch } from "../../hooks/useFetch";
+import { API_ENDPOINTS } from "@/lib/api";
 
 const CampusRecruitment = () => {
   const { setTitle, setDescription } = useMeta();
@@ -24,7 +25,7 @@ const CampusRecruitment = () => {
 
   const { data } = useFetch("/api/indexBanner.php");
   const [bannerImage, setBannerImage] = useState(
-    "https://stealthlearn.in/imm-admin/api/uploads/680fd14484b0a.png"
+    `${API_ENDPOINTS.UPLOADS}/680fd14484b0a.png`
   ); // Default image
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
 
@@ -102,9 +103,7 @@ function CompanyLogos() {
   useEffect(() => {
     const fetchRecruiters = async () => {
       try {
-        const response = await fetch(
-          "https://stealthlearn.in/imm-admin/api/indexRecruiter.php"
-        );
+        const response = await fetch(API_ENDPOINTS.RECRUITERS);
         const data = await response.json();
         setRecruiters(data);
         setLoading(false);
