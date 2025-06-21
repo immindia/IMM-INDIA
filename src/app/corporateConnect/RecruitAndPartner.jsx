@@ -35,9 +35,12 @@ const formSchema = z.object({
   email: z.string().email({ message: "Please enter a valid email address" }),
   title: z.string().optional(),
   company: z.string().optional(),
-  connectionType: z.enum(["hireIntern", "fullTimeJob", "collaborate"], {
-    required_error: "Please select how you wish to connect",
-  }),
+  connectionType: z.enum(
+    ["Full-Time Job", "Hire Intern", "live Project/Industry Session"],
+    {
+      required_error: "Please select how you wish to connect",
+    }
+  ),
   comments: z.string().optional(),
 });
 
@@ -83,6 +86,7 @@ export default function RecruitAndPartner() {
       if (response.data.status === "success") {
         // Complete success
         setIsSubmitted(true);
+        form.reset();
         toast({
           title: "Form submitted successfully",
           description: "Thank you for your interest. We'll be in touch soon.",
@@ -90,6 +94,7 @@ export default function RecruitAndPartner() {
       } else if (response.data.status === "partial") {
         // Database success but email failed
         setIsSubmitted(true);
+        form.reset();
         toast({
           title: "Form submitted successfully",
           description:
@@ -135,7 +140,10 @@ export default function RecruitAndPartner() {
             </p>
             <Button
               className="mt-8 bg-pink-600 hover:bg-pink-700 text-white px-8 py-2 rounded-full"
-              onClick={() => setIsSubmitted(false)}
+              onClick={() => {
+                setIsSubmitted(false);
+                form.reset();
+              }}
             >
               <Sparkles className="mr-2 h-4 w-4" />
               Submit Another Response

@@ -1,7 +1,9 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { useMeta } from "@/context/MetaContext";
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 import {
   Briefcase,
   ChevronRight,
@@ -24,14 +26,19 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-
-const API_URL =
-  "https://stealthlearn.in/imm-admin/api/indexCareer.php?scope=active";
+import { jobListings, departments, locations } from "./jobData";
 
 export default function Career() {
-  const [jobListings, setJobListings] = useState([]);
-  const [departments, setDepartments] = useState([]);
-  const [locations, setLocations] = useState([]);
+  const { setTitle, setDescription } = useMeta();
+
+  useEffect(() => {
+    setTitle("Career - IMM");
+    setDescription(
+      "Kickstart your leadership journey! Explore MBA career opportunities at IMM, a top business school in Delhi, India. Shape your future with us."
+    );
+  }, [setTitle, setDescription]);
+
+  window.scrollTo(0, 0);
 
   const [isLoading, setIsLoading] = useState(true);
   const [searchQuery, setSearchQuery] = useState("");
@@ -40,40 +47,19 @@ export default function Career() {
   const [selectedLocation, setSelectedLocation] = useState("All Locations");
   const [showFilters, setShowFilters] = useState(false);
 
+  // Simulate loading
   useEffect(() => {
-    window.scrollTo(0, 0);
-    const fetchJobs = async () => {
-      setIsLoading(true);
-      try {
-        const response = await fetch(API_URL);
-        const data = await response.json();
-        if (Array.isArray(data)) {
-          setJobListings(data);
-          const uniqueDepartments = [
-            "All Departments",
-            ...new Set(data.map((job) => job.department)),
-          ];
-          const uniqueLocations = [
-            "All Locations",
-            ...new Set(data.map((job) => job.location)),
-          ];
-          setDepartments(uniqueDepartments);
-          setLocations(uniqueLocations);
-        }
-      } catch (error) {
-        console.error("Failed to fetch jobs:", error);
-      } finally {
-        setIsLoading(false);
-      }
-    };
-    fetchJobs();
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 1500);
+    return () => clearTimeout(timer);
   }, []);
 
+  // Filter jobs based on search and filters
   const filteredJobs = jobListings.filter((job) => {
     const matchesSearch =
       job.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      (job.description &&
-        job.description.toLowerCase().includes(searchQuery.toLowerCase()));
+      job.description.toLowerCase().includes(searchQuery.toLowerCase());
 
     const matchesDepartment =
       selectedDepartment === "All Departments" ||
@@ -85,12 +71,40 @@ export default function Career() {
     return matchesSearch && matchesDepartment && matchesLocation;
   });
 
+  // Animation variants
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { y: 20, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        type: "spring",
+        stiffness: 100,
+      },
+    },
+  };
+
   return (
     <div className="min-h-screen bg-white text-black">
       {/* Hero Section */}
       <section className="relative overflow-hidden border-b border-pink-100">
         <div className="container sm:max-w-6xl md:max-w-7xl mx-auto px-4 py-24 sm:px-6 lg:px-8">
-          <div className="max-w-3xl">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="max-w-3xl"
+          >
             <h1 className="text-5xl font-bold tracking-tight mb-6 text-pink-900">
               Join our team
             </h1>
@@ -116,7 +130,7 @@ export default function Career() {
                 About our culture
               </Button>
             </div>
-          </div>
+          </motion.div>
         </div>
 
         {/* Abstract background pattern */}
@@ -218,11 +232,18 @@ export default function Career() {
               ))}
             </div>
           ) : (
-            <div className="space-y-4">
+            <motion.div
+              variants={containerVariants}
+              initial="hidden"
+              animate="visible"
+              className="space-y-4"
+            >
               {filteredJobs.length > 0 ? (
                 filteredJobs.map((job) => (
-                  <div
+                  <motion.div
                     key={job.id}
+                    variants={itemVariants}
+                    whileHover={{ scale: 1.01 }}
                     className="border border-pink-100 rounded-lg p-6 transition-all hover:shadow-md"
                   >
                     <Link to={`/career/${job.slug}`} className="block group">
@@ -263,10 +284,10 @@ export default function Career() {
                       </div>
                       <p className="text-pink-700 mb-2">{job.description}</p>
                       <p className="text-sm text-pink-400">
-                        Posted {new Date(job.created_at).toLocaleDateString()}
+                        Posted {job.posted}
                       </p>
                     </Link>
-                  </div>
+                  </motion.div>
                 ))
               ) : (
                 <div className="text-center py-12">
@@ -286,7 +307,7 @@ export default function Career() {
                   </Button>
                 </div>
               )}
-            </div>
+            </motion.div>
           )}
         </div>
       </section>
