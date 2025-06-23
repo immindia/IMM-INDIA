@@ -102,7 +102,7 @@ export default function BrochureForm() {
           <DialogTitle className="text-pink-800 flex items-center justify-between px-4">
             Download PGDM Brochure
             <img
-              src="https://www.immindia.edu.in/assets/logo-BPFf0OW6.svg"
+              src="/logo.svg"
               alt="PGDM Brochure"
               className="w-auto h-12 mr-2 p-1 bg-pink-900 rounded-sm"
             />

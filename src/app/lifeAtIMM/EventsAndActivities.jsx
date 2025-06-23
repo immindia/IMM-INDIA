@@ -273,7 +273,7 @@ function EventGallery() {
         )}
       </div>
 
-      <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen} modal={true}>
+      <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen} modal={true} >
         <DialogContent className="p-0 w-[95vw] sm:max-w-[60vw] max-h-[95vh] rounded-xl overflow-hidden border-none shadow-lg z-[99999] ">
           {selectedEvent && (
             <div className="relative flex flex-col h-full">
@@ -289,23 +289,23 @@ function EventGallery() {
                   >
                     <CarouselContent>
                       {selectedEvent.gallery.map((image, index) => (
-                        <CarouselItem key={index}>
+                        <CarouselItem key={index} className="basis-full w-full">
                           <img
-                            src={`${API_ENDPOINTS.API}/${image}`}
-                            alt={`Event image ${index + 1}`}
-                            className="w-full h-auto object-contain rounded-lg"
+                            src={`https://stealthlearn.in/imm-admin/api/${image}`}
+                            alt={`Gallery image ${index + 1}`}
+                            className="w-auto mx-auto h-[200px] sm:h-[500px] object-cover transition-transform hover:scale-105 duration-700"
                           />
                         </CarouselItem>
                       ))}
                     </CarouselContent>
-                    <CarouselPrevious />
-                    <CarouselNext />
+                    <CarouselPrevious className="absolute left-2 top-1/2 -translate-y-1/2 z-10" />
+                    <CarouselNext className="absolute right-2 top-1/2 -translate-y-1/2 z-10" />
                   </Carousel>
                 ) : (
                   <img
-                    src={`${API_ENDPOINTS.API}/${selectedEvent.image}`}
+                    src={`https://stealthlearn.in/imm-admin/api/${selectedEvent.image}`}
                     alt={selectedEvent.title}
-                    className="w-full h-auto object-cover rounded-lg"
+                    className="w-full h-[200px] sm:h-[400px] object-cover transition-transform hover:scale-105 duration-700"
                   />
                 )}
                 <Button
