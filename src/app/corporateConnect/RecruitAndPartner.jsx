@@ -136,8 +136,8 @@ export default function RecruitAndPartner() {
             </h2>
             <p className="text-center text-gray-600 max-w-md">
               Your submission has been received. We appreciate your interest in
-              IMM's Strategic Plan Implementation. Someone from our team will be
-              in touch with you soon.
+              IMM&apos;s Strategic Plan Implementation. Someone from our team
+              will be in touch with you soon.
             </p>
             <Button
               className="mt-8 bg-pink-600 hover:bg-pink-700 text-white px-8 py-2 rounded-full"
@@ -179,7 +179,7 @@ export default function RecruitAndPartner() {
                 />
               </div>
               <CardTitle className="text-4xl font-bold tracking-tight mb-2">
-                HELP DESIGN IMM'S FUTURE
+                HELP DESIGN IMM&apos;S FUTURE
               </CardTitle>
               <CardDescription className="text-pink-100 text-xl">
                 Send Comments, Ideas, Questions
@@ -190,7 +190,7 @@ export default function RecruitAndPartner() {
           <CardContent className="pt-8 relative z-10">
             <div className="mb-8 text-slate-600 bg-pink-50 p-6 rounded-lg border-l-4 border-pink-400">
               <p>
-                Thank you for your interest in IMM's Strategic Plan
+                Thank you for your interest in IMM&apos;s Strategic Plan
                 Implementation: IMM{new Date().getFullYear()} - Designing the
                 Future. Please use the form below to ask any questions or
                 provide feedback. Your inquiry will be directed to the
