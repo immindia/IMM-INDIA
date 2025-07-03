@@ -2,7 +2,13 @@
 import { useEffect, useState } from "react";
 import { useMeta } from "@/context/MetaContext";
 import { initializePrefetch } from "../../utils/prefetch";
-import { Dialog, DialogContent } from "@/components/ui/dialog";
+import {
+  Dialog,
+  DialogContent,
+  DialogClose,
+  DialogFooter,
+} from "@/components/ui/dialog";
+import { Button } from "@/components/ui/button";
 
 import LatestBlogsAndEvents from "./LatestBlogsAndEvents";
 import Stats from "./Stats";
@@ -18,7 +24,6 @@ import Placements from "./Placements";
 import OurPartners from "./OurPartners";
 import Magnet from "../../../yes/Magnet/Magnet";
 import BrochureForm from "./BrochureForm";
-
 
 const MobilePopup = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -36,7 +41,10 @@ const MobilePopup = () => {
 
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
-      <DialogContent className="md:hidden z-[9999] w-full h-full px-5 max-h-[100vh] aspect-ratio-[5/7]  bg-transparent border-0 rounded-lg overflow-hidden focus:outline-none">
+      <DialogContent
+        className="md:hidden z-[9999] w-full px-5 max-h-fit aspect-ratio-[5/7]  bg-transparent border-0 rounded-lg overflow-hidden focus:outline-none"
+        crossIcon="hidden"
+      >
         <a
           href="https://www.immindia.edu.in/imm/general-pgdm-lp/"
           target="_blank"
@@ -46,9 +54,24 @@ const MobilePopup = () => {
           <img
             src="/pop-up.webp"
             alt="Special Offer"
-            className="rounded-lg object-cover w-full h-full max-h-[500px]"
+            className="rounded-lg object-contain w-full h-full max-h-[700px]"
           />
         </a>
+        <DialogFooter className="grid grid-cols-2  justify-center gap-4">
+          <DialogClose className="bg-white text-black px-4 py-2 rounded-md text-lg">
+            Close
+          </DialogClose>
+          <Button
+            variant="outline"
+            onClick={() => {
+              window.location.href = "https://admissions.immindia.edu.in/";
+            }}
+            target="_blank"
+            className="bg-blue-600 hover:bg-blue-700 hover:text-white text-base text-white px-4 py-2 mt-3 rounded-md h-full animate-bounce "
+          >
+            Apply Now
+          </Button>
+        </DialogFooter>
       </DialogContent>
     </Dialog>
   );
