@@ -106,8 +106,7 @@ const EventsAndActivities = () => {
         <EventGallery />
       </Container>
       <div className="bg-slate-50"></div>
-      {/* <Stats />
-      <Newsletter /> */}
+   
     </div>
   );
 };
