@@ -1,7 +1,7 @@
 import Heading from "../../components/Heading";
 import ImgAndBreadcrumb from "../../components/ImgAndBreadcrumb";
 import Container from "../../components/wrappers/Container";
-import img from "../../assets/lifeAtIIM/eventsAndActivities/eventBanner.webp";
+// import img from "../../assets/lifeAtIIM/eventsAndActivities/eventBanner.webp";
 import { useMemo, useState, useEffect } from "react";
 // import Stats from "../../components/Stats";
 // import Newsletter from "../../components/Newsletter";
