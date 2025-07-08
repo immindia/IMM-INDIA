@@ -19,6 +19,7 @@ pnpm run build
 
 # Copy build output to LIVE SITE ROOT
 echo "Copying build output to live site..."
-cp -rT /var/www/running_sites/immindia.edu.in/frontend/build/IMM-INDIA/dist  /var/www/running_sites/immindia.edu.in/frontend/build/
+rsync -av /var/www/running_sites/immindia.edu.in/frontend/build/IMM-INDIA/dist/ /var/www/running_sites/immindia.edu.in/frontend/build/
+
 
 echo "===== IMM Frontend Deploy Completed ====="
