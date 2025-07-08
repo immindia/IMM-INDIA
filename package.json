@@ -8,7 +8,7 @@
     "build": "node generate-sitemap.js && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "start:webhook": "node webhook.js"
+    "start:webhook": "node webhook.cjs"
   },
   "dependencies": {
     "@hookform/resolvers": "^4.1.3",
