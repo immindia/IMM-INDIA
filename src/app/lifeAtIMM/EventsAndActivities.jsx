@@ -100,7 +100,7 @@ const EventsAndActivities = () => {
           title="Events & Activities"
           titleClassName="text-primary-color  lg:text-5xl"
           subtitleClassName="text-gray-500  m-0 lg:text-lg lg:font-normal lg:max-w-full lg:"
-          subtitle="Dive into the exciting and diverse events and activities that unite the IMM community, highlighting our spirit of collaboration and celebration"
+          subtitle="Dive into the exciting and diverse events and activities that unite the IMM community, highlighting our spirit of collaboration and celebration."
           className="pt-12"
         />
         <EventGallery />
