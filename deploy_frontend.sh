@@ -15,7 +15,7 @@ pnpm install
 
 # Build the project
 echo "Building project..."
-pnpm build
+pnpm run build
 
 # Copy build output to LIVE SITE ROOT
 echo "Copying build output to live site..."
