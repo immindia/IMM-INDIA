@@ -17,8 +17,8 @@ import {
 import {
   Dialog,
   DialogContent,
-  DialogHeader,
-  DialogTitle,
+    // DialogHeader,
+    // DialogTitle,
 } from "@/components/ui/dialog";
 import {
   Carousel,
@@ -291,7 +291,7 @@ function EventGallery() {
                       {selectedEvent.gallery.map((image, index) => (
                         <CarouselItem key={index} className="basis-full w-full">
                           <img
-                            src={`https://stealthlearn.in/imm-admin/api/${image}`}
+                            src={`${API_ENDPOINTS.API}/${image}`}
                             alt={`Gallery image ${index + 1}`}
                             className="w-auto mx-auto h-[200px] sm:h-[500px] object-cover transition-transform hover:scale-105 duration-700"
                           />
@@ -303,7 +303,7 @@ function EventGallery() {
                   </Carousel>
                 ) : (
                   <img
-                    src={`https://stealthlearn.in/imm-admin/api/${selectedEvent.image}`}
+                    src={`${API_ENDPOINTS.API}/${selectedEvent.image}`}
                     alt={selectedEvent.title}
                     className="w-full h-[200px] sm:h-[400px] object-cover transition-transform hover:scale-105 duration-700"
                   />

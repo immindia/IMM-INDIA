@@ -16,7 +16,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { User, Phone, Mail, MapPin } from "lucide-react";
 import pgdm from "../../assets/pdfs/PGDM Brochure 2025-2027.pdf";
-
+import { API_ENDPOINTS } from "@/lib/api";
 export default function BrochureForm() {
   const { setTitle, setDescription } = useMeta();
 
@@ -48,7 +48,7 @@ export default function BrochureForm() {
 
     try {
       const response = await fetch(
-        "https://www.stealthlearn.in/imm-admin/api/indexBrochure.php",
+        `${API_ENDPOINTS.API}/indexBrochure.php`,
         {
           // TODO: Replace with your actual API URL
           method: "POST",
