@@ -1,12 +1,13 @@
-import React, { createContext, useState, useContext } from "react";
+import { createContext, useState, useContext } from "react";
 
 const MarqueeContext = createContext();
 
+// eslint-disable-next-line react-refresh/only-export-components
 export const useMarquee = () => useContext(MarqueeContext);
 
 export const MarqueeProvider = ({ children }) => {
   const [marqueeText, setMarqueeText] = useState(
-    "PGDM Session 2025-27 Commences from July 7, 2025, onwards for Batch 1* | Phase-4 Applications Closed"
+    "PGDM Session 2025-27 Commences from August 11, 2025, onwards for Batch 2* | Phase-4 Applications Closed"
   );
   const [isBBAPage, setIsBBAPage] = useState(false);
 
