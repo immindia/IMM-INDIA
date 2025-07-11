@@ -30,6 +30,8 @@ dist-ssr
 
 # imm lp
 /public/imm
+/public/sitemap.xml
+/public/robots.txt
 
 # stats
 /stats.html
