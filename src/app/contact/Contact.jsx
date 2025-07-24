@@ -237,7 +237,7 @@ function CorporateResourceCentreHead() {
     <div className="space-y-4">
       <div className="flex items-center space-x-3 text-gray-600">
         <Phone className="w-5 h-5 text-pink-900" />
-        <span>+91-9313556551</span>
+        <span>+91-9811881852</span>
       </div>
       {/* <div className="flex items-center space-x-3 text-gray-600">
         <Phone className="w-5 h-5 text-pink-900" />
@@ -247,7 +247,7 @@ function CorporateResourceCentreHead() {
       </div> */}
       <div className="flex items-center space-x-3 text-gray-600">
         <Mail className="w-5 h-5 text-pink-900" />
-        <span>sanjay@immindia.com</span>
+        <span>anupa.sen@immindia.com</span>
       </div>
     </div>
   );
