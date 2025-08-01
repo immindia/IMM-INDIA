@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useMeta } from "@/context/MetaContext";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -8,7 +8,6 @@ import {
   Phone,
   Mail,
   Facebook,
-  Twitter,
   Instagram,
   Linkedin,
   Youtube,
