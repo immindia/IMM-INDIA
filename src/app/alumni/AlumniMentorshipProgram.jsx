@@ -9,6 +9,7 @@ import ImgAndBreadcrumb from "../../components/ImgAndBreadcrumb";
 import { useFetch } from "../../hooks/useFetch";
 import ProfileCard from "./ProfileCard";
 import { API_ENDPOINTS } from "@/lib/api";
+import AlumniMentorshipEvents from "./AlumniMentorshipEvents";
 
 const breadcrumbItems = [
   { href: "/", label: "Home" },
@@ -165,6 +166,8 @@ export default function AlumniMentorshipProgram() {
             }}
           ></div>
         </div>
+
+        <AlumniMentorshipEvents />
         <div className="container sm:max-w-6xl md:max-w-6xl lg:max-w-7xl xl:max-w-7xl mx-auto py-6 px-4 sm:py-8">
           <Heading
             title="Alumni Directory"
