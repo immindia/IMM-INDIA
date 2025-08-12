@@ -13,6 +13,7 @@ import {
 import { RiTwitterXLine } from "react-icons/ri";
 import img from "../../assets/header/QR-img.webp";
 import { useMarquee } from "../../context/MarqueeContext.jsx";
+import Marquee from "@/components/ui/marquee";
 
 const TopBar = () => {
   const [iconsLoaded, setIconsLoaded] = useState([
@@ -120,9 +121,15 @@ const TopBar = () => {
         {/* Marquee */}
         <div className="text-pink-700 justify-center items-center bg-slate-50 p-3 gap-2 rounded-full border shadow-sm flex w-96 overflow-hidden">
           <div className="h-2 w-2 bg-pink-900 rounded-full animate-ping"></div>
-          <marquee className="font-bold" behavior="scroll" direction="left">
-            {marqueeText} | {marqueeText} | {marqueeText} | {marqueeText}
-          </marquee>
+          <Marquee
+            pauseOnHover
+            isPlaying
+            className="[--duration:20s] [--gap:0rem] w-full"
+          >
+            <span className="font-bold whitespace-nowrap">
+              {marqueeText} | {marqueeText} | {marqueeText} | {marqueeText}
+            </span>
+          </Marquee>
         </div>
 
         {/* Contact Info */}

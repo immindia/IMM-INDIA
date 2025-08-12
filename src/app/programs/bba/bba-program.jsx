@@ -79,7 +79,7 @@ const BBAProgram = () => {
     return () => {
       updateColors("bg-primary-color", "bg-primary-color");
       setMarqueeText(
-        "PGDM Session 2025-27 Commences from July 7, 2025, onwards for Batch 1*"
+        "Phase-4 Applications Closed"
       );
       setIsBBAPage(false);
     };
