@@ -124,10 +124,10 @@ const TopBar = () => {
           <Marquee
             pauseOnHover
             isPlaying
-            className="[--duration:20s] [--gap:0rem] w-full"
+            className="[--duration:5s] [--gap:0rem] w-full"
           >
             <span className="font-bold whitespace-nowrap">
-              {marqueeText} | {marqueeText} | {marqueeText} | {marqueeText}
+              {marqueeText} |&nbsp;
             </span>
           </Marquee>
         </div>

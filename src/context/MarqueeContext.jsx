@@ -10,7 +10,7 @@ export const MarqueeProvider = ({ children }) => {
   //   "PGDM Session 2025-27 Commences from 18th Aug 2025 onwards for Batch 2* | Phase-4 Applications Closed"
   // );
   const [marqueeText, setMarqueeText] = useState(
-    "Phase-4 Applications Closed"
+    "Phase-4 Applications Closed "
   );
   const [isBBAPage, setIsBBAPage] = useState(false);
 
